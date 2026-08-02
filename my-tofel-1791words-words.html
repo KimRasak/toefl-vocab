@@ -120,8 +120,12 @@ const $ = id => document.getElementById(id);
 // 跳转链接：线上运行时切到 GitHub Pages 对应地址，本地/微信里用相对文件名
 (function(){
   try{
-    if(location.protocol === "http:" || location.protocol === "https:" && location.hostname === "kimrasak.github.io"){
-      $("linkBtn").href = "https://kimrasak.github.io/toefl-vocab/";
+    if(location.protocol === "http:" || location.protocol === "https:"){
+      if(location.hostname === "kimrasak.github.io"){
+        $("linkBtn").href = "https://kimrasak.github.io/toefl-vocab/";
+        const to1675 = document.querySelector('a[href="my-tofel-1675-words.html"]');
+        if(to1675){ to1675.href = "https://kimrasak.github.io/toefl-vocab/1675/"; }
+      }
     }
   }catch(e){}
 })();
