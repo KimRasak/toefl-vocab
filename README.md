@@ -1,4 +1,6 @@
-TOEFL 1791 单词本
+TOEFL 单词本（1791 + 1675）
 
-- index.html : 单词本网页（点击单词旁喇叭可听发音）
-- my-tofel-1791words-words.txt : 原始单词数据
+- 根路径 index.html : 主页（两个入口）
+- my-tofel-1791words-words.html : 1791 词版（带发音）
+- 1675/index.html : 1675 词版（带发音）
+- 对应 .txt 为原始数据
