@@ -414,7 +414,9 @@ document.addEventListener("click", async e => {
     const item = editBtn.closest(".item");
     const w = item.querySelector(".w .wtext").textContent.trim();
     const mEl = item.querySelector(".m");
-    const orig = mEl.dataset.orig || mEl.textContent.trim();
+    // 从数据源取原始释义（比 dataset.orig 可靠）
+    const src = WORDS.find(x => x[0] === w);
+    const orig = src ? src[1] : (mEl.textContent.trim());
 
     if(editingWord){
       const prev = document.querySelector('.item[data-w="' + editingWord + '"]');
@@ -449,7 +451,6 @@ document.addEventListener("click", async e => {
     saveBtn.disabled = false; saveBtn.textContent = "保存";
     if(res.ok){
       overrides[w] = newVal;
-      mEl.dataset.orig = newVal;
       mEl.innerHTML = esc(newVal);
       item.classList.remove("editing");
       editingWord = null;
@@ -458,7 +459,11 @@ document.addEventListener("click", async e => {
       toast("保存失败：" + res.msg);
       item.classList.remove("editing");
       editingWord = null;
-      mEl.innerHTML = esc(overrides[w] !== undefined ? overrides[w] : orig);
+      // 恢复：优先 override，否则原文
+      const src = WORDS.find(x => x[0] === w);
+      const originalMeaning = src ? src[1] : "";
+      const showMeaning = overrides[w] !== undefined ? overrides[w] : originalMeaning;
+      mEl.innerHTML = esc(showMeaning);
     }
     return;
   }
@@ -476,8 +481,12 @@ function cancelEdit(item){
   if(!item) return;
   const mEl = item.querySelector(".m");
   const w = item.dataset.w;
-  const orig = overrides[w] !== undefined ? overrides[w] : (mEl.dataset.orig || "");
-  mEl.innerHTML = esc(orig);
+  // 从数据源找原始释义（而不是依赖可能被污染的 dataset.orig）
+  const src = WORDS.find(x => x[0] === w);
+  const originalMeaning = src ? src[1] : "";
+  const showMeaning = overrides[w] !== undefined ? overrides[w] : originalMeaning;
+  mEl.innerHTML = esc(showMeaning);
+  delete mEl.dataset.orig;
   item.classList.remove("editing");
   if(editingWord === (item.dataset.w)) editingWord = null;
 }
@@ -486,13 +495,13 @@ function cancelEdit(item){
 const _origRenderHTML = render;
 render = function(){
   _origRenderHTML();
-  // 对已渲染的释义做 overrides 覆盖
+  // 对已渲染的释义做 overrides 覆盖（不依赖 dataset.orig，避免状态污染）
   document.querySelectorAll(".item .m").forEach(mEl => {
-    if(mEl.dataset.orig !== undefined) return; // 编辑中/刚编辑过，跳过
+    if(editingWord) return; // 编辑中不重绘
     const item = mEl.closest(".item");
+    if(!item) return;
     const w = item.querySelector(".w .wtext").textContent.trim();
-    if(overrides[w] !== undefined){
-      mEl.dataset.orig = mEl.textContent.trim();
+    if(overrides[w] !== undefined && !item.classList.contains("editing")){
       mEl.textContent = overrides[w];
     }
   });
