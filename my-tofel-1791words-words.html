@@ -271,12 +271,6 @@ $("fileInput").onchange = e => {
   e.target.value = "";
 };
 
-// keyboard nav
-document.addEventListener("keydown", e => {
-  if(e.target.tagName === "INPUT") return;
-  if(e.key === "ArrowLeft") $("prevBtn").click();
-  else if(e.key === "ArrowRight") $("nextBtn").click();
-});
 
 try {
   const savedPerPage = parseInt(localStorage.getItem("wb:perPage"), 10);
