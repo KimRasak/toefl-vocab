@@ -303,8 +303,26 @@ let overrides = {};
 let editingWord = null; // 当前正在编辑的单词
 
 async function loadOverrides(){
+  const token = getToken();
+  // 优先走 API：内容无 CDN 缓存，刚保存后刷新立即生效
   try{
-    const url = "https://raw.githubusercontent.com/" + REPO_OWNER + "/" + REPO_NAME + "/main/" + OVERRIDES_PATH;
+    const url = "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME + "/contents/" + OVERRIDES_PATH;
+    const r = await fetch(url, {
+      cache: "no-store",
+      headers: Object.assign(
+        { "Accept": "application/vnd.github+json" },
+        token ? { "Authorization": "Bearer " + token } : {}
+      )
+    });
+    if(r.ok){
+      const j = await r.json();
+      const j2 = JSON.parse(decodeURIComponent(escape(atob(j.content))));
+      if(j2 && typeof j2 === "object"){ overrides = j2; return overrides; }
+    }
+  }catch(e){}
+  // 回退：raw + 时间戳参数绕过边缘缓存
+  try{
+    const url = "https://raw.githubusercontent.com/" + REPO_OWNER + "/" + REPO_NAME + "/main/" + OVERRIDES_PATH + "?v=" + Date.now();
     const r = await fetch(url, {cache:"no-store"});
     if(!r.ok) throw new Error("HTTP " + r.status);
     const j = await r.json();
