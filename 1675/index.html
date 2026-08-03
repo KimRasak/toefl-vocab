@@ -284,19 +284,18 @@ catch(err){
   document.getElementById("list").innerHTML =
     '<div class="empty">加载出错：' + (err && err.message ? err.message : err) +
     '<br>请重新下载最新版 HTML。</div>';
+}
 
 // 启动时加载作者自定义翻译并重绘
+let overrides = {};
 const EMBEDDED_OVERRIDES = {};
 loadOverrides().then(function(){ try{ render(); }catch(e){} });
-}
 
 // ===== 作者可编辑翻译 =====
 const REPO_OWNER = "KimRasak";
 const REPO_NAME = "toefl-vocab";
 const OVERRIDES_PATH = "1675/overrides.json"; // 由注入脚本替换
 const TOKEN_KEY = "toefl_gh_token";
-
-let overrides = {};
 
 let editingWord = null; // 当前正在编辑的单词
 
