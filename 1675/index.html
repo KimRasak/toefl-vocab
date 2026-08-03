@@ -286,6 +286,7 @@ catch(err){
     '<br>请重新下载最新版 HTML。</div>';
 
 // 启动时加载作者自定义翻译并重绘
+const EMBEDDED_OVERRIDES = {};
 loadOverrides().then(function(){ try{ render(); }catch(e){} });
 }
 
@@ -296,7 +297,6 @@ const OVERRIDES_PATH = "1675/overrides.json"; // 由注入脚本替换
 const TOKEN_KEY = "toefl_gh_token";
 
 let overrides = {};
-const EMBEDDED_OVERRIDES = {};
 
 let editingWord = null; // 当前正在编辑的单词
 
