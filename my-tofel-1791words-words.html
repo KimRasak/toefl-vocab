@@ -58,6 +58,17 @@
   .wbtn circle { fill: var(--accent); transition: transform .15s ease; }
   .wbtn:hover circle { transform: scale(1.12); }
   .wbtn:active circle { transform: scale(0.95); }
+
+  .edit-btn { flex:0 0 auto; background:none; border:0; padding:2px; cursor:pointer; color:var(--muted); font-size:14px; opacity:.55; display:inline-flex; align-items:center; }
+  .edit-btn:hover { opacity:1; color:var(--accent); }
+  .item .m textarea { width:100%; min-height:64px; background:var(--card2); color:var(--fg); border:1px solid var(--border); border-radius:8px; padding:8px; font-size:14px; font-family:inherit; resize:vertical; box-sizing:border-box; }
+  .save-row { display:flex; gap:8px; margin-top:8px; align-items:center; }
+  .save-row button { border:0; border-radius:8px; padding:6px 14px; font-size:13px; cursor:pointer; font-weight:600; }
+  .save-ok { background:var(--accent); color:#fff; }
+  .save-ok:disabled { opacity:.5; cursor:not-allowed; }
+  .save-cancel { background:var(--card2); color:var(--muted); }
+  .item.editing { border-color: var(--accent); }
+
   .item .m { font-size:14px; color:var(--muted); margin-top:4px; line-height:1.5; }
   .item mark { background:rgba(76,141,255,0.28); color:inherit; border-radius:3px; padding:0 2px; }
   .pager { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:14px; }
@@ -189,7 +200,8 @@ function render(){
     list.innerHTML = slice.map(([w,m], i) => {
       const idx = start + i + 1;
       return '<div class="item"><div class="w">'+ idx +'. '+ hi(w, query) +
-             '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button></div>' +
+             '<span class="wtext" style="display:none">' + esc(w) + '</span>' +
+             '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' + EDIT_BTN_HTML + '</div>' +
              '<div class="m">'+ hi(m, query) +'</div></div>';
     }).join("");
   }
@@ -282,6 +294,212 @@ catch(err){
     '<div class="empty">加载出错：' + (err && err.message ? err.message : err) +
     '<br>请重新下载最新版 HTML。</div>';
 }
+const EDIT_BTN_HTML = '\n    <button class="edit-btn" type="button" title="编辑翻译">✏️</button>\n';
+
+// ===== 作者可编辑翻译 =====
+const REPO_OWNER = "KimRasak";
+const REPO_NAME = "toefl-vocab";
+const OVERRIDES_PATH = "overrides.json"; // 由注入脚本替换
+const TOKEN_KEY = "toefl_gh_token";
+
+let overrides = {};
+let editingWord = null; // 当前正在编辑的单词
+
+async function loadOverrides(){
+  try{
+    const url = "https://raw.githubusercontent.com/" + REPO_OWNER + "/" + REPO_NAME + "/main/" + OVERRIDES_PATH;
+    const r = await fetch(url, {cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    if(j && typeof j === "object") overrides = j;
+  }catch(e){ overrides = {}; }
+  return overrides;
+}
+
+function getToken(){
+  const t = localStorage.getItem(TOKEN_KEY);
+  return t ? t.trim() : "";
+}
+function setToken(t){ try{ localStorage.setItem(TOKEN_KEY, t.trim()); }catch(e){} }
+
+async function ensureAuthorized(){
+  const token = getToken();
+  if(!token){ return {ok:false, needAuth:true}; }
+  try{
+    const r = await fetch("https://api.github.com/user", {
+      headers: { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" }
+    });
+    if(!r.ok) return {ok:false, needAuth:true, msg:"Token 无效或已过期"};
+    const u = await r.json();
+    if(u.login !== REPO_OWNER) return {ok:false, needAuth:true, msg:"仅仓库作者 " + REPO_OWNER + " 可修改"};
+
+    // 校验是否对仓库有写权限
+    const repo = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME, {
+      headers: { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" }
+    });
+    if(repo.ok){
+      const ri = await repo.json();
+      if(ri.permissions && ri.permissions.push){
+        return {ok:true, token};
+      }
+    }
+    return {ok:false, needAuth:true, msg:"Token 无仓库写权限"};
+  }catch(e){
+    return {ok:false, needAuth:false, msg:"网络错误：" + e.message};
+  }
+}
+
+async function saveOverride(word, meaning){
+  const auth = await ensureAuthorized();
+  if(!auth.ok){
+    if(auth.needAuth){
+      const entered = prompt((auth.msg ? auth.msg + "\n" : "") + "请输入你的 GitHub Token（仅保存在本浏览器，用于作者身份校验）：");
+      if(!entered) return {ok:false, msg:"已取消"};
+      setToken(entered);
+      return saveOverride(word, meaning); // 递归重试（最多一次）
+    }
+    return {ok:false, msg: auth.msg || "校验失败"};
+  }
+  const token = auth.token;
+
+  // 读取当前 overrides.json 内容 + sha（用于冲突检测）
+  let currentContent = JSON.stringify(overrides, null, 2), sha = null;
+  try{
+    const r = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME + "/contents/" + OVERRIDES_PATH, {
+      headers: { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" }
+    });
+    if(r.ok){
+      const j = await r.json();
+      sha = j.sha;
+      currentContent = decodeURIComponent(escape(atob(j.content)));
+    }
+  }catch(e){}
+
+  // 合并修改
+  let newOverrides = {};
+  try{ newOverrides = JSON.parse(currentContent); }catch(e){ newOverrides = {}; }
+  newOverrides[word] = meaning;
+
+  const body = {
+    message: "Override translation for " + word + " (author " + REPO_OWNER + ")",
+    content: btoa(unescape(encodeURIComponent(JSON.stringify(newOverrides, null, 2))))
+  };
+  if(sha) body.sha = sha;
+
+  try{
+    const r = await fetch("https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME + "/contents/" + OVERRIDES_PATH, {
+      method: "PUT",
+      headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json", "Accept": "application/vnd.github+json" },
+      body: JSON.stringify(body)
+    });
+    if(!r.ok){
+      const err = await r.json().catch(()=>({}));
+      return {ok:false, msg: err.message || ("HTTP " + r.status)};
+    }
+    overrides = newOverrides; // 更新本地缓存
+    return {ok:true};
+  }catch(e){
+    return {ok:false, msg:"网络错误：" + e.message};
+  }
+}
+
+async function updateOverrideLocal(word, meaning){
+  // 本地直接生效（无论是否线上保存成功），保存由 saveOverride 完成
+}
+
+document.addEventListener("click", async e => {
+  // 编辑按钮
+  const editBtn = e.target.closest(".edit-btn");
+  if(editBtn){
+    e.stopPropagation();
+    const item = editBtn.closest(".item");
+    const w = item.querySelector(".w .wtext").textContent.trim();
+    const mEl = item.querySelector(".m");
+    const orig = mEl.dataset.orig || mEl.textContent.trim();
+
+    if(editingWord){
+      const prev = document.querySelector('.item[data-w="' + editingWord + '"]');
+      if(prev && prev !== item){ cancelEdit(prev); }
+    }
+
+    item.classList.add("editing");
+    item.dataset.w = w;
+    editingWord = w;
+    const edited = overrides[w] !== undefined ? overrides[w] : orig;
+    mEl.innerHTML = '<textarea rows="3" spellcheck="false">' + esc(edited) + '</textarea>' +
+      '<div class="save-row"><button class="save-ok" type="button">保存</button>' +
+      '<button class="save-cancel" type="button">取消</button></div>';
+    const ta = mEl.querySelector("textarea");
+    ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length);
+    return;
+  }
+
+  // 保存按钮
+  const saveBtn = e.target.closest(".save-ok");
+  if(saveBtn){
+    e.stopPropagation();
+    const item = saveBtn.closest(".item");
+    const w = item.dataset.w;
+    const mEl = item.querySelector(".m");
+    const ta = mEl.querySelector("textarea");
+    const newVal = ta.value.trim();
+    if(!newVal){ toast("释义不能为空"); return; }
+    saveBtn.disabled = true; saveBtn.textContent = "保存中…";
+
+    const res = await saveOverride(w, newVal);
+    saveBtn.disabled = false; saveBtn.textContent = "保存";
+    if(res.ok){
+      overrides[w] = newVal;
+      mEl.dataset.orig = newVal;
+      mEl.innerHTML = esc(newVal);
+      item.classList.remove("editing");
+      editingWord = null;
+      toast("已保存 ✅");
+    } else {
+      toast("保存失败：" + res.msg);
+      item.classList.remove("editing");
+      editingWord = null;
+      mEl.innerHTML = esc(overrides[w] !== undefined ? overrides[w] : orig);
+    }
+    return;
+  }
+
+  // 取消按钮
+  const cancelBtn = e.target.closest(".save-cancel");
+  if(cancelBtn){
+    e.stopPropagation();
+    const item = cancelBtn.closest(".item");
+    cancelEdit(item);
+  }
+});
+
+function cancelEdit(item){
+  if(!item) return;
+  const mEl = item.querySelector(".m");
+  const w = item.dataset.w;
+  const orig = overrides[w] !== undefined ? overrides[w] : (mEl.dataset.orig || "");
+  mEl.innerHTML = esc(orig);
+  item.classList.remove("editing");
+  if(editingWord === (item.dataset.w)) editingWord = null;
+}
+
+// 覆盖显示：render 时把 overrides 合并进 m
+const _origRenderHTML = render;
+render = function(){
+  // 先应用 overrides 到 WORDS（只改显示，不改数据源）
+  _origRenderHTML();
+  // 对已渲染的释义做 overrides 覆盖
+  document.querySelectorAll(".item .m").forEach(mEl => {
+    if(mEl.dataset.orig !== undefined) return; // 编辑中/刚编辑过，跳过
+    const item = mEl.closest(".item");
+    const w = item.querySelector(".w .wtext").textContent.trim();
+    if(overrides[w] !== undefined){
+      mEl.dataset.orig = mEl.textContent.trim();
+      mEl.textContent = overrides[w];
+    }
+  });
+};
+
 </script>
 </body>
 </html>
