@@ -75,6 +75,9 @@
 
   .item .m { font-size:14px; color:var(--muted); margin-top:4px; line-height:1.5; }
   .item mark { background:rgba(76,141,255,0.28); color:inherit; border-radius:3px; padding:0 2px; }
+  .loc-btn { flex:0 0 auto; margin-left:auto; background:var(--card2); border:1px solid var(--border); color:var(--accent); border-radius:8px; padding:3px 8px; font-size:12px; cursor:pointer; white-space:nowrap; font-weight:600; }
+  .loc-btn:hover { border-color:var(--accent); }
+  .item.located { border-color:var(--accent); box-shadow:0 0 0 2px rgba(76,141,255,.35); }
   .pager { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:14px; }
   .nav-btn { background:var(--accent); color:#fff; border:0; border-radius:10px; padding:10px 16px; font-size:15px; font-weight:600; cursor:pointer; }
   .nav-btn:disabled { background:var(--card2); color:var(--muted); cursor:not-allowed; }
@@ -88,7 +91,7 @@
 <body>
 <header>
   <div class="top-row">
-    <div class="title">单词本 <span style="font-size:11px;color:#e5484d;background:rgba(229,72,77,.15);border:1px solid rgba(229,72,77,.4);border-radius:6px;padding:1px 6px;margin-left:4px">V6</span></div>
+    <div class="title">单词本 <span style="font-size:11px;color:#e5484d;background:rgba(229,72,77,.15);border:1px solid rgba(229,72,77,.4);border-radius:6px;padding:1px 6px;margin-left:4px">V7</span></div>
     <a class="link-btn" id="linkBtn" href="index.html">↩ 主页</a>
     <a class="link-btn" href="my-tofel-1675-words.html">→ 1675</a>
     <div class="search-wrap">
@@ -197,10 +200,19 @@ function playWord(word, btn){
   });
 }
 
+let filteredIndices = null; // 与 filtered() 结果一一对应的全表下标；无搜索时为 null
 function filtered(){
-  if(!query) return WORDS;
+  if(!query){ filteredIndices = null; return WORDS; }
   const q = query.toLowerCase();
-  return WORDS.filter(([w,m]) => w.toLowerCase().includes(q) || m.toLowerCase().includes(q));
+  const out = [];
+  filteredIndices = [];
+  WORDS.forEach(([w,m], i) => {
+    if(w.toLowerCase().includes(q) || m.toLowerCase().includes(q)){
+      out.push([w,m]);
+      filteredIndices.push(i);
+    }
+  });
+  return out;
 }
 
 function render(){
@@ -216,10 +228,15 @@ function render(){
     list.innerHTML = '<div class="empty">没有匹配的单词</div>';
   } else {
     list.innerHTML = slice.map(([w,m], i) => {
-      const idx = start + i + 1;
+      // 搜索时也显示单词在全表里的真实序号，并给出“跳到该页”的入口
+      const gi = filteredIndices ? filteredIndices[start + i] : start + i;
+      const idx = gi + 1;
+      const locBtn = query
+        ? '<button class="loc-btn" type="button" data-idx="' + gi + '" title="跳到该词在全表中的位置">↗ 第 ' + (Math.floor(gi / perPage) + 1) + ' 页</button>'
+        : '';
       return '<div class="item"><div class="w">'+ idx +'. '+ hi(w, query) +
              '<span class="wtext" style="display:none">' + esc(w) + '</span>' +
-             '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' + EDIT_BTN_HTML + '</div>' +
+             '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' + EDIT_BTN_HTML + locBtn + '</div>' +
              '<div class="m">'+ hi(m, query) +'</div></div>';
     }).join("");
   }
@@ -712,6 +729,47 @@ render = function(){ _renderBeforeAuto(); highlightAuto(); };
 autoIdx = loadAutoIdx();
 if(autoIdx >= WORDS.length) autoIdx = 0;
 updateAutoUI();
+
+
+// ===== 搜索结果里"跳到该词所在页" =====
+function gotoWordIndex(gi){
+  if(gi < 0 || gi >= WORDS.length) return;
+  // 连读中会不断把页面翻回朗读位置，所以先停下，并把进度挪到这个词
+  if(typeof auto !== "undefined" && auto){
+    stopAuto();
+    autoIdx = gi; saveAutoIdx(); updateAutoUI();
+  }
+  query = ""; $("search").value = "";
+  page = Math.floor(gi / perPage) + 1;
+  render();
+  const off = gi - (page - 1) * perPage;
+  const el = document.querySelectorAll("#list .item")[off];
+  if(el){
+    el.classList.add("located");
+    el.scrollIntoView({block:"center", behavior:"smooth"});
+    setTimeout(() => el.classList.remove("located"), 2000);
+  }
+  toast("已跳到第 " + page + " 页 · 第 " + (gi + 1) + " 个词");
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".loc-btn");
+  if(!btn) return;
+  e.stopPropagation();
+  gotoWordIndex(parseInt(btn.dataset.idx, 10));
+});
+
+// 搜索只剩一个结果时，回车直接跳过去
+$("search").addEventListener("keydown", e => {
+  if(e.key !== "Enter" || !query) return;
+  const arr = filtered();
+  if(!arr.length) return;
+  const q = query.toLowerCase();
+  // 优先精确命中的单词，否则取第一条结果
+  let at = arr.findIndex(([w]) => w.toLowerCase() === q);
+  if(at < 0) at = 0;
+  gotoWordIndex(filteredIndices ? filteredIndices[at] : at);
+});
 
 </script>
 </body>
