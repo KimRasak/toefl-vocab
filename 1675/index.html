@@ -53,6 +53,10 @@
   .wbtn circle { fill: var(--accent); transition: transform .15s ease; }
   .wbtn:hover circle { transform: scale(1.12); }
   .wbtn:active circle { transform: scale(0.95); }
+  .wbtn.playing circle { fill: #e5484d; }
+  .item.playing { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  #autoBtn.on { background: var(--accent); color:#fff; border-color: var(--accent); font-weight:700; }
+  #autoPos { color: var(--muted); font-size:12px; white-space:nowrap; max-width:190px; overflow:hidden; text-overflow:ellipsis; }
 
   .edit-btn { flex:0 0 auto; background:none; border:0; padding:2px; cursor:pointer; color:var(--muted); font-size:14px; opacity:.55; display:inline-flex; align-items:center; }
   .edit-btn:hover { opacity:1; color:var(--accent); }
@@ -79,7 +83,7 @@
 <body>
 <header>
   <div class="top-row">
-    <div class="title">单词本 <span style="font-size:11px;color:#e5484d;background:rgba(229,72,77,.15);border:1px solid rgba(229,72,77,.4);border-radius:6px;padding:1px 6px;margin-left:4px">V5</span></div>
+    <div class="title">单词本 <span style="font-size:11px;color:#e5484d;background:rgba(229,72,77,.15);border:1px solid rgba(229,72,77,.4);border-radius:6px;padding:1px 6px;margin-left:4px">V6</span></div>
     <a class="link-btn" id="linkBtn" href="../index.html">↩ 主页</a>
     <a class="link-btn" href="my-tofel-1791words-words.html">→ 1791</a>
     <div class="search-wrap">
@@ -102,6 +106,19 @@
     </div>
     <label class="import-btn" for="fileInput">导入 txt</label>
     <input type="file" id="fileInput" accept=".txt,text/plain">
+    <div class="seg">
+      <button class="import-btn" id="autoBtn" title="依次朗读整个词表">▶ 连读</button>
+      <button class="import-btn" id="autoRestartBtn" title="从第 1 个单词重新开始">⏮ 从头</button>
+      <label>间隔</label>
+      <select id="autoGap">
+        <option value="0">0s</option>
+        <option value="500" selected>0.5s</option>
+        <option value="1000">1s</option>
+        <option value="2000">2s</option>
+        <option value="3000">3s</option>
+      </select>
+      <span id="autoPos"></span>
+    </div>
   </div>
 </header>
 <main>
@@ -522,6 +539,175 @@ render = function(){
     }
   });
 };
+
+
+// ===== 全词表连读（带进度记忆） =====
+// 进度按词表分开保存（OVERRIDES_PATH 在两个词表页面里不同）
+const AUTO_KEY = "wb:auto:" + OVERRIDES_PATH;
+const YOUDAO_TTS = "https://dict.youdao.com/dictvoice?audio=";
+const GOOGLE_TTS = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=";
+
+let auto = false;          // 是否正在连读
+let autoIdx = 0;           // 当前朗读到的下标（WORDS 全表下标）
+let autoToken = 0;         // 用于取消旧的播放循环
+let autoTimer = null, autoWake = null;
+
+function cleanWord(word){
+  return String(word).replace(/'/g, "").replace(/^[^A-Za-z]+/, "").replace(/[^A-Za-z-].*$/, "");
+}
+function loadAutoIdx(){
+  try{
+    const v = parseInt(localStorage.getItem(AUTO_KEY), 10);
+    if(!isNaN(v) && v >= 0) return v;
+  }catch(e){}
+  return 0;
+}
+function saveAutoIdx(){ try{ localStorage.setItem(AUTO_KEY, String(autoIdx)); }catch(e){} }
+
+function updateAutoUI(){
+  const btn = $("autoBtn");
+  btn.classList.toggle("on", auto);
+  btn.textContent = auto ? "⏸ 暂停" : "▶ 连读";
+  const total = WORDS.length;
+  const cur = WORDS[autoIdx] ? WORDS[autoIdx][0] : "";
+  $("autoPos").textContent = total ? (Math.min(autoIdx + 1, total) + "/" + total + (cur ? " " + cur : "")) : "";
+}
+
+// 朗读一个单词，播完（或失败）后 resolve
+function speakAsync(word){
+  return new Promise(resolve => {
+    const clean = cleanWord(word);
+    if(!clean){ resolve(); return; }
+    if(!audioEl) audioEl = new Audio();
+    audioEl.onended = null; audioEl.onerror = null;
+    try{ audioEl.pause(); }catch(e){}
+
+    let done = false, fallback = false;
+    const finish = () => {
+      if(done) return;
+      done = true;
+      clearTimeout(guard);
+      audioEl.onended = null; audioEl.onerror = null;
+      resolve();
+    };
+    const guard = setTimeout(finish, 8000); // 单词卡住时兜底，避免整个循环停住
+    const goFallback = () => {
+      if(fallback){ finish(); return; }
+      fallback = true;
+      audioEl.src = GOOGLE_TTS + encodeURIComponent(clean);
+      audioEl.play().catch(finish);
+    };
+    audioEl.onended = finish;
+    audioEl.onerror = goFallback;
+    audioEl.src = YOUDAO_TTS + encodeURIComponent(clean) + "&type=2";
+    audioEl.play().catch(goFallback);
+  });
+}
+
+function sleepCancelable(ms){
+  return new Promise(resolve => {
+    autoWake = resolve;
+    autoTimer = setTimeout(() => { autoTimer = null; autoWake = null; resolve(); }, ms);
+  });
+}
+
+// 让当前朗读的单词出现在屏幕上（搜索状态下不打扰用户，只管继续读）
+function ensureVisible(i){
+  if(query){ return; }
+  const p = Math.floor(i / perPage) + 1;
+  if(p !== page){ page = p; render(); } else { highlightAuto(); }
+}
+
+function highlightAuto(){
+  document.querySelectorAll(".item.playing").forEach(el => el.classList.remove("playing"));
+  if(!auto || query) return;
+  const off = autoIdx - (page - 1) * perPage;
+  if(off < 0 || off >= perPage) return;
+  const el = document.querySelectorAll("#list .item")[off];
+  if(!el) return;
+  el.classList.add("playing");
+  const r = el.getBoundingClientRect();
+  if(r.top < 60 || r.bottom > window.innerHeight - 20){
+    el.scrollIntoView({block: "center", behavior: "smooth"});
+  }
+}
+
+async function autoLoop(){
+  const token = ++autoToken;
+  while(auto && token === autoToken){
+    if(autoIdx >= WORDS.length){
+      autoIdx = 0; saveAutoIdx();
+      stopAuto();
+      toast("整个词表已读完 🎉 已回到第 1 个");
+      return;
+    }
+    ensureVisible(autoIdx);
+    updateAutoUI();
+    await speakAsync(WORDS[autoIdx][0]);
+    if(!auto || token !== autoToken) return;
+    autoIdx++; saveAutoIdx(); updateAutoUI();
+    if(autoIdx >= WORDS.length) continue;
+    const gap = parseInt($("autoGap").value, 10) || 0;
+    if(gap){
+      await sleepCancelable(gap);
+      if(!auto || token !== autoToken) return;
+    }
+  }
+}
+
+function startAuto(){
+  if(auto) return;
+  if(!WORDS.length){ toast("词表为空"); return; }
+  if(autoIdx >= WORDS.length) autoIdx = 0;
+  auto = true;
+  updateAutoUI();
+  autoLoop();
+}
+
+function stopAuto(){
+  auto = false;
+  autoToken++; // 让正在跑的循环失效
+  if(autoTimer){ clearTimeout(autoTimer); autoTimer = null; }
+  if(autoWake){ const w = autoWake; autoWake = null; w(); }
+  if(audioEl){
+    audioEl.onended = null; audioEl.onerror = null;
+    try{ audioEl.pause(); }catch(e){}
+  }
+  updateAutoUI();
+  document.querySelectorAll(".item.playing").forEach(el => el.classList.remove("playing"));
+}
+
+$("autoBtn").onclick = () => { auto ? stopAuto() : startAuto(); };
+$("autoRestartBtn").onclick = () => {
+  stopAuto();
+  autoIdx = 0; saveAutoIdx();
+  startAuto();
+};
+$("autoGap").onchange = () => {
+  // 立刻生效：正在等间隔时提前唤醒
+  if(auto && autoTimer){ clearTimeout(autoTimer); autoTimer = null; const w = autoWake; autoWake = null; if(w) w(); }
+};
+
+// 手动点某个单词的喇叭：暂停连读，并把进度移到该词
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".wbtn");
+  if(!btn || !btn.dataset.word) return;
+  if(auto){
+    stopAuto(); // 会掐断上一个 handler 刚开始的播放，所以下面重放一次
+    const i = WORDS.findIndex(x => x[0] === btn.dataset.word);
+    if(i >= 0){ autoIdx = i; saveAutoIdx(); }
+    updateAutoUI();
+    playWord(btn.dataset.word, btn);
+  }
+});
+
+// 高亮跟着重绘走
+const _renderBeforeAuto = render;
+render = function(){ _renderBeforeAuto(); highlightAuto(); };
+
+autoIdx = loadAutoIdx();
+if(autoIdx >= WORDS.length) autoIdx = 0;
+updateAutoUI();
 
 </script>
 </body>
