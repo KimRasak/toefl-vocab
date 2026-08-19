@@ -331,8 +331,8 @@ function setView(mode) {
   viewMode = mode;
   document.getElementById('tabSubs').classList.toggle('on', mode === 'subs');
   document.getElementById('tabTrans').classList.toggle('on', mode === 'trans');
-  capBox.style.display = mode === 'subs' ? '' : 'none';
-  transBox.style.display = mode === 'trans' ? '' : 'none';
+  capBox.style.display = mode === 'subs' ? 'block' : 'none';
+  transBox.style.display = mode === 'trans' ? 'block' : 'none';
   if (mode === 'trans' && curIdx) renderTranscript();
 }
 
