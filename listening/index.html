@@ -99,6 +99,13 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
       <audio id="player" controls preload="metadata"></audio>
       <div id="progress"></div>
     </div>
+    <label for="endMode" style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:10px;">播放结束后
+      <select id="endMode" style="font-size:13px;padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;">
+        <option value="stop">停止</option>
+        <option value="next">播放下一个</option>
+        <option value="loop">重播</option>
+      </select>
+    </label>
     <div id="viewTabs">
       <button id="tabSubs" class="on">逐句字幕</button>
       <button id="tabTrans">全文原文</button>
@@ -106,7 +113,7 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
     <div id="capBox"></div>
     <div id="transBox"></div>
     <div id="hint">
-      提示：点击左侧列表选集；逐句字幕可点击跳转；
+      提示：点击左侧列表选集；逐句字幕可点击跳转；"播放结束后"可设为停止 / 播放下一个 / 重播；
       播放进度自动保存在本地浏览器（localStorage）。共 200 集，编号越大越靠前（倒序）。
     </div>
   </div>
@@ -135,6 +142,7 @@ let state = {};
 try { state = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { state = {}; }
 if (!state.positions) state.positions = {};
 if (!state.done) state.done = {};
+if (!state.endMode) state.endMode = 'stop'; // stop | next | loop
 
 function fmt(sec) {
   if (!isFinite(sec) || sec < 0) sec = 0;
@@ -296,11 +304,32 @@ audio.addEventListener('timeupdate', () => {
 audio.addEventListener('loadedmetadata', () => {
   progress.textContent = `0:00 / ${fmt(audio.duration || 0)}`;
 });
+const endModeSel = document.getElementById('endMode');
+endModeSel.value = state.endMode;
+endModeSel.addEventListener('change', () => {
+  state.endMode = endModeSel.value;
+  save();
+});
+
 audio.addEventListener('ended', () => {
   if (curIdx) { state.done[curIdx] = 1; save(); render(); }
-  const list = filtered();
-  const i = list.findIndex(x => x.i === curIdx);
-  if (i >= 0 && i < list.length - 1) select(list[i+1].i, true);
+  const mode = state.endMode;
+  if (mode === 'loop') {
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+    return;
+  }
+  if (mode === 'next') {
+    const list = filtered();
+    const i = list.findIndex(x => x.i === curIdx);
+    if (i >= 0 && i < list.length - 1) {
+      select(list[i+1].i, true);
+    } else {
+      audio.currentTime = 0; // 已是最后一集：回到开头停止
+    }
+    return;
+  }
+  // stop：什么都不做（已标记听完）
 });
 
 document.getElementById('prevBtn').onclick = () => {
