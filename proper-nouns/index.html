@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0f1115">
+<title>TOEFL 专有名词</title>
+<style>
+  :root {
+    --bg: #0f1115; --card: #1a1d24; --card2: #22262f; --fg: #e6e8eb;
+    --muted: #8b93a1; --accent: #4c8dff; --accent2: #2a5fc0; --border: #2a2f3a;
+    --good: #34c77b;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f4f6fa; --card:#ffffff; --card2:#eef1f6; --fg:#1a1d24; --muted:#5f6672; --accent:#2a5fc0; --accent2:#1c4499; --border:#dde2eb; }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html,body { margin:0; padding:0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    min-height: 100vh; min-height: 100dvh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    padding: 10px 12px 8px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    border-bottom: 1px solid var(--border);
+  }
+  .top-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .title { font-weight:700; font-size:16px; flex:0 0 auto; }
+  .link-btn {
+    flex:0 0 auto; background:var(--card); border:1px solid var(--border); color:var(--accent);
+    border-radius:10px; padding:6px 10px; font-size:12px; cursor:pointer; text-decoration:none;
+    white-space:nowrap; font-weight:600;
+  }
+  .search-wrap { flex:1 1 auto; min-width:140px; display:flex; align-items:center; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:6px 10px; }
+  .search-wrap input { flex:1; border:0; outline:0; background:transparent; color:var(--fg); font-size:14px; }
+  .icon-btn { background:var(--card); border:1px solid var(--border); color:var(--fg); border-radius:10px; width:38px; height:38px; font-size:18px; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:0 0 auto; }
+  .random-btn {
+    flex:0 0 auto; background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff;
+    border:0; border-radius:10px; padding:8px 14px; font-size:14px; font-weight:700; cursor:pointer;
+    white-space:nowrap; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(76,141,255,.35);
+  }
+  .random-btn:active { transform: scale(.97); }
+  .chips { display:flex; gap:6px; margin-top:8px; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch; }
+  .chip {
+    flex:0 0 auto; background:var(--card); border:1px solid var(--border); color:var(--muted);
+    border-radius:999px; padding:5px 12px; font-size:12px; cursor:pointer; white-space:nowrap;
+  }
+  .chip.on { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+  main { padding:12px; }
+  .list { display:flex; flex-direction:column; gap:10px; }
+  .item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 14px; }
+  .item .w { font-size:18px; font-weight:700; line-height:1.3; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .wbtn { flex:0 0 auto; background:none; border:0; padding:0; cursor:pointer; display:inline-flex; align-items:center; }
+  .wbtn svg { display:block; }
+  .wbtn circle { fill: var(--accent); transition: transform .15s ease; }
+  .wbtn:hover circle { transform: scale(1.12); }
+  .wbtn:active circle { transform: scale(0.95); }
+  .wbtn.playing circle { fill: var(--good); }
+  .ipa { font-size:13px; color:var(--muted); font-family: "Times New Roman", serif; }
+  .tag { font-size:11px; color:var(--accent); background:rgba(76,141,255,.12); border-radius:6px; padding:2px 7px; }
+  .item .m { font-size:14px; color:var(--fg); margin-top:6px; line-height:1.55; }
+  .item .s { font-size:14px; color:var(--muted); margin-top:6px; line-height:1.55; border-left:3px solid var(--border); padding-left:10px; }
+  .item .srow { display:flex; align-items:flex-start; gap:8px; margin-top:6px; }
+  .item mark { background:rgba(76,141,255,0.28); color:inherit; border-radius:3px; padding:0 2px; }
+  .count { font-size:12px; color:var(--muted); margin:2px 2px 10px; }
+  .empty { text-align:center; color:var(--muted); padding:40px 12px; font-size:14px; }
+
+  /* ===== 随机卡片 ===== */
+  .fc-layer { position:fixed; inset:0; z-index:100; background:var(--bg); display:none; flex-direction:column; }
+  .fc-layer.show { display:flex; }
+  .fc-top { flex:0 0 auto; display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    padding:10px 12px; padding-top:max(10px, env(safe-area-inset-top)); border-bottom:1px solid var(--border); }
+  .fc-top .fc-title { font-weight:700; font-size:15px; }
+  .fc-top .import-btn { background:var(--card); border:1px solid var(--border); color:var(--fg);
+    border-radius:10px; padding:6px 12px; font-size:13px; cursor:pointer; font-weight:600; }
+  .fc-top .import-btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  #fcCloseBtn { margin-left:auto; }
+  .fc-scroll { flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; display:flex; align-items:center; justify-content:center; padding:16px; }
+  .fc-inner { width:100%; max-width:560px; background:var(--card); border:1px solid var(--accent); border-radius:18px; padding:28px 22px; text-align:center; }
+  .fc-idx { font-size:12px; color:var(--muted); }
+  .fc-word { font-size:30px; font-weight:800; margin:12px 0 4px; line-height:1.25; word-break:break-word; }
+  .fc-ipa { font-size:15px; color:var(--muted); font-family: "Times New Roman", serif; }
+  .fc-mean { font-size:15px; line-height:1.6; margin-top:10px; color:var(--fg); }
+  .fc-sent { font-size:14px; color:var(--muted); line-height:1.7; margin-top:14px; text-align:left;
+    border-left:3px solid var(--accent); padding-left:12px; }
+  .fc-actions { display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
+  .fc-actions button { background:var(--card2); border:1px solid var(--border); color:var(--fg);
+    border-radius:10px; padding:10px 18px; font-size:14px; cursor:pointer; font-weight:600; }
+  .fc-actions button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .fc-actions button.playing { background:var(--good); border-color:var(--good); color:#fff; }
+  .fc-tip { text-align:center; font-size:12px; color:var(--muted); margin-top:12px; }
+  .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#000; color:#fff; padding:8px 14px; border-radius:8px; font-size:13px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:50; }
+  .toast.show { opacity:.92; }
+</style>
+</head>
+<body>
+<header>
+  <div class="top-row">
+    <div class="title">📌 专有名词</div>
+    <a class="link-btn" id="linkBtn" href="../index.html">↩ 主页</a>
+    <button class="random-btn" id="randBtn">🎲 随机抽一个</button>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="搜索英文 / 中文 / 例句…" autocomplete="off">
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+</header>
+<main>
+  <div class="count" id="count"></div>
+  <div class="list" id="list"></div>
+  <div class="empty" id="empty" style="display:none">没有匹配的词条</div>
+</main>
+
+<div class="fc-layer" id="fcLayer">
+  <div class="fc-top">
+    <div class="fc-title">🎲 随机抽到的词条</div>
+    <button class="import-btn primary" id="fcAgainBtn">🎲 再抽一个</button>
+    <button class="import-btn" id="fcCloseBtn">✕ 关闭</button>
+  </div>
+  <div class="fc-scroll">
+    <div class="fc-inner">
+      <div class="fc-idx" id="fcIdx"></div>
+      <div class="fc-word" id="fcWord"></div>
+      <div class="fc-ipa" id="fcIpa"></div>
+      <div class="fc-mean" id="fcMean"></div>
+      <div class="fc-sent" id="fcSent"></div>
+      <div class="fc-actions">
+        <button class="primary" id="fcPlaySent">🔊 听句子</button>
+        <button id="fcPlayWord">🔊 听单词</button>
+      </div>
+      <div class="fc-tip">抽中后自动朗读例句 · 可再抽一个</div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="audio_map.js"></script>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const CATS = ["全部", "身体词", "海洋", "海峡", "海湾", "大陆", "海洋生物", "叙述方式", "灭绝事件", "地质年代", "写景词"];
+  let cat = "全部", query = "";
+  let audioEl = null, sentAudioEl = null, sentBtn = null;
+
+  const SPEAKER_SVG = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"currentColor\"/><path d=\"M8 9.5v5h3l4 3.5v-12l-4 3.5H8z\" fill=\"#fff\"/></svg>";
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+  function hi(text, q){
+    if(!q) return esc(text);
+    const idx = text.toLowerCase().indexOf(q.toLowerCase());
+    if(idx < 0) return esc(text);
+    return esc(text.slice(0,idx)) + "<mark>" + esc(text.slice(idx,idx+q.length)) + "</mark>" + esc(text.slice(idx+q.length));
+  }
+  function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"), 1600); }
+
+  // ===== 音频播放 =====
+  // 优先本地预生成音频（edge-tts 神经语音），失败依次降级：
+  //   单词: Youdao → Google TTS → 浏览器 speechSynthesis
+  //   句子: Google TTS → 浏览器 speechSynthesis
+  function getAudioFile(word){
+    try{ return (AUDIO_MAP && AUDIO_MAP[word]) || null; }catch(e){ return null; }
+  }
+
+  function playFile(path, btn, fallback){
+    stopWord(); stopSent();
+    let el;
+    if(path && path.indexOf("-w-") >= 0){
+      el = audioEl || (audioEl = mkAudio());
+      audioEl.onerror = null; audioEl.onended = null; audioEl.pause();
+    } else {
+      el = sentAudioEl || (sentAudioEl = mkAudio());
+      sentAudioEl.onerror = null; sentAudioEl.onended = null; sentAudioEl.pause();
+    }
+    sentBtn = (path && path.indexOf("-w-") >= 0) ? null : (btn || null);
+    el.onerror = () => { if(btn) btn.classList.remove("playing"); if(fallback) fallback(); };
+    el.onended = () => { if(btn) btn.classList.remove("playing"); };
+    el.src = "audio/" + path;
+    if(btn) btn.classList.add("playing");
+    el.play().catch(() => { if(btn) btn.classList.remove("playing"); if(fallback) fallback(); });
+  }
+
+  function mkAudio(){
+    const a = new Audio();
+    a.style.display = "none";
+    document.body.appendChild(a);
+    return a;
+  }
+
+  // 单词发音
+  function playWord(word, btn){
+    const clean = String(word).replace(/'/g, "").replace(/^[^A-Za-z]+/, "").replace(/[^A-Za-z -].*$/, "");
+    if(!clean){ toast("无法播放：" + word); return; }
+    const map = getAudioFile(word);
+    const fallback = () => {
+      // 第 2 步：有道词典美音
+      if(!audioEl) audioEl = mkAudio();
+      audioEl.onerror = null; audioEl.onended = null; audioEl.pause();
+      audioEl.onerror = () => { if(btn) btn.classList.remove("playing"); gttsWord(clean, word, btn); };
+      audioEl.onended = () => { if(btn) btn.classList.remove("playing"); };
+      audioEl.src = "https://dict.youdao.com/dictvoice?audio=" + encodeURIComponent(clean) + "&type=2";
+      if(btn) btn.classList.add("playing");
+      audioEl.play().catch(() => { if(btn) btn.classList.remove("playing"); gttsWord(clean, word, btn); });
+    };
+    if(map && map.w){ playFile(map.w, btn, fallback); }
+    else fallback();
+  }
+
+  function gttsWord(clean, word, btn){
+    // 第 3 步：Google TTS
+    if(!audioEl) audioEl = mkAudio();
+    audioEl.onerror = null; audioEl.onended = null; audioEl.pause();
+    audioEl.onerror = () => { if(btn) btn.classList.remove("playing"); ttsFallback(word); };
+    audioEl.onended = () => { if(btn) btn.classList.remove("playing"); };
+    audioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(clean);
+    if(btn) btn.classList.add("playing");
+    audioEl.play().catch(() => { if(btn) btn.classList.remove("playing"); ttsFallback(word); });
+  }
+
+  // 句子发音：优先本地预生成音频，失败降级 Google TTS / speechSynthesis
+  function playSent(text, btn, word){
+    if(!text) return;
+    stopWord(); stopSent();
+    const map = word ? getAudioFile(word) : null;
+    const fallback = () => {
+      // 降级：Google TTS
+      if(!sentAudioEl) sentAudioEl = mkAudio();
+      else { sentAudioEl.onerror = null; sentAudioEl.onended = null; sentAudioEl.pause(); }
+      sentBtn = btn || null;
+      sentAudioEl.onerror = () => { if(sentBtn) sentBtn.classList.remove("playing"); sentTTS(text); };
+      sentAudioEl.onended = () => { if(sentBtn) sentBtn.classList.remove("playing"); };
+      sentAudioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(text);
+      if(sentBtn) sentBtn.classList.add("playing");
+      sentAudioEl.play().catch(() => { if(sentBtn) sentBtn.classList.remove("playing"); sentTTS(text); });
+    };
+    if(map && map.s){ playFile(map.s, btn, fallback); }
+    else fallback();
+  }
+
+  function sentTTS(text){
+    if(!("speechSynthesis" in window)) return;
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US"; u.rate = 0.95;
+    u.onend = () => { if(sentBtn) sentBtn.classList.remove("playing"); };
+    u.onerror = () => { if(sentBtn) sentBtn.classList.remove("playing"); };
+    speechSynthesis.speak(u);
+  }
+
+  function ttsFallback(word){
+    if(!("speechSynthesis" in window)) return;
+    const u = new SpeechSynthesisUtterance(String(word));
+    u.lang = "en-US"; u.rate = 0.9;
+    speechSynthesis.speak(u);
+  }
+
+  function stopSent(){
+    if(sentAudioEl){ sentAudioEl.onerror = null; sentAudioEl.onended = null; sentAudioEl.pause(); }
+    if(sentBtn){ sentBtn.classList.remove("playing"); sentBtn = null; }
+    try{ if("speechSynthesis" in window) speechSynthesis.cancel(); }catch(e){}
+  }
+
+  function stopWord(){
+    if(audioEl){ audioEl.onerror = null; audioEl.onended = null; audioEl.pause(); }
+    const playing = document.querySelectorAll(".wbtn.playing, #fcPlayWord.playing");
+    playing.forEach(el => el.classList.remove("playing"));
+  }
+
+  // ===== 筛选与渲染 =====
+  function filtered(){
+    let arr = PROPER_NOUNS;
+    if(cat !== "全部") arr = arr.filter(x => x[3] === cat);
+    if(query){
+      const q = query.toLowerCase();
+      arr = arr.filter(x => x[0].toLowerCase().includes(q) || x[1].toLowerCase().includes(q) || x[2].toLowerCase().includes(q));
+    }
+    return arr;
+  }
+
+  function render(){
+    const arr = filtered();
+    $("count").textContent = "共 " + PROPER_NOUNS.length + " 条 · 当前显示 " + arr.length + " 条（点击 🔊 听单词或句子发音）";
+    $("empty").style.display = arr.length ? "none" : "block";
+    $("list").innerHTML = arr.map(x => {
+      const w = x[0], c = x[1], s = x[2], ipa = x[4] || "";
+      return '<div class="item">' +
+        '<div class="w">' + hi(w, query) +
+        '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放单词发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' +
+        (ipa ? '<span class="ipa">' + esc(ipa) + '</span>' : '') +
+        '<span class="tag">' + esc(x[3]) + '</span>' +
+        '</div>' +
+        '<div class="m">' + hi(c, query) + '</div>' +
+        (s ? '<div class="srow"><button class="wbtn" type="button" data-sent="' + esc(s) + '" data-w="' + esc(w) + '" title="播放例句发音" aria-label="播放例句">' + SPEAKER_SVG + '</button>' +
+              '<div class="s">' + hi(s, query) + '</div></div>' : '') +
+        '</div>';
+    }).join("");
+  }
+
+  // ===== 分类 chips =====
+  function renderChips(){
+    $("chips").innerHTML = CATS.map(c => '<button class="chip' + (c === cat ? " on" : "") + '" data-cat="' + c + '">' + c + '</button>').join("");
+  }
+  $("chips").addEventListener("click", e => {
+    const b = e.target.closest(".chip");
+    if(!b) return;
+    cat = b.dataset.cat; renderChips(); render();
+  });
+
+  $("search").addEventListener("input", e => { query = e.target.value.trim(); render(); });
+
+  // ===== 随机抽一个 =====
+  function drawRandom(){
+    const pool = filtered();
+    if(pool.length === 0){ toast("当前筛选下没有词条"); return; }
+    const x = pool[Math.floor(Math.random() * pool.length)];
+    showCard(x, pool.length);
+  }
+  function showCard(x, poolSize){
+    $("fcIdx").textContent = "分类：" + x[3] + (poolSize < PROPER_NOUNS.length ? "（当前筛选 " + poolSize + " 条）" : "（共 " + PROPER_NOUNS.length + " 条）");
+    $("fcWord").textContent = x[0];
+    $("fcIpa").textContent = x[4] || "";
+    $("fcMean").textContent = x[1];
+    $("fcSent").textContent = x[2] || "";
+    $("fcLayer").classList.add("show");
+    if(x[2]) setTimeout(() => playSent(x[2], $("fcPlaySent"), x[0]), 250);
+  }
+  $("randBtn").onclick = () => drawRandom();
+  $("fcAgainBtn").onclick = () => drawRandom();
+  $("fcCloseBtn").onclick = () => { $("fcLayer").classList.remove("show"); stopSent(); stopWord(); };
+  $("fcPlaySent").onclick = () => {
+    const t = $("fcSent").textContent;
+    if(!t) return;
+    const btn = $("fcPlaySent");
+    btn.classList.toggle("playing");
+    if(btn.classList.contains("playing")) playSent(t, btn, $("fcWord").textContent);
+    else stopSent();
+  };
+  $("fcPlayWord").onclick = () => {
+    const w = $("fcWord").textContent;
+    if(w) playWord(w, $("fcPlayWord"));
+  };
+
+  // 事件委托：列表中的发音按钮
+  document.addEventListener("click", e => {
+    const sb = e.target.closest("[data-sent]");
+    if(sb){ playSent(sb.dataset.sent, sb, sb.dataset.w || null); return; }
+    const wb = e.target.closest("[data-word]");
+    if(wb){ playWord(wb.dataset.word, wb); }
+  });
+
+  // 返回链接：GitHub Pages 环境切到绝对地址
+  (function(){
+    try{
+      if(location.hostname === "kimrasak.github.io"){
+        $("linkBtn").href = "https://kimrasak.github.io/toefl-vocab/";
+      }
+    }catch(e){}
+  })();
+
+  renderChips();
+  render();
+})();
+</script>
+</body>
+</html>
