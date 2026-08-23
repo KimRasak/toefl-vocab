@@ -128,6 +128,7 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
     <div id="viewTabs">
       <button id="tabSubs" class="on">逐句字幕</button>
       <button id="tabTrans">全文原文</button>
+      <button id="copyTransBtn" type="button" title="复制全文" style="margin-left:auto;">复制全文</button>
     </div>
     <div id="capBox"></div>
     <div id="transBox"></div>
@@ -154,6 +155,7 @@ const nowSub = document.getElementById('nowSub');
 const progress = document.getElementById('progress');
 const capBox = document.getElementById('capBox');
 const transBox = document.getElementById('transBox');
+const copyTransBtn = document.getElementById('copyTransBtn');
 
 let curIdx = null;
 let viewMode = 'subs'; // subs | trans
@@ -410,8 +412,25 @@ function setView(mode) {
   document.getElementById('tabTrans').classList.toggle('on', mode === 'trans');
   capBox.style.display = mode === 'subs' ? 'block' : 'none';
   transBox.style.display = mode === 'trans' ? 'block' : 'none';
+  copyTransBtn.style.display = mode === 'trans' ? 'inline-block' : 'none';
   if (mode === 'trans' && curIdx) renderTranscript();
 }
+
+function transcriptCleanText() {
+  const it = itByIdx(curIdx);
+  if (!it) return '';
+  const lines = it.tr && it.tr.length ? it.tr : [];
+  return lines.map(ln => {
+    const m = ln.match(/^([A-Z][A-Z ]+?):\s*(.*)$/);
+    return m ? m[2].trim() : ln.trim();
+  }).join('\n');
+}
+
+copyTransBtn.addEventListener('click', () => {
+  const t = transcriptCleanText();
+  if (!t) { toast('暂无原文'); return; }
+  copyText(t, { toast: '已复制全文 ✓' });
+});
 
 document.getElementById('tabSubs').onclick = () => setView('subs');
 document.getElementById('tabTrans').onclick = () => setView('trans');
