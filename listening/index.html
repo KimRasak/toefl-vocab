@@ -58,11 +58,24 @@ audio { flex: 1; min-width: 240px; }
   flex: 1; overflow-y: auto; background: var(--panel); border: 1px solid var(--border);
   border-radius: 10px; padding: 14px 18px; line-height: 1.75; font-size: 15px; min-height: 0;
 }
-.cue { padding: 6px 8px; border-radius: 6px; cursor: pointer; }
+/* 长按选中复制：正文可选，时间戳/说话人不可选、不参与复制 */
+.cue { padding: 6px 8px; border-radius: 6px; cursor: pointer; -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
+.cue .st, .cue .speaker { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .cue:hover { background: #f1f4fb; }
 .cue.on { background: var(--hl); outline: 1px solid #f0d98c; }
 .cue .speaker { font-weight: 700; color: var(--accent); }
 .cue .st { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 8px; }
+/* 浮动复制按钮（长按选中后出现在选区上方） */
+#copyBar {
+  position: fixed; z-index: 50; display: none; align-items: center; gap: 4px;
+  background: #22262f; color: #fff; border-radius: 10px; padding: 6px 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25); font-size: 13px; line-height: 1;
+}
+#copyBar button {
+  border: none; background: transparent; color: #fff; font-size: 13px; padding: 6px 10px;
+  border-radius: 6px; cursor: pointer; white-space: nowrap;
+}
+#copyBar button:active { background: rgba(255,255,255,.18); }
 #transBox { display: none; flex: 1; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; line-height: 1.9; font-size: 15px; white-space: pre-wrap; min-height: 0; }
 #transBox .tr-line { padding: 3px 0; }
 #transBox .tr-line.on { background: var(--hl); }
@@ -73,6 +86,16 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
   #listPanel { width: 100%; max-height: 34vh; border-right: none; border-bottom: 1px solid var(--border); }
   #playerPanel { padding: 12px 14px; }
   #searchBox { width: 140px; }
+  /* 手机端：播放器条吸顶，翻看逐句字幕时暂停键始终可见 */
+  #audioWrap {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg);
+    padding: 10px 0;
+    margin: -10px 0 10px;
+    border-bottom: 1px solid var(--border);
+  }
 }
 </style>
 </head>
@@ -119,6 +142,10 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
     </div>
     <div id="capBox"></div>
     <div id="transBox"></div>
+    <div id="copyBar" role="toolbar" aria-label="复制字幕">
+      <button id="copyBtn" type="button">复制</button>
+      <button id="copyMoreBtn" type="button" title="更多操作">⋯</button>
+    </div>
     <div id="hint">
       提示：点击左侧列表选集；逐句字幕可点击跳转；"播放结束后"可设为停止 / 播放下一个 / 重播；
       列表会记录每集最后播放的日期，可按"最近播放"排序；播放进度自动保存在本地浏览器（localStorage）。共 200 集，编号越大越靠前（倒序）。
@@ -142,6 +169,9 @@ const nowSub = document.getElementById('nowSub');
 const progress = document.getElementById('progress');
 const capBox = document.getElementById('capBox');
 const transBox = document.getElementById('transBox');
+const copyBar = document.getElementById('copyBar');
+const copyBtn = document.getElementById('copyBtn');
+const copyMoreBtn = document.getElementById('copyMoreBtn');
 
 let curIdx = null;
 let viewMode = 'subs'; // subs | trans
@@ -279,12 +309,121 @@ function renderCues() {
     const sp = speakerName(c[2]);
     const rest = sp ? c[2].slice(sp.length + 1).trim() : c[2];
     div.innerHTML = `<span class="st">${cueTime(c)}</span>${sp ? `<span class="speaker" style="color:${speakerColor(sp)}">${sp}:</span> ` : ''}${rest}`;
-    div.onclick = () => { audio.currentTime = c[0]; if (audio.paused) audio.play().catch(()=>{}); };
+    // 点击跳转：仅在无文字选区时生效，避免长按选中后误跳
+    div.addEventListener('click', (e) => {
+      if (hasSelection()) return;
+      audio.currentTime = c[0];
+      if (audio.paused) audio.play().catch(() => {});
+    });
     div.dataset.i = i;
     capBox.appendChild(div);
   });
   updateCueHighlight();
 }
+
+/* ---------- 选区与复制 ---------- */
+function hasSelection() {
+  const sel = window.getSelection();
+  return !!sel && sel.toString().trim().length > 0;
+}
+function selText() {
+  const sel = window.getSelection();
+  if (!sel || !sel.rangeCount) return '';
+  return sel.toString();
+}
+function rectOfRange(range) {
+  const r = range.getBoundingClientRect();
+  if (r && (r.width || r.height)) return r;
+  // 兼容空选区（光标）：退回客户端矩形
+  const rc = range.getClientRects();
+  return rc && rc.length ? rc[0] : null;
+}
+function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
+function placeCopyBar(rect) {
+  if (!rect) { hideCopyBar(); return; }
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const bw = copyBar.offsetWidth || 96, bh = copyBar.offsetHeight || 34;
+  let x = rect.left + rect.width / 2 - bw / 2;
+  x = clamp(x, 6, vw - bw - 6);
+  let y;
+  if (rect.top - bh - 8 >= 4) y = rect.top - bh - 8;   // 优先选区上方
+  else y = rect.bottom + 8;                            // 放不下则下方
+  y = clamp(y, 4, vh - bh - 4);
+  copyBar.style.left = x + 'px';
+  copyBar.style.top = y + 'px';
+  copyBar.style.display = 'flex';
+}
+function showCopyBar() {
+  const sel = window.getSelection();
+  if (!sel || !sel.rangeCount) { hideCopyBar(); return; }
+  const r = rectOfRange(sel.getRangeAt(0));
+  if (!r) { hideCopyBar(); return; }
+  placeCopyBar(r);
+}
+function hideCopyBar() { copyBar.style.display = 'none'; }
+
+// 任意处点击/滚动：收起浮动按钮（不清空选区，避免 iOS 选中态被破坏）
+document.addEventListener('pointerdown', (e) => {
+  if (!copyBar.contains(e.target)) hideCopyBar();
+}, true);
+document.addEventListener('scroll', hideCopyBar, true);
+
+function selectionToCleanText() {
+  // 选区文本：去掉每行行首的时间戳与说话人前缀，并合并换行
+  const raw = selText();
+  const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+  const out = [];
+  for (let l of lines) {
+    l = l.replace(/^\d{1,2}:\d{2}\s*[–-]\s*\d{1,2}:\d{2}\s*/, '');   // 0:14 – 0:17
+    l = l.replace(/^[A-Z][A-Z ]{1,24}:/, '');                          // FEMALE PROFESSOR:
+    l = l.replace(/\s+/g, ' ').trim();
+    if (l) out.push(l);
+  }
+  return out.join(' ');
+}
+function copyText(t) {
+  const done = () => {
+    copyBtn.textContent = '已复制 ✓';
+    setTimeout(() => { copyBtn.textContent = '复制'; hideCopyBar(); }, 900);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(done, () => fallbackCopy(t, done));
+  } else {
+    fallbackCopy(t, done);
+  }
+}
+function fallbackCopy(t, done) {
+  const ta = document.createElement('textarea');
+  ta.value = t;
+  ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+  done();
+}
+copyBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const t = selectionToCleanText();
+  if (t) copyText(t);
+  else { copyBtn.textContent = '未选中'; setTimeout(() => { copyBtn.textContent = '复制'; }, 900); }
+});
+copyMoreBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const t = selectionToCleanText();
+  if (!t) return;
+  const text = t.length > 500 ? t.slice(0, 500) + ' …' : t;
+  const share = { title: document.title, text };
+  if (navigator.share) navigator.share(share).catch(() => {});
+  else {
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(t);
+    window.open(url, '_blank');
+  }
+});
+document.addEventListener('selectionchange', () => {
+  if (hasSelection()) showCopyBar();
+  else hideCopyBar();
+});
 
 function updateCueHighlight() {
   const cues = SUBS[String(curIdx)] || SUBS[curIdx] || [];
@@ -299,6 +438,8 @@ function updateCueHighlight() {
     kids[i].classList.toggle('on', i === onIdx);
   }
   if (onIdx >= 0) {
+    // 用户正在长按选中文字：不自动滚动，避免打断选择
+    if (hasSelection()) return;
     const el = kids[onIdx];
     const box = capBox.getBoundingClientRect();
     const r = el.getBoundingClientRect();
