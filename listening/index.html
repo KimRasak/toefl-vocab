@@ -147,7 +147,7 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
       <button id="copyMoreBtn" type="button" title="更多操作">⋯</button>
     </div>
     <div id="hint">
-      提示：点击左侧列表选集；逐句字幕可点击跳转；"播放结束后"可设为停止 / 播放下一个 / 重播；
+      提示：单击左侧列表选集；字幕单击播放该句、双击复制该句（长按可划选任意文字复制）；"播放结束后"可设为停止 / 播放下一个 / 重播；
       列表会记录每集最后播放的日期，可按"最近播放"排序；播放进度自动保存在本地浏览器（localStorage）。共 200 集，编号越大越靠前（倒序）。
     </div>
   </div>
@@ -296,6 +296,13 @@ function speakerName(s) {
   return m ? m[1] : '';
 }
 
+function cueCleanText(c) {
+  // 单句干净文本：去掉时间戳与说话人前缀
+  const sp = speakerName(c[2]);
+  const rest = sp ? c[2].slice(sp.length + 1).trim() : c[2];
+  return rest.replace(/\s+/g, ' ').trim();
+}
+
 function renderCues() {
   const cues = SUBS[String(curIdx)] || SUBS[curIdx] || [];
   capBox.innerHTML = '';
@@ -309,11 +316,23 @@ function renderCues() {
     const sp = speakerName(c[2]);
     const rest = sp ? c[2].slice(sp.length + 1).trim() : c[2];
     div.innerHTML = `<span class="st">${cueTime(c)}</span>${sp ? `<span class="speaker" style="color:${speakerColor(sp)}">${sp}:</span> ` : ''}${rest}`;
-    // 点击跳转：仅在无文字选区时生效，避免长按选中后误跳
+    // 单击 = 播放该句；双击 = 复制整句（250ms 内第二次点击判定为双击）
+    let clickTimer = null;
     div.addEventListener('click', (e) => {
-      if (hasSelection()) return;
-      audio.currentTime = c[0];
-      if (audio.paused) audio.play().catch(() => {});
+      e.preventDefault();
+      if (clickTimer) {
+        // 双击：取消单击播放，复制整句
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        copyText(cueCleanText(c), { toast: '已复制该句 ✓' });
+        return;
+      }
+      clickTimer = setTimeout(() => {
+        clickTimer = null;
+        if (hasSelection()) return;
+        audio.currentTime = c[0];
+        if (audio.paused) audio.play().catch(() => {});
+      }, 250);
     });
     div.dataset.i = i;
     capBox.appendChild(div);
@@ -381,16 +400,34 @@ function selectionToCleanText() {
   }
   return out.join(' ');
 }
-function copyText(t) {
+function copyText(t, opts) {
+  opts = opts || {};
   const done = () => {
-    copyBtn.textContent = '已复制 ✓';
-    setTimeout(() => { copyBtn.textContent = '复制'; hideCopyBar(); }, 900);
+    if (opts.toast) {
+      toast(opts.toast);
+    } else {
+      copyBtn.textContent = '已复制 ✓';
+      setTimeout(() => { copyBtn.textContent = '复制'; hideCopyBar(); }, 900);
+    }
   };
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(t).then(done, () => fallbackCopy(t, done));
   } else {
     fallbackCopy(t, done);
   }
+}
+function toast(msg) {
+  let el = document.getElementById('toast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'toast';
+    el.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:rgba(34,38,47,.92);color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;z-index:60;pointer-events:none;transition:opacity .25s;';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.opacity = '1';
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.style.opacity = '0'; }, 1200);
 }
 function fallbackCopy(t, done) {
   const ta = document.createElement('textarea');
