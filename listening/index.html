@@ -125,6 +125,13 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
         <option value="loop">重播</option>
       </select>
     </label>
+    <div style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap;">
+      播放范围
+      <select id="rangeFrom" title="范围起点" style="font-size:13px;padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;max-width:150px;"></select>
+      <span>至</span>
+      <select id="rangeTo" title="范围终点" style="font-size:13px;padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;max-width:150px;"></select>
+      <button id="clearRangeBtn" type="button" style="font-size:12px;padding:4px 10px;">清除</button>
+    </div>
     <div id="viewTabs">
       <button id="tabSubs" class="on">逐句字幕</button>
       <button id="tabTrans">全文原文</button>
@@ -133,7 +140,7 @@ footer { font-size: 11px; color: var(--muted); text-align: center; padding: 7px;
     <div id="capBox"></div>
     <div id="transBox"></div>
     <div id="hint">
-      提示：单击左侧列表选集；字幕单击播放该句、双击复制该句；"播放结束后"可设为停止 / 播放下一个 / 重播；
+      提示：单击左侧列表选集；字幕单击播放该句、双击复制该句；全文原文视图可一键"复制全文"；"播放结束后"设为"播放下一个"时，可配合"播放范围"只在指定编号区间内循环；
       列表会记录每集最后播放的日期，可按"最近播放"排序；播放进度自动保存在本地浏览器（localStorage）。共 200 集，编号越大越靠前（倒序）。
     </div>
   </div>
@@ -156,6 +163,9 @@ const progress = document.getElementById('progress');
 const capBox = document.getElementById('capBox');
 const transBox = document.getElementById('transBox');
 const copyTransBtn = document.getElementById('copyTransBtn');
+const rangeFromSel = document.getElementById('rangeFrom');
+const rangeToSel = document.getElementById('rangeTo');
+const clearRangeBtn = document.getElementById('clearRangeBtn');
 
 let curIdx = null;
 let viewMode = 'subs'; // subs | trans
@@ -166,6 +176,7 @@ if (!state.positions) state.positions = {};
 if (!state.done) state.done = {};
 if (!state.endMode) state.endMode = 'stop'; // stop | next | loop
 if (!state.lastPlayed) state.lastPlayed = {}; // idx -> ISO 时间戳
+if (!state.range) state.range = {}; // {from: idx|null, to: idx|null} 播放范围
 
 function fmt(sec) {
   if (!isFinite(sec) || sec < 0) sec = 0;
@@ -192,6 +203,53 @@ function fmtDate(iso) {
 }
 
 function itByIdx(idx) { return ITEMS.find(x => x.i === idx); }
+
+/* ---------- 播放范围 ---------- */
+function fillRangeSelects() {
+  // 下拉选项倒序（编号大在前，与列表一致），仅用编号+简短名称
+  const opts = ITEMS.slice().sort((a, b) => b.i - a.i).map(it =>
+    `<option value="${it.i}">p${String(it.i).padStart(3,'0')} · ${it.s}</option>`);
+  rangeFromSel.innerHTML = '<option value="">起点</option>' + opts.join('');
+  rangeToSel.innerHTML = '<option value="">终点</option>' + opts.join('');
+  // 恢复已保存的范围
+  if (state.range && state.range.from) rangeFromSel.value = String(state.range.from);
+  if (state.range && state.range.to) rangeToSel.value = String(state.range.to);
+}
+function rangeBounds() {
+  // 返回 [lo, hi] 编号区间；未设置范围返回 null
+  const r = state.range || {};
+  const from = r.from, to = r.to;
+  if (!from && !to) return null;
+  const lo = from && to ? Math.min(from, to) : (from || to);
+  const hi = from && to ? Math.max(from, to) : (from || to);
+  return [lo, hi];
+}
+function inRange(idx) {
+  const b = rangeBounds();
+  if (!b) return true;
+  return idx >= b[0] && idx <= b[1];
+}
+function saveRange() {
+  const r = state.range || {};
+  if (!r.from && !r.to) delete state.range;
+  save();
+}
+rangeFromSel.addEventListener('change', () => {
+  state.range = state.range || {};
+  state.range.from = rangeFromSel.value ? Number(rangeFromSel.value) : null;
+  saveRange();
+});
+rangeToSel.addEventListener('change', () => {
+  state.range = state.range || {};
+  state.range.to = rangeToSel.value ? Number(rangeToSel.value) : null;
+  saveRange();
+});
+clearRangeBtn.addEventListener('click', () => {
+  delete state.range;
+  rangeFromSel.value = '';
+  rangeToSel.value = '';
+  save();
+});
 
 function filtered() {
   const q = searchBox.value.trim().toLowerCase();
@@ -468,12 +526,20 @@ audio.addEventListener('ended', () => {
     return;
   }
   if (mode === 'next') {
-    const list = filtered();
+    const list = filtered().filter(x => inRange(x.i));  // 只在范围内找下一集
     const i = list.findIndex(x => x.i === curIdx);
     if (i >= 0 && i < list.length - 1) {
-      select(list[i+1].i, true);
+      select(list[i+1].i, true);      // 范围内下一集
+    } else if (i >= 0 && list.length > 1) {
+      select(list[0].i, true);        // 范围末尾 -> 回到范围开头（循环）
+    } else if (i < 0) {
+      // 当前集不在范围内：按完整列表推进
+      const full = filtered();
+      const j = full.findIndex(x => x.i === curIdx);
+      if (j >= 0 && j < full.length - 1) select(full[j+1].i, true);
+      else audio.currentTime = 0;     // 已是最后一集：回到开头停止
     } else {
-      audio.currentTime = 0; // 已是最后一集：回到开头停止
+      audio.currentTime = 0;          // 范围内只有一集：重播当前集
     }
     return;
   }
@@ -494,6 +560,7 @@ searchBox.addEventListener('input', render);
 statusFilter.addEventListener('change', render);
 sortBy.addEventListener('change', render);
 
+fillRangeSelects();
 render();
 setView('subs');
 // 恢复上次播放
