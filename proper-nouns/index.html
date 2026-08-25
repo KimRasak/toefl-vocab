@@ -45,6 +45,21 @@
     white-space:nowrap; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(76,141,255,.35);
   }
   .random-btn:active { transform: scale(.97); }
+  .queue-btn {
+    flex:0 0 auto; background:linear-gradient(135deg, var(--good), #1d9e5e); color:#fff;
+    border:0; border-radius:10px; padding:8px 14px; font-size:14px; font-weight:700; cursor:pointer;
+    white-space:nowrap; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(52,199,123,.35);
+  }
+  .queue-btn:active { transform: scale(.97); }
+  .queue-row { display:flex; align-items:center; gap:8px; margin-top:8px; }
+  .qbtn {
+    flex:0 0 auto; background:var(--card); border:1px solid var(--border); color:var(--fg);
+    border-radius:10px; padding:6px 12px; font-size:13px; cursor:pointer; font-weight:600;
+  }
+  .qbtn:active { transform: scale(.97); }
+  .qbtn.stop { background:linear-gradient(135deg, #e05252, #b23b3b); border-color:transparent; color:#fff; }
+  .qnow { flex:1 1 auto; min-width:0; font-size:12px; color:var(--muted); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .item.playing { border-color:var(--accent); background:var(--card2); box-shadow:0 0 0 1px var(--accent); }
   .chips { display:flex; gap:6px; margin-top:8px; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch; }
   .chip {
     flex:0 0 auto; background:var(--card); border:1px solid var(--border); color:var(--muted);
@@ -104,9 +119,16 @@
     <div class="title">📌 专有名词</div>
     <a class="link-btn" id="linkBtn" href="../index.html">↩ 主页</a>
     <button class="random-btn" id="randBtn">🎲 随机抽一个</button>
+    <button class="queue-btn" id="queueBtn">🔁 连播</button>
     <div class="search-wrap">
       <input id="search" type="search" placeholder="搜索英文 / 中文 / 例句…" autocomplete="off">
     </div>
+  </div>
+  <div class="queue-row" id="queueRow" style="display:none">
+    <button class="qbtn" id="qPrevBtn">⏮ 上一个</button>
+    <button class="qbtn stop" id="qStopBtn">⏹ 停止</button>
+    <button class="qbtn" id="qNextBtn">⏭ 下一个</button>
+    <span class="qnow" id="qNow"></span>
   </div>
   <div class="chips" id="chips"></div>
 </header>
@@ -145,7 +167,7 @@
 <script>
 (function(){
   const $ = id => document.getElementById(id);
-  const CATS = ["全部", "身体词", "海洋", "海峡", "海湾", "大陆", "海洋生物", "叙述方式", "灭绝事件", "地质年代", "写景词"];
+  const CATS = ["全部", "身体词", "肢体功能", "解剖方位", "海洋", "海峡", "海湾", "大陆", "美国州名", "海洋生物", "叙述方式", "灭绝事件", "地质年代", "写景词", "历史运动", "能源环境", "乐器", "多义词", "地质化学", "校园场景"];
   let cat = "全部", query = "";
   let audioEl = null, sentAudioEl = null, sentBtn = null;
 
@@ -168,7 +190,7 @@
     try{ return (AUDIO_MAP && AUDIO_MAP[word]) || null; }catch(e){ return null; }
   }
 
-  function playFile(path, btn, fallback){
+  function playFile(path, btn, fallback, onDone){
     stopWord(); stopSent();
     let el;
     if(path && path.indexOf("-w-") >= 0){
@@ -179,8 +201,9 @@
       sentAudioEl.onerror = null; sentAudioEl.onended = null; sentAudioEl.pause();
     }
     sentBtn = (path && path.indexOf("-w-") >= 0) ? null : (btn || null);
+    const done = () => { if(btn) btn.classList.remove("playing"); if(onDone) onDone(); };
     el.onerror = () => { if(btn) btn.classList.remove("playing"); if(fallback) fallback(); };
-    el.onended = () => { if(btn) btn.classList.remove("playing"); };
+    el.onended = done;
     el.src = "audio/" + path;
     if(btn) btn.classList.add("playing");
     el.play().catch(() => { if(btn) btn.classList.remove("playing"); if(fallback) fallback(); });
@@ -194,68 +217,69 @@
   }
 
   // 单词发音
-  function playWord(word, btn){
+  function playWord(word, btn, onDone){
     const clean = String(word).replace(/'/g, "").replace(/^[^A-Za-z]+/, "").replace(/[^A-Za-z -].*$/, "");
-    if(!clean){ toast("无法播放：" + word); return; }
+    if(!clean){ if(onDone) onDone(); toast("无法播放：" + word); return; }
     const map = getAudioFile(word);
     const fallback = () => {
       // 第 2 步：有道词典美音
       if(!audioEl) audioEl = mkAudio();
       audioEl.onerror = null; audioEl.onended = null; audioEl.pause();
-      audioEl.onerror = () => { if(btn) btn.classList.remove("playing"); gttsWord(clean, word, btn); };
-      audioEl.onended = () => { if(btn) btn.classList.remove("playing"); };
+      audioEl.onerror = () => { if(btn) btn.classList.remove("playing"); gttsWord(clean, word, btn, onDone); };
+      audioEl.onended = () => { if(btn) btn.classList.remove("playing"); if(onDone) onDone(); };
       audioEl.src = "https://dict.youdao.com/dictvoice?audio=" + encodeURIComponent(clean) + "&type=2";
       if(btn) btn.classList.add("playing");
-      audioEl.play().catch(() => { if(btn) btn.classList.remove("playing"); gttsWord(clean, word, btn); });
+      audioEl.play().catch(() => { if(btn) btn.classList.remove("playing"); gttsWord(clean, word, btn, onDone); });
     };
-    if(map && map.w){ playFile(map.w, btn, fallback); }
+    if(map && map.w){ playFile(map.w, btn, fallback, onDone); }
     else fallback();
   }
 
-  function gttsWord(clean, word, btn){
+  function gttsWord(clean, word, btn, onDone){
     // 第 3 步：Google TTS
     if(!audioEl) audioEl = mkAudio();
     audioEl.onerror = null; audioEl.onended = null; audioEl.pause();
-    audioEl.onerror = () => { if(btn) btn.classList.remove("playing"); ttsFallback(word); };
-    audioEl.onended = () => { if(btn) btn.classList.remove("playing"); };
+    audioEl.onerror = () => { if(btn) btn.classList.remove("playing"); ttsFallback(word, btn, onDone); };
+    audioEl.onended = () => { if(btn) btn.classList.remove("playing"); if(onDone) onDone(); };
     audioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(clean);
     if(btn) btn.classList.add("playing");
-    audioEl.play().catch(() => { if(btn) btn.classList.remove("playing"); ttsFallback(word); });
+    audioEl.play().catch(() => { if(btn) btn.classList.remove("playing"); ttsFallback(word, btn, onDone); });
   }
 
-  // 句子发音：优先本地预生成音频，失败降级 Google TTS / speechSynthesis
-  function playSent(text, btn, word){
-    if(!text) return;
+  // 句子发音：例句文本已改为真实语料，本地 s 音频为旧合成版（文本不匹配），
+  // 因此例句发音统一走 Google TTS → speechSynthesis，朗读当前显示的文本
+  function playSent(text, btn, word, onDone){
+    if(!text){ if(onDone) onDone(); return; }
     stopWord(); stopSent();
-    const map = word ? getAudioFile(word) : null;
-    const fallback = () => {
-      // 降级：Google TTS
-      if(!sentAudioEl) sentAudioEl = mkAudio();
-      else { sentAudioEl.onerror = null; sentAudioEl.onended = null; sentAudioEl.pause(); }
-      sentBtn = btn || null;
-      sentAudioEl.onerror = () => { if(sentBtn) sentBtn.classList.remove("playing"); sentTTS(text); };
-      sentAudioEl.onended = () => { if(sentBtn) sentBtn.classList.remove("playing"); };
-      sentAudioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(text);
-      if(sentBtn) sentBtn.classList.add("playing");
-      sentAudioEl.play().catch(() => { if(sentBtn) sentBtn.classList.remove("playing"); sentTTS(text); });
-    };
-    if(map && map.s){ playFile(map.s, btn, fallback); }
-    else fallback();
+    // 降级链：Google TTS → speechSynthesis
+    if(!sentAudioEl) sentAudioEl = mkAudio();
+    else { sentAudioEl.onerror = null; sentAudioEl.onended = null; sentAudioEl.pause(); }
+    sentBtn = btn || null;
+    const done = () => { if(sentBtn) sentBtn.classList.remove("playing"); if(onDone) onDone(); };
+    sentAudioEl.onerror = () => { if(sentBtn) sentBtn.classList.remove("playing"); sentTTS(text, onDone); };
+    sentAudioEl.onended = done;
+    sentAudioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(text);
+    if(sentBtn) sentBtn.classList.add("playing");
+    sentAudioEl.play().catch(() => { if(sentBtn) sentBtn.classList.remove("playing"); sentTTS(text, onDone); });
   }
 
-  function sentTTS(text){
-    if(!("speechSynthesis" in window)) return;
+  function sentTTS(text, onDone){
+    if(!("speechSynthesis" in window)){ if(onDone) onDone(); return; }
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "en-US"; u.rate = 0.95;
-    u.onend = () => { if(sentBtn) sentBtn.classList.remove("playing"); };
-    u.onerror = () => { if(sentBtn) sentBtn.classList.remove("playing"); };
+    const done = () => { if(sentBtn) sentBtn.classList.remove("playing"); if(onDone) onDone(); };
+    u.onend = done;
+    u.onerror = done;
     speechSynthesis.speak(u);
   }
 
-  function ttsFallback(word){
-    if(!("speechSynthesis" in window)) return;
+  function ttsFallback(word, btn, onDone){
+    if(!("speechSynthesis" in window)){ if(onDone) onDone(); return; }
     const u = new SpeechSynthesisUtterance(String(word));
     u.lang = "en-US"; u.rate = 0.9;
+    const done = () => { if(btn) btn.classList.remove("playing"); if(onDone) onDone(); };
+    u.onend = done;
+    u.onerror = done;
     speechSynthesis.speak(u);
   }
 
@@ -283,12 +307,13 @@
   }
 
   function render(){
+    if(queueOn) queueStop();
     const arr = filtered();
     $("count").textContent = "共 " + PROPER_NOUNS.length + " 条 · 当前显示 " + arr.length + " 条（点击 🔊 听单词或句子发音）";
     $("empty").style.display = arr.length ? "none" : "block";
-    $("list").innerHTML = arr.map(x => {
+    $("list").innerHTML = arr.map((x, i) => {
       const w = x[0], c = x[1], s = x[2], ipa = x[4] || "";
-      return '<div class="item">' +
+      return '<div class="item" data-i="' + i + '">' +
         '<div class="w">' + hi(w, query) +
         '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放单词发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' +
         (ipa ? '<span class="ipa">' + esc(ipa) + '</span>' : '') +
@@ -321,6 +346,7 @@
     showCard(x, pool.length);
   }
   function showCard(x, poolSize){
+    if(queueOn) queueStop();
     $("fcIdx").textContent = "分类：" + x[3] + (poolSize < PROPER_NOUNS.length ? "（当前筛选 " + poolSize + " 条）" : "（共 " + PROPER_NOUNS.length + " 条）");
     $("fcWord").textContent = x[0];
     $("fcIpa").textContent = x[4] || "";
@@ -345,12 +371,69 @@
     if(w) playWord(w, $("fcPlayWord"));
   };
 
+  // ===== 连播（按当前筛选列表顺序自动播放下一个）=====
+  let queueOn = false, queueIdx = 0, queueList = [];
+  function queueStart(){
+    queueList = filtered();
+    if(queueList.length === 0){ toast("当前筛选下没有词条"); return; }
+    queueOn = true; queueIdx = 0;
+    updateQueueUI();
+    playQueueCurrent();
+  }
+  function queueStop(){
+    if(!queueOn) return;
+    queueOn = false;
+    stopWord(); stopSent();
+    removeQueueHighlight();
+    updateQueueUI();
+  }
+  function queueGo(delta){
+    if(!queueOn || queueList.length === 0) return;
+    queueIdx = (queueIdx + delta + queueList.length) % queueList.length;
+    stopWord(); stopSent();
+    updateQueueUI();
+    playQueueCurrent();
+  }
+  function playQueueCurrent(){
+    const x = queueList[queueIdx];
+    if(!x){ queueStop(); return; }
+    updateQueueUI();
+    // 高亮当前词条并滚动到可见位置
+    const item = document.querySelector('.item[data-i="' + queueIdx + '"]');
+    if(item){
+      removeQueueHighlight();
+      item.classList.add("playing");
+      try{ item.scrollIntoView({behavior:"smooth", block:"center"}); }catch(e){}
+    }
+    // 先播单词，再播例句，全部结束后自动进入下一个
+    playWord(x[0], null, () => {
+      if(!queueOn) return;
+      if(x[2]) playSent(x[2], null, x[0], () => { if(!queueOn) return; queueGo(1); });
+      else queueGo(1);
+    });
+  }
+  function removeQueueHighlight(){
+    const cur = document.querySelector(".item.playing");
+    if(cur) cur.classList.remove("playing");
+  }
+  function updateQueueUI(){
+    $("queueBtn").textContent = queueOn ? "⏹ 停止连播" : "🔁 连播";
+    $("queueRow").style.display = queueOn ? "flex" : "none";
+    if(queueOn && queueList.length){
+      $("qNow").textContent = (queueIdx + 1) + " / " + queueList.length + " · " + queueList[queueIdx][0];
+    }
+  }
+  $("queueBtn").onclick = () => { queueOn ? queueStop() : queueStart(); };
+  $("qPrevBtn").onclick = () => { if(queueOn) queueGo(-1); };
+  $("qNextBtn").onclick = () => { if(queueOn) queueGo(1); };
+  $("qStopBtn").onclick = () => queueStop();
+
   // 事件委托：列表中的发音按钮
   document.addEventListener("click", e => {
     const sb = e.target.closest("[data-sent]");
-    if(sb){ playSent(sb.dataset.sent, sb, sb.dataset.w || null); return; }
+    if(sb){ if(queueOn) queueStop(); playSent(sb.dataset.sent, sb, sb.dataset.w || null); return; }
     const wb = e.target.closest("[data-word]");
-    if(wb){ playWord(wb.dataset.word, wb); }
+    if(wb){ if(queueOn) queueStop(); playWord(wb.dataset.word, wb); }
   });
 
   // 返回链接：GitHub Pages 环境切到绝对地址
