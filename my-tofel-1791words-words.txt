@@ -1789,3 +1789,5 @@ lusty	adj. 强壮的，有精神的
 luxuriant	adj. 繁茂的，多产的
 luxurious	adj. 奢侈的
 lyric	n. 抒情诗，歌词
+vernacular	n. 本地话，方言；adj. 本地方言的（the local vernacular / vernacular architecture 乡土建筑）
+resurrected	adj./v. 复活的；被重新启用的 resurrect sth 使…重新流行 / 复兴
