@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0f1115">
+<title>日常短语 · 口语常用表达</title>
+<style>
+  :root {
+    --bg: #0f1115; --card: #1a1d24; --card2: #22262f; --fg: #e6e8eb;
+    --muted: #8b93a1; --accent: #4c8dff; --accent2: #2a5fc0; --border: #2a2f3a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f4f6fa; --card:#ffffff; --card2:#eef1f6; --fg:#1a1d24; --muted:#5f6672; --accent:#2a5fc0; --accent2:#1c4499; --border:#dde2eb; }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html,body { margin:0; padding:0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    min-height: 100vh; min-height: 100dvh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    padding: 10px 12px 8px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    border-bottom: 1px solid var(--border);
+  }
+  .top-row { display:flex; align-items:center; gap:8px; }
+  .link-btn {
+    flex:0 0 auto; background:var(--card); border:1px solid var(--border); color:var(--accent);
+    border-radius:10px; padding:6px 10px; font-size:12px; cursor:pointer; text-decoration:none;
+    white-space:nowrap; font-weight:600;
+  }
+  .title { font-weight:700; font-size:16px; flex:0 0 auto; }
+  .search-wrap { flex:1 1 auto; display:flex; align-items:center; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:6px 10px; }
+  .search-wrap input { flex:1; border:0; outline:0; background:transparent; color:var(--fg); font-size:14px; }
+  main { padding:12px; max-width: 860px; margin: 0 auto; }
+  .toolbar { display:flex; gap:8px; margin-top:8px; align-items:center; flex-wrap:wrap; }
+  .seg { display:flex; align-items:center; gap:6px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:4px 6px; }
+  .seg label { font-size:12px; color:var(--muted); }
+  .seg select, .seg input { background:var(--card2); color:var(--fg); border:1px solid var(--border); border-radius:6px; padding:4px 6px; font-size:13px; }
+  .count { font-size:12px; color:var(--muted); }
+  .list { display:flex; flex-direction:column; gap:8px; }
+  .item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 14px; }
+  .item .ph { font-size:17px; font-weight:600; line-height:1.45; display:flex; align-items:flex-start; gap:8px; }
+  .sbtn {
+    flex:0 0 auto; background:none; border:0; padding:2px 0 0 0; cursor:pointer; display:inline-flex; align-items:center; margin-top:2px;
+  }
+  .sbtn svg { display:block; }
+  .sbtn circle { fill: var(--accent); transition: transform .15s ease; }
+  .sbtn:hover circle { transform: scale(1.12); }
+  .sbtn:active circle { transform: scale(0.95); }
+  .sbtn.playing circle { fill: #34c77b; }
+  .zh { margin-top:6px; color:var(--fg); font-size:14px; line-height:1.6; }
+  .meta { margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .tag {
+    font-size:11px; color:var(--accent); background:rgba(76,141,255,.12);
+    border:1px solid rgba(76,141,255,.3); border-radius:6px; padding:1px 7px;
+  }
+  .src { font-size:11px; color:var(--muted); }
+  .ctx {
+    margin-top:8px; padding:8px 10px; background:var(--card2);
+    border-radius:8px; font-size:13px; line-height:1.6; color:var(--muted);
+    border-left: 3px solid var(--accent2);
+  }
+  .ctx b { color: var(--fg); font-weight:600; }
+  .empty { text-align:center; color:var(--muted); padding:40px 0; font-size:14px; }
+  .toast {
+    position: fixed; left:50%; bottom:40px; transform:translateX(-50%);
+    background:var(--card2); color:var(--fg); border:1px solid var(--border);
+    border-radius:10px; padding:8px 16px; font-size:13px; z-index:99;
+    opacity:0; pointer-events:none; transition:opacity .2s;
+  }
+  .toast.show { opacity:1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="top-row">
+    <a class="link-btn" href="my-tofel-1925-words.html">→ 1925</a>
+    <a class="link-btn" href="my-tofel-1791words-words.html">→ 1791</a>
+    <div class="title">日常短语 <span style="font-size:11px;color:#ffb454;background:rgba(255,180,84,.15);border:1px solid rgba(255,180,84,.4);border-radius:6px;padding:1px 6px;margin-left:4px">V1</span></div>
+    <div class="search-wrap"><input id="q" placeholder="搜索短语 / 中文…" autocomplete="off"></div>
+    <a class="link-btn" href="index.html">↩ 主页</a>
+  </div>
+  <div class="toolbar">
+    <span class="count"><span id="cnt">0</span> 条短语</span>
+  </div>
+</header>
+<main>
+  <div class="list" id="list"></div>
+  <div class="empty" id="empty" style="display:none">没有匹配的短语</div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ 短语数据 ============
+// 每条：短语 | 中文释义 | 完整原句（朗读用）| 出处 | 用法说明
+const PHRASES = [
+  ["they can only tell you so much about …",
+   "（数据/调查等）能告诉你的…是有限的；光靠…了解不到全部",
+   "Surveys and market research can only tell you so much about what the customers actually want in their day-to-day lives.",
+   "TPO12-L2 Managing by Wandering Around",
+   "表达“某信息来源的作用有限”，暗示要获得更深入/真实的了解需要其他方式。口语中很常用，如 “A textbook can only tell you so much about real life.”"]
+];
+
+// ============ 渲染 ============
+const $ = id => document.getElementById(id);
+const listEl = $("list"), emptyEl = $("empty"), qEl = $("q"), cntEl = $("cnt"), toastEl = $("toast");
+let audioEl = null;
+let toastTimer = null;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1600);
+}
+const SVG = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M11 8.5v7l6-3.5z" fill="#fff"/></svg>';
+
+function speakSentence(text, btn){
+  const clean = String(text).replace(/\s+/g, " ").trim();
+  if(!clean) return;
+  if(audioEl){ audioEl.onerror = null; audioEl.onended = null; audioEl.pause(); }
+  else { audioEl = new Audio(); }
+  let fallback = false;
+  audioEl.onerror = () => {
+    if(fallback) return;
+    fallback = true;
+    if(btn) btn.classList.remove("playing");
+    try {
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = "en-US"; u.rate = 0.95;
+      u.onend = () => { if(btn) btn.classList.remove("playing"); };
+      u.onerror = () => { if(btn) btn.classList.remove("playing"); };
+      if(btn) btn.classList.add("playing");
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    } catch(e){ if(btn) btn.classList.remove("playing"); }
+  };
+  audioEl.onended = () => { if(btn) btn.classList.remove("playing"); };
+  audioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(clean);
+  if(btn) btn.classList.add("playing");
+  audioEl.play().catch(() => { audioEl.onerror && audioEl.onerror(); });
+}
+
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  const arr = PHRASES.filter(p =>
+    !q || p[0].toLowerCase().includes(q) || p[1].toLowerCase().includes(q) ||
+    (p[2] && p[2].toLowerCase().includes(q)) || (p[4] && p[4].toLowerCase().includes(q))
+  );
+  cntEl.textContent = PHRASES.length;
+  emptyEl.style.display = arr.length ? "none" : "block";
+  listEl.innerHTML = arr.map((p, i) => {
+    const [ph, zh, full, src, note] = p;
+    const showFull = full && full.toLowerCase() !== ph.toLowerCase();
+    return `<div class="item">
+      <div class="ph">
+        <button class="sbtn" data-speak="${encodeURIComponent(full || ph)}" title="朗读">${SVG}</button>
+        <span>${ph}</span>
+      </div>
+      <div class="zh">${zh}</div>
+      ${src ? `<div class="meta"><span class="tag">出处</span><span class="src">${src}</span></div>` : ""}
+      ${note ? `<div class="ctx">💡 ${note}</div>` : ""}
+      ${showFull ? `<div class="ctx">🔊 原句：<b>${full}</b></div>` : ""}
+    </div>`;
+  }).join("");
+}
+
+listEl.addEventListener("click", e => {
+  const btn = e.target.closest(".sbtn");
+  if(btn) speakSentence(decodeURIComponent(btn.dataset.speak), btn);
+});
+qEl.addEventListener("input", render);
+render();
+</script>
+</body>
+</html>
