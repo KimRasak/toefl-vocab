@@ -310,7 +310,11 @@ function select(idx, autoplay) {
   nowSub.textContent = `${it.t || ''} · 时长 ${fmt(it.d)}`;
   audio.src = it.a;
   if (autoplay) {
-    audio.currentTime = state.positions[idx] || 0;
+    // 若上次的浮标已停在末尾（或接近末尾），说明该集已听完：从头播放，
+    // 避免一加载就触发 ended，导致自动播放时每集都在末尾"闪现"、最终无一集在播
+    let pos = state.positions[idx] || 0;
+    if (pos > 0 && it.d > 0 && pos >= it.d - 0.5) pos = 0;
+    audio.currentTime = pos;
     audio.play().catch(() => {});
   }
   renderCues();
@@ -518,7 +522,12 @@ endModeSel.addEventListener('change', () => {
 });
 
 audio.addEventListener('ended', () => {
-  if (curIdx) { state.done[curIdx] = 1; save(); render(); }
+  if (curIdx) {
+    state.done[curIdx] = 1;
+    // 听完后清除进度浮标，下次自动播放从开头开始，而不是停在末尾
+    delete state.positions[curIdx];
+    save(); render();
+  }
   const mode = state.endMode;
   if (mode === 'loop') {
     audio.currentTime = 0;
