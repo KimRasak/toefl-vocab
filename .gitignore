@@ -15,6 +15,7 @@ TPO_listening/*
 !TPO_listening/*.py
 !TPO_listening/*.js
 !TPO_listening/subjects.json
+!TPO_listening/README.md
 toefl_tts_demo/
 
 # ---- 待决策：1791 本地真人音频（57MB / 3533 个 mp3）----
