@@ -13,6 +13,8 @@ bilibili_TPO听力原文200集/*
 !bilibili_TPO听力原文200集/*.py
 TPO_listening/*
 !TPO_listening/*.py
+!TPO_listening/*.js
+!TPO_listening/subjects.json
 toefl_tts_demo/
 
 # ---- 待决策：1791 本地真人音频（57MB / 3533 个 mp3）----
@@ -33,3 +35,13 @@ tpo42_54/
 output/
 *.mhtml
 *.pdf
+
+# ---- ETS 官方 2026 对版练习卷：原始 PDF / 音频 zip 不入库（体积大且属 ETS 版权）----
+ets_official_2026/*.zip
+ets_official_2026/txt/
+listening-2026/audio/
+
+# ---- 已决策：2026 新格式听力页的音频（196 个文件 / 28MB，ETS 原始音频）不入公开仓库 ----
+# 这些文件在 ets.org 免费公开下载，但放进 public 仓库属于二次分发。
+# 已改为备份到 HuggingFace 私有 dataset：xxfasdf/toefl-2026-listening-audio
+# （含摊平的 audio/ 与官方原始 original-zips/，取用办法见 ets_official_2026/README.md）

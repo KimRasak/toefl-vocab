@@ -1,0 +1,2210 @@
+[
+ {
+  "set": 1,
+  "seq": 1,
+  "title": "Rose Frantzen",
+  "subject": "contemporary art",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 1,
+  "seq": 2,
+  "title": "Uranium-Lead Dating",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 1,
+  "seq": 3,
+  "title": "Catalhoyuk",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 1,
+  "seq": 4,
+  "title": "Marmots",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 2,
+  "seq": 1,
+  "title": "Behaviorism",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 2,
+  "seq": 2,
+  "title": "Manila Hemp",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 2,
+  "seq": 3,
+  "title": "Aristotle",
+  "subject": "philosophy",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 2,
+  "seq": 4,
+  "title": "Bode's Law",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 3,
+  "seq": 1,
+  "title": "Humming Birds",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 3,
+  "seq": 2,
+  "title": "Jean Painlevé",
+  "subject": "film history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 3,
+  "seq": 3,
+  "title": "Chauvet Paintings",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 3,
+  "seq": 4,
+  "title": "Spectroscopy",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 4,
+  "seq": 1,
+  "title": "Displacement Activity",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 4,
+  "seq": 2,
+  "title": "Emerson's Self-reliance",
+  "subject": "literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 4,
+  "seq": 3,
+  "title": "Moving Rocks",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 4,
+  "seq": 4,
+  "title": "Government Support for Arts",
+  "subject": "united states government",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 5,
+  "seq": 1,
+  "title": "Meme",
+  "subject": "sociology",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 5,
+  "seq": 2,
+  "title": "Moon Landing",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 5,
+  "seq": 3,
+  "title": "Spectroscopy",
+  "subject": "chemistry",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 5,
+  "seq": 4,
+  "title": "Folk Tales and Fairy Tales",
+  "subject": "literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 6,
+  "seq": 1,
+  "title": "Boom and Bust",
+  "subject": "economics",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 6,
+  "seq": 2,
+  "title": "Nightcap Oak",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 6,
+  "seq": 3,
+  "title": "Character Sketch",
+  "subject": "creative writing",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 6,
+  "seq": 4,
+  "title": "Climate Change in Sahara De",
+  "subject": "earth science",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 7,
+  "seq": 1,
+  "title": "the Well-made Play",
+  "subject": "theater history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 7,
+  "seq": 2,
+  "title": "Bats' Use of Ultrasound",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 7,
+  "seq": 3,
+  "title": "Iroquois people & Birch Tree",
+  "subject": "anthropology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 7,
+  "seq": 4,
+  "title": "Glacial Movement",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 8,
+  "seq": 1,
+  "title": "Active Habitat Selection",
+  "subject": "animal behavior",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 8,
+  "seq": 2,
+  "title": "Women Artists in Paris",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 8,
+  "seq": 3,
+  "title": "Vision Correction",
+  "subject": "history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 8,
+  "seq": 4,
+  "title": "The Periodic Table of Elements",
+  "subject": "chemistry",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 9,
+  "seq": 1,
+  "title": "Philippe Jacques de Loutherbour",
+  "subject": "theater",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 9,
+  "seq": 2,
+  "title": "Shrubs in Tundra",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 9,
+  "seq": 3,
+  "title": "Desert Lakes",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 9,
+  "seq": 4,
+  "title": "Features of Human Language",
+  "subject": "linguistics",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 10,
+  "seq": 1,
+  "title": "Whales",
+  "subject": "marine biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 10,
+  "seq": 2,
+  "title": "American Food Crops",
+  "subject": "european history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 10,
+  "seq": 3,
+  "title": "Phosphorus Cycle",
+  "subject": "ecology",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 10,
+  "seq": 4,
+  "title": "Childhood Amnesia",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 11,
+  "seq": 1,
+  "title": "Distraction Display",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 11,
+  "seq": 2,
+  "title": "Cape Cod House",
+  "subject": "architecture",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 11,
+  "seq": 3,
+  "title": "Landscape & Climate",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 11,
+  "seq": 4,
+  "title": "Advertising",
+  "subject": "business",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 12,
+  "seq": 1,
+  "title": "Cell Division",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 12,
+  "seq": 2,
+  "title": "Managing by Wandering Around",
+  "subject": "business",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 12,
+  "seq": 3,
+  "title": "Opera",
+  "subject": "music history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 12,
+  "seq": 4,
+  "title": "Solar Energy",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 13,
+  "seq": 1,
+  "title": "Pedestrian Malls",
+  "subject": "city planning",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 13,
+  "seq": 2,
+  "title": "Interrelationships",
+  "subject": "ecology",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 13,
+  "seq": 3,
+  "title": "Medieval Poetry",
+  "subject": "poetry",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 13,
+  "seq": 4,
+  "title": "Meteorites",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 14,
+  "seq": 1,
+  "title": "Cognition",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 14,
+  "seq": 2,
+  "title": "Microclimate",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 14,
+  "seq": 3,
+  "title": "Seafarers and Stars",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 14,
+  "seq": 4,
+  "title": "Passage Graves",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 15,
+  "seq": 1,
+  "title": "Distraction",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 15,
+  "seq": 2,
+  "title": "Geologic Time Periods",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 15,
+  "seq": 3,
+  "title": "Palimpsest",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 15,
+  "seq": 4,
+  "title": "Biological community",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 16,
+  "seq": 1,
+  "title": "Lechuguilla Cave",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 16,
+  "seq": 2,
+  "title": "Piano",
+  "subject": "music history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 16,
+  "seq": 3,
+  "title": "Foraging Behavior Among Beavers",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 16,
+  "seq": 4,
+  "title": "Stained Glass Art",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 17,
+  "seq": 1,
+  "title": "Prehistoric Art Dating",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 17,
+  "seq": 2,
+  "title": "Milankovitch Hypothesis",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 17,
+  "seq": 3,
+  "title": "Ancient Egyptian Calendar",
+  "subject": "history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 17,
+  "seq": 4,
+  "title": "Octopus",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 18,
+  "seq": 1,
+  "title": "Sunspots",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 18,
+  "seq": 2,
+  "title": "Copies of Greek Sculptures",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 18,
+  "seq": 3,
+  "title": "Spices",
+  "subject": "european history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 18,
+  "seq": 4,
+  "title": "North American Wood Frog",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 19,
+  "seq": 1,
+  "title": "Family Tree Model",
+  "subject": "linguistics",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 19,
+  "seq": 2,
+  "title": "Difficulties in Astronomy",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 19,
+  "seq": 3,
+  "title": "Plants in salt marshes",
+  "subject": "marine biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 19,
+  "seq": 4,
+  "title": "Cecilia Beaux",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 20,
+  "seq": 1,
+  "title": "Gricean Maxims",
+  "subject": "linguistics",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 20,
+  "seq": 2,
+  "title": "Interglacial Periods",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 20,
+  "seq": 3,
+  "title": "Folk Tales",
+  "subject": "literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 20,
+  "seq": 4,
+  "title": "Snowshoe Hare",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 21,
+  "seq": 1,
+  "title": "Geocentric Theory",
+  "subject": "history of science",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 21,
+  "seq": 2,
+  "title": "Software Development",
+  "subject": "computer science",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 21,
+  "seq": 3,
+  "title": "Evolution Theory",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 21,
+  "seq": 4,
+  "title": "Alice Neel",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 22,
+  "seq": 1,
+  "title": "State Formation",
+  "subject": "anthropology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 22,
+  "seq": 2,
+  "title": "Faint Young Sun Paradox",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 22,
+  "seq": 3,
+  "title": "Pleistocene Rewilding",
+  "subject": "zoology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 22,
+  "seq": 4,
+  "title": "Musicians & Film Industry",
+  "subject": "music history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 23,
+  "seq": 1,
+  "title": "Antikythera Mechanism",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 23,
+  "seq": 2,
+  "title": "Earth Radiation Budget",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 23,
+  "seq": 3,
+  "title": "Dolphin's navigation",
+  "subject": "marine biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 23,
+  "seq": 4,
+  "title": "Screen Dance",
+  "subject": "choreography",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 24,
+  "seq": 1,
+  "title": "Crocodile Vocalization",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 24,
+  "seq": 2,
+  "title": "Modern Dance",
+  "subject": "dance history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 24,
+  "seq": 3,
+  "title": "Megafauna",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 24,
+  "seq": 4,
+  "title": "Shield Volcanoes on Venus",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 25,
+  "seq": 1,
+  "title": "Assisted Migration Conservation",
+  "subject": "conservation biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 25,
+  "seq": 2,
+  "title": "Béla Bartók",
+  "subject": "music history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 25,
+  "seq": 3,
+  "title": "Egyptian Hieroglyphs",
+  "subject": "history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 25,
+  "seq": 4,
+  "title": "Animal Play",
+  "subject": "animal behavior",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 26,
+  "seq": 1,
+  "title": "Green Marketing",
+  "subject": "advertising",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 26,
+  "seq": 2,
+  "title": "Carbon Cycling",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 26,
+  "seq": 3,
+  "title": "Comets",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 26,
+  "seq": 4,
+  "title": "Archimedes Palimpsest",
+  "subject": "art conservation",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 27,
+  "seq": 1,
+  "title": "Coral Reefs Marine",
+  "subject": "marine biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 27,
+  "seq": 2,
+  "title": "Cremonese Violins",
+  "subject": "history of musical instruments",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 27,
+  "seq": 3,
+  "title": "Sauropod",
+  "subject": "zoology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 27,
+  "seq": 4,
+  "title": "Primary Colors",
+  "subject": "studio art",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 28,
+  "seq": 1,
+  "title": "Foundationalism",
+  "subject": "philosophy",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 28,
+  "seq": 2,
+  "title": "Mirror Self-Recognition",
+  "subject": "animal behavior",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 28,
+  "seq": 3,
+  "title": "Plants' photoreceptors",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 28,
+  "seq": 4,
+  "title": "Gonur-depe",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 29,
+  "seq": 1,
+  "title": "Pedodiversity Plant",
+  "subject": "plant ecology",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 29,
+  "seq": 2,
+  "title": "Reverberation",
+  "subject": "architecture",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 29,
+  "seq": 3,
+  "title": "Clovis people & caches",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 29,
+  "seq": 4,
+  "title": "Carbon Nanotubes",
+  "subject": "structural engineering",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 30,
+  "seq": 1,
+  "title": "Metacognition",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 30,
+  "seq": 2,
+  "title": "Oviraptor",
+  "subject": "paleontology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 30,
+  "seq": 3,
+  "title": "Jarosite",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 30,
+  "seq": 4,
+  "title": "Electric Guitar",
+  "subject": "music history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 31,
+  "seq": 1,
+  "title": "Music In Ancient Greece",
+  "subject": "music",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 31,
+  "seq": 2,
+  "title": "Plate Drift",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 31,
+  "seq": 3,
+  "title": "Decline Of Coral Reefs",
+  "subject": "marine biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 31,
+  "seq": 4,
+  "title": "The Botai Culture",
+  "subject": "anthropology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 32,
+  "seq": 1,
+  "title": "Ancient Bananas",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 32,
+  "seq": 2,
+  "title": "Relationships Among Species",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 32,
+  "seq": 3,
+  "title": "The Copper Basin",
+  "subject": "earth science",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 32,
+  "seq": 4,
+  "title": "Harriet Morrison Irwin",
+  "subject": "architectural history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 33,
+  "seq": 1,
+  "title": "the Great Pyramid",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 33,
+  "seq": 2,
+  "title": "Colorado's water",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 33,
+  "seq": 3,
+  "title": "Notothenioids",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 33,
+  "seq": 4,
+  "title": "the Renaissance gardens",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 34,
+  "seq": 1,
+  "title": "Dadasim",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 34,
+  "seq": 2,
+  "title": "APS digestion",
+  "subject": "environmental engineering",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 34,
+  "seq": 3,
+  "title": "Plants And Pollinators",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 34,
+  "seq": 4,
+  "title": "The Life Cycle Of Innovation",
+  "subject": "business management",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 35,
+  "seq": 1,
+  "title": "Animal Navigation System",
+  "subject": "animal behavior",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 35,
+  "seq": 2,
+  "title": "Earliest Permanent Settlement",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 35,
+  "seq": 3,
+  "title": "Frescos",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 35,
+  "seq": 4,
+  "title": "Permian Extinction",
+  "subject": "earth science",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 36,
+  "seq": 1,
+  "title": "Potential Energy Source - Helium-3",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 36,
+  "seq": 2,
+  "title": "Vegetation Discoloration And Mayan Ruins",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 36,
+  "seq": 3,
+  "title": "Suburb Housing Design",
+  "subject": "architecture",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 36,
+  "seq": 4,
+  "title": "Gause's Hypothesis",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 37,
+  "seq": 1,
+  "title": "Soil Formation",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 37,
+  "seq": 2,
+  "title": "Cats' Domestication",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 37,
+  "seq": 3,
+  "title": "Vasari's Biographies Of Famous Artists",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 37,
+  "seq": 4,
+  "title": "Endotherms And Ectotherms",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 38,
+  "seq": 1,
+  "title": "Tulip-breaking Virus",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 38,
+  "seq": 2,
+  "title": "Congruent and Incongruent Media",
+  "subject": "business",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 38,
+  "seq": 3,
+  "title": "Found Sound",
+  "subject": "music history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 38,
+  "seq": 4,
+  "title": "The Formation Of Gas Planets",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 39,
+  "seq": 1,
+  "title": "Mineral Evolution",
+  "subject": null,
+  "domain": "地质/地球/气象",
+  "origin": "keyword"
+ },
+ {
+  "set": 39,
+  "seq": 2,
+  "title": "Community-determined Film",
+  "subject": "anthropology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 39,
+  "seq": 3,
+  "title": "Thoreau's Ideas About Train",
+  "subject": "literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 39,
+  "seq": 4,
+  "title": "Potential Alternative Source of Energy-cellulose",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 40,
+  "seq": 1,
+  "title": "A Formal Analysis Of Art",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 40,
+  "seq": 2,
+  "title": "Cape Cod",
+  "subject": "environmental conservation",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 40,
+  "seq": 3,
+  "title": "Greenhouse Effect",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 40,
+  "seq": 4,
+  "title": "Infrastructure Privatization",
+  "subject": "united states government",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 41,
+  "seq": 1,
+  "title": "Desert Plants",
+  "subject": null,
+  "domain": "植物/农业",
+  "origin": "keyword"
+ },
+ {
+  "set": 41,
+  "seq": 2,
+  "title": "Christopher Columbus",
+  "subject": null,
+  "domain": "历史/社会/政治",
+  "origin": "keyword"
+ },
+ {
+  "set": 41,
+  "seq": 3,
+  "title": "Analysing The Ownership Of Works Of Art",
+  "subject": null,
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "keyword"
+ },
+ {
+  "set": 41,
+  "seq": 4,
+  "title": "Exoplanets",
+  "subject": null,
+  "domain": "天文/航天",
+  "origin": "keyword"
+ },
+ {
+  "set": 42,
+  "seq": 1,
+  "title": "Greek And Roman Statues",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 42,
+  "seq": 2,
+  "title": "Distribution Of Galaxies",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 42,
+  "seq": 3,
+  "title": "Fungi",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 42,
+  "seq": 4,
+  "title": "Service Failures",
+  "subject": "marketing",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 43,
+  "seq": 1,
+  "title": "Leaves Turn Color",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 43,
+  "seq": 2,
+  "title": "Approximate Number Sense",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 43,
+  "seq": 3,
+  "title": "Theodor Seuss Geisel",
+  "subject": "children's literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 43,
+  "seq": 4,
+  "title": "Electromagnetic Waves",
+  "subject": "physics",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 44,
+  "seq": 1,
+  "title": "An Application Of Nanotechnology",
+  "subject": "materials science",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 44,
+  "seq": 2,
+  "title": "The Structure Of Theater",
+  "subject": "introduction to drama",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 44,
+  "seq": 3,
+  "title": "New Guinea",
+  "subject": "anthropology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 44,
+  "seq": 4,
+  "title": "Renewable Energy Sources",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 45,
+  "seq": 1,
+  "title": "Techniques used during the Renaissance",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 45,
+  "seq": 2,
+  "title": "T-cells",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 45,
+  "seq": 3,
+  "title": "Homogeneous And Heterogeneous",
+  "subject": "chemistry",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 45,
+  "seq": 4,
+  "title": "Early Pottery",
+  "subject": "anthropology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 46,
+  "seq": 1,
+  "title": "swarm intelligence",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 46,
+  "seq": 2,
+  "title": "preference in portrait painting",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 46,
+  "seq": 3,
+  "title": "Precious Blue Pigment",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 46,
+  "seq": 4,
+  "title": "Copper",
+  "subject": "materials science",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 47,
+  "seq": 1,
+  "title": "Hernani",
+  "subject": "literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 47,
+  "seq": 2,
+  "title": "albatross",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 47,
+  "seq": 3,
+  "title": "things coaches should know",
+  "subject": "sports management",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 47,
+  "seq": 4,
+  "title": "the role of wind",
+  "subject": "meteorology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 48,
+  "seq": 1,
+  "title": "Georgia O'Keeffe",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 48,
+  "seq": 2,
+  "title": "formation of some special volcanos",
+  "subject": "earth science",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 48,
+  "seq": 3,
+  "title": "Mutualism",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 48,
+  "seq": 4,
+  "title": "how business leaders get political power in 19th",
+  "subject": "american history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 49,
+  "seq": 1,
+  "title": "Thaw lakes in Alaska",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 49,
+  "seq": 2,
+  "title": "Montessori Method",
+  "subject": "education",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 49,
+  "seq": 3,
+  "title": "Reindeer",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 49,
+  "seq": 4,
+  "title": "Pottery",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 50,
+  "seq": 1,
+  "title": "Ancient Egyptian Glass",
+  "subject": "ancient history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 50,
+  "seq": 2,
+  "title": "The Classification of Creatures",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 50,
+  "seq": 3,
+  "title": "American Realism",
+  "subject": "united states literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 50,
+  "seq": 4,
+  "title": "Petroleum",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 51,
+  "seq": 1,
+  "title": "Maize and Teosinte",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 51,
+  "seq": 2,
+  "title": "The Transmission of A Number System",
+  "subject": "world history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 51,
+  "seq": 3,
+  "title": "Audubon the Famous Illustrator",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 51,
+  "seq": 4,
+  "title": "Heliocentric Theory",
+  "subject": "history of science",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 52,
+  "seq": 1,
+  "title": "Still-life Painting",
+  "subject": "art",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 52,
+  "seq": 2,
+  "title": "Interactions within an Ecosystem",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 52,
+  "seq": 3,
+  "title": "Snowflakes and Ozone",
+  "subject": "chemistry",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 52,
+  "seq": 4,
+  "title": "Maya Civilization",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 53,
+  "seq": 1,
+  "title": "Sounds in the Film",
+  "subject": "film studies",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 53,
+  "seq": 2,
+  "title": "Two Kinds of Pollution",
+  "subject": "environmental science",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 53,
+  "seq": 3,
+  "title": "The History of Tea",
+  "subject": "world history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 53,
+  "seq": 4,
+  "title": "Saturn's Rings",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 54,
+  "seq": 1,
+  "title": "Migration of Zooplankton",
+  "subject": "marine biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 54,
+  "seq": 2,
+  "title": "Benefits of Muon Detectors",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 54,
+  "seq": 3,
+  "title": "William Wheatley and Broadway Theaters",
+  "subject": "theater history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 54,
+  "seq": 4,
+  "title": "New Evidence of River Hypothesis",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 55,
+  "seq": 1,
+  "title": "First Public Art Museum",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 55,
+  "seq": 2,
+  "title": "Exercise and Cognition",
+  "subject": "health science",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 55,
+  "seq": 3,
+  "title": "CMEs & the Aurora",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 56,
+  "seq": 1,
+  "title": "Jackson Pollock",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 56,
+  "seq": 2,
+  "title": "Archaeopteryx",
+  "subject": "zoology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 56,
+  "seq": 3,
+  "title": "Iceland",
+  "subject": "archaeology",
+  "domain": "考古/人类学",
+  "origin": "narrator"
+ },
+ {
+  "set": 57,
+  "seq": 1,
+  "title": "Sentimental Comedy",
+  "subject": "theater history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 57,
+  "seq": 2,
+  "title": "Craters and Age",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 57,
+  "seq": 3,
+  "title": "The New West",
+  "subject": "united states history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 58,
+  "seq": 1,
+  "title": "Homing Behavior in Birds",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 58,
+  "seq": 2,
+  "title": "Interferometers",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 58,
+  "seq": 3,
+  "title": "Harlem Renaissance",
+  "subject": "african american history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 60,
+  "seq": 1,
+  "title": "historical development and use of oil paint",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 60,
+  "seq": 2,
+  "title": "Building Design",
+  "subject": "engineering",
+  "domain": "工程/技术/理化",
+  "origin": "narrator"
+ },
+ {
+  "set": 60,
+  "seq": 3,
+  "title": "Psychological Development",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 61,
+  "seq": 1,
+  "title": "The connection between neocortex size and social relationships in mammals",
+  "subject": "sociology",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 61,
+  "seq": 2,
+  "title": "A method of decaffeinating coffee while preserving its flavor",
+  "subject": "food science and technology",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 61,
+  "seq": 3,
+  "title": "To present opposing viewpoints about art restoration",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 62,
+  "seq": 1,
+  "title": "Landscape Architecture",
+  "subject": "architectural history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 62,
+  "seq": 2,
+  "title": "Encounter of Galaxies",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 62,
+  "seq": 3,
+  "title": "Pest",
+  "subject": "sociology",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 63,
+  "seq": 1,
+  "title": "geology class",
+  "subject": "geology",
+  "domain": "地质/地球/气象",
+  "origin": "narrator"
+ },
+ {
+  "set": 63,
+  "seq": 2,
+  "title": "hearing and read the ancient text",
+  "subject": "ancient history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 63,
+  "seq": 3,
+  "title": "characteristics of the lens of human eyes",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 64,
+  "seq": 1,
+  "title": "international trade",
+  "subject": "economics",
+  "domain": "商业/经济",
+  "origin": "narrator"
+ },
+ {
+  "set": 64,
+  "seq": 2,
+  "title": "continental polar air mass",
+  "subject": "earth science",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 64,
+  "seq": 3,
+  "title": "Gila lizard",
+  "subject": "zoology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 65,
+  "seq": 1,
+  "title": "Whether dinosaurs are warm blooded animals",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 65,
+  "seq": 2,
+  "title": "Resilience",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 65,
+  "seq": 3,
+  "title": "Perspective in Painting",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 66,
+  "seq": 1,
+  "title": "Sleep",
+  "subject": null,
+  "domain": "生物/动物",
+  "origin": "keyword"
+ },
+ {
+  "set": 66,
+  "seq": 2,
+  "title": "Fish Movement",
+  "subject": null,
+  "domain": "生物/动物",
+  "origin": "keyword"
+ },
+ {
+  "set": 66,
+  "seq": 3,
+  "title": "Whether Animals have a Theory of Mind",
+  "subject": null,
+  "domain": "生物/动物",
+  "origin": "keyword"
+ },
+ {
+  "set": 67,
+  "seq": 1,
+  "title": "Animal Behavior Patterns",
+  "subject": null,
+  "domain": "生物/动物",
+  "origin": "manual"
+ },
+ {
+  "set": 67,
+  "seq": 2,
+  "title": "Emotional Connection",
+  "subject": null,
+  "domain": "心理/语言/教育",
+  "origin": "manual"
+ },
+ {
+  "set": 67,
+  "seq": 3,
+  "title": "New Wallpaper Designs",
+  "subject": null,
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "keyword"
+ },
+ {
+  "set": 68,
+  "seq": 1,
+  "title": "Two Ancient Arctic Cultures",
+  "subject": null,
+  "domain": "考古/人类学",
+  "origin": "manual"
+ },
+ {
+  "set": 68,
+  "seq": 2,
+  "title": "Zircon",
+  "subject": "last",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 68,
+  "seq": 3,
+  "title": "A Group of Mostly Undisturbed Archaeological Sites",
+  "subject": null,
+  "domain": "考古/人类学",
+  "origin": "keyword"
+ },
+ {
+  "set": 69,
+  "seq": 1,
+  "title": "The formation of hydrothermal vents",
+  "subject": null,
+  "domain": "地质/地球/气象",
+  "origin": "keyword"
+ },
+ {
+  "set": 69,
+  "seq": 2,
+  "title": "How to convey a personal point of view in painting",
+  "subject": null,
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "keyword"
+ },
+ {
+  "set": 69,
+  "seq": 3,
+  "title": "the fiddler crab's visual field",
+  "subject": null,
+  "domain": "生物/动物",
+  "origin": "manual"
+ },
+ {
+  "set": 70,
+  "seq": 1,
+  "title": "To present a theory and an argument that refutes it",
+  "subject": null,
+  "domain": "生物/动物",
+  "origin": "manual"
+ },
+ {
+  "set": 70,
+  "seq": 2,
+  "title": "several solutions for a common artistic problem",
+  "subject": null,
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "keyword"
+ },
+ {
+  "set": 70,
+  "seq": 3,
+  "title": "the process of aurora's formation",
+  "subject": null,
+  "domain": "天文/航天",
+  "origin": "keyword"
+ },
+ {
+  "set": 71,
+  "seq": 1,
+  "title": "Fire affect savanna ecosystem",
+  "subject": null,
+  "domain": "环境/生态",
+  "origin": "keyword"
+ },
+ {
+  "set": 71,
+  "seq": 2,
+  "title": "The discovery of 51 Pegacy B",
+  "subject": null,
+  "domain": "天文/航天",
+  "origin": "keyword"
+ },
+ {
+  "set": 71,
+  "seq": 3,
+  "title": "The houses of the Inuit people",
+  "subject": null,
+  "domain": "考古/人类学",
+  "origin": "keyword"
+ },
+ {
+  "set": 72,
+  "seq": 1,
+  "title": "Astrobiology",
+  "subject": "astronomy",
+  "domain": "天文/航天",
+  "origin": "narrator"
+ },
+ {
+  "set": 72,
+  "seq": 2,
+  "title": "The process of maple sap production",
+  "subject": "botany",
+  "domain": "植物/农业",
+  "origin": "narrator"
+ },
+ {
+  "set": 72,
+  "seq": 3,
+  "title": "Investigations about infants’ ability to retain information",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 73,
+  "seq": 1,
+  "title": "Infant Communication And Vocabulary Development",
+  "subject": "psychology",
+  "domain": "心理/语言/教育",
+  "origin": "narrator"
+ },
+ {
+  "set": 73,
+  "seq": 2,
+  "title": "Autobiography And Memoir",
+  "subject": "literature",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 73,
+  "seq": 3,
+  "title": "Organic Compounds",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 74,
+  "seq": 1,
+  "title": "The courting behavior of the Bower bird",
+  "subject": "biology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 74,
+  "seq": 2,
+  "title": "Utilization of Ocean Energy",
+  "subject": "environmental engineering",
+  "domain": "环境/生态",
+  "origin": "narrator"
+ },
+ {
+  "set": 74,
+  "seq": 3,
+  "title": "The Olmec civilization",
+  "subject": "art history",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ },
+ {
+  "set": 75,
+  "seq": 1,
+  "title": "The Statue of Hatshepsut",
+  "subject": "ancient history",
+  "domain": "历史/社会/政治",
+  "origin": "narrator"
+ },
+ {
+  "set": 75,
+  "seq": 2,
+  "title": "Origin of Life",
+  "subject": "paleontology",
+  "domain": "生物/动物",
+  "origin": "narrator"
+ },
+ {
+  "set": 75,
+  "seq": 3,
+  "title": "Method acting",
+  "subject": "acting",
+  "domain": "艺术/音乐/文学/戏剧",
+  "origin": "narrator"
+ }
+]
