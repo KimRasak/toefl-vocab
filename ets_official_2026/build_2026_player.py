@@ -204,7 +204,9 @@ body.showstats #stats{display:block}
 #banner{display:none;padding:10px 24px;font-size:12.5px;background:#fdefef;color:#991b1b;
   border-bottom:1px solid #f5c2c2;line-height:1.7}
 #banner.on{display:block}
+#banner.info{background:#eef4ff;color:#1e40af;border-bottom-color:#c7d8f7}
 #banner code{background:#fff;padding:1px 5px;border-radius:4px;font-size:12px}
+#banner a{color:inherit;text-decoration:underline}
 .err{color:var(--bad);font-size:13px;margin-top:6px}
 </style>
 </head>
@@ -253,8 +255,11 @@ body.showstats #stats{display:block}
   <b>听答题的作答倒计时是本页自设的练习节奏</b>，官方从未公布这一题型的作答时限，别把它当考场标准。<br>
   Module 1 = Router（人人都做，据此决定分支），Module 2 = 按 Module 1 表现走的上/下分支，
   所以 M1 与 M2 的难度不可直接比较。<br>
-  音频为 ETS 原始文件（多数是 22 kHz 单声道 Ogg Vorbis）。Ogg 在 Chrome/Firefox/Edge 与
-  Safari 17+ 可播；更老的 Safari 会报解码失败。做题记录存在本机浏览器。
+  音频为 ETS 原始文件（多数是 22 kHz 单声道 Ogg Vorbis，Copyright © 2025 ETS），
+  优先读本页同级的 <code>audio/</code>，没有就从
+  <a href="https://huggingface.co/datasets/xxfasdf/toefl-2026-official-listening-audio" target="_blank" rel="noopener">HuggingFace 公开镜像</a>
+  流式播放；原始文件在 <a href="https://www.ets.org/toefl/test-takers/ibt/prepare.html" target="_blank" rel="noopener">ETS 官网</a>免费公开下载。
+  Ogg 在 Chrome/Firefox/Edge 与 Safari 17+ 可播；更老的 Safari 会报解码失败。做题记录存在本机浏览器。
 </div>
 <script>
 const DATA = __DATA__;
@@ -273,6 +278,21 @@ const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch
 const $ = id => document.getElementById(id);
 const au = new Audio();
 let cur = null, timer = null, deadline = 0;
+
+// 音频两个来源：本页同级的 audio/（本地/离线优先），和 HF 公开镜像（线上兜底）。
+const HF_BASE = 'https://huggingface.co/datasets/xxfasdf/toefl-2026-official-listening-audio/resolve/main/audio/';
+let AUBASE = 'audio/';
+const auURL = name => AUBASE + encodeURIComponent(name);
+let mirrorNoted = false;
+function showMirrorNote() {
+  if (mirrorNoted) return;
+  mirrorNoted = true;
+  $('banner').className = 'on info';
+  $('banner').innerHTML = '本页同级没有 <code>audio/</code> 目录，音频改从 '
+    + '<a href="https://huggingface.co/datasets/xxfasdf/toefl-2026-official-listening-audio" target="_blank" rel="noopener">'
+    + 'HuggingFace 公开镜像</a> 直接流式播放（196 个文件 / 28 MB，ETS 原始音频，Copyright © 2025 ETS）。'
+    + '想离线用就把音频放到本页同级的 <code>audio/</code> 目录，本地文件优先。';
+}
 
 const fmt = s => (s == null ? '--' : (s < 60 ? s.toFixed(1) + 's'
   : Math.floor(s / 60) + ':' + String(Math.round(s % 60)).padStart(2, '0')));
@@ -384,20 +404,24 @@ function open(it) {
 function play() {
   if (!cur || !cur.au) return;
   stop();
-  au.src = 'audio/' + encodeURIComponent(cur.au);
+  au.src = auURL(cur.au);
   au.currentTime = 0;
   au.play().then(() => {
     S.plays[cur.id] = (S.plays[cur.id] || 0) + 1; save();
     $('plays').textContent = '已播 ' + S.plays[cur.id] + ' 次';
     render();
-  }).catch(e => { $('err').textContent = '音频播不了：' + e.message + '（Ogg 需要 Chrome/Firefox 或 Safari 17+）'; });
+  }).catch(e => {
+    // 本地目录没有音频时退到 HF 公开镜像再试一次，只退一次
+    if (AUBASE !== HF_BASE) { AUBASE = HF_BASE; showMirrorNote(); play(); return; }
+    $('err').textContent = '音频播不了：' + e.message + '（Ogg 需要 Chrome/Firefox 或 Safari 17+）';
+  });
 }
 
 $('pl').onclick = play;
 $('pd').onclick = () => {
   if (!cur || !cur.ad) return;
   stop();
-  au.src = 'audio/' + encodeURIComponent(cur.ad);
+  au.src = auURL(cur.ad);
   au.play().catch(e => { $('err').textContent = '指令音频播不了：' + e.message; });
 };
 
@@ -540,22 +564,16 @@ renderTabs();
 render();
 blank();
 
-// 音频没随页面发布时给出明确说明，而不是让用户点了播放一脸问号。
-// 音频是 ETS 的文件，是否放进公开仓库是单独决定的事，页面这边只负责说清状态。
+// 音频来源：优先本页同级的 audio/ 目录（本地开发、离线可用），
+// 取不到就退到 HF 公开镜像。镜像用 <audio> 直连没有 CORS 问题
+// （最终 CDN 响应带 access-control-allow-origin: *，且支持 Range 206），
+// 但 fetch 探测 HF 会在 302 那一跳被 CORS 拦掉，所以只探本地、不探镜像。
 function probeAudio() {
   const first = ITEMS.find(x => x.au);
   if (!first || location.protocol === 'file:') return Promise.resolve();
   return fetch('audio/' + encodeURIComponent(first.au), { method: 'HEAD' })
-    .then(r => {
-      if (r.ok) return;
-      $('banner').className = 'on';
-      $('banner').innerHTML = '<b>这个部署没有附带音频文件</b>，题目、选项、答案和原文都能用，但点播放会失败。'
-        + '音频是 ETS 的原始文件（196 个 / 28 MB），没有随页面一起发布。'
-        + '本地跑 <code>python3 ets_official_2026/extract_audio.py</code> 从官方 zip 解出来，'
-        + '放到本页同级的 <code>audio/</code> 目录即可；'
-        + '或从私有备份取：<code>hf download xxfasdf/toefl-2026-listening-audio --repo-type=dataset --include "audio/*" --local-dir .</code>（需本人 HF 账号）。';
-    })
-    .catch(() => {});
+    .then(r => { if (!r.ok) { AUBASE = HF_BASE; showMirrorNote(); } })
+    .catch(() => { AUBASE = HF_BASE; showMirrorNote(); });
 }
 probeAudio();
 </script>

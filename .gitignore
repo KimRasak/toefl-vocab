@@ -42,7 +42,9 @@ ets_official_2026/*.zip
 ets_official_2026/txt/
 listening-2026/audio/
 
-# ---- 已决策：2026 新格式听力页的音频（196 个文件 / 28MB，ETS 原始音频）不入公开仓库 ----
-# 这些文件在 ets.org 免费公开下载，但放进 public 仓库属于二次分发。
-# 已改为备份到 HuggingFace 私有 dataset：xxfasdf/toefl-2026-listening-audio
-# （含摊平的 audio/ 与官方原始 original-zips/，取用办法见 ets_official_2026/README.md）
+# ---- 已决策：2026 新格式听力页的音频（196 个文件 / 28MB）不入 git，改托管 HF ----
+# 不入 git 的理由是体积：28MB 会把仓库翻几倍，且每次改动永久留在历史里。
+# 托管在两个 HuggingFace dataset：
+#   xxfasdf/toefl-2026-official-listening-audio  public  仅 audio/，线上页面直接播这份
+#   xxfasdf/toefl-2026-listening-audio           private audio/ + 官方原始 original-zips/
+# 页面「本地优先、镜像兜底」，取用与恢复办法见 ets_official_2026/README.md 第五节。

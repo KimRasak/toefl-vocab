@@ -138,29 +138,42 @@ node test_2026_player.js         # 48 条断言，退出码非 0 即失败
 官方从未公布该题型的作答时限**），全部题答完才自动显示原文，成绩按题型统计。
 键盘 A/B/C/D 选项、空格重播、N 下一条。做题记录存本机 localStorage（键 `hl2026_v1`）。
 
-音频**不入库**（见根目录 `.gitignore`）：196 个文件 / 28 MB 是 ETS 原始音频，
-放进公开仓库属于二次分发。线上部署缺音频时页面会自己弹横幅说明获取办法。
+音频**不入 git 库**（见根目录 `.gitignore`）：196 个文件 / 28 MB，放进 git 会把仓库体积
+翻几倍且每次改动都留在历史里。改为托管在 HuggingFace，页面按「本地优先、镜像兜底」取用。
 
-### 音频备份：HuggingFace 私有 dataset
+### 音频托管：两个 HF dataset
 
-<https://huggingface.co/datasets/xxfasdf/toefl-2026-listening-audio>（**private**）
+| repo | 可见性 | 内容 | 用途 |
+|---|---|---|---|
+| [`xxfasdf/toefl-2026-official-listening-audio`](https://huggingface.co/datasets/xxfasdf/toefl-2026-official-listening-audio) | **public** | `audio/` 摊平后的 196 个音频 | 线上页面直接流式播放的那份 |
+| [`xxfasdf/toefl-2026-listening-audio`](https://huggingface.co/datasets/xxfasdf/toefl-2026-listening-audio) | private | `audio/` + `original-zips/`（官方原始 zip，含口语/lesson plan 音频） | 完整备份 |
 
-本机已登录（`hf auth whoami` → `xxfasdf`，token 在 `~/.cache/huggingface/token`），
-下载直接可用；换机器才需要先 `hf auth login`。
+页面里的取用顺序写在 `build_2026_player.py` 的 `probeAudio()`：先 HEAD 本页同级的
+`audio/`，取不到就把 `AUBASE` 换成公开 dataset 的 `resolve/main/audio/` 并弹一条蓝色
+提示横幅（非报错色）。`play()` 里还有一次一次性兜底，防止探测还没回来用户就点了播放。
 
-| 路径 | 内容 |
-|---|---|
-| `audio/` | 摊平后的 196 个音频，练习页直接引用的那份 |
-| `original-zips/` | ETS 官方原始音频 zip（7 套模拟卷 + lesson plan + 口语范例） |
+> 为什么只 HEAD 本地、不探镜像：HF 的 `resolve/main` 会 302 到签名 CDN，
+> **302 那一跳的 `access-control-allow-origin` 是 `https://huggingface.co`**，
+> 跨域 `fetch` 会在重定向处被 CORS 拦掉。而 `<audio src>` 是媒体加载不走 CORS，
+> 最终 CDN 响应又带 `access-control-allow-origin: *` 和 `accept-ranges: bytes`（Range 返回 206），
+> 所以**播放没问题、fetch 探测不行**。已实测确认。
 
-恢复本地音频（两种都行）：
+版权口径：音频是 **Copyright © 2025 by ETS**，公开 dataset 的 README 里写明了
+不主张任何权利、仅为镜像、原始文件在 ETS 官网免费公开下载、收到 ETS 异议即下架。
+页面页脚与横幅也都标了版权与官网链接。
+
+恢复本地音频（三种都行）：
 
 ```bash
-# A. 从私有备份拉（快）
+# A. 从公开镜像拉（无需账号）
+hf download xxfasdf/toefl-2026-official-listening-audio --repo-type=dataset \
+  --include "audio/*" --local-dir listening-2026/
+
+# B. 从私有完整备份拉（含 original-zips/，需本人账号）
 hf download xxfasdf/toefl-2026-listening-audio --repo-type=dataset \
   --include "audio/*" --local-dir listening-2026/
 
-# B. 从官方 zip 重解（无需 HF 账号，但要先按第六节重新下载 zip）
+# C. 从官方 zip 重解（要先按第六节重新下载 zip）
 python3 ets_official_2026/extract_audio.py
 ```
 

@@ -174,13 +174,21 @@ document.getElementById('rs').onclick();
 chk('重置后讲座类无记录', ITEMS.filter(x => x.k === 'at').every(x => x.qs.every(q => !S.ans[x.id + '#' + q.n])));
 chk('重置不影响听答题记录', S.ans[cr.id + '#' + cr.qs[0].n] === cr.qs[0].a);
 
-// 音频缺失横幅：把 fetch 换成 404 再跑一次探测
-chk('音频可取时不显示横幅', ids.banner.className === '', '[' + ids.banner.className + ']');
+// 音频来源回退：本地 audio/ 取不到就换 HF 公开镜像
+chk('默认用本地 audio/ 目录', AUBASE === 'audio/', AUBASE);
+chk('本地可取时不弹横幅', ids.banner.className === '', '[' + ids.banner.className + ']');
+const beforeSrc = auURL('x y.ogg');
+chk('文件名做了 URL 编码', beforeSrc === 'audio/x%20y.ogg', beforeSrc);
 globalThis.fetch = () => Promise.resolve({ ok: false });
 await probeAudio();
-chk('音频 404 时弹出横幅', ids.banner.className === 'on', '[' + ids.banner.className + ']');
-chk('横幅写明本地解压办法', ids.banner.innerHTML.includes('extract_audio.py'));
-chk('横幅说明文本题仍可用', ids.banner.innerHTML.includes('原文都能用'));
+chk('本地 404 后切到 HF 镜像', AUBASE === HF_BASE, AUBASE.slice(0, 40));
+chk('镜像地址指向公开 dataset', HF_BASE.includes('toefl-2026-official-listening-audio'));
+chk('切镜像后弹信息横幅（非报错色）', ids.banner.className === 'on info', '[' + ids.banner.className + ']');
+chk('横幅标注 ETS 版权', ids.banner.innerHTML.includes('Copyright'));
+chk('横幅说明本地优先', ids.banner.innerHTML.includes('本地文件优先'));
+chk('横幅只弹一次', (() => { const h = ids.banner.innerHTML; showMirrorNote(); return ids.banner.innerHTML === h; })());
+const afterSrc = auURL('t4_m1_at01.ogg');
+chk('切换后音频 URL 走镜像', afterSrc === HF_BASE + 't4_m1_at01.ogg', afterSrc.slice(0, 60));
 `+ '})();';
 
 vm.runInThisContext(page + '\n' + ASSERTS, { filename: 'listening-2026.js' });
