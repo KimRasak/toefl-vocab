@@ -143,7 +143,10 @@ node test_2026_player.js         # 48 条断言，退出码非 0 即失败
 
 ### 音频备份：HuggingFace 私有 dataset
 
-<https://huggingface.co/datasets/xxfasdf/toefl-2026-listening-audio>（**private**，需本人账号）
+<https://huggingface.co/datasets/xxfasdf/toefl-2026-listening-audio>（**private**）
+
+本机已登录（`hf auth whoami` → `xxfasdf`，token 在 `~/.cache/huggingface/token`），
+下载直接可用；换机器才需要先 `hf auth login`。
 
 | 路径 | 内容 |
 |---|---|
@@ -161,8 +164,9 @@ hf download xxfasdf/toefl-2026-listening-audio --repo-type=dataset \
 python3 ets_official_2026/extract_audio.py
 ```
 
-> macOS 上若 `hf` 报 `Operation not permitted ... /xet/staging`，是沙箱不让写
+> macOS 上若 `hf` **上传**报 `Operation not permitted ... /xet/staging`，是沙箱不让写
 > `~/.cache/huggingface`；加 `HF_XET_CACHE=$PWD/.hf_cache/xet` 即可。
+> 下载只会打一条同源的 xet 日志写入告警（自动退回控制台输出），不影响结果，可忽略。
 
 ### 实测音频时长（`audio_len.py`，ogg 按 granulepos 精确计算）
 
