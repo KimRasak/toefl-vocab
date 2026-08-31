@@ -296,6 +296,54 @@ const AUDIO_MAP = {
   "w": "73-w-pedal.mp3",
   "s": null
  },
+ "pelvis": {
+  "w": null,
+  "s": null
+ },
+ "limb": {
+  "w": null,
+  "s": null
+ },
+ "thigh": {
+  "w": null,
+  "s": null
+ },
+ "calf": {
+  "w": null,
+  "s": null
+ },
+ "skull": {
+  "w": null,
+  "s": null
+ },
+ "jaw": {
+  "w": null,
+  "s": null
+ },
+ "shoulder": {
+  "w": null,
+  "s": null
+ },
+ "leg": {
+  "w": null,
+  "s": null
+ },
+ "bone": {
+  "w": null,
+  "s": null
+ },
+ "muscle": {
+  "w": null,
+  "s": null
+ },
+ "skeleton": {
+  "w": null,
+  "s": null
+ },
+ "neck": {
+  "w": null,
+  "s": null
+ },
  "grasp": {
   "w": "74-w-grasp.mp3",
   "s": null
@@ -956,6 +1004,10 @@ const AUDIO_MAP = {
   "w": "238-w-recycle.mp3",
   "s": null
  },
+ "monsoon rains": {
+  "w": null,
+  "s": null
+ },
  "transverse flute": {
   "w": "239-w-transverse-flute.mp3",
   "s": null
@@ -1437,6 +1489,10 @@ const AUDIO_MAP = {
   "s": null
  },
  "Lechuguilla Cave": {
+  "w": null,
+  "s": null
+ },
+ "runoff": {
   "w": null,
   "s": null
  },

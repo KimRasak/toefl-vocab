@@ -1,0 +1,35 @@
+# ---- 系统与缓存 ----
+.DS_Store
+__pycache__/
+*.pyc
+.hf_cache/
+
+# ---- 与本项目无关的第三方代码 ----
+csdn-mcp/
+
+# ---- 听力素材源目录：音频/字幕/中间数据都不入库（仅保留顶层构建脚本）----
+# 需另行备份到外部盘或对象存储；TPO 原文与音频属第三方版权内容，不放公开仓库
+bilibili_TPO听力原文200集/*
+!bilibili_TPO听力原文200集/*.py
+TPO_listening/*
+!TPO_listening/*.py
+toefl_tts_demo/
+
+# ---- 待决策：1791 本地真人音频（57MB / 3533 个 mp3）----
+# 若决定上线 V7 本地音频，删掉下面两行后提交，页面才能用上本地发音
+1791_audio/
+1791_audio_map.js
+
+# ---- 构建产物：站点已按部署路径 listening/ listening-all/ 跟踪，源目录内的副本不重复入库 ----
+# （上面的 bilibili.../* 与 TPO_listening/* 规则已覆盖）
+
+# ---- 抓取的原始语料与中间数据（仓库是 public，默认不公开这些）----
+raw/
+research/
+zhan_research/
+_tporesearch/
+tpo_online/
+tpo42_54/
+output/
+*.mhtml
+*.pdf
