@@ -1374,6 +1374,7 @@ body.autobar-open{{padding-bottom:100px}}
 
 <!-- Focus mode overlay -->
 <div class="focus-overlay" id="focusOverlay">
+  <div class="focus-topic" id="focusTopic" style="font-size:14px;color:var(--muted);margin-bottom:16px"></div>
   <div class="focus-reveal-area" id="focusRevealArea" style="cursor:pointer;padding:20px;min-height:120px;display:flex;flex-direction:column;align-items:center">
     <div class="focus-hint" id="focusHint" style="font-size:14px;color:var(--muted);opacity:.5">👆 点击此处揭晓答案</div>
     <div class="focus-word" id="focusWord">—</div>
@@ -1694,7 +1695,11 @@ render('');
 
 // ─── Auto-play ───
 const ALL_WORDS = [];
-DATA.forEach(t => t.words.forEach(w => ALL_WORDS.push(w)));
+const WORD_TOPIC = {{}};
+DATA.forEach(t => t.words.forEach(w => {{
+  ALL_WORDS.push(w);
+  WORD_TOPIC[w.w] = t.emoji + ' ' + t.name.split(' ')[0];
+}}));
 
 let abPlaying = false, abIdx = 0, abToken = 0, abHardOnly = false;
 function abGetList() {{ return abHardOnly ? ALL_WORDS.filter(w => hardWords.has(w.w)) : ALL_WORDS; }}
@@ -1903,6 +1908,7 @@ function focusUpdateUI(keepRevealed) {{
   focusDefEl.textContent = w ? (w.d || '') : '';
   focusFullEl.textContent = w ? (w.f && w.f !== w.d ? w.f : '') : '';
   focusPosEl.textContent = list.length ? (abIdx + 1) + ' / ' + list.length : '';
+  document.getElementById('focusTopic').textContent = w ? (WORD_TOPIC[w.w] || '') : '';
   focusMarkEl.classList.toggle('marked', w ? hardWords.has(w.w) : false);
   focusPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
   document.getElementById('focusHardBtn').classList.toggle('active', abHardOnly);
