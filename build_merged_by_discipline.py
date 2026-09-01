@@ -1255,10 +1255,10 @@ body.autobar-open{{padding-bottom:100px}}
   padding:24px;text-align:center;
 }}
 .focus-overlay.open{{display:flex}}
-.focus-word{{font-size:clamp(32px,8vw,56px);font-weight:800;margin-bottom:12px}}
+.focus-word{{font-size:clamp(32px,8vw,56px);font-weight:800;margin-bottom:12px;visibility:hidden}}
 .focus-def{{font-size:16px;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:8px;visibility:hidden}}
 .focus-full{{font-size:13px;color:var(--muted);max-width:500px;line-height:1.6;opacity:.7;margin-bottom:20px;word-break:break-word;white-space:pre-wrap;visibility:hidden}}
-.focus-overlay.revealed .focus-def,.focus-overlay.revealed .focus-full{{visibility:visible}}
+.focus-overlay.revealed .focus-word,.focus-overlay.revealed .focus-def,.focus-overlay.revealed .focus-full{{visibility:visible}}
 .focus-pos{{font-size:13px;color:var(--muted);margin-bottom:20px}}
 .focus-btns{{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}}
 .focus-btns button{{
@@ -1325,9 +1325,11 @@ body.autobar-open{{padding-bottom:100px}}
 
 <!-- Focus mode overlay -->
 <div class="focus-overlay" id="focusOverlay">
-  <div class="focus-word" id="focusWord" style="cursor:pointer" title="点击显示释义">—</div>
+  <div class="focus-reveal-area" id="focusRevealArea" style="cursor:pointer;padding:20px;min-height:120px;display:flex;flex-direction:column;align-items:center">
+    <div class="focus-hint" id="focusHint" style="font-size:14px;color:var(--muted);opacity:.5">👆 点击此处揭晓答案</div>
+    <div class="focus-word" id="focusWord">—</div>
+  </div>
   <div class="focus-mark" id="focusMark" title="标记难词">⭐</div>
-  <div class="focus-hint" id="focusHint" style="font-size:12px;color:var(--muted);margin-bottom:12px;opacity:.5">👆 点击单词查看释义</div>
   <div class="focus-def" id="focusDef"></div>
   <div class="focus-full" id="focusFull"></div>
   <div class="focus-pos" id="focusPos"></div>
@@ -1336,6 +1338,7 @@ body.autobar-open{{padding-bottom:100px}}
     <button onclick="focusSpeak()">🔊 发音</button>
     <button class="primary" id="focusPlayBtn" onclick="focusTogglePlay()">▶ 连播</button>
     <button onclick="focusNext()">⏭ 下一个</button>
+    <button class="filter-btn" id="focusHardBtn" onclick="focusToggleHard()">⭐ 仅难词</button>
     <button onclick="focusClose()">✕ 退出</button>
   </div>
 </div>
@@ -1700,6 +1703,7 @@ function focusUpdateUI(keepRevealed) {{
   focusPosEl.textContent = list.length ? (abIdx + 1) + ' / ' + list.length : '';
   focusMarkEl.classList.toggle('marked', w ? hardWords.has(w.w) : false);
   focusPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
+  document.getElementById('focusHardBtn').classList.toggle('active', abHardOnly);
   if (!keepRevealed) {{
     focusOverlay.classList.remove('revealed');
     document.getElementById('focusHint').style.display = '';
@@ -1765,10 +1769,19 @@ focusMarkEl.onclick = () => {{
 
 document.getElementById('abFocusBtn').onclick = () => {{ focusEnter(); }};
 
-focusWordEl.onclick = () => {{
-  focusOverlay.classList.toggle('revealed');
-  document.getElementById('focusHint').style.display = focusOverlay.classList.contains('revealed') ? 'none' : '';
+document.getElementById('focusRevealArea').onclick = () => {{
+  const revealed = focusOverlay.classList.toggle('revealed');
+  document.getElementById('focusHint').style.display = revealed ? 'none' : '';
 }};
+
+function focusToggleHard() {{
+  abHardOnly = !abHardOnly;
+  abIdx = 0; abSave();
+  document.getElementById('focusHardBtn').classList.toggle('active', abHardOnly);
+  document.getElementById('abHardOnly').classList.toggle('active', abHardOnly);
+  if (abPlaying) {{ abStop(); abStart(); }}
+  focusUpdateUI();
+}}
 
 // Update focus UI when autoplay advances
 const _origAbUpdateUI = abUpdateUI;
@@ -1786,8 +1799,8 @@ document.addEventListener('keydown', (e) => {{
   else if (e.key === 's' || e.key === 'S') {{ e.preventDefault(); focusSpeak(); }}
   else if (e.key === 'Enter' || e.key === 'r' || e.key === 'R') {{
     e.preventDefault();
-    focusOverlay.classList.toggle('revealed');
-    document.getElementById('focusHint').style.display = focusOverlay.classList.contains('revealed') ? 'none' : '';
+    const revealed = focusOverlay.classList.toggle('revealed');
+    document.getElementById('focusHint').style.display = revealed ? 'none' : '';
   }}
   else if (e.key === 'Escape') {{ focusClose(); }}
 }});
