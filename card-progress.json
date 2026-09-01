@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788247224320,
+  "updatedAt": 1788247621889,
   "datasets": {
     "1675": {
       "deport": {
@@ -321,6 +321,11 @@
       "distillation": {
         "mastered": true,
         "updatedAt": 1788247221397,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "cereal": {
+        "mastered": true,
+        "updatedAt": 1788247618831,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
