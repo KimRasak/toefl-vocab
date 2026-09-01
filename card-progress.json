@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788233773779,
+  "updatedAt": 1788234164442,
   "datasets": {
     "1675": {
       "deport": {
@@ -111,6 +111,11 @@
       "avalanche": {
         "mastered": true,
         "updatedAt": 1788233772224,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "currency": {
+        "mastered": true,
+        "updatedAt": 1788234161700,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
