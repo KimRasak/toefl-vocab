@@ -50,6 +50,7 @@
   .badge.blisten2026 { background: rgba(255,69,58,.16); }
   .badge.bflash { background: rgba(255,214,10,.18); }
   .badge.bscene { background: rgba(101,214,173,.16); }
+  .badge.bmerged { background: rgba(255,99,71,.16); }
   .card .body { flex: 1 1 auto; min-width: 0; }
   .card .name { font-size: 18px; font-weight: 700; }
   .card .desc { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
@@ -64,6 +65,14 @@
     <p>点击卡片进入对应单词表 · 单词旁 🔊 可听发音</p>
   </div>
   <div class="cards">
+    <a class="card" id="cmerged" href="merged-by-discipline/">
+      <div class="badge bmerged">🏷️</div>
+      <div class="body">
+        <div class="name">学科分类总表</div>
+        <div class="desc">4074 词 · 三大词表合并 · 按 42 个学科话题分组 · 便于按学科背诵</div>
+      </div>
+      <div class="go">→</div>
+    </a>
     <a class="card" id="cflash2026" href="toefl-2026-vocab/">
       <div class="badge bflash">🃏</div>
       <div class="body">
