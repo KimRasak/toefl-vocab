@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "updatedAt": 1788233469986,
+  "datasets": {
+    "1675": {
+      "deport": {
+        "mastered": true,
+        "updatedAt": 1788230802157,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "desolate": {
+        "mastered": true,
+        "updatedAt": 1788231011588,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "gnaw": {
+        "mastered": true,
+        "updatedAt": 1788231087741,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "revolve": {
+        "mastered": true,
+        "updatedAt": 1788231405381,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "asset": {
+        "mastered": true,
+        "updatedAt": 1788231412931,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "custom": {
+        "mastered": true,
+        "updatedAt": 1788231925948,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "cultivation": {
+        "mastered": true,
+        "updatedAt": 1788231930905,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "vapor": {
+        "mastered": true,
+        "updatedAt": 1788232903619,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "dehydrate": {
+        "mastered": true,
+        "updatedAt": 1788232908623,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "brisk": {
+        "mastered": true,
+        "updatedAt": 1788232924590,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "eternal": {
+        "mastered": true,
+        "updatedAt": 1788233145112,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "haul": {
+        "mastered": true,
+        "updatedAt": 1788233152151,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "evaporation": {
+        "mastered": true,
+        "updatedAt": 1788233157177,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "athlete": {
+        "mastered": true,
+        "updatedAt": 1788233198712,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "subtract": {
+        "mastered": true,
+        "updatedAt": 1788233252991,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "canny": {
+        "mastered": true,
+        "updatedAt": 1788233257449,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "puddle": {
+        "mastered": true,
+        "updatedAt": 1788233450577,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "proportion": {
+        "mastered": true,
+        "updatedAt": 1788233468439,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      }
+    }
+  }
+}
