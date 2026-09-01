@@ -549,7 +549,8 @@ function speak(text) {
 function answer(word, correct) {
   const rec = getRec(word);
   if (correct) {
-    rec.box = Math.min(rec.box + 1, 5);
+    // box 0 (new) or box 1 (wrong) → skip to box 2; others → box+1
+    rec.box = rec.box <= 1 ? 2 : Math.min(rec.box + 1, 5);
     rec.right++;
     studyResults.right++;
   } else {
@@ -918,6 +919,17 @@ function init() {
 
   loadProgress();
   loadSettings();
+
+  // Migrate: fix words stuck in box 1 that were answered correctly (old bug)
+  let migrated = false;
+  Object.keys(progress).forEach(w => {
+    const rec = progress[w];
+    if (rec && rec.box === 1 && rec.right > 0 && rec.wrong === 0) {
+      rec.box = 2;
+      migrated = true;
+    }
+  });
+  if (migrated) saveProgress();
 
   // URL sync
   const params = new URLSearchParams(location.search);
