@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788236677239,
+  "updatedAt": 1788236681283,
   "datasets": {
     "1675": {
       "deport": {
@@ -136,6 +136,11 @@
       "consolidate": {
         "mastered": true,
         "updatedAt": 1788236675375,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "centigrade": {
+        "mastered": true,
+        "updatedAt": 1788236679730,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
