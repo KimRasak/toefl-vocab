@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788247754019,
+  "updatedAt": 1788247758500,
   "datasets": {
     "1675": {
       "deport": {
@@ -341,6 +341,11 @@
       "incentive": {
         "mastered": true,
         "updatedAt": 1788247750888,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "crust": {
+        "mastered": true,
+        "updatedAt": 1788247756813,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
