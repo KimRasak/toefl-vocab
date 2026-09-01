@@ -546,11 +546,16 @@ function speak(text) {
   _audioEl = a;
 }
 
-function answer(word, correct) {
+function answer(word, correct, skipped) {
   const rec = getRec(word);
-  if (correct) {
-    // box 0 (new) or box 1 (wrong) → skip to box 2; others → box+1
-    rec.box = rec.box <= 1 ? 2 : Math.min(rec.box + 1, 5);
+  if (skipped) {
+    // "已认识，跳过" → directly mastered
+    rec.box = 5;
+    rec.right++;
+    studyResults.right++;
+  } else if (correct) {
+    // "认识" after reveal → fast-track: new/wrong → box 3, others → box+1
+    rec.box = rec.box <= 1 ? 3 : Math.min(rec.box + 1, 5);
     rec.right++;
     studyResults.right++;
   } else {
@@ -721,11 +726,11 @@ function renderStudyCard() {
 
   $('fc-skip').addEventListener('click', e => {
     e.stopPropagation();
-    submitAnswer(true);
+    submitAnswer(true, true);
   });
 
-  $('fc-right').addEventListener('click', e => { e.stopPropagation(); submitAnswer(true); });
-  $('fc-wrong').addEventListener('click', e => { e.stopPropagation(); submitAnswer(false); });
+  $('fc-right').addEventListener('click', e => { e.stopPropagation(); submitAnswer(true, false); });
+  $('fc-wrong').addEventListener('click', e => { e.stopPropagation(); submitAnswer(false, false); });
 
   setupSwipe(entry);
 
@@ -763,13 +768,13 @@ function setupSwipe(entry) {
   }, { passive: true });
 }
 
-function submitAnswer(correct) {
+function submitAnswer(correct, skipped) {
   const entry = studyQueue[studyIdx];
   const card = $('fc-card');
   if (card) {
     card.classList.add(correct ? 'swipe-right' : 'swipe-left');
   }
-  answer(entry.w, correct);
+  answer(entry.w, correct, skipped);
   setTimeout(() => {
     studyIdx++;
     renderStudyCard();
@@ -920,12 +925,12 @@ function init() {
   loadProgress();
   loadSettings();
 
-  // Migrate: fix words stuck in box 1 that were answered correctly (old bug)
+  // Migrate: fix words stuck in low boxes that were answered correctly (old bug)
   let migrated = false;
   Object.keys(progress).forEach(w => {
     const rec = progress[w];
-    if (rec && rec.box === 1 && rec.right > 0 && rec.wrong === 0) {
-      rec.box = 2;
+    if (rec && rec.box >= 1 && rec.box <= 2 && rec.right > 0 && rec.wrong === 0) {
+      rec.box = rec.right >= 2 ? 5 : 3;
       migrated = true;
     }
   });
