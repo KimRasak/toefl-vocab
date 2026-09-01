@@ -485,27 +485,32 @@ if (gistToken && gistId) {
 }
 
 let audioEl = null;
+let audioRequestId = 0;
 function ttsUrls(word) {
   const w = encodeURIComponent(word);
-  return [
-    "https://dict.youdao.com/dictvoice?audio=" + w + "&type=2",
-    "https://dict.youdao.com/dictvoice?audio=" + w + "&type=1",
-    "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + w,
-  ];
+  // Use one fixed source/voice. Falling back to type=1 or Google can make
+  // consecutive clicks sound different (US/UK or different TTS voices).
+  return ["https://dict.youdao.com/dictvoice?audio=" + w + "&type=2"];
+}
+function stopAudio() {
+  audioRequestId++;
+  if (audioEl) {
+    audioEl.onerror = null; audioEl.onended = null;
+    try { audioEl.pause(); audioEl.currentTime = 0; } catch(e) {}
+    audioEl = null;
+  }
 }
 function speak(word) {
   const clean = word.replace(/['']/g, "'");
-  if (audioEl) { audioEl.onerror = null; audioEl.onended = null; try { audioEl.pause(); } catch(e) {} }
+  stopAudio();
+  if (!clean) return;
+  const requestId = audioRequestId;
   const urls = ttsUrls(clean);
-  let idx = 0;
-  function tryNext() {
-    if (idx >= urls.length) return;
-    audioEl = new Audio();
-    audioEl.onerror = () => { idx++; tryNext(); };
-    audioEl.src = urls[idx];
-    audioEl.play().catch(() => { idx++; tryNext(); });
-  }
-  tryNext();
+  const audio = new Audio(urls[0]);
+  audioEl = audio;
+  audio.onerror = () => { if (requestId === audioRequestId) audioEl = null; };
+  audio.onended = () => { if (requestId === audioRequestId) audioEl = null; };
+  audio.play().catch(() => { if (requestId === audioRequestId) audioEl = null; });
 }
 
 function escHtml(s) {
@@ -650,19 +655,17 @@ function speakAsync(word) {
   return new Promise(resolve => {
     const clean = word.replace(/['']/g, "'");
     if (!clean) { resolve(); return; }
-    if (audioEl) { audioEl.onerror = null; audioEl.onended = null; try { audioEl.pause(); } catch(e) {} }
-    const urls = ttsUrls(clean);
-    let idx = 0;
-    const finish = () => { if (audioEl) { audioEl.onended = null; audioEl.onerror = null; } resolve(); };
-    function tryNext() {
-      if (idx >= urls.length) { finish(); return; }
-      audioEl = new Audio();
-      audioEl.onended = finish;
-      audioEl.onerror = () => { idx++; tryNext(); };
-      audioEl.src = urls[idx];
-      audioEl.play().catch(() => { idx++; tryNext(); });
-    }
-    tryNext();
+    stopAudio();
+    const requestId = audioRequestId;
+    const audio = new Audio(ttsUrls(clean)[0]);
+    audioEl = audio;
+    const finish = () => {
+      if (requestId === audioRequestId) audioEl = null;
+      resolve();
+    };
+    audio.onended = finish;
+    audio.onerror = finish;
+    audio.play().catch(finish);
   });
 }
 
