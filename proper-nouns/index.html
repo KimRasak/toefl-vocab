@@ -45,7 +45,7 @@
     white-space:nowrap; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(76,141,255,.35);
   }
   .random-btn:active { transform: scale(.97); }
-  .queue-btn {
+   .queue-btn {
     flex:0 0 auto; background:linear-gradient(135deg, var(--good), #1d9e5e); color:#fff;
     border:0; border-radius:10px; padding:8px 14px; font-size:14px; font-weight:700; cursor:pointer;
     white-space:nowrap; display:flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(52,199,123,.35);
@@ -108,6 +108,7 @@
     border-radius:10px; padding:10px 18px; font-size:14px; cursor:pointer; font-weight:600; }
   .fc-actions button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
   .fc-actions button.playing { background:var(--good); border-color:var(--good); color:#fff; }
+  .fc-actions button.mastered { background:var(--good); border-color:var(--good); color:#fff; }
   .fc-tip { text-align:center; font-size:12px; color:var(--muted); margin-top:12px; }
   .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#000; color:#fff; padding:8px 14px; border-radius:8px; font-size:13px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:50; }
   .toast.show { opacity:.92; }
@@ -119,6 +120,7 @@
     <div class="title">📌 专有名词</div>
     <a class="link-btn" id="linkBtn" href="../index.html">↩ 主页</a>
     <button class="random-btn" id="randBtn">🎲 随机抽一个</button>
+    <button class="random-btn" id="cardModeBtn">🃏 单词卡</button>
     <button class="queue-btn" id="queueBtn">🔁 连播</button>
     <div class="search-wrap">
       <input id="search" type="search" placeholder="搜索英文 / 中文 / 例句…" autocomplete="off">
@@ -154,6 +156,7 @@
       <div class="fc-actions">
         <button class="primary" id="fcPlaySent">🔊 听句子</button>
         <button id="fcPlayWord">🔊 听单词</button>
+        <button class="master-btn" id="fcMaster">✓ 已掌握</button>
       </div>
       <div class="fc-tip">抽中后自动朗读例句 · 可再抽一个</div>
     </div>
@@ -345,6 +348,29 @@
     const x = pool[Math.floor(Math.random() * pool.length)];
     showCard(x, pool.length);
   }
+  const CARD_PROGRESS_PATH = "card-progress.json", CARD_DATASET = "proper-nouns/data.js", CARD_DEVICE_KEY = "wb:card-device";
+  let cardProgress = {}, cardSyncTimer = 0, cardSyncBusy = false, cardSyncQueued = false;
+  let cardDevice = localStorage.getItem(CARD_DEVICE_KEY);
+  try { if(!cardDevice){ cardDevice = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random(); localStorage.setItem(CARD_DEVICE_KEY, cardDevice); } } catch(e){ cardDevice = String(Date.now()); }
+  function getToken(){ try{return (localStorage.getItem("toefl_gh_token")||"").trim();}catch(e){return "";} }
+  function progressMerge(a,b){ const out=Object.assign({},a||{}); Object.keys(b||{}).forEach(w=>{const x=b[w],y=out[w];if(!y||Number(x.updatedAt||0)>Number(y.updatedAt||0)||(Number(x.updatedAt||0)===Number(y.updatedAt||0)&&String(x.device||"")>String(y.device||"")))out[w]=x;});return out; }
+  function progressDecode(c){ return JSON.parse(decodeURIComponent(escape(atob(c||"")))); }
+  function progressEncode(v){ return btoa(unescape(encodeURIComponent(JSON.stringify(v,null,2)))); }
+  async function progressSync(){
+    const token=getToken(); if(!token || cardSyncBusy) return; cardSyncBusy=true;
+    try{ const url="https://api.github.com/repos/KimRasak/toefl-vocab/contents/"+CARD_PROGRESS_PATH;
+      for(let i=0;i<3;i++){ const r=await fetch(url,{cache:"no-store",headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"}}); let remote={},sha=null;
+        if(r.ok){const j=await r.json();sha=j.sha;try{const d=progressDecode(j.content);remote=(d.datasets&&d.datasets[CARD_DATASET])||d[CARD_DATASET]||d||{};}catch(e){}}
+        else if(r.status!==404) return;
+        const merged=progressMerge(remote,cardProgress); const body={message:"Sync proper-nouns flashcard progress",content:progressEncode({version:1,updatedAt:Date.now(),datasets:{[CARD_DATASET]:merged}})}; if(sha) body.sha=sha;
+        const put=await fetch(url,{method:"PUT",headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json","Content-Type":"application/json"},body:JSON.stringify(body)});
+        if(put.ok){cardProgress=merged;localStorage.setItem("wb:card-progress:proper-nouns",JSON.stringify(cardProgress));return;} if(put.status!==409&&put.status!==422)return;
+      }
+    }catch(e){} finally{cardSyncBusy=false;if(cardSyncQueued){cardSyncQueued=false;progressSync();}}
+  }
+  function progressLoad(){ try{cardProgress=JSON.parse(localStorage.getItem("wb:card-progress:proper-nouns")||"{}");}catch(e){cardProgress={};} const token=getToken(); if(!token)return; const url="https://api.github.com/repos/KimRasak/toefl-vocab/contents/"+CARD_PROGRESS_PATH; fetch(url,{cache:"no-store",headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"}}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;const d=progressDecode(j.content);cardProgress=progressMerge((d.datasets&&d.datasets[CARD_DATASET])||d[CARD_DATASET]||d||{},cardProgress);localStorage.setItem("wb:card-progress:proper-nouns",JSON.stringify(cardProgress));if($("fcLayer").classList.contains("show"))showCard(PROPER_NOUNS.find(x=>x[0]===$("fcWord").textContent)||PROPER_NOUNS[0],PROPER_NOUNS.length);}).catch(()=>{}); }
+  function markMastered(word){ const mastered=!(cardProgress[word]&&cardProgress[word].mastered); cardProgress[word]={mastered,updatedAt:Date.now(),device:cardDevice}; try{localStorage.setItem("wb:card-progress:proper-nouns",JSON.stringify(cardProgress));}catch(e){}; clearTimeout(cardSyncTimer);cardSyncTimer=setTimeout(progressSync,700); updateMasterButton(word); toast(mastered?"已掌握 ✓":"已取消标记"); }
+  function updateMasterButton(word){ const on=!!(cardProgress[word]&&cardProgress[word].mastered); $("fcMaster").textContent=on?"✓ 已掌握（点击取消）":"✓ 已掌握"; $("fcMaster").classList.toggle("mastered",on); }
   function showCard(x, poolSize){
     if(queueOn) queueStop();
     $("fcIdx").textContent = "分类：" + x[3] + (poolSize < PROPER_NOUNS.length ? "（当前筛选 " + poolSize + " 条）" : "（共 " + PROPER_NOUNS.length + " 条）");
@@ -352,6 +378,7 @@
     $("fcIpa").textContent = x[4] || "";
     $("fcMean").textContent = x[1];
     $("fcSent").textContent = x[2] || "";
+    updateMasterButton(x[0]);
     $("fcLayer").classList.add("show");
     if(x[2]) setTimeout(() => playSent(x[2], $("fcPlaySent"), x[0]), 250);
   }
@@ -370,6 +397,8 @@
     const w = $("fcWord").textContent;
     if(w) playWord(w, $("fcPlayWord"));
   };
+  $("fcMaster").onclick = () => { const w=$("fcWord").textContent; if(w) markMastered(w); };
+  progressLoad();
 
   // ===== 连播（按当前筛选列表顺序自动播放下一个）=====
   let queueOn = false, queueIdx = 0, queueList = [];

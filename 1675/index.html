@@ -819,7 +819,7 @@ $("search").addEventListener("keydown", e => {
 
 // ===== 随机单词卡（滚动式记忆） =====
 const FC_KEY = "wb:fc:" + OVERRIDES_PATH;
-const CARD_PROGRESS_PATH = "progress/1675.json";
+const CARD_PROGRESS_PATH = "card-progress.json";
 const CARD_DATASET = "1675";
 const CARD_DEVICE_KEY = "wb:card-device";
 let cardProgress = {};
@@ -833,6 +833,11 @@ function cardProgressLocalSave(){ try{ localStorage.setItem("wb:card-progress:" 
 function cardProgressMerge(a,b){ const out = Object.assign({}, a || {}); Object.keys(b || {}).forEach(w => { const x=b[w], y=out[w]; if(!y || Number(x.updatedAt||0)>Number(y.updatedAt||0) || (Number(x.updatedAt||0)===Number(y.updatedAt||0) && String(x.device)>String(y.device))) out[w]=x; }); return out; }
 function cardProgressDecode(content){ return JSON.parse(decodeURIComponent(escape(atob(content || "")))); }
 function cardProgressEncode(value){ return btoa(unescape(encodeURIComponent(JSON.stringify(value, null, 2)))); }
+function cardProgressRemote(doc){
+  if(!doc || typeof doc !== "object") return {};
+  // 兼容早期按词表独立文件保存的格式，以及统一 datasets 格式。
+  return (doc.datasets && doc.datasets[CARD_DATASET]) || doc[CARD_DATASET] || doc;
+}
 async function cardProgressSync(){
   if(cardSyncBusy){ cardSyncQueued = true; return; }
   const token = getToken();
@@ -844,10 +849,10 @@ async function cardProgressSync(){
       const auth = await ensureAuthorized(); if(!auth.ok) return;
       const r = await fetch(url, {cache:"no-store", headers:{"Authorization":"Bearer "+auth.token,"Accept":"application/vnd.github+json"}});
       let remote = {}, sha = null;
-      if(r.ok){ const j=await r.json(); sha=j.sha; try{ const doc=cardProgressDecode(j.content); remote=(doc && doc[CARD_DATASET]) || {}; }catch(e){} }
+      if(r.ok){ const j=await r.json(); sha=j.sha; try{ remote=cardProgressRemote(cardProgressDecode(j.content)); }catch(e){} }
       else if(r.status !== 404) throw new Error("HTTP " + r.status);
       const merged = cardProgressMerge(remote, cardProgress);
-      const body={message:"Sync 1675 flashcard progress",content:cardProgressEncode(merged)}; if(sha) body.sha=sha;
+      const body={message:"Sync 1675 flashcard progress",content:cardProgressEncode({version:1,updatedAt:Date.now(),datasets:{[CARD_DATASET]:merged}})}; if(sha) body.sha=sha;
       const put=await fetch(url,{method:"PUT",headers:{"Authorization":"Bearer "+auth.token,"Content-Type":"application/json","Accept":"application/vnd.github+json"},body:JSON.stringify(body)});
       if(put.ok){ cardProgress=merged; cardProgressLocalSave(); cardProgressApply(); return; }
       if(put.status!==409 && put.status!==422) throw new Error("HTTP "+put.status);
@@ -862,7 +867,7 @@ async function cardProgressLoad(){
   try{
     const auth=await ensureAuthorized(); if(!auth.ok) return;
     const r=await fetch("https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+CARD_PROGRESS_PATH,{cache:"no-store",headers:{"Authorization":"Bearer "+auth.token,"Accept":"application/vnd.github+json"}});
-    if(!r.ok) return; const j=await r.json(); const remote=cardProgressDecode(j.content) || {}; cardProgress=cardProgressMerge(remote,cardProgress); cardProgressLocalSave();
+    if(!r.ok) return; const j=await r.json(); const remote=cardProgressRemote(cardProgressDecode(j.content)); cardProgress=cardProgressMerge(remote,cardProgress); cardProgressLocalSave();
     cardProgressApply();
   }catch(e){}
 }

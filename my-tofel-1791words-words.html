@@ -10893,7 +10893,8 @@ const SPEAKER_SVG = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-
 const EDIT_BTN_HTML = '\n    <button class="edit-btn" type="button" title="编辑翻译">✏️</button>\n';
 let WORDS = DEFAULT_WORDS;
 let page = 1, perPage = 20, query = "";
-const PROGRESS_PATH = "progress/1791.json";
+const PROGRESS_PATH = "card-progress.json";
+const PROGRESS_DATASET = "1791";
 const PROGRESS_KEY = "wb:progress:1791";
 const PROGRESS_DEVICE_KEY = "wb:progress-device";
 let mastered = {};
@@ -10905,14 +10906,15 @@ function progressSaveLocal(){ try{ localStorage.setItem(PROGRESS_KEY, JSON.strin
 function progressMerge(a,b){ const out=Object.assign({},a||{}); Object.keys(b||{}).forEach(w=>{const x=b[w],y=out[w];if(x && (!y || Number(x.updatedAt||0)>Number(y.updatedAt||0) || (Number(x.updatedAt||0)===Number(y.updatedAt||0)&&String(x.device||"")>String(y.device||""))))out[w]=x;});return out; }
 function progressDecode(c){ return JSON.parse(decodeURIComponent(escape(atob(c||"")))); }
 function progressEncode(v){ return btoa(unescape(encodeURIComponent(JSON.stringify(v,null,2)))); }
+function progressRemote(doc){ return (doc && doc.datasets && doc.datasets[PROGRESS_DATASET]) || (doc && doc[PROGRESS_DATASET]) || doc || {}; }
 async function progressSync(){
   if(progressSyncBusy){progressSyncQueued=true;return;} if(!getToken()||!REPO_OWNER)return; progressSyncBusy=true;
   try{const url="https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+PROGRESS_PATH;
-    for(let i=0;i<3;i++){const auth=await ensureAuthorized();if(!auth.ok)return;const r=await fetch(url,{cache:"no-store",headers:{Authorization:"Bearer "+auth.token,Accept:"application/vnd.github+json"}});let remote={},sha=null;if(r.ok){const j=await r.json();sha=j.sha;try{remote=progressDecode(j.content)||{};}catch(e){}}else if(r.status!==404)throw Error("HTTP "+r.status);const merged=progressMerge(remote,mastered);const put=await fetch(url,{method:"PUT",headers:{Authorization:"Bearer "+auth.token,"Content-Type":"application/json",Accept:"application/vnd.github+json"},body:JSON.stringify({message:"Sync 1791 mastered progress",content:progressEncode(merged),...(sha?{sha}: {})})});if(put.ok){mastered=merged;progressSaveLocal();return;}if(put.status!==409&&put.status!==422)throw Error("HTTP "+put.status);}
+    for(let i=0;i<3;i++){const auth=await ensureAuthorized();if(!auth.ok)return;const r=await fetch(url,{cache:"no-store",headers:{Authorization:"Bearer "+auth.token,Accept:"application/vnd.github+json"}});let remote={},sha=null;if(r.ok){const j=await r.json();sha=j.sha;try{remote=progressRemote(progressDecode(j.content));}catch(e){}}else if(r.status!==404)throw Error("HTTP "+r.status);const merged=progressMerge(remote,mastered);const put=await fetch(url,{method:"PUT",headers:{Authorization:"Bearer "+auth.token,"Content-Type":"application/json",Accept:"application/vnd.github+json"},body:JSON.stringify({message:"Sync 1791 mastered progress",content:progressEncode({version:1,updatedAt:Date.now(),datasets:{[PROGRESS_DATASET]:merged}}),...(sha?{sha}: {})})});if(put.ok){mastered=merged;progressSaveLocal();return;}if(put.status!==409&&put.status!==422)throw Error("HTTP "+put.status);}
   }catch(e){} finally{progressSyncBusy=false;if(progressSyncQueued){progressSyncQueued=false;progressSync();}}
 }
 function progressSchedule(){progressSaveLocal();clearTimeout(progressSyncTimer);progressSyncTimer=setTimeout(progressSync,800);}
-async function progressLoadRemote(){progressLoadLocal();if(!getToken()||!REPO_OWNER)return;try{const auth=await ensureAuthorized();if(!auth.ok)return;const r=await fetch("https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+PROGRESS_PATH,{cache:"no-store",headers:{Authorization:"Bearer "+auth.token,Accept:"application/vnd.github+json"}});if(r.ok){const j=await r.json();mastered=progressMerge(progressDecode(j.content)||{},mastered);progressSaveLocal();}}catch(e){}}
+async function progressLoadRemote(){progressLoadLocal();if(!getToken()||!REPO_OWNER)return;try{const auth=await ensureAuthorized();if(!auth.ok)return;const r=await fetch("https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+PROGRESS_PATH,{cache:"no-store",headers:{Authorization:"Bearer "+auth.token,Accept:"application/vnd.github+json"}});if(r.ok){const j=await r.json();mastered=progressMerge(progressRemote(progressDecode(j.content)),mastered);progressSaveLocal();}}catch(e){}}
 progressLoadRemote();
 let audioEl = null;
 
