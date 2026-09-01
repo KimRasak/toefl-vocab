@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788236839193,
+  "updatedAt": 1788236842926,
   "datasets": {
     "1675": {
       "deport": {
@@ -161,6 +161,11 @@
       "constellation": {
         "mastered": true,
         "updatedAt": 1788236836104,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "internal": {
+        "mastered": true,
+        "updatedAt": 1788236841349,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
