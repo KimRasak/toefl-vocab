@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788236970073,
+  "updatedAt": 1788236983377,
   "datasets": {
     "1675": {
       "deport": {
@@ -191,6 +191,11 @@
       "discipline": {
         "mastered": true,
         "updatedAt": 1788236967691,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "trepidation": {
+        "mastered": false,
+        "updatedAt": 1788236983176,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
