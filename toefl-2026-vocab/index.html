@@ -289,7 +289,8 @@ button { cursor: pointer; border: none; background: none; }
     <!-- 总览 -->
     <div class="view" id="view-dashboard">
       <div class="hero-stats" id="dash-stats"></div>
-      <button class="btn btn-primary btn-block" id="btn-study-all">全部学习 · 今日复习</button>
+      <button class="btn btn-primary btn-block" id="btn-study-new">📖 学新词</button>
+      <button class="btn btn-block" id="btn-study-review" style="border-color:var(--warn);color:var(--warn)">🔁 今日复习 · <span id="review-count">0</span> 词待复习</button>
       <div class="section-title">分类进度</div>
       <div id="macro-list"></div>
     </div>
@@ -575,7 +576,7 @@ function answer(word, correct, skipped) {
   saveProgress();
 }
 
-function buildSession(macroFilter) {
+function buildSession(macroFilter, mode) {
   const box1 = [], due = [], fresh = [];
   vocab.forEach((entry, i) => {
     if (macroFilter && getMacro(entry.c) !== macroFilter) return;
@@ -584,15 +585,21 @@ function buildSession(macroFilter) {
     else if (rec.box === 1) box1.push(i);
     else if (rec.box >= 2 && rec.box <= 4 && isDue(rec)) due.push(i);
   });
-  // Priority-weighted: higher priority number = harder = more likely to appear
-  // P1 (easiest, e.g. analyze) → weight 0.2, P2 → 0.5, P3 → 1, P4 → 1.5, P5 → 2
   const PRI_WEIGHT = { 1: 0.2, 2: 0.5, 3: 1, 4: 1.5, 5: 2 };
   fresh.sort((a, b) => {
     const wa = PRI_WEIGHT[vocab[a].r] || 1, wb = PRI_WEIGHT[vocab[b].r] || 1;
     return (Math.random() / wa) - (Math.random() / wb);
   });
   due.sort((a, b) => (getRec(vocab[a].w).lastSeen || 0) - (getRec(vocab[b].w).lastSeen || 0));
-  const indices = box1.concat(due, fresh.slice(0, MAX_NEW)).slice(0, MAX_SESSION);
+
+  let indices;
+  if (mode === 'review') {
+    indices = box1.concat(due).slice(0, MAX_SESSION);
+  } else if (mode === 'new') {
+    indices = fresh.slice(0, MAX_SESSION);
+  } else {
+    indices = box1.concat(due, fresh.slice(0, MAX_NEW)).slice(0, MAX_SESSION);
+  }
   return indices.map(i => vocab[i]);
 }
 
@@ -655,8 +662,19 @@ function renderDashboard() {
   });
   $('macro-list').innerHTML = html;
   $('macro-list').querySelectorAll('[data-macro]').forEach(btn => {
-    btn.addEventListener('click', () => startStudy(btn.dataset.macro));
+    btn.addEventListener('click', () => startStudy(btn.dataset.macro, 'new'));
   });
+
+  // Update review count
+  let reviewCount = 0;
+  vocab.forEach(e => {
+    const rec = getRec(e.w);
+    if (rec.box === 1 || (rec.box >= 2 && rec.box <= 4 && isDue(rec))) reviewCount++;
+  });
+  const rc = $('review-count');
+  if (rc) rc.textContent = reviewCount;
+  const rb = $('btn-study-review');
+  if (rb) rb.style.display = reviewCount > 0 ? '' : 'none';
 }
 
 function priClass(r) {
@@ -668,8 +686,8 @@ function priClass(r) {
 function renderStudyCard() {
   const area = $('study-area');
   if (!studyStarted) {
-    area.innerHTML = '<div class="empty-study"><div class="icon">🃏</div><p>点击上方「开始」或从总览选择分类</p><p style="font-size:13px;margin-top:8px">优先复习错题，其次到期词，最后新词（每轮最多 30 张）</p><button class="btn btn-primary" style="margin-top:16px" id="btn-start-inline">开始今日学习</button></div>';
-    $('btn-start-inline')?.addEventListener('click', () => startStudy(studyCategory));
+    area.innerHTML = '<div class="empty-study"><div class="icon">🃏</div><p>点击上方「开始」或从总览选择分类</p><p style="font-size:13px;margin-top:8px">每轮最多 30 张新词</p><button class="btn btn-primary" style="margin-top:16px" id="btn-start-inline">开始学新词</button></div>';
+    $('btn-start-inline')?.addEventListener('click', () => startStudy(studyCategory, 'new'));
     return;
   }
   if (!studyQueue.length) {
@@ -690,7 +708,6 @@ function renderStudyCard() {
   area.innerHTML =
     '<div class="study-meta">' +
       '<span>第 ' + (studyIdx + 1) + ' / ' + studyQueue.length + ' 题</span>' +
-      (rec.box === 1 ? '<span class="due">⚡ 需立即复习</span>' : '') +
     '</div>' +
     '<div class="flashcard-wrap" id="fc-wrap">' +
       '<div class="flashcard" id="fc-card">' +
@@ -807,20 +824,19 @@ function renderSummary() {
         '<button class="btn" id="btn-done" style="flex:1">返回总览</button>' +
       '</div>' +
     '</div>';
-  $('btn-again').addEventListener('click', () => startStudy(studyCategory));
+  $('btn-again').addEventListener('click', () => startStudy(studyCategory, 'new'));
   $('btn-done').addEventListener('click', () => switchTab('dashboard'));
 }
 
-function startStudy(macroFilter) {
+function startStudy(macroFilter, mode) {
   studyCategory = macroFilter || '';
-  studyQueue = buildSession(studyCategory || null);
+  studyQueue = buildSession(studyCategory || null, mode || 'new');
   studyIdx = 0;
   studyResults = { right: 0, wrong: 0 };
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
   renderStudyCard();
-  // Auto-play first card (within user click context)
   if (studyQueue.length) speak(studyQueue[0].w);
 }
 
@@ -976,13 +992,14 @@ document.querySelectorAll('.nav-item').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
 
-$('btn-study-all').addEventListener('click', () => startStudy(''));
+$('btn-study-new').addEventListener('click', () => startStudy('', 'new'));
+$('btn-study-review').addEventListener('click', () => startStudy('', 'review'));
 
 $('study-cat-filter').addEventListener('change', e => {
   studyCategory = e.target.value;
 });
 
-$('btn-start-session').addEventListener('click', () => startStudy(studyCategory));
+$('btn-start-session').addEventListener('click', () => startStudy(studyCategory, 'new'));
 
 ['list-search', 'list-cat-filter', 'list-status-filter', 'list-sort'].forEach(id => {
   $(id).addEventListener('input', () => {
