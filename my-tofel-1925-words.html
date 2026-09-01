@@ -9869,7 +9869,7 @@ function cardProgressSchedule(){cardProgressLocalSave();clearTimeout(cardSyncTim
 function cardProgressApply(){if(typeof cardList==='undefined')return;cardRender()}
 function cardProgressLoad(){cardProgressLocalLoad();if(typeof getToken!=='function'||!getToken())return;fetch('https://api.github.com/repos/'+REPO_OWNER+'/'+REPO_NAME+'/contents/'+CARD_PROGRESS_PATH,{headers:{Authorization:'Bearer '+getToken(),Accept:'application/vnd.github+json'},cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;const d=cardProgressDec(j.content);cardProgress=cardProgressMerge(d.datasets&&d.datasets[CARD_DATASET]||{},cardProgress);cardProgressLocalSave();cardRender()}).catch(()=>{})}
 function cardSave(){ try { localStorage.setItem(CARD_KEY, JSON.stringify(cardState)); } catch(e) {} }
-cardProgressLoad();
+setTimeout(cardProgressLoad, 0);
 function cardExample(w){ const c=CAMBRIDGE[w]; return c && c.exs && c.exs.length ? c.exs[0] : ""; }
 function cardMeaning(w,m){ return overrides[w] !== undefined ? overrides[w] : (m || ""); }
 function cardRender(){

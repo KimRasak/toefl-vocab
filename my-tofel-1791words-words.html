@@ -11120,6 +11120,17 @@ $("topBtn").onclick = () => window.scrollTo({top:0, behavior:"smooth"});
 
 // 点击发音按钮播放读音（事件委托，避免内联转义问题）
 document.addEventListener("click", e => {
+  const masterBtn = e.target.closest(".master-list-btn");
+  if(masterBtn){
+    e.stopPropagation();
+    const w = masterBtn.dataset.word;
+    const isMastered = !mastered[w];
+    mastered[w] = {mastered:isMastered, updatedAt:Date.now(), device:progressDevice};
+    masterBtn.textContent = isMastered ? "✓" : "○";
+    progressSchedule();
+    toast(isMastered ? "已掌握 ✓" : "已取消标记");
+    return;
+  }
   const btn = e.target.closest(".wbtn");
   if(btn && btn.dataset.word){
     playWord(btn.dataset.word, btn);
