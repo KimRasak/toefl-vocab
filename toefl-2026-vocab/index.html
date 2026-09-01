@@ -529,22 +529,34 @@ function importAndMerge(data) {
   toast('进度已合并');
 }
 
-let _audioEl = null;
+const _audio = new Audio();
 const YOUDAO_TTS = 'https://dict.youdao.com/dictvoice?audio=';
 const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
+let _speakPending = '';
 
 function speak(text) {
   const clean = String(text).replace(/'/g, '').replace(/^[^A-Za-z]+/, '').replace(/\s*[\/\(].*/,'').trim();
   if (!clean) return;
-  if (_audioEl) { _audioEl.pause(); _audioEl = null; }
-  const a = new Audio(YOUDAO_TTS + encodeURIComponent(clean) + '&type=2');
-  a.onerror = function() {
-    const b = new Audio(GOOGLE_TTS + encodeURIComponent(clean));
-    b.play().catch(() => {});
-  };
-  a.play().catch(() => {});
-  _audioEl = a;
+  _speakPending = clean;
+  _audio.pause();
+  _audio.src = YOUDAO_TTS + encodeURIComponent(clean) + '&type=2';
+  const p = _audio.play();
+  if (p && p.catch) p.catch(() => {
+    // Youdao failed, try Google TTS
+    if (_speakPending !== clean) return;
+    _audio.src = GOOGLE_TTS + encodeURIComponent(clean);
+    _audio.play().catch(() => {});
+  });
 }
+
+// Unlock audio on first user touch/click (mobile Safari requirement)
+function unlockAudio() {
+  _audio.play().then(() => _audio.pause()).catch(() => {});
+  document.removeEventListener('touchstart', unlockAudio, true);
+  document.removeEventListener('click', unlockAudio, true);
+}
+document.addEventListener('touchstart', unlockAudio, true);
+document.addEventListener('click', unlockAudio, true);
 
 function answer(word, correct, skipped) {
   const rec = getRec(word);
@@ -733,9 +745,6 @@ function renderStudyCard() {
   $('fc-wrong').addEventListener('click', e => { e.stopPropagation(); submitAnswer(false, false); });
 
   setupSwipe(entry);
-
-  // Auto-play pronunciation when card appears
-  setTimeout(() => speak(entry.w), 200);
 }
 
 function setupSwipe(entry) {
@@ -775,6 +784,9 @@ function submitAnswer(correct, skipped) {
     card.classList.add(correct ? 'swipe-right' : 'swipe-left');
   }
   answer(entry.w, correct, skipped);
+  // Pre-load next card's audio within user gesture context
+  const nextEntry = studyQueue[studyIdx + 1];
+  if (nextEntry) speak(nextEntry.w);
   setTimeout(() => {
     studyIdx++;
     renderStudyCard();
@@ -813,6 +825,8 @@ function startStudy(macroFilter) {
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
   renderStudyCard();
+  // Auto-play first card (within user click context)
+  if (studyQueue.length) speak(studyQueue[0].w);
 }
 
 function getFilteredList() {
