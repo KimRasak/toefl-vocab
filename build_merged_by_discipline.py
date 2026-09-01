@@ -1166,6 +1166,7 @@ main{{padding:12px 16px;max-width:800px;margin:0 auto}}
 }}
 .witem .wd{{font-size:13px;color:var(--muted);flex:1;line-height:1.5}}
 .witem .wsrc{{font-size:10px;color:var(--accent);flex:0 0 auto;opacity:.6}}
+.widx{{font-size:11px;color:var(--muted);opacity:.5;margin-right:6px;font-weight:400;font-variant-numeric:tabular-nums}}
 .spk-btn{{
   background:none;border:0;padding:0;cursor:pointer;color:var(--accent);
   font-size:14px;display:inline-flex;align-items:center;flex:0 0 auto;
@@ -1654,8 +1655,9 @@ function render(query) {{
       items.forEach(w => {{
         const srcBadge = w.s.join('+');
         const isHard = hardWords.has(w.w);
+        const gIdx = WORD_IDX[w.w];
         html += `<div class="witem${{isHard ? ' is-hard' : ''}}" onclick="this.classList.toggle('expanded')">`;
-        html += `<div class="ww">${{highlight(w.w, q)}}<button class="spk-btn" onclick="event.stopPropagation();speak('${{w.w}}')" title="发音">🔊</button><button class="mark-btn${{isHard ? ' marked' : ''}}" onclick="toggleHard('${{w.w}}',event)" title="${{isHard ? '取消标记' : '标记为难词'}}">⭐</button></div>`;
+        html += `<div class="ww"><span class="widx">${{gIdx + 1}}</span>${{highlight(w.w, q)}}<button class="spk-btn" onclick="event.stopPropagation();speak('${{w.w}}')" title="发音">🔊</button><button class="mark-btn${{isHard ? ' marked' : ''}}" onclick="toggleHard('${{w.w}}',event)" title="${{isHard ? '取消标记' : '标记为难词'}}">⭐</button></div>`;
         html += `<div class="wd">${{highlight(w.d, q)}}</div>`;
         html += `<div class="wsrc">${{srcBadge}}</div>`;
         if (w.f) {{
@@ -1696,7 +1698,9 @@ render('');
 // ─── Auto-play ───
 const ALL_WORDS = [];
 const WORD_TOPIC = {{}};
+const WORD_IDX = {{}};
 DATA.forEach(t => t.words.forEach(w => {{
+  WORD_IDX[w.w] = ALL_WORDS.length;
   ALL_WORDS.push(w);
   WORD_TOPIC[w.w] = t.emoji + ' ' + t.name.split(' ')[0];
 }}));
