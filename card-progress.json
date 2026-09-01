@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788237537322,
+  "updatedAt": 1788237541595,
   "datasets": {
     "1675": {
       "deport": {
@@ -231,6 +231,11 @@
       "sphere": {
         "mastered": true,
         "updatedAt": 1788237532652,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "exotic": {
+        "mastered": true,
+        "updatedAt": 1788237539927,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
