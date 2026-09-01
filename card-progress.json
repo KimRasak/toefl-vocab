@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788246040593,
+  "updatedAt": 1788246140675,
   "datasets": {
     "1675": {
       "deport": {
@@ -291,6 +291,11 @@
       "everlasting": {
         "mastered": true,
         "updatedAt": 1788246014912,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "confidential": {
+        "mastered": true,
+        "updatedAt": 1788246137591,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
