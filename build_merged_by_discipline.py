@@ -943,8 +943,208 @@ def parse_1675():
     return words, topics
 
 
+# ── Manual overrides: highest priority corrections ──
+MANUAL_FIXES = {
+    # Weather → correct topic
+    "spaceship": "天文学 Astronomy", "space shuttle": "天文学 Astronomy",
+    "spacecraft": "天文学 Astronomy", "solar cell": "物理学 Physics",
+    "sunflower": "植物学 Botany", "trough": "农业 Agriculture",
+    "plantation": "农业 Agriculture", "ranch": "农业 Agriculture",
+    "serene": "情绪与心理 Emotions & Psychology",
+    "sunburn": "医学与健康 Medicine & Health", "sundial": "日常器物 Everyday Objects",
+    "tide": "地理与地质 Geography & Geology",
+    # Math
+    "divide": "数学与几何 Mathematics & Geometry",
+    "fraction": "数学与几何 Mathematics & Geometry",
+    "percentage": "数学与几何 Mathematics & Geometry",
+    "quarter": "数学与几何 Mathematics & Geometry",
+    "numeral": "数学与几何 Mathematics & Geometry",
+    "cubic": "数学与几何 Mathematics & Geometry",
+    "equation": "数学与几何 Mathematics & Geometry",
+    "proportion": "数学与几何 Mathematics & Geometry",
+    # Geography
+    "erosion": "地理与地质 Geography & Geology",
+    "canyon": "地理与地质 Geography & Geology",
+    "creek": "地理与地质 Geography & Geology",
+    "gorge": "地理与地质 Geography & Geology",
+    "summit": "地理与地质 Geography & Geology",
+    "scenic": "地理与地质 Geography & Geology",
+    "ridge": "地理与地质 Geography & Geology",
+    "avalanche": "地理与地质 Geography & Geology",
+    "precipitous": "地理与地质 Geography & Geology",
+    "hydrosphere": "地理与地质 Geography & Geology",
+    # Astronomy
+    "universe": "天文学 Astronomy", "telescope": "天文学 Astronomy",
+    # Agriculture
+    "crossbreed": "农业 Agriculture", "agrarian": "农业 Agriculture",
+    "barley": "农业 Agriculture", "beet": "农业 Agriculture",
+    "fertile": "农业 Agriculture", "fertilizer": "农业 Agriculture",
+    "harvest": "农业 Agriculture", "arable": "农业 Agriculture",
+    "aquaculture": "农业 Agriculture",
+    # Food
+    "eggplant": "饮食 Food & Cooking", "squash": "饮食 Food & Cooking",
+    "cabbage": "饮食 Food & Cooking", "celery": "饮食 Food & Cooking",
+    "cereal": "饮食 Food & Cooking", "broccoli": "饮食 Food & Cooking",
+    "butter": "饮食 Food & Cooking", "brew": "饮食 Food & Cooking",
+    "banquet": "饮食 Food & Cooking", "sustenance": "饮食 Food & Cooking",
+    "delicious": "饮食 Food & Cooking",
+    # Zoology
+    "fauna": "动物与生态 Zoology & Ecology",
+    "buffalo": "动物与生态 Zoology & Ecology",
+    "clam": "动物与生态 Zoology & Ecology",
+    "coral": "动物与生态 Zoology & Ecology",
+    "oyster": "动物与生态 Zoology & Ecology",
+    "plankton": "动物与生态 Zoology & Ecology",
+    "parasite": "动物与生态 Zoology & Ecology",
+    "nocturnal": "动物与生态 Zoology & Ecology",
+    "flounder": "动物与生态 Zoology & Ecology",
+    "wildlife": "动物与生态 Zoology & Ecology",
+    "butterfly": "动物与生态 Zoology & Ecology",
+    # Botany
+    "graft": "植物学 Botany", "locoweed": "植物学 Botany",
+    "spined": "植物学 Botany",
+    # Biology
+    "hybrid": "生物学 Biology", "heredity": "生物学 Biology",
+    "skeleton": "生物学 Biology", "skull": "生物学 Biology",
+    "mold": "生物学 Biology",
+    # Medicine
+    "anatomy": "医学与健康 Medicine & Health",
+    "diagnose": "医学与健康 Medicine & Health",
+    "diagnosis": "医学与健康 Medicine & Health",
+    "dissect": "医学与健康 Medicine & Health",
+    "fracture": "医学与健康 Medicine & Health",
+    "fester": "医学与健康 Medicine & Health",
+    "hygiene": "医学与健康 Medicine & Health",
+    "malnourished": "医学与健康 Medicine & Health",
+    "prescription": "医学与健康 Medicine & Health",
+    "remedy": "医学与健康 Medicine & Health",
+    "sterile": "医学与健康 Medicine & Health",
+    "recur": "医学与健康 Medicine & Health",
+    "relapse": "医学与健康 Medicine & Health",
+    "chronic": "医学与健康 Medicine & Health",
+    "necrosis": "医学与健康 Medicine & Health",
+    "cranial": "医学与健康 Medicine & Health",
+    "sanitary": "医学与健康 Medicine & Health",
+    "vessel": "医学与健康 Medicine & Health",
+    # Physics
+    "decibel": "物理学 Physics", "lens": "物理学 Physics",
+    "magnifier": "物理学 Physics", "spectrum": "物理学 Physics",
+    "optical": "物理学 Physics", "ductile": "物理学 Physics",
+    # Chemistry
+    "slag": "化学与材料 Chemistry & Materials",
+    # Economics
+    "exorbitant": "经济与商业 Economics & Business",
+    "bonus": "经济与商业 Economics & Business",
+    "commission": "经济与商业 Economics & Business",
+    "revenue": "经济与商业 Economics & Business",
+    "deposit": "经济与商业 Economics & Business",
+    "barter": "经济与商业 Economics & Business",
+    "bond": "经济与商业 Economics & Business",
+    "custom": "经济与商业 Economics & Business",
+    "asset": "经济与商业 Economics & Business",
+    "prosperity": "经济与商业 Economics & Business",
+    "prosperous": "经济与商业 Economics & Business",
+    "toll": "经济与商业 Economics & Business",
+    "finance": "经济与商业 Economics & Business",
+    "incentive": "经济与商业 Economics & Business",
+    "auditor": "经济与商业 Economics & Business",
+    "subsidiary": "经济与商业 Economics & Business",
+    # Politics
+    "constituent": "政治与社会制度 Politics & Social Systems",
+    "municipal": "政治与社会制度 Politics & Social Systems",
+    "scandal": "政治与社会制度 Politics & Social Systems",
+    "partisan": "政治与社会制度 Politics & Social Systems",
+    "protest": "政治与社会制度 Politics & Social Systems",
+    "strike": "政治与社会制度 Politics & Social Systems",
+    "walkout": "政治与社会制度 Politics & Social Systems",
+    # Law
+    "counsel": "法律与制度 Law & Governance",
+    # Military
+    "soldier": "军事 Military", "warrior": "军事 Military",
+    "headquarters": "军事 Military",
+    # Education
+    "didactic": "教育 Education", "graduate": "教育 Education",
+    "coach": "教育 Education",
+    # Art & Literature
+    "sculptural": "艺术与文学 Art & Literature",
+    "gallery": "艺术与文学 Art & Literature",
+    "playwright": "艺术与文学 Art & Literature",
+    "craft": "艺术与文学 Art & Literature",
+    "impromptu": "艺术与文学 Art & Literature",
+    "improvise": "艺术与文学 Art & Literature",
+    "audition": "艺术与文学 Art & Literature",
+    "rhythmic": "艺术与文学 Art & Literature",
+    "rhythmical": "艺术与文学 Art & Literature",
+    # Language
+    "hackneyed": "语言与写作 Language & Writing",
+    "news coverage": "语言与写作 Language & Writing",
+    # Religion
+    "sermon": "宗教与哲学 Religion & Philosophy",
+    "veneration": "宗教与哲学 Religion & Philosophy",
+    "clergy": "宗教与哲学 Religion & Philosophy",
+    "sect": "宗教与哲学 Religion & Philosophy",
+    "doctrine": "宗教与哲学 Religion & Philosophy",
+    # Emotions
+    "homesick": "情绪与心理 Emotions & Psychology",
+    "solitude": "情绪与心理 Emotions & Psychology",
+    # Archaeology
+    "archeology": "考古与历史 Archaeology & History",
+    # Anthropology
+    "cosmopolitan": "人类学与社会学 Anthropology & Sociology",
+    # Everyday objects
+    "microwave": "日常器物 Everyday Objects",
+    "jar": "日常器物 Everyday Objects",
+    "lampshade": "日常器物 Everyday Objects",
+    "spectacle": "日常器物 Everyday Objects",
+    "textile": "日常器物 Everyday Objects",
+    "waterproof": "日常器物 Everyday Objects",
+    # Architecture
+    "cement": "建筑与住所 Architecture & Dwellings",
+    "fixture": "建筑与住所 Architecture & Dwellings",
+    # Body movements
+    "quiver": "身体动作 Body Movements",
+    "trot": "身体动作 Body Movements",
+    "grip": "身体动作 Body Movements",
+    # Environment
+    "sanitation": "环境科学 Environmental Science",
+    # Transport
+    "navigation": "交通与旅行 Travel & Transport",
+    # Negative traits
+    "brutal": "品性（贬义）Negative Traits",
+    "crooked": "品性（贬义）Negative Traits",
+    "grumpy": "品性（贬义）Negative Traits",
+    "imprudent": "品性（贬义）Negative Traits",
+    "impudent": "品性（贬义）Negative Traits",
+    "indolent": "品性（贬义）Negative Traits",
+    "prodigal": "品性（贬义）Negative Traits",
+    "sluggish": "品性（贬义）Negative Traits",
+    "sly": "品性（贬义）Negative Traits",
+    "snobbish": "品性（贬义）Negative Traits",
+    "spineless": "品性（贬义）Negative Traits",
+    "stingy": "品性（贬义）Negative Traits",
+    "sloth": "品性（贬义）Negative Traits",
+    "slothful": "品性（贬义）Negative Traits",
+    "idiocy": "品性（贬义）Negative Traits",
+    "moron": "品性（贬义）Negative Traits",
+    "brag": "品性（贬义）Negative Traits",
+    # Positive traits
+    "auspicious": "品性（褒义）Positive Traits",
+    "boon": "品性（褒义）Positive Traits",
+    "stamina": "品性（褒义）Positive Traits",
+    "vigor": "品性（褒义）Positive Traits",
+    # Tools
+    "gear": "工具与劳动 Tools & Labor",
+    # Weather (correct moves INTO weather)
+    "breeze": "气象与气候 Weather & Climate",
+    "atmosphere": "气象与气候 Weather & Climate",
+}
+
+
 def classify_word(word, defn, known_topics):
     """Classify a word into a discipline."""
+    # Manual fixes have highest priority
+    if word in MANUAL_FIXES:
+        return MANUAL_FIXES[word]
     if word in known_topics:
         return known_topics[word]
     # Check direct word→topic map
