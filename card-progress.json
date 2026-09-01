@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788247624122,
+  "updatedAt": 1788247735305,
   "datasets": {
     "1675": {
       "deport": {
@@ -326,6 +326,11 @@
       "cereal": {
         "mastered": true,
         "updatedAt": 1788247618831,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "immunity": {
+        "mastered": true,
+        "updatedAt": 1788247732321,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
