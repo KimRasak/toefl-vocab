@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788245758289,
+  "updatedAt": 1788245761447,
   "datasets": {
     "1675": {
       "deport": {
@@ -266,6 +266,11 @@
       "sediment": {
         "mastered": true,
         "updatedAt": 1788245755430,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "sanity": {
+        "mastered": true,
+        "updatedAt": 1788245759889,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
