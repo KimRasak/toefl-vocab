@@ -168,22 +168,26 @@ body.autobar-open{padding-bottom:100px}
 .sync-modal.open{display:flex}
 .sync-box{
   background:var(--card);border:1px solid var(--border);border-radius:16px;
-  padding:24px;max-width:420px;width:100%;
+  padding:24px;max-width:440px;width:100%;
 }
 .sync-box h3{margin:0 0 12px;font-size:16px}
-.sync-box textarea{
-  width:100%;height:120px;background:var(--card2);border:1px solid var(--border);
-  border-radius:8px;color:var(--fg);font-size:12px;padding:10px;resize:vertical;
+.sync-box input[type=password],.sync-box input[type=text]{
+  width:100%;background:var(--card2);border:1px solid var(--border);
+  border-radius:8px;color:var(--fg);font-size:13px;padding:10px;
   font-family:monospace;
 }
-.sync-box .sync-btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.sync-box .sync-btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .sync-box .sync-btns button{
   background:var(--card2);border:1px solid var(--border);color:var(--fg);
   border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;
 }
 .sync-box .sync-btns button:hover{border-color:var(--accent)}
 .sync-box .sync-btns button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.sync-hint{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+.sync-hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+.sync-status{font-size:12px;margin-top:8px;padding:6px 10px;border-radius:6px}
+.sync-status.ok{background:rgba(52,199,89,.15);color:#34c759}
+.sync-status.err{background:rgba(255,69,58,.15);color:#ff453a}
+.sync-status.info{background:rgba(76,141,255,.12);color:var(--accent)}
 
 /* Focus mode */
 .focus-overlay{
@@ -264,12 +268,17 @@ body.autobar-open{padding-bottom:100px}
 <!-- Sync modal -->
 <div class="sync-modal" id="syncModal" onclick="if(event.target===this)syncClose()">
   <div class="sync-box">
-    <h3 id="syncTitle">📲 同步难词标记</h3>
-    <textarea id="syncText" placeholder="粘贴从另一台设备导出的内容..."></textarea>
-    <div class="sync-hint">在 PC 上导出 → 复制内容 → 手机上粘贴导入，即可跨设备同步。</div>
+    <h3>☁️ 云同步难词标记</h3>
+    <input type="password" id="syncToken" placeholder="粘贴 GitHub Personal Access Token..." autocomplete="off">
+    <div id="syncMsg"></div>
+    <div class="sync-hint">
+      只需一次设置：<a href="https://github.com/settings/tokens/new?scopes=gist&description=TOEFL-vocab-sync" target="_blank" style="color:var(--accent)">👉 点此创建 Token</a>（勾选 gist 权限即可）<br>
+      输入后自动创建私密 Gist 保存星标，多设备输入同一 Token 即同步。
+    </div>
     <div class="sync-btns">
-      <button class="primary" onclick="syncExport()">📋 导出并复制</button>
-      <button class="primary" onclick="syncImport()">📥 导入</button>
+      <button class="primary" onclick="syncLogin()">🔗 连接</button>
+      <button onclick="syncNow()">🔄 立即同步</button>
+      <button onclick="syncLogout()">退出登录</button>
       <button onclick="syncClose()">关闭</button>
     </div>
   </div>
@@ -321,49 +330,156 @@ function toggleHard(word, e) {
 }
 loadHard();
 
-// ─── Sync ───
+// ─── Cloud Sync via GitHub Gist ───
+const GIST_KEY = 'merged_gist_sync';
+const GIST_DESC = 'TOEFL-vocab-hard-words-sync';
+let gistToken = '', gistId = '';
+
+function gistLoadCreds() {
+  try {
+    const s = JSON.parse(localStorage.getItem(GIST_KEY) || '{}');
+    gistToken = s.token || '';
+    gistId = s.gistId || '';
+  } catch(e) {}
+}
+function gistSaveCreds() {
+  try { localStorage.setItem(GIST_KEY, JSON.stringify({ token: gistToken, gistId })); } catch(e) {}
+}
+
+function syncMsg(text, cls) {
+  const el = document.getElementById('syncMsg');
+  el.className = 'sync-status ' + (cls || 'info');
+  el.textContent = text;
+}
+
 function syncOpen() {
-  const modal = document.getElementById('syncModal');
-  const ta = document.getElementById('syncText');
-  ta.value = hardWords.size ? JSON.stringify([...hardWords]) : '';
-  modal.classList.add('open');
+  document.getElementById('syncModal').classList.add('open');
+  const inp = document.getElementById('syncToken');
+  inp.value = gistToken;
+  document.getElementById('syncMsg').textContent = '';
+  if (gistToken && gistId) syncMsg('已连接 · Gist ID: ' + gistId.slice(0,8) + '...', 'ok');
 }
 function syncClose() {
   document.getElementById('syncModal').classList.remove('open');
 }
-function syncExport() {
-  const ta = document.getElementById('syncText');
-  const data = JSON.stringify([...hardWords]);
-  ta.value = data;
-  ta.select();
+
+async function gistFetch(url, opts) {
+  const res = await fetch(url, {
+    ...opts,
+    headers: { 'Authorization': 'token ' + gistToken, 'Accept': 'application/vnd.github.v3+json', ...(opts?.headers || {}) },
+  });
+  if (!res.ok) throw new Error(res.status + ' ' + (await res.text()).slice(0,100));
+  return res.json();
+}
+
+async function gistFindExisting() {
+  const gists = await gistFetch('https://api.github.com/gists?per_page=100');
+  return gists.find(g => g.description === GIST_DESC);
+}
+
+async function gistCreate() {
+  return gistFetch('https://api.github.com/gists', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      description: GIST_DESC,
+      public: false,
+      files: { 'hard-words.json': { content: JSON.stringify([...hardWords]) } }
+    })
+  });
+}
+
+async function gistPush() {
+  if (!gistToken || !gistId) return;
   try {
-    navigator.clipboard.writeText(data).then(() => {
-      alert('已复制 ' + hardWords.size + ' 个难词到剪贴板！\n在另一台设备上打开此页面 → 点📲同步 → 粘贴导入');
-    }).catch(() => {
-      document.execCommand('copy');
-      alert('已复制！请在另一台设备粘贴导入。');
+    await gistFetch('https://api.github.com/gists/' + gistId, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ files: { 'hard-words.json': { content: JSON.stringify([...hardWords]) } } })
     });
+  } catch(e) { console.warn('Gist push failed:', e); }
+}
+
+async function gistPull() {
+  if (!gistToken || !gistId) return;
+  try {
+    const g = await gistFetch('https://api.github.com/gists/' + gistId);
+    const content = g.files['hard-words.json']?.content;
+    if (content) {
+      const arr = JSON.parse(content);
+      if (Array.isArray(arr)) {
+        arr.forEach(w => { if (typeof w === 'string') hardWords.add(w); });
+        saveHard();
+      }
+    }
+  } catch(e) { console.warn('Gist pull failed:', e); }
+}
+
+async function syncLogin() {
+  const inp = document.getElementById('syncToken');
+  const token = inp.value.trim();
+  if (!token) { syncMsg('请先粘贴 Token', 'err'); return; }
+  gistToken = token;
+  syncMsg('连接中...', 'info');
+  try {
+    // Verify token
+    await gistFetch('https://api.github.com/user');
+    // Find existing Gist
+    const existing = await gistFindExisting();
+    if (existing) {
+      gistId = existing.id;
+      gistSaveCreds();
+      syncMsg('已找到已有同步 Gist，正在拉取...', 'info');
+      await gistPull();
+      render(searchInput.value);
+      syncMsg('✅ 同步成功！已合并 ' + hardWords.size + ' 个难词', 'ok');
+    } else {
+      syncMsg('创建同步 Gist...', 'info');
+      const g = await gistCreate();
+      gistId = g.id;
+      gistSaveCreds();
+      syncMsg('✅ 已连接！' + hardWords.size + ' 个难词已上传', 'ok');
+    }
   } catch(e) {
-    document.execCommand('copy');
-    alert('已选中，请手动复制 (Ctrl+C)');
+    gistToken = ''; gistId = '';
+    syncMsg('❌ 连接失败: ' + e.message, 'err');
   }
 }
-function syncImport() {
-  const ta = document.getElementById('syncText');
-  const text = ta.value.trim();
-  if (!text) { alert('请先粘贴内容'); return; }
+
+async function syncNow() {
+  if (!gistToken || !gistId) { syncMsg('请先连接', 'err'); return; }
+  syncMsg('同步中...', 'info');
   try {
-    const arr = JSON.parse(text);
-    if (!Array.isArray(arr)) throw new Error('格式错误');
-    const before = hardWords.size;
-    arr.forEach(w => { if (typeof w === 'string') hardWords.add(w); });
-    saveHard();
-    syncClose();
+    await gistPull();
+    await gistPush();
     render(searchInput.value);
-    alert('导入成功！新增 ' + (hardWords.size - before) + ' 个难词，当前共 ' + hardWords.size + ' 个');
+    syncMsg('✅ 同步完成！共 ' + hardWords.size + ' 个难词', 'ok');
   } catch(e) {
-    alert('格式错误，请粘贴从另一台设备导出的内容');
+    syncMsg('❌ 同步失败: ' + e.message, 'err');
   }
+}
+
+function syncLogout() {
+  gistToken = ''; gistId = '';
+  localStorage.removeItem(GIST_KEY);
+  document.getElementById('syncToken').value = '';
+  syncMsg('已退出', 'info');
+}
+
+// Auto-push on hard word changes
+const _origSaveHard = saveHard;
+saveHard = function() {
+  _origSaveHard();
+  if (gistToken && gistId) {
+    clearTimeout(saveHard._t);
+    saveHard._t = setTimeout(gistPush, 2000);
+  }
+};
+
+// Auto-pull on page load
+gistLoadCreds();
+if (gistToken && gistId) {
+  gistPull().then(() => render(searchInput.value)).catch(() => {});
 }
 
 let audioEl = null;
@@ -410,7 +526,7 @@ function render(query) {
   html += '<div class="filter-bar">';
   html += `<button class="filter-btn${showHardOnly ? ' active' : ''}" onclick="showHardOnly=!showHardOnly;render(searchInput.value)">⭐ 仅看难词</button>`;
   html += `<span class="hard-count">已标记 ${hardCnt} 个难词</span>`;
-  html += `<button class="filter-btn" onclick="syncOpen()">📲 同步</button>`;
+  html += `<button class="filter-btn" onclick="syncOpen()">☁️ 云同步</button>`;
   if (hardCnt > 0) {
     html += `<button class="filter-btn" onclick="if(confirm('确定清空所有难词标记？')){hardWords.clear();saveHard();showHardOnly=false;render(searchInput.value)}">清空标记</button>`;
   }
