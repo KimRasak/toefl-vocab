@@ -560,14 +560,9 @@ document.addEventListener('click', unlockAudio, true);
 
 function answer(word, correct, skipped) {
   const rec = getRec(word);
-  if (skipped) {
-    // "已认识，跳过" → directly mastered
+  if (skipped || correct) {
+    // Both "跳过" and "认识" → mastered
     rec.box = 5;
-    rec.right++;
-    studyResults.right++;
-  } else if (correct) {
-    // "认识" after reveal → fast-track: new/wrong → box 3, others → box+1
-    rec.box = rec.box <= 1 ? 3 : Math.min(rec.box + 1, 5);
     rec.right++;
     studyResults.right++;
   } else {
@@ -939,12 +934,12 @@ function init() {
   loadProgress();
   loadSettings();
 
-  // Migrate: fix words stuck in low boxes that were answered correctly (old bug)
+  // Migrate: promote all correctly-answered words to mastered
   let migrated = false;
   Object.keys(progress).forEach(w => {
     const rec = progress[w];
-    if (rec && rec.box >= 1 && rec.box <= 2 && rec.right > 0 && rec.wrong === 0) {
-      rec.box = rec.right >= 2 ? 5 : 3;
+    if (rec && rec.right > 0 && rec.wrong === 0 && rec.box < 5) {
+      rec.box = 5;
       migrated = true;
     }
   });
