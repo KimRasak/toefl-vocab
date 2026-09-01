@@ -125,10 +125,22 @@ const statsEl = document.getElementById('stats');
 
 let collapsed = {};
 
+let audioEl = null;
+const YOUDAO_TTS = "https://dict.youdao.com/dictvoice?audio=";
+const GOOGLE_TTS = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=";
 function speak(word) {
-  const u = new SpeechSynthesisUtterance(word);
-  u.lang = 'en-US';
-  speechSynthesis.speak(u);
+  const clean = word.replace(/['']/g, "'");
+  if (audioEl) { audioEl.onerror = null; audioEl.onended = null; try { audioEl.pause(); } catch(e) {} }
+  audioEl = new Audio();
+  let fallback = false;
+  audioEl.onerror = () => {
+    if (fallback) return;
+    fallback = true;
+    audioEl.src = GOOGLE_TTS + encodeURIComponent(clean);
+    audioEl.play().catch(() => {});
+  };
+  audioEl.src = YOUDAO_TTS + encodeURIComponent(clean) + "&type=2";
+  audioEl.play().catch(() => { if (!fallback) { audioEl.onerror && audioEl.onerror(); } });
 }
 
 function escHtml(s) {
