@@ -562,7 +562,7 @@ satirist	讽刺作家[syn]"satirist"、"humorist" 和 "wit" 都可以指具有�
 satisfactory	令人满意的，符合要求的
 unsatisfactory	令人不满意的
 saturate	使饱和，浸透。表示用液体将物体充分湿透或浸泡，使其无法再吸收更多的液体或溶液。 v.[ph]The heavy rain will saturate the soil[ph]he market is already saturated with similar products[syn]"saturate"、"soak" 和 "drench" 都可以表示用液体浸透或湿透某物。"saturate" 更强调达到饱和状态，使物体无法再吸收更多的液体。"soak" 侧重于长时间地浸透或泡在液体中，通常指更深入地浸透。"drench" 则强调使物体彻底湿透，可能是因为被大量的液体浇灌或浸泡。
-saturated	渗透的, 饱和的
+saturated	adj. 饱和的；浸透的
 saucer	茶碟，垫盘[st]The waiter placed the coffee cup on the saucer[st]I accidentally knocked over the cup, but luckily the saucer caught most of the spill.
 save	拯救；保留
 savings	储蓄，存款
@@ -662,7 +662,7 @@ hypersensitive	非常敏感的
 photosensitive	[物] 感光性的[ph]be hypersensitive to sth.[ph]hypersensitive skin
 sensory	感觉的，感官的[adj.]用于形容与感官或感觉有关的，指与感觉、感知或感官功能相关的事物或过程。[ph]sensory experience[ph]sensory information[syn]perceptual，但它们之间的区别在于，sensory更强调与感官、感觉或感知有关的，而perceptual则更强调与感知和认知有关的。
 sentimental	感伤性的, 感情脆弱的[adj.]用于形容感伤的、感情用事的、或富有情感的，指一个人或事物对情感有强烈或过于多愁善感的倾向。[ph]it brought back sentimental memories[ph]The old letter was full of sentimental words[syn]emotional，但它们之间的区别在于，sentimental更强调对情感有强烈的感知和反应，常常带有怀旧和感伤的情感色彩，而emotional更一般地指涉及各种情绪和感情的。
-sentimentalize	伤感[v.]表示使某事物变得感伤或过度感伤，或是赋予某事物过多的情感色彩。这个词通常用于描述文学、电影或其他艺术作品中，作者或创作者过度强调情感，使作品显得过于感伤或多愁善感。[st]The movie sentimentalizes the past, portraying it as a perfect and nostalgic time.[st]The author tends to sentimentalize every relationship in her novels,
+sentimentalize	v. 使感伤；使多愁善感[v.]表示使某事物变得感伤或过度感伤，或是赋予某事物过多的情感色彩。这个词通常用于描述文学、电影或其他艺术作品中，作者或创作者过度强调情感，使作品显得过于感伤或多愁善感。[st]The movie sentimentalizes the past, portraying it as a perfect and nostalgic time.[st]The author tends to sentimentalize every relationship in her novels,
 sentimentalism	感情主意，感情用事[n]指的是感伤主义，是一种文学或艺术风格或态度，强调对情感、感情和个人经历的强烈表达和赋予作品深情的情感色彩。[st]The novel is characterized by its sentimentalism[st]The paintings of that era are often criticized for their excessive sentimentalism
 sequence	序列；顺序[ph]sequence of the alphabet[ph]steps must be followed in a specific sequence
 consequence	结果
@@ -769,7 +769,7 @@ slope	斜坡，斜面[ph]The ski slope 斜坡[ph]The road had a gentle slope 斜
 sloping	倾斜的，有坡度的[ph]The house was built on a sloping hill[ph]The sloping driveway[ph]the sloping coastline
 sloth	树懒；怠惰，懒惰[ph]The sloth spends most of its life hanging upside down in trees[ph]sth. were clear signs of his sloth.[ph]indulge in a bit of sloth on the weekends.
 slothful	迟钝的，懒惰的[ph]slothful attitude towards[ph]The slothful employee[ph]She spent a slothful afternoon
-slow breeding	养育起来很慢的[ph]slow breeding rate[ph]a slow breeding cycle[ph]slow breeding habits,
+slow breeding	adj. 繁殖缓慢的[ph]slow breeding rate[ph]a slow breeding cycle[ph]slow breeding habits,
 sluggish	行动迟缓的；不活泼的[ph]a period of sluggish growth[ph]felt sluggish
 slum	贫民窟
 slumber	睡眠[ph]slumber in their nests.[ph]slumbered in her crib
@@ -1056,7 +1056,7 @@ sunlit	被日光照射了的, 阳光照射的
 sunflower	向日葵
 sunrise	日出
 sunset	日落
-sunburn	晒斑, 晒黑
+sunburn	n. 晒伤
 sundial	(通过太阳知道时间的) 日规, 日晷
 sunglasses	太阳镜；墨镜
 superb	极好的，超级的
@@ -1075,7 +1075,7 @@ supplement	增补，补充
 supplementary	补充的
 supplementation	增补，补充
 suppose	推想，假设
-supposedly	按说，应该
+supposedly	adv. 据说；据推测
 supposition	假定
 suppress	镇压，抑制
 supreme	(权力、级别或地位)至高的；最重要的
@@ -1352,7 +1352,7 @@ tunnel	隧道
 turbulent	吵闹的；狂暴的
 turbulence	喧嚣，骚乱
 turnpike	公路，收费高速公路
-turquoise	绿宝石
+turquoise	n. 绿松石；adj. 绿松石色的
 tutor	辅导；当...的家庭教师
 tutorial	个别指导
 twig	细枝，嫩枝
@@ -1413,7 +1413,7 @@ unity	结合，一致
 community	团体，社会；(生物)群落
 opportunity	机会，时机
 immunity	免疫性
-universal	普遍的；全体的；通用的；宇宙的（特定语境）
+universal	adj. 普遍的；全世界的；通用的
 universe	宇宙
 unmatched	无可匹敌的
 unpack	打开包裹（或行李）
@@ -1540,7 +1540,7 @@ viral	病毒的
 virus	[微]病毒
 virtue	美德
 virtually	事实上，实质上
-virtuosity	高超技巧
+virtuosity	n. 精湛技艺；高超技巧
 viscosity	粘度，粘性
 viscous	粘滞的，粘性的
 vision	视觉
@@ -1651,7 +1651,7 @@ wring	绞，拧，扭
 wrinkle	皱纹，褶皱
 yarn	纱，纱线
 yawn	呵欠
-yelp	狗吠
+yelp	n./v. （痛苦等的）尖叫；吠叫
 yield	生产；产生
 yield to	屈服于...
 yolk	蛋黄

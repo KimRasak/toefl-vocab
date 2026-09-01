@@ -31,7 +31,7 @@ sediment	沉淀物
 elevation	n. 高度，海拔
 geothermy	地热
 terrain	地形
-Topography	地形学
+topography	n. 地形学
 temperate	温和的
 vein	n.静脉，血管，矿脉
 pit	n.坑,陷阱;煤矿,矿井
@@ -87,7 +87,7 @@ reptile	爬行动物
 homotherm	恒温动物
 Primates	灵长类动物
 mollusk	软体动物
-Coelenterate	腔肠动物（如水母、海蜇、珊瑚等）
+coelenterate	n. 腔肠动物（如水母、海蜇、珊瑚等）
 vertebrate	脊椎动物
 invertebrate	无脊椎动物
 finch	鸣禽
@@ -253,7 +253,7 @@ dissolve	v.溶解,解散
 element	元素
 impurity	杂质
 blend	混合
-Compound	n.混合物,化合物；园区a.混合的,化合的；vt.混合
+compound	n./adj./v. 混合物，化合物；混合的，化合的；混合
 substance	n.物质,实质
 particle	n 颗粒，微粒
 explosive	adj. 爆炸的；爆炸性的；爆发性的n. 炸药；爆炸物
@@ -604,7 +604,7 @@ fermentation	发酵
 respiration	n. 呼吸；呼吸作用
 stodgy	难消化的
 secretion	分泌物
-secrete	分泌
+secrete	v. 分泌
 assimilate	吸收
 immune	免疫的
 immunity	免疫力
@@ -943,7 +943,7 @@ pollen	花粉；传授花粉给...
 flora	n. 植物区系；植物群
 crossbreed	n.杂交动物
 necrosis	坏疽，骨疽
-Photosynthesis	n 光合作用；光能合成
+photosynthesis	n. 光合作用；光能合成
 pollinate	v.给...授粉
 starch	淀粉，淀粉类食物
 luxuriant	茂盛的
@@ -1536,7 +1536,7 @@ furniture	n. 家具
 hurdle	n.跳栏；障碍；v.克服(障碍)
 nostalgia	n 怀乡病，乡愁，怀旧，留恋过去
 singe	轻微烧焦
-regimen	n. 统治，控制；养生法
+regimen	n. 养生法；疗法；（尤指严格的）生活制度
 slag	n. 矿渣,炉渣,熔渣
 sojourn	逗留；旅居
 dwell	vi. 居住；存在于；细想某事
