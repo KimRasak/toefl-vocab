@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788237033531,
+  "updatedAt": 1788237037444,
   "datasets": {
     "1675": {
       "deport": {
@@ -201,6 +201,11 @@
       "cleft": {
         "mastered": true,
         "updatedAt": 1788237030727,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "germinate": {
+        "mastered": true,
+        "updatedAt": 1788237035893,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
