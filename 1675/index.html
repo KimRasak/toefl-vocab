@@ -819,6 +819,55 @@ $("search").addEventListener("keydown", e => {
 
 // ===== 随机单词卡（滚动式记忆） =====
 const FC_KEY = "wb:fc:" + OVERRIDES_PATH;
+const CARD_PROGRESS_PATH = "progress/1675.json";
+const CARD_DATASET = "1675";
+const CARD_DEVICE_KEY = "wb:card-device";
+let cardProgress = {};
+let cardSyncTimer = 0;
+let cardSyncBusy = false;
+let cardSyncQueued = false;
+let cardDevice = localStorage.getItem(CARD_DEVICE_KEY);
+try { if(!cardDevice){ cardDevice = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random(); localStorage.setItem(CARD_DEVICE_KEY, cardDevice); } } catch(e){ cardDevice = String(Date.now()); }
+function cardProgressLocalLoad(){ try{ cardProgress = JSON.parse(localStorage.getItem("wb:card-progress:" + CARD_DATASET) || "{}"); }catch(e){ cardProgress = {}; } return cardProgress; }
+function cardProgressLocalSave(){ try{ localStorage.setItem("wb:card-progress:" + CARD_DATASET, JSON.stringify(cardProgress)); }catch(e){} }
+function cardProgressMerge(a,b){ const out = Object.assign({}, a || {}); Object.keys(b || {}).forEach(w => { const x=b[w], y=out[w]; if(!y || Number(x.updatedAt||0)>Number(y.updatedAt||0) || (Number(x.updatedAt||0)===Number(y.updatedAt||0) && String(x.device)>String(y.device))) out[w]=x; }); return out; }
+function cardProgressDecode(content){ return JSON.parse(decodeURIComponent(escape(atob(content || "")))); }
+function cardProgressEncode(value){ return btoa(unescape(encodeURIComponent(JSON.stringify(value, null, 2)))); }
+async function cardProgressSync(){
+  if(cardSyncBusy){ cardSyncQueued = true; return; }
+  const token = getToken();
+  if(!token){ return; } // 本地状态继续可用，未配置 token 时不上传
+  cardSyncBusy = true;
+  try{
+    const url = "https://api.github.com/repos/" + REPO_OWNER + "/" + REPO_NAME + "/contents/" + CARD_PROGRESS_PATH;
+    for(let attempt=0; attempt<3; attempt++){
+      const auth = await ensureAuthorized(); if(!auth.ok) return;
+      const r = await fetch(url, {cache:"no-store", headers:{"Authorization":"Bearer "+auth.token,"Accept":"application/vnd.github+json"}});
+      let remote = {}, sha = null;
+      if(r.ok){ const j=await r.json(); sha=j.sha; try{ const doc=cardProgressDecode(j.content); remote=(doc && doc[CARD_DATASET]) || {}; }catch(e){} }
+      else if(r.status !== 404) throw new Error("HTTP " + r.status);
+      const merged = cardProgressMerge(remote, cardProgress);
+      const body={message:"Sync 1675 flashcard progress",content:cardProgressEncode(merged)}; if(sha) body.sha=sha;
+      const put=await fetch(url,{method:"PUT",headers:{"Authorization":"Bearer "+auth.token,"Content-Type":"application/json","Accept":"application/vnd.github+json"},body:JSON.stringify(body)});
+      if(put.ok){ cardProgress=merged; cardProgressLocalSave(); cardProgressApply(); return; }
+      if(put.status!==409 && put.status!==422) throw new Error("HTTP "+put.status);
+    }
+    toast("同步冲突，已保留本地进度");
+  }catch(e){ /* 离线/权限失败时保留 localStorage */ }
+  finally{ cardSyncBusy=false; if(cardSyncQueued){ cardSyncQueued=false; cardProgressSync(); } }
+}
+function cardProgressSchedule(){ cardProgressLocalSave(); clearTimeout(cardSyncTimer); cardSyncTimer=setTimeout(cardProgressSync,800); }
+async function cardProgressLoad(){
+  cardProgressLocalLoad(); const token=getToken(); if(!token) return;
+  try{
+    const auth=await ensureAuthorized(); if(!auth.ok) return;
+    const r=await fetch("https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+CARD_PROGRESS_PATH,{cache:"no-store",headers:{"Authorization":"Bearer "+auth.token,"Accept":"application/vnd.github+json"}});
+    if(!r.ok) return; const j=await r.json(); const remote=cardProgressDecode(j.content) || {}; cardProgress=cardProgressMerge(remote,cardProgress); cardProgressLocalSave();
+    cardProgressApply();
+  }catch(e){}
+}
+function cardProgressApply(){ Object.keys(cardProgress).forEach(w=>{ if(cardProgress[w].mastered) fcMastered.add(w); else fcMastered.delete(w); }); if(fcIsOpen){ fcRender(); fcUpdateTop(); } }
+cardProgressLoad();
 let fcDeck = [];        // 打乱后的全表下标序列
 let fcPos = 0;          // 在 fcDeck 中的绝对位置（记进度用）
 let fcStart = 0, fcEnd = 0, fcCur = 0; // 已渲染区间 [fcStart,fcEnd) 与当前卡在区间内的偏移
@@ -827,6 +876,7 @@ let fcIsOpen = false, fcAutoSpeak = false, fcRevealAll = false, fcScope = "all";
 let fcRaf = 0, fcSpeakTimer = null;
 
 function fcLoad(){
+  cardProgressLocalLoad();
   let s = {};
   try{ s = JSON.parse(localStorage.getItem(FC_KEY) || "{}") || {}; }catch(e){ s = {}; }
   fcMastered = new Set(Array.isArray(s.mastered) ? s.mastered : []);
@@ -1012,8 +1062,9 @@ $("fcLayer").addEventListener("click", e => {
     const w = card.dataset.w;
     if(fcMastered.has(w)){ fcMastered.delete(w); toast("已取消标记"); }
     else { fcMastered.add(w); toast("已掌握 ✓"); }
+    cardProgress[w] = {mastered:fcMastered.has(w), updatedAt:Date.now(), device:cardDevice};
     card.classList.toggle("mastered", fcMastered.has(w));
-    fcUpdateTop(); fcSave();
+    fcUpdateTop(); fcSave(); cardProgressSchedule();
     return;
   }
   // 跳到列表

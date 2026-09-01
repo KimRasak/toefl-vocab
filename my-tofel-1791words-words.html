@@ -119,6 +119,7 @@
   .card-actions .c-play { background:linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow:0 3px 12px rgba(76,141,255,.4); }
   .card-actions .c-word { background:var(--card2); color:var(--fg); border:1px solid var(--border); }
   .card-actions .c-ex { background:var(--card2); color:var(--fg); border:1px solid var(--border); }
+  .card-actions .c-word.mastered { background:#34c77b; color:#fff; border-color:#34c77b; }
   .card-actions button:active { transform: scale(.97); }
   .card-actions button.playing { outline:2px solid var(--good,#34c77b); outline-offset:2px; }
   .card-actions .c-play.playing { background:linear-gradient(135deg, #1d9e5e, #147a47); box-shadow:0 3px 12px rgba(52,199,123,.4); }
@@ -206,6 +207,7 @@
       <button class="c-play" id="cardPlayAll" type="button">▶ 播放（单词+例句）</button>
       <button class="c-word" id="cardPlayWord" type="button">🔊 单词</button>
       <button class="c-ex" id="cardPlayEx" type="button">🔊 例句</button>
+      <button class="c-word" id="cardMaster" type="button">✓ 已掌握</button>
     </div>
     <div class="card-nav">
       <button id="cardPrev" type="button">‹ 上一个</button>
@@ -10891,6 +10893,27 @@ const SPEAKER_SVG = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-
 const EDIT_BTN_HTML = '\n    <button class="edit-btn" type="button" title="编辑翻译">✏️</button>\n';
 let WORDS = DEFAULT_WORDS;
 let page = 1, perPage = 20, query = "";
+const PROGRESS_PATH = "progress/1791.json";
+const PROGRESS_KEY = "wb:progress:1791";
+const PROGRESS_DEVICE_KEY = "wb:progress-device";
+let mastered = {};
+let progressSyncTimer = 0, progressSyncBusy = false, progressSyncQueued = false;
+let progressDevice = localStorage.getItem(PROGRESS_DEVICE_KEY);
+try { if(!progressDevice){ progressDevice = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()); localStorage.setItem(PROGRESS_DEVICE_KEY, progressDevice); } } catch(e){ progressDevice = String(Date.now()); }
+function progressLoadLocal(){ try{ mastered = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"); }catch(e){ mastered = {}; } }
+function progressSaveLocal(){ try{ localStorage.setItem(PROGRESS_KEY, JSON.stringify(mastered)); }catch(e){} }
+function progressMerge(a,b){ const out=Object.assign({},a||{}); Object.keys(b||{}).forEach(w=>{const x=b[w],y=out[w];if(x && (!y || Number(x.updatedAt||0)>Number(y.updatedAt||0) || (Number(x.updatedAt||0)===Number(y.updatedAt||0)&&String(x.device||"")>String(y.device||""))))out[w]=x;});return out; }
+function progressDecode(c){ return JSON.parse(decodeURIComponent(escape(atob(c||"")))); }
+function progressEncode(v){ return btoa(unescape(encodeURIComponent(JSON.stringify(v,null,2)))); }
+async function progressSync(){
+  if(progressSyncBusy){progressSyncQueued=true;return;} if(!getToken()||!REPO_OWNER)return; progressSyncBusy=true;
+  try{const url="https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+PROGRESS_PATH;
+    for(let i=0;i<3;i++){const auth=await ensureAuthorized();if(!auth.ok)return;const r=await fetch(url,{cache:"no-store",headers:{Authorization:"Bearer "+auth.token,Accept:"application/vnd.github+json"}});let remote={},sha=null;if(r.ok){const j=await r.json();sha=j.sha;try{remote=progressDecode(j.content)||{};}catch(e){}}else if(r.status!==404)throw Error("HTTP "+r.status);const merged=progressMerge(remote,mastered);const put=await fetch(url,{method:"PUT",headers:{Authorization:"Bearer "+auth.token,"Content-Type":"application/json",Accept:"application/vnd.github+json"},body:JSON.stringify({message:"Sync 1791 mastered progress",content:progressEncode(merged),...(sha?{sha}: {})})});if(put.ok){mastered=merged;progressSaveLocal();return;}if(put.status!==409&&put.status!==422)throw Error("HTTP "+put.status);}
+  }catch(e){} finally{progressSyncBusy=false;if(progressSyncQueued){progressSyncQueued=false;progressSync();}}
+}
+function progressSchedule(){progressSaveLocal();clearTimeout(progressSyncTimer);progressSyncTimer=setTimeout(progressSync,800);}
+async function progressLoadRemote(){progressLoadLocal();if(!getToken()||!REPO_OWNER)return;try{const auth=await ensureAuthorized();if(!auth.ok)return;const r=await fetch("https://api.github.com/repos/"+REPO_OWNER+"/"+REPO_NAME+"/contents/"+PROGRESS_PATH,{cache:"no-store",headers:{Authorization:"Bearer "+auth.token,Accept:"application/vnd.github+json"}});if(r.ok){const j=await r.json();mastered=progressMerge(progressDecode(j.content)||{},mastered);progressSaveLocal();}}catch(e){}}
+progressLoadRemote();
 let audioEl = null;
 
 const $ = id => document.getElementById(id);
@@ -11065,7 +11088,7 @@ function render(){
       }
       return '<div class="item"><div class="w">'+ idx +'. '+ hi(w, query) +
              '<span class="wtext" style="display:none">' + esc(w) + '</span>' +
-             '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' + EDIT_BTN_HTML + '</div>' +
+             '<button class="wbtn" type="button" data-word="' + esc(w) + '" title="播放发音" aria-label="播放 ' + esc(w) + '">' + SPEAKER_SVG + '</button>' + EDIT_BTN_HTML + '<button class="edit-btn master-list-btn" type="button" data-word="' + esc(w) + '" title="标记已掌握">' + (mastered[w] ? '✓' : '○') + '</button></div>' +
              '<div class="m">'+ hi(m, query) +'</div>' + extra + '</div>';
     }).join("");
   }
@@ -11143,6 +11166,9 @@ function renderCard(){
   $("cardIpa").textContent = cam && cam.ipa ? "/" + cam.ipa + "/" : "";
   $("cardEx").textContent = (cam && cam.exs && cam.exs.length) ? cam.exs[0] : "（无例句）";
   $("cardPos").textContent = (cardIdx + 1) + " / " + cardList.length;
+  const masteredNow = !!mastered[w];
+  $("cardMaster").classList.toggle("mastered", masteredNow);
+  $("cardMaster").textContent = masteredNow ? "✓ 已掌握（点击取消）" : "✓ 已掌握";
   updateCardBtns();
 }
 function updateCardBtns(){
@@ -11214,6 +11240,12 @@ $("cardModeBtn").onclick = () => {
 $("cardClose").onclick = closeCardMode;
 cardPrevBtn.onclick = () => cardGo(-1);
 cardNextBtn.onclick = () => cardGo(1);
+$("cardMaster").onclick = () => {
+  const x = cardCur(); if(!x) return;
+  const w=x[0], isMastered=!mastered[w];
+  mastered[w]={mastered:isMastered,updatedAt:Date.now(),device:progressDevice};
+  progressSchedule(); renderCard(); render(); toast(isMastered ? "已掌握 ✓" : "已取消标记");
+};
 $("cardPlayWord").onclick = playCardWordOnly;
 $("cardPlayEx").onclick = playCardExOnly;
 $("cardPlayAll").onclick = playCardAll;
