@@ -277,21 +277,27 @@ function toggleHard(word, e) {
 loadHard();
 
 let audioEl = null;
-const YOUDAO_TTS = "https://dict.youdao.com/dictvoice?audio=";
-const GOOGLE_TTS = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=";
+function ttsUrls(word) {
+  const w = encodeURIComponent(word);
+  return [
+    "https://dict.youdao.com/dictvoice?audio=" + w + "&type=2",
+    "https://dict.youdao.com/dictvoice?audio=" + w + "&type=1",
+    "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + w,
+  ];
+}
 function speak(word) {
   const clean = word.replace(/['']/g, "'");
   if (audioEl) { audioEl.onerror = null; audioEl.onended = null; try { audioEl.pause(); } catch(e) {} }
-  audioEl = new Audio();
-  let fallback = false;
-  audioEl.onerror = () => {
-    if (fallback) return;
-    fallback = true;
-    audioEl.src = GOOGLE_TTS + encodeURIComponent(clean);
-    audioEl.play().catch(() => {});
-  };
-  audioEl.src = YOUDAO_TTS + encodeURIComponent(clean) + "&type=2";
-  audioEl.play().catch(() => { if (!fallback) { audioEl.onerror && audioEl.onerror(); } });
+  const urls = ttsUrls(clean);
+  let idx = 0;
+  function tryNext() {
+    if (idx >= urls.length) return;
+    audioEl = new Audio();
+    audioEl.onerror = () => { idx++; tryNext(); };
+    audioEl.src = urls[idx];
+    audioEl.play().catch(() => { idx++; tryNext(); });
+  }
+  tryNext();
 }
 
 function escHtml(s) {
@@ -427,20 +433,18 @@ function speakAsync(word) {
     const clean = word.replace(/['']/g, "'");
     if (!clean) { resolve(); return; }
     if (audioEl) { audioEl.onerror = null; audioEl.onended = null; try { audioEl.pause(); } catch(e) {} }
-    audioEl = new Audio();
-    let fallback = false;
-    const finish = () => { audioEl.onended = null; audioEl.onerror = null; resolve(); };
-    audioEl.onerror = () => {
-      if (fallback) { finish(); return; }
-      fallback = true;
+    const urls = ttsUrls(clean);
+    let idx = 0;
+    const finish = () => { if (audioEl) { audioEl.onended = null; audioEl.onerror = null; } resolve(); };
+    function tryNext() {
+      if (idx >= urls.length) { finish(); return; }
+      audioEl = new Audio();
       audioEl.onended = finish;
-      audioEl.onerror = finish;
-      audioEl.src = GOOGLE_TTS + encodeURIComponent(clean);
-      audioEl.play().catch(finish);
-    };
-    audioEl.onended = finish;
-    audioEl.src = YOUDAO_TTS + encodeURIComponent(clean) + '&type=2';
-    audioEl.play().catch(() => { if (!fallback) audioEl.onerror(); else finish(); });
+      audioEl.onerror = () => { idx++; tryNext(); };
+      audioEl.src = urls[idx];
+      audioEl.play().catch(() => { idx++; tryNext(); });
+    }
+    tryNext();
   });
 }
 
