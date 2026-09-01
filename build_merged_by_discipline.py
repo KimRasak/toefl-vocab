@@ -1693,9 +1693,7 @@ searchInput.addEventListener('input', () => {{
   debounceTimer = setTimeout(() => render(searchInput.value), 200);
 }});
 
-render('');
-
-// ─── Auto-play ───
+// ─── Build indexes ───
 const ALL_WORDS = [];
 const WORD_TOPIC = {{}};
 const WORD_IDX = {{}};
@@ -1704,6 +1702,10 @@ DATA.forEach(t => t.words.forEach(w => {{
   ALL_WORDS.push(w);
   WORD_TOPIC[w.w] = t.emoji + ' ' + t.name.split(' ')[0];
 }}));
+
+render('');
+
+// ─── Auto-play ───
 
 let abPlaying = false, abIdx = 0, abToken = 0, abHardOnly = false;
 function abGetList() {{ return abHardOnly ? ALL_WORDS.filter(w => hardWords.has(w.w)) : ALL_WORDS; }}
