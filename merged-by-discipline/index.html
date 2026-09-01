@@ -491,14 +491,14 @@ async function abLoop() {
     await speakAsync(list[abIdx].w);
     if (!abPlaying || token !== abToken) return;
 
-    abIdx++; abSave(); abUpdateUI();
-    if (abIdx >= abGetList().length) continue;
-
     const gap = parseInt(abGapSel.value, 10) || 0;
     if (gap) {
       await sleepCancelable(gap);
       if (!abPlaying || token !== abToken) return;
     }
+
+    abIdx++; abSave(); abUpdateUI();
+    if (abIdx >= abGetList().length) continue;
   }
 }
 
