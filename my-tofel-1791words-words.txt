@@ -41,8 +41,8 @@ adaptation	n. the adaptation of ...(改编作品)， cultural adaptation(文化�
 adept	adj.擅长的，熟练的 be adept at
 adequate	adj. 足够的，充分的
 adhere	v. 黏着，粘附，坚持
-adherence	n. 依附的，信奉的
-adhesive	n. 粘着的，粘着物
+adherence	n. 遵守；坚持；依从
+adhesive	n. 黏合剂；adj. 有黏性的
 adjacent	adj. 邻近的，附近的，毗连的
 adjoin	v. 贴近，靠近
 adjoining	adj. 接近的，邻近的，相连的Adjoining rooms 相邻房间，且有内部连通门adjoins 紧邻(法律场景)
@@ -84,7 +84,7 @@ agrarian	adj. 土地的， 农业的
 agreeable	adj. 宜人的，令人愉快的
 aim	v. 打算，意欲，目的，瞄准
 alert	adj. 机敏的
-alien	n. 外国的， 陌生的
+alien	n. 外星人；外国人；adj. 外来的；陌生的
 alienate	v. 使疏远
 alkali	n.碱
 allege	v. 宣称，主张
@@ -100,7 +100,7 @@ allusion	n.引示， 暗指
 ally	v. 同盟，结盟
 alter	v. 改变
 alternate	n.替代物，v. 轮流,adj. 交替的
-alternative	n.可选事务，adj.两者条一的
+alternative	n. 替代方案；选择；adj. 可供选择的；替代的
 altruism	n.利他主意
 aluminium	n. 铝
 alumnus	n. 男校友
@@ -122,7 +122,7 @@ analysis	n. 分析，分解，解析 （复数 analyses)
 anecdote	n. 轶闻，轶事
 anguish	n.极度的痛苦，苦闷，苦恼
 animated	adj.有生气的， 热烈的，活跃的
-annex	v. 附加，附件
+annex	v. 吞并；兼并；n. 附录；附属建筑
 annihilate	v. 销减，歼灭
 annotate	v. 注解
 annoy	v. 使恼怒，打扰
@@ -145,7 +145,7 @@ apparel	n. 服装，衣服
 appeal	n. 呼吁，申述
 applaud	v. 喝彩，欢呼
 applicant	n. 申请人
-application	n. 请求，神情，施用
+application	n. 申请；应用；使用；施用；应用程序
 appoint	n.任命，委任， 约定，
 appraise	v. 鉴定，评价
 appreciate	v. 重视，感激
@@ -201,7 +201,7 @@ assist	v. 补助
 associate	v. 联合，伙伴
 association	n. 协会，关联
 assuage	vt.缓和
-assumption	n. 就职，假设
+assumption	n. 假定；假设；承担（责任或职务）
 assure	vt. 使确信，向保证
 astonish	vt. 使惊讶
 astonished	adj. 惊讶的
@@ -274,7 +274,7 @@ barter	n.易货，易货贸易
 bashful	adj. 害羞的，胆小的
 basin	n. 盆地
 bask	vt. 取暖，晒太阳，沐浴于
-baste	vt. 殴打，公开责骂
+baste	vt. 给肉浇汁；粗缝；疏缝
 batter	v. 击破，捣坏，炮击
 bear	v. 具有，带有，支撑
 beat	adj. 疲倦的
@@ -282,7 +282,7 @@ becoming	adj. 合适的，相称的
 beforehand	adv. 事先的
 befuddle	vt. 使混乱
 beget	vt. 引起，产生
-begrudge	vt. 羡慕，嫉妒
+begrudge	vt. 吝惜；不情愿地给予；因……而怨恨
 beguile	vt. 欺骗，消遣
 behave	v. 举止端正，表现，运转
 behaviour	n. 行为
@@ -303,9 +303,9 @@ bereave	vt. 剥夺
 beset	v. 包围
 besides	adj. 除了
 besiege	vt. 围，包围
-bestow	v. 赠与，利用
+bestow	v. 授予；赠予
 betray	vt. 背叛，泄露
-beverage	n. 饮料
+beverage	n. 饮料；饮品
 bewilder	vt. 迷惑，把弄糊涂
 bias	v. 偏见，使偏离
 bicker	v. 争吵
@@ -358,7 +358,7 @@ breeze	n. 微风
 brew	v. 酿造，图谋
 brighten	v. 使发光，使快活
 brim	n. 边
-brink	n. 边缘
+brink	n. 边缘；（危险或困难的）紧要关头；濒临……的边缘
 brisk	adj. 活泼的,轻快的
 brittle	adj. 易碎的
 broaden	v. 放宽，变阔
@@ -392,7 +392,7 @@ carnage	大屠杀，残杀
 carnal	adj.肉体的
 castigate	v. 谴责
 casual	adj. 非正式的，随便的
-casualty	n. 意外
+casualty	n. 伤亡人员；死伤者；事故造成的伤亡或损失
 cataclysm	n. 洪水， 大灾难
 catastrophe	n. 异常的灾祸
 catching	adj. 迷人的，传染的
@@ -409,7 +409,7 @@ celestial	adj. 天的
 censor	n. 检查，检查员
 censure	v. n. 责难
 centigrade	adj. 摄氏的
-ceremonial	adj. 仪式，正式的
+ceremonial	adj. 仪式的；礼仪的；礼节性的
 ceremonious	adj. 隆重的，正式的，恭敬的
 ceremony	n. 仪式
 chafe	v. 擦热，烦恼
@@ -527,7 +527,7 @@ component	n. 组成部分
 composed	adj. 沉着的
 composure	n. 镇静
 comprehend	vt. 理解
-comprehensive	adj. 综合的，有理解的
+comprehensive	adj. 全面的；综合性的；详尽的
 comprise	v. 包括
 compulsive	adj. 强迫的
 compulsory	adj. 义务的，必修的
@@ -611,7 +611,7 @@ contaminate	v. 污染
 contempt	n. 蔑视
 contemplate	v. 凝视，沉思
 contemptible	adj. 可鄙的
-contemptuous	adj. 苗似的，傲慢的
+contemptuous	adj. 轻蔑的；鄙视的；表示蔑视的
 contend	v. 争斗
 con`tent	adj. 满足的
 `content	n. 内容
@@ -694,7 +694,7 @@ culpable	adj. 该受谴责的
 cult	n. 崇拜，崇拜者
 cultivate	vt. 耕种，培养
 cultivation	n. 耕种，培养
-cunning	adj. 狡猾的，可爱的
+cunning	adj. 狡猾的；诡计多端的；巧妙的
 curb	n. 抑制
 curiosity	n. 好奇心
 curious	adj. 好奇的
@@ -740,7 +740,7 @@ decline	v. 衰落，拒绝
 declivity	n. 下倾的斜面
 decorum	n. 礼仪
 decree	n. 法令，规定，颁布
-decry	v. 危难，谴责
+decry	v. 强烈谴责；公开抨击
 dedicate	vt. 奉献，致力于
 deem	v. 认为
 defame	v. 诽谤，损毁名誉
@@ -791,7 +791,7 @@ depict	vt. 描写，叙述
 deplore	v. 悲痛，深悔
 deport	vt. 驱逐出境，放逐，举止
 deposit	n. 放置，存款，押金
-depot	n. 仓库，容纳
+depot	n. 车站；车辆段；仓库；补给站
 deprecate	vt. 抗议，攻击
 depreciate	v. 贬值
 depress	v. 使沮丧
@@ -852,7 +852,7 @@ diffuse	v. 传播,扩散
 dignified	adj. 尊严的，高贵的
 dignify	vt. 使尊严，使显贵
 dignity	n. 尊严
-digress	v. 离开本题
+digress	v. 离题；岔开话题；离题发挥
 dilate	vt. 使膨胀，使扩大
 dilemma	n. 左右为难，困境
 diligent	adj. 勤勉的，勤奋的
@@ -892,7 +892,7 @@ disgrace	v.不光彩的，丢脸的
 disgust	n. 厌恶
 disinterested	adj. 公正的
 dismal	adj. 沮丧的，阴暗的
-dismay	v. 使饥饿，使沮丧
+dismay	v. 使惊愕；使沮丧；惊愕；沮丧
 disparage	vt. 轻视，毁谤
 dispatch	vt. 分配，派遣
 dispensable	adj. 可有可无的
@@ -998,7 +998,7 @@ elude	v. 躲避，困惑
 elusive	adj. 难懂得，躲避的
 emaciate	v. 使瘦弱
 emaciated	adj.瘦弱的，憔悴的
-embalm	vt. 铭记，使不朽
+embalm	vt. 给尸体防腐；用防腐剂保存遗体
 embarrass	vt. 使困窘
 embellish	v. 装饰，修饰
 embezzle	vt. 盗用
@@ -1087,7 +1087,7 @@ eschew	vt. 避开，远离
 escort	v. 护送
 essential	adj. 重要的，基本的
 esteem	n. 尊敬
-estimable	adj. 可估计的
+estimable	adj. 值得尊敬的；可敬的
 estimate	v. 估计
 eternal	adj. 永恒的
 ethics	n. 伦理学
@@ -1242,7 +1242,7 @@ flimsy	adj. 脆弱的，薄弱的
 flip	v. 弹，投，翻滚
 flora	n. 植物界
 flounder	vi. 挣扎，踌躇
-flout	v. 嘲弄
+flout	v. 公然藐视；公然违反
 fluctuate	v. 波动，使波动
 fluent	adj. 流利的，流畅的
 fluffy	adj. 绒毛的
@@ -1261,7 +1261,7 @@ foresight	n. 预见，远见
 forestall	vt. 预先阻止
 foretell	vt. 预言
 forge	v. 铸造，伪造
-forlorn	adj. 掘网，被遗弃的
+forlorn	adj. 被遗弃的；孤苦无依的；凄凉的
 formal	adj. 正式的，礼仪上的
 former	dj. 以前的
 formidable	adj. 可畏惧的，可怕的
@@ -1309,7 +1309,7 @@ further	v. 促进，增进，更多的
 fury	v. 勃然大怒
 fusion	n. 融合，联合
 fussy	adj. 过分挑剔的
-futile	adj. 无意的，徒劳的
+futile	adj. 无效的；徒劳的；无希望成功的
 fuzz	adj. 有绒毛的，绒毛状的
 gabble	vt. 急促而不清楚地说出
 gainful	adj. 有利的，有报酬的
@@ -1321,7 +1321,7 @@ gallery	n. 画廊
 gangster	n. 暴徒，歹徒
 gap	n. 裂口，差距
 garb	n. 服装，装束
-garner	v. 储存
+garner	v. 收集；获得；赢得
 garnish	v. 加装饰
 gash	n. 深的切口
 gasoline	n. 汽油
@@ -1398,7 +1398,7 @@ guise	n. 外观，装束
 gush	v. 涌出
 habituate	v. 习惯的
 hackneyed	adj. 平凡的，陈腐的
-haggle	v.n. 争论
+haggle	v./n. 讨价还价；就价格或条件反复争论
 hail	n. 冰雹， v. 欢呼, 欢迎
 halt	v. 停止，踌躇
 hamper	v. 阻碍
@@ -1423,7 +1423,7 @@ haughty	adj. 傲慢的，轻蔑的
 haul	v. 拖曳，拖运
 haunt	v. 萦绕于心，常到
 haven	n. 避难所
-hazard	v. 危险，公害
+hazard	n. 危险；风险；隐患
 hazardous	adj. 危险的
 head	n.头，v.向某处走去
 headstrong	adj. 顽固的
@@ -1440,11 +1440,11 @@ heresy	n. 异端，斜说
 heritage	n. 遗产
 hermit	n. 隐居者
 hesitate	v.犹豫，踌躇，含糊
-hew	v. 砍，伐，削
+hew	v. 砍；劈；砍伐
 hideous	adj. 骇人听闻的，丑恶的
 highlight	v. 突出显示，强调
 hike	n. 上升
-hilarious	adj. 高兴的，热闹的
+hilarious	adj. 非常滑稽可笑的；令人捧腹的
 hilarity	n. 欢闹
 hinder	v. 妨碍
 hinge	v. 依...而定
@@ -1545,7 +1545,7 @@ impropriety	n. 不适当
 improvident	adj. 浪费的
 improvise	v. 即席而作
 imprudent	adj. 轻率的，不谨慎的
-impudent	adj. 鲁莽的
+impudent	adj. 无礼的；放肆的；冒失无礼的
 impulse	n. 冲动，刺激，推动
 impulsive	adj. 易冲动的,任性的
 impunity	n. 免罚
@@ -1570,7 +1570,7 @@ incongruity	n. 不和谐
 incongruous	adj. 不协调的
 incorruptible	adj. 廉洁的
 incredible	adj. 难以相信的
-incredulity	n. 怀疑
+incredulity	n. 不相信；怀疑态度；难以置信
 incriminate	v. 控告，使负罪
 incur	v. 遭遇，遭致，承担
 indecent	adj. 无理的，下流的
@@ -1605,7 +1605,7 @@ inflation	n. 通货膨胀
 inflexible	adj. 坚定的
 inflict	v. 造成
 influential	adj. 有影响的，有权势的
-influx	n. 流入，灌输
+influx	n. 大量涌入；流入
 informal	adj. 不拘礼节的，随便的
 infringe	v. 侵犯，违反
 infuse	vt. 灌输，浸渍
@@ -1683,7 +1683,7 @@ invalid	adj. 无效的，有病的
 invalidate	vt. 使作废
 invaluable	adj. 无价的
 inventory	n. 物品清单，库存物品
-inverse	n. 反的
+inverse	n./adj. 相反的；倒数；反函数
 invert	v. 倒转
 investigate	v. 调查，研究
 inviting	adj. 诱人的，引人注目的
@@ -1791,3 +1791,25 @@ luxurious	adj. 奢侈的
 lyric	n. 抒情诗，歌词
 vernacular	n. 本地话，方言；adj. 本地方言的（the local vernacular / vernacular architecture 乡土建筑）
 resurrected	adj./v. 复活的；被重新启用的 resurrect sth 使…重新流行 / 复兴
+trail	n. 小径；踪迹；痕迹
+solubility	n. 溶解度；溶解性
+mercury	n. 汞；水银；水星
+iodine	n. 碘
+sewage	n. 污水；生活污水；城市污水
+onset	n. 开始；发作；来临
+novice	n. 新手；初学者
+spectator	n. 观众；旁观者
+alumni	n. 校友
+clan	n. 氏族；宗族；（引申）小团体；帮派
+planetoid	n. 小行星；小行星状天体
+interferometer	n. 干涉仪
+vibration	n. 振动；颤动；（引申）共鸣；氛围
+microwave	n. 微波；微波炉
+nationality	n. 国籍；民族身份
+stoically	adv. 坚忍地；泰然自若地；冷静坚毅地
+hence	adv. 因此；所以；从今以后；从此
+perennial	adj. 多年生的；长期存在的；经久不衰的
+temporal	adj. 时间的；世俗的；尘世的
+sickle	n. 镰刀
+vocation	n. 职业；天职；使命
+odor	n. 气味
