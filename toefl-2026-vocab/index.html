@@ -162,6 +162,14 @@ button { cursor: pointer; border: none; background: none; }
 .fc-actions .btn-ok { background: rgba(52,199,89,.15); border-color: var(--ok); color: var(--ok); flex: 1; padding: 14px; font-size: 16px; }
 .fc-actions .btn-no { background: rgba(255,69,58,.12); border-color: var(--bad); color: var(--bad); flex: 1; padding: 14px; font-size: 16px; }
 
+.fc-skip {
+  width: 100%; margin-top: 12px; padding: 12px; border-radius: 12px; font-size: 14px;
+  background: var(--card2); border: 1px solid var(--border); color: var(--muted);
+  transition: opacity .2s;
+}
+.fc-skip:active { transform: scale(.97); }
+.fc-skip.hidden { display: none; }
+
 .speak-btn {
   position: absolute; top: 16px; right: 16px;
   width: 40px; height: 40px; border-radius: 12px;
@@ -563,7 +571,13 @@ function buildSession(macroFilter) {
     else if (rec.box === 1) box1.push(i);
     else if (rec.box >= 2 && rec.box <= 4 && isDue(rec)) due.push(i);
   });
-  fresh.sort((a, b) => vocab[a].r - vocab[b].r || a - b);
+  // Priority-weighted: higher priority number = harder = more likely to appear
+  // P1 (easiest, e.g. analyze) → weight 0.2, P2 → 0.5, P3 → 1, P4 → 1.5, P5 → 2
+  const PRI_WEIGHT = { 1: 0.2, 2: 0.5, 3: 1, 4: 1.5, 5: 2 };
+  fresh.sort((a, b) => {
+    const wa = PRI_WEIGHT[vocab[a].r] || 1, wb = PRI_WEIGHT[vocab[b].r] || 1;
+    return (Math.random() / wa) - (Math.random() / wb);
+  });
   due.sort((a, b) => (getRec(vocab[a].w).lastSeen || 0) - (getRec(vocab[b].w).lastSeen || 0));
   const indices = box1.concat(due, fresh.slice(0, MAX_NEW)).slice(0, MAX_SESSION);
   return indices.map(i => vocab[i]);
@@ -683,7 +697,8 @@ function renderStudyCard() {
       '<button class="btn btn-no" id="fc-wrong" type="button">❌ 不认识</button>' +
       '<button class="btn btn-ok" id="fc-right" type="button">✅ 认识</button>' +
     '</div>' +
-    '<div class="swipe-hint">← 不认识 · 认识 →</div>';
+    '<button class="fc-skip" id="fc-skip" type="button">⏭ 已认识，跳过</button>' +
+    '<div class="swipe-hint">← 不认识 · 认识 → · 点「跳过」直接下一个</div>';
 
   const card = $('fc-card');
   const actions = $('fc-actions');
@@ -694,12 +709,18 @@ function renderStudyCard() {
       cardRevealed = true;
       card.classList.add('revealed');
       actions.classList.add('show');
+      $('fc-skip').classList.add('hidden');
     }
   });
 
   $('fc-speak').addEventListener('click', e => {
     e.stopPropagation();
     speak(entry.w);
+  });
+
+  $('fc-skip').addEventListener('click', e => {
+    e.stopPropagation();
+    submitAnswer(true);
   });
 
   $('fc-right').addEventListener('click', e => { e.stopPropagation(); submitAnswer(true); });
