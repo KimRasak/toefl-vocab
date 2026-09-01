@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788236756885,
+  "updatedAt": 1788236763554,
   "datasets": {
     "1675": {
       "deport": {
@@ -146,6 +146,11 @@
       "optical": {
         "mastered": true,
         "updatedAt": 1788236754063,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "attribute": {
+        "mastered": true,
+        "updatedAt": 1788236761979,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
