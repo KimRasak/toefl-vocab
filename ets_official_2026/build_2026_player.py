@@ -208,18 +208,22 @@ body.showstats #stats{display:block}
 #banner code{background:#fff;padding:1px 5px;border-radius:4px;font-size:12px}
 #banner a{color:inherit;text-decoration:underline}
 .err{color:var(--bad);font-size:13px;margin-top:6px}
-#sceneSummary{background:var(--panel);border-bottom:1px solid var(--border);padding:12px 24px 14px;line-height:1.6}
-#sceneSummary .sumHead{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
-#sceneSummary h2{font-size:14px}
+#sceneSummary{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 24px 16px;line-height:1.6}
+#sceneSummary .sumHead{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+#sceneSummary h2{font-size:15px}
 #sceneSummary .sumHint{font-size:11.5px;color:var(--muted)}
+#sceneSummary .sumNote{font-size:12px;color:var(--muted);margin-bottom:10px}
 .sceneGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.scene{border:1px solid var(--border);border-radius:8px;padding:8px 10px;background:#fafbfc}
+.scene{border:1px solid var(--border);border-radius:8px;padding:9px 10px;background:#fafbfc}
 .scene strong{display:block;font-size:12.5px;margin-bottom:2px}
 .scene span{display:block;font-size:12px;color:var(--muted)}
 .scene.social strong{color:#2563eb}.scene.nav strong{color:#7c3aed}.scene.acad strong{color:#059669}
-.scene p{font-size:11.5px;color:var(--muted);margin-top:7px}
+.scene p{font-size:11.5px;color:var(--muted);margin-top:6px}
+.scene .topics{color:var(--text);font-size:12px;margin-top:5px}
+.sceneLinks{margin-top:10px;font-size:11.5px;color:var(--muted)}
+.sceneLinks a{color:var(--accent);margin-right:12px}
 @media(max-width:800px){.sceneGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){#sceneSummary{padding:10px 14px}.sceneGrid{grid-template-columns:1fr 1fr}.scene{padding:7px}.scene span{font-size:11.5px}}
+@media(max-width:520px){#sceneSummary{padding:11px 14px}.sceneGrid{grid-template-columns:1fr 1fr}.scene{padding:7px}.scene span,.scene .topics{font-size:11.5px}.sceneLinks a{display:inline-block;margin:2px 10px 2px 0}}
 </style>
 </head>
 <body>
@@ -241,12 +245,20 @@ body.showstats #stats{display:block}
   <button class="btn ghost" id="rs">重置本类</button>
 </header>
 <div id="sceneSummary">
-  <div class="sumHead"><h2>🧭 新托福听力场景速览</h2><span class="sumHint">按 ETS 2026 蓝图归纳；题数是官方范围，不代表固定学科配额</span></div>
+  <div class="sumHead"><h2>🧭 2026 新托福听力：场景与话题范围</h2><span class="sumHint">ETS 蓝图 + 2026 公开考情回忆的保守归纳</span></div>
+  <div class="sumNote">最确定的变化是日常生活和职场沟通明显增加、学术音频缩短；公开回忆可用来确认“考过哪些范围”，但样本仍不足以估计各学科占比。</div>
   <div class="sceneGrid">
-    <div class="scene social"><strong>日常社交 · 15–19 题</strong><span>听答题：一句话 + 最合适回应</span><p>购物、餐饮、交通、旅行、健身、维修、预约、活动安排、请求与建议。</p></div>
-    <div class="scene social"><strong>日常/校园短对话 · 10 题</strong><span>Conversation：两人短交流</span><p>生活计划、租房、设备、工作沟通，也可能涉及图书馆、课程等校园事务。</p></div>
-    <div class="scene nav"><strong>校园公告 · 6–10 题</strong><span>Announcement：课堂或校园通知</span><p>课程与作业、教室调整、图书馆、社团、活动、校规与设施维护。</p></div>
-    <div class="scene acad"><strong>学术讲座 · 8–16 题</strong><span>Academic Talk：短篇学术听力</span><p>自然科学、人文、社会科学、经济、心理、历史、艺术等；不要按少量样题押学科比例。</p></div>
+    <div class="scene social"><strong>日常社交 · 15–19 题</strong><span>Listen and Choose a Response</span><p class="topics">购物与客服、餐饮、公交/火车/机场、旅行、健身、天气、维修、预约、邀请、时间安排、请求和建议。</p><p>重点：听懂问句意图、否定问句、婉拒和自然回应。</p></div>
+    <div class="scene social"><strong>短对话 · 10 题</strong><span>Listen to a Conversation</span><p class="topics">超市与农夫市场、租房、电脑/手机/汽车、健身房、读书会、聚会旅行；也包括会议、报告、营销演示等职场沟通。</p><p>旧式三分钟校园对话不再占主导。</p></div>
+    <div class="scene nav"><strong>校园公告 · 6–10 题</strong><span>Listen to an Announcement</span><p class="topics">课程与作业截止、课堂调整、教授办公时间、图书馆/休息室、社团、讲座、校园活动、门户信息、设施维护。</p><p>重点：目的、时间地点、变化和行动要求。</p></div>
+    <div class="scene acad"><strong>短学术讲座 · 8–16 题</strong><span>Listen to an Academic Talk</span><p class="topics">仍覆盖自然科学、人文与社会科学：生物生态、环境气候、心理/神经、经济社会、天文地质、化学工程、历史考古、艺术文学、语言教育。</p><p>常见结构：概念定义 → 原因/分类 → 例子或研究发现。传统学科没有证据表明被取消。</p></div>
+  </div>
+  <div class="sceneLinks">公开考情参考：
+    <a href="http://sh.yuloo.com/toefl/listening/369166.html" target="_blank" rel="noopener">1 月 21 日首考</a>
+    <a href="http://sh.yuloo.com/toefl/listening/369488.html" target="_blank" rel="noopener">2 月 1 日</a>
+    <a href="http://sh.yuloo.com/toefl/listening/373811.html" target="_blank" rel="noopener">4 月 11 日</a>
+    <a href="http://sh.yuloo.com/toefl/listening/376142.html" target="_blank" rel="noopener">5 月 9 日</a>
+    <a href="https://www.qulexue.cn/lxks/10908.shtml" target="_blank" rel="noopener">8 月 19 日</a>
   </div>
 </div>
 <div id="tabs"></div>
