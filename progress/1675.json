@@ -63,5 +63,10 @@
     "mastered": true,
     "updatedAt": 1788233157177,
     "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+  },
+  "athlete": {
+    "mastered": true,
+    "updatedAt": 1788233198712,
+    "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
   }
 }
