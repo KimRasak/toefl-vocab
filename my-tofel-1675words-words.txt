@@ -10,20 +10,20 @@ outskirt	n.外边，郊区
 endemic	adj. 地方性的
 cosmopolitan	adj. 世界性的
 subterrane	n.地下
-subterranean	地下的
+subterranean	adj. 地下的
 cavern	n. 大洞穴
-cleft	裂缝
+cleft	n./adj. 裂缝；裂开的
 crevice	裂缝
 equator	赤道
 latitude	纬度
 meridian	子午线
-subsidiary	a.辅助的；次要的
+subsidiary	n./adj. 辅助的；次要的；子公司
 hemisphere	半球
 contour	n. 轮廓，海岸线
 lowland	n.低地，苏格兰低地 adj.低地的
 strait	海峡；痛苦
-channel	海峡
-plateau	高原
+channel	n./v. 海峡；渠道；引导/传送
+plateau	n./v. 高原；进入稳定/停滞阶段
 navigation	导航，航行
 ranges	山脉；范围，一系列
 salinity	n. 盐度；盐分；盐性
@@ -69,16 +69,16 @@ fault	n.错误；(地质学)断层
 magma	岩浆
 squirt	vi. 喷出，溅进
 gregarious	群居的
-swarm	一大群(蜜蜂/蚂蚁等）
+swarm	n./v. 一大群；成群涌动
 flock	n.羊群；鸟群
-herd	兽群
+herd	n./v. 兽群；聚集/驱赶（成群动物）
 carnivore	食肉动物
 carnivorous	食肉的
 herbivorous	食草的
 omnivorous	杂食的
 predator	捕食者
 predatory	adj. 掠夺的；食肉的
-prey	n.被捕食的动物
+prey	n./v. 被捕食的动物；捕食
 poikilotherm	变温动物，冷血动物
 rodent	啮齿动物
 scavenger	食腐动物
@@ -95,10 +95,10 @@ fowl	n. 鸡，家禽
 hordes	昆虫群
 aquatic	a 水生的，水栖的
 amphibian	n.两栖动物；水陆两用飞行器
-graze	放牧
-gasp	喘气
-peck	啄
-trot	小跑
+graze	v./n. 放牧；吃草；擦伤
+gasp	v./n. 喘气；倒吸气
+peck	v./n. 啄；啄击/少量
+trot	n./v. 小跑；小跑着走
 dormant	休眠的
 offspring	n. 后代，子孙；产物
 spawn	产卵
@@ -108,7 +108,7 @@ Regeneration	再生，重建
 squeak	v 叽叽地叫 n 叽叽声
 chirp	n. 喳喳声,唧唧声vt.vi. 吱喳而鸣
 hibernate	冬眠
-camouflage	伪装
+camouflage	n./v. 伪装；掩饰
 monogamous	单配的，一雌一雄的
 polyandrous	一妻多夫的，一雌多雄的
 niche	小生态环境
@@ -132,7 +132,7 @@ antenna	n.触角；天线
 tentacle	n 触须，触角；触丝，触毛
 spleen	脾脏
 spine	脊柱
-hide	兽皮；隐藏
+hide	n./v. 兽皮；隐藏
 bill	账单;鸟嘴
 beak	鸟嘴
 hump	驼峰
@@ -155,7 +155,7 @@ penal	受刑罚的，刑事的
 illicit	违法的
 unruly	不守规矩的
 illegitimate	adj. 非法的，私生的
-default	不履行义务，玩忽职守：nonperformance
+default	n./v. 不履行义务；违约；默认
 violate	v.违反，触犯
 violation	违反
 infringe	v.违反，侵害(法规，协议)
@@ -210,7 +210,7 @@ lawsuit	诉讼
 query	v.质疑，疑问；n.问题，疑问
 interrogate	v.审问，审讯
 impunity	免罚
-exempt	被豁免的
+exempt	adj./v. 被豁免的；豁免
 condone	宽恕；忽视：forgive
 liberate	v.释放，解放
 remit	赦免
@@ -242,7 +242,7 @@ catalysis	催化作用
 catalyst	催化剂
 adhesive	a.黏着的，带黏性的；n.黏合剂
 bleach	v./n. 漂白；使褪色；漂白剂
-tint	涂浅色，微染：slight coloration to
+tint	n./v. 色调；给……着色
 hydronic	液体循环加热或冷却的
 alchemy	炼金术，魔力
 ion	离子

@@ -17,7 +17,7 @@ abstinence	n. 禁戒，节制practice abstinence from
 abstruse	adj. 深奥的，难解的abstruse theory / concept / language / philosophysth is too abstruse for sb.
 abundant	adj. 充裕的，丰富的
 accentuate	v. 突出、强调、使更明显accentuate differencesA serve to accentuate B
-acclaim	v. 公开赞扬、欢呼、高度评价won critical acclaim 获得评论界的喝彩
+acclaim	n./v. 公开赞扬、欢呼、高度评价；喝彩，赞誉 won critical acclaim 获得评论界的喝彩
 accommodate	v. 供应，容纳
 accomplice	n.从犯，帮凶，同谋He was charged as an accomplice in the robbery. 他被指控为抢劫案的共犯。She became an accomplice to the murder. 她成了谋杀案的帮凶。
 accomplished	adj. 完成的，熟练的
@@ -82,8 +82,8 @@ agitate	v. 煽动，搅动，激起
 agonize	v. 使受苦，使苦闷
 agrarian	adj. 土地的， 农业的
 agreeable	adj. 宜人的，令人愉快的
-aim	v. 打算，意欲，目的，瞄准
-alert	adj. 机敏的
+aim	n./v. 目标；目的；旨在；瞄准
+alert	adj./n./v. 机敏的；警报；使警觉、提醒
 alien	n. 外星人；外国人；adj. 外来的；陌生的
 alienate	v. 使疏远
 alkali	n.碱
@@ -95,9 +95,9 @@ alliance	n. 联盟，同盟
 allocate	vt. 分配，定位置
 allot	v. 分配，指派
 allude	v. 提及，暗指
-allure	v. 引诱，诱惑，吸引
+allure	n./v. 引诱、吸引；魅力、诱惑力
 allusion	n.引示， 暗指
-ally	v. 同盟，结盟
+ally	n./v. 盟友；同盟国；支持；结盟
 alter	v. 改变
 alternate	n.替代物，v. 轮流,adj. 交替的
 alternative	n. 替代方案；选择；adj. 可供选择的；替代的
@@ -106,7 +106,7 @@ aluminium	n. 铝
 alumnus	n. 男校友
 amalgamate	v. 混合，合并
 amass	vt. 收集，积聚
-amateur	n. 业余的，业余爱好者
+amateur	n./adj. 业余爱好者；业余的；外行的
 amazed	adj. 惊愕的
 ambiguous	adj. 含糊的，
 ambitious	adj. 有野心的，雄心的
@@ -134,7 +134,7 @@ anonymous	adj. 匿名的
 antagonism	n. 敌对，对立，对抗
 antagonist	n. 敌手，对手
 anticipate	v. 预料，预期，期望
-antique	adj. 古代的
+antique	adj./n. 古老的、古董的；古董
 antiquity	n. 古代
 antiseptic	adj. 防腐的，杀菌的
 anxious	adj. 渴望的
@@ -142,17 +142,17 @@ apathetic	adj.冷淡的
 aperture	n. 孔，开口
 apex	n. 顶点， 最高点
 apparel	n. 服装，衣服
-appeal	n. 呼吁，申述
+appeal	n./v. 呼吁、申诉；有吸引力
 applaud	v. 喝彩，欢呼
 applicant	n. 申请人
 application	n. 申请；应用；使用；施用；应用程序
-appoint	n.任命，委任， 约定，
+appoint	v./vt. 任命、委任；约定
 appraise	v. 鉴定，评价
 appreciate	v. 重视，感激
 apprehend	v. 忧虑，畏惧，捕捉
 apprehension	n. 担心，害怕
 apprentice	n.学徒
-appropriate	adj. 适当的,恰当的,拨款,挪用,没收
+appropriate	adj. 适当的；恰当的 / vt. 拨款；挪用；占用
 approve	v. 赞成，称许，批准
 approximate	adj.近似的，大约的
 apt	adj. 有倾向的
@@ -188,7 +188,7 @@ aspire	vi. 热望
 assail	vt. 猛击，绝然面对
 assassin	n. 刺客
 assassinate	vt. 暗杀， 行刺
-assault	v. 袭击，攻击
+assault	n./v. 袭击、攻击
 assemble	vt. 聚集
 assembly	n. 集会
 assert	v. 断言，宣称，维护
@@ -238,7 +238,7 @@ available	adj. 可用的
 avalanche	n. v. 雪崩
 avarice	n. 贪婪，贪财
 avaricious	adj. 贪婪的， 贪心的
-average	adj. 一般的，平均的
+average	n./v./adj. 平均数；平均为、平均；平均的、普通的
 aversion	n. 厌恶
 avert	v. 转移，避免，防止
 aviator	n. 飞行家，飞行员
@@ -264,7 +264,7 @@ bankruptcy	n. 破产
 banquet	n. 宴会
 bar	n. 法院
 barbarian	n. 野蛮人
-bare	adj。 露出，空的
+bare	adj./v. 裸的、空的；露出、揭示
 barely	adv. 仅仅
 barometer	n. 气压计
 barren	n. 贫瘠的，不孕的
@@ -293,7 +293,7 @@ belligerent	adj. 好战的，交战的
 benefactor	n. 恩人，行善的人，捐助人 (女性，benefactress)
 beneficial	adj. 有益的
 beneficiary	n.受益者，受惠着
-benefit	n. 利益，对有益处
+benefit	n./v. 益处；福利；受益；对……有益
 benevolent	adj. 慈善的
 benign	adj. 亲切的，良好的
 bent	n. 倾向，爱好
@@ -301,7 +301,7 @@ bequest	n. 遗产，遗传
 berate	vt. 痛骂
 bereave	vt. 剥夺
 beset	v. 包围
-besides	adj. 除了
+besides	adv./prep. 此外；除……之外
 besiege	vt. 围，包围
 bestow	v. 授予；赠予
 betray	vt. 背叛，泄露
@@ -329,7 +329,7 @@ blink	v. 眨眼
 bliss	n. 狂喜
 block	n. 一块，阻碍，街区
 blunder	v. 犯大错
-blunt	adj. 迟钝的，使变钝
+blunt	adj. 钝的；迟钝的；直率的 / vt. 使变钝；使迟钝
 board	n. 木板，委员会
 boast	v. 自夸，吹嘘
 boastful	adj. 自夸的
@@ -347,7 +347,7 @@ bound	富有义务的，限制
 boundary	n. 边界
 boundless	adj. 无限的
 bow	v. n. 弯腰，屈服，弓子
-brace	n. 支持，使固定，支撑物，
+brace	n./vt. 支撑物；一对；支撑；使固定；使做好准备
 brag	n.v.夸张
 brain	n. 脑，头脑
 brawl	n.vi.争吵
@@ -520,7 +520,7 @@ complementary	adj. adv. 补充的
 complete	adj. 完全的，完成
 complex	adj. 复杂的，综合体
 complicate	v. 使复杂，使陷入
-compliment	n. 问候，赞美，祝贺
+compliment	n./vt. 恭维；赞美；致意；赞美某人
 complimentary	adj. 赞美的
 comply	vi.顺从，应允
 component	n. 组成部分
@@ -563,7 +563,7 @@ confide	v. 倾诉
 confidence	n. 信心
 confident	adj. 确信的，自信的
 confidential	adj.机密的
-confine	n. 限制，边界
+confine	n./vt. 界限；范围；限制；禁闭
 confirm	v. 证实，确认
 confiscate	vt. 没收，充公
 confound	vt. 使糊涂，迷惑
@@ -745,7 +745,7 @@ dedicate	vt. 奉献，致力于
 deem	v. 认为
 defame	v. 诽谤，损毁名誉
 default	n. 不履行责任，缺乏，不履行
-defect	v. 缺陷
+defect	n. 缺陷；瑕疵 / vi. 叛变；脱离
 defection	n. 背叛，缺陷
 defective	adj. 有缺陷的
 defend	vt. 防护，辩护
@@ -770,7 +770,7 @@ delay	v. 推迟，耽搁，延误
 delegate	n. 代表
 delete	vt. 删除
 deleterious	adj. 有害的
-deliberate	ad. 认真的，故意的
+deliberate	adj. 深思熟虑的；故意的 / v. 仔细考虑；商议
 delicate	adj. 精巧的，脆弱的
 delicious	adj. 美味的，宜人的
 delineate	v. 刻画，记述

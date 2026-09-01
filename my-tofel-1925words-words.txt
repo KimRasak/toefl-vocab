@@ -14,7 +14,7 @@ presidential election	n. 总统选举
 preside over	v. 主持
 pressure	n./v. 压力；压迫
 prestige	n. 威望，声望 [ph]enhance one's professional prestige [ph] the prestige as sth.
-prestigious	有名望的，有威信的
+prestigious	adj. 有名望的，有威信的
 presumably	adv. 推测起来, 大概
 pretension	n. 自命不凡，虚张声势，虚伪[ph] sb. have the pretension to do [ph] sb's pretensions of sth.
 prevailing	adj. 流行的，盛行的
@@ -28,7 +28,7 @@ prime	adj./n. 主要的；素数
 primary	adj. 第一位的，主要的
 prime number	素数
 heyday	n. 全盛期
-primitive	上古的，原始的 举个例子： "他们采用了原始的技术"。 这句话中，使用 "primitive" 是更准确的选择，因为它描述了一种简单、基础或未发展的技术，暗示这种技术属于早期阶段或未经改进。使用 "primal" 在这个句子中并不合适，因为 "primal" 更强调事物的根本性质，而不是它的发展程度或进化状态。
+primitive	adj. 上古的，原始的 举个例子： "他们采用了原始的技术"。 这句话中，使用 "primitive" 是更准确的选择，因为它描述了一种简单、基础或未发展的技术，暗示这种技术属于早期阶段或未经改进。使用 "primal" 在这个句子中并不合适，因为 "primal" 更强调事物的根本性质，而不是它的发展程度或进化状态。
 primordial	adj. 原始的，最初的 The primordial oceans existed long before the arrival of humans.
 priority	n. 优先，优先权
 pristine	adj. 原始的，未被破坏的
@@ -38,7 +38,7 @@ proceed	v. 进行，继续下去
 proceeds	（pl）收益 [ph] net proceeds [ph] proceeds of crime
 proceeding	n./v. 行动；进行
 process	n./v. 过程；加工
-proclaim	声明，宣告 [ph] proclaim one's love to their significant others [ph] proclaim the new policies
+proclaim	v. 声明，宣告 [ph] proclaim one's love to their significant others [ph] proclaim the new policies
 proclivity	倾向，癖性 [ph] show a proclivity towards sth. [syn]"proclivity" 在强调内在性倾向、固有特质或描述具体而特定的倾向时，不适合直接替换为 "tendency" 和 "inclination"。
 prod	n./v. 鼓励；戳，刺。 [ph] prod sb. into action [ph] give sb. a gentle prod
 prodigious	巨大的，惊人的；挥霍的 [ph] a prodigious amount of sth. [ph] the prodigious talent of sb.[syn] 同义词区别：Prodigious的同义词包括"enormous"（巨大的）和"immense"（极大的）。然而，与这两个词相比，prodigious更强调事物的异常、惊人或超乎寻常的程度。
@@ -154,7 +154,7 @@ quantitative	adj. 定量的；数量的 [ph] quantitative methods [ph] quantitat
 quantum theory	（物理）量子论
 quarry	n. 采石场，露天矿场
 quarter	n./v. 四分之一；把...四等分
-quarterly	每季地 [ph]quarterly financial report [ph] quarterly meeting
+quarterly	adj./adv./n. 每季的；每季地；季刊 [ph]quarterly financial report [ph] quarterly meeting
 headquarters	n. 司令部，总部
 quartz	石英 [ph] made of quartz [ph] Quartz crystals
 quench	v. 解渴；熄灭；扑灭；（金属）淬火
@@ -177,7 +177,7 @@ radiant	adj. 发光的；荣光焕发的[st] The sun cast a radiant glow over th
 radiate	v. 放射；辐射 [st] The sun radiates warmth and light to the surrounding environment.
 irradiate	照射 [ph] ~ sth. with sth. [syn] 区别: "irradiate"、"shine"、"illuminate"、"beam" 都表示照射或照明物体或区域。然而，它们在用法和强调上有所不同。"irradiate" 强调使用光、辐射或能量对物体进行照射，通常用于科学、医学或技术上的研究和应用。"shine" 指物体表面反射光线或发出光亮，可以是自然光、人工光或物体自身的光。"illuminate" 意味着用光线或照明设备照亮某个区域，以提供光线或清晰度。"beam" 强调光线以集中、明亮或有力的方式照射，可以指激光束、聚光灯束等。
 radiation	n. 辐射，发光，放热 [ph] exposure to radiation
-radical	根本的；激进的
+radical	adj./n. 根本的；激进的；激进分子；激进派
 radically	根本上 [ph]radically different approach [syn] 区别: "radically"、"drastically"、"fundamentally"、"profoundly" 都表示在程度、方式或性质上发生重大或显著的变化或转变。然而，它们在语气和强调上有所不同。"radically" 强调变化的程度或方式是根本性的，可能涉及彻底的改变或采用激进的方法。"drastically" 强调变化的程度非常大，突出变化的剧烈性或明显性。"fundamentally" 指的是变化涉及事物的基本原则、性质或结构，强调变化的根本性。"profoundly" 意味着变化是深刻而广泛的，可能对个体、社会或思想产生深远的影响。
 sporadically	偶发地, 零星地 [ph] occur sporadically [syn]"sporadically"、"occasionally"、"intermittently"、"infrequently" 都表示发生或发生的方式不连续、不规律或间断。然而，它们在频率和程度上有所不同。"sporadically" 强调事物发生的不规律性和零星性，可能指在不同的时间或地点发生，没有固定的模式或规律。
 raft	筏，救生艇
@@ -186,7 +186,7 @@ craft	工艺，手艺 n./v. [st] She is skilled in the craft of pottery
 aircraft	n. 飞机；航空器
 spacecraft	太空船
 hovercraft	气垫船
-rage	风尚，风靡一时的事物 [ph] be a rage among
+rage	n./v. 风尚，风靡一时的事物；发怒，怒吼；肆虐 [ph] be a rage among
 coverage	覆盖
 news coverage	新闻报道 news coverage of the election/the natural disaster
 outrage	n./v. 愤怒；义愤；使震怒；冒犯
@@ -204,18 +204,18 @@ rampant	蔓生的，猖獗的 [st] The problem of pollution has reached rampant 
 ranch	农场，牧场 ranching industry
 ranching	n. 牧场经营；畜牧业
 rancher	大农场经营者；牧场工人
-range	行列；范围
+range	n./v. 行列；范围；排列；变化/延伸于某范围
 a range of	一系列的东西
 range from...to...	从...到...范围不等
-rank	排列，归类
+rank	n./v. 等级，地位；排列，归类
 rare	稀有的
 rarefy	使稀少，使稀薄 the air rarefied
 rarely	很少地，罕有地
 ratify	批准 ratify the new constitution
-ration	定量，配给量[ph]survive on limited rations of food
+ration	n./v. 定量，配给量；定量供应，配给 [ph]survive on limited rations of food
 rationing	（食物等的）配给制度 [ph]~ measures [ph]~ of water
 rational	理性的，合理的
-rattle	拨浪鼓；格格声[ph]The rattle of the train wheels
+rattle	n./v. 拨浪鼓；格格声；使发出格格声，使震颤 [ph]The rattle of the train wheels
 rattlesnake	响尾蛇
 raucous	喧闹的 The raucous laughter/crowd/street
 raven	大乌鸦 [ph]a flock of ravens
@@ -223,7 +223,7 @@ ravine	沟壑，峡谷
 ray	光线
 rayon	人造纤维 [ph]rayon fabric
 crayon	蜡笔、彩笔及其绘画
-fray	使磨损 [st]The edges of the old book cover began to fray, revealing the worn pages beneath.
+fray	v./n. 使磨损，磨损；争吵，小冲突 [st]The edges of the old book cover began to fray, revealing the worn pages beneath.
 foray	突袭 [ph]make a foray into jungle/industry [ph] foray into sth.
 tray	碟，盘子
 array	编队；大批
