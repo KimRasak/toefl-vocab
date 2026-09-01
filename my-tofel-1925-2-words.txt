@@ -1,29 +1,29 @@
 scarlet	猩红的，鲜红的[ph]a scarlet dress[ph]the sky turned scarlet[ph]scarlet roses
 scavenger	清道夫，食腐动物scavenger 是一个名词，指的是食腐动物或食腐性生物，它们以死去的动物或其他有机物为食。在人类文化中，scavenger 也可以指那些在废弃物中寻找可回收物品或有价值物品的人。[ph]skillful scavengers
-scenery	风景，景色
-scenic	风景如画的[mean]scenic 是一个形容词，用来描述风景优美的、景色如画的、或景观壮丽的。[ph]take a scenic drive[ph]scenic trails and picturesque lakes[ph]a scenic valley surrounded by mountains and forests
+scenery	n. 风景，景色
+scenic	adj. 风景如画的[mean]scenic 是一个形容词，用来描述风景优美的、景色如画的、或景观壮丽的。[ph]take a scenic drive[ph]scenic trails and picturesque lakes[ph]a scenic valley surrounded by mountains and forests
 scent	n./v. 气味；香味[mean]名词：作为名词时，scent 表示气味、香味或气息，特指能被嗅觉察觉的味道。动词：作为动词时，scent 表示嗅到、闻到或察觉气味，也可以表示寻找或发现（如猎犬追踪猎物的气味）。[ph]the scent of freshly baked bread[ph]the dog scented something interesting[ph]scented the flowers in the garden
-ascent	上升，攀登ascent 是一个常见的词汇，常用于描述爬山、攀登、飞机或气球等向上移动的行为或过程。[ph]climbers began their ascent[st]The hot air balloon made a smooth ascent into the sky[st]The aircraft started its ascent after takeoff
-descent	降下，降落；世系，血统[ph]airplane began its descent[ph]starting our descent[st]He is of French descent
+ascent	n. 上升，攀登ascent 是一个常见的词汇，常用于描述爬山、攀登、飞机或气球等向上移动的行为或过程。[ph]climbers began their ascent[st]The hot air balloon made a smooth ascent into the sky[st]The aircraft started its ascent after takeoff
+descent	n. 降下，降落；世系，血统[ph]airplane began its descent[ph]starting our descent[st]He is of French descent
 quiescent	静止的[mean]quiescent 是一个形容词，指的是静止的、不活动的或处于休眠状态的，表示缺乏运动或活动的状态。[ph]bears are quiescent[st]The volcano has been quiescent for many years[st]The quiescent lake reflected the surrounding mountains and trees perfectly.
 incandescent	遇热发光的, 白炽的[mean]incandescent 是一个形容词，指的是发光的、白热化的或炽热的，特指物体因高温而发出明亮的光。[ph]incandescent light bulb[ph]glowed incandescent[ph]an incandescent performance
-scarcely	scarcely 是一个副词，表示几乎不、几乎没有，用来强调某事非常少或接近不存在。[st]The weather was so hot that there was scarcely any shade to find[st]She had scarcely started her new job[st]The book was so engaging that he could scarcely put it down[syn]"Scarcely"、"hardly"、"barely" 和 "almost not" 都有关于几乎不或几乎没有的意思，它们在使用上非常接近。"Scarcely" 和 "hardly" 通常可以互换使用，都表示几乎不或几乎没有。"Barely" 表示几乎不或刚刚够，强调程度更接近几乎不及格的程度。"Almost not" 表示几乎不，与 "scarcely" 和 "hardly" 的意思相同，但相对较口语化。总的来说，"scarcely"、"hardly"、"barely" 和 "almost not" 都表示几乎不或几乎没有，可根据语境和个人喜好选择使用。这些词汇用于强调某事物极少或接近不存在的情况。
-scare	惊吓，使受惊
+scarcely	adv. scarcely 是一个副词，表示几乎不、几乎没有，用来强调某事非常少或接近不存在。[st]The weather was so hot that there was scarcely any shade to find[st]She had scarcely started her new job[st]The book was so engaging that he could scarcely put it down[syn]"Scarcely"、"hardly"、"barely" 和 "almost not" 都有关于几乎不或几乎没有的意思，它们在使用上非常接近。"Scarcely" 和 "hardly" 通常可以互换使用，都表示几乎不或几乎没有。"Barely" 表示几乎不或刚刚够，强调程度更接近几乎不及格的程度。"Almost not" 表示几乎不，与 "scarcely" 和 "hardly" 的意思相同，但相对较口语化。总的来说，"scarcely"、"hardly"、"barely" 和 "almost not" 都表示几乎不或几乎没有，可根据语境和个人喜好选择使用。这些词汇用于强调某事物极少或接近不存在的情况。
+scare	n./v. 惊吓；使受惊
 scatter	使分散，扩散[v.]使分散、使散开或使散布[n.]散乱的东西或人群[ph]scatter the leaves[ph]scatter the petals[ph]a scatter of people
 scene	地点，现场；景色
 revitalization	恢复活力，焕发新生（100%）[ph]a process of revitalization [ph]launched a revitalization program[syn]它们在语义上相似，强调给予某物新的能量和活力。Revitalization 更常用于描述城市、社区或经济的振兴过程。Rejuvenation 强调恢复年轻和活力，可以指身体、心灵或事物的复兴。Renewal 更强调重新开始或更新事物的过程。Reinvigoration 强调为某物注入新的活力和精神。
 revive	恢复，复苏（60%）使重新活跃（40%）[ph]perform CPR to revive the unconscious swimmer.[st]A cup of coffee in the morning helps to revive my energy and wake me up.[st]The theater has plans to revive a classic play from the 1920s.
 revival	复兴，复活[st]The city experienced an economic revival...[st]The fashion industry has seen a revival of vintage styles in recent years.[st]The concert was a revival of classic jazz music from the 1920s.[syn]Revival 更常用于描述文化、经济或社会的复兴。Rejuvenation 强调恢复年轻、活力和活跃。Renaissance 指的是文艺复兴时期或某一领域的文化复兴。Resurgence 强调某事物的再次兴起或激增。
 revolt	反抗，起义，反叛 n./v.[ph]revolted against the tyrannical regime[ph]The taste and smell of the food revolted her[ph]The revolt against[syn]Revolt 更常用于描述群体或人民对政治、社会或经济状况的反抗，通常涉及大规模行动或事件。Rebel 强调个体或群体的反叛行为，有时与政治或社会体系发生冲突。Resist 指抵抗、反对或拒绝屈服于压迫或控制。Defy 表示公然违抗、藐视或挑战某种权威或规定。
-revolutionize	彻底改变，颠覆 v.[st]The invention of the Internet revolutionized the way we communicate and access information.
-revolution	革命 [ph]The French Revolution in the 18th century[syn]Revolution 是最常用的词汇，指代广义的社会变革或变革运动。Upheaval 强调剧烈的变动、动荡或混乱。Uprising 强调群体或人民的起义或反抗行动。Transformation 强调通过变革和转型来实现新的形态或状态。
-revolutionary	革命性的、突破性的[ph]The invention of the Internet brought about revolutionary changes[ph]The revolutionary ideas of equality and liberty[syn]Revolutionary 更常用于描述与革命相关的领域、思想或行为，强调对现有秩序或体系的根本性改变。Innovative 强调创新和新颖，指的是引入新的想法、方法或技术。Groundbreaking 强调在某一领域或领域中具有开创性的、前沿的突破。Radical 指的是与传统观念、方法或做法彻底不同的、激进的。
+revolutionize	v. 彻底改变，颠覆[st]The invention of the Internet revolutionized the way we communicate and access information.
+revolution	n. 革命 [ph]The French Revolution in the 18th century[syn]Revolution 是最常用的词汇，指代广义的社会变革或变革运动。Upheaval 强调剧烈的变动、动荡或混乱。Uprising 强调群体或人民的起义或反抗行动。Transformation 强调通过变革和转型来实现新的形态或状态。
+revolutionary	adj. 革命性的、突破性的[ph]The invention of the Internet brought about revolutionary changes[ph]The revolutionary ideas of equality and liberty[syn]Revolutionary 更常用于描述与革命相关的领域、思想或行为，强调对现有秩序或体系的根本性改变。Innovative 强调创新和新颖，指的是引入新的想法、方法或技术。Groundbreaking 强调在某一领域或领域中具有开创性的、前沿的突破。Radical 指的是与传统观念、方法或做法彻底不同的、激进的。
 rhetoric	修辞学，辞言运用（60%）浮夸的言辞，夸大其词（40%）[st]The politician's speech was filled with persuasive rhetoric to win over the voters.[ph]exaggerated rhetoric[st]The study of rhetoric helps individuals develop effective communication skills and persuasive techniques.
 rhythm	节奏，韵律[ph]The poem has a beautiful rhythm that flows smoothly from line to line.[ph]The dance routine had a fast and energetic rhythm
 rhythmic	有节奏感的，有规律的（100%)[st]The dancers moved in perfect synchrony, creating a rhythmic and captivating performance.[st]The waves crashed against the shore in a rhythmic pattern, creating a soothing sound.
 rhythmical	有韵律的，有节奏的[st]The children clapped their hands in a rhythmical pattern, creating a playful beat.[st]The poet's words flowed in a rhythmical manner, captivating the listeners with their musicality.[syn]Rhythmical 是 rhythm 的形容词形式，与 rhythmic 含义相同。
 ridge	山脊、脊梁（70%）脊线、脊状物（30%）[ph]hike along the ridge[ph]The roof of the house had a ridge
-ridiculous	荒唐的，可笑的
+ridiculous	adj. 荒唐的，可笑的
 ridicule	嘲笑、讥讽（80%）被嘲笑、被讥讽（20%）v./n.[ph]ridicule the teacher/the idea[ph]became the target of ridicule[st]The politician faced widespread ridicule for his controversial statement
 rifle	步枪（70%）射击（30%） n./v.[ph]carried his rifle[ph]took aim with his rifle[ph]rifled through his bag/the old documents
 rift	裂缝、裂隙（50%）分裂、分歧（30%）不和、矛盾（20%)[st]The earthquake caused a deep rift in the ground[st]The political party experienced a rift within its members[st]The ongoing rift between the two neighbors has resulted in strained diplomatic relations.
@@ -420,7 +420,7 @@ spiny	多刺的，刺状的[mean]有刺的；多刺的。这个词用来描述�
 spinet	小型立式钢琴[ph]She practiced playing the spinet every afternoon[ph]The antique spinet
 spinach	菠菜[ph]fresh spinach leaves[ph]The creamy spinach soup
 spinning	旋转的[st]The children enjoyed spinning around in the park[st]The textile factory specializes in spinning high-quality yarn for various types of fabric
-spiral	螺旋形的，盘旋的 adj.[ph]spiral design
+spiral	adj. 螺旋形的；盘旋的；n. 螺旋；螺旋线；v. 盘旋；螺旋式上升或下降[ph]spiral design
 spiritual	精神上的
 splash	溅，泼 v. 溅湿；溅泼。作为动词，表示液体或其他物质突然或猛烈地飞溅或撞击其他表面，通常产生声音和水花。[ph]splashing in the pool[ph]splash hot soup when stirring it in the pot.n.溅湿声；飞溅的液体。作为名词，指由液体撞击表面所产生的声音或水花。[ph]The splash of the waves[ph]there were splashes of mud on the sidewalk
 splendor	壮丽，辉煌 n.[ph]royal splendor[ph]The natural splendor of the sunrise
