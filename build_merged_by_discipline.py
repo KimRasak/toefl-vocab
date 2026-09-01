@@ -1182,6 +1182,50 @@ main{{padding:12px 16px;max-width:800px;margin:0 auto}}
 .empty{{text-align:center;color:var(--muted);padding:40px;font-size:14px}}
 .foot{{text-align:center;margin:32px 0;color:var(--muted);font-size:12px}}
 
+/* Auto-play bar */
+.autobar{{
+  position:fixed;bottom:0;left:0;right:0;z-index:30;
+  background:var(--card);border-top:1px solid var(--border);
+  padding:10px 16px;padding-bottom:max(10px,env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  box-shadow:0 -2px 12px rgba(0,0,0,.15);
+  transition:transform .25s;
+}}
+.autobar.hidden{{transform:translateY(100%)}}
+.autobar .ab-row{{display:flex;align-items:center;gap:8px;width:100%}}
+.autobar .ab-word{{
+  font-size:18px;font-weight:700;flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}}
+.autobar .ab-def{{
+  font-size:12px;color:var(--muted);width:100%;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}}
+.autobar .ab-pos{{font-size:12px;color:var(--muted);white-space:nowrap}}
+.autobar button{{
+  background:var(--card2);border:1px solid var(--border);color:var(--fg);
+  border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;
+  white-space:nowrap;
+}}
+.autobar button:hover{{border-color:var(--accent)}}
+.autobar button.primary{{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}}
+.autobar select,.autobar input[type=number]{{
+  background:var(--card2);border:1px solid var(--border);color:var(--fg);
+  border-radius:8px;padding:5px 8px;font-size:12px;
+}}
+.autobar input[type=number]{{width:60px}}
+.ab-toggle{{
+  position:fixed;bottom:16px;right:16px;z-index:29;
+  background:var(--accent);color:#fff;border:0;border-radius:50%;
+  width:48px;height:48px;font-size:22px;cursor:pointer;
+  box-shadow:0 2px 12px rgba(76,141,255,.4);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:env(safe-area-inset-bottom);
+}}
+.ab-toggle:hover{{opacity:.85}}
+.witem.playing{{border-color:var(--accent);background:var(--accent2);background:rgba(76,141,255,.08)}}
+body.autobar-open{{padding-bottom:100px}}
+
 /* hidden */
 .hidden{{display:none!important}}
 
@@ -1204,6 +1248,35 @@ main{{padding:12px 16px;max-width:800px;margin:0 auto}}
 </header>
 <main id="main"></main>
 <div class="foot">TOEFL 学科词汇总表 · 1791 + 1925 + 1675 合并 · 按学科分组</div>
+
+<!-- Auto-play bar -->
+<button class="ab-toggle" id="abToggle" title="连播模式">▶</button>
+<div class="autobar hidden" id="autobar">
+  <div class="ab-row">
+    <button class="primary" id="abPlayBtn">▶ 连播</button>
+    <span class="ab-word" id="abWord">—</span>
+    <span class="ab-pos" id="abPos"></span>
+  </div>
+  <div class="ab-row">
+    <div class="ab-def" id="abDef">&nbsp;</div>
+  </div>
+  <div class="ab-row">
+    <label style="font-size:12px;color:var(--muted)">起始:</label>
+    <input type="number" id="abStart" min="1" value="1" title="从第几个词开始">
+    <label style="font-size:12px;color:var(--muted)">间隔:</label>
+    <select id="abGap">
+      <option value="0">无间隔</option>
+      <option value="1000" selected>1 秒</option>
+      <option value="2000">2 秒</option>
+      <option value="3000">3 秒</option>
+      <option value="5000">5 秒</option>
+    </select>
+    <button id="abPrev" title="上一个">⏮</button>
+    <button id="abNext" title="下一个">⏭</button>
+    <button id="abClose" title="关闭">✕</button>
+  </div>
+</div>
+
 <script>
 const DATA = {data_js};
 
@@ -1316,6 +1389,187 @@ searchInput.addEventListener('input', () => {{
 }});
 
 render('');
+
+// ─── Auto-play ───
+const ALL_WORDS = [];
+DATA.forEach(t => t.words.forEach(w => ALL_WORDS.push(w)));
+
+let abPlaying = false, abIdx = 0, abToken = 0;
+let abWake = null, abTimer = null;
+const abBar = document.getElementById('autobar');
+const abToggleBtn = document.getElementById('abToggle');
+const abPlayBtn = document.getElementById('abPlayBtn');
+const abWordEl = document.getElementById('abWord');
+const abPosEl = document.getElementById('abPos');
+const abDefEl = document.getElementById('abDef');
+const abStartInput = document.getElementById('abStart');
+const abGapSel = document.getElementById('abGap');
+
+// Load saved position
+const AB_KEY = 'merged_autoplay';
+function abLoad() {{
+  try {{
+    const s = JSON.parse(localStorage.getItem(AB_KEY) || '{{}}');
+    if (s.idx >= 0 && s.idx < ALL_WORDS.length) abIdx = s.idx;
+    if (s.gap) abGapSel.value = String(s.gap);
+  }} catch(e) {{}}
+}}
+function abSave() {{
+  try {{
+    localStorage.setItem(AB_KEY, JSON.stringify({{ idx: abIdx, gap: parseInt(abGapSel.value) }}));
+  }} catch(e) {{}}
+}}
+
+function speakAsync(word) {{
+  return new Promise(resolve => {{
+    const clean = word.replace(/['']/g, "'");
+    if (!clean) {{ resolve(); return; }}
+    if (audioEl) {{ audioEl.onerror = null; audioEl.onended = null; try {{ audioEl.pause(); }} catch(e) {{}} }}
+    audioEl = new Audio();
+    let fallback = false;
+    const finish = () => {{ audioEl.onended = null; audioEl.onerror = null; resolve(); }};
+    audioEl.onerror = () => {{
+      if (fallback) {{ finish(); return; }}
+      fallback = true;
+      audioEl.onended = finish;
+      audioEl.onerror = finish;
+      audioEl.src = GOOGLE_TTS + encodeURIComponent(clean);
+      audioEl.play().catch(finish);
+    }};
+    audioEl.onended = finish;
+    audioEl.src = YOUDAO_TTS + encodeURIComponent(clean) + '&type=2';
+    audioEl.play().catch(() => {{ if (!fallback) audioEl.onerror(); else finish(); }});
+  }});
+}}
+
+function sleepCancelable(ms) {{
+  return new Promise(resolve => {{
+    abWake = resolve;
+    abTimer = setTimeout(resolve, ms);
+  }});
+}}
+
+function abUpdateUI() {{
+  const w = ALL_WORDS[abIdx];
+  abPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
+  abToggleBtn.textContent = abPlaying ? '⏸' : '▶';
+  abWordEl.textContent = w ? w.w : '—';
+  abDefEl.textContent = w ? (w.d || w.f || '') : '';
+  abPosEl.textContent = ALL_WORDS.length ? (abIdx + 1) + '/' + ALL_WORDS.length : '';
+  abStartInput.value = abIdx + 1;
+
+  // Highlight current word in list
+  document.querySelectorAll('.witem.playing').forEach(el => el.classList.remove('playing'));
+  if (w) {{
+    const items = document.querySelectorAll('.witem');
+    items.forEach(el => {{
+      const ww = el.querySelector('.ww');
+      if (ww && ww.textContent.replace('🔊','').trim() === w.w) {{
+        el.classList.add('playing');
+      }}
+    }});
+  }}
+}}
+
+async function abLoop() {{
+  const token = ++abToken;
+  while (abPlaying && token === abToken) {{
+    if (abIdx >= ALL_WORDS.length) {{
+      abIdx = 0; abSave(); abStop();
+      return;
+    }}
+    abUpdateUI();
+    // Scroll word into view
+    const playing = document.querySelector('.witem.playing');
+    if (playing) playing.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+
+    await speakAsync(ALL_WORDS[abIdx].w);
+    if (!abPlaying || token !== abToken) return;
+
+    abIdx++; abSave(); abUpdateUI();
+    if (abIdx >= ALL_WORDS.length) continue;
+
+    const gap = parseInt(abGapSel.value, 10) || 0;
+    if (gap) {{
+      await sleepCancelable(gap);
+      if (!abPlaying || token !== abToken) return;
+    }}
+  }}
+}}
+
+function abStart() {{
+  if (abPlaying) return;
+  if (!ALL_WORDS.length) return;
+  if (abIdx >= ALL_WORDS.length) abIdx = 0;
+  abPlaying = true;
+  abUpdateUI();
+  abLoop();
+}}
+
+function abStop() {{
+  abPlaying = false;
+  abToken++;
+  if (abTimer) {{ clearTimeout(abTimer); abTimer = null; }}
+  if (abWake) {{ const w = abWake; abWake = null; w(); }}
+  if (audioEl) {{ try {{ audioEl.pause(); }} catch(e) {{}} audioEl.onended = null; audioEl.onerror = null; }}
+  abUpdateUI();
+}}
+
+// Toggle bar visibility
+abToggleBtn.onclick = () => {{
+  const show = abBar.classList.contains('hidden');
+  abBar.classList.toggle('hidden', !show);
+  document.body.classList.toggle('autobar-open', show);
+  abToggleBtn.style.display = show ? 'none' : '';
+  if (show) abUpdateUI();
+}};
+
+abPlayBtn.onclick = () => {{ abPlaying ? abStop() : abStart(); }};
+
+document.getElementById('abClose').onclick = () => {{
+  abStop();
+  abBar.classList.add('hidden');
+  document.body.classList.remove('autobar-open');
+  abToggleBtn.style.display = '';
+}};
+
+document.getElementById('abPrev').onclick = () => {{
+  if (abIdx > 0) {{ abIdx--; abSave(); }}
+  if (abPlaying) {{ abStop(); abStart(); }}
+  else abUpdateUI();
+}};
+
+document.getElementById('abNext').onclick = () => {{
+  if (abIdx < ALL_WORDS.length - 1) {{ abIdx++; abSave(); }}
+  if (abPlaying) {{ abStop(); abStart(); }}
+  else abUpdateUI();
+}};
+
+abStartInput.onchange = () => {{
+  const v = parseInt(abStartInput.value, 10);
+  if (v >= 1 && v <= ALL_WORDS.length) {{
+    abIdx = v - 1; abSave();
+    if (abPlaying) {{ abStop(); abStart(); }}
+    else abUpdateUI();
+  }}
+}};
+
+abGapSel.onchange = () => {{ abSave(); }};
+
+// Click a word's speaker button to set autoplay position
+mainEl.addEventListener('click', (e) => {{
+  const btn = e.target.closest('.spk-btn');
+  if (!btn) return;
+  const word = btn.getAttribute('onclick')?.match(/speak\\('([^']+)'\\)/)?.[1];
+  if (!word) return;
+  const idx = ALL_WORDS.findIndex(w => w.w === word);
+  if (idx >= 0) {{
+    abIdx = idx; abSave(); abUpdateUI();
+  }}
+}});
+
+abLoad();
+abUpdateUI();
 </script>
 </body>
 </html>'''
