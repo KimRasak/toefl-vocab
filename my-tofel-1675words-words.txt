@@ -1,17 +1,17 @@
-insular	海岛的
-peninsula	半岛
-islet	小岛
+insular	adj. 海岛的
+peninsula	n. 半岛
+islet	n. 小岛
 maritime	a 海的，海上的
-moist	潮湿的
-ledge	暗礁；突出的部分
-ebb	退潮
-terrestrial	陆地的
+moist	adj. 潮湿的
+ledge	n. 暗礁；突出的部分
+ebb	n./v. 退潮
+terrestrial	adj. 陆地的
 outskirt	n.外边，郊区
-endemic	地方性的
-cosmopolitan	世界性的
+endemic	adj. 地方性的
+cosmopolitan	adj. 世界性的
 subterrane	n.地下
 subterranean	地下的
-cavern	大洞穴
+cavern	n. 大洞穴
 cleft	裂缝
 crevice	裂缝
 equator	赤道

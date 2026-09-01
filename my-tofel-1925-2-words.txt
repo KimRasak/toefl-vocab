@@ -44,7 +44,7 @@ ripe	熟的；成熟的
 ripen	（使）成熟[ph]fruits ripen fully;bananas will ripen faster;skills and talents began to ripen
 risky	危险的，冒险的
 frisky	活泼的，欢闹的[mean]frisky 是一个形容词，通常用来形容动物或人活泼、欢快、调皮或兴奋的状态。[st]The puppy was feeling frisky and ran around the backyard[ph]frisky children playing tag[syn]Frisky、playful、lively 和 mischievous 都表示活泼、欢快或调皮。它们通常用于描述动物或人的行为、性格或状态。Frisky 强调活泼、欢快和有趣的状态，特别适用于形容动物的活跃玩耍。Playful 侧重于嬉戏、玩耍和有趣的行为，可以用于形容孩子或动物的欢乐玩耍。Lively 表示充满生气和活力，可用于形容人、动物或场景的生动和活跃。Mischievous 强调有点调皮、淘气和捣蛋，通常用于形容孩子或动物的捣蛋行为。
-briskness	[mean]briskness 是一个名词，表示活泼、轻快、迅速或清新的特性或状态。[ph]The briskness of the morning air;need for briskness and precision;briskness of her response
+briskness	n. [mean]briskness 是一个名词，表示活泼、轻快、迅速或清新的特性或状态。[ph]The briskness of the morning air;need for briskness and precision;briskness of her response
 rite	n. 仪式[ph]traditional religious rites;initiation rite;funeral rite[syn]Rite、ceremony、ritual 和 observance 都表示仪式、典礼或仪式行为。它们描述了按照一定规则和传统进行的庆祝、纪念或宗教仪式。Rite 是最常用的词汇，通常用来指宗教仪式、传统仪式或特定的礼仪行为。Ceremony 侧重于正式的、庄重的或隆重的仪式，可用于描述婚礼、毕业典礼或重要场合的庆祝活动。Ritual 也指宗教或传统的仪式，强调按照特定的仪式程序和步骤进行。Observance 用于形容遵守传统或纪念的行为，强调遵循规定或礼节。
 ritual	[mean]ritual 是一个名词，表示仪式、典礼或仪式性的行为。[st]The priest performed the ancient ritual to bless the newborn baby.[st]traditional rituals to honor the gods
 rival	比得上，与...相匹敌 v.[ph]rival each other in their efforts[ph]rival those of the most experienced professionals[syn]Rival、competitor、adversary 和 compete 都表示竞争对手或竞争。它们用于描述在竞争中相互对抗或竞争的个体或团体。Rival 是最常用的词汇，强调在竞争中与其他人或组织相对抗，可以用于形容在商业、体育或其他领域的竞争。Competitor 侧重于与其他个体或团体在某一方面的竞争，通常用于商业竞争或比赛。Adversary 指对手或敌手，侧重于敌对或敌对立场，常用于形容比赛或竞争中的对手。Compete 是一个动词，表示参加竞争或争夺，描述了参与竞争或比赛的行为。
@@ -337,7 +337,7 @@ sociable	好交际的，友善的
 social distinction	具有明显的社会身分或地位[ph]symbol of social distinction[ph]reduce social distinctions
 solar	太阳的
 solar cell	太阳能电池
-solder	焊接，焊在一起[mean]含义1（动词）： 焊接；用焊料连接。 （频率：40%）含义2（名词）： 焊料；焊接用的金属合金。 （频率：60%）[ph]solder the two metal pieces together[ph]The solder melted smoothly[ph]learned how to solder
+solder	n./v. 焊接，焊在一起[mean]含义1（动词）： 焊接；用焊料连接。 （频率：40%）含义2（名词）： 焊料；焊接用的金属合金。 （频率：60%）[ph]solder the two metal pieces together[ph]The solder melted smoothly[ph]learned how to solder
 soldier	军人，士兵
 sole	单独的，惟一的
 solely	独自地，单独地

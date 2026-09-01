@@ -2183,10 +2183,20 @@ focusMarkEl.onclick = () => {{
 
 document.getElementById('abFocusBtn').onclick = () => {{ focusEnter(); }};
 
-document.getElementById('focusRevealArea').onclick = () => {{
+// Reveal only on a genuine click. A drag is reserved for selecting/copying text.
+const focusRevealArea = document.getElementById('focusRevealArea');
+let focusPointerDown = null;
+focusRevealArea.addEventListener('pointerdown', (e) => {{
+  focusPointerDown = {{ x: e.clientX, y: e.clientY }};
+}});
+focusRevealArea.addEventListener('click', (e) => {{
+  const selection = window.getSelection();
+  const moved = focusPointerDown && Math.hypot(e.clientX - focusPointerDown.x, e.clientY - focusPointerDown.y) > 6;
+  focusPointerDown = null;
+  if (moved || (selection && !selection.isCollapsed)) return;
   const revealed = focusOverlay.classList.toggle('revealed');
   document.getElementById('focusHint').style.display = revealed ? 'none' : '';
-}};
+}});
 
 function focusToggleHard() {{
   abHardOnly = !abHardOnly;
