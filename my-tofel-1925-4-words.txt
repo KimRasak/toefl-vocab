@@ -1,53 +1,53 @@
-transcript	抄本
-transfer	转移；转学
-transform	（使）变形，改观
-transformation	转变；变形
-transition	转变，过渡
-translucent	半透明的；透明的
-transmit	传送，传播
-transmitter	传送者，发送器
-neurotransmitter	[生化]神经传递素
-transmute	使变化，使改变
-transparent	透明的
-transplant	移植
-trap	捕捉，困住；陷害
-trapper	设阱捕兽者
-strap	用带缚住, 用带捆扎
-trash	垃圾，废物
-treacherous	不可靠的，有暗藏的危险的
-tread	踏，践踏；行走
-treadmill	踏车
-treason	叛逆，叛国
-treasure trove	无主埋藏物，无主珍宝
-trove	被发现的东西，收藏的东西
-treatment	待遇，对待
-tremendous	巨大的，惊人的
-trench	沟，壕沟
-entrenched	（权利、传统）确立的，牢固的
-trend	倾向，趋势
-trespass	侵犯，闯入私人领地
-trespasser	侵犯（他人土地）者
+transcript	n. 抄本
+transfer	n./v. 转移；转学
+transform	v. （使）变形，改观
+transformation	n. 转变；变形
+transition	n./v. 转变，过渡
+translucent	adj. 半透明的；透明的
+transmit	v. 传送，传播
+transmitter	n. 传送者，发送器
+neurotransmitter	n. [生化]神经传递素
+transmute	v. 使变化，使改变
+transparent	adj. 透明的
+transplant	n./v. 移植
+trap	n./v. 捕捉，困住；陷害
+trapper	n. 设阱捕兽者
+strap	n./v. 带；用带缚住，用带捆扎
+trash	n./v. 垃圾，废物；丢弃
+treacherous	adj. 不可靠的，有暗藏的危险的
+tread	n./v. 踏，践踏；行走
+treadmill	n. 踏车
+treason	n. 叛逆，叛国
+treasure trove	n. 无主埋藏物，无主珍宝
+trove	n. 被发现的东西，收藏的东西
+treatment	n. 待遇，对待
+tremendous	adj. 巨大的，惊人的
+trench	n. 沟，壕沟
+entrenched	adj. （权利、传统）确立的，牢固的
+trend	n./v. 倾向，趋势
+trespass	n./v. 侵犯，闯入私人领地
+trespasser	n. 侵犯（他人土地）者
 trial	实验
-tribal	部落的，宗族的
-tribe	部落，部族
-tributary	辅助的，支流的
-tribute	贡品，礼物
-trickle	滴；细流
-trigger	引发，引起，触发
-trilogy	三部剧，三部曲
-trim	修剪，整饰
-triumph	胜利
-trivial	微不足道的，琐碎的
-tropical	热带的
-troublesome	讨厌的，麻烦的
-troubling	令人不安的，令人忧虑的
-troupe	剧团
-trumpet	喇叭
-trumpeter	喇叭手，号兵
-trustworthy	可信赖的
-tub	桶，浴盆
-tube	管子；电子管，显像管
-tuition	学费
+tribal	adj. 部落的，宗族的
+tribe	n. 部落，部族
+tributary	n./adj. 辅助的，支流的
+tribute	n. 贡品，礼物
+trickle	n./v. 滴；细流
+trigger	n./v. 引发，引起，触发
+trilogy	n. 三部剧，三部曲
+trim	n./v. 修剪，整饰
+triumph	n./v. 胜利；获胜
+trivial	adj. 微不足道的，琐碎的
+tropical	adj. 热带的
+troublesome	adj. 讨厌的，麻烦的
+troubling	adj. 令人不安的，令人忧虑的
+troupe	n. 剧团
+trumpet	n./v. 喇叭；吹喇叭
+trumpeter	n. 喇叭手，号兵
+trustworthy	adj. 可信赖的
+tub	n. 桶，浴盆
+tube	n. 管子；电子管，显像管
+tuition	n. 学费
 tumble	v./n. 翻滚；跌倒；摔倒；（使）滚落 n. 翻滚；跌倒
 tundra	苔原，冻土地带
 tunnel	隧道

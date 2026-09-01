@@ -119,7 +119,7 @@ gorilla	大猩猩
 lizard	蜥蜴
 moth	蛾
 canary	金丝雀
-catepillar	毛毛虫
+caterpillar	n. 毛毛虫
 dinosaur	恐龙
 chameleon	变色龙
 larva	幼虫
@@ -880,7 +880,7 @@ board	n. 木板；管理委员会；食物v. 乘船；用板铺；供膳食
 senate	n.参议院,上院
 congress	n.大会；国会，议会
 diplomatic	a.外交的；圆滑的
-deplomacy	外交；策略
+diplomacy	n. 外交；策略
 confederate	n. 同盟者，盟友
 league	n. 同盟，联盟；联合会
 affiliate	v.加入；联合
@@ -988,7 +988,7 @@ disrespectful	adj. 无礼的，轻视的
 discrimination	n. 歧视
 contemn	侮辱；鄙视
 belittle	v.轻视，贬抑
-distain	贬损，伤害（某人的）名誉：lose honor, respect, reputation；弄脏：dirty
+disdain	v. 贬损，伤害（某人的）名誉：lose honor, respect, reputation；弄脏：dirty
 despise	v.鄙视，藐视
 inert	（人）懒惰缺乏活力的；（物品）惰性的：sluggish, deficient
 blunt	adj. 钝的；迟钝的；直率的 / vt. 使变钝；使迟钝
@@ -1198,7 +1198,7 @@ comprise	vt. 包含；由...组成
 bias	n./vt. 偏见；偏向；使有偏见；使偏离
 deflect	v.偏离，转向，The mirror deflects sunlight onto the wall；deflect from + 目标/话题；deflect onto + 其他人/事
 embody	v.embody + 抽象名词（spirit / value / ideal / principle）：体现（精神/价值观/理念/原则）
-accomodate	容纳
+accommodate	v. 容纳
 preclude	使...不再是一种可选项，表示使得...客观上不再可能发生了
 forthright	坦率的 forthright feedback, be forthright about, be forthright with
 shortcut	n.近路，捷径
@@ -1648,7 +1648,7 @@ brisk	a.敏捷的，活泼的；清新健康的
 gleeful	adj. 及高兴的，兴奋的
 joyous	a.快乐的,高兴的
 elation	n.得意洋洋,兴高采烈
-ecstacy	恍惚；狂喜
+ecstasy	n. 恍惚；狂喜
 bliss	n.狂喜；福佑，天赐的福
 rapture	n.狂喜，欢天喜地
 enrapture	v.使狂喜，使高兴

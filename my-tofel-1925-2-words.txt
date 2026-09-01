@@ -2,7 +2,7 @@ scarlet	猩红的，鲜红的[ph]a scarlet dress[ph]the sky turned scarlet[ph]sc
 scavenger	清道夫，食腐动物scavenger 是一个名词，指的是食腐动物或食腐性生物，它们以死去的动物或其他有机物为食。在人类文化中，scavenger 也可以指那些在废弃物中寻找可回收物品或有价值物品的人。[ph]skillful scavengers
 scenery	风景，景色
 scenic	风景如画的[mean]scenic 是一个形容词，用来描述风景优美的、景色如画的、或景观壮丽的。[ph]take a scenic drive[ph]scenic trails and picturesque lakes[ph]a scenic valley surrounded by mountains and forests
-scent	气味；香味[mean]名词：作为名词时，scent 表示气味、香味或气息，特指能被嗅觉察觉的味道。动词：作为动词时，scent 表示嗅到、闻到或察觉气味，也可以表示寻找或发现（如猎犬追踪猎物的气味）。[ph]the scent of freshly baked bread[ph]the dog scented something interesting[ph]scented the flowers in the garden
+scent	n./v. 气味；香味[mean]名词：作为名词时，scent 表示气味、香味或气息，特指能被嗅觉察觉的味道。动词：作为动词时，scent 表示嗅到、闻到或察觉气味，也可以表示寻找或发现（如猎犬追踪猎物的气味）。[ph]the scent of freshly baked bread[ph]the dog scented something interesting[ph]scented the flowers in the garden
 ascent	上升，攀登ascent 是一个常见的词汇，常用于描述爬山、攀登、飞机或气球等向上移动的行为或过程。[ph]climbers began their ascent[st]The hot air balloon made a smooth ascent into the sky[st]The aircraft started its ascent after takeoff
 descent	降下，降落；世系，血统[ph]airplane began its descent[ph]starting our descent[st]He is of French descent
 quiescent	静止的[mean]quiescent 是一个形容词，指的是静止的、不活动的或处于休眠状态的，表示缺乏运动或活动的状态。[ph]bears are quiescent[st]The volcano has been quiescent for many years[st]The quiescent lake reflected the surrounding mountains and trees perfectly.
@@ -44,8 +44,8 @@ ripe	熟的；成熟的
 ripen	（使）成熟[ph]fruits ripen fully;bananas will ripen faster;skills and talents began to ripen
 risky	危险的，冒险的
 frisky	活泼的，欢闹的[mean]frisky 是一个形容词，通常用来形容动物或人活泼、欢快、调皮或兴奋的状态。[st]The puppy was feeling frisky and ran around the backyard[ph]frisky children playing tag[syn]Frisky、playful、lively 和 mischievous 都表示活泼、欢快或调皮。它们通常用于描述动物或人的行为、性格或状态。Frisky 强调活泼、欢快和有趣的状态，特别适用于形容动物的活跃玩耍。Playful 侧重于嬉戏、玩耍和有趣的行为，可以用于形容孩子或动物的欢乐玩耍。Lively 表示充满生气和活力，可用于形容人、动物或场景的生动和活跃。Mischievous 强调有点调皮、淘气和捣蛋，通常用于形容孩子或动物的捣蛋行为。
-briskness	[mena]briskness 是一个名词，表示活泼、轻快、迅速或清新的特性或状态。[ph]The briskness of the morning air;need for briskness and precision;briskness of her response
-rite	仪式[ph]traditional religious rites;initiation rite;funeral rite[syn]Rite、ceremony、ritual 和 observance 都表示仪式、典礼或仪式行为。它们描述了按照一定规则和传统进行的庆祝、纪念或宗教仪式。Rite 是最常用的词汇，通常用来指宗教仪式、传统仪式或特定的礼仪行为。Ceremony 侧重于正式的、庄重的或隆重的仪式，可用于描述婚礼、毕业典礼或重要场合的庆祝活动。Ritual 也指宗教或传统的仪式，强调按照特定的仪式程序和步骤进行。Observance 用于形容遵守传统或纪念的行为，强调遵循规定或礼节。
+briskness	[mean]briskness 是一个名词，表示活泼、轻快、迅速或清新的特性或状态。[ph]The briskness of the morning air;need for briskness and precision;briskness of her response
+rite	n. 仪式[ph]traditional religious rites;initiation rite;funeral rite[syn]Rite、ceremony、ritual 和 observance 都表示仪式、典礼或仪式行为。它们描述了按照一定规则和传统进行的庆祝、纪念或宗教仪式。Rite 是最常用的词汇，通常用来指宗教仪式、传统仪式或特定的礼仪行为。Ceremony 侧重于正式的、庄重的或隆重的仪式，可用于描述婚礼、毕业典礼或重要场合的庆祝活动。Ritual 也指宗教或传统的仪式，强调按照特定的仪式程序和步骤进行。Observance 用于形容遵守传统或纪念的行为，强调遵循规定或礼节。
 ritual	[mean]ritual 是一个名词，表示仪式、典礼或仪式性的行为。[st]The priest performed the ancient ritual to bless the newborn baby.[st]traditional rituals to honor the gods
 rival	比得上，与...相匹敌 v.[ph]rival each other in their efforts[ph]rival those of the most experienced professionals[syn]Rival、competitor、adversary 和 compete 都表示竞争对手或竞争。它们用于描述在竞争中相互对抗或竞争的个体或团体。Rival 是最常用的词汇，强调在竞争中与其他人或组织相对抗，可以用于形容在商业、体育或其他领域的竞争。Competitor 侧重于与其他个体或团体在某一方面的竞争，通常用于商业竞争或比赛。Adversary 指对手或敌手，侧重于敌对或敌对立场，常用于形容比赛或竞争中的对手。Compete 是一个动词，表示参加竞争或争夺，描述了参与竞争或比赛的行为。
 rivalry	竞争；敌对状态 n.[ph]intense rivalry between the two companies/political parties;passionate rivalry among the fans;[syn]Rivalry、competition、contention 和 conflict 都表示竞争、对抗或敌对关系。它们用于描述不同个体或团体之间的争夺、对抗或敌对的状态。Rivalry 是最常用的词汇，强调在竞争中的敌对或竞争关系，通常用于形容长期、激烈的竞争，也可指公司、运动队或个人之间的竞争。Competition 指竞争或比赛，侧重于在某种资源、荣誉或目标上的竞争。Contention 指争夺或争议，强调在观点、权力或地位上的竞争。Conflict 是一个更广泛的词汇，表示冲突、对抗或战争，指不同利益或意见之间的冲突，也可以包含暴力或敌对的情况。
@@ -60,7 +60,7 @@ roost	栖息处、休息地（100%）[ph]a cozy roost on the tree branch;a safe 
 rooster	公鸡
 rotate	v. 旋转；转动；轮换
 rotation	旋转
-rote	死记硬背，生搬硬套 n.[ph]learne/memorize sth. by rote
+rote	n. 死记硬背，生搬硬套 [ph]learn/memorize sth. by rote
 rough	粗糙的；不平的
 roughly	概略地；大致地
 routine	常规，惯例 n.[ph]followed a daily routine of[ph]handles the routine tasks[ph]practiced their routine
@@ -85,7 +85,7 @@ knapsack	(士兵或徒步旅行者用的帆布或皮制的)背包[ph]in his knap
 sacred	宗教的；祭祀的
 saddle	鞍子，马鞍[ph]adjusted the saddle[ph]placed the saddle
 saga	英雄传奇[ph]a fantasy saga[ph]family's saga
-sake	[mean]名词（缘由、目的、利益）含义的使用频率约为总使用频率的 60%。名词（日本米酒）含义的使用频率约为总使用频率的 40%。[ph]for everyone's sake[ph]a bottle of sake
+sake	n. [mean]名词（缘由、目的、利益）含义的使用频率约为总使用频率的 60%。名词（日本米酒）含义的使用频率约为总使用频率的 40%。[ph]for everyone's sake[ph]a bottle of sake
 salient	显著的，突出的[st]The most salient feature of the new smartphone is its advanced facial recognition technology.[st]The speaker highlighted the salient points of the research in her presentation."[ph]the salient aspects of
 saline	含盐的，咸的 adj.[st]The saline solution is used to clean and irrigate wounds.[ph]saline soils[ph]a saline nasal spray
 saliva	口水，唾液 n.[st]The smell of food triggered the flow of saliva in my mouth[st]Chewing stimulates the production of saliva, which aids in digestion[st]The doctor asked the patient to provide a saliva sample for testing.
@@ -94,16 +94,16 @@ saltiness	咸味，盐味。指食物或液体中的盐分所带来的味道或�
 desalination	脱盐，海水淡化。是指将海水或咸水中的盐分去除，以产生淡水的过程。[st]Many coastal regions rely on desalination plants to provide fresh water for their populations.[ph]Desalination technologies[st]The government invested in a large-scale desalination project to ensure water availability during droughts
 sample	范例，样品
 sanctimonious	假装圣洁的，装模作样的显示虔诚的。形容一个人故意表现得比实际更为虔诚、圣洁或道德高尚，通常是为了让他人对自己产生好感或印象。[st]She had a sanctimonious smile on her face while criticizing others' behavior.[st]His sanctimonious speeches about honesty were contradicted by his own dishonest actions.[st]Don't be fooled by his sanctimonious demeanor; he's not as virtuous as he pretends to be.
-sanction	名词（制裁、处罚）含义的使用频率约为总使用频率的 50%。[ph]imposed sanctions on[ph]received official sanctions
-sanctuary	[mean]名词（庇护所）含义的使用频率约为总使用频率的 60%。名词（避难权）含义的使用频率约为总使用频率的 10%。[st]The animal rescue organization provided a sanctuary for injured and abandoned animals.[st]Refugees sought sanctuary in neighboring countries
+sanction	n. 名词（制裁、处罚）含义的使用频率约为总使用频率的 50%。[ph]imposed sanctions on[ph]received official sanctions
+sanctuary	n. [mean]名词（庇护所）含义的使用频率约为总使用频率的 60%。名词（避难权）含义的使用频率约为总使用频率的 10%。[st]The animal rescue organization provided a sanctuary for injured and abandoned animals.[st]Refugees sought sanctuary in neighboring countries
 infirmary	医院, 医务室<美>养老院, 救济院[mean]医务室，医院，医疗所。通常指一个设备简单、规模较小的医疗机构，如校园医务室、军队医疗所或监狱医院。[st]The school infirmary provides basic medical care to students and staff[st]he injured soldiers were taken to the infirmary for treatment.[st]Inmates who require medical attention are sent to the prison infirmary.[syn]"infirmary"、"clinic"和"medical center" 都可以指医疗机构，但 "infirmary" 更常用于描述规模较小的医疗设施，特别是校园、军队或监狱等地方设立的。"clinic" 可以指医生的诊所或非常简单的医疗机构。而 "medical center" 则更普遍地指大型的医疗机构，可能提供更全面的医疗服务。
 sandy	沙的，多沙的[ph]the sandy beach[ph]vast sandy deserts.[ph]Walking on the sandy path
 sanitation	卫生，卫生设施，公共卫生。指与保持环境清洁、预防疾病传播和提供健康条件相关的措施和设施。 n.[st]"Proper sanitation is essential for preventing the spread of infectious diseases." (翻译：适当的卫生对于预防传染病的传播至关重要。)[st]"The city invested in improving sanitation by installing more public trash bins." (翻译：该市投资改善卫生状况，增设了更多的公共垃圾桶。)[st]"The organization focuses on providing clean water and sanitation facilities to rural communities." (翻译：该组织致力于为农村社区提供清洁水和卫生设施。)
 sanitary	卫生的，清洁的，符合卫生标准的。用来形容与保持环境清洁和健康有关的条件、设施或措施。[ph]maintain sanitary conditions in food handling and preparation areas.[ph]The hospital follows strict sanitary protocols[ph]promote sanitary practices in public places.
-sap	名词（树液）含义的使用频率约为总使用频率的 40%。名词（精力）含义的使用频率约为总使用频率的 30%。[st]The maple tree produces sweet sap that is used to make maple syrup.[st]She woke up feeling full of sap[syn]"sap" 和 "juice" 都可以指树液或液体，但 "sap" 通常用于指树木流出的液体，而 "juice" 更广泛地用于液体的含义，可以指果汁等。"sap" 和 "vitality" 都可以指精力或活力，但 "sap" 带有逐渐消耗的含义，而 "vitality" 更强调生命力或活力的程度。"sap" 和 "weaken"、"drain" 都可以表示削弱或耗尽，但 "sap" 强调逐渐削弱或耗尽。
+sap	n. 名词（树液）含义的使用频率约为总使用频率的 40%。名词（精力）含义的使用频率约为总使用频率的 30%。[st]The maple tree produces sweet sap that is used to make maple syrup.[st]She woke up feeling full of sap[syn]"sap" 和 "juice" 都可以指树液或液体，但 "sap" 通常用于指树木流出的液体，而 "juice" 更广泛地用于液体的含义，可以指果汁等。"sap" 和 "vitality" 都可以指精力或活力，但 "sap" 带有逐渐消耗的含义，而 "vitality" 更强调生命力或活力的程度。"sap" 和 "weaken"、"drain" 都可以表示削弱或耗尽，但 "sap" 强调逐渐削弱或耗尽。
 sapphire	蓝宝石[ph]a beautiful sapphire ring[st]The sky turned sapphire as the sun set over the horizon[st]The necklace was adorned with sapphire and diamond gemstones.
 sarcastic	讽刺的，挖苦的[ph]make a sarcastic comment about[st]Her sarcastic tone made it clear that she didn't believe a word he said[ph]The sarcastic remarks from the audience[syn]"sarcastic"、"mocking"和"sardonic" 都可以形容讽刺的特点。"sarcastic" 强调以嘲讽和挖苦的方式表达，通常带有一种尖刻的幽默感。"mocking" 更强调嘲笑或嘲弄的态度，可能没有"sarcastic" 那么尖酸刻薄。"sardonic" 更强调嘲讽的冷嘲热讽，带有一种冷峻、嘲弄的特点。
-satire	讽刺；讽刺文学[ph]a satire on politices.[ph]a biting satire of[syn]"satire"、"mockery"、"parody"和"lampoon" 都可以指对事物进行讽刺或嘲笑。"satire" 是一种更广泛的文学或艺术形式，旨在通过讽刺和嘲笑来批评和揭示社会问题。"mockery" 强调对某人或某事进行嘲弄或讥讽。"parody" 是指模仿某种作品或风格，以幽默或嘲弄的方式呈现。"lampoon" 强调对某人或某事进行尖刻的讽刺和批评，通常是通过文学或艺术作品来实现。
+satire	n. 讽刺；讽刺文学[ph]a satire on politics.[ph]a biting satire of[syn]"satire"、"mockery"、"parody"和"lampoon" 都可以指对事物进行讽刺或嘲笑。"satire" 是一种更广泛的文学或艺术形式，旨在通过讽刺和嘲笑来批评和揭示社会问题。"mockery" 强调对某人或某事进行嘲弄或讥讽。"parody" 是指模仿某种作品或风格，以幽默或嘲弄的方式呈现。"lampoon" 强调对某人或某事进行尖刻的讽刺和批评，通常是通过文学或艺术作品来实现。
 satiric	讽刺的，挖苦的 adj.[ph]The satiric cartoon[ph]He delivered a satiric speech[ph]The satiric play[syn]"satiric"、"satirical" 和 "sarcastic" 都可以用来形容具有讽刺和嘲讽特点的事物。"satiric" 是 "satirical" 的另一种拼写方式，两者没有实质区别。而 "sarcastic" 更强调含有尖刻幽默和讥讽的特点，相较于 "satiric" 和 "satirical" 更侧重于嘲弄和挖苦。
 satirist	讽刺作家[syn]"satirist"、"humorist" 和 "wit" 都可以指具有幽默和讽刺才能的人。"satirist" 专指从事讽刺文学或艺术创作的人。"humorist" 侧重于指那些擅长制造幽默和滑稽笑话的人，不一定以讽刺为主要目标。"wit" 强调智慧和机智，指那些善于用聪明才智制造幽默和搞笑的人，也不一定局限于讽刺方面。
 satisfactory	令人满意的，符合要求的
@@ -169,7 +169,7 @@ unseasonably	不合时令地，不合时宜地[adv.]指的是某事发生在不�
 seclusion	独处，隐居[n.]Seclusion是一个名词，指的是与外界隔离或分离，通常是为了寻求隐居、隐退或隐私而选择远离社会或与人群隔绝的状态或行为。[st]The author sought seclusion in the countryside to focus on writing his novel.[st]The monastery provided a place of seclusion for the monks to meditate and pray.
 seclude	使隔离，使孤立[v.]指的是将自己或他人与外界隔离或分离，通常是为了寻求隐居、隐退或隐私而选择远离社会或与人群隔绝。[ph]seclude himself in a remote cabin[ph]seclude themselves for quiet study.[ph]seclude her family from the media's constant attention.
 secondary	adj. 次要的；第二级的；中等教育的；中学的
-secrete	分泌；隐匿，使隐秘[mean]动词 - 分泌或隐藏 (45%)名词 - 分泌物 (30%)形容词 - 秘密的，隐秘的 (25%)[ph]secrete enzymes[ph]The caterpillar had a secrete liquid that protected it from predators.
+secrete	v./n./adj. 分泌；隐匿，使隐秘[mean]动词 - 分泌或隐藏 (45%)名词 - 分泌物 (30%)形容词 - 秘密的，隐秘的 (25%)[ph]secrete enzymes[ph]The caterpillar had a secrete liquid that protected it from predators.
 secretin	分泌素[mean]一种胃肠激素，它促进胰腺分泌消化液和胆囊收缩 (100%)[st]Secretin is released in response to the acidity of chyme in the duodenum.
 oversecretion	分泌过多[n.]Oversecretion是一个名词，指的是某种物质或激素在生物体内分泌过多的现象，导致超出正常水平。[st]Oversecretion of growth hormone can lead to gigantism in children.[ph]The oversecretion of[st]The pancreas's oversecretion of insulin can cause hypoglycemia.
 secret	秘密
@@ -240,7 +240,7 @@ shelter	掩蔽处；庇护所 n.
 sheltered	遮蔽的[mean]表示受庇护的、受保护的或避风的。[st]The campsite was located in a sheltered valley 避风的山谷[st]The children grew up in a sheltered environment 受保护的环境[ph]a sheltered anchorage 避风的锚地
 shepherd	牧羊人；牧羊犬
 shield	庇护，保护 v.~ sb/sth from sth
-shift	移动，改变位置或方向 n. v.The shift in sth.make a shift
+shift	n./v. 移动，改变位置或方向 [ph] The shift in sth. [ph] make a shift
 shifting	变动的；运动的The weather forecast predicts shifting winds throughout the day​
 shine	照耀，发光 v.
 shining	发亮的，华丽的[syn]"Shiny" 强调物体的表面状态，表示光滑、明亮、有光泽。"Shining" 强调物体本身或某人的状态，表示发出光亮、明亮、闪耀，或展现出优秀、杰出的特质。
@@ -261,9 +261,9 @@ shrink	收缩，缩小 v.[st]The wool sweater shrank in the wash and no longer f
 shrinkage	收缩 n.[st]sth. experienced significant ~ after sth.[st]The retail store's ~ problem was attributed to both shoplifting and employee theft.[ph]sth. resulted in the ~ of sth.
 shrivel	（使）枯萎[mean]"shrivel" 描述的是物体因缺乏水分或其他因素而变得干瘪、皱缩或干燥。这个词通常用于形容植物、食物、纸张等在特定条件下失去水分而产生的变化。[ph]sth. started to ~/~ up[ph]sth. caused sth. to ~
 shrub	灌木；灌木丛[st]The garden was adorned with colorful shrubs[st]She enjoys planting different types of shrubs[ph]areas filled with native shrubs.
-shuffle	洗牌[mean]动词 "shuffle" 的使用频率约为 70%。 名词 "shuffle" 的使用频率约为 30%。v.[st]He shuffled his feet as he walked, lost in thought. （翻译：他走路时拖着脚，陷入了沉思。）[ph]shuffle the deck[ph]shuffled the desks移动桌子n.[ph]walked with a slight shuffle[st]The dealer performed a shuffle of the cards[ph]sth. caused a bit of a shuffle among sb.
+shuffle	v./n. 洗牌[mean]动词 "shuffle" 的使用频率约为 70%。 名词 "shuffle" 的使用频率约为 30%。v.[st]He shuffled his feet as he walked, lost in thought. （翻译：他走路时拖着脚，陷入了沉思。）[ph]shuffle the deck[ph]shuffled the desks移动桌子n.[ph]walked with a slight shuffle[st]The dealer performed a shuffle of the cards[ph]sth. caused a bit of a shuffle among sb.
 shuffle the deck	洗牌
-shutter	(pl)百叶窗[mean]名词 "shutter" 的使用频率约为 70%。 动词 "shutter" 的使用频率约为 30%。n.[st]The old house had charming wooden shutters on its windows.v.[st]The store decided to shutter its doors due to the economic downturn.[st]The artist used curtains to shutter the bright sunlight[st]The company had to temporarily shutter its production facility
+shutter	n./v. (pl)百叶窗[mean]名词 "shutter" 的使用频率约为 70%。 动词 "shutter" 的使用频率约为 30%。n.[st]The old house had charming wooden shutters on its windows.v.[st]The store decided to shutter its doors due to the economic downturn.[st]The artist used curtains to shutter the bright sunlight[st]The company had to temporarily shutter its production facility
 shuttle	梭子；往返汽车 n.[ph]The space shuttle launched into orbit 航天飞机[st]She used the shuttle to weave intricate patterns on the loom. （翻译：她用梭子在织布机上编织复杂的图案。）[ph]The hotel offers a shuttle service
 shy	害羞的；胆小的
 shyness	羞怯，胆怯[st]Her shyness made it difficult for her to speak up in public settings.[ph]The teacher noticed the student's shyness[ph]Overcoming his shyness
@@ -279,7 +279,7 @@ significant	有意义的；重要的，重大的
 significance	意义，含义；重要性
 insignificant	无关紧要的, 可忽略的, 无意义的
 signify	表示，意味[mean]v. 表示表示、意味、象征、具有重要性等。以下是 "signify" 的使用频率百分比：[st]The red traffic light signifies that ...[st]sth. seemed to signify sth.
-silica	硅石，硅土[mean]n. 指的是二氧化硅，是一种无机化合物，化学式为 SiÓ。它是地壳中最常见的化合物之一，常见于许多岩石和矿物中，如石英、石膏等。[ph]be composed of tiny grains of silica.
+silica	硅石，硅土[mean]n. 指的是二氧化硅，是一种无机化合物，化学式为 SiO₂。它是地壳中最常见的化合物之一，常见于许多岩石和矿物中，如石英、石膏等。[ph]be composed of tiny grains of silica.
 silicate	[化]硅酸盐[mean]n. 表示硅酸盐，是一种化学化合物，由硅元素和氧元素组成，通常和其他金属元素形成盐类化合物。硅酸盐在地壳中非常常见，构成了大部分岩石和矿物的主要成分之一[ph]The granite rock is composed mainly of silicate minerals, ...
 silly	愚蠢的；糊涂的；傻的
 silt	淤泥[st]The river's slow-moving water carries silt downstream, depositing it along the riverbanks.[st]The farmer used the rich silt from the floodplain to fertilize the fields.[st]The boat got stuck in the shallow silt near the river's edge
@@ -328,11 +328,11 @@ smog	烟雾
 smoothly	平稳地；顺利地
 smother	使窒息 v.[st]The heavy blanket seemed to smother him in his sleep.[st]The government's attempt to smother free speech
 smuggle	走私[ph]smuggle drugs across the border[ph]smuggle a letter out of the prison[ph]The rare artifacts were smuggled out of the country
-snap	突然折断[mean]含义1（名词）： 快照；猛咬；突然折断。 （频率：35%）含义2（名词）： 突然爆发；瞬间。 （频率：25%）含义3（动词）： 猛然折断；突然折断；咔嗒声。 （频率：40%）[ph]The rope snapped suddenly
+snap	n./v. 突然折断[mean]含义1（名词）： 快照；猛咬；突然折断。 （频率：35%）含义2（名词）： 突然爆发；瞬间。 （频率：25%）含义3（动词）： 猛然折断；突然折断；咔嗒声。 （频率：40%）[ph]The rope snapped suddenly
 snippet	小片，片段；摘录
 snowflake	雪花
-flake	薄片 vt. 使成薄片[mean]含义1（名词）： 小薄片；小片状物。 （频率：40%）含义2（名词）： 轻浮的人；不可靠的人。 （频率：20%）含义3（动词）： 使成小薄片；剥落。 （频率：40%）[ph]delicate flakes[ph]be a flake[ph]the paint began to flake off
-snug	温暖舒适的[mean]含义1（形容词）： 温暖舒适的；紧密贴合的。 （频率：50%）含义2（动词）： 使变得温暖舒适；使适合。 （频率：50%）[ph]a snug retreat[ph]feel snug and cozy[ph]snug up security measures
+flake	n./v. 薄片；使成薄片 使成薄片[mean]含义1（名词）： 小薄片；小片状物。 （频率：40%）含义2（名词）： 轻浮的人；不可靠的人。 （频率：20%）含义3（动词）： 使成小薄片；剥落。 （频率：40%）[ph]delicate flakes[ph]be a flake[ph]the paint began to flake off
+snug	adj./v. 温暖舒适的[mean]含义1（形容词）： 温暖舒适的；紧密贴合的。 （频率：50%）含义2（动词）： 使变得温暖舒适；使适合。 （频率：50%）[ph]a snug retreat[ph]feel snug and cozy[ph]snug up security measures
 sociable	好交际的，友善的
 social distinction	具有明显的社会身分或地位[ph]symbol of social distinction[ph]reduce social distinctions
 solar	太阳的

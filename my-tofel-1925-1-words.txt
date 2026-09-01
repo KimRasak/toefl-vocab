@@ -1,32 +1,32 @@
 preponderance	n. （数量或力量上的）优势 The preponderance of
 prerequisite	n. 先决条件
-prerequisite	首要必备的
+prerequisite	adj. 首要必备的
 prescribe	v. 指示，规定[st]The law prescribes certain safety measures that must be followed in the workplace.
-prescribe	开药方[ph]prescribe medication[syn]"prescribe" 表示开处方、指示或规定。与 "recommend" 和 "dictate" 相似，但 "prescribe" 更常用于医学和医疗领域，指医生为患者提供药方或指示。与 "specify" 相似，但 "prescribe" 更强调医疗建议或规定的行为。
+prescribe	v. 开药方[ph]prescribe medication[syn]"prescribe" 表示开处方、指示或规定。与 "recommend" 和 "dictate" 相似，但 "prescribe" 更常用于医学和医疗领域，指医生为患者提供药方或指示。与 "specify" 相似，但 "prescribe" 更强调医疗建议或规定的行为。
 prescribed	adj. 规定的[ph]prescribed medication/exercise regimen
-prescription	药方，处方[ph]Follow a prescription for[ph]Abide by a prescription of[ph]comply with a prescription for
+prescription	n. 药方，处方[ph]Follow a prescription for[ph]Abide by a prescription of[ph]comply with a prescription for
 presence	n. 出席，到场
 preserve	v. 保存
 preservative	n./adj. 防腐剂
 preservation	n. 保存[ph]preservation of wildlife habitats/delicate artworks
-presidency	总统职位；总统任期
-presidential election	总统选举
+presidency	n. 总统职位；总统任期
+presidential election	n. 总统选举
 preside over	v. 主持
-pressure	压力；压迫
-prestige	威望，声望 [ph]enhance one's professional prestige [ph] the prestige as sth.
-prestigious	有名望的，有威信的
+pressure	n./v. 压力；压迫
+prestige	n. 威望，声望 [ph]enhance one's professional prestige [ph] the prestige as sth.
+prestigious	adj. 有名望的，有威信的
 presumably	adv. 推测起来, 大概
 pretension	自命不凡，虚张声势，虚伪[ph] sb. have the pretension to do [ph] sb's pretensions of sth.
-prevailing	流行的，盛行的
+prevailing	adj. 流行的，盛行的
 prevail	v. 盛行，居主导地位
-prevalent	普遍的；流行的 [syn] In summary, "prevailing" often implies a sense of dominance or influence within a specific context or group, while "prevalent" indicates a broader presence or occurrence across a larger population or general situation.
-prey	被掠食者，牺牲者，食物 [ph] hunt for prey
-prey	捕食，掠夺
+prevalent	adj. 普遍的；流行的 [syn] In summary, "prevailing" often implies a sense of dominance or influence within a specific context or group, while "prevalent" indicates a broader presence or occurrence across a larger population or general situation.
+prey	n. 被掠食者，牺牲者，食物 [ph] hunt for prey
+prey	v. 捕食，掠夺
 osprey	n. 鱼鹰
-primal	原始的；最初的
-primal	最重要的(不建议用)
+primal	adj. 原始的；最初的
+primal	adj. 最重要的（不建议用）
 primate	n./adj. 灵长目动物
-primate	首要的，第一的
+primate	adj. 首要的，第一的
 prime	主要的
 primary	第一位的，主要的
 prime number	素数
@@ -35,24 +35,24 @@ primitive	上古的，原始的 举个例子： "他们采用了原始的技术"
 primordial	adj. 原始的，最初的 The primordial oceans existed long before the arrival of humans.
 priority	n. 优先，优先权
 pristine	adj. 原始的，未被破坏的
-privilege	给与...特权，特免 n. 特权
-probe	调查，查究 verb. noun. [ph] probe into sth. [ph] probe someone's intentions
+privilege	v./n. 给与...特权，特免；特权
+probe	n./v. 调查，查究 [ph] probe into sth. [ph] probe someone's intentions
 proceed	v. 进行，继续下去
-proceeds	（pl）收益 [ph] net proceeds [ph] proceeds of crime
-proceeding	行动；进行
-process	过程； vt. 加工
+proceeds	n. （pl）收益 [ph] net proceeds [ph] proceeds of crime
+proceeding	n. 行动；进行
+process	n./v. 过程；加工
 proclaim	声明，宣告 [ph] proclaim one's love to their significant others [ph] proclaim the new policies
-proclivity	倾向，癖性 [ph] show a proclivity towards sth. [syn]"proclivity" 在强调内在性倾向、固有特质或描述具体而特定的倾向时，不适合直接替换为 "tendency" 和 "inclination"。
-prod	鼓励。戳，刺。 verb. [ph] prod sb. into action [ph] give sb. a gentle prod
-prodigious	巨大的，惊人的；挥霍的 [ph] a prodigious amount of sth. [ph] the prodigious talent of sb.[syn] 同义词区别：Prodigious的同义词包括"enormous"（巨大的）和"immense"（极大的）。然而，与这两个词相比，prodigious更强调事物的异常、惊人或超乎寻常的程度。
-prodigy	非凡之人，天才 [ph] child prodigy [ph] math prodigy
-produce	生产 n. 农副产品
+proclivity	n. 倾向，癖性 [ph] show a proclivity towards sth. [syn]"proclivity" 在强调内在性倾向、固有特质或描述具体而特定的倾向时，不适合直接替换为 "tendency" 和 "inclination"。
+prod	v. 鼓励；戳，刺。 [ph] prod sb. into action [ph] give sb. a gentle prod
+prodigious	adj. 巨大的，惊人的；挥霍的 [ph] a prodigious amount of sth. [ph] the prodigious talent of sb.[syn] 同义词区别：Prodigious的同义词包括"enormous"（巨大的）和"immense"（极大的）。然而，与这两个词相比，prodigious更强调事物的异常、惊人或超乎寻常的程度。
+prodigy	n. 非凡之人，天才 [ph] child prodigy [ph] math prodigy
+produce	v./n. 生产；农副产品
 profession	职业，专业 [ph] legal profession [ph] teaching profession [st] He chose medicine as his profession.
 professional	专业的，职业的
 professionalism	职业精神, 专业素养 [ph]a high level of professionalism [ph] a code of professionalism
 proficient	熟练的，精通的 [ph] be proficient in sth.[syn] Proficient的同义词包括"skilled"（熟练的）和"competent"（有能力的）。然而，与这两个词相比，proficient更强调在特定领域或技能上达到高水平的熟练程度。
 proficiency	熟练程度 [ph] His proficiency in foreign languages [ph] a high level of language proficiency [ph] demonstrate proficiency in sth.
-profile	概况 noun./verb. [ph] create a profile of sb.[st.] The conference was a high-profile event.
+profile	n./v. 概况 [ph] create a profile of sb.[st.] The conference was a high-profile event.
 profound	深刻的，深奥的
 profoundly	深深地，衷心地 [st] The loss of her loved one affected her profoundly [st] I am profoundly grateful for your help
 progress	进展 n./v. [st] The project is making steady progress. [st] We need to track the progress of the team. [ph] progress a plan [ph] progress towards a goal
@@ -61,12 +61,12 @@ progressive	adj. 进步的；渐进的；（政策等）改革性的 [mean] 它�
 prohibit	禁止
 prohibitive	禁止的, 过高的, 难以承受的 [ph] prohibitive regulations [ph] sth. be prohibitive for sb. [st] The prohibitive entry requirements for the prestigious university made it difficult for many students to gain admission.
 prohibitively	令人望而却步地；(价格)极高地 [ph] prohibitively expensive [ph] prohibitively long waiting times [ph] The prices are prohibitively high
-project	设计，规划；项目
+project	n./v. 设计，规划；项目
 projecting	突出的，伸出的 [ph] a projecting jawline [ph] a projecting roof
 projector	放映机 [ph] portable projector [ph] projector screen
 projection	发射 [ph] missile's projection phase 导弹发射阶段 [ph] economic projection 经济预测 [ph] self-projection 自我展示
 projectionist	电影放映员，幻灯放映员
-proliferate	迅速扩散; 激增；大量繁殖 verb. [ph] proliferate rapidly/quickly [st] In the age of social media, false information can proliferate quickly, causing confusion and misinformation among the public. [st] Invasive species can proliferate rapidly in a new environment, disrupting the local ecosystem.
+proliferate	v. 迅速扩散；激增；大量繁殖 [ph] proliferate rapidly/quickly [st] In the age of social media, false information can proliferate quickly, causing confusion and misinformation among the public. [st] Invasive species can proliferate rapidly in a new environment, disrupting the local ecosystem.
 proliferation	繁殖，大量增殖 [ph] nuclear proliferation [ph] proliferation of fake news
 prolific	富有成果的(人) [ph] prolific composer/writer/artist
 prolong	拖长，延长
@@ -80,7 +80,7 @@ promoter	促进者 [ph] event promoter [ph] promoter of a company
 prompt	鼓动，促进 n./v. [ph] prompted sb. to do sth. [ph] give a prompt response to email.
 prone	易于...的；倾向于...的 [ph] prone to allergies
 pronounced	显著的，明确地 [ph] The impact is ~ [st] Her love for music is pronounced
-proof	证据
+proof	n. 证据
 proofread	校正，校对 [ph] proofread the essay
 fireproof	耐火的，防火的
 waterproof	防水的
@@ -114,12 +114,12 @@ protagonist	n. 主角；主要人物；主要倡导者
 protagonist	主角；主要人物；主要倡导者 [mean] protagonist是一个名词，指的是故事、小说、戏剧等中的主要角色或主人公。他/她通常是故事的中心人物，推动情节的发展。
 protectionist	贸易保护主义者
 protein	蛋白质
-protest	抗议
-prototype	原型
+protest	n./v. 抗议
+prototype	n. 原型
 protruding	突出的 [mean] protruding是一个形容词，用来描述物体或部分突出或伸出的状态。它指的是超出表面或周围环境的部分或物体。 [st] The nail was protruding from the wooden board [st] The child had a pair of large, protruding ears that made him easily recognizable.
 provincialism	地方主义，心胸狭窄 [ph] small town's provincialism [ph] intellectual provincialism
-provision	供应，供应品
-provoke	激怒，惹起 [ph] sth. provok sb. to do sth. [st] The controversial decision by the government provoked widespread protests and public outrage.
+provision	n. 供应，供应品
+provoke	v. 激怒，惹起 [ph] sth. provoke sb. to do sth. [st] The controversial decision by the government provoked widespread protests and public outrage.
 provocative	挑拨的；煽动的 [ph] provocative artwork [ph] provocative statements [st] provocative、controversial和incendiary都指引起争议、激发反应或兴趣，但provocative更强调挑衅性或刺激性；controversial表示引起争议或争论的；incendiary指能够激起激烈情绪或引发冲突的。stimulating表示刺激或激发兴趣或活动的。
 provocation	激怒，挑拨，刺激 [ph] deliberate provocation [ph] sth. viewed as a provocation
 prudent	审慎的，深谋远虑的 [ph] take a prudent approach by doing [ph]It is prudent to do
@@ -128,26 +128,26 @@ psychology	心理学；心理
 parapsychology	超心理学
 publicize	（公开）宣传，宣扬 [ph] publicize their new product [ph] be publicized to raise awareness
 publicity	公众关注、宣传、报道 [ph] received a lot of publicity [st] The scandal brought negative publicity to the politician.
-puddle	小水洼
+puddle	n. 小水洼
 pueblo	印第安人村庄 [syn]区别: pueblo指的是具有特定文化和建筑风格的印第安人村庄；Native American village表示印第安人的村庄；settlement更通用，可指任何人类居住的定居点。
-pulp	果肉，纸浆 [ph] orange pulp [ph] ecycled pulp
+pulp	n. 果肉，纸浆 [ph] orange pulp [ph] recycled pulp
 pulse	脉搏，脉冲 [ph] check the pulse [ph] pulses of electromagnetic waves
 impulse	推动，刺激；冲动 [st] She couldn't resist the impulse to buy the dress [st] The applause from the audience acted as an impulse for the performer to give an encore.
-pump	泵
+pump	n./v. 泵；用泵抽取
 pumpkin	南瓜
 punch	重击
 puncture	刺穿，戳破 n./v. [st] He got a puncture in his bicycle tire [ph] puncture the blister
 acupuncture	针灸疗法
 pungent	（气味、味道）刺激性的，辛辣的；尖锐的 adj. [ph]pungent aroma [ph] pungent smell
 pupil	瞳孔 [ph] dilated pupils
-purple	紫色
+purple	n./adj. 紫色；紫色的
 purify	提炼，精炼
 purified	纯净的 [ph] purified water
 purification	纯化，净化 [ph] purification process [ph] purification of the air
-puzzle	难题，谜
+puzzle	n./v. 难题，谜；使迷惑
 puzzling	使迷惑的，使莫名其妙的
 pyramid	金字塔
-quail	鹌鹑
+quail	n./v. 鹌鹑；畏缩
 quaint	古雅的；别致的 [mean] Quaint 是一个形容词，用于形容某物具有古雅、古朴或别致的特点，有时也带有一种过时但有吸引力的感觉。它常用于描述古老的建筑、风景、乡村或风俗。 [ph]quaint cottages
 acquaint	使熟知，通知 [ph] acquaint sb./oneself with sth.[syn] "acquaint" 和 "familiarize"、"introduce"、"inform" 都涉及向某人介绍或让其了解某事物。然而，"acquaint" 更强调通过接触或交流来建立某人对某事物的了解或熟悉。"familiarize" 强调通过学习或体验来使某人熟悉某事物，"introduce" 强调正式地向某人介绍新的人或事物，"inform" 则更侧重于向某人提供信息或知识。
 acquaintance	相识的人 [ph] have some acquaintance with[syn]"acquaintance" 和 "associate"、"contact"、"connection" 都指的是人际关系中的认识或联系。然而，"acquaintance" 更强调我们认识但不太熟悉的人，常用于形容浅显的关系。"associate" 强调与某人有密切关系，通常指的是工作、业务或社交上的伙伴。"contact" 强调与某人建立或保持沟通和联系。"connection" 则指的是我们认识的人或机构，有某种联系或关联。
@@ -157,9 +157,9 @@ qualification	资格，条件 [ph] have necessary qualifications for [ph] obtain
 quantitative	定量的；数量的 [ph] quantitative methods [ph] quantitative analysis
 quantum theory	（物理）量子论
 quarry	采石场，露天矿场
-quarter	四分之一
+quarter	n./v. 四分之一；把...四等分
 quarterly	每季地 [ph]quarterly financial report [ph] quarterly meeting
-headquarters	司令部，总部
+headquarters	n. 司令部，总部
 quartz	石英 [ph] made of quartz [ph] Quartz crystals
 quench	v. 解渴；熄灭；扑灭；（金属）淬火
 quench	解渴；熄灭；扑灭；（金属）淬火 [mean] Quench 是一个动词，表示熄灭、解渴、满足或压制。它可以用来描述熄灭火焰、消除渴望、满足需求或抑制某种情感或行为。[ph]quench the fire [ph] quenched their desire for [syn] 区别: "quench"、"extinguish"、"satisfy"、"suppress" 都表示一种行动或效果，但侧重点不同。"quench" 主要指熄灭火焰或消除渴望，强调通过满足需求来满足或解决某种状态或感受。
@@ -311,7 +311,7 @@ rehabilitate	使(身体)康复；使复职；使复元[ph]rehabilitate after the
 rehabilitation	n. 康复；恢复（名誉或地位）；修复
 rehearse	预演，排练
 reign	统治，支配[ph]reign of terror [ph]reign over
-reigning	统治的，起支配作用的[ph]reigning champion/monach
+reigning	adj. 统治的，起支配作用的[ph]reigning champion/monarch
 sovereignty	统治权，主权[st]The president asserted the nation's sovereignty over the disputed territory.
 reimburse	偿还 v. ~[st]The company will reimburse employees for their business-related expenses.[st]The airline reimbursed passengers for the canceled flights by providing vouchers for future travel.
 reinforce	加强
@@ -356,7 +356,7 @@ rendering	表现，描写 n.[ph]her rendering of the poem
 surrender	交出，放弃；投降
 rendition	表演，演唱 n.[ph]deliver a powerful rendition of the song[ph]rendition of the character[ph]a flawless rendition of
 renew	使更新，使恢复；重新开始
-renewal	更新；复兴 Cn.[ph]a renewal of a contract/a subscription[ph]go ahead with the renewal of their lease[st]The magazine offers an automatic renewal of subscriptions unless canceled.
+renewal	n. 更新；复兴[ph]a renewal of a contract/a subscription[ph]go ahead with the renewal of their lease[st]The magazine offers an automatic renewal of subscriptions unless canceled.
 renewable	可再生的[ph]renewable energy/resources/materials
 renounce	声明放弃[ph]renounce citizenship/a claim/violence
 renunciation	放弃；宣布终止[ph]renunciation of citizenship/the throne/power/worldly possessions

@@ -1,27 +1,27 @@
-squirt	喷出，溅进
-stable	稳定的，相对固定的
-stability	稳定性
-stabilize	使稳定，使坚固
-stack	堆积
-staff	全体人员或职员
-despoiler	掠夺者
-sponge	海绵
-spontaneous	自发的，自然产生的
-spontaneously	自然地, 本能地
-spontaneity	自然，自发
-spoon	匙，勺子
-spot	地点，场所
-spotless	没有污点的
-spotlight	强调，突出 n. 重点
-highlight	使显著，突出
+squirt	v. 喷出，溅进
+stable	adj. 稳定的，相对固定的
+stability	n. 稳定性
+stabilize	v. 使稳定，使坚固
+stack	n./v. 堆；堆积
+staff	n. 全体人员或职员
+despoiler	n. 掠夺者
+sponge	n./v. 海绵；用海绵擦拭
+spontaneous	adj. 自发的，自然产生的
+spontaneously	adv. 自然地，本能地
+spontaneity	n. 自然，自发
+spoon	n./v. 匙，勺子；用勺舀
+spot	n./v. 地点，场所；发现
+spotless	adj. 没有污点的
+spotlight	n./v. 强调，突出；重点
+highlight	n./v. 使显著，突出；重点
 sprawl	散乱地延伸
 spray	喷雾，飞沫
-spring	泉；弹簧
-spring up	出现，产生
-springtime	春天，春季
-springwater	天然泉水
-offspring	(单复数同形)子孙, 后代
-mainspring	(钟表的)主发条
+spring	n./v. 泉；弹簧；跳跃，涌出
+spring up	v. 出现，产生
+springtime	n. 春天，春季
+springwater	n. 天然泉水
+offspring	n. (单复数同形)子孙，后代
+mainspring	n. (钟表的)主发条
 sprout	长出，萌芽
 spur	踢马刺
 squarely	adv. 直接地；正面地；恰当地；正好
@@ -202,7 +202,7 @@ supplement	增补，补充
 supplementary	补充的
 supplementation	增补，补充
 suppose	推想，假设
-supposedly	按说，应该i
+supposedly	按说，应该
 supposition	假定
 suppress	镇压，抑制
 supreme	(权力、级别或地位)至高的；最重要的
@@ -384,7 +384,7 @@ tint	给...着色；染
 tip	顶，尖端
 fingertip	指尖
 tissue	[生]组织
-to and fro	来来回回i
+to and fro	来来回回
 toe	趾，脚趾，足尖
 toed	有趾的
 tolerate	忍受；容许
