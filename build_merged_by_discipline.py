@@ -1256,8 +1256,9 @@ body.autobar-open{{padding-bottom:100px}}
 }}
 .focus-overlay.open{{display:flex}}
 .focus-word{{font-size:clamp(32px,8vw,56px);font-weight:800;margin-bottom:12px}}
-.focus-def{{font-size:16px;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:8px}}
-.focus-full{{font-size:13px;color:var(--muted);max-width:500px;line-height:1.6;opacity:.7;margin-bottom:20px;word-break:break-word;white-space:pre-wrap}}
+.focus-def{{font-size:16px;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:8px;visibility:hidden}}
+.focus-full{{font-size:13px;color:var(--muted);max-width:500px;line-height:1.6;opacity:.7;margin-bottom:20px;word-break:break-word;white-space:pre-wrap;visibility:hidden}}
+.focus-overlay.revealed .focus-def,.focus-overlay.revealed .focus-full{{visibility:visible}}
 .focus-pos{{font-size:13px;color:var(--muted);margin-bottom:20px}}
 .focus-btns{{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}}
 .focus-btns button{{
@@ -1324,8 +1325,9 @@ body.autobar-open{{padding-bottom:100px}}
 
 <!-- Focus mode overlay -->
 <div class="focus-overlay" id="focusOverlay">
-  <div class="focus-word" id="focusWord">—</div>
+  <div class="focus-word" id="focusWord" style="cursor:pointer" title="点击显示释义">—</div>
   <div class="focus-mark" id="focusMark" title="标记难词">⭐</div>
+  <div class="focus-hint" id="focusHint" style="font-size:12px;color:var(--muted);margin-bottom:12px;opacity:.5">👆 点击单词查看释义</div>
   <div class="focus-def" id="focusDef"></div>
   <div class="focus-full" id="focusFull"></div>
   <div class="focus-pos" id="focusPos"></div>
@@ -1689,7 +1691,7 @@ const focusPosEl = document.getElementById('focusPos');
 const focusMarkEl = document.getElementById('focusMark');
 const focusPlayBtn = document.getElementById('focusPlayBtn');
 
-function focusUpdateUI() {{
+function focusUpdateUI(keepRevealed) {{
   const list = abGetList();
   const w = list[abIdx];
   focusWordEl.textContent = w ? w.w : '—';
@@ -1698,6 +1700,10 @@ function focusUpdateUI() {{
   focusPosEl.textContent = list.length ? (abIdx + 1) + ' / ' + list.length : '';
   focusMarkEl.classList.toggle('marked', w ? hardWords.has(w.w) : false);
   focusPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
+  if (!keepRevealed) {{
+    focusOverlay.classList.remove('revealed');
+    document.getElementById('focusHint').style.display = '';
+  }}
 }}
 
 function focusEnter() {{
@@ -1759,6 +1765,11 @@ focusMarkEl.onclick = () => {{
 
 document.getElementById('abFocusBtn').onclick = () => {{ focusEnter(); }};
 
+focusWordEl.onclick = () => {{
+  focusOverlay.classList.toggle('revealed');
+  document.getElementById('focusHint').style.display = focusOverlay.classList.contains('revealed') ? 'none' : '';
+}};
+
 // Update focus UI when autoplay advances
 const _origAbUpdateUI = abUpdateUI;
 abUpdateUI = function() {{
@@ -1773,6 +1784,11 @@ document.addEventListener('keydown', (e) => {{
   else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {{ e.preventDefault(); focusNext(); }}
   else if (e.key === ' ') {{ e.preventDefault(); focusTogglePlay(); }}
   else if (e.key === 's' || e.key === 'S') {{ e.preventDefault(); focusSpeak(); }}
+  else if (e.key === 'Enter' || e.key === 'r' || e.key === 'R') {{
+    e.preventDefault();
+    focusOverlay.classList.toggle('revealed');
+    document.getElementById('focusHint').style.display = focusOverlay.classList.contains('revealed') ? 'none' : '';
+  }}
   else if (e.key === 'Escape') {{ focusClose(); }}
 }});
 </script>
