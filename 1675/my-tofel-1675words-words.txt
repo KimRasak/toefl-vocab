@@ -25,7 +25,7 @@ strait	海峡；痛苦
 channel	海峡
 plateau	高原
 navigation	导航，航行
-ranges	射程表尺数
+ranges	山脉；范围，一系列
 salinity	n. 盐度；盐分；盐性
 sediment	沉淀物
 elevation	n. 高度，海拔
