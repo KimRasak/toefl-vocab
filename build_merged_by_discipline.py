@@ -1247,6 +1247,28 @@ body.autobar-open{{padding-bottom:100px}}
 .filter-btn.active{{background:var(--accent);color:#fff;border-color:var(--accent)}}
 .hard-count{{font-size:12px;color:var(--muted)}}
 
+/* Focus mode */
+.focus-overlay{{
+  display:none;position:fixed;inset:0;z-index:25;
+  background:var(--bg);
+  flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;text-align:center;
+}}
+.focus-overlay.open{{display:flex}}
+.focus-word{{font-size:clamp(32px,8vw,56px);font-weight:800;margin-bottom:12px}}
+.focus-def{{font-size:16px;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:8px}}
+.focus-full{{font-size:13px;color:var(--muted);max-width:500px;line-height:1.6;opacity:.7;margin-bottom:20px;word-break:break-word;white-space:pre-wrap}}
+.focus-pos{{font-size:13px;color:var(--muted);margin-bottom:20px}}
+.focus-btns{{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}}
+.focus-btns button{{
+  background:var(--card);border:1px solid var(--border);color:var(--fg);
+  border-radius:10px;padding:8px 16px;font-size:14px;cursor:pointer;
+}}
+.focus-btns button:hover{{border-color:var(--accent)}}
+.focus-btns button.primary{{background:var(--accent);color:#fff;border-color:var(--accent)}}
+.focus-mark{{font-size:28px;cursor:pointer;margin-bottom:16px;opacity:.4;transition:opacity .15s}}
+.focus-mark.marked{{opacity:1}}
+
 /* hidden */
 .hidden{{display:none!important}}
 
@@ -1293,9 +1315,26 @@ body.autobar-open{{padding-bottom:100px}}
       <option value="5000">5 秒</option>
     </select>
     <button class="filter-btn" id="abHardOnly">⭐ 仅难词</button>
+    <button class="filter-btn" id="abFocusBtn">🎯 专注</button>
     <button id="abPrev" title="上一个">⏮</button>
     <button id="abNext" title="下一个">⏭</button>
     <button id="abClose" title="关闭">✕</button>
+  </div>
+</div>
+
+<!-- Focus mode overlay -->
+<div class="focus-overlay" id="focusOverlay">
+  <div class="focus-word" id="focusWord">—</div>
+  <div class="focus-mark" id="focusMark" title="标记难词">⭐</div>
+  <div class="focus-def" id="focusDef"></div>
+  <div class="focus-full" id="focusFull"></div>
+  <div class="focus-pos" id="focusPos"></div>
+  <div class="focus-btns">
+    <button onclick="focusPrev()">⏮ 上一个</button>
+    <button onclick="focusSpeak()">🔊 发音</button>
+    <button class="primary" id="focusPlayBtn" onclick="focusTogglePlay()">▶ 连播</button>
+    <button onclick="focusNext()">⏭ 下一个</button>
+    <button onclick="focusClose()">✕ 退出</button>
   </div>
 </div>
 
@@ -1635,6 +1674,103 @@ mainEl.addEventListener('click', (e) => {{
 
 abLoad();
 abUpdateUI();
+
+// ─── Focus mode ───
+let focusOpen = false;
+const focusOverlay = document.getElementById('focusOverlay');
+const focusWordEl = document.getElementById('focusWord');
+const focusDefEl = document.getElementById('focusDef');
+const focusFullEl = document.getElementById('focusFull');
+const focusPosEl = document.getElementById('focusPos');
+const focusMarkEl = document.getElementById('focusMark');
+const focusPlayBtn = document.getElementById('focusPlayBtn');
+
+function focusUpdateUI() {{
+  const list = abGetList();
+  const w = list[abIdx];
+  focusWordEl.textContent = w ? w.w : '—';
+  focusDefEl.textContent = w ? (w.d || '') : '';
+  focusFullEl.textContent = w ? (w.f && w.f !== w.d ? w.f : '') : '';
+  focusPosEl.textContent = list.length ? (abIdx + 1) + ' / ' + list.length : '';
+  focusMarkEl.classList.toggle('marked', w ? hardWords.has(w.w) : false);
+  focusPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
+}}
+
+function focusEnter() {{
+  focusOpen = true;
+  focusOverlay.classList.add('open');
+  document.querySelector('header').style.display = 'none';
+  mainEl.style.display = 'none';
+  document.querySelector('.foot').style.display = 'none';
+  abBar.style.display = 'none';
+  abToggleBtn.style.display = 'none';
+  focusUpdateUI();
+}}
+
+function focusClose() {{
+  focusOpen = false;
+  focusOverlay.classList.remove('open');
+  document.querySelector('header').style.display = '';
+  mainEl.style.display = '';
+  document.querySelector('.foot').style.display = '';
+  abBar.style.display = '';
+  abBar.classList.remove('hidden');
+  document.body.classList.add('autobar-open');
+  abUpdateUI();
+}}
+
+function focusSpeak() {{
+  const list = abGetList();
+  const w = list[abIdx];
+  if (w) speak(w.w);
+}}
+
+function focusPrev() {{
+  if (abIdx > 0) {{ abIdx--; abSave(); }}
+  if (abPlaying) {{ abStop(); abStart(); }}
+  focusUpdateUI();
+}}
+
+function focusNext() {{
+  const list = abGetList();
+  if (abIdx < list.length - 1) {{ abIdx++; abSave(); }}
+  if (abPlaying) {{ abStop(); abStart(); }}
+  focusUpdateUI();
+}}
+
+function focusTogglePlay() {{
+  abPlaying ? abStop() : abStart();
+  focusUpdateUI();
+}}
+
+focusMarkEl.onclick = () => {{
+  const list = abGetList();
+  const w = list[abIdx];
+  if (w) {{
+    if (hardWords.has(w.w)) hardWords.delete(w.w); else hardWords.add(w.w);
+    saveHard();
+    focusUpdateUI();
+  }}
+}};
+
+document.getElementById('abFocusBtn').onclick = () => {{ focusEnter(); }};
+
+// Update focus UI when autoplay advances
+const _origAbUpdateUI = abUpdateUI;
+abUpdateUI = function() {{
+  _origAbUpdateUI();
+  if (focusOpen) focusUpdateUI();
+}};
+
+// Keyboard shortcuts in focus mode
+document.addEventListener('keydown', (e) => {{
+  if (!focusOpen) return;
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {{ e.preventDefault(); focusPrev(); }}
+  else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {{ e.preventDefault(); focusNext(); }}
+  else if (e.key === ' ') {{ e.preventDefault(); focusTogglePlay(); }}
+  else if (e.key === 's' || e.key === 'S') {{ e.preventDefault(); focusSpeak(); }}
+  else if (e.key === 'Escape') {{ focusClose(); }}
+}});
 </script>
 </body>
 </html>'''
