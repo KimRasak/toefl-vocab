@@ -1247,6 +1247,32 @@ body.autobar-open{{padding-bottom:100px}}
 .filter-btn.active{{background:var(--accent);color:#fff;border-color:var(--accent)}}
 .hard-count{{font-size:12px;color:var(--muted)}}
 
+/* Sync modal */
+.sync-modal{{
+  display:none;position:fixed;inset:0;z-index:50;
+  background:rgba(0,0,0,.6);align-items:center;justify-content:center;
+  padding:20px;
+}}
+.sync-modal.open{{display:flex}}
+.sync-box{{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:24px;max-width:420px;width:100%;
+}}
+.sync-box h3{{margin:0 0 12px;font-size:16px}}
+.sync-box textarea{{
+  width:100%;height:120px;background:var(--card2);border:1px solid var(--border);
+  border-radius:8px;color:var(--fg);font-size:12px;padding:10px;resize:vertical;
+  font-family:monospace;
+}}
+.sync-box .sync-btns{{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}}
+.sync-box .sync-btns button{{
+  background:var(--card2);border:1px solid var(--border);color:var(--fg);
+  border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;
+}}
+.sync-box .sync-btns button:hover{{border-color:var(--accent)}}
+.sync-box .sync-btns button.primary{{background:var(--accent);color:#fff;border-color:var(--accent)}}
+.sync-hint{{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}}
+
 /* Focus mode */
 .focus-overlay{{
   display:none;position:fixed;inset:0;z-index:25;
@@ -1323,6 +1349,20 @@ body.autobar-open{{padding-bottom:100px}}
   </div>
 </div>
 
+<!-- Sync modal -->
+<div class="sync-modal" id="syncModal" onclick="if(event.target===this)syncClose()">
+  <div class="sync-box">
+    <h3 id="syncTitle">📲 同步难词标记</h3>
+    <textarea id="syncText" placeholder="粘贴从另一台设备导出的内容..."></textarea>
+    <div class="sync-hint">在 PC 上导出 → 复制内容 → 手机上粘贴导入，即可跨设备同步。</div>
+    <div class="sync-btns">
+      <button class="primary" onclick="syncExport()">📋 导出并复制</button>
+      <button class="primary" onclick="syncImport()">📥 导入</button>
+      <button onclick="syncClose()">关闭</button>
+    </div>
+  </div>
+</div>
+
 <!-- Focus mode overlay -->
 <div class="focus-overlay" id="focusOverlay">
   <div class="focus-reveal-area" id="focusRevealArea" style="cursor:pointer;padding:20px;min-height:120px;display:flex;flex-direction:column;align-items:center">
@@ -1369,6 +1409,51 @@ function toggleHard(word, e) {{
 }}
 loadHard();
 
+// ─── Sync ───
+function syncOpen() {{
+  const modal = document.getElementById('syncModal');
+  const ta = document.getElementById('syncText');
+  ta.value = hardWords.size ? JSON.stringify([...hardWords]) : '';
+  modal.classList.add('open');
+}}
+function syncClose() {{
+  document.getElementById('syncModal').classList.remove('open');
+}}
+function syncExport() {{
+  const ta = document.getElementById('syncText');
+  const data = JSON.stringify([...hardWords]);
+  ta.value = data;
+  ta.select();
+  try {{
+    navigator.clipboard.writeText(data).then(() => {{
+      alert('已复制 ' + hardWords.size + ' 个难词到剪贴板！\\n在另一台设备上打开此页面 → 点📲同步 → 粘贴导入');
+    }}).catch(() => {{
+      document.execCommand('copy');
+      alert('已复制！请在另一台设备粘贴导入。');
+    }});
+  }} catch(e) {{
+    document.execCommand('copy');
+    alert('已选中，请手动复制 (Ctrl+C)');
+  }}
+}}
+function syncImport() {{
+  const ta = document.getElementById('syncText');
+  const text = ta.value.trim();
+  if (!text) {{ alert('请先粘贴内容'); return; }}
+  try {{
+    const arr = JSON.parse(text);
+    if (!Array.isArray(arr)) throw new Error('格式错误');
+    const before = hardWords.size;
+    arr.forEach(w => {{ if (typeof w === 'string') hardWords.add(w); }});
+    saveHard();
+    syncClose();
+    render(searchInput.value);
+    alert('导入成功！新增 ' + (hardWords.size - before) + ' 个难词，当前共 ' + hardWords.size + ' 个');
+  }} catch(e) {{
+    alert('格式错误，请粘贴从另一台设备导出的内容');
+  }}
+}}
+
 let audioEl = null;
 function ttsUrls(word) {{
   const w = encodeURIComponent(word);
@@ -1413,6 +1498,7 @@ function render(query) {{
   html += '<div class="filter-bar">';
   html += `<button class="filter-btn${{showHardOnly ? ' active' : ''}}" onclick="showHardOnly=!showHardOnly;render(searchInput.value)">⭐ 仅看难词</button>`;
   html += `<span class="hard-count">已标记 ${{hardCnt}} 个难词</span>`;
+  html += `<button class="filter-btn" onclick="syncOpen()">📲 同步</button>`;
   if (hardCnt > 0) {{
     html += `<button class="filter-btn" onclick="if(confirm('确定清空所有难词标记？')){{hardWords.clear();saveHard();showHardOnly=false;render(searchInput.value)}}">清空标记</button>`;
   }}
