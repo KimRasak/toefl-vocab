@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788236933242,
+  "updatedAt": 1788236968323,
   "datasets": {
     "1675": {
       "deport": {
@@ -181,6 +181,16 @@
       "lavish": {
         "mastered": true,
         "updatedAt": 1788236931699,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "seism": {
+        "mastered": true,
+        "updatedAt": 1788236966440,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "discipline": {
+        "mastered": true,
+        "updatedAt": 1788236967691,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
