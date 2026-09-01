@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788245761447,
+  "updatedAt": 1788245845182,
   "datasets": {
     "1675": {
       "deport": {
@@ -271,6 +271,11 @@
       "sanity": {
         "mastered": true,
         "updatedAt": 1788245759889,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "beverage": {
+        "mastered": true,
+        "updatedAt": 1788245842289,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
