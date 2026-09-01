@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1788244242962,
+  "updatedAt": 1788244246529,
   "datasets": {
     "1675": {
       "deport": {
@@ -241,6 +241,11 @@
       "opponent": {
         "mastered": true,
         "updatedAt": 1788244239581,
+        "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
+      },
+      "clutch": {
+        "mastered": true,
+        "updatedAt": 1788244244943,
         "device": "00da1ad1-ea6a-48df-9c73-b9a109bb5f33"
       }
     }
