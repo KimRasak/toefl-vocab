@@ -208,6 +208,18 @@ body.showstats #stats{display:block}
 #banner code{background:#fff;padding:1px 5px;border-radius:4px;font-size:12px}
 #banner a{color:inherit;text-decoration:underline}
 .err{color:var(--bad);font-size:13px;margin-top:6px}
+#sceneSummary{background:var(--panel);border-bottom:1px solid var(--border);padding:12px 24px 14px;line-height:1.6}
+#sceneSummary .sumHead{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+#sceneSummary h2{font-size:14px}
+#sceneSummary .sumHint{font-size:11.5px;color:var(--muted)}
+.sceneGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.scene{border:1px solid var(--border);border-radius:8px;padding:8px 10px;background:#fafbfc}
+.scene strong{display:block;font-size:12.5px;margin-bottom:2px}
+.scene span{display:block;font-size:12px;color:var(--muted)}
+.scene.social strong{color:#2563eb}.scene.nav strong{color:#7c3aed}.scene.acad strong{color:#059669}
+.scene p{font-size:11.5px;color:var(--muted);margin-top:7px}
+@media(max-width:800px){.sceneGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){#sceneSummary{padding:10px 14px}.sceneGrid{grid-template-columns:1fr 1fr}.scene{padding:7px}.scene span{font-size:11.5px}}
 </style>
 </head>
 <body>
@@ -228,6 +240,15 @@ body.showstats #stats{display:block}
   <button class="btn ghost" id="sb">成绩</button>
   <button class="btn ghost" id="rs">重置本类</button>
 </header>
+<div id="sceneSummary">
+  <div class="sumHead"><h2>🧭 新托福听力场景速览</h2><span class="sumHint">按 ETS 2026 蓝图归纳；题数是官方范围，不代表固定学科配额</span></div>
+  <div class="sceneGrid">
+    <div class="scene social"><strong>日常社交 · 15–19 题</strong><span>听答题：一句话 + 最合适回应</span><p>购物、餐饮、交通、旅行、健身、维修、预约、活动安排、请求与建议。</p></div>
+    <div class="scene social"><strong>日常/校园短对话 · 10 题</strong><span>Conversation：两人短交流</span><p>生活计划、租房、设备、工作沟通，也可能涉及图书馆、课程等校园事务。</p></div>
+    <div class="scene nav"><strong>校园公告 · 6–10 题</strong><span>Announcement：课堂或校园通知</span><p>课程与作业、教室调整、图书馆、社团、活动、校规与设施维护。</p></div>
+    <div class="scene acad"><strong>学术讲座 · 8–16 题</strong><span>Academic Talk：短篇学术听力</span><p>自然科学、人文、社会科学、经济、心理、历史、艺术等；不要按少量样题押学科比例。</p></div>
+  </div>
+</div>
 <div id="tabs"></div>
 <main>
   <div id="list"></div>
