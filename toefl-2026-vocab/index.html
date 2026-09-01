@@ -147,11 +147,12 @@ button { cursor: pointer; border: none; background: none; }
 .badge.status-learning { background: rgba(255,180,84,.18); color: var(--warn); }
 .badge.status-mastered { background: rgba(52,199,89,.18); color: var(--ok); }
 
-.fc-meaning { font-size: 26px; font-weight: 700; line-height: 1.35; margin: 8px 0; }
+.fc-meaning { font-size: 26px; font-weight: 700; line-height: 1.35; margin: 8px 0; display: none; }
 .fc-word { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; display: none; }
 .fc-pos { font-size: 14px; color: var(--muted); display: none; }
-.flashcard.revealed .fc-word, .flashcard.revealed .fc-pos { display: block; }
+.flashcard.revealed .fc-meaning, .flashcard.revealed .fc-word, .flashcard.revealed .fc-pos { display: block; }
 .fc-hint { font-size: 13px; color: var(--muted); margin-top: 20px; }
+.fc-hint .listen-icon { font-size: 40px; display: block; margin-bottom: 8px; }
 .flashcard.revealed .fc-hint { display: none; }
 
 .fc-actions {
@@ -520,13 +521,21 @@ function importAndMerge(data) {
   toast('进度已合并');
 }
 
+let _audioEl = null;
+const YOUDAO_TTS = 'https://dict.youdao.com/dictvoice?audio=';
+const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
+
 function speak(text) {
-  if (!('speechSynthesis' in window)) { toast('当前浏览器不支持语音'); return; }
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US';
-  u.rate = 0.9;
-  speechSynthesis.speak(u);
+  const clean = String(text).replace(/'/g, '').replace(/^[^A-Za-z]+/, '').replace(/\s*[\/\(].*/,'').trim();
+  if (!clean) return;
+  if (_audioEl) { _audioEl.pause(); _audioEl = null; }
+  const a = new Audio(YOUDAO_TTS + encodeURIComponent(clean) + '&type=2');
+  a.onerror = function() {
+    const b = new Audio(GOOGLE_TTS + encodeURIComponent(clean));
+    b.play().catch(() => {});
+  };
+  a.play().catch(() => {});
+  _audioEl = a;
 }
 
 function answer(word, correct) {
@@ -667,7 +676,7 @@ function renderStudyCard() {
         '<div class="fc-meaning">' + esc(entry.m) + '</div>' +
         '<div class="fc-word">' + esc(entry.w) + '</div>' +
         '<div class="fc-pos">' + esc(entry.p) + '</div>' +
-        '<div class="fc-hint">点击卡片查看英文</div>' +
+        '<div class="fc-hint"><span class="listen-icon">🔊</span>先听发音，再点击卡片查看答案</div>' +
       '</div>' +
     '</div>' +
     '<div class="fc-actions" id="fc-actions">' +
@@ -697,6 +706,9 @@ function renderStudyCard() {
   $('fc-wrong').addEventListener('click', e => { e.stopPropagation(); submitAnswer(false); });
 
   setupSwipe(entry);
+
+  // Auto-play pronunciation when card appears
+  setTimeout(() => speak(entry.w), 200);
 }
 
 function setupSwipe(entry) {
