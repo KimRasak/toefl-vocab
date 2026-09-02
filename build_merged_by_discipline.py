@@ -22,6 +22,17 @@ try:
 except (FileNotFoundError, json.JSONDecodeError):
     pass
 
+# High-frequency discipline expansions are kept as a separate, reviewable
+# source so topic growth does not get mixed with the legacy word lists.
+HIGH_FREQ_DISCIPLINE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'high_frequency_discipline_words.json')
+try:
+    with open(HIGH_FREQ_DISCIPLINE_PATH, encoding='utf-8') as _f:
+        _high_freq_data = json.load(_f)
+        HIGH_FREQ_WORDS = {str(k).lower(): str(v).strip() for k, v in _high_freq_data.get('words', {}).items()}
+        HIGH_FREQ_TOPICS = {str(k).lower(): str(v) for k, v in _high_freq_data.get('topics', {}).items()}
+except (FileNotFoundError, json.JSONDecodeError):
+    HIGH_FREQ_WORDS, HIGH_FREQ_TOPICS = {}, {}
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 # ── 1. Topic ranges in 1675 list (line numbers, 1-based) ──
@@ -1335,6 +1346,10 @@ def main():
         print(f"  Scenario words: {len(scenario_words)} words loaded")
     except (FileNotFoundError, json.JSONDecodeError):
         print("  Scenario words: not found, skipping")
+    # Add curated high-frequency discipline terminology separately from scenario words.
+    scenario_words.update(HIGH_FREQ_WORDS)
+    scenario_topics.update(HIGH_FREQ_TOPICS)
+    print(f"  High-frequency discipline additions: {len(HIGH_FREQ_WORDS)} words loaded")
 
     print(f"  1791: {len(w1791)} words")
     print(f"  1925: {len(w1925)} words")
