@@ -7,29 +7,45 @@ Output: merged-by-discipline/index.html
 import os, re, json
 from collections import defaultdict
 
+# Legacy source lists carry stress marks and typos in a few headwords; map them
+# onto the real spelling so definitions merge and pronunciation lookups work.
+WORD_ALIASES = {
+    'con`duct': 'conduct',
+    'con`tent': 'content',
+    'con`tract': 'contract',
+    'con`vict': 'convict',
+    'discerm': 'discern',
+    'figure-head': 'figurehead',
+}
+
+
+def canonical_word(word):
+    word = (word or '').strip().lower()
+    return WORD_ALIASES.get(word, word)
+
 # Curated definition corrections and expansions.  This file is deliberately
 # kept separate from the generated HTML so it can be reviewed and backed up.
 DEFINITION_OVERRIDES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'overrides.json')
 try:
     with open(DEFINITION_OVERRIDES_PATH, encoding='utf-8') as _f:
-        DEFINITION_OVERRIDES = {str(k).lower(): str(v).strip() for k, v in json.load(_f).items()}
+        DEFINITION_OVERRIDES = {canonical_word(k): str(v).strip() for k, v in json.load(_f).items()}
 except (FileNotFoundError, json.JSONDecodeError):
     DEFINITION_OVERRIDES = {}
 try:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pos_overrides.json'), encoding='utf-8') as _f:
-        POS_OVERRIDES = {str(k).lower(): str(v).strip() for k, v in json.load(_f).items()}
+        POS_OVERRIDES = {canonical_word(k): str(v).strip() for k, v in json.load(_f).items()}
 except (FileNotFoundError, json.JSONDecodeError):
     POS_OVERRIDES = {}
 try:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pos_review_candidates.json'), encoding='utf-8') as _f:
         # Candidate reviews are lower priority than already audited overrides.
-        POS_REVIEW_CANDIDATES = {str(k).lower(): str(v).strip() for k, v in json.load(_f).items()}
+        POS_REVIEW_CANDIDATES = {canonical_word(k): str(v).strip() for k, v in json.load(_f).items()}
 except (FileNotFoundError, json.JSONDecodeError):
     POS_REVIEW_CANDIDATES = {}
 try:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'definition_corrections.json'), encoding='utf-8') as _f:
         # New corrections intentionally take precedence over the older review table.
-        DEFINITION_OVERRIDES.update({str(k).lower(): str(v).strip() for k, v in json.load(_f).items()})
+        DEFINITION_OVERRIDES.update({canonical_word(k): str(v).strip() for k, v in json.load(_f).items()})
 except (FileNotFoundError, json.JSONDecodeError):
     pass
 
@@ -39,7 +55,7 @@ HIGH_FREQ_DISCIPLINE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file_
 try:
     with open(HIGH_FREQ_DISCIPLINE_PATH, encoding='utf-8') as _f:
         _high_freq_data = json.load(_f)
-        HIGH_FREQ_WORDS = {str(k).lower(): str(v).strip() for k, v in _high_freq_data.get('words', {}).items()}
+        HIGH_FREQ_WORDS = {canonical_word(k): str(v).strip() for k, v in _high_freq_data.get('words', {}).items()}
         HIGH_FREQ_TOPICS = {str(k).lower(): str(v) for k, v in _high_freq_data.get('topics', {}).items()}
 except (FileNotFoundError, json.JSONDecodeError):
     HIGH_FREQ_WORDS, HIGH_FREQ_TOPICS = {}, {}
@@ -975,7 +991,7 @@ def parse_word(line):
     # Skip "..." placeholder lines
     if word == '...':
         return None, None
-    return word.lower(), defn
+    return canonical_word(word), defn
 
 
 def parse_1791():
@@ -1471,7 +1487,13 @@ LEGACY_POS_MAP = {
 # Only rewrite a legacy label when Chinese text follows it, so that English
 # articles and abbreviations (``emend a text``) are never touched.
 LEGACY_POS_RE = re.compile(
-    r'(?<![A-Za-z])(a|ad|vt|vi|cn|un)[ \t]?\.?[ \t]*(?=[\u4e00-\u9fff])',
+    r'(?<![A-Za-z])(a|ad|vt|vi|cn|un)[ \t]?\.[ \t]*(?=[\u4e00-\u9fff])',
+    re.I,
+)
+
+# ``maritime  a 海的``: a dotless legacy label only counts at a segment start.
+LEGACY_POS_BARE_RE = re.compile(
+    r'(?:(?<=^)|(?<=\n)|(?<=[；;，,、/]))([ \t]*)(a|ad|vt|vi|cn|un)[ \t]+(?=[\u4e00-\u9fff])',
     re.I,
 )
 
@@ -1491,6 +1513,8 @@ def normalize_definition_pos(definition):
         return LEGACY_POS_MAP[match.group(1).lower()] + ' '
 
     result = LEGACY_POS_RE.sub(_sub, definition)
+    result = LEGACY_POS_BARE_RE.sub(
+        lambda m: m.group(1) + LEGACY_POS_MAP[m.group(2).lower()] + ' ', result)
     return LEGACY_POS_ADJACENT_RE.sub(lambda m: LEGACY_POS_MAP[m.group(1).lower()], result)
 
 
@@ -2305,31 +2329,83 @@ if (gistToken && gistId) {{
 
 let audioEl = null;
 let audioRequestId = 0;
+const ttsPreferred = new Map();   // word -> url that actually played
 function ttsUrls(word) {{
+  const cached = ttsPreferred.get(word);
   const w = encodeURIComponent(word);
-  // Use one fixed source/voice. Falling back to type=1 or Google can make
-  // consecutive clicks sound different (US/UK or different TTS voices).
-  return ["https://dict.youdao.com/dictvoice?audio=" + w + "&type=2"];
+  const youdaoUs = "https://dict.youdao.com/dictvoice?audio=" + w + "&type=2";
+  const youdaoUk = "https://dict.youdao.com/dictvoice?audio=" + w + "&type=1";
+  const google = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=" + w;
+  // Keep one voice for everything that Youdao can pronounce, then fall back:
+  // Youdao returns an error for ~50 multi-word terms, which Google can read.
+  const chain = [youdaoUs, youdaoUk, google];
+  if (cached) return [cached].concat(chain.filter(u => u !== cached));
+  return chain;
+}}
+function pickVoice() {{
+  if (!window.speechSynthesis) return null;
+  const voices = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang));
+  const liked = ['Samantha', 'Ava', 'Allison', 'Karen', 'Serena', 'Google US English',
+                 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft Guy', 'Alex', 'Daniel'];
+  for (const name of liked) {{
+    const hit = voices.find(v => v.name.indexOf(name) !== -1);
+    if (hit) return hit;
+  }}
+  return voices.find(v => /en[-_]US/i.test(v.lang)) || voices[0] || null;
+}}
+function synthSpeak(word, requestId, done) {{
+  // Last resort: the local system voice, so no word is ever silent.
+  if (!window.speechSynthesis) {{ done(); return; }}
+  try {{
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = 'en-US';
+    utter.rate = 0.95;
+    const voice = pickVoice();
+    if (voice) utter.voice = voice;
+    utter.onend = () => {{ if (requestId === audioRequestId) done(); }};
+    utter.onerror = () => {{ if (requestId === audioRequestId) done(); }};
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utter);
+  }} catch (e) {{ done(); }}
+}}
+function playChain(word, requestId, done) {{
+  const urls = ttsUrls(word);
+  let index = 0;
+  const next = () => {{
+    if (requestId !== audioRequestId) return;
+    if (index >= urls.length) {{
+      audioEl = null;
+      synthSpeak(word, requestId, done);
+      return;
+    }}
+    const url = urls[index++];
+    const audio = new Audio(url);
+    audioEl = audio;
+    audio.onerror = next;
+    audio.onended = () => {{
+      if (requestId !== audioRequestId) return;
+      audioEl = null;
+      done();
+    }};
+    audio.onplaying = () => {{ ttsPreferred.set(word, url); }};
+    audio.play().catch(next);
+  }};
+  next();
 }}
 function stopAudio() {{
   audioRequestId++;
+  if (window.speechSynthesis) {{ try {{ speechSynthesis.cancel(); }} catch(e) {{}} }}
   if (audioEl) {{
-    audioEl.onerror = null; audioEl.onended = null;
+    audioEl.onerror = null; audioEl.onended = null; audioEl.onplaying = null;
     try {{ audioEl.pause(); audioEl.currentTime = 0; }} catch(e) {{}}
     audioEl = null;
   }}
 }}
 function speak(word) {{
-  const clean = word.replace(/['']/g, "'");
+  const clean = word.replace(/['’]/g, "'");
   stopAudio();
   if (!clean) return;
-  const requestId = audioRequestId;
-  const urls = ttsUrls(clean);
-  const audio = new Audio(urls[0]);
-  audioEl = audio;
-  audio.onerror = () => {{ if (requestId === audioRequestId) audioEl = null; }};
-  audio.onended = () => {{ if (requestId === audioRequestId) audioEl = null; }};
-  audio.play().catch(() => {{ if (requestId === audioRequestId) audioEl = null; }});
+  playChain(clean, audioRequestId, () => {{}});
 }}
 
 function escHtml(s) {{
@@ -2472,19 +2548,10 @@ function abSave() {{
 
 function speakAsync(word) {{
   return new Promise(resolve => {{
-    const clean = word.replace(/['']/g, "'");
+    const clean = word.replace(/['’]/g, "'");
     if (!clean) {{ resolve(); return; }}
     stopAudio();
-    const requestId = audioRequestId;
-    const audio = new Audio(ttsUrls(clean)[0]);
-    audioEl = audio;
-    const finish = () => {{
-      if (requestId === audioRequestId) audioEl = null;
-      resolve();
-    }};
-    audio.onended = finish;
-    audio.onerror = finish;
-    audio.play().catch(finish);
+    playChain(clean, audioRequestId, resolve);
   }});
 }}
 
