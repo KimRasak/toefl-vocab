@@ -1430,7 +1430,7 @@ def extract_short_def(defn):
     d = re.split(r'\[(?:ph|st|syn|mean)\]', defn)[0].strip()
     # Keep POS labels wherever they occur (e.g. ``n. ...; adj. ...``),
     # rather than hiding them until the user expands a word card.
-    token_re = (r'(?:adj|adv|prep|conj|pron|num|idiom|phr|n|v)'
+    token_re = (r'(?:adj|adv|prep|conj|pron|num|idiom|phr|a|n|v)'
                 r'(?:\./(?:adj|adv|prep|conj|pron|num|idiom|phr|n|v))?\.?')
     tokens = re.findall(
         rf'{token_re}|[\u4e00-\u9fff\uff0c\u3001\uff1b\uff08\uff09（）。，、；：：“”‘’？！]+',
