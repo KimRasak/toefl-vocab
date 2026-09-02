@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0f1115">
-<title>2026 新托福词汇卡 · 2670词</title>
+<title>2026 新托福词汇卡</title>
 <script src="data.js"></script>
 <style>
 :root {
@@ -116,6 +116,42 @@ button { cursor: pointer; border: none; background: none; }
   padding: 10px 12px; background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; outline: none; min-width: 100px;
 }
+
+/* Browse (category overview) */
+.browse-head {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.browse-head .icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.browse-head .meta { flex: 1; min-width: 0; }
+.browse-head .meta .name { font-weight: 800; font-size: 18px; }
+.browse-head .meta .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.browse-tip { font-size: 12px; color: var(--muted); margin: 0 0 14px; }
+.browse-group { margin-bottom: 18px; }
+.browse-group h4 {
+  margin: 0 0 8px; font-size: 13px; font-weight: 700; color: var(--muted);
+  display: flex; justify-content: space-between; gap: 8px;
+}
+.browse-group h4 span { font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--border); background: var(--card);
+  border-radius: 12px; padding: 8px 12px; font-size: 14px;
+  display: flex; align-items: center; gap: 6px; max-width: 100%;
+  text-align: left; transition: border-color .15s, transform .1s;
+}
+.chip:active { transform: scale(.97); }
+.chip:hover { border-color: var(--accent); }
+.chip .cw { font-weight: 600; }
+.chip .cm { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; }
+.chip.mastered { border-color: rgba(52,199,89,.5); }
+.chip.learning { border-color: rgba(255,180,84,.5); }
+.chip .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.chip .dot.new { background: var(--muted); }
+.chip .dot.learning { background: var(--warn); }
+.chip .dot.mastered { background: var(--ok); }
 
 /* Flashcard */
 .study-area { display: flex; flex-direction: column; align-items: center; min-height: 420px; }
@@ -239,6 +275,19 @@ button { cursor: pointer; border: none; background: none; }
 }
 .sync-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 .sync-btns .btn { flex: 1; min-width: 120px; }
+.sync-input {
+  width: 100%; padding: 12px; margin-bottom: 10px;
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 12px; outline: none; font-size: 13px;
+}
+.sync-input:focus { border-color: var(--accent); }
+.sync-remember { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.sync-status { font-size: 12px; margin-top: 10px; padding: 8px 10px; border-radius: 8px; display: none; }
+.sync-status.show { display: block; }
+.sync-status.ok { background: rgba(52,199,89,.15); color: var(--ok); }
+.sync-status.err { background: rgba(255,69,58,.15); color: var(--bad); }
+.sync-status.info { background: rgba(76,141,255,.12); color: var(--accent); }
+.sync-warn { font-size: 12px; color: var(--warn); margin-top: 10px; line-height: 1.6; }
 .toast {
   position: fixed; bottom: calc(var(--nav-h) + 16px + env(safe-area-inset-bottom));
   left: 50%; transform: translateX(-50%) translateY(20px);
@@ -295,6 +344,17 @@ button { cursor: pointer; border: none; background: none; }
       <div id="macro-list"></div>
     </div>
 
+    <!-- 分类一览 -->
+    <div class="view" id="view-browse">
+      <button class="btn btn-block" id="btn-browse-back" style="margin-bottom:12px">← 返回总览</button>
+      <div class="browse-head" id="browse-head"></div>
+      <div class="btn-row" style="margin-bottom:14px">
+        <button class="btn btn-primary" id="btn-browse-study">📖 按记忆曲线学这类</button>
+      </div>
+      <p class="browse-tip">点击任意单词即可从该词开始进入单词卡模式。</p>
+      <div id="browse-list"></div>
+    </div>
+
     <!-- 学习 -->
     <div class="view" id="view-study">
       <div class="controls" id="study-controls">
@@ -337,7 +397,20 @@ button { cursor: pointer; border: none; background: none; }
     <!-- 同步 -->
     <div class="view" id="view-sync">
       <div class="sync-panel">
-        <h3>方法一 · 同步码（推荐）</h3>
+        <h3>☁️ GitHub Gist 云同步（推荐）</h3>
+        <p>和「学科分类总表」相同的方式：粘贴一次 GitHub Token，进度自动上传到你自己的私密 Gist，其他设备打开本页自动拉取合并。</p>
+        <input class="sync-input" type="password" id="gist-token" placeholder="粘贴 GitHub Personal Access Token…" autocomplete="off">
+        <label class="sync-remember"><input type="checkbox" id="gist-remember" checked>在本机记住 Token（取消勾选则只在本次浏览器会话有效）</label>
+        <div class="sync-btns">
+          <button class="btn btn-primary" id="btn-gist-login">🔗 连接</button>
+          <button class="btn" id="btn-gist-sync">🔄 立即同步</button>
+          <button class="btn" id="btn-gist-logout">退出登录</button>
+        </div>
+        <div class="sync-status" id="gist-msg"></div>
+        <p class="sync-warn">Token 需勾选 <code>gist</code> 权限即可，<a href="https://github.com/settings/tokens/new?scopes=gist&description=TOEFL-2026-vocab-sync" target="_blank" rel="noopener">点此创建</a>。注意：勾选“记住”会把 Token 存在本机浏览器里，公用电脑请取消勾选并在用完后退出登录。</p>
+      </div>
+      <div class="sync-panel">
+        <h3>方法一 · 同步码</h3>
         <p>复制同步码到其他设备，粘贴后合并学习进度（练习次数多的记录优先保留）。</p>
         <textarea class="sync-textarea" id="sync-code" placeholder="粘贴同步码…" readonly></textarea>
         <div class="sync-btns">
@@ -397,6 +470,7 @@ const MAX_NEW = 20;
 const MACRO = {
   awl:      { name: 'AWL学术词', icon: '📚', color: '#4c8dff' },
   listening:{ name: '听力场景', icon: '🎧', color: '#ff9500' },
+  reading:  { name: '日常阅读', icon: '📄', color: '#5ac8fa' },
   subject:  { name: '学科主题', icon: '🔬', color: '#34c759' },
   phrasal:  { name: '短语动词', icon: '💬', color: '#ffb454' },
   writing:  { name: '写作表达', icon: '✍️', color: '#af52de' },
@@ -433,6 +507,7 @@ function esc(s) {
 function getMacro(c) {
   if (c.startsWith('AWL')) return 'awl';
   if (c.startsWith('听力-')) return 'listening';
+  if (c.startsWith('阅读-')) return 'reading';
   if (c.startsWith('学科-') || c.startsWith('深度-')) return 'subject';
   if (c === '短语动词') return 'phrasal';
   if (c.includes('写作') || c.startsWith('功能词')) return 'writing';
@@ -470,6 +545,7 @@ function loadProgress() {
 function saveProgress() {
   try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); }
   catch(e) { toast('保存失败，存储空间可能已满'); }
+  gistSchedulePush();
 }
 
 function loadSettings() {
@@ -530,34 +606,227 @@ function importAndMerge(data) {
   toast('进度已合并');
 }
 
+// ─── Cloud Sync via GitHub Gist ───
+const GIST_KEY = 'toefl2026_gist_sync';
+const GIST_DESC = 'TOEFL-2026-vocab-progress-sync';
+const GIST_FILE = 'toefl2026-progress.json';
+let gistToken = '', gistId = '', gistRemember = true;
+
+function gistLoadCreds() {
+  try {
+    const raw = localStorage.getItem(GIST_KEY) || sessionStorage.getItem(GIST_KEY) || '{}';
+    const s = JSON.parse(raw);
+    gistToken = s.token || '';
+    gistId = s.gistId || '';
+    gistRemember = s.remember !== false;
+  } catch(e) {}
+}
+
+function gistSaveCreds() {
+  const payload = JSON.stringify({ token: gistToken, gistId, remember: gistRemember });
+  try {
+    if (gistRemember) { localStorage.setItem(GIST_KEY, payload); sessionStorage.removeItem(GIST_KEY); }
+    else { sessionStorage.setItem(GIST_KEY, payload); localStorage.removeItem(GIST_KEY); }
+  } catch(e) {}
+}
+
+function gistMsg(text, cls) {
+  const el = $('gist-msg');
+  if (!el) return;
+  el.className = 'sync-status show ' + (cls || 'info');
+  el.textContent = text;
+}
+
+async function gistFetch(url, opts) {
+  const res = await fetch(url, Object.assign({}, opts, {
+    headers: Object.assign({
+      'Authorization': 'token ' + gistToken,
+      'Accept': 'application/vnd.github.v3+json'
+    }, (opts && opts.headers) || {})
+  }));
+  if (!res.ok) throw new Error(res.status + ' ' + (await res.text()).slice(0, 100));
+  return res.json();
+}
+
+function gistPayload() {
+  return JSON.stringify({ version: 1, progress, updatedAt: Date.now() }, null, 2);
+}
+
+async function gistFindExisting() {
+  const gists = await gistFetch('https://api.github.com/gists?per_page=100');
+  return gists.find(g => g.description === GIST_DESC);
+}
+
+async function gistCreate() {
+  return gistFetch('https://api.github.com/gists', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      description: GIST_DESC,
+      public: false,
+      files: { [GIST_FILE]: { content: gistPayload() } }
+    })
+  });
+}
+
+async function gistPush() {
+  if (!gistToken || !gistId) return;
+  await gistFetch('https://api.github.com/gists/' + gistId, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ files: { [GIST_FILE]: { content: gistPayload() } } })
+  });
+}
+
+async function gistPull() {
+  if (!gistToken || !gistId) return 0;
+  const g = await gistFetch('https://api.github.com/gists/' + gistId);
+  const file = g.files && g.files[GIST_FILE];
+  if (!file) return 0;
+  let content = file.content;
+  if (file.truncated && file.raw_url) content = await (await fetch(file.raw_url)).text();
+  if (!content) return 0;
+  const data = JSON.parse(content);
+  const remote = data && data.progress ? data.progress : data;
+  if (!remote || typeof remote !== 'object') return 0;
+  progress = mergeProgress(progress, remote);
+  try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch(e) {}
+  return Object.keys(remote).length;
+}
+
+function gistSchedulePush() {
+  if (!gistToken || !gistId) return;
+  clearTimeout(gistSchedulePush._t);
+  gistSchedulePush._t = setTimeout(() => {
+    gistPush().catch(e => console.warn('Gist push failed:', e));
+  }, 2000);
+}
+
+function gistSeenCount() {
+  return Object.keys(progress).filter(w => getRec(w).box > 0).length;
+}
+
+async function gistLogin() {
+  const token = ($('gist-token').value || '').trim();
+  if (!token) { gistMsg('请先粘贴 Token', 'err'); return; }
+  gistToken = token;
+  gistRemember = !!$('gist-remember').checked;
+  gistMsg('连接中…', 'info');
+  try {
+    await gistFetch('https://api.github.com/user');
+    const existing = await gistFindExisting();
+    if (existing) {
+      gistId = existing.id;
+      gistSaveCreds();
+      gistMsg('已找到同步 Gist，正在拉取…', 'info');
+      await gistPull();
+      await gistPush();
+      renderAll();
+      gistMsg('✅ 同步成功，本机已学习 ' + gistSeenCount() + ' 词', 'ok');
+    } else {
+      gistMsg('正在创建同步 Gist…', 'info');
+      const g = await gistCreate();
+      gistId = g.id;
+      gistSaveCreds();
+      gistMsg('✅ 已连接，' + gistSeenCount() + ' 词进度已上传', 'ok');
+    }
+  } catch(e) {
+    gistToken = ''; gistId = '';
+    gistMsg('❌ 连接失败：' + e.message, 'err');
+  }
+}
+
+async function gistSyncNow() {
+  if (!gistToken || !gistId) { gistMsg('请先连接', 'err'); return; }
+  gistMsg('同步中…', 'info');
+  try {
+    await gistPull();
+    await gistPush();
+    renderAll();
+    gistMsg('✅ 同步完成，共 ' + gistSeenCount() + ' 词', 'ok');
+  } catch(e) {
+    gistMsg('❌ 同步失败：' + e.message, 'err');
+  }
+}
+
+function gistLogout() {
+  gistToken = ''; gistId = '';
+  try { localStorage.removeItem(GIST_KEY); sessionStorage.removeItem(GIST_KEY); } catch(e) {}
+  if ($('gist-token')) $('gist-token').value = '';
+  gistMsg('已退出登录，本机进度仍保留', 'info');
+}
+
 const _audio = new Audio();
 const YOUDAO_TTS = 'https://dict.youdao.com/dictvoice?audio=';
 const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
 let _speakPending = '';
+let _speakGeneration = 0;
+let _voices = [];
+
+function loadVoices() {
+  _voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+}
+loadVoices();
+if (window.speechSynthesis) speechSynthesis.addEventListener('voiceschanged', loadVoices);
+
+function cleanForSpeech(text) {
+  return String(text).replace(/\[[^\]]*\]|（[^）]*）|\([^)]*\)/g, '')
+    .split(/\s+\/\s+/)[0].replace(/^['’]+/, '').trim();
+}
+
+function nativeSpeak(clean) {
+  if (!window.speechSynthesis || !_voices.length) return false;
+  const english = _voices.filter(v => /^en(-|_)/i.test(v.lang));
+  if (!english.length) return false;
+  const voice = english.find(v => /Samantha|Google US English|Microsoft.*(Jenny|Aria|Guy)|Alex/i.test(v.name)) || english[0];
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(clean);
+  u.voice = voice; u.lang = voice.lang || 'en-US'; u.rate = 0.88; u.pitch = 1; u.volume = 0.92;
+  speechSynthesis.speak(u);
+  return true;
+}
 
 function speak(text) {
-  const clean = String(text).replace(/'/g, '').replace(/^[^A-Za-z]+/, '').replace(/\s*[\/\(].*/,'').trim();
+  const clean = cleanForSpeech(text);
   if (!clean) return;
+  const generation = ++_speakGeneration;
   _speakPending = clean;
+  if (nativeSpeak(clean)) return;
   _audio.pause();
-  _audio.src = YOUDAO_TTS + encodeURIComponent(clean) + '&type=2';
-  const p = _audio.play();
-  if (p && p.catch) p.catch(() => {
-    // Youdao failed, try Google TTS
-    if (_speakPending !== clean) return;
-    _audio.src = GOOGLE_TTS + encodeURIComponent(clean);
-    _audio.play().catch(() => {});
-  });
+  _audio.onerror = null;
+  _audio.src = '';
+  const candidates = [
+    YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
+    GOOGLE_TTS + encodeURIComponent(clean)
+  ];
+  let candidate = 0;
+  const tryNext = () => {
+    if (generation !== _speakGeneration) return;
+    if (candidate >= candidates.length) {
+      _audio.onerror = null;
+      if (!nativeSpeak(clean)) toast('发音不可用，请点击🔊重试');
+      return;
+    }
+    _audio.onerror = tryNext;
+    _audio.src = candidates[candidate++];
+    _audio.load();
+    const p = _audio.play();
+    if (p && p.catch) p.catch(() => tryNext());
+  };
+  tryNext();
 }
 
-// Unlock audio on first user touch/click (mobile Safari requirement)
-function unlockAudio() {
-  _audio.play().then(() => _audio.pause()).catch(() => {});
-  document.removeEventListener('touchstart', unlockAudio, true);
-  document.removeEventListener('click', unlockAudio, true);
+function stopSpeech() {
+  ++_speakGeneration;
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  _audio.pause();
+  _audio.onerror = null;
 }
-document.addEventListener('touchstart', unlockAudio, true);
-document.addEventListener('click', unlockAudio, true);
+
+document.addEventListener('pagehide', stopSpeech);
+
+// Unlock audio on first user touch/click (mobile Safari requirement)
+// Explicit 🔊 button/card-row clicks are the supported audio gesture.
 
 function answer(word, correct, skipped) {
   const rec = getRec(word);
@@ -656,13 +925,17 @@ function renderDashboard() {
       '</div>' +
       '<div class="macro-bar"><div class="bar"><i style="width:' + mp + '%;background:' + m.color + '"></i></div></div>' +
       '<div class="btn-row">' +
-        '<button class="btn btn-primary" data-macro="' + key + '">开始学习</button>' +
+        '<button class="btn btn-primary" data-browse="' + key + '">一览全部 ' + st.total + ' 词</button>' +
+        '<button class="btn" data-macro="' + key + '">按记忆曲线学</button>' +
       '</div>' +
     '</div>';
   });
   $('macro-list').innerHTML = html;
   $('macro-list').querySelectorAll('[data-macro]').forEach(btn => {
     btn.addEventListener('click', () => startStudy(btn.dataset.macro, 'new'));
+  });
+  $('macro-list').querySelectorAll('[data-browse]').forEach(btn => {
+    btn.addEventListener('click', () => openBrowse(btn.dataset.browse));
   });
 
   // Update review count
@@ -796,9 +1069,7 @@ function submitAnswer(correct, skipped) {
     card.classList.add(correct ? 'swipe-right' : 'swipe-left');
   }
   answer(entry.w, correct, skipped);
-  // Pre-load next card's audio within user gesture context
-  const nextEntry = studyQueue[studyIdx + 1];
-  if (nextEntry) speak(nextEntry.w);
+  // Do not autoplay the next card; let the learner choose when to hear it.
   setTimeout(() => {
     studyIdx++;
     renderStudyCard();
@@ -826,6 +1097,115 @@ function renderSummary() {
     '</div>';
   $('btn-again').addEventListener('click', () => startStudy(studyCategory, 'new'));
   $('btn-done').addEventListener('click', () => switchTab('dashboard'));
+}
+
+// ─── 分类一览（点词进卡片） ───
+let browseMacro = '';
+
+function browseGroups(macroKey) {
+  const groups = [];
+  const index = {};
+  vocab.forEach(entry => {
+    if (getMacro(entry.c) !== macroKey) return;
+    if (index[entry.c] === undefined) {
+      index[entry.c] = groups.length;
+      groups.push({ cat: entry.c, items: [] });
+    }
+    groups[index[entry.c]].items.push(entry);
+  });
+  return groups;
+}
+
+function openBrowse(macroKey) {
+  browseMacro = macroKey;
+  settings.browseMacro = macroKey;
+  saveSettings();
+  switchTab('browse');
+}
+
+function renderBrowse() {
+  const m = MACRO[browseMacro];
+  const head = $('browse-head');
+  const listEl = $('browse-list');
+  if (!m) {
+    head.innerHTML = '';
+    listEl.innerHTML = '<div class="empty-study"><p>请从总览选择一个分类</p></div>';
+    return;
+  }
+  const groups = browseGroups(browseMacro);
+  let total = 0, mastered = 0;
+  groups.forEach(g => g.items.forEach(e => {
+    total++;
+    if (getStatus(e.w) === 'mastered') mastered++;
+  }));
+
+  head.innerHTML =
+    '<div class="icon" style="background:' + m.color + '22">' + m.icon + '</div>' +
+    '<div class="meta">' +
+      '<div class="name">' + esc(m.name) + '</div>' +
+      '<div class="sub">' + total + ' 词 · ' + mastered + ' 已掌握 · ' + groups.length + ' 个子场景</div>' +
+    '</div>';
+
+  const frag = document.createDocumentFragment();
+  // The full queue mirrors the display order, so clicking any word can resume from it.
+  const flat = [];
+  groups.forEach(g => {
+    const section = document.createElement('div');
+    section.className = 'browse-group';
+    const h = document.createElement('h4');
+    const title = document.createElement('b');
+    title.textContent = g.cat;
+    const count = document.createElement('span');
+    count.textContent = g.items.length + ' 词';
+    h.appendChild(title);
+    h.appendChild(count);
+    section.appendChild(h);
+
+    const chips = document.createElement('div');
+    chips.className = 'chips';
+    g.items.forEach(entry => {
+      const pos = flat.length;
+      flat.push(entry);
+      const st = getStatus(entry.w);
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'chip ' + st;
+      const dot = document.createElement('i');
+      dot.className = 'dot ' + st;
+      const w = document.createElement('span');
+      w.className = 'cw';
+      w.textContent = entry.w;
+      const mean = document.createElement('span');
+      mean.className = 'cm';
+      mean.textContent = entry.m;
+      chip.appendChild(dot);
+      chip.appendChild(w);
+      chip.appendChild(mean);
+      chip.addEventListener('click', () => startStudyAt(pos));
+      chips.appendChild(chip);
+    });
+    section.appendChild(chips);
+    frag.appendChild(section);
+  });
+
+  listEl.innerHTML = '';
+  listEl.appendChild(frag);
+  renderBrowse._flat = flat;
+}
+
+// Enter flashcard mode from the browse list, keeping the whole category as the queue.
+function startStudyAt(pos) {
+  const flat = renderBrowse._flat || [];
+  if (!flat.length) return;
+  studyCategory = browseMacro;
+  studyQueue = flat;
+  studyIdx = Math.max(0, Math.min(pos, flat.length - 1));
+  studyResults = { right: 0, wrong: 0 };
+  studyStarted = true;
+  if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
+  switchTab('study');
+  renderStudyCard();
+  speak(flat[studyIdx].w);
 }
 
 function startStudy(macroFilter, mode) {
@@ -900,12 +1280,16 @@ function renderList() {
 function renderSync() {
   const seen = Object.keys(progress).filter(w => getRec(w).box > 0).length;
   $('sync-seen').textContent = seen;
+  if ($('gist-token')) $('gist-token').value = gistToken;
+  if ($('gist-remember')) $('gist-remember').checked = gistRemember;
+  if (gistToken && gistId) gistMsg('已连接 · Gist ' + gistId.slice(0, 8) + '…', 'ok');
 }
 
 function renderAll() {
   renderDashboard();
   renderList();
   renderSync();
+  if (currentTab === 'browse' && MACRO[browseMacro]) renderBrowse();
 }
 
 function switchTab(tab) {
@@ -919,6 +1303,7 @@ function switchTab(tab) {
   const nav = document.querySelector('.nav-item[data-tab="' + tab + '"]');
   if (nav) nav.classList.add('active');
   if (tab === 'study') renderStudyCard();
+  if (tab === 'browse') renderBrowse();
   if (tab === 'list') renderList();
   if (tab === 'sync') renderSync();
 }
@@ -949,6 +1334,7 @@ function init() {
 
   loadProgress();
   loadSettings();
+  gistLoadCreds();
 
   // Migrate: promote all correctly-answered words to mastered
   let migrated = false;
@@ -974,6 +1360,10 @@ function init() {
   populateFilters();
 
   if (settings.tab) currentTab = settings.tab;
+  if (currentTab === 'browse') {
+    browseMacro = settings.browseMacro || '';
+    if (!MACRO[browseMacro]) currentTab = 'dashboard';
+  }
   $('view-' + currentTab)?.classList.add('active') || ($('view-dashboard').classList.add('active'), currentTab = 'dashboard');
   document.querySelectorAll('.nav-item').forEach(n => {
     n.classList.toggle('active', n.dataset.tab === currentTab);
@@ -985,6 +1375,14 @@ function init() {
   if (settings.listSort) $('list-sort').value = settings.listSort;
 
   renderAll();
+  if (currentTab === 'browse') renderBrowse();
+
+  // Auto-pull cloud progress on load, then merge into the current view.
+  if (gistToken && gistId) {
+    gistPull().then(n => {
+      if (n) { renderAll(); toast('已从云端合并进度'); }
+    }).catch(e => console.warn('Gist pull failed:', e));
+  }
 }
 
 // Events
@@ -1018,6 +1416,17 @@ $('btn-start-session').addEventListener('click', () => startStudy(studyCategory,
     saveSettings();
     renderList();
   });
+});
+
+$('btn-browse-back').addEventListener('click', () => switchTab('dashboard'));
+$('btn-browse-study').addEventListener('click', () => startStudy(browseMacro, 'new'));
+
+$('btn-gist-login').addEventListener('click', gistLogin);
+$('btn-gist-sync').addEventListener('click', gistSyncNow);
+$('btn-gist-logout').addEventListener('click', gistLogout);
+$('gist-remember').addEventListener('change', () => {
+  gistRemember = $('gist-remember').checked;
+  if (gistToken && gistId) gistSaveCreds();
 });
 
 $('btn-gen-code').addEventListener('click', () => {
