@@ -62,6 +62,91 @@ except (FileNotFoundError, json.JSONDecodeError):
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 
+# ── 2026 新格式听力 Academic Talk 真题学科词库 ──
+# 权重来源：2026听力学科场景占比-2026-09-02.md（237 条去重讲座话题 / 29 个考试日）。
+# 该文件按学科分组，因此词→学科的映射不必逐词重复书写。
+EXAM2026_PATH = os.path.join(BASE, 'toefl2026_exam_terms.json')
+EXAM2026_WORDS, EXAM2026_TOPICS, EXAM2026_GROUPS = {}, {}, {}
+try:
+    with open(EXAM2026_PATH, encoding='utf-8') as _f:
+        _exam2026 = json.load(_f)
+    for _g in _exam2026.get('groups', []):
+        _topic = _g['topic']
+        EXAM2026_GROUPS[_topic] = {
+            'weight': _g.get('weight_2026'),
+            'rank': _g.get('rank_2026'),
+            'note': _g.get('weight_note', ''),
+            'evidence': _g.get('evidence', ''),
+        }
+        for _w, _d in _g.get('words', {}).items():
+            _cw = canonical_word(_w)
+            EXAM2026_WORDS[_cw] = str(_d).strip()
+            EXAM2026_TOPICS[_cw] = _topic
+except (FileNotFoundError, json.JSONDecodeError, KeyError):
+    EXAM2026_WORDS, EXAM2026_TOPICS, EXAM2026_GROUPS = {}, {}, {}
+
+# 每个页面学科在 2026 真实考场里的地位。
+# weight = 该学科在 237 条 2026 讲座话题中的占比（%）；None = 2026 回忆件里没有独立出现。
+# tier   = 复习优先级标签，直接决定页面上的徽章与「只看高频学科」筛选。
+# note   = 口径说明；凡多个页面学科共享同一统计桶都必须写清楚，避免把占比读成互斥的。
+TOPIC_2026 = {
+    "艺术与文学 Art & Literature": (23.2, "讲座高频", "2026 第 1 大类：艺术/音乐 21.9% + 文学 1.3%（旧格式 19.8%）"),
+    "考古与历史 Archaeology & History": (11.4, "讲座高频", "考古/人类学 6.3% + 历史 5.1%；与「人类学与社会学」共享考古/人类学"),
+    "人类学与社会学 Anthropology & Sociology": (10.9, "讲座高频", "考古/人类学 6.3% + 社会学 4.6%；与「考古与历史」共享考古/人类学"),
+    "经济与商业 Economics & Business": (10.1, "讲座高频", "旧格式仅 3.0% → 2026 翻三倍，涨幅最大的学科"),
+    "科技与计算 Technology & Computing": (9.3, "讲座高频", "技术/工程 9.3%（仿生、纳米、发明史、GIS）；与「工具与劳动」共享"),
+    "工具与劳动 Tools & Labor": (9.3, "讲座中频", "技术/工程 9.3% 里的发明与手工艺部分；与「科技与计算」共享"),
+    "动物与生态 Zoology & Ecology": (7.2, "讲座中频", "生物/动物 7.2%（旧格式 21.1%，已腰斩但仍在考）；与「生物学」共享"),
+    "生物学 Biology": (7.2, "讲座中频", "生物/动物 7.2%；与「动物与生态」共享"),
+    "情绪与心理 Emotions & Psychology": (6.8, "讲座中频", "心理/认知 6.8%；官方 14 篇练习卷里心理+神经科学占 35.7%，是官方最偏重方向"),
+    "心理健康 Mental Health": (6.8, "讲座中频", "心理/认知 6.8%；与「情绪与心理」共享"),
+    "建筑与住所 Architecture & Dwellings": (5.9, "讲座中频", "城市规划/建筑 5.9%（工业城市改造、公共空间与意识形态）"),
+    "环境科学 Environmental Science": (5.1, "讲座中频", "环境/生态 5.1%；官方练习卷里 environmental science 占 3/14"),
+    "政治与社会制度 Politics & Social Systems": (4.6, "讲座中频", "社会学/社会科学 4.6%（soft power、公共政策）；与「人类学与社会学」共享"),
+    "植物学 Botany": (4.2, "讲座低频", "植物/农业 4.2%；与「农业」共享"),
+    "农业 Agriculture": (4.2, "讲座低频", "植物/农业 4.2%；与「植物学」共享"),
+    "化学与材料 Chemistry & Materials": (3.4, "讲座低频", "化学/物理 3.4%（旧格式 8.7%）；与「物理学」共享"),
+    "物理学 Physics": (3.4, "讲座低频", "化学/物理 3.4%；与「化学与材料」共享"),
+    "地理与地质 Geography & Geology": (3.4, "讲座低频", "地质/地球科学 3.4%（旧格式 8.9%）"),
+    "运动与流体 Motion & Fluids": (3.4, "讲座低频", "并入化学/物理 3.4% 统计"),
+    "医学与健康 Medicine & Health": (1.7, "讲座低频", "医学/健康 1.7%"),
+    "天文学 Astronomy": (1.7, "讲座低频", "旧格式 11.1% → 2026 仅 1.7%，掉幅最大的学科"),
+    "语言与写作 Language & Writing": (1.3, "讲座低频", "语言/教育 1.3%；与「教育」共享"),
+    "教育 Education": (1.3, "讲座低频", "语言/教育 1.3%；与「语言与写作」共享"),
+    "气象与气候 Weather & Climate": (None, "讲座低频", "2026 回忆件里没有独立气象讲座，相关内容并入环境/地质"),
+    "宗教与哲学 Religion & Philosophy": (None, "讲座低频", "2026 官方与回忆件均未出现；第三方新题库里出现过 philosophy class"),
+    "数学与几何 Mathematics & Geometry": (None, "讲座低频", "2026 回忆件未出现独立数学讲座（阿拉伯数字那篇按历史归类）"),
+    "法律与制度 Law & Governance": (None, "讲座低频", "2026 回忆件未出现独立法律讲座"),
+    "军事 Military": (None, "讲座低频", "2026 回忆件未出现独立军事讲座"),
+    "校园生活 Campus Life": (None, "对话·公告", "自适应低分支只有对话+公告、没有学术讲座，这部分全员必备"),
+    "日常生活 Daily Life": (None, "对话·公告", "短对话与公告的主场景"),
+    "社会关系 Social Relations": (None, "对话·公告", "听答题与短对话的高频语域"),
+    "礼仪与情感 Etiquette & Emotions": (None, "对话·公告", "听答题最常考的应答语域"),
+    "交通与旅行 Travel & Transport": (None, "对话·公告", "短对话高频场景"),
+    "饮食 Food & Cooking": (None, "对话·公告", "短对话与公告高频场景"),
+    "日常器物 Everyday Objects": (None, "对话·公告", "短对话高频场景"),
+    "核心学术概念 Core Academic Concepts": (None, "全学科通用", "任何讲座都会用到的学术论述词，优先级等同高频学科"),
+    "职业与人物 Professions & People": (None, "全学科通用", "讲座与对话都会出现"),
+    "时间与变化 Time & Change": (None, "全学科通用", "讲座里描述过程与演变的高频词"),
+    "欺诈与犯罪 Fraud & Crime": (None, "通用", "非独立讲座学科"),
+    "品性（褒义）Positive Traits": (None, "通用", "非独立讲座学科"),
+    "品性（贬义）Negative Traits": (None, "通用", "非独立讲座学科"),
+    "品性与状态 Character & States": (None, "通用", "非独立讲座学科"),
+    "身体动作 Body Movements": (None, "通用", "非独立讲座学科"),
+    "名望与成就 Fame & Achievement": (None, "通用", "非独立讲座学科"),
+    "通用词汇 General Vocabulary": (None, "通用", "未归入学科的词"),
+}
+
+# 徽章：emoji + 颜色。排序权重让「2026 优先级」视图能把高频学科顶到前面。
+TIER_META = {
+    "讲座高频": ("🔥", "#ff6b4a", 0),
+    "全学科通用": ("🧩", "#b07cff", 1),
+    "讲座中频": ("📈", "#4c8dff", 2),
+    "对话·公告": ("🎓", "#2ecc71", 3),
+    "讲座低频": ("💤", "#8b93a1", 4),
+    "通用": ("", "#8b93a1", 5),
+}
+
 # ── 1. Topic ranges in 1675 list (line numbers, 1-based) ──
 # The 1675 file is implicitly organized by topic.
 TOPIC_RANGES_1675 = [
@@ -1574,6 +1659,8 @@ def main():
     scenario_words.update(HIGH_FREQ_WORDS)
     scenario_topics.update(HIGH_FREQ_TOPICS)
     print(f"  High-frequency discipline additions: {len(HIGH_FREQ_WORDS)} words loaded")
+    print(f"  2026 exam-derived terms: {len(EXAM2026_WORDS)} words loaded "
+          f"across {len(EXAM2026_GROUPS)} disciplines")
 
     print(f"  1791: {len(w1791)} words")
     print(f"  1925: {len(w1925)} words")
@@ -1585,11 +1672,16 @@ def main():
     all_words.update(w1925.keys())
     all_words.update(w1675.keys())
     all_words.update(scenario_words.keys())
+    all_words.update(EXAM2026_WORDS.keys())
     print(f"  Merged (unique): {len(all_words)} words")
 
     # Merge scenario_topics into topics_1675 for classify_word
     known_topics = dict(topics_1675)
     known_topics.update(scenario_topics)
+    # 2026 分组只给「本来没有明确归属」的词定学科，不搬动既有词，避免这次改动
+    # 顺带把老词表的分类结果洗一遍。
+    for w, t in EXAM2026_TOPICS.items():
+        known_topics.setdefault(w, t)
 
     # For each word, pick best definition and classify
     word_data = {}
@@ -1608,6 +1700,10 @@ def main():
         if w in scenario_words:
             defs.append(scenario_words[w])
             sources.append('scenario')
+        if w in EXAM2026_WORDS:
+            # 词条来自 2026 真实考场讲座话题所需术语；标签让页面能筛出这批词。
+            defs.append(EXAM2026_WORDS[w])
+            sources.append('2026')
         # Reviewed POS overrides have highest priority, followed by general
         # definition corrections and then the merged legacy source definitions.
         defn = POS_OVERRIDES.get(w, POS_REVIEW_CANDIDATES.get(w, DEFINITION_OVERRIDES.get(w, merge_definitions(defs))))
@@ -1633,6 +1729,10 @@ def main():
 
     # Stats
     print("\nTopics:")
+    missing_2026 = [t for t in TOPIC_ORDER if t not in TOPIC_2026]
+    if missing_2026:
+        # 新增学科必须同时登记 2026 权重，否则页面徽章会静默退化成「通用」。
+        raise SystemExit(f"TOPIC_2026 缺少这些学科的 2026 权重登记: {missing_2026}")
     for topic in TOPIC_ORDER:
         if topic in grouped:
             print(f"  {EMOJI.get(topic, '📝')} {topic}: {len(grouped[topic])} words")
@@ -1833,11 +1933,23 @@ def generate_html(grouped, total):
                 'f': full_def,
                 's': item['sources'],
             })
+        weight, tier, note = TOPIC_2026.get(topic, (None, "通用", ""))
+        emoji_badge, color, order = TIER_META.get(tier, ("", "#8b93a1", 5))
         data_topics.append({
             'name': topic,
             'emoji': EMOJI.get(topic, '📝'),
             'words': words,
+            # 2026 真实考场权重（见 2026听力学科场景占比-2026-09-02.md）
+            'w26': weight,
+            'tier': tier,
+            'tierEmoji': emoji_badge,
+            'tierColor': color,
+            'tierOrder': order,
+            'note': note,
+            'n2026': sum(1 for x in words if '2026' in x['s']),
         })
+
+    total_2026 = sum(t['n2026'] for t in data_topics)
 
     data_js = json.dumps(data_topics, ensure_ascii=False, separators=(',', ':'))
 
@@ -1893,6 +2005,27 @@ main{{padding:12px 16px;max-width:800px;margin:0 auto}}
 }}
 .topic-chip:hover{{border-color:var(--accent)}}
 .topic-chip .cnt{{color:var(--muted);font-size:11px;margin-left:3px}}
+
+/* 2026 权重徽章 */
+.w26{{
+  display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;
+  border-radius:6px;padding:1px 5px;margin-left:4px;white-space:nowrap;
+  border:1px solid currentColor;opacity:.95;
+}}
+.sec-w26{{font-size:11px;padding:2px 7px}}
+.sec-note{{
+  font-size:11px;color:var(--muted);line-height:1.5;
+  margin:-2px 0 8px;padding:6px 10px;background:var(--card);
+  border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;
+}}
+.sec-note b{{color:var(--fg);font-weight:600}}
+.prio-banner{{
+  font-size:12px;color:var(--muted);line-height:1.6;
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:10px 12px;margin-bottom:12px;
+}}
+.prio-banner b{{color:var(--fg)}}
+.prio-banner a{{color:var(--accent)}}
 
 /* Section */
 .section{{margin-bottom:28px}}
@@ -2159,6 +2292,11 @@ const statsEl = document.getElementById('stats');
 let collapsed = {{}};
 let hardWords = new Set();
 let showHardOnly = false;
+// 2026 视图状态：仅真题词 / 仅高频学科 / 按 2026 优先级排序
+let show2026Only = false;
+let showHighYieldOnly = false;
+let prioSort = false;
+const TOTAL_2026 = {total_2026};
 const HARD_KEY = 'merged_hard_words';
 
 function loadHard() {{
@@ -2424,9 +2562,32 @@ function render(query) {{
   let totalShown = 0;
   const hardCnt = hardWords.size;
 
+  // 词条级筛选：搜索 → 难词 → 2026 真题词
+  const wordFilter = (ws) => {{
+    let r = ws;
+    if (q) r = r.filter(w => w.w.includes(q) || w.d.includes(q) || w.f.toLowerCase().includes(q));
+    if (showHardOnly) r = r.filter(w => hardWords.has(w.w));
+    if (show2026Only) r = r.filter(w => w.s.indexOf('2026') >= 0);
+    return r;
+  }};
+  // 学科级筛选：只看 2026 讲座高频（含全学科通用词）
+  const topicPass = (t) => !showHighYieldOnly || t.tier === '讲座高频' || t.tier === '全学科通用';
+
+  // 视图顺序：DATA 本身不动（连播索引依赖它），只在展示层排序
+  let view = DATA.map((t, i) => ({{ t, i }}));
+  if (prioSort) {{
+    view.sort((a, b) =>
+      (a.t.tierOrder - b.t.tierOrder) ||
+      ((b.t.w26 || 0) - (a.t.w26 || 0)) ||
+      (a.i - b.i));
+  }}
+
   // Filter bar
   html += '<div class="filter-bar">';
   html += `<button class="filter-btn${{showHardOnly ? ' active' : ''}}" onclick="showHardOnly=!showHardOnly;render(searchInput.value)">⭐ 仅看难词</button>`;
+  html += `<button class="filter-btn${{show2026Only ? ' active' : ''}}" onclick="show2026Only=!show2026Only;render(searchInput.value)">🆕 仅 2026 真题词</button>`;
+  html += `<button class="filter-btn${{showHighYieldOnly ? ' active' : ''}}" onclick="showHighYieldOnly=!showHighYieldOnly;render(searchInput.value)">🔥 仅 2026 高频学科</button>`;
+  html += `<button class="filter-btn${{prioSort ? ' active' : ''}}" onclick="prioSort=!prioSort;render(searchInput.value)">${{prioSort ? '↕️ 按 2026 优先级' : '↕️ 按原学科顺序'}}</button>`;
   html += `<span class="hard-count">已标记 ${{hardCnt}} 个难词</span>`;
   html += `<button class="filter-btn" onclick="syncOpen()">☁️ 云同步</button>`;
   if (hardCnt > 0) {{
@@ -2434,33 +2595,51 @@ function render(query) {{
   }}
   html += '</div>';
 
+  // 2026 权重说明
+  if (!q) {{
+    html += `<div class="prio-banner">🔥 <b>徽章＝2026 真实考场权重</b>：数字是该学科在 2026 改版后 237 条去重讲座话题（29 个考试日）里的占比。`
+      + `<b>艺术 23.2%</b> 居首，<b>经济商业 10.1%</b>（旧格式仅 3.0%），而<b>天文只剩 1.7%</b>（旧格式 11.1%）。`
+      + `🎓 对话·公告类不参与讲座统计，但自适应低分支<b>只有</b>对话和公告，属全员必备。`
+      + `🆕 标签 = 从 2026 真题话题反推出来的新增术语（本表 ${{TOTAL_2026}} 词）。`
+      + `口径与样本局限见仓库内 <code>2026听力学科场景占比-2026-09-02.md</code>。</div>`;
+  }}
+
   // Topic nav
   html += '<div class="topic-nav">';
-  DATA.forEach((t, i) => {{
-    let filtered = t.words;
-    if (q) filtered = filtered.filter(w => w.w.includes(q) || w.d.includes(q) || w.f.toLowerCase().includes(q));
-    if (showHardOnly) filtered = filtered.filter(w => hardWords.has(w.w));
+  view.forEach(({{ t, i }}) => {{
+    if (!topicPass(t)) return;
+    const filtered = wordFilter(t.words);
     if (filtered.length > 0) {{
-      html += `<a class="topic-chip" href="#sec${{i}}">${{t.emoji}} ${{t.name.split(' ')[0]}}<span class="cnt">${{filtered.length}}</span></a>`;
+      const badge = t.w26 != null
+        ? `<span class="w26" style="color:${{t.tierColor}}">${{t.tierEmoji}}${{t.w26}}%</span>`
+        : (t.tierEmoji ? `<span class="w26" style="color:${{t.tierColor}}">${{t.tierEmoji}}</span>` : '');
+      html += `<a class="topic-chip" href="#sec${{i}}">${{t.emoji}} ${{t.name.split(' ')[0]}}<span class="cnt">${{filtered.length}}</span>${{badge}}</a>`;
     }}
   }});
   html += '</div>';
 
-  DATA.forEach((t, ti) => {{
-    let items = t.words;
-    if (q) items = items.filter(w => w.w.includes(q) || w.d.includes(q) || w.f.toLowerCase().includes(q));
-    if (showHardOnly) items = items.filter(w => hardWords.has(w.w));
+  view.forEach(({{ t, i: ti }}) => {{
+    if (!topicPass(t)) return;
+    const items = wordFilter(t.words);
     if (items.length === 0) return;
     totalShown += items.length;
 
     const isCollapsed = collapsed[ti] && !q;
+    const secBadge = t.w26 != null
+      ? `<span class="w26 sec-w26" style="color:${{t.tierColor}}">${{t.tierEmoji}} 2026 讲座 ${{t.w26}}%</span>`
+      : `<span class="w26 sec-w26" style="color:${{t.tierColor}}">${{t.tierEmoji}} ${{t.tier}}</span>`;
     html += `<div class="section" id="sec${{ti}}">`;
     html += `<div class="sec-head">`;
     html += `<span class="sec-emoji">${{t.emoji}}</span>`;
     html += `<span class="sec-title">${{escHtml(t.name)}}</span>`;
+    html += secBadge;
     html += `<span class="sec-cnt">${{items.length}} 词</span>`;
     html += `<button class="sec-toggle" onclick="toggleSec(${{ti}})">${{isCollapsed ? '展开' : '折叠'}}</button>`;
     html += `</div>`;
+    if (t.note && t.tier !== '通用') {{
+      const newTag = t.n2026 > 0 ? ` · 本组含 <b>${{t.n2026}}</b> 个 2026 真题词` : '';
+      html += `<div class="sec-note"><b>${{t.tier}}</b>｜${{escHtml(t.note)}}${{newTag}}</div>`;
+    }}
 
     if (!isCollapsed) {{
       html += '<div class="wlist">';
@@ -2468,8 +2647,9 @@ function render(query) {{
         const srcBadge = w.s.join('+');
         const isHard = hardWords.has(w.w);
         const gIdx = WORD_IDX[w.w];
+        const is2026 = w.s.indexOf('2026') >= 0;
         html += `<div class="witem${{isHard ? ' is-hard' : ''}}" onclick="this.classList.toggle('expanded')">`;
-        html += `<div class="ww"><span class="widx">${{gIdx + 1}}</span>${{highlight(w.w, q)}}<button class="spk-btn" onclick="event.stopPropagation();speak('${{w.w}}')" title="发音">🔊</button><button class="mark-btn${{isHard ? ' marked' : ''}}" onclick="toggleHard('${{w.w}}',event)" title="${{isHard ? '取消标记' : '标记为难词'}}">⭐</button></div>`;
+        html += `<div class="ww"><span class="widx">${{gIdx + 1}}</span>${{highlight(w.w, q)}}${{is2026 ? '<span class="w26" style="color:#ff6b4a" title="2026 真实考场讲座话题反推出的术语">🆕</span>' : ''}}<button class="spk-btn" onclick="event.stopPropagation();speak('${{w.w}}')" title="发音">🔊</button><button class="mark-btn${{isHard ? ' marked' : ''}}" onclick="toggleHard('${{w.w}}',event)" title="${{isHard ? '取消标记' : '标记为难词'}}">⭐</button></div>`;
         html += `<div class="wd">${{highlight(w.d, q)}}</div>`;
         html += `<div class="wsrc">${{srcBadge}}</div>`;
         if (w.f) {{
@@ -2483,7 +2663,7 @@ function render(query) {{
   }});
 
   if (totalShown === 0) {{
-    html += `<div class="empty">${{showHardOnly ? '还没有标记难词，点击单词旁 ⭐ 标记' : '未找到匹配的单词'}}</div>`;
+    html += `<div class="empty">${{showHardOnly ? '还没有标记难词，点击单词旁 ⭐ 标记' : (show2026Only || showHighYieldOnly ? '当前筛选下没有词汇，试着关掉 🆕 / 🔥 筛选' : '未找到匹配的单词')}}</div>`;
   }}
 
   mainEl.innerHTML = html;
@@ -2491,7 +2671,9 @@ function render(query) {{
     ? `找到 ${{totalShown}} 个词汇`
     : showHardOnly
       ? `⭐ ${{totalShown}} 个难词`
-      : `{total} 个词汇 · {len([t for t in TOPIC_ORDER if t in grouped])} 个学科`;
+      : show2026Only || showHighYieldOnly
+        ? `当前筛选 ${{totalShown}} 个词汇`
+        : `{total} 个词汇 · {len([t for t in TOPIC_ORDER if t in grouped])} 个学科 · 🆕 {total_2026} 个 2026 真题词`;
 }}
 
 function toggleSec(idx) {{
