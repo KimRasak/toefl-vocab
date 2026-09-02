@@ -239,6 +239,74 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run("browseMacro = ''; renderBrowse();");
   chk('未选分类时有兜底提示', /请从总览选择/.test(getEl('browse-list').innerHTML));
 
+  // ── P0 扩充：缺失分类 + 即时应答训练层 ──────────────────
+  const V = run('VOCAB');
+  const catOf = c => V.filter(e => e.c === c);
+
+  // 15. 两个此前完全缺失的子话题现在有独立分类
+  chk('新增「作业任务」分类', catOf('听力-作业任务').length >= 30, catOf('听力-作业任务').length);
+  chk('新增「设施维护」分类', catOf('听力-设施维护').length >= 50, catOf('听力-设施维护').length);
+  chk('新增「时间日期」分类', catOf('听力-时间日期').length >= 40, catOf('听力-时间日期').length);
+  ['听力-作业任务', '听力-设施维护', '听力-时间日期'].forEach(c => {
+    chk('新分类归入听力场景 ' + c, run("getMacro('" + c + "')") === 'listening');
+  });
+
+  // 16. Listen and Choose a Response 应答训练层
+  const RESP = ['听力-应答-反问确认', '听力-应答-疑问词匹配', '听力-应答-请求许可',
+                '听力-应答-建议安排', '听力-应答-问题求助', '听力-应答-信息核对'];
+  const resp = V.filter(e => RESP.indexOf(e.c) >= 0);
+  chk('应答层 6 个子类齐全', RESP.every(c => catOf(c).length >= 10), RESP.map(c => catOf(c).length).join('/'));
+  chk('应答层条目数', resp.length >= 70, resp.length);
+  chk('应答层归入听力场景', RESP.every(c => run("getMacro('" + c + "')") === 'listening'));
+  chk('每条都给出正确回应', resp.every(e => e.m.startsWith('✅')));
+  chk('每条都给出干扰项套路提示', resp.every(e => e.m.includes('｜') && e.m.split('｜')[1].length > 3));
+  chk('刺激句是完整问句或陈述句', resp.every(e => /[?.]$/.test(e.w)));
+
+  // 17. 整句卡不会被 cleanForSpeech 截断（斜杠前后带空格会被切掉）
+  const truncated = resp.filter(e => run('cleanForSpeech(' + JSON.stringify(e.w) + ')') !== e.w);
+  chk('应答刺激句 TTS 不被截断', truncated.length === 0, truncated.slice(0, 3).map(e => e.w).join(' ; '));
+
+  // 18. 整句卡走小字号排版，普通单词卡不受影响
+  chk('应答句判定为整句卡', run('isSentenceCard(' + JSON.stringify(resp[0]) + ')') === true, resp[0].w);
+  chk('普通单词不判定为整句卡', run("isSentenceCard({ w: 'aisle' })") === false);
+  chk('短语动词不判定为整句卡', run("isSentenceCard({ w: 'turn in' })") === false);
+
+  // 19. 追加而非插入：既有词的索引没被挪动，否则云端进度会错位
+  chk('首条仍是 analyse', V[0].w === 'analyse');
+  chk('既有词索引仍落在原有区间内',
+    ['analyse', 'aisle', 'seminar', 'flyer', 'organic', 'syllabus']
+      .every(w => run("wordToIndex['" + w + "']") < 2862),
+    ['analyse', 'aisle', 'seminar', 'flyer', 'organic', 'syllabus']
+      .map(w => w + '=' + run("wordToIndex['" + w + "']")).join(' '));
+  chk('新词追加在原有区间之后', run("wordToIndex['work order']") >= 2862, run("wordToIndex['work order']"));
+  chk('新词也进了索引', typeof run("wordToIndex['work order']") === 'number');
+  run("progress['work order'] = { box: 3, right: 2, wrong: 1, lastSeen: 5 * EPOCH };");
+  const rt = run("decodeProgress(encodeProgress())['work order']");
+  chk('新词进度可编解码往返', rt && rt.box === 3 && rt.right === 2, JSON.stringify(rt));
+
+  // 20. 全库无重复的「词+分类」组合
+  const seenPair = new Set(), dupPair = [];
+  V.forEach(e => {
+    const k = e.w.toLowerCase() + '\u0000' + e.c;
+    if (seenPair.has(k)) dupPair.push(e.w + '@' + e.c); else seenPair.add(k);
+  });
+  chk('无重复的词+分类组合', dupPair.length === 0, dupPair.slice(0, 5).join(' , '));
+
+  // 21. 中频通用词已补进既有场景（官方对版卷高频但原先缺失的样本）
+  const wset = new Set(V.map(e => e.w.toLowerCase()));
+  const sample = ['downtown', 'lounge', 'facility', 'technician', 'upcoming', 'availability',
+                  'closure', 'inconvenience', 'equipment', 'fitness center', 'cafeteria',
+                  'course load', 'reference desk', 'club', 'transportation'];
+  const stillMissing = sample.filter(w => !wset.has(w));
+  chk('官方高频中频词已补齐', stillMissing.length === 0, stillMissing.join(' , '));
+
+  // 22. 一览页把新分类一起列出来了
+  run("openBrowse('listening')");
+  const cats = run("browseGroups('listening').map(g => g.cat)");
+  chk('一览包含新分类', ['听力-作业任务', '听力-设施维护', '听力-时间日期'].concat(RESP)
+    .every(c => cats.indexOf(c) >= 0));
+  chk('一览总数含新增词', run('(renderBrowse._flat || []).length') > 1900, run('(renderBrowse._flat || []).length'));
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');

@@ -144,7 +144,8 @@ button { cursor: pointer; border: none; background: none; }
 }
 .chip:active { transform: scale(.97); }
 .chip:hover { border-color: var(--accent); }
-.chip .cw { font-weight: 600; }
+/* 应答训练层的 w 是整句刺激句，需要截断，否则单个 chip 会撑满多行 */
+.chip .cw { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 280px; }
 .chip .cm { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; }
 .chip.mastered { border-color: rgba(52,199,89,.5); }
 .chip.learning { border-color: rgba(255,180,84,.5); }
@@ -187,6 +188,12 @@ button { cursor: pointer; border: none; background: none; }
 .fc-word { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; display: none; }
 .fc-pos { font-size: 14px; color: var(--muted); display: none; }
 .flashcard.revealed .fc-meaning, .flashcard.revealed .fc-word, .flashcard.revealed .fc-pos { display: block; }
+/* 整句卡（即时应答、时间日期句型）缩小字号，并把刺激句排在正确回应之前 */
+.flashcard.long .fc-word { order: 1; font-size: 18px; font-weight: 700; line-height: 1.45; }
+.flashcard.long .fc-meaning {
+  order: 2; font-size: 16px; font-weight: 600; line-height: 1.6;
+  margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);
+}
 .fc-hint { font-size: 13px; color: var(--muted); margin-top: 20px; }
 .fc-hint .listen-icon { font-size: 40px; display: block; margin-bottom: 8px; }
 .flashcard.revealed .fc-hint { display: none; }
@@ -956,6 +963,11 @@ function priClass(r) {
   return 'pri-3';
 }
 
+// 即时应答卡与长句型卡：w 是整句，28px 字号会溢出，改用小一号排版
+function isSentenceCard(entry) {
+  return entry.w.length > 24 || /\s/.test(entry.w) && entry.w.split(/\s+/).length > 4;
+}
+
 function renderStudyCard() {
   const area = $('study-area');
   if (!studyStarted) {
@@ -983,7 +995,7 @@ function renderStudyCard() {
       '<span>第 ' + (studyIdx + 1) + ' / ' + studyQueue.length + ' 题</span>' +
     '</div>' +
     '<div class="flashcard-wrap" id="fc-wrap">' +
-      '<div class="flashcard" id="fc-card">' +
+      '<div class="flashcard' + (isSentenceCard(entry) ? ' long' : '') + '" id="fc-card">' +
         '<button class="speak-btn" id="fc-speak" type="button" aria-label="发音">🔊</button>' +
         '<div class="fc-badges">' +
           '<span class="badge">' + esc(entry.c) + '</span>' +
