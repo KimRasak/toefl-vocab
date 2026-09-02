@@ -332,20 +332,79 @@ function toggleHard(word, e) {
 }
 loadHard();
 
+// ─── 跨页面共享的 Gist 凭证 ───────────────────────────────
+// 这一段在 toefl-2026-vocab/index.html 与 merged-by-discipline/index.html
+// 两处各有一份副本，必须逐字一致（test_sync.js 有断言校验两份相同）。
+// 两个页面同源（kimrasak.github.io），localStorage 本来就是共通的，
+// 此前只是各用了不同的 key。现在 token 与 remember 共享，
+// 各页面的 gistId 按 slot 分开存放，互不覆盖。
+const GIST_SHARED_KEY = 'toefl-vocab-gist-shared';
+
+function gistSharedRead() {
+  const empty = { token: '', remember: true, gists: {} };
+  try {
+    const raw = localStorage.getItem(GIST_SHARED_KEY) || sessionStorage.getItem(GIST_SHARED_KEY);
+    if (!raw) return empty;
+    const s = JSON.parse(raw) || {};
+    return { token: s.token || '', remember: s.remember !== false, gists: s.gists || {} };
+  } catch (e) { return empty; }
+}
+
+function gistSharedWrite(token, remember, slot, id) {
+  const cur = gistSharedRead();
+  const gists = Object.assign({}, cur.gists);
+  if (slot) { if (id) gists[slot] = id; else delete gists[slot]; }
+  const payload = JSON.stringify({ token: token, remember: remember, gists: gists });
+  try {
+    if (remember) { localStorage.setItem(GIST_SHARED_KEY, payload); sessionStorage.removeItem(GIST_SHARED_KEY); }
+    else { sessionStorage.setItem(GIST_SHARED_KEY, payload); localStorage.removeItem(GIST_SHARED_KEY); }
+  } catch (e) {}
+}
+
+function gistSharedClearToken() {
+  const cur = gistSharedRead();
+  gistSharedWrite('', cur.remember, null, null);
+}
+// ─── 共享凭证实现结束 ─────────────────────────────────────
+
 // ─── Cloud Sync via GitHub Gist ───
-const GIST_KEY = 'merged_gist_sync';
+const GIST_SLOT = 'hard-words';
+const GIST_LEGACY_KEY = 'merged_gist_sync';
 const GIST_DESC = 'TOEFL-vocab-hard-words-sync';
-let gistToken = '', gistId = '';
+let gistToken = '', gistId = '', gistRemember = true;
 
 function gistLoadCreds() {
+  const sh = gistSharedRead();
+  gistToken = sh.token;
+  gistRemember = sh.remember;
+  gistId = sh.gists[GIST_SLOT] || '';
+  if (gistToken) return;
+  // 迁移本页面此前的单页凭证
   try {
-    const s = JSON.parse(localStorage.getItem(GIST_KEY) || '{}');
-    gistToken = s.token || '';
-    gistId = s.gistId || '';
+    const raw = localStorage.getItem(GIST_LEGACY_KEY) || sessionStorage.getItem(GIST_LEGACY_KEY);
+    if (!raw) return;
+    const s = JSON.parse(raw) || {};
+    if (!s.token) return;
+    gistToken = s.token;
+    gistId = gistId || s.gistId || '';
+    gistSaveCreds();
   } catch(e) {}
 }
+
 function gistSaveCreds() {
-  try { localStorage.setItem(GIST_KEY, JSON.stringify({ token: gistToken, gistId })); } catch(e) {}
+  gistSharedWrite(gistToken, gistRemember, GIST_SLOT, gistId);
+}
+
+// 另一个页面已连接过：拿共享 token 认领本页的 Gist，但不擅自创建
+async function gistAdoptShared() {
+  if (!gistToken || gistId) return false;
+  try {
+    const existing = await gistFindExisting();
+    if (!existing) return false;
+    gistId = existing.id;
+    gistSaveCreds();
+    return true;
+  } catch(e) { return false; }
 }
 
 function syncMsg(text, cls) {
@@ -360,6 +419,7 @@ function syncOpen() {
   inp.value = gistToken;
   document.getElementById('syncMsg').textContent = '';
   if (gistToken && gistId) syncMsg('已连接 · Gist ID: ' + gistId.slice(0,8) + '...', 'ok');
+  else if (gistToken) syncMsg('已读到单词卡页共用的 Token，点「连接」即可启用本页同步', 'info');
 }
 function syncClose() {
   document.getElementById('syncModal').classList.remove('open');
@@ -463,9 +523,14 @@ async function syncNow() {
 
 function syncLogout() {
   gistToken = ''; gistId = '';
-  localStorage.removeItem(GIST_KEY);
+  // token 是两个页面共用的，退出会同时断开单词卡页
+  try {
+    gistSharedClearToken();
+    localStorage.removeItem(GIST_LEGACY_KEY);
+    sessionStorage.removeItem(GIST_LEGACY_KEY);
+  } catch(e) {}
   document.getElementById('syncToken').value = '';
-  syncMsg('已退出', 'info');
+  syncMsg('已退出，共用 Token 已清除（单词卡页也会断开）', 'info');
 }
 
 // Auto-push on hard word changes
@@ -482,6 +547,11 @@ saveHard = function() {
 gistLoadCreds();
 if (gistToken && gistId) {
   gistPull().then(() => render(searchInput.value)).catch(() => {});
+} else if (gistToken) {
+  // 单词卡页已连接过：用共享 token 认领本页的 Gist 后再拉一次
+  gistAdoptShared()
+    .then(ok => (ok ? gistPull().then(() => render(searchInput.value)) : null))
+    .catch(() => {});
 }
 
 let audioEl = null;

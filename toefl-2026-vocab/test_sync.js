@@ -125,6 +125,28 @@ vm.runInContext('init();', ctx);
 // ── 断言 ─────────────────────────────────────────────────
 const run = expr => vm.runInContext(expr, ctx);
 
+const SHARED_KEY = 'toefl-vocab-gist-shared';
+const sharedRec = () => JSON.parse(localStorage.getItem(SHARED_KEY) || sessionStorage.getItem(SHARED_KEY) || '{}');
+
+// 跨页面共享的 Gist 凭证块：两份副本必须逐字一致
+const MERGED = path.join(HERE, '..', 'merged-by-discipline', 'index.html');
+if (fs.existsSync(MERGED)) {
+  const BEG = '// ─── 跨页面共享的 Gist 凭证';
+  const END = '// ─── 共享凭证实现结束';
+  const slice = src => {
+    const i = src.indexOf(BEG), j = src.indexOf(END);
+    return i >= 0 && j > i ? src.slice(i, j) : null;
+  };
+  const here = slice(html), there = slice(fs.readFileSync(MERGED, 'utf8'));
+  chk('本页含共享凭证块', !!here);
+  chk('难词页含共享凭证块', !!there);
+  chk('两份共享凭证块逐字一致', !!here && here === there,
+    here && there ? here.length + ' vs ' + there.length : 'missing');
+  chk('难词页用不同的 gistId slot', /const GIST_SLOT = 'hard-words'/.test(fs.readFileSync(MERGED, 'utf8')));
+} else {
+  chk('跳过共享凭证块比对（未找到难词页）', true, MERGED);
+}
+
 chk('云同步函数已定义', ['gistLogin', 'gistSyncNow', 'gistLogout', 'gistPull', 'gistPush', 'gistSchedulePush']
   .every(f => typeof run('typeof ' + f) === 'function' || run('typeof ' + f) === 'function'));
 
@@ -138,8 +160,8 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   await run('gistLogin()');
   chk('连接后创建了私密 gist', gistStore !== null);
   chk('上传内容包含本机进度', gistStore && JSON.parse(gistStore).progress.area.box === 5);
-  chk('remember=true 时 Token 存 localStorage', !!localStorage.getItem('toefl2026_gist_sync'));
-  chk('remember=true 时不写 sessionStorage', sessionStorage.getItem('toefl2026_gist_sync') === null);
+  chk('remember=true 时 Token 存共享 localStorage 键', !!localStorage.getItem(SHARED_KEY));
+  chk('remember=true 时不写 sessionStorage', sessionStorage.getItem(SHARED_KEY) === null);
   chk('连接成功提示', /同步|已连接/.test(getEl('gist-msg').textContent), getEl('gist-msg').textContent);
 
   // 2. 远端有更多练习次数的记录 → 拉取时合并
@@ -171,14 +193,14 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   // 5. remember=false → 只写 sessionStorage
   getEl('gist-remember').checked = false;
   run('gistRemember = false; gistSaveCreds();');
-  chk('remember=false 时写 sessionStorage', !!sessionStorage.getItem('toefl2026_gist_sync'));
-  chk('remember=false 时清掉 localStorage', localStorage.getItem('toefl2026_gist_sync') === null);
+  chk('remember=false 时写 sessionStorage', !!sessionStorage.getItem(SHARED_KEY));
+  chk('remember=false 时清掉 localStorage', localStorage.getItem(SHARED_KEY) === null);
 
   // 6. 退出登录：清凭证但保留本机进度
   run('gistLogout()');
   chk('退出后清空 Token', run('gistToken') === '' && run('gistId') === '');
-  chk('退出后两处凭证都已清除',
-    localStorage.getItem('toefl2026_gist_sync') === null && sessionStorage.getItem('toefl2026_gist_sync') === null);
+  chk('退出后共享 Token 已清空',
+    (JSON.parse(localStorage.getItem(SHARED_KEY) || sessionStorage.getItem(SHARED_KEY) || '{}').token || '') === '');
   chk('退出后本机进度保留', !!run("progress['aisle']"));
   fetchLog = [];
   run("progress['flyer'] = { box: 1, right: 0, wrong: 1, lastSeen: 4 }; saveProgress();");
@@ -306,6 +328,48 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('一览包含新分类', ['听力-作业任务', '听力-设施维护', '听力-时间日期'].concat(RESP)
     .every(c => cats.indexOf(c) >= 0));
   chk('一览总数含新增词', run('(renderBrowse._flat || []).length') > 1900, run('(renderBrowse._flat || []).length'));
+
+  // ── 跨页面共享 Gist Token ───────────────────────────────
+  // 23. 读到难词页写入的共用 token，但不误用对方的 gistId
+  localStorage.removeItem(SHARED_KEY); sessionStorage.removeItem(SHARED_KEY);
+  localStorage.removeItem('toefl2026_gist_sync'); sessionStorage.removeItem('toefl2026_gist_sync');
+  localStorage.setItem(SHARED_KEY, JSON.stringify({
+    token: 'ghp_shared', remember: true, gists: { 'hard-words': 'hw_gist_id' },
+  }));
+  run('gistLoadCreds();');
+  chk('读到难词页写入的共用 Token', run('gistToken') === 'ghp_shared', run('gistToken'));
+  chk('本页 slot 为空时不误用难词页的 gistId', run('gistId') === '', run('gistId'));
+
+  gistStore = JSON.stringify({ version: 1, progress: {} });
+  const adopted = await run('gistAdoptShared()');
+  chk('用共用 Token 认领本页 Gist', adopted === true && run('gistId') === 'gid123456789', run('gistId'));
+  chk('认领后不覆盖难词页的 slot', sharedRec().gists['hard-words'] === 'hw_gist_id', JSON.stringify(sharedRec().gists));
+  chk('本页 slot 已写入', sharedRec().gists['toefl2026-progress'] === 'gid123456789');
+  chk('共用 Token 未被改写', sharedRec().token === 'ghp_shared');
+
+  // 24. 旧的单页凭证自动迁移到共享键
+  localStorage.removeItem(SHARED_KEY); sessionStorage.removeItem(SHARED_KEY);
+  localStorage.setItem('toefl2026_gist_sync', JSON.stringify({
+    token: 'ghp_legacy', gistId: 'legacy_id', remember: true,
+  }));
+  run('gistLoadCreds();');
+  chk('迁移旧的单页 Token', run('gistToken') === 'ghp_legacy' && run('gistId') === 'legacy_id',
+    run('gistToken') + '/' + run('gistId'));
+  chk('迁移结果已落地共享键',
+    sharedRec().token === 'ghp_legacy' && sharedRec().gists['toefl2026-progress'] === 'legacy_id',
+    localStorage.getItem(SHARED_KEY));
+
+  // 25. 登出清掉共用 Token，但保留两页各自的 gistId
+  localStorage.setItem(SHARED_KEY, JSON.stringify({
+    token: 'ghp_x', remember: true, gists: { 'hard-words': 'hw', 'toefl2026-progress': 'tp' },
+  }));
+  run('gistLoadCreds(); gistLogout();');
+  chk('登出后共用 Token 为空', sharedRec().token === '', sharedRec().token);
+  chk('登出保留两页的 gistId',
+    sharedRec().gists['hard-words'] === 'hw' && sharedRec().gists['toefl2026-progress'] === 'tp',
+    JSON.stringify(sharedRec().gists));
+  chk('登出提示说明会影响难词页', /难词页/.test(getEl('gist-msg').textContent), getEl('gist-msg').textContent);
+  chk('登出后旧单页键也清掉', localStorage.getItem('toefl2026_gist_sync') === null);
 
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));

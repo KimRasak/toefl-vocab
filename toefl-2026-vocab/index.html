@@ -613,28 +613,81 @@ function importAndMerge(data) {
   toast('进度已合并');
 }
 
+// ─── 跨页面共享的 Gist 凭证 ───────────────────────────────
+// 这一段在 toefl-2026-vocab/index.html 与 merged-by-discipline/index.html
+// 两处各有一份副本，必须逐字一致（test_sync.js 有断言校验两份相同）。
+// 两个页面同源（kimrasak.github.io），localStorage 本来就是共通的，
+// 此前只是各用了不同的 key。现在 token 与 remember 共享，
+// 各页面的 gistId 按 slot 分开存放，互不覆盖。
+const GIST_SHARED_KEY = 'toefl-vocab-gist-shared';
+
+function gistSharedRead() {
+  const empty = { token: '', remember: true, gists: {} };
+  try {
+    const raw = localStorage.getItem(GIST_SHARED_KEY) || sessionStorage.getItem(GIST_SHARED_KEY);
+    if (!raw) return empty;
+    const s = JSON.parse(raw) || {};
+    return { token: s.token || '', remember: s.remember !== false, gists: s.gists || {} };
+  } catch (e) { return empty; }
+}
+
+function gistSharedWrite(token, remember, slot, id) {
+  const cur = gistSharedRead();
+  const gists = Object.assign({}, cur.gists);
+  if (slot) { if (id) gists[slot] = id; else delete gists[slot]; }
+  const payload = JSON.stringify({ token: token, remember: remember, gists: gists });
+  try {
+    if (remember) { localStorage.setItem(GIST_SHARED_KEY, payload); sessionStorage.removeItem(GIST_SHARED_KEY); }
+    else { sessionStorage.setItem(GIST_SHARED_KEY, payload); localStorage.removeItem(GIST_SHARED_KEY); }
+  } catch (e) {}
+}
+
+function gistSharedClearToken() {
+  const cur = gistSharedRead();
+  gistSharedWrite('', cur.remember, null, null);
+}
+// ─── 共享凭证实现结束 ─────────────────────────────────────
+
 // ─── Cloud Sync via GitHub Gist ───
-const GIST_KEY = 'toefl2026_gist_sync';
+const GIST_SLOT = 'toefl2026-progress';
+const GIST_LEGACY_KEY = 'toefl2026_gist_sync';
 const GIST_DESC = 'TOEFL-2026-vocab-progress-sync';
 const GIST_FILE = 'toefl2026-progress.json';
 let gistToken = '', gistId = '', gistRemember = true;
 
 function gistLoadCreds() {
+  const sh = gistSharedRead();
+  gistToken = sh.token;
+  gistRemember = sh.remember;
+  gistId = sh.gists[GIST_SLOT] || '';
+  if (gistToken) return;
+  // 迁移本页面此前的单页凭证
   try {
-    const raw = localStorage.getItem(GIST_KEY) || sessionStorage.getItem(GIST_KEY) || '{}';
-    const s = JSON.parse(raw);
-    gistToken = s.token || '';
-    gistId = s.gistId || '';
+    const raw = localStorage.getItem(GIST_LEGACY_KEY) || sessionStorage.getItem(GIST_LEGACY_KEY);
+    if (!raw) return;
+    const s = JSON.parse(raw) || {};
+    if (!s.token) return;
+    gistToken = s.token;
+    gistId = gistId || s.gistId || '';
     gistRemember = s.remember !== false;
+    gistSaveCreds();
   } catch(e) {}
 }
 
 function gistSaveCreds() {
-  const payload = JSON.stringify({ token: gistToken, gistId, remember: gistRemember });
+  gistSharedWrite(gistToken, gistRemember, GIST_SLOT, gistId);
+}
+
+// 另一个页面已连接过：拿共享 token 认领本页的 Gist，但不擅自创建
+async function gistAdoptShared() {
+  if (!gistToken || gistId) return false;
   try {
-    if (gistRemember) { localStorage.setItem(GIST_KEY, payload); sessionStorage.removeItem(GIST_KEY); }
-    else { sessionStorage.setItem(GIST_KEY, payload); localStorage.removeItem(GIST_KEY); }
-  } catch(e) {}
+    const existing = await gistFindExisting();
+    if (!existing) return false;
+    gistId = existing.id;
+    gistSaveCreds();
+    return true;
+  } catch(e) { return false; }
 }
 
 function gistMsg(text, cls) {
@@ -758,9 +811,14 @@ async function gistSyncNow() {
 
 function gistLogout() {
   gistToken = ''; gistId = '';
-  try { localStorage.removeItem(GIST_KEY); sessionStorage.removeItem(GIST_KEY); } catch(e) {}
+  // token 是两个页面共用的，退出会同时断开难词页
+  try {
+    gistSharedClearToken();
+    localStorage.removeItem(GIST_LEGACY_KEY);
+    sessionStorage.removeItem(GIST_LEGACY_KEY);
+  } catch(e) {}
   if ($('gist-token')) $('gist-token').value = '';
-  gistMsg('已退出登录，本机进度仍保留', 'info');
+  gistMsg('已退出登录，共用 Token 已清除（难词页也会断开），本机进度仍保留', 'info');
 }
 
 const _audio = new Audio();
@@ -1295,6 +1353,7 @@ function renderSync() {
   if ($('gist-token')) $('gist-token').value = gistToken;
   if ($('gist-remember')) $('gist-remember').checked = gistRemember;
   if (gistToken && gistId) gistMsg('已连接 · Gist ' + gistId.slice(0, 8) + '…', 'ok');
+  else if (gistToken) gistMsg('已读到难词页共用的 Token，点「连接」即可启用本页同步', 'info');
 }
 
 function renderAll() {
@@ -1394,6 +1453,15 @@ function init() {
     gistPull().then(n => {
       if (n) { renderAll(); toast('已从云端合并进度'); }
     }).catch(e => console.warn('Gist pull failed:', e));
+  } else if (gistToken) {
+    // 难词页已连接过：用共享 token 认领本页的 Gist 后再拉一次
+    gistAdoptShared().then(ok => {
+      if (!ok) { renderSync(); return; }
+      return gistPull().then(n => {
+        renderAll();
+        if (n) toast('已用共用 Token 连上云端并合并进度');
+      });
+    }).catch(e => console.warn('Gist adopt failed:', e));
   }
 }
 
