@@ -1423,20 +1423,23 @@ def esc(s):
 
 
 def extract_short_def(defn):
-    """Extract a short Chinese definition from a full definition string."""
+    """Extract a compact default definition while keeping part-of-speech labels."""
     if not defn:
         return ''
-    # Take first meaningful segment (before [ph], [st], [syn], [mean])
+    # Ignore examples, notes, and collocations in the expanded view.
     d = re.split(r'\[(?:ph|st|syn|mean)\]', defn)[0].strip()
-    # Remove leading "n./v./adj./adv." etc
-    d = re.sub(r'^[nvadc]+[\./]\s*', '', d, flags=re.I)
-    # Take just the Chinese part if mixed
-    parts = re.findall(r'[\u4e00-\u9fff\uff0c\u3001\uff1b\uff08\uff09（）；，、]+', d)
-    if parts:
-        result = ''.join(parts)[:30]
-        return result
-    # Fallback: first 40 chars
-    return d[:40] if d else ''
+    # Keep POS labels wherever they occur (e.g. ``n. ...; adj. ...``),
+    # rather than hiding them until the user expands a word card.
+    token_re = (r'(?:adj|adv|prep|conj|pron|num|idiom|phr|n|v)'
+                r'(?:\./(?:adj|adv|prep|conj|pron|num|idiom|phr|n|v))?\.?')
+    tokens = re.findall(
+        rf'{token_re}|[\u4e00-\u9fff\uff0c\u3001\uff1b\uff08\uff09（）。，、；：：“”‘’？！]+',
+        d, flags=re.I
+    )
+    if tokens:
+        result = ''.join(tokens).strip(' ，、；')
+        return result[:45]
+    return d[:45] if d else ''
 
 
 def generate_html(grouped, total):
