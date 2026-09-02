@@ -198,8 +198,10 @@ TOPIC_RANGES_1675 = [
     (1340,1359,"欺诈与犯罪 Fraud & Crime"),
     (1360,1399,"工具与劳动 Tools & Labor"),
     (1400,1419,"社会关系 Social Relations"),
-    (1420,1439,"建筑与住所 Architecture & Dwellings"),
-    (1440,1469,"名望与成就 Fame & Achievement"),
+    (1420,1428,"社会关系 Social Relations"),
+    (1429,1436,"建筑与住所 Architecture & Dwellings"),
+    (1437,1446,"品性与状态 Character & States"),
+    (1447,1469,"名望与成就 Fame & Achievement"),
     (1470,1499,"礼仪与情感 Etiquette & Emotions"),
     (1500,1529,"身体动作 Body Movements"),
     (1530,1559,"日常生活 Daily Life"),
@@ -1129,6 +1131,15 @@ def parse_1675():
 
 # ── Manual overrides: highest priority corrections ──
 MANUAL_FIXES = {
+    # Words whose curated group membership reads worse than their real sense.
+    'laborious': '品性与状态 Character & States',
+    'strenuous': '品性与状态 Character & States',
+    'arduous': '品性与状态 Character & States',
+    'painstaking': '品性与状态 Character & States',
+    'chuckle': '身体动作 Body Movements',
+    'order': '核心学术概念 Core Academic Concepts',
+    'devious': '品性（贬义）Negative Traits',
+
     # Weather → correct topic
     "spaceship": "天文学 Astronomy", "space shuttle": "天文学 Astronomy",
     "spacecraft": "天文学 Astronomy", "solar cell": "物理学 Physics",
@@ -1407,16 +1418,20 @@ MANUAL_FIXES = {
 }
 
 
-def classify_word(word, defn, known_topics):
+def classify_word(word, defn, known_topics, curated_topics=None):
     """Classify a word into a discipline."""
     # Manual fixes have highest priority
     if word in MANUAL_FIXES:
         return MANUAL_FIXES[word]
-    if word in known_topics:
-        return known_topics[word]
-    # Check direct word→topic map
+    # Per-word curated topics (scenario / high-frequency / 2026 lists) are exact.
+    if curated_topics and word in curated_topics:
+        return curated_topics[word]
+    # The curated word→topic map is more precise than the 1675 line ranges,
+    # whose boundaries only approximate where each topic block starts.
     if word in WORD_TOPIC_MAP:
         return WORD_TOPIC_MAP[word]
+    if word in known_topics:
+        return known_topics[word]
     text = (word + ' ' + defn).lower()
     for topic, keywords in CLASSIFY_RULES:
         for kw in keywords:
@@ -1675,13 +1690,16 @@ def main():
     all_words.update(EXAM2026_WORDS.keys())
     print(f"  Merged (unique): {len(all_words)} words")
 
-    # Merge scenario_topics into topics_1675 for classify_word
+    # Per-word curated topics stay authoritative; the 1675 ranges are a fallback.
+    curated_topics = dict(scenario_topics)
     known_topics = dict(topics_1675)
     known_topics.update(scenario_topics)
     # 2026 分组只给「本来没有明确归属」的词定学科，不搬动既有词，避免这次改动
     # 顺带把老词表的分类结果洗一遍。
     for w, t in EXAM2026_TOPICS.items():
         known_topics.setdefault(w, t)
+        if w not in topics_1675 and w not in WORD_TOPIC_MAP:
+            curated_topics.setdefault(w, t)
 
     # For each word, pick best definition and classify
     word_data = {}
@@ -1710,7 +1728,7 @@ def main():
         # Normalize and guarantee a visible POS even when an override replaced
         # the source definition (legacy overrides may use a./vt./cn. labels).
         defn = complete_pos(w, defn, defs)
-        topic = classify_word(w, defn, known_topics)
+        topic = classify_word(w, defn, known_topics, curated_topics)
         word_data[w] = {
             'word': w,
             'defn': defn,
