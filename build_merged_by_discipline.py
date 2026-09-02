@@ -21,6 +21,12 @@ try:
 except (FileNotFoundError, json.JSONDecodeError):
     POS_OVERRIDES = {}
 try:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pos_review_candidates.json'), encoding='utf-8') as _f:
+        # Candidate reviews are lower priority than already audited overrides.
+        POS_REVIEW_CANDIDATES = {str(k).lower(): str(v).strip() for k, v in json.load(_f).items()}
+except (FileNotFoundError, json.JSONDecodeError):
+    POS_REVIEW_CANDIDATES = {}
+try:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'definition_corrections.json'), encoding='utf-8') as _f:
         # New corrections intentionally take precedence over the older review table.
         DEFINITION_OVERRIDES.update({str(k).lower(): str(v).strip() for k, v in json.load(_f).items()})
@@ -1466,7 +1472,7 @@ def main():
             sources.append('scenario')
         # Reviewed POS overrides have highest priority, followed by general
         # definition corrections and then the merged legacy source definitions.
-        defn = POS_OVERRIDES.get(w, DEFINITION_OVERRIDES.get(w, merge_definitions(defs)))
+        defn = POS_OVERRIDES.get(w, POS_REVIEW_CANDIDATES.get(w, DEFINITION_OVERRIDES.get(w, merge_definitions(defs))))
         # Normalize and guarantee a visible POS even when an override replaced
         # the source definition (legacy overrides may use a./vt./cn. labels).
         defn = complete_pos(w, defn, defs)
