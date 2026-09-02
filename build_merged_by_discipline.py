@@ -1464,7 +1464,9 @@ def main():
         if w in scenario_words:
             defs.append(scenario_words[w])
             sources.append('scenario')
-        defn = DEFINITION_OVERRIDES.get(w, merge_definitions(defs))
+        # Reviewed POS overrides have highest priority, followed by general
+        # definition corrections and then the merged legacy source definitions.
+        defn = POS_OVERRIDES.get(w, DEFINITION_OVERRIDES.get(w, merge_definitions(defs)))
         # Normalize and guarantee a visible POS even when an override replaced
         # the source definition (legacy overrides may use a./vt./cn. labels).
         defn = complete_pos(w, defn, defs)
