@@ -7,6 +7,21 @@ Output: merged-by-discipline/index.html
 import os, re, json
 from collections import defaultdict
 
+# Curated definition corrections and expansions.  This file is deliberately
+# kept separate from the generated HTML so it can be reviewed and backed up.
+DEFINITION_OVERRIDES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'overrides.json')
+try:
+    with open(DEFINITION_OVERRIDES_PATH, encoding='utf-8') as _f:
+        DEFINITION_OVERRIDES = {str(k).lower(): str(v).strip() for k, v in json.load(_f).items()}
+except (FileNotFoundError, json.JSONDecodeError):
+    DEFINITION_OVERRIDES = {}
+try:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'definition_corrections.json'), encoding='utf-8') as _f:
+        # New corrections intentionally take precedence over the older review table.
+        DEFINITION_OVERRIDES.update({str(k).lower(): str(v).strip() for k, v in json.load(_f).items()})
+except (FileNotFoundError, json.JSONDecodeError):
+    pass
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 # ── 1. Topic ranges in 1675 list (line numbers, 1-based) ──
@@ -902,7 +917,11 @@ def parse_word(line):
 def parse_1791():
     """Parse simple word list."""
     words = {}
-    path = os.path.join(BASE, 'tofel_words_1791.txt')
+    # Prefer the maintained 1791 source with definitions; the legacy file is
+    # only a bare word inventory.
+    path = os.path.join(BASE, 'my-tofel-1791words-words.txt')
+    if not os.path.exists(path):
+        path = os.path.join(BASE, 'tofel_words_1791.txt')
     with open(path, encoding='utf-8') as f:
         for line in f:
             w, d = parse_word(line)
@@ -1137,6 +1156,75 @@ MANUAL_FIXES = {
     # Weather (correct moves INTO weather)
     "breeze": "气象与气候 Weather & Climate",
     "atmosphere": "气象与气候 Weather & Climate",
+    # Definition-based placement corrections (override source-list ranges).
+    "aluminum": "化学与材料 Chemistry & Materials", "aluminium": "化学与材料 Chemistry & Materials",
+    "desalination": "环境科学 Environmental Science", "endemic": "生物学 Biology",
+    "magnitude": "物理学 Physics", "moist": "气象与气候 Weather & Climate",
+    "fieldstone": "建筑与住所 Architecture & Dwellings", "weathering": "地理与地质 Geography & Geology",
+    "astrology": "宗教与哲学 Religion & Philosophy", "pseudoscience": "宗教与哲学 Religion & Philosophy",
+    "emission": "物理学 Physics", "condense": "物理学 Physics", "current": "物理学 Physics",
+    "droplet": "运动与流体 Motion & Fluids", "sunlight": "物理学 Physics",
+    "dilute": "化学与材料 Chemistry & Materials", "particle": "物理学 Physics",
+    "proliferation": "生物学 Biology", "revolve": "天文学 Astronomy",
+    "ventilation": "建筑与住所 Architecture & Dwellings", "chafe": "身体动作 Body Movements",
+    "biochemistry": "生物学 Biology", "explosive": "军事 Military", "blend": "饮食 Food & Cooking",
+    "sear": "饮食 Food & Cooking", "stale": "饮食 Food & Cooking", "symmetry": "数学与几何 Mathematics & Geometry",
+    "induction": "核心学术概念 Core Academic Concepts", "inference": "核心学术概念 Core Academic Concepts",
+    "microbe": "生物学 Biology", "regeneration": "生物学 Biology", "squirt": "运动与流体 Motion & Fluids",
+    "starch": "化学与材料 Chemistry & Materials", "scatter": "核心学术概念 Core Academic Concepts",
+    "opaque": "物理学 Physics", "transparent": "物理学 Physics", "translucent": "物理学 Physics",
+    "rectify": "核心学术概念 Core Academic Concepts", "refraction": "物理学 Physics",
+    "refrigeration": "日常器物 Everyday Objects", "silt": "地理与地质 Geography & Geology",
+    "ascend": "身体动作 Body Movements", "indigenous": "人类学与社会学 Anthropology & Sociology",
+    "invaluable": "品性（褒义）Positive Traits", "prolific": "品性（褒义）Positive Traits",
+    "smuggle": "欺诈与犯罪 Fraud & Crime", "clan": "人类学与社会学 Anthropology & Sociology",
+    "territory": "地理与地质 Geography & Geology", "observance": "宗教与哲学 Religion & Philosophy",
+    "prescribe": "医学与健康 Medicine & Health", "credential": "教育 Education",
+    "domineering": "品性（贬义）Negative Traits", "ransom": "欺诈与犯罪 Fraud & Crime",
+    "onset": "时间与变化 Time & Change", "array": "数学与几何 Mathematics & Geometry",
+    "cipher": "语言与写作 Language & Writing", "corpse": "生物学 Biology", "dagger": "日常器物 Everyday Objects",
+    "career": "职业与人物 Professions & People", "staff": "职业与人物 Professions & People",
+    "exponent": "数学与几何 Mathematics & Geometry", "inertia": "物理学 Physics",
+    "quotation": "语言与写作 Language & Writing", "redress": "法律与制度 Law & Governance",
+    "renovation": "建筑与住所 Architecture & Dwellings", "residue": "化学与材料 Chemistry & Materials",
+    "retirement": "时间与变化 Time & Change", "dialogue": "语言与写作 Language & Writing",
+    "movement": "物理学 Physics", "sentimentalism": "情绪与心理 Emotions & Psychology",
+    "wind": "气象与气候 Weather & Climate", "tense": "语言与写作 Language & Writing",
+    "ascetic": "宗教与哲学 Religion & Philosophy", "facility": "核心学术概念 Core Academic Concepts",
+    "ravenous": "情绪与心理 Emotions & Psychology", "stunt": "身体动作 Body Movements",
+    "temperament": "情绪与心理 Emotions & Psychology", "economical": "经济与商业 Economics & Business",
+    "economize": "经济与商业 Economics & Business", "avidity": "品性（褒义）Positive Traits",
+    "accomplished": "品性（褒义）Positive Traits", "adept": "品性（褒义）Positive Traits",
+    "aptitude": "品性（褒义）Positive Traits", "deft": "品性（褒义）Positive Traits",
+    "skillful": "品性（褒义）Positive Traits", "avid": "品性（褒义）Positive Traits",
+    "designing": "品性（贬义）Negative Traits", "drastic": "核心学术概念 Core Academic Concepts",
+    "stringent": "核心学术概念 Core Academic Concepts", "ordeal": "品性与状态 Character & States",
+    "stocky": "身体动作 Body Movements", "stern": "品性（贬义）Negative Traits",
+    "facetious": "品性（贬义）Negative Traits",
+    "virus": "生物学 Biology", "captivate": "情绪与心理 Emotions & Psychology",
+    "projection": "核心学术概念 Core Academic Concepts", "suspect": "欺诈与犯罪 Fraud & Crime",
+    "uniform": "日常器物 Everyday Objects", "yield": "核心学术概念 Core Academic Concepts",
+    "astronaut": "天文学 Astronomy", "astronomer": "天文学 Astronomy",
+    "botanist": "植物学 Botany", "ecologist": "动物与生态 Zoology & Ecology",
+    "anthropologist": "人类学与社会学 Anthropology & Sociology",
+    "advocate": "法律与制度 Law & Governance", "arbitrator": "法律与制度 Law & Governance",
+    "alumni": "教育 Education", "educator": "教育 Education", "superintendent": "教育 Education",
+    "monarch": "政治与社会制度 Politics & Social Systems", "rebel": "政治与社会制度 Politics & Social Systems",
+    "debtor": "经济与商业 Economics & Business", "orator": "语言与写作 Language & Writing",
+    "satirist": "语言与写作 Language & Writing", "veteran": "军事 Military",
+    "domesticate": "农业 Agriculture", "fertilize": "植物学 Botany", "gasp": "身体动作 Body Movements",
+    "peck": "身体动作 Body Movements", "regeneration": "生物学 Biology", "spleen": "医学与健康 Medicine & Health",
+    "grease": "日常器物 Everyday Objects", "hide": "动物与生态 Zoology & Ecology",
+    "restoration": "建筑与住所 Architecture & Dwellings", "meadow": "地理与地质 Geography & Geology",
+    "puddle": "运动与流体 Motion & Fluids", "trickle": "运动与流体 Motion & Fluids",
+    "cooperation": "社会关系 Social Relations", "deduction": "核心学术概念 Core Academic Concepts",
+    "estimate": "核心学术概念 Core Academic Concepts", "functional": "核心学术概念 Core Academic Concepts",
+    "conservatory": "建筑与住所 Architecture & Dwellings", "roost": "动物与生态 Zoology & Ecology",
+    "saline": "化学与材料 Chemistry & Materials", "invaluable": "品性（褒义）Positive Traits",
+    "prolific": "品性（褒义）Positive Traits", "household": "日常生活 Daily Life",
+    "exodus": "考古与历史 Archaeology & History", "fatalism": "宗教与哲学 Religion & Philosophy",
+    "immerse": "核心学术概念 Core Academic Concepts", "limpid": "品性（褒义）Positive Traits",
+    "exotic": "通用词汇 General Vocabulary", "unconventional": "通用词汇 General Vocabulary",
 }
 
 
@@ -1204,7 +1292,7 @@ def main():
         if w in w1791:
             defs.append(w1791[w])
             sources.append('1791')
-        defn = merge_definitions(defs)
+        defn = DEFINITION_OVERRIDES.get(w, merge_definitions(defs))
         topic = classify_word(w, defn, topics_1675)
         word_data[w] = {
             'word': w,
