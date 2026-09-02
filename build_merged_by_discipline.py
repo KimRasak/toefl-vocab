@@ -240,7 +240,43 @@ CLASSIFY_RULES = [
     ]),
     ("环境科学 Environmental Science", [
         "pollut", "contamin", "sewage", "noxious", "ozone",
-        "decibel", "smog", "emission",
+        "decibel", "smog", "emission", "sustainab", "biodegradab",
+        "deforest", "reforest", "greenhouse", "compost", "landfill",
+        "fossil fuel", "biodiversity", "endangered", "desertif",
+        "ecological footprint", "carbon neutral", "zero waste",
+        "coral bleach",
+    ]),
+    ("科技与计算 Technology & Computing", [
+        "algorithm", "software", "digital", "virtual reality",
+        "augmented reality", "simulat", "interface", "automat",
+        "neural network", "machine learning", "artificial intellig",
+        "computing", "coding", "programm", "cloud comput",
+        "bandwidth", "server", "database", "cybersecur", "encrypt",
+        "browser", "download", "upload", "backup", "debug",
+        "blockchain", "big data", "robotics", "3d print",
+        "sensor", "processor", "fiber optic", "wireless",
+        "bluetooth", "drone", "autonomous", "self-driving",
+        "startup", "silicon valley",
+    ]),
+    ("心理健康 Mental Health", [
+        "therapy", "counseling", "mindful", "burnout",
+        "self-care", "mental health", "resilien", "coping",
+        "well-being", "meditat", "psycholog", "psychiatr",
+        "cognitive behav", "disorder", "adhd", "insomnia",
+        "phobia", "panic attack", "self-esteem", "procrastinat",
+        "work-life balance", "support group", "wellness",
+    ]),
+    ("校园生活 Campus Life", [
+        "librarian", "checkout", "overdue", "interlibrary",
+        "periodical", "bibliograph", "citation", "thesis defense",
+        "enrollment", "elective", "syllabus", "advisor",
+        "orientation", "registrar", "commencement",
+        "freshman", "sophomore", "junior", "senior",
+        "undergraduate", "graduate school", "provost",
+        "roommate", "cafeteria", "meal plan", "move-in",
+        "residence hall", "off-campus", "on-campus",
+        "extracurricular", "student union", "bulletin board",
+        "study abroad", "exchange program", "career fair",
     ]),
 ]
 
@@ -287,6 +323,9 @@ EMOJI = {
     "品性与状态 Character & States": "🧘",
     "情绪与心理 Emotions & Psychology": "🧠",
     "交通与旅行 Travel & Transport": "🚀",
+    "科技与计算 Technology & Computing": "💻",
+    "心理健康 Mental Health": "🧘‍♀️",
+    "校园生活 Campus Life": "🎓",
     "通用词汇 General Vocabulary": "📝",
 }
 
@@ -881,6 +920,9 @@ TOPIC_ORDER = [
     "日常生活 Daily Life",
     "品性与状态 Character & States",
     "欺诈与犯罪 Fraud & Crime",
+    "科技与计算 Technology & Computing",
+    "心理健康 Mental Health",
+    "校园生活 Campus Life",
     "通用词汇 General Vocabulary",
 ]
 
@@ -1267,6 +1309,19 @@ def main():
     w1925 = parse_1925()
     w1675, topics_1675 = parse_1675()
 
+    # Load new scenario words (2026 new TOEFL listening gaps)
+    scenario_path = os.path.join(BASE, 'new_scenario_words.json')
+    scenario_topics = {}
+    scenario_words = {}
+    try:
+        with open(scenario_path, encoding='utf-8') as f:
+            scenario_data = json.load(f)
+            scenario_words = {k.lower(): v for k, v in scenario_data.get('words', {}).items()}
+            scenario_topics = {k.lower(): v for k, v in scenario_data.get('topics', {}).items()}
+        print(f"  Scenario words: {len(scenario_words)} words loaded")
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("  Scenario words: not found, skipping")
+
     print(f"  1791: {len(w1791)} words")
     print(f"  1925: {len(w1925)} words")
     print(f"  1675: {len(w1675)} words")
@@ -1276,7 +1331,12 @@ def main():
     all_words.update(w1791.keys())
     all_words.update(w1925.keys())
     all_words.update(w1675.keys())
+    all_words.update(scenario_words.keys())
     print(f"  Merged (unique): {len(all_words)} words")
+
+    # Merge scenario_topics into topics_1675 for classify_word
+    known_topics = dict(topics_1675)
+    known_topics.update(scenario_topics)
 
     # For each word, pick best definition and classify
     word_data = {}
@@ -1292,8 +1352,11 @@ def main():
         if w in w1791:
             defs.append(w1791[w])
             sources.append('1791')
+        if w in scenario_words:
+            defs.append(scenario_words[w])
+            sources.append('scenario')
         defn = DEFINITION_OVERRIDES.get(w, merge_definitions(defs))
-        topic = classify_word(w, defn, topics_1675)
+        topic = classify_word(w, defn, known_topics)
         word_data[w] = {
             'word': w,
             'defn': defn,
@@ -1610,7 +1673,7 @@ body.autobar-open{{padding-bottom:100px}}
   <div class="stats" id="stats">{total} 个词汇 · {len([t for t in TOPIC_ORDER if t in grouped])} 个学科</div>
 </header>
 <main id="main"></main>
-<div class="foot">TOEFL 学科词汇总表 · 1791 + 1925 + 1675 合并 · 按学科分组</div>
+<div class="foot">TOEFL 学科词汇总表 · 三大词表 + 2026新场景词汇 · 按学科分组</div>
 
 <!-- Auto-play bar -->
 <button class="ab-toggle" id="abToggle" title="连播模式">▶</button>
