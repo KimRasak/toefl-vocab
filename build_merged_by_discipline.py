@@ -1329,8 +1329,11 @@ def classify_word(word, defn, known_topics):
     return "通用词汇 General Vocabulary"
 
 
+# A part-of-speech label must carry its dot (``n.``), otherwise plain English
+# words such as ``a`` or ``n`` in example sentences are mistaken for labels.
 POS_LABEL_RE = re.compile(
-    r'(?<![A-Za-z])(adj|adv|prep|conj|pron|num|idiom|phr(?:\s+v)?|noun|verb|vt|vi|a|n|v)\.?\b',
+    r'(?<![A-Za-z])(?:(adj|adv|prep|conj|pron|num|phr\.?\s*v|phr|noun|verb|vt|vi|a|n|v)\.'
+    r'|(idiom))',
     re.I,
 )
 
@@ -1348,8 +1351,9 @@ def normalize_pos(label):
 def explicit_pos(definitions):
     found = []
     for definition in definitions:
-        for match in POS_LABEL_RE.findall(definition or ''):
-            pos = normalize_pos(match)
+        for match in POS_LABEL_RE.finditer(definition or ''):
+            label = match.group(1) or match.group(2)
+            pos = normalize_pos(label)
             if pos not in found:
                 found.append(pos)
     # Keep conventional order and avoid treating a phrase marker as a word POS.
@@ -1357,47 +1361,157 @@ def explicit_pos(definitions):
     return [p for p in order if p in found]
 
 
-def inferred_pos(word):
+SENSE_SPLIT_RE = re.compile(r'[；;，,、/／]')
+
+# ``-ly`` words that are adjectives rather than adverbs.
+ADJ_LY_WORDS = {
+    'deadly', 'friendly', 'lonely', 'likely', 'unlikely', 'lively', 'lovely',
+    'costly', 'orderly', 'stately', 'scholarly', 'timely', 'ugly', 'silly',
+    'holy', 'cowardly', 'elderly', 'worldly', 'portly', 'burly', 'godly',
+    'homely', 'manly', 'curly', 'surly', 'oily', 'jolly', 'lowly', 'kindly',
+    'motherly', 'brotherly', 'sisterly', 'leisurely', 'unruly', 'saintly',
+    'princely', 'heavenly', 'earthly', 'ghastly', 'sprightly', 'unsightly',
+}
+
+
+def _senses(text):
+    """Chinese sense fragments of a definition, without labels or notes."""
+    text = re.sub(r'\[(?:ph|st|syn|mean|def|ex|n|v|adj|adv)\][\s\S]*$', '', text or '')
+    text = text.split('\n')[0]
+    text = re.sub(r'(?<![A-Za-z])(?:adj|adv|prep|conj|pron|num|phr|noun|verb|vt|vi|n|v)[ \t]?\.', '', text, flags=re.I)
+    text = re.sub(r'[（(][^）)]*[）)]', '', text)
+    out = []
+    for part in SENSE_SPLIT_RE.split(text):
+        part = part.strip(' \t。.:："“”\'')
+        if re.search(r'[\u4e00-\u9fff]', part) and len(part) <= 12:
+            out.append(part)
+    return out
+
+
+def gloss_pos_hint(definition):
+    """Guess a part of speech from the shape of the Chinese gloss."""
+    senses = _senses(definition)
+    if not senses:
+        return None
+    if all(s.endswith('地') for s in senses):
+        return 'adv.'
+    if all(s.endswith('的') for s in senses):
+        return 'adj.'
+    if all(re.match(r'^(?:使|把|予以|加以)', s) for s in senses):
+        return 'v.'
+    return None
+
+
+# Cambridge dumps give a reliable clue: verb senses are phrased "to ...".
+CAMBRIDGE_POS = {}
+
+
+def _load_cambridge_pos():
+    for name in ('cambridge_defs_1791.json', 'cambridge_defs_1925.json'):
+        path = os.path.join(BASE, 'output', name)
+        try:
+            with open(path, encoding='utf-8') as handle:
+                data = json.load(handle)
+        except (FileNotFoundError, json.JSONDecodeError):
+            continue
+        for word, entry in data.items():
+            defs = [d for d in (entry.get('defs') or []) if d]
+            if not defs:
+                continue
+            first = defs[0].strip().lower()
+            if first.startswith(('to ', 'to(', '(of ', 'if ')) and ' to ' in f' {first} ':
+                pos = 'v.' if first.startswith(('to ', 'to(')) else None
+            elif first.startswith(('a ', 'an ', 'the ', 'someone ', 'something ',
+                                   'a person', 'any ', 'one of')):
+                pos = 'n.'
+            else:
+                pos = None
+            if pos:
+                CAMBRIDGE_POS.setdefault(word.lower(), pos)
+
+
+_load_cambridge_pos()
+
+
+def inferred_pos(word, definition=''):
     """Conservative fallback: provide a reviewable POS instead of a blank label."""
+    hint = gloss_pos_hint(definition)
+    if hint:
+        return [hint]
     if ' ' in word or '-' in word:
         return ['phr.']
-    if word.endswith('ly'):
+    lower = word.lower()
+    if lower in CAMBRIDGE_POS:
+        return [CAMBRIDGE_POS[lower]]
+    if lower.endswith('ly') and not lower.endswith(('ply', 'uly', 'lly', 'ily')):
         return ['adv.']
-    if word.endswith(('ous', 'ful', 'less', 'ive', 'al', 'ic', 'ary', 'ory', 'ent', 'ant', 'able', 'ible', 'ish', 'y')):
-        return ['adj.']
-    if word.endswith(('tion', 'sion', 'ment', 'ness', 'ity', 'ism', 'ship', 'ance', 'ence', 'hood', 'dom', 'er', 'or', 'ist')):
+    # Noun and verb suffixes are checked before adjective ones, because endings
+    # such as ``-ment`` and ``-ity`` also end in an adjective-looking letter.
+    if lower.endswith(('tion', 'sion', 'ment', 'ness', 'ity', 'ism', 'ship', 'ance',
+                       'ence', 'hood', 'dom', 'ist', 'ology', 'graphy', 'ure', 'age',
+                       'ency', 'ancy', 'acy', 'sis', 'tude', 'ee')):
         return ['n.']
-    if word.endswith(('ize', 'ise', 'ify', 'en', 'ate')):
+    if lower.endswith(('ize', 'ise', 'ify', 'fy', 'en')):
         return ['v.']
+    if lower.endswith(('ous', 'ful', 'less', 'ive', 'ical', 'able', 'ible', 'ish',
+                       'ary', 'ory', 'ic', 'al', 'ent', 'ant', 'ile', 'ate')):
+        return ['adj.']
+    if lower.endswith(('er', 'or')):
+        return ['n.']
+    if lower.endswith('ed'):
+        return ['adj.']
     return ['n.']
+
+
+LEGACY_POS_MAP = {
+    'a': 'adj.', 'ad': 'adv.', 'adj': 'adj.', 'adv': 'adv.',
+    'vt': 'v.', 'vi': 'v.', 'cn': 'n.', 'un': 'n.', 'n': 'n.', 'v': 'v.',
+}
+
+# Only rewrite a legacy label when Chinese text follows it, so that English
+# articles and abbreviations (``emend a text``) are never touched.
+LEGACY_POS_RE = re.compile(
+    r'(?<![A-Za-z])(a|ad|vt|vi|cn|un)[ \t]?\.?[ \t]*(?=[\u4e00-\u9fff])',
+    re.I,
+)
+
+# ``n.a.`` and ``n./a.``: a legacy label glued to another label is unambiguous.
+LEGACY_POS_ADJACENT_RE = re.compile(
+    r'(?<=[./、,，])(a|ad|vt|vi|cn|un)[ \t]?\.',
+    re.I,
+)
 
 
 def normalize_definition_pos(definition):
     """Normalize legacy labels such as ``a.``, ``vt.`` and ``cn.``."""
     if not definition:
         return definition
-    replacements = {
-        # Legacy labels occur without a space (``a.宇宙的``) as well as with one.
-        r'(?<![A-Za-z])a\.(?=[\s\u4e00-\u9fff]|$)': 'adj.',
-        r'(?<![A-Za-z])a(?=\s|$)': 'adj.',
-        r'(?<![A-Za-z])ad\.(?=[\s\u4e00-\u9fff]|$)': 'adv.',
-        r'(?<![A-Za-z])ad(?=\s)': 'adv.',
-        r'(?<![A-Za-z])vt\.(?=[\s\u4e00-\u9fff]|$)': 'v.',
-        r'(?<![A-Za-z])vi\.(?=[\s\u4e00-\u9fff]|$)': 'v.',
-        r'(?<![A-Za-z])cn\.(?=[\s\u4e00-\u9fff]|$)': 'n.',
-        r'(?<![A-Za-z])un\.(?=[\s\u4e00-\u9fff]|$)': 'n.',
-    }
-    result = definition
-    for pattern, replacement in replacements.items():
-        result = re.sub(pattern, replacement, result, flags=re.I)
-    return result
+
+    def _sub(match):
+        return LEGACY_POS_MAP[match.group(1).lower()] + ' '
+
+    result = LEGACY_POS_RE.sub(_sub, definition)
+    return LEGACY_POS_ADJACENT_RE.sub(lambda m: LEGACY_POS_MAP[m.group(1).lower()], result)
 
 
 def complete_pos(word, selected_def, all_defs):
     selected_def = normalize_definition_pos(selected_def)
     found = explicit_pos([selected_def] + all_defs)
     if not found:
-        found = inferred_pos(word)
+        found = inferred_pos(word, selected_def)
+    elif len(found) == 1 and found[0] in ('adj.', 'adv.'):
+        # A legacy ``ad.``/``a.`` label is ambiguous: the word shape decides
+        # first, then the shape of the Chinese gloss.
+        lower = word.lower()
+        if lower.endswith('ly') and lower not in ADJ_LY_WORDS and len(lower) > 4:
+            hint = 'adv.'
+        else:
+            hint = gloss_pos_hint(selected_def)
+        if hint in ('adj.', 'adv.') and hint != found[0]:
+            selected_def = re.sub(
+                r'^(\s*)(?:adj|adv)[ \t]?\.', lambda m: m.group(1) + hint,
+                selected_def, count=1, flags=re.I)
+            found = [hint]
     # If the selected definition has no label, make the evidence visible in the card.
     if not POS_LABEL_RE.match(selected_def.lstrip()):
         return ' '.join(found) + ' ' + selected_def
@@ -1513,24 +1627,167 @@ def esc(s):
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
 
 
+POS_TOKEN_RE = re.compile(
+    r'(?<![A-Za-z])(?:adj|adv|prep|conj|pron|num|phr\.?\s*v|phr|noun|verb|vt|vi|n|v)[ \t]?\.'
+    r'|(?<![A-Za-z])idiom\b',
+    re.I,
+)
+
+# Separators that may sit between two labels of the same group (``n./v.``).
+POS_JOINER_RE = re.compile(r'^[\s/、,，&]*$')
+
+HAN_RE = re.compile(r'[\u4e00-\u9fff]')
+ENGLISH_RUN_RE = re.compile(r'[A-Za-z]{3,}[A-Za-z\s\'\-]*')
+
+# Explanatory lead-ins that turn a gloss into a sentence about the word.
+META_LEAD_RE = re.compile(
+    r'^[\s:：的]*'
+    r'(?:[（(][^）)]*[）)][\s:：]*)?'          # leading usage note: （不可数名词）：
+    r'(?:\d+%[^：:，,。]{0,6}[：:，,]?)?'        # 95%情况：
+    r'(?:是?[^，,。]{0,10}?(?:形式|词性)[，,])?'  # 的抽象名词形式，
+    r'(?:是一个[^，,。]{0,10}[，,]?)?'          # 是一个名词，
+    r'(?:有[^，,。]{0,8}含义[，,])?'             # 有多个含义，
+    r'(?:可以表示|可以指|可指|亦可指|亦指)?'
+    r'(?:指的是|意思是|意为|表示|用于形容|用于指|用于|形容|核心含义是|核心意思是|'
+    r'核心意为|核心是|核心在于|本义是|字面意思是|字面意为|'
+    r'指(?![挥导定数标示南责令派控甲纹环出向针])'
+    r')?[\s:：、]*'
+)
+NOTE_TAIL_RE = re.compile(r'[（(][^（()）]*[\d%％][^（()）]*[)）]')
+BREAK_RE = re.compile(
+    r'[，,](?=用来|通常|尤其|常用|常指|常见|一般|多用|强调|核心|它|也可以|还可以|'
+    r'在[^，,。]{0,6}中)'
+)
+WORD_NOTE_RE = re.compile(r'(?:这个词|该词|此词|这词).*$')
+FUNCTION_ONLY_RE = re.compile(r'^[是的和或与也就即为把被在]{1,3}$')
+
+
+def _drop_unbalanced_brackets(text):
+    """Remove bracket fragments left behind after cutting example text."""
+    openers = {'(': ')', '（': '）', '【': '】', '[': ']', '“': '”'}
+    closers = {v: k for k, v in openers.items()}
+    stack = []
+    drop = set()
+    for i, ch in enumerate(text):
+        if ch in openers:
+            stack.append(i)
+        elif ch in closers:
+            if stack:
+                stack.pop()
+            else:
+                drop.add(i)
+    if stack:
+        # An unclosed bracket means its content was truncated: cut it away.
+        text = text[:stack[0]]
+    return ''.join(c for i, c in enumerate(text) if i not in drop)
+
+
+def _tidy_gloss(text, limit=40):
+    """Turn one raw Chinese fragment into a compact gloss."""
+    text = text.strip().strip('|·-—–').replace('“', '').replace('”', '').replace('"', '')
+    text = META_LEAD_RE.sub('', text, count=1)
+    text = WORD_NOTE_RE.sub('', text)
+    text = NOTE_TAIL_RE.sub('', text)
+    # Keep only the first sentence: what follows is usage commentary.
+    text = re.split(r'[。!！?？]', text)[0]
+    text = BREAK_RE.split(text)[0]
+    text = _drop_unbalanced_brackets(text).strip()
+    if len(text) > 2 and text[0] in '“"\'' and text[-1] in '”"\'':
+        text = text[1:-1]
+    text = text.strip(' \t，,、；;：:./／-—')
+    # Stray ASCII letters at either edge are leftovers of a cut example.
+    text = re.sub(r'^[A-Za-z\s]+|[A-Za-z\s]+$', '', text)
+    if len(text) > limit:
+        cut = max(text.rfind(sep, 0, limit + 1) for sep in ('；', '，', '、', ';'))
+        text = text[:cut] if cut > 8 else text[:limit]
+    return text.strip(' \t，,、；;：:./／')
+
+
+def _chinese_fragments(text):
+    """Split a line into Chinese fragments, dropping embedded English text."""
+    for raw in ENGLISH_RUN_RE.split(text):
+        if raw and len(HAN_RE.findall(raw)) >= 1:
+            yield raw
+
+
+def _gloss_from_region(region, limit=40):
+    """Find the gloss that belongs to a label, ignoring example sentences."""
+    for index, line in enumerate(region.splitlines()):
+        line = line.strip()
+        if not line:
+            continue
+        if index and not HAN_RE.match(line[0]):
+            # A continuation line that starts in English is an example, not a gloss.
+            break
+        for fragment in _chinese_fragments(line):
+            stripped = fragment.strip()
+            # A fully bracketed fragment is the translation of an example.
+            if stripped.startswith(('（', '(')) and stripped.endswith(('）', ')')):
+                continue
+            gloss = _tidy_gloss(fragment, limit)
+            if HAN_RE.search(gloss) and not FUNCTION_ONLY_RE.match(gloss):
+                return gloss
+    return ''
+
+
+def _label_groups(text):
+    """Group adjacent part-of-speech labels found in ``text``."""
+    groups = []
+    for match in POS_TOKEN_RE.finditer(text):
+        if groups and POS_JOINER_RE.match(text[groups[-1][-1].end():match.start()]):
+            groups[-1].append(match)
+        else:
+            groups.append([match])
+    return groups
+
+
 def extract_short_def(defn):
-    """Extract a compact default definition while keeping part-of-speech labels."""
+    """Build a compact default definition that keeps its part-of-speech labels."""
     if not defn:
         return ''
-    # Ignore examples, notes, and collocations in the expanded view.
-    d = re.split(r'\[(?:ph|st|syn|mean)\]', defn)[0].strip()
-    # Keep POS labels wherever they occur (e.g. ``n. ...; adj. ...``),
-    # rather than hiding them until the user expands a word card.
-    token_re = (r'(?:adj|adv|prep|conj|pron|num|idiom|phr|a|n|v)'
-                r'(?:\./(?:adj|adv|prep|conj|pron|num|idiom|phr|n|v))?\.?')
-    tokens = re.findall(
-        rf'{token_re}|[\u4e00-\u9fff\uff0c\u3001\uff1b\uff08\uff09（）。，、；：：“”‘’？！]+',
-        d, flags=re.I
-    )
-    if tokens:
-        result = ''.join(tokens).strip(' ，、；')
-        return result[:45]
-    return d[:45] if d else ''
+    # Ignore examples, notes, and collocations kept for the expanded view.
+    body = re.split(r'\[(?:ph|st|syn|mean|def|ex|n|v|adj|adv)\]', defn)[0].strip()
+    groups = _label_groups(body)
+
+    segments = []
+    seen_labels = set()
+    for index, group in enumerate(groups):
+        labels = []
+        for match in group:
+            pos = normalize_pos(match.group(0).replace(' ', '').rstrip('.'))
+            if pos not in labels:
+                labels.append(pos)
+        label = '/'.join(labels)
+        if all(pos in seen_labels for pos in labels):
+            # A repeated label introduces commentary, not a new sense.
+            continue
+        stop = groups[index + 1][0].start() if index + 1 < len(groups) else len(body)
+        gloss = _gloss_from_region(body[group[-1].end():stop], 40 if not segments else 24)
+        if not gloss:
+            continue
+        seen_labels.update(labels)
+        segments.append(f'{label} {gloss}')
+
+    if segments:
+        compact = '；'.join(segments)
+        if len(compact) > 60 and len(segments) > 1:
+            # Keep every sense visible by shortening each gloss instead of one.
+            trimmed = []
+            for segment in segments:
+                label, _, gloss = segment.partition(' ')
+                trimmed.append(f'{label} {_tidy_gloss(gloss, 18)}'.strip())
+            compact = '；'.join(trimmed)
+        return compact[:60]
+
+    # No label produced a gloss: keep the labels and the first Chinese fragment.
+    label = '/'.join(dict.fromkeys(
+        normalize_pos(m.group(0).replace(' ', '').rstrip('.'))
+        for group in groups for m in group
+    ))
+    gloss = _gloss_from_region(body)
+    if gloss:
+        return f'{label} {gloss}'.strip()
+    return label or _tidy_gloss(body)
 
 
 def generate_html(grouped, total):
