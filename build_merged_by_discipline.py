@@ -16,6 +16,11 @@ try:
 except (FileNotFoundError, json.JSONDecodeError):
     DEFINITION_OVERRIDES = {}
 try:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pos_overrides.json'), encoding='utf-8') as _f:
+        POS_OVERRIDES = {str(k).lower(): str(v).strip() for k, v in json.load(_f).items()}
+except (FileNotFoundError, json.JSONDecodeError):
+    POS_OVERRIDES = {}
+try:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'definition_corrections.json'), encoding='utf-8') as _f:
         # New corrections intentionally take precedence over the older review table.
         DEFINITION_OVERRIDES.update({str(k).lower(): str(v).strip() for k, v in json.load(_f).items()})
@@ -1318,6 +1323,81 @@ def classify_word(word, defn, known_topics):
     return "通用词汇 General Vocabulary"
 
 
+POS_LABEL_RE = re.compile(
+    r'(?<![A-Za-z])(adj|adv|prep|conj|pron|num|idiom|phr(?:\s+v)?|noun|verb|vt|vi|a|n|v)\.?\b',
+    re.I,
+)
+
+
+def normalize_pos(label):
+    label = label.lower().replace(' ', '')
+    return {'a': 'adj.', 'adj': 'adj.', 'adjective': 'adj.',
+            'adv': 'adv.', 'adverb': 'adv.', 'noun': 'n.', 'n': 'n.',
+            'verb': 'v.', 'vt': 'v.', 'vi': 'v.', 'v': 'v.',
+            'phr': 'phr.', 'phrv': 'phr. v.', 'idiom': 'idiom',
+            'prep': 'prep.', 'conj': 'conj.', 'pron': 'pron.',
+            'num': 'num.'}.get(label, label + '.')
+
+
+def explicit_pos(definitions):
+    found = []
+    for definition in definitions:
+        for match in POS_LABEL_RE.findall(definition or ''):
+            pos = normalize_pos(match)
+            if pos not in found:
+                found.append(pos)
+    # Keep conventional order and avoid treating a phrase marker as a word POS.
+    order = ['n.', 'v.', 'adj.', 'adv.', 'prep.', 'conj.', 'pron.', 'num.', 'phr.', 'phr. v.', 'idiom']
+    return [p for p in order if p in found]
+
+
+def inferred_pos(word):
+    """Conservative fallback: provide a reviewable POS instead of a blank label."""
+    if ' ' in word or '-' in word:
+        return ['phr.']
+    if word.endswith('ly'):
+        return ['adv.']
+    if word.endswith(('ous', 'ful', 'less', 'ive', 'al', 'ic', 'ary', 'ory', 'ent', 'ant', 'able', 'ible', 'ish', 'y')):
+        return ['adj.']
+    if word.endswith(('tion', 'sion', 'ment', 'ness', 'ity', 'ism', 'ship', 'ance', 'ence', 'hood', 'dom', 'er', 'or', 'ist')):
+        return ['n.']
+    if word.endswith(('ize', 'ise', 'ify', 'en', 'ate')):
+        return ['v.']
+    return ['n.']
+
+
+def normalize_definition_pos(definition):
+    """Normalize legacy labels such as ``a.``, ``vt.`` and ``cn.``."""
+    if not definition:
+        return definition
+    replacements = {
+        # Legacy labels occur without a space (``a.宇宙的``) as well as with one.
+        r'(?<![A-Za-z])a\.(?=[\s\u4e00-\u9fff]|$)': 'adj.',
+        r'(?<![A-Za-z])a(?=\s|$)': 'adj.',
+        r'(?<![A-Za-z])ad\.(?=[\s\u4e00-\u9fff]|$)': 'adv.',
+        r'(?<![A-Za-z])ad(?=\s)': 'adv.',
+        r'(?<![A-Za-z])vt\.(?=[\s\u4e00-\u9fff]|$)': 'v.',
+        r'(?<![A-Za-z])vi\.(?=[\s\u4e00-\u9fff]|$)': 'v.',
+        r'(?<![A-Za-z])cn\.(?=[\s\u4e00-\u9fff]|$)': 'n.',
+        r'(?<![A-Za-z])un\.(?=[\s\u4e00-\u9fff]|$)': 'n.',
+    }
+    result = definition
+    for pattern, replacement in replacements.items():
+        result = re.sub(pattern, replacement, result, flags=re.I)
+    return result
+
+
+def complete_pos(word, selected_def, all_defs):
+    selected_def = normalize_definition_pos(selected_def)
+    found = explicit_pos([selected_def] + all_defs)
+    if not found:
+        found = inferred_pos(word)
+    # If the selected definition has no label, make the evidence visible in the card.
+    if not POS_LABEL_RE.match(selected_def.lstrip()):
+        return ' '.join(found) + ' ' + selected_def
+    return selected_def
+
+
 def merge_definitions(defs_list):
     """Merge multiple definitions, preferring the longest/most detailed."""
     defs = [d for d in defs_list if d]
@@ -1385,6 +1465,9 @@ def main():
             defs.append(scenario_words[w])
             sources.append('scenario')
         defn = DEFINITION_OVERRIDES.get(w, merge_definitions(defs))
+        # Normalize and guarantee a visible POS even when an override replaced
+        # the source definition (legacy overrides may use a./vt./cn. labels).
+        defn = complete_pos(w, defn, defs)
         topic = classify_word(w, defn, known_topics)
         word_data[w] = {
             'word': w,
