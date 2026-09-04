@@ -224,8 +224,8 @@ body.autobar-open{padding-bottom:100px}
 }
 .focus-overlay.open{display:flex}
 .focus-word{font-size:clamp(32px,8vw,56px);font-weight:800;margin-bottom:12px;visibility:hidden}
-.focus-def{font-size:16px;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:8px;visibility:hidden}
-.focus-full{font-size:13px;color:var(--muted);max-width:500px;line-height:1.6;opacity:.7;margin-bottom:20px;word-break:break-word;white-space:pre-wrap;visibility:hidden}
+.focus-def{font-size:16px;color:var(--muted);width:min(100%,680px);box-sizing:border-box;line-height:1.75;margin:0 auto 10px;padding:0 8px;text-align:left;visibility:hidden}
+.focus-full{font-size:13px;color:var(--muted);width:min(100%,680px);box-sizing:border-box;line-height:1.75;opacity:.82;margin:0 auto 20px;padding:0 8px;text-align:left;word-break:break-word;white-space:pre-wrap;visibility:hidden}
 .focus-overlay.revealed .focus-word,.focus-overlay.revealed .focus-def,.focus-overlay.revealed .focus-full{visibility:visible}
 .focus-pos{font-size:13px;color:var(--muted);margin-bottom:20px}
 .focus-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
@@ -326,8 +326,8 @@ body.autobar-open{padding-bottom:100px}
     <div class="focus-word" id="focusWord">—</div>
   </div>
   <div class="focus-mark" id="focusMark" title="标记难词">⭐</div>
-  <div class="focus-def" id="focusDef"></div>
-  <div class="focus-full" id="focusFull"></div>
+  <div class="focus-def" id="focusDef" aria-live="polite"></div>
+  <div class="focus-full" id="focusFull" aria-live="polite"></div>
   <div class="focus-pos" id="focusPos"></div>
   <div class="focus-btns">
     <button onclick="focusPrev()">⏮ 上一个</button>
