@@ -175,3 +175,40 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 - [ETS 2026 TOEFL iBT Test Specifications](https://www.ets.org/content/dam/ets-org/pdfs/toefl/toefl-ibt-test-specifications-2026.pdf)
 - [ETS China Test Content and Structure](https://www.cn.ets.org/toefl/china/toefl/content-structure.html)
 - 本地研究：`../TPO调研-2026-08-31.md`、`../ets_official_2026/README.md`
+
+## 第四轮：按用户水平的已知词降权 + 混淆音连读 + 跨页登录统一
+
+用户水平：CET-4 554 / CET-6 555，正在备考 2026 托福。核心动作是「把用户**肯定已会的词**从每日新词队列里移出，让队列优先出现可能不会的词」。
+
+### 97 条 CET 级已知词降权到 P1
+
+逐条核对 `data.js` 中 r≥3 的听力场景词，把六级考生**无疑已掌握**的基础词全部降到 `r=1`（权重 0.2，队列最后出现，仍可在分类一览中查到）：
+
+- 烹饪/餐饮：`bake grill steam stir-fry chop microwave homemade`；`tip takeout vegetarian beverage appetizer`
+- 医疗：`fever headache cough dizzy clinic pharmacy treatment insurance`
+- 健身/家务/休闲：`yoga stretch workout`；`vacuum recycle iron laundry do the dishes take out the trash`；`picnic camping board game sold out`
+- 运动/节日：`score season gear cycling`；`Thanksgiving fireworks barbecue decoration gift card`
+- 交通/旅行/酒店：`delay platform departure arrival`；`passport`；`front desk luggage`
+- 购物/邮局/银行：`receipt refund exchange discount coupon checkout aisle on sale out of stock`（购物客服副本；超市同词本就是 r2/3）；`package parcel`；`ATM PIN`
+- 租房/天气/科技：`rent roommate move in move out`；`forecast humidity thunderstorm breeze`；`app download upload log in sign out inbox spam bluetooth screenshot`；`crash backup Wi-Fi charger battery storage`
+- 发音陷阱中过于日常的：`women towel drawer vegetable comfortable temperature interesting`
+- 保留不降权（虽是熟词但是 2026 考点/难点）：`entrée side dish specials`、`produce`（农产品义项）、`drizzle overcast heatwave`、`precipitation`、`overdue fine` 等。
+
+`r` 分布从 `{1:411, 4:1088}` 变为 `{1:508, 4:994}`；纯字段改动，索引与云端进度编码完全不受影响（82/82 测试全绿）。
+
+### 混淆音卡片 TTS 双词连读
+
+此前 `speak()` 用 `cleanForSpeech` 按 ` / ` 切分只读前半，`dessert / desert` 永远只能听到 `dessert`，听不到对比。现在 `speak()` 检测斜杠成对词，把两部分拼成 `dessert, desert` 连读，让用户亲耳听到重音/音位差异（17 条混淆音 + `Slight / slightly`、`Um / Uh` 都受益）。
+
+### 跨页登录统一（难词页）
+
+`merged-by-discipline/index.html`（难词页）原本用独立单页凭证 key，与词库页不互通。现将其迁移到与词库页相同的**跨页面共享 Gist 凭证块**（`test_sync.js` 断言两份逐字一致）：token 共享，两页各用独立 `gistId` slot（`toefl2026-progress` / `hard-words`），任一一页登录后另一页自动共用、自动认领本页 Gist；登出会同时断开两页。旧单页凭证自动迁移。修好了此前 3 条失败断言，测试恢复到 82/82。
+
+### 过短释义补全
+
+`layer`（层）、`grill/steam/stir-fry`（烤/蒸/炒）的释义从单字扩到带烹饪/层级语境的中文说明。
+
+### 仍待办（下一轮候选）
+
+- 最薄的 2026 场景分类：`听力-体育设施`(3)、`听力-学业支持`(3)、`听力-可持续环保`(3)、`听力-理发美容`(3)、`阅读-社交短文`(3) —— 若要扩充，须像第三轮那样用 `ets_official_2026/` 官方材料逐条验证，避免重回低频具体名词。
+- `Write an Email` 功能语块、`听力-医疗健康` 剩余词的产出率复核、12 条占位符句型的 TTS 处理。
