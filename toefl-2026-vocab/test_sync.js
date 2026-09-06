@@ -322,6 +322,25 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   const stillMissing = sample.filter(w => !wset.has(w));
   chk('官方高频中频词已补齐', stillMissing.length === 0, stillMissing.join(' , '));
 
+  // 21b. 2026 写作/口语任务分类 + 薄场景分类补齐
+  const taskCats = {
+    '写作-邮件': { min: 20, macro: 'writing' },
+    '口语-虚拟面试': { min: 15, macro: 'speaking' },
+    '听力-学业支持': { min: 5, macro: 'listening' },
+    '听力-可持续环保': { min: 5, macro: 'listening' },
+    '听力-体育设施': { min: 5, macro: 'listening' },
+    '阅读-社交短文': { min: 5, macro: 'reading' },
+  };
+  Object.keys(taskCats).forEach(c => {
+    const spec = taskCats[c];
+    chk('任务分类齐全 ' + c, catOf(c).length >= spec.min, catOf(c).length);
+    chk('任务分类宏正确 ' + c, run("getMacro('" + c + "')") === spec.macro);
+  });
+  chk('邮件语块示例在列', ['i am writing to', 'please find attached', 'best regards']
+    .every(w => wset.has(w)));
+  chk('面试语块示例在列', ['collaborate', 'prioritize', 'relevant experience']
+    .every(w => wset.has(w)));
+
   // 22. 一览页把新分类一起列出来了
   run("openBrowse('listening')");
   const cats = run("browseGroups('listening').map(g => g.cat)");
