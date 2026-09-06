@@ -211,4 +211,22 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 ### 仍待办（下一轮候选）
 
 - 最薄的 2026 场景分类：`听力-体育设施`(3)、`听力-学业支持`(3)、`听力-可持续环保`(3)、`听力-理发美容`(3)、`阅读-社交短文`(3) —— 若要扩充，须像第三轮那样用 `ets_official_2026/` 官方材料逐条验证，避免重回低频具体名词。
-- `Write an Email` 功能语块、`听力-医疗健康` 剩余词的产出率复核、12 条占位符句型的 TTS 处理。
+- `听力-医疗健康` 剩余词的产出率复核、12 条占位符句型的 TTS 处理。
+
+## 第五轮：补齐 2026 两大写作/口语任务语块 + 稀有零命中词降权
+
+基于官方 7 套卷（`ets_official_2026/txt/`，约 4.2 万词）的语料证据，补齐此前缺失的两大 2026 任务语块：
+
+### 新增「写作-邮件」23 条（r=5）
+
+官方卷中 `email` 出现 83 次、`dear` 16 次、`regards` 15 次、`schedule` 39 次、`meeting` 35 次——Write an Email 是 2026 写作必考任务，且 "Read an email" 也是阅读新题。按任务结构补齐功能语块：称呼（`Dear Professor`、`Dear Sir or Madam`）、说明目的（`I am writing to`、`I would like to`）、礼貌请求（`I was wondering if`、`Could you please`、`I would appreciate it if`）、致歉（`I apologize for`、`I am sorry for`）、追问（`Could you let me know`、`Please let me know`、`At your earliest convenience`）、附件（`Please find attached`、`I have attached`）、结尾（`Thank you for your time`、`I look forward to hearing from you`、`Please feel free to contact me`）、落款（`Best regards`、`Regards`、`Sincerely`）、`ASAP`。`Would it be possible to`、`Unfortunately`、`due to` 已在听力分类，不重复收。
+
+### 新增「口语-虚拟面试」18 条 + 口语顶层宏
+
+2026 口语 Virtual Interview 必考（经历/优势/困难/选择理由/团队合作）。补齐：`reliable adaptable prioritize collaborate teamwork leadership problem-solving motivated self-motivated detail-oriented relevant experience take the initiative step up meet deadlines work under pressure strengths and weaknesses career goal contribute to`。同时在 `index.html` 增加 `speaking` 顶层宏（`口语-` 前缀 → 口语表达卡片，图标 🗣️），仪表盘自动新增一张卡片，`test_sync.js` 82 条断言全绿。
+
+### 稀有零命中词降权 14 条
+
+对第三轮诊断出的「低频具体名词」做收敛式处理：只降权**确实稀有且 2026 价值低**的 14 条（`bellhop optometrist kayaking matinee haircut trim blow-dry gratuity turnstile intramural study carrel potluck fortnight groundskeeper`）到 P1；**保留**官方高频/中频通用词（`allergy ingredient landlord engine symptom` 等零命中但通用）、全部发音陷阱/混淆音/连读缩略（教学价值不受语料命中影响），以及 P0 明确要的图书馆词（`e-journal call number interlibrary loan`）。
+
+词库总量 3243 → 3284；云端进度索引（`wordToIndex`）对既有 3243 条逐字保持不动，仅追加，进度编码完全兼容。
