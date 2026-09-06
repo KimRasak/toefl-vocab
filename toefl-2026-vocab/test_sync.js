@@ -364,6 +364,24 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     .every(c => run("getMacro('" + c + "')") === 'writing'));
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
+  // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
+  const awlR = w => run("VOCAB.find(e => e.w === '" + w + "' && e.c.startsWith('AWL')).r");
+  const promoted = { constitute: 3, legislate: 3, negate: 3, convene: 3, criterion: 3,
+                     consequent: 3, constrain: 3, derive: 2, proceed: 2, sector: 2,
+                     administrate: 2, perceive: 2, regulate: 2, reside: 2, compensate: 2,
+                     consent: 2, coordinate: 2, deduce: 2, scheme: 2, sequence: 2 };
+  const badPromo = Object.keys(promoted).filter(w => awlR(w) < promoted[w]);
+  chk('AWL 难词已提权', badPromo.length === 0, badPromo.join(','));
+
+  // 21e. CET 级已知词降权出队列（r=1，任一分类下的该词都不得高于 r=1）
+  const demoted = ['borrow', 'discount', 'exchange', 'receipt', 'reception', 'shelf',
+                   'colleague', 'coupon', 'job', 'lecture', 'project', 'confirm', 'file',
+                   'grade', 'schedule', 'team', 'appointment', 'cancel', 'deposit',
+                   'reserve', 'salary', 'terminal', 'withdraw'];
+  const badDemo = demoted.filter(w => run("VOCAB.filter(e => e.w === '" + w + "').some(e => e.r !== 1)"));
+  chk('CET 级已知词已降权', badDemo.length === 0, badDemo.join(','));
+  chk('AWL-1/2/3 不再全是 r=1', run("VOCAB.filter(e => ['AWL-1','AWL-2','AWL-3'].includes(e.c)).some(e => e.r > 1)"));
+
   // 22. 一览页把新分类一起列出来了
   run("openBrowse('listening')");
   const cats = run("browseGroups('listening').map(g => g.cat)");

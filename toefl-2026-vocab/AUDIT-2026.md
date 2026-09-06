@@ -302,3 +302,26 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 新增 13 条断言：句型占位卡 TTS 8 条（槽位读 blank、句尾省略号处理、X/Y 双占位、全量 11 卡可朗读）+ 学术功能词 5 条（含宏归属、cause 不进队列）。全部 109/109 通过。
 
 词库总量 3301 → 3309；`wordToIndex` 索引对既有词逐字不动，仅追加，进度编码完全兼容。
+
+## 第八轮：按 555 分水平的双向优先级校准（AWL 难词提权 + CET 已知词降权）
+
+针对"只保留我可能不会的词"这一目标，做双向校准：
+
+### 提权：AWL-1/2/3 高子表中 555 分可能不会的学术词进入队列（27 条）
+
+此前 AWL-1/2/3（最高频学术词）整体按"高频骨架=已知"设计为 r=1 不进队列。但其中相当一部分（`constitute`、`legislate`、`negate`、`criterion`、`consequent`、`constrain` 等）是 555 分考生**并不扎实掌握**的高价值学术词——高频 + 不会 = 阅读写作必考。按难度提权：
+
+- **r=3（7 条）**：`constitute legislate negate convene criterion consequent constrain`
+- **r=2（20 条）**：`derive proceed sector administrate equate institute perceive regulate reside secure compensate consent considerable coordinate deduce scheme sequence specify evident proportion`
+
+### 降权：CET-4/6 级必会词移出队列（27 条）
+
+从 r=2/3/4 中找出 555 分考生**肯定掌握**的基础词降为 r=1（不进队列，权重 0.2 仅浏览可见）：`borrow discount exchange receipt reception shelf`、`colleague coupon confirm file grade schedule team`、`appointment cancel deadline deposit reserve return salary terminal withdraw`。其中 `job lecture project`（AWL-4/6）与 `team grade file schedule confirm colleague`（AWL-7/8/9/10）此前因身处 AWL 高子表而滞留队列，现与 AWL-1/2/3 的"已知骨架"处理对齐。
+
+**保留不动**（教学价值 > 已知与否）：全部发音陷阱（如 `garage`）、功能语气标记（`Look/Now/Right/like` 的口语用法）、`prescription` 等医疗边界词。
+
+### 回归测试 109 → 112 条
+
+新增 3 条断言锁定：AWL 难词提权不回落、CET 已知词全分类不得高于 r=1、AWL-1/2/3 不再全是 r=1。全部 112/112 通过。
+
+词库总量保持 3309；`wordToIndex` 索引对既有词逐字不动（仅改 r 字段，无增删），进度编码完全兼容。
