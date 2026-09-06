@@ -230,3 +230,40 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 对第三轮诊断出的「低频具体名词」做收敛式处理：只降权**确实稀有且 2026 价值低**的 14 条（`bellhop optometrist kayaking matinee haircut trim blow-dry gratuity turnstile intramural study carrel potluck fortnight groundskeeper`）到 P1；**保留**官方高频/中频通用词（`allergy ingredient landlord engine symptom` 等零命中但通用）、全部发音陷阱/混淆音/连读缩略（教学价值不受语料命中影响），以及 P0 明确要的图书馆词（`e-journal call number interlibrary loan`）。
 
 词库总量 3243 → 3284；云端进度索引（`wordToIndex`）对既有 3243 条逐字保持不动，仅追加，进度编码完全兼容。
+
+## 第六轮：补齐最薄场景分类 + 全库释义/音标抽查修正
+
+### 补齐 4 个最薄场景分类 17 条（官方语料逐条验证）
+
+上一轮「仍待办」里最薄的 2026 场景分类已补齐（`ets_official_2026/txt/` 语料佐证产出率）：
+
+- **听力-学业支持** 7 条：`workshop`（22 次）、`tutoring session`、`help session`、`supplemental instruction`
+- **听力-可持续环保** 7 条：`renewable`（6 次）、`zero waste`、`eco-friendly`、`compostable`（校园环保话题）
+- **听力-体育设施** 7 条：`pickup game`、`home game`、`away game`、`rec center`
+- **阅读-社交短文** 8 条：`caption`、`hashtag`、`direct message`、`trending`、`viral`（新阅读题"Read a social media post"）
+
+均避开低频具体名词，只收官方材料中真实出现的高频场景表达。
+
+### 全库释义/音标抽查（4 个子代理并行审 2258 条）
+
+按分类抽样 2258 条（发音陷阱 109 / 听力场景 1194 / 学术词 955）交由子代理逐条核对 IPA、中文释义与词性标签，采纳修正 **8 条客观错误 + 1 条自查收窄**（其余为可接受释义或风格问题，从宽原则未改）：
+
+| 词 | 分类 | 原释义 | 修正 |
+|---|---|---|---|
+| `plough` | 听力-发音陷阱 | [plaʊ 不是"普劳"] | [plaʊ]（gh 不发音，不是"普劳格"）——原纠错自相矛盾，"普劳"本就是正确近似 |
+| `gratuity` | 听力-餐饮 | 服务费（已含小费） | 小费；酬金（账单自动加收的小费也称 gratuity）——原释义颠倒概念 |
+| `fender bender` | 听力-紧急意外 | 轻微追尾 | 轻微交通事故；小刮蹭（不一定是追尾）——原释义范围过窄 |
+| `registrar` | 学科-校园 | 教务处 | 注册主任；教务主任——registrar 指"人/职位"，"教务处"是机构 |
+| `I take your point, but` | 听力-同意反对 | 我听到了你的观点，但 | 我明白你的意思，但 / 你说得有道理，但——原文丢失"理解并认可"核心义 |
+| `eye exam` | 听力-眼科配镜 | 验光 | 眼科检查；视力检查——"验光"仅测屈光度，范围过窄 |
+| `flat tire` | 听力-科技汽车 | 爆胎 | 瘪胎；轮胎没气——爆胎是 blowout，范围过窄 |
+| `return address` | 听力-邮局快递 | 退回地址 | 寄件人地址；回邮地址——原文易与"退货地址"混淆 |
+| `tutoring session` | 听力-学业支持 | 辅导课（一对多辅导） | 辅导课；辅导时段——"一对多"属未证实的假设，收窄为中性表述 |
+
+另复核 r=5 全量 853 条（无低价值词混入）、易混淆对、发音陷阱全量（除上述 1 条外均准确）。顺带将 58 条此前以带空格格式追加的词条统一为全库一致的紧凑 JSON 格式（内容逐字段验证不变）。
+
+### 回归测试 82 → 96 条
+
+新增 14 条断言锁定本轮成果：`写作-邮件`/`口语-虚拟面试` 等 6 个任务分类的存在性与宏归属、邮件/面试语块示例、薄分类宏正确性。全部 96/96 通过。
+
+词库总量 3284 → 3301；`wordToIndex` 索引对既有词逐字不动，仅追加，进度编码完全兼容。
