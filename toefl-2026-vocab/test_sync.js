@@ -293,6 +293,19 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('普通单词不判定为整句卡', run("isSentenceCard({ w: 'aisle' })") === false);
   chk('短语动词不判定为整句卡', run("isSentenceCard({ w: 'turn in' })") === false);
 
+  // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
+  chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
+    run("patternSpeak('Take ... for example')"));
+  chk('not only...but also 可读', run("patternSpeak('not only ... but also')") === 'not only blank, but also');
+  chk('句尾省略号去掉', run("patternSpeak('Well...')") === 'Well', run("patternSpeak('Well...')"));
+  chk('句尾省略号+问号保留问号', run("patternSpeak('You mean ...?')") === 'You mean blank?', run("patternSpeak('You mean ...?')"));
+  chk('X/Y 双占位可读', run("patternSpeak('While X ..., Y ...')") === 'While X blank, Y blank',
+    run("patternSpeak('While X ..., Y ...')"));
+  chk('列举句型两槽位', run("patternSpeak('The first is ... the second ...')") === 'The first is blank, the second blank');
+  const pats = V.filter(e => e.w.includes('...'));
+  chk('占位句型卡已收录', pats.length >= 8, pats.length);
+  chk('占位句型卡全部可朗读', pats.every(e => /[A-Za-z]/.test(run("patternSpeak(" + JSON.stringify(e.w) + ")"))), '');
+
   // 19. 追加而非插入：既有词的索引没被挪动，否则云端进度会错位
   chk('首条仍是 analyse', V[0].w === 'analyse');
   chk('既有词索引仍落在原有区间内',
@@ -340,6 +353,16 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     .every(w => wset.has(w)));
   chk('面试语块示例在列', ['collaborate', 'prioritize', 'relevant experience']
     .every(w => wset.has(w)));
+
+  // 21c. 学术功能词（写作/阅读论证）补齐
+  const funcWords = ['claim', 'suggest', 'propose', 'assumption', 'correlate', 'originate', 'cause', 'peak'];
+  const funcMiss = funcWords.filter(w => !wset.has(w));
+  chk('学术功能词已补齐', funcMiss.length === 0, funcMiss.join(','));
+  chk('功能词-论证不少于 8 条', catOf('功能词-论证').length >= 8, catOf('功能词-论证').length);
+  chk('功能词-抽象名词不少于 2 条', catOf('功能词-抽象名词').length >= 2, catOf('功能词-抽象名词').length);
+  chk('功能词分类归入写作宏', ['功能词-论证', '功能词-抽象名词', '功能词-分析', '功能词-因果', '功能词-变化量']
+    .every(c => run("getMacro('" + c + "')") === 'writing'));
+  chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 22. 一览页把新分类一起列出来了
   run("openBrowse('listening')");

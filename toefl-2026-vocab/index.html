@@ -853,14 +853,32 @@ function nativeSpeak(clean) {
   return true;
 }
 
+function patternSpeak(text) {
+  // 句型占位卡（Take ... for example / While X ..., Y ...）：把省略号槽位转成
+  // 可朗读的 "blank"，只有单字拖长（Well...）才去掉省略号，X/Y 占位字母保留
+  // 由 TTS 自然读出，让句型卡也能听出结构。
+  let s = String(text)
+    .replace(/^(\w+)\s*\.\.\.\s*$/, '$1')   // Well... 单字拖长 → Well
+    .replace(/\.\.\./g, ' blank,')          // 其余省略号均为槽位 → blank + 停顿
+    .replace(/\s+/g, ' ')
+    .replace(/,+/g, ',')                    // 折叠重复逗号
+    .replace(/[\s,]*([?])\s*/g, '$1');        // 问号前不留空格/逗号
+  return s.replace(/,\s*$/, '').trim();     // 去句尾逗号
+}
+
 function speak(text) {
   const raw = String(text);
-  // 斜杠成对词（如 dessert / desert、affect / effect）：把两部分都读出来，
-  // 让用户亲耳听到重音/音位对比——这才是混淆音卡片的训练目的。
-  const slashParts = raw.split(/\s+\/\s+/);
-  const clean = slashParts.length > 1
-    ? slashParts.map(s => cleanForSpeech(s)).filter(Boolean).join(', ')
-    : cleanForSpeech(raw);
+  let clean;
+  if (/\.\.\./.test(raw)) {
+    clean = patternSpeak(raw);
+  } else {
+    // 斜杠成对词（如 dessert / desert、affect / effect）：把两部分都读出来，
+    // 让用户亲耳听到重音/音位对比——这才是混淆音卡片的训练目的。
+    const slashParts = raw.split(/\s+\/\s+/);
+    clean = slashParts.length > 1
+      ? slashParts.map(s => cleanForSpeech(s)).filter(Boolean).join(', ')
+      : cleanForSpeech(raw);
+  }
   if (!clean) return;
   const generation = ++_speakGeneration;
   _speakPending = clean;
