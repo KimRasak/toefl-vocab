@@ -362,6 +362,17 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('功能词-抽象名词不少于 2 条', catOf('功能词-抽象名词').length >= 2, catOf('功能词-抽象名词').length);
   chk('功能词分类归入写作宏', ['功能词-论证', '功能词-抽象名词', '功能词-分析', '功能词-因果', '功能词-变化量']
     .every(c => run("getMacro('" + c + "')") === 'writing'));
+
+  // 21f. 技能向分类归入对应卡片，不再堆在「其他」
+  chk('填词归入阅读（Complete the words 新题）', ['填词-转折连接', '填词-修饰副词']
+    .every(c => run("getMacro('" + c + "')") === 'reading'));
+  chk('词缀派生归入阅读', run("getMacro('词缀派生-tion')") === 'reading');
+  chk('讲座信号词/态度词/语气动词归入听力', ['讲座信号词-举例', '态度词-积极', '语气动词']
+    .every(c => run("getMacro('" + c + "')") === 'listening'));
+  chk('同义替换/学术搭配归入写作', ['同义替换-动词', '同义替换-形容词', '同义替换-名词', '学术搭配']
+    .every(c => run("getMacro('" + c + "')") === 'writing'));
+  chk('补充高频词/易混淆对留在其他', ['补充高频词', '易混淆对']
+    .every(c => run("getMacro('" + c + "')") === 'other'));
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）

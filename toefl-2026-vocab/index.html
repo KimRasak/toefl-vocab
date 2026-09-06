@@ -520,6 +520,11 @@ function getMacro(c) {
   if (c.startsWith('学科-') || c.startsWith('深度-')) return 'subject';
   if (c === '短语动词') return 'phrasal';
   if (c.includes('写作') || c.startsWith('功能词')) return 'writing';
+  // 阅读新题「Complete the words」/ 构词 → 阅读；讲座信号词 / 说话人态度 → 听力；
+  // 学术换词 / 搭配 → 写作。让这些分类各自归入对应技能卡片，不再堆在「其他」。
+  if (c.startsWith('填词-') || c.startsWith('词缀派生-')) return 'reading';
+  if (c.startsWith('讲座信号词-') || c.startsWith('态度词-') || c === '语气动词') return 'listening';
+  if (c.startsWith('同义替换-') || c === '学术搭配') return 'writing';
   return 'other';
 }
 
