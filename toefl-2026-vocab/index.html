@@ -481,6 +481,7 @@ const MACRO = {
   subject:  { name: '学科主题', icon: '🔬', color: '#34c759' },
   phrasal:  { name: '短语动词', icon: '💬', color: '#ffb454' },
   writing:  { name: '写作表达', icon: '✍️', color: '#af52de' },
+  speaking: { name: '口语表达', icon: '🗣️', color: '#ff6b4a' },
   other:    { name: '其他', icon: '📋', color: '#8b93a1' }
 };
 
@@ -515,6 +516,7 @@ function getMacro(c) {
   if (c.startsWith('AWL')) return 'awl';
   if (c.startsWith('听力-')) return 'listening';
   if (c.startsWith('阅读-')) return 'reading';
+  if (c.startsWith('口语-')) return 'speaking';
   if (c.startsWith('学科-') || c.startsWith('深度-')) return 'subject';
   if (c === '短语动词') return 'phrasal';
   if (c.includes('写作') || c.startsWith('功能词')) return 'writing';
