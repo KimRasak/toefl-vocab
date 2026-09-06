@@ -852,7 +852,13 @@ function nativeSpeak(clean) {
 }
 
 function speak(text) {
-  const clean = cleanForSpeech(text);
+  const raw = String(text);
+  // 斜杠成对词（如 dessert / desert、affect / effect）：把两部分都读出来，
+  // 让用户亲耳听到重音/音位对比——这才是混淆音卡片的训练目的。
+  const slashParts = raw.split(/\s+\/\s+/);
+  const clean = slashParts.length > 1
+    ? slashParts.map(s => cleanForSpeech(s)).filter(Boolean).join(', ')
+    : cleanForSpeech(raw);
   if (!clean) return;
   const generation = ++_speakGeneration;
   _speakPending = clean;
