@@ -605,3 +605,28 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 **已在 vm 实测交互**：8 页 init 后 `currentTab==='browse'`、`browseMacro===该宏`、单词表完整渲染（flat 词数 = awl 574 / listening 2042 / reading 79 / subject 294 / phrasal 87 / writing 197 / speaking 18 / other 76，子场景数与主站一致）。
 
 **回归测试 181 → 183 条全绿**（新增：听力版打开即单词表、8 页一打开即该宏单词表）。
+
+## 第二十九轮：真 DOM 复现并修掉「打开子路径页仍停在总览」的根因
+
+上一轮声称已修好，但**用户实测仍不对**。这轮用 jsdom 真跑线上页面复现，找到根因：
+
+```js
+// 旧代码（init 内）
+$('view-' + currentTab)?.classList.add('active') || ($('view-dashboard').classList.add('active'), currentTab = 'dashboard');
+```
+
+`classList.add()` 返回 **undefined**（假值），所以 `||` 右侧**永远执行** → `view-dashboard` 被强行点亮、`currentTab` 被重置为 `'dashboard'`。后果：子路径页 **同时点亮 view-dashboard + view-browse**，且因 currentTab 已被改回 dashboard，`renderBrowse()` 从未执行 → 单词表是空的，底栏高亮总览。用户看到的就是「还是总览」。
+
+这也是个**潜伏已久的主站 bug**：`settings.tab`（上次所在标签页）恢复功能一直是死代码。
+
+**修复**：改成显式 if/else；另把「分类一览」的底栏高亮归到总览（此前 browse 视图无任何高亮）。8 个子路径页已重新生成。
+
+**为什么上一轮测试没抓到（重要）**：`test_sync.js` 的 DOM 打桩里 `classList.add` 返回 `Set`（真值），恰好让 `||` 短路，于是打桩环境「碰巧正确」，真浏览器却错。已修正打桩保真度：
+
+- `classList.add/remove` 返回 `undefined`、`toggle` 返回 boolean（与真 DOM 一致）；
+- `document.querySelectorAll('.view' / '.nav-item')` 从真实 HTML 解析出清单并真实返回（此前一律返回 `[]`，视图切换类 bug 完全测不到）；
+- 新增 `makeDom()` 工厂，每个页面用独立 DOM 注册表，8 个子路径页各自真跑一遍 `init()`。
+
+**新增断言**：主站首屏只点亮 `view-dashboard`+底栏高亮总览；听力版只点亮 `view-browse`+底栏仅一个高亮；8 个子路径页真跑「打开即单词表、只亮一个视图、单词表非空、宏正确」。**已反向验证**：把旧 bug 放回去，这批断言立刻报 3 条 FAIL（含 `view-dashboard,view-browse` 双亮）。
+
+回归测试 **183 → 188 条全绿**。jsdom 实测 8 页首屏：均 `view-browse` 单亮，单词表词数 574/2042/79/294/87/197/18/76，子场景 10/129/9/18/1/21/1/2。

@@ -1469,7 +1469,7 @@ function switchTab(tab) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const view = $('view-' + tab);
   if (view) view.classList.add('active');
-  const nav = document.querySelector('.nav-item[data-tab="' + tab + '"]');
+  const nav = document.querySelector('.nav-item[data-tab="' + (tab === 'browse' ? 'dashboard' : tab) + '"]');
   if (nav) nav.classList.add('active');
   if (tab === 'study') renderStudyCard();
   if (tab === 'browse') renderBrowse();
@@ -1530,9 +1530,19 @@ function init() {
 
   currentTab = 'browse';
   browseMacro = 'listening';
-  $('view-' + currentTab)?.classList.add('active') || ($('view-dashboard').classList.add('active'), currentTab = 'dashboard');
+  // 注意：classList.add() 返回 undefined，不能用 `add(...) || fallback` 兜底，
+  // 否则 fallback 永远执行、view-dashboard 被强行点亮（会同时亮两个视图）。
+  const startView = $('view-' + currentTab);
+  if (startView) {
+    startView.classList.add('active');
+  } else {
+    currentTab = 'dashboard';
+    $('view-dashboard').classList.add('active');
+  }
+  // 分类一览是「总览」的子屏，底栏高亮沿用总览，避免出现无高亮状态。
+  const navTab = currentTab === 'browse' ? 'dashboard' : currentTab;
   document.querySelectorAll('.nav-item').forEach(n => {
-    n.classList.toggle('active', n.dataset.tab === currentTab);
+    n.classList.toggle('active', n.dataset.tab === navTab);
   });
 
   if (settings.listSearch) $('list-search').value = settings.listSearch;

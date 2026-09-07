@@ -14,10 +14,12 @@ class El {
     this.value = ''; this.textContent = ''; this.className = ''; this.checked = true;
     this._cls = new Set();
     this._ev = {};
+    // 真实 DOM 的 classList.add/remove 返回 undefined，toggle 返回 boolean。
+    // 早期打桩让 add 返回 Set（真值），掩盖了 `add(...) || fallback` 这类 bug，务必保持一致。
     this.classList = {
-      add: c => this._cls.add(c),
-      remove: c => this._cls.delete(c),
-      toggle: (c, v) => { v ? this._cls.add(c) : this._cls.delete(c); },
+      add: c => { this._cls.add(c); },
+      remove: c => { this._cls.delete(c); },
+      toggle: (c, v) => { const on = v === undefined ? !this._cls.has(c) : !!v; on ? this._cls.add(c) : this._cls.delete(c); return on; },
       contains: c => this._cls.has(c),
     };
   }
@@ -34,6 +36,39 @@ class El {
 
 const ids = {};
 const getEl = id => ids[id] || (ids[id] = new El(id));
+
+// 从真实 HTML 里取出 .view 与 .nav-item 清单，让 document.querySelectorAll 具备真 DOM 行为
+// （早期打桩一律返回 []，导致「视图切换/底栏高亮」类 bug 完全测不出来）。
+function makeDom(pageHtml, reg) {
+  reg = reg || {};
+  const gEl = id => reg[id] || (reg[id] = new El(id));
+  const viewIds = [...pageHtml.matchAll(/<div class="view" id="(view-[a-z]+)"/g)].map(m => m[1]);
+  const navTabs = [...pageHtml.matchAll(/class="nav-item[^"]*" data-tab="([a-z]+)"/g)].map(m => m[1]);
+  const views = viewIds.map(gEl);
+  const navs = navTabs.map(t => { const el = gEl('nav-' + t); el.dataset.tab = t; return el; });
+  // 首屏 HTML 里 dashboard 的 nav-item 自带 active，打桩要一致
+  const dash = navs.find(n => n.dataset.tab === 'dashboard');
+  if (dash) dash.classList.add('active');
+  return {
+    reg, getEl: gEl, views, navs,
+    activeViews: () => views.filter(v => v.classList.contains('active')).map(v => v.id),
+    activeNavs: () => navs.filter(n => n.classList.contains('active')).map(n => n.dataset.tab),
+    document: {
+      getElementById: gEl,
+      createElement: t => new El(t),
+      createDocumentFragment: () => new El('frag'),
+      querySelectorAll: sel => (sel === '.view' ? views : sel === '.nav-item' ? navs : []),
+      querySelector: sel => {
+        const m = /^\.nav-item\[data-tab="([a-z]+)"\]$/.exec(sel);
+        return m ? (navs.find(n => n.dataset.tab === m[1]) || null) : null;
+      },
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      readyState: 'complete',
+      body: new El('body'),
+    },
+  };
+}
 
 function memStore() {
   const m = new Map();
@@ -78,6 +113,8 @@ function fakeFetch(url, opts) {
   return Promise.resolve({ ok: false, status: 404, text: () => Promise.resolve('not found') });
 }
 
+const DOM = makeDom(html, ids);
+
 const sandbox = {
   console,
   setTimeout, clearTimeout, setInterval, clearInterval,
@@ -95,17 +132,7 @@ const sandbox = {
   URL: { createObjectURL: () => 'blob:x', revokeObjectURL() {} },
   FileReader: class { readAsText() {} },
   Audio: class { constructor() { this.src = ''; } play() { return Promise.resolve(); } pause() {} load() {} },
-  document: {
-    getElementById: getEl,
-    createElement: t => new El(t),
-    createDocumentFragment: () => new El('frag'),
-    querySelectorAll: () => [],
-    querySelector: () => null,
-    addEventListener: () => {},
-    removeEventListener: () => {},
-    readyState: 'complete',
-    body: new El('body'),
-  },
+  document: DOM.document,
 };
 sandbox.window = sandbox;
 sandbox.globalThis = sandbox;
@@ -121,6 +148,9 @@ let script = html.split('<script>')[1].split('</script>')[0];
 script = script.replace(/^\s*\(function\(\)\s*\{/, '').replace(/\}\)\(\);\s*$/, '');
 vm.runInContext(script, ctx);
 vm.runInContext('init();', ctx);
+// 首屏快照：后面的用例会切视图，必须在这里取
+const MAIN_FIRST_VIEWS = DOM.activeViews();
+const MAIN_FIRST_NAVS = DOM.activeNavs();
 
 // ── 断言 ─────────────────────────────────────────────────
 const run = expr => vm.runInContext(expr, ctx);
@@ -585,9 +615,13 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('听力版含同步码所需补丁',
     /wordToIndex\[e\.w\] = e\.i/.test(lhtml) && /byFullIdx\[idx\]/.test(lhtml));
 
-  // 独立 vm 上下文跑听力版页面，验证与主站同步码/索引互通
+  // 独立 vm 上下文 + 独立 DOM 跑听力版页面，验证与主站同步码/索引互通
+  const dom2 = makeDom(lhtml);
   const sandbox2 = {};
   Object.keys(sandbox).forEach(k => sandbox2[k] = sandbox[k]);
+  sandbox2.document = dom2.document;
+  sandbox2.window = sandbox2;
+  sandbox2.globalThis = sandbox2;
   const ctx2 = vm.createContext(sandbox2);
   vm.runInContext(ldata + '\nglobalThis.VOCAB = VOCAB;', ctx2);
   let lScript = lhtml.split('<script>')[1].split('</script>')[0];
@@ -601,6 +635,11 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('听力版打开即落在单词表', run2('currentTab') === 'browse' && run2('browseMacro') === 'listening'
     && run2('(renderBrowse._flat || []).length') === 2042,
     run2('currentTab') + '/' + run2('browseMacro') + '/' + run2('(renderBrowse._flat || []).length'));
+  // 真 DOM 行为断言：只能有一个视图 active（曾因 `classList.add(..) || fallback` 同时点亮两个）
+  chk('听力版只点亮 view-browse 一个视图',
+    dom2.activeViews().length === 1 && dom2.activeViews()[0] === 'view-browse',
+    dom2.activeViews().join(','));
+  chk('听力版底栏有且仅有一个高亮', dom2.activeNavs().length === 1, dom2.activeNavs().join(','));
 
   const syncWords = ['aisle', 'checkout', 'discount', 'optometrist', 'turnstile',
     'the day after tomorrow', 'flat tire'];
@@ -658,6 +697,43 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('子路径页一打开即该宏的单词表', Object.keys(MACRO_PAGES).every(k =>
     new RegExp("currentTab = 'browse';\\s*browseMacro = '" + k + "';").test(
       fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8'))));
+
+  // 8 个子路径页逐个真跑一遍：只点亮 view-browse、单词表真的渲染出词、底栏有高亮
+  let landProblems = [];
+  Object.keys(MACRO_PAGES).forEach(k => {
+    const pHtml = fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8');
+    const pData = fs.readFileSync(path.join(HERE, k, 'data.js'), 'utf8');
+    const d = makeDom(pHtml);
+    const sb = {};
+    Object.keys(sandbox).forEach(x => sb[x] = sandbox[x]);
+    sb.document = d.document;
+    sb.localStorage = memStore();
+    sb.sessionStorage = memStore();
+    sb.window = sb; sb.globalThis = sb;
+    const c = vm.createContext(sb);
+    try {
+      vm.runInContext(pData + '\nglobalThis.VOCAB = VOCAB;', c);
+      let s = pHtml.split('<script>')[1].split('</script>')[0];
+      s = s.replace(/^\s*\(function\(\)\s*\{/, '').replace(/\}\)\(\);\s*$/, '');
+      vm.runInContext(s, c);
+      vm.runInContext('init();', c);
+    } catch (e) { landProblems.push(k + ':抛错 ' + e.message); return; }
+    const av = d.activeViews();
+    if (av.length !== 1 || av[0] !== 'view-browse') landProblems.push(k + ':视图 ' + (av.join('+') || '无'));
+    if (vm.runInContext('(renderBrowse._flat || []).length', c) === 0) landProblems.push(k + ':单词表为空');
+    if (vm.runInContext('browseMacro', c) !== k) landProblems.push(k + ':宏 ' + vm.runInContext('browseMacro', c));
+    if (d.activeNavs().length !== 1) landProblems.push(k + ':底栏高亮 ' + d.activeNavs().length + ' 个');
+  });
+  chk('8 个子路径页真跑：打开即单词表且只亮一个视图', landProblems.length === 0,
+    landProblems.slice(0, 4).join(';'));
+
+  // 主站首屏：只点亮 view-dashboard、底栏高亮总览
+  chk('主站首屏只点亮 view-dashboard',
+    MAIN_FIRST_VIEWS.length === 1 && MAIN_FIRST_VIEWS[0] === 'view-dashboard',
+    MAIN_FIRST_VIEWS.join(','));
+  chk('主站首屏底栏高亮总览',
+    MAIN_FIRST_NAVS.length === 1 && MAIN_FIRST_NAVS[0] === 'dashboard',
+    MAIN_FIRST_NAVS.join(','));
 
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
