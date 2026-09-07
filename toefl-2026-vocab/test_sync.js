@@ -400,6 +400,19 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('遗传学归生物', run("VOCAB.find(e => e.w === 'genetics').c") === '学科-生物');
   chk('陶器归历史考古', run("VOCAB.find(e => e.w === 'pottery').c") === '学科-历史考古');
   chk('畜牧业归可持续环保', run("VOCAB.find(e => e.w === 'livestock farming').c") === '听力-可持续环保');
+
+  // 21j. AWL 全部 570 个词族头词覆盖（对照官方 AWL 词表）
+  const AWL3 = ['sex', 'alternative', 'circumstance', 'compensate', 'constrain', 'criterion', 'sufficient'];
+  chk('AWL-3 头词齐全', AWL3.every(w => wset.has(w)), AWL3.filter(w => !wset.has(w)).join(','));
+  const AWL6 = ['ignorant', 'intelligent', 'ignorance', 'intelligence'];
+  chk('AWL-6 头词齐全', AWL6.every(w => wset.has(w)), AWL6.filter(w => !wset.has(w)).join(','));
+  const AWL78 = ['globe', 'append'];
+  chk('AWL-7/8 头词齐全', AWL78.every(w => wset.has(w)), AWL78.filter(w => !wset.has(w)).join(','));
+  chk('AWL 头词分位正确', run("VOCAB.find(e => e.w === 'ignorant').r") === 2
+    && run("VOCAB.find(e => e.w === 'append').r") === 3
+    && run("VOCAB.find(e => e.w === 'sex').r") === 1);
+  const awlCount = run("vocab.filter(e => e.c.startsWith('AWL')).length");
+  chk('AWL 词数 ≥ 570', awlCount >= 570, awlCount);
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
