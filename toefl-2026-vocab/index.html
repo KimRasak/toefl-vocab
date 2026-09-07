@@ -493,7 +493,7 @@ let settings = {};
 let currentTab = 'dashboard';
 let studyQueue = [];
 let studyIdx = 0;
-let studyResults = { right: 0, wrong: 0 };
+let studyResults = { right: 0, wrong: 0, wrongList: [] };
 let studyCategory = '';
 let studyStarted = false;
 let cardRevealed = false;
@@ -937,6 +937,8 @@ function answer(word, correct, skipped) {
     rec.box = 1;
     rec.wrong++;
     studyResults.wrong++;
+    // 收集本轮答错的词，供「重练错词」立即重练
+    if (studyResults.wrongList.indexOf(word) < 0) studyResults.wrongList.push(word);
   }
   rec.lastSeen = Date.now();
   progress[word] = rec;
@@ -982,7 +984,7 @@ function startResponseTraining() {
   studyCategory = '听力-应答';
   studyQueue = buildSession('听力-应答', 'train');
   studyIdx = 0;
-  studyResults = { right: 0, wrong: 0 };
+  studyResults = { right: 0, wrong: 0, wrongList: [] };
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
@@ -1216,6 +1218,7 @@ function submitAnswer(correct, skipped) {
 function renderSummary() {
   const total = studyResults.right + studyResults.wrong;
   const acc = total ? Math.round(studyResults.right / total * 100) : 0;
+  const nErr = (studyResults.wrongList || []).length;
   $('study-area').innerHTML =
     '<div class="summary">' +
       '<div class="emoji">' + (acc >= 80 ? '🎉' : acc >= 50 ? '💪' : '📖') + '</div>' +
@@ -1226,13 +1229,30 @@ function renderSummary() {
       '</div>' +
       '<div class="acc">' + acc + '%</div>' +
       '<p style="color:var(--muted);font-size:13px;margin-top:8px">正确率</p>' +
+      (nErr ? '<p style="color:var(--warn);font-size:13px;margin-top:8px">答错的 ' + nErr + ' 词已进入记忆曲线的回炉队列，可立即重练：</p>' : '') +
       '<div style="margin-top:20px;display:flex;gap:8px">' +
+        (nErr ? '<button class="btn btn-primary" id="btn-redo-err" style="flex:1">🔁 重练错词 (' + nErr + ')</button>' : '') +
         '<button class="btn btn-primary" id="btn-again" style="flex:1">再来一轮</button>' +
         '<button class="btn" id="btn-done" style="flex:1">返回总览</button>' +
       '</div>' +
     '</div>';
+  $('btn-redo-err')?.addEventListener('click', startErrorRedo);
   $('btn-again').addEventListener('click', () => startStudy(studyCategory, 'new'));
   $('btn-done').addEventListener('click', () => switchTab('dashboard'));
+}
+
+// 立即重练本轮答错的词（与 今日复习 的记忆曲线队列互补：即时、聚焦）
+function startErrorRedo() {
+  const words = (studyResults.wrongList || []).slice();
+  studyCategory = '';
+  studyQueue = vocab.filter(e => words.indexOf(e.w) >= 0);
+  studyIdx = 0;
+  studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyStarted = true;
+  if ($('study-cat-filter')) $('study-cat-filter').value = '';
+  switchTab('study');
+  renderStudyCard();
+  if (studyQueue.length) speak(studyQueue[0].w);
 }
 
 // ─── 分类一览（点词进卡片） ───
@@ -1338,7 +1358,7 @@ function startStudyAt(pos) {
   studyCategory = browseMacro;
   studyQueue = flat;
   studyIdx = Math.max(0, Math.min(pos, flat.length - 1));
-  studyResults = { right: 0, wrong: 0 };
+  studyResults = { right: 0, wrong: 0, wrongList: [] };
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
@@ -1350,7 +1370,7 @@ function startStudy(macroFilter, mode) {
   studyCategory = macroFilter || '';
   studyQueue = buildSession(studyCategory || null, mode || 'new');
   studyIdx = 0;
-  studyResults = { right: 0, wrong: 0 };
+  studyResults = { right: 0, wrong: 0, wrongList: [] };
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
