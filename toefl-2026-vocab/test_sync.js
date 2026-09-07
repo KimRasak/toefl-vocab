@@ -429,6 +429,15 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('in conclusion 已入写作精准-总结', run("VOCAB.find(e => e.w === 'in conclusion').c") === '写作精准-总结');
   chk('连接词均为高优先级', ['thus', 'namely', 'in conclusion']
     .every(w => run("VOCAB.find(e => e.w === '" + w + "').r") === 5));
+
+  // 21m. 校园习语补齐（all-nighter / brush up on 等）
+  const idiomMiss = ['pull an all-nighter', 'a lot on my plate', 'brush up on',
+                     'get the most out of', 'cut it close', 'burn the midnight oil']
+    .filter(w => !wset.has(w));
+  chk('校园习语已补齐', idiomMiss.length === 0, idiomMiss.join(','));
+  chk('习语均为高优先级', ['pull an all-nighter', 'brush up on', 'burn the midnight oil']
+    .every(w => run("VOCAB.find(e => e.w === '" + w + "').r") === 5));
+  chk('习语分类达 29 条', catOf('听力-习语补充').length >= 29, catOf('听力-习语补充').length);
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
