@@ -45,7 +45,10 @@ for (const [key, name] of MACROS) {
       'let wordToIndex = {};\nlet byFullIdx = {};\nlet progress = {};')
     .replace('const entry = vocab[idx];', 'const entry = byFullIdx[idx];')
     .replace('vocab.forEach((e, i) => { wordToIndex[e.w] = i; });',
-      'vocab.forEach(e => { wordToIndex[e.w] = e.i; if (typeof e.i === \'number\') byFullIdx[e.i] = e; });');
+      'vocab.forEach(e => { wordToIndex[e.w] = e.i; if (typeof e.i === \'number\') byFullIdx[e.i] = e; });')
+    // 子路径页一打开直接落在「分类一览」（该部分的单词表），不经过总览
+    .replace(/  if \(settings\.tab\) currentTab = settings\.tab;\n  if \(currentTab === 'browse'\) \{\n    browseMacro = settings\.browseMacro \|\| '';\n    if \(!MACRO\[browseMacro\]\) currentTab = 'dashboard';\n  \}/,
+      "  currentTab = 'browse';\n  browseMacro = '" + key + "';");
   fs.writeFileSync(path.join(dir, 'index.html'), html);
   total += filtered.length;
   console.log(key.padEnd(10) + filtered.length + ' 词  →  ' + key + '/');

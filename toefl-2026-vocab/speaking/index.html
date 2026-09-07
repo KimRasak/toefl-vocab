@@ -1528,11 +1528,8 @@ function init() {
 
   populateFilters();
 
-  if (settings.tab) currentTab = settings.tab;
-  if (currentTab === 'browse') {
-    browseMacro = settings.browseMacro || '';
-    if (!MACRO[browseMacro]) currentTab = 'dashboard';
-  }
+  currentTab = 'browse';
+  browseMacro = 'speaking';
   $('view-' + currentTab)?.classList.add('active') || ($('view-dashboard').classList.add('active'), currentTab = 'dashboard');
   document.querySelectorAll('.nav-item').forEach(n => {
     n.classList.toggle('active', n.dataset.tab === currentTab);

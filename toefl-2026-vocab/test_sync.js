@@ -598,6 +598,9 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
 
   chk('听力版页面加载 2042 词', run2('vocab.length') === 2042, run2('vocab.length'));
   chk('听力版仅听力宏', run2("vocab.every(e => getMacro(e.c) === 'listening')"));
+  chk('听力版打开即落在单词表', run2('currentTab') === 'browse' && run2('browseMacro') === 'listening'
+    && run2('(renderBrowse._flat || []).length') === 2042,
+    run2('currentTab') + '/' + run2('browseMacro') + '/' + run2('(renderBrowse._flat || []).length'));
 
   const syncWords = ['aisle', 'checkout', 'discount', 'optometrist', 'turnstile',
     'the day after tomorrow', 'flat tire'];
@@ -652,6 +655,9 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('一览全部跳转子路径', /location\.href = sub/.test(html), '');
   chk('子路径页一览全部仍页内浏览', Object.keys(MACRO_PAGES).every(k =>
     /const MACRO_SUBPATH = \{\};/.test(fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8'))));
+  chk('子路径页一打开即该宏的单词表', Object.keys(MACRO_PAGES).every(k =>
+    new RegExp("currentTab = 'browse';\\s*browseMacro = '" + k + "';").test(
+      fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8'))));
 
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
