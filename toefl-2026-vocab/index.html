@@ -993,6 +993,10 @@ function getMacroStats() {
 function renderDashboard() {
   const s = getStats();
   const pct = s.total ? Math.round(s.mastered / s.total * 100) : 0;
+  // 重点词进度：P4+P5（2026 备考的核心目标词）
+  const priTotal = vocab.filter(e => e.r >= 4).length;
+  const priMastered = vocab.filter(e => e.r >= 4 && getStatus(e.w) === 'mastered').length;
+  const priPct = priTotal ? Math.round(priMastered / priTotal * 100) : 0;
   $('dash-stats').innerHTML =
     '<div class="nums">' +
       '<div class="num"><strong>' + s.total + '</strong><span>总词数</span></div>' +
@@ -1003,6 +1007,10 @@ function renderDashboard() {
     '<div class="progress-wrap">' +
       '<div class="label"><span>掌握进度</span><span>' + pct + '%</span></div>' +
       '<div class="bar"><i style="width:' + pct + '%"></i></div>' +
+    '</div>' +
+    '<div class="progress-wrap">' +
+      '<div class="label"><span>重点词进度（P4+P5）</span><span>' + priMastered + ' / ' + priTotal + ' · ' + priPct + '%</span></div>' +
+      '<div class="bar"><i style="width:' + priPct + '%;background:var(--warn)"></i></div>' +
     '</div>';
 
   const ms = getMacroStats();

@@ -438,6 +438,13 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('习语均为高优先级', ['pull an all-nighter', 'brush up on', 'burn the midnight oil']
     .every(w => run("VOCAB.find(e => e.w === '" + w + "').r") === 5));
   chk('习语分类达 29 条', catOf('听力-习语补充').length >= 29, catOf('听力-习语补充').length);
+
+  // 21n. 仪表盘重点词进度（P4+P5）
+  run('renderDashboard()');
+  const dd = getEl('dash-stats').innerHTML;
+  chk('仪表盘含重点词进度', /重点词进度（P4\+P5）/.test(dd));
+  const priTotal = run("vocab.filter(e => e.r >= 4).length");
+  chk('重点词进度数字正确', dd.indexOf(' / ' + priTotal) > 0, priTotal);
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
