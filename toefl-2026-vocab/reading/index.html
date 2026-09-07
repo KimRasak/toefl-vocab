@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0f1115">
-<title>2026 新托福词汇卡</title>
+<title>2026 新托福 · 日常阅读词汇卡</title>
 <script src="data.js"></script>
 <style>
 :root {
@@ -331,8 +331,8 @@ button { cursor: pointer; border: none; background: none; }
 <body>
 <div class="app" id="app">
   <header class="topbar">
-    <a class="back" href="../index.html">← 返回 TOEFL 单词本</a>
-    <h1>2026 词汇卡</h1>
+    <a class="back" href="../index.html">← 完整词表</a>
+    <h1>日常阅读词汇卡</h1>
     <div class="spacer"></div>
   </header>
 
@@ -488,13 +488,11 @@ const MACRO = {
 
 // 各技能卡子路径页：一览全部 → 跳转到独立 URL（听力场景等独立页）。
 // 独立页自身把本常量置空，一览全部仍走页内分类一览。
-const MACRO_SUBPATH = {
-  awl: 'awl/', listening: 'listening/', reading: 'reading/', subject: 'subject/',
-  phrasal: 'phrasal/', writing: 'writing/', speaking: 'speaking/', other: 'other/'
-};
+const MACRO_SUBPATH = {};
 
 let vocab = [];
 let wordToIndex = {};
+let byFullIdx = {};
 let progress = {};
 let settings = {};
 let currentTab = 'dashboard';
@@ -613,7 +611,7 @@ function decodeProgress(str) {
       if (!part) return;
       const p = part.split(':');
       const idx = +p[0], box = +p[1], right = +p[2], wrong = +p[3], days = +p[4];
-      const entry = vocab[idx];
+      const entry = byFullIdx[idx];
       if (!entry) return;
       out[entry.w] = { box, right, wrong, lastSeen: days * EPOCH };
     });
@@ -1498,7 +1496,7 @@ function init() {
     return;
   }
   vocab = VOCAB;
-  vocab.forEach((e, i) => { wordToIndex[e.w] = i; });
+  vocab.forEach(e => { wordToIndex[e.w] = e.i; if (typeof e.i === 'number') byFullIdx[e.i] = e; });
 
   $('loading').style.display = 'none';
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));

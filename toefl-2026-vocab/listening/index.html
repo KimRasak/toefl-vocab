@@ -332,7 +332,7 @@ button { cursor: pointer; border: none; background: none; }
 <div class="app" id="app">
   <header class="topbar">
     <a class="back" href="../index.html">← 完整词表</a>
-    <h1>2026 听力场景词汇卡</h1>
+    <h1>听力场景词汇卡</h1>
     <div class="spacer"></div>
   </header>
 
@@ -485,6 +485,10 @@ const MACRO = {
   speaking: { name: '口语表达', icon: '🗣️', color: '#ff6b4a' },
   other:    { name: '其他', icon: '📋', color: '#8b93a1' }
 };
+
+// 各技能卡子路径页：一览全部 → 跳转到独立 URL（听力场景等独立页）。
+// 独立页自身把本常量置空，一览全部仍走页内分类一览。
+const MACRO_SUBPATH = {};
 
 let vocab = [];
 let wordToIndex = {};
@@ -1064,7 +1068,11 @@ function renderDashboard() {
     btn.addEventListener('click', () => startStudy(btn.dataset.macro, 'new'));
   });
   $('macro-list').querySelectorAll('[data-browse]').forEach(btn => {
-    btn.addEventListener('click', () => openBrowse(btn.dataset.browse));
+    btn.addEventListener('click', () => {
+      const sub = MACRO_SUBPATH[btn.dataset.browse];
+      if (sub) location.href = sub;      // 有独立子路径页 → 跳转
+      else openBrowse(btn.dataset.browse); // 否则页内一览
+    });
   });
 
   // Update review count
@@ -1488,8 +1496,6 @@ function init() {
     return;
   }
   vocab = VOCAB;
-  // 听力版：词条自带主站全量索引 i，wordToIndex/同步码 与主站完全兼容；
-  // byFullIdx 供 decodeProgress 用全量索引反查听力词条。
   vocab.forEach(e => { wordToIndex[e.w] = e.i; if (typeof e.i === 'number') byFullIdx[e.i] = e; });
 
   $('loading').style.display = 'none';

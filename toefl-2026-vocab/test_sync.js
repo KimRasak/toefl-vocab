@@ -619,6 +619,40 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('听力版可用主站同步码解码', decoded && decoded.checkout && decoded.checkout.box === 3,
     JSON.stringify(decoded));
 
+  // ── 27. 各技能卡独立子路径页（一览全部 → 跳子路径 URL）────────
+  const MACRO_PAGES = { awl: 'AWL学术词', listening: '听力场景', reading: '日常阅读',
+    subject: '学科主题', phrasal: '短语动词', writing: '写作表达',
+    speaking: '口语表达', other: '其他' };
+  const MAINVOCAB = eval(dataJs.match(/const VOCAB\s*=\s*(\[.*\]);/s)[1]);
+
+  let pageProblems = [];
+  let subTotal = 0;
+  Object.keys(MACRO_PAGES).forEach(key => {
+    const pd = eval(fs.readFileSync(path.join(HERE, key, 'data.js'), 'utf8')
+      .match(/const VOCAB\s*=\s*(\[.*\]);/s)[1]);
+    const ph = fs.readFileSync(path.join(HERE, key, 'index.html'), 'utf8');
+    const expected = run("VOCAB.filter(e => getMacro(e.c) === '" + key + "').length");
+    if (pd.length !== expected) pageProblems.push(key + ':count ' + pd.length + '!=' + expected);
+    const iuniq = new Set(pd.map(e => e.i));
+    if (iuniq.size !== pd.length) pageProblems.push(key + ':i非唯一');
+    pd.forEach(e => {
+      const m = MAINVOCAB[e.i];
+      if (!m || m.w !== e.w) pageProblems.push(key + ':i错位 ' + e.w + '@' + e.i);
+    });
+    const patchOk = /wordToIndex\[e\.w\] = e\.i/.test(ph) && /byFullIdx\[idx\]/.test(ph)
+      && /const MACRO_SUBPATH = \{\};/.test(ph);
+    if (!patchOk) pageProblems.push(key + ':缺补丁');
+    subTotal += pd.length;
+  });
+  chk('8 个子路径页词数/索引/补丁全部正确', pageProblems.length === 0, pageProblems.slice(0, 3).join(';'));
+  chk('8 个子路径页合计 = 主站 3367', subTotal === MAINVOCAB.length, subTotal);
+
+  chk('主站含 8 个子路径映射', Object.keys(MACRO_PAGES).every(k =>
+    run('MACRO_SUBPATH[' + JSON.stringify(k) + ']') === k + '/'));
+  chk('一览全部跳转子路径', /location\.href = sub/.test(html), '');
+  chk('子路径页一览全部仍页内浏览', Object.keys(MACRO_PAGES).every(k =>
+    /const MACRO_SUBPATH = \{\};/.test(fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8'))));
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
