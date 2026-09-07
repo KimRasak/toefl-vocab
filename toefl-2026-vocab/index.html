@@ -1214,6 +1214,8 @@ function browseGroups(macroKey) {
     }
     groups[index[entry.c]].items.push(entry);
   });
+  // 组内按优先级降序：r=5 词在前（与学习队列一致），点击进入也从高优先级开始
+  groups.forEach(g => g.items.sort((a, b) => b.r - a.r));
   return groups;
 }
 
@@ -1340,9 +1342,10 @@ function getFilteredList() {
   if (statusF) items = items.filter(x => x.status === statusF);
 
   if (sort === 'priority') {
-    items.sort((a, b) => a.e.r - b.e.r || a.i - b.i);
+    // 与学习队列一致：优先级高的（r=5）排前，r=1 已知词排后
+    items.sort((a, b) => b.e.r - a.e.r || a.i - b.i);
   } else if (sort === 'category') {
-    items.sort((a, b) => a.e.c.localeCompare(b.e.c) || a.e.r - b.e.r);
+    items.sort((a, b) => a.e.c.localeCompare(b.e.c) || b.e.r - a.e.r);
   } else if (sort === 'error') {
     items.sort((a, b) => {
       const ra = a.rec.right + a.rec.wrong, rb = b.rec.right + b.rec.wrong;

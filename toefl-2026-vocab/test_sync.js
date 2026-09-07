@@ -373,6 +373,17 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     .every(c => run("getMacro('" + c + "')") === 'writing'));
   chk('补充高频词/易混淆对留在其他', ['补充高频词', '易混淆对']
     .every(c => run("getMacro('" + c + "')") === 'other'));
+
+  // 21g. 词表「优先级」排序与学习队列一致：r=5 在前、r=1 在后
+  run("$('list-search').value = ''; $('list-cat-filter').value = ''; $('list-status-filter').value = ''; $('list-sort').value = 'priority';");
+  const prio = run("getFilteredList().map(x => x.e.r)");
+  chk('优先级排序 r=5 在前', prio[0] === 5 && prio[prio.length - 1] === 1, prio[0] + '..' + prio[prio.length - 1]);
+  chk('优先级排序单调不升', prio.every((r, i) => i === 0 || prio[i - 1] >= r));
+  run("$('list-sort').value = 'error';");
+  const er = run("getFilteredList().map(x => x.rec.right + x.rec.wrong ? x.rec.wrong / (x.rec.right + x.rec.wrong) : 0)");
+  chk('错误率排序首位最高', er[0] >= 0 && er[0] === Math.max.apply(null, er));
+  const grpR = run("browseGroups('listening')[0].items.map(e => e.r)");
+  chk('一览组内高优先级在前', grpR.every((r, i) => i === 0 || grpR[i - 1] >= r), grpR.slice(0, 5).join(','));
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
