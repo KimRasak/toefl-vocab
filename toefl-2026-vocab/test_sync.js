@@ -384,6 +384,13 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('错误率排序首位最高', er[0] >= 0 && er[0] === Math.max.apply(null, er));
   const grpR = run("browseGroups('listening')[0].items.map(e => e.r)");
   chk('一览组内高优先级在前', grpR.every((r, i) => i === 0 || grpR[i - 1] >= r), grpR.slice(0, 5).join(','));
+
+  // 21h. 可持续环保主题词补齐（官方语料 ecological footprint 16 次命中）
+  const ecoMiss = ['ecological footprint', 'emissions', 'carbon emissions', 'greenhouse gas',
+                   'environmental impact', 'recyclable'].filter(w => !wset.has(w));
+  chk('可持续环保主题词已补齐', ecoMiss.length === 0, ecoMiss.join(','));
+  chk('可持续环保分类不少于 12 条', catOf('听力-可持续环保').length >= 12, catOf('听力-可持续环保').length);
+  chk('生态足迹为高优先级', run("VOCAB.find(e => e.w === 'ecological footprint').r") >= 4);
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
