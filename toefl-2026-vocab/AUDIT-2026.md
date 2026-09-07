@@ -567,3 +567,20 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 - optometrist 验光师、turnstile 闸机、bellhop 行李员、matinee 日场、intramural 校内的、gratuity 小费、fortnight 两周（英式）、peer-reviewed 经同行评审的
 
 优先级分布 1:524→516、3:458→466，总数不变。**仅原地改 r 字段**，索引/进度兼容。回归测试 167/167 全绿。
+
+## 第二十六轮：听力场景独立版（listening/ 子路径，数据零改动）
+
+应要求给「2026 词汇卡-听力场景」一个独立网址：`kimrasak.github.io/toefl-vocab/toefl-2026-vocab/listening/`（主站子路径，无需新域名）。
+
+**实现方式**（页面复制 + 数据裁剪，**主站 data.js 与进度零改动**）：
+
+- `listening/data.js`：仅听力宏词（听力-* + 讲座信号词 + 态度词 + 语气动词，129 分类 **2042 词**），每条附主站全量索引 `"i"`（与主站逐条对应，i 唯一、可双向校验）。
+- `listening/index.html`：主站页复制，仅 3 处适配——
+  1. `wordToIndex[e.w] = e.i` 用全量索引建映射；
+  2. 新增 `byFullIdx`，`decodeProgress` 用全量索引反查听力词条；
+  3. 标题/返回链接改为「听力场景词汇卡 / ← 完整词表」。
+- 因词表本身只含听力词，分类、总览、学习队列、应答训练、同步视图全部自动只剩听力内容，无额外 UI 改动。
+
+**进度完全共享**：本地键 `toefl2026-progress`、Gist slot、共用 Token 均与主站相同；Gist 载荷是 word-keyed 的完整 progress 对象（主站非听力词的进度也会原样同步，无丢失）；同步码用全量索引编码，与主站**逐字兼容**（已双向验证 encode/decode 一致）。
+
+**回归测试 167 → 176 条全绿**（新增：听力版词数=主站听力宏词数、索引一一对应、补丁存在、独立上下文加载 2042 词、wordToIndex 一致、同步码互通、主站码可被听力版解码）。

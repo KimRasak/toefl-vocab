@@ -561,6 +561,64 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('登出提示说明会影响难词页', /难词页/.test(getEl('gist-msg').textContent), getEl('gist-msg').textContent);
   chk('登出后旧单页键也清掉', localStorage.getItem('toefl2026_gist_sync') === null);
 
+  // ── 26. 听力场景独立版（listening/）───────────────────────
+  // 独立 URL、仅听力宏词，但与主站共享进度：本地键相同、Gist 载荷 word-keyed 相同，
+  // 同步码用全量索引 i 编码，与主站逐字兼容。
+  const ldata = fs.readFileSync(path.join(HERE, 'listening/data.js'), 'utf8');
+  const lhtml = fs.readFileSync(path.join(HERE, 'listening/index.html'), 'utf8');
+  const LVOCAB = eval(ldata.match(/const VOCAB\s*=\s*(\[.*\]);/s)[1]);
+
+  const mainListeningCount = run("VOCAB.filter(e => getMacro(e.c) === 'listening').length");
+  chk('听力版词数 = 主站听力宏词数', LVOCAB.length === mainListeningCount,
+    LVOCAB.length + ' vs ' + mainListeningCount);
+
+  let badIdx = [];
+  LVOCAB.forEach(e => {
+    const m = run('VOCAB[' + e.i + ']');
+    if (typeof e.i !== 'number' || !m || m.w !== e.w || run('getMacro("' + e.c + '")') !== 'listening')
+      badIdx.push(e.w + '@' + e.i);
+  });
+  chk('听力版每词带正确全量索引 i', badIdx.length === 0, badIdx.slice(0, 5).join(','));
+
+  chk('听力版 i 唯一（与主站一一对应）', new Set(LVOCAB.map(e => e.i)).size === LVOCAB.length);
+
+  chk('听力版含同步码所需补丁',
+    /wordToIndex\[e\.w\] = e\.i/.test(lhtml) && /byFullIdx\[idx\]/.test(lhtml));
+
+  // 独立 vm 上下文跑听力版页面，验证与主站同步码/索引互通
+  const sandbox2 = {};
+  Object.keys(sandbox).forEach(k => sandbox2[k] = sandbox[k]);
+  const ctx2 = vm.createContext(sandbox2);
+  vm.runInContext(ldata + '\nglobalThis.VOCAB = VOCAB;', ctx2);
+  let lScript = lhtml.split('<script>')[1].split('</script>')[0];
+  lScript = lScript.replace(/^\s*\(function\(\)\s*\{/, '').replace(/\}\)\(\);\s*$/, '');
+  vm.runInContext(lScript, ctx2);
+  vm.runInContext('init();', ctx2);
+  const run2 = expr => vm.runInContext(expr, ctx2);
+
+  chk('听力版页面加载 2042 词', run2('vocab.length') === 2042, run2('vocab.length'));
+  chk('听力版仅听力宏', run2("vocab.every(e => getMacro(e.c) === 'listening')"));
+
+  const syncWords = ['aisle', 'checkout', 'discount', 'optometrist', 'turnstile',
+    'the day after tomorrow', 'flat tire'];
+  let idxMismatch = [];
+  syncWords.forEach(w => {
+    const m = run('wordToIndex[' + JSON.stringify(w) + ']');
+    const l = run2('wordToIndex[' + JSON.stringify(w) + ']');
+    if (m !== l) idxMismatch.push(w + ':' + m + '!=' + l);
+  });
+  chk('听力版 wordToIndex 与主站一致', idxMismatch.length === 0, idxMismatch.join(','));
+
+  run("progress = { checkout: {box:3,right:2,wrong:1,lastSeen:0} };");
+  run2("progress = { checkout: {box:3,right:2,wrong:1,lastSeen:0} };");
+  const codeMain = run('encodeProgress()'), codeListen = run2('encodeProgress()');
+  chk('同一进度在两地生成相同同步码', codeMain === codeListen, codeMain + ' / ' + codeListen);
+
+  run2('progress = {};');
+  const decoded = run2('decodeProgress(' + JSON.stringify(codeMain) + ')');
+  chk('听力版可用主站同步码解码', decoded && decoded.checkout && decoded.checkout.box === 3,
+    JSON.stringify(decoded));
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
