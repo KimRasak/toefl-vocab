@@ -536,3 +536,14 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 - 态度词-积极 +1：approving 赞成
 
 已核实 critical/concerned/negative/confident 等 555 已掌握的基础态度词不收入。**仅尾部追加**，索引/进度兼容。回归测试 160 → 162 条全绿。
+
+## 第二十三轮：语气动词补缺 +2 + 全库终检（3365→3367）
+
+复查讲座信号词（31 条：举例/回指/对比/强调/总结/转换/释义，均 r=5）与语气动词（10 条，对应「说话人做了什么」题），补 2 个高价值动词（r=3）：
+
+- **rebut** 反驳；驳斥（=refute, counter）
+- **recount** 讲述；详细叙述（recount an experiment 讲述实验经过）
+
+其余说话人动词已确认覆盖（elaborate/acknowledge/clarify/maintain/illustrate/imply/contend/highlight/stress/mention/point out 等均在库）。
+
+另做**全库终检**：3367 条无重复/无结构缺失/优先级全部合法；宏分布（听力 2042 / 写作 197 / 学科 294 / AWL 574 / 阅读 79 / 口语 18 / 短语动词 87 / 其他 76）；191 个分类；2026 新题专项（应答 72 / 学术讨论 10 / 邮件 24 / 虚拟面试 18）全部在位。回归测试 162 → 164 条全绿。

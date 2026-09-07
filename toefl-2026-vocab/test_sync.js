@@ -319,6 +319,11 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('态度词已补齐', run("['reluctant', 'hesitant', 'resigned', 'wary', 'approving', 'disapproving'].every(w => VOCAB.some(e => e.w === w))"));
   chk('态度词均 r=3', run("['reluctant', 'hesitant', 'resigned', 'wary', 'approving', 'disapproving'].every(w => VOCAB.find(e => e.w === w).r === 3)"));
 
+  // 18g. 语气动词补缺（rebut / recount）
+  chk('语气动词已补齐', run("['rebut', 'recount'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('语气动词归位正确', run("VOCAB.find(e => e.w === 'rebut').c") === '语气动词'
+    && run("VOCAB.find(e => e.w === 'recount').c") === '语气动词');
+
   // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
   chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
     run("patternSpeak('Take ... for example')"));
