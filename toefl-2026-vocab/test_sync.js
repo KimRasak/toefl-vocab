@@ -422,6 +422,13 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('易混淆对均含对照标注', ['moral', 'morale', 'historic', 'historical', 'continual', 'continuous',
     'council', 'counsel', 'economic', 'economical']
     .every(w => /≠/.test(run("VOCAB.find(e => e.w === '" + w + "').m"))));
+
+  // 21l. 学术连接词补齐（thus/namely/in conclusion）
+  chk('thus 已入填词-转折连接', run("VOCAB.find(e => e.w === 'thus').c") === '填词-转折连接');
+  chk('namely 已入写作精准-举例', run("VOCAB.find(e => e.w === 'namely').c") === '写作精准-举例');
+  chk('in conclusion 已入写作精准-总结', run("VOCAB.find(e => e.w === 'in conclusion').c") === '写作精准-总结');
+  chk('连接词均为高优先级', ['thus', 'namely', 'in conclusion']
+    .every(w => run("VOCAB.find(e => e.w === '" + w + "').r") === 5));
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
