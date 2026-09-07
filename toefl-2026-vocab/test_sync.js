@@ -308,6 +308,13 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('学术讨论短语已补齐', run("['make a contribution to the discussion', 'Building on what ... said', 'While I agree with ... on ...', 'I see your point, but', \"That's a great point\", \"I'd like to add that\", 'One thing worth mentioning is', 'From my perspective', \"I'd argue that\", 'This relates to ...'].every(w => VOCAB.some(e => e.w === w))"));
   chk('学术讨论均高优先级', run("VOCAB.filter(e => e.c === '写作-学术讨论').every(e => e.r === 5)"));
 
+  // 18e. 同义替换补缺（alleviate / discrepancy / escalate / surge / plummet）
+  chk('同义替换词已补齐', run("['alleviate', 'discrepancy', 'escalate', 'surge', 'plummet'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('同义词均含对照标注', ['alleviate', 'escalate', 'surge', 'plummet', 'discrepancy']
+    .every(w => /=/.test(run("VOCAB.find(e => e.w === '" + w + "').m"))));
+  chk('同义词归位分类正确', run("VOCAB.find(e => e.w === 'discrepancy').c") === '同义替换-名词'
+    && run("VOCAB.find(e => e.w === 'alleviate').c") === '同义替换-动词');
+
   // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
   chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
     run("patternSpeak('Take ... for example')"));

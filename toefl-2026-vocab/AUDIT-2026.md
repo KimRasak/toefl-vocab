@@ -517,3 +517,12 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 新短语含「介词/关系词 + 省略号」槽位（on ... / what ... / to ...），原逻辑一律插逗号会读成 "with blank, on blank"。优化：介词/关系词（on/in/to/at/with/of/for/from/about/that/what/which/how/where/when）后的槽位不插逗号 → 读作 "with blank on blank"。既有 8 条 patternSpeak 断言全部保持通过。
 
 **仅尾部追加**，索引/进度兼容。回归测试 151 → 157 条全绿。
+
+## 第二十一轮：同义替换词补缺 +5（3354→3359）
+
+复查三个同义替换分类（动词 18 / 名词 9 / 形容词 16，均含「=同义词」对照标注，质量高），补 5 个高价值学术同义词（r=2，与分类一致）：
+
+- 同义替换-动词 +4：alleviate 缓解（=relieve/mitigate/ease）、escalate 升级（=intensify/heighten）、surge 激增（=spike/soar）、plummet 暴跌（=plunge/nosedive）
+- 同义替换-名词 +1：discrepancy 差异（=difference/inconsistency/divergence）
+
+已核实 controversial/scarce/flourish 等 555 已掌握或与既有词重复者不收入。**仅尾部追加**，索引/进度兼容。回归测试 157 → 160 条全绿。
