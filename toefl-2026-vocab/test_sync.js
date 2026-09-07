@@ -391,6 +391,15 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('可持续环保主题词已补齐', ecoMiss.length === 0, ecoMiss.join(','));
   chk('可持续环保分类不少于 12 条', catOf('听力-可持续环保').length >= 12, catOf('听力-可持续环保').length);
   chk('生态足迹为高优先级', run("VOCAB.find(e => e.w === 'ecological footprint').r") >= 4);
+
+  // 21i. 学术语料概念词补齐（language acquisition / genetics / pottery / livestock farming）
+  const acadMiss = ['language acquisition', 'genetics', 'pottery', 'livestock farming']
+    .filter(w => !wset.has(w));
+  chk('学术概念词已补齐', acadMiss.length === 0, acadMiss.join(','));
+  chk('语言习得归认知语言', run("VOCAB.find(e => e.w === 'language acquisition').c") === '深度-认知语言');
+  chk('遗传学归生物', run("VOCAB.find(e => e.w === 'genetics').c") === '学科-生物');
+  chk('陶器归历史考古', run("VOCAB.find(e => e.w === 'pottery').c") === '学科-历史考古');
+  chk('畜牧业归可持续环保', run("VOCAB.find(e => e.w === 'livestock farming').c") === '听力-可持续环保');
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
