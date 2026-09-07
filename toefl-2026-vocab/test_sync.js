@@ -315,6 +315,10 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('同义词归位分类正确', run("VOCAB.find(e => e.w === 'discrepancy').c") === '同义替换-名词'
     && run("VOCAB.find(e => e.w === 'alleviate').c") === '同义替换-动词');
 
+  // 18f. 态度词补缺（reluctant / hesitant / resigned / wary / approving / disapproving）
+  chk('态度词已补齐', run("['reluctant', 'hesitant', 'resigned', 'wary', 'approving', 'disapproving'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('态度词均 r=3', run("['reluctant', 'hesitant', 'resigned', 'wary', 'approving', 'disapproving'].every(w => VOCAB.find(e => e.w === w).r === 3)"));
+
   // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
   chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
     run("patternSpeak('Take ... for example')"));

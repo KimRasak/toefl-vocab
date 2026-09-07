@@ -526,3 +526,13 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 - 同义替换-名词 +1：discrepancy 差异（=difference/inconsistency/divergence）
 
 已核实 controversial/scarce/flourish 等 555 已掌握或与既有词重复者不收入。**仅尾部追加**，索引/进度兼容。回归测试 157 → 160 条全绿。
+
+## 第二十二轮：态度词补缺 +6（3359→3365）
+
+复查四个态度词分类（积极 7 / 消极 8 / 中性 5 / 惊讶 6，共 26 条，对应听力「说话人态度」题，质量高），补 6 个高价值态度形容词（r=3，与分类一致）：
+
+- 态度词-消极 +4：reluctant 不情愿、resigned 听天由命、wary 警惕、disapproving 不赞成
+- 态度词-中性 +1：hesitant 犹豫
+- 态度词-积极 +1：approving 赞成
+
+已核实 critical/concerned/negative/confident 等 555 已掌握的基础态度词不收入。**仅尾部追加**，索引/进度兼容。回归测试 160 → 162 条全绿。
