@@ -293,6 +293,16 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('普通单词不判定为整句卡', run("isSentenceCard({ w: 'aisle' })") === false);
   chk('短语动词不判定为整句卡', run("isSentenceCard({ w: 'turn in' })") === false);
 
+  // 18c. 即时应答训练入口：仪表盘按钮 + train 模式全量抽取
+  run('renderDashboard()');
+  chk('仪表盘有应答训练按钮', !!run("$('btn-response-train')"));
+  chk('训练按钮计数 = 应答条目数', run("$('train-count').textContent") === String(resp.length), run("$('train-count').textContent"));
+  run('startResponseTraining()');
+  chk('训练进入学习视图', run('currentTab') === 'study' && run('studyStarted') === true);
+  chk('训练队列全为应答句', run('studyQueue.length') <= 30 && run('studyQueue.every(e => e.c.startsWith("听力-应答-"))'),
+    run('studyQueue.length'));
+  chk('train 模式含已掌握词', run('buildSession("听力-应答","train").length') > 0);
+
   // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
   chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
     run("patternSpeak('Take ... for example')"));

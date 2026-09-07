@@ -347,6 +347,7 @@ button { cursor: pointer; border: none; background: none; }
       <div class="hero-stats" id="dash-stats"></div>
       <button class="btn btn-primary btn-block" id="btn-study-new">📖 学新词</button>
       <button class="btn btn-block" id="btn-study-review" style="border-color:var(--warn);color:var(--warn)">🔁 今日复习 · <span id="review-count">0</span> 词待复习</button>
+      <button class="btn btn-block" id="btn-response-train" style="border-color:var(--accent);color:var(--accent)">🎯 即时应答训练 · <span id="train-count">0</span> 个模式</button>
       <div class="section-title">分类进度</div>
       <div id="macro-list"></div>
     </div>
@@ -942,13 +943,18 @@ function answer(word, correct, skipped) {
 }
 
 function buildSession(macroFilter, mode) {
-  const box1 = [], due = [], fresh = [];
+  const box1 = [], due = [], fresh = [], train = [];
   vocab.forEach((entry, i) => {
-    if (macroFilter && getMacro(entry.c) !== macroFilter) return;
+    if (macroFilter) {
+      if (macroFilter === '听力-应答') {
+        if (!entry.c.startsWith('听力-应答-')) return;
+      } else if (getMacro(entry.c) !== macroFilter) return;
+    }
     const rec = getRec(entry.w);
     if (rec.box === 0) fresh.push(i);
     else if (rec.box === 1) box1.push(i);
     else if (rec.box >= 2 && rec.box <= 4 && isDue(rec)) due.push(i);
+    train.push(i);
   });
   const PRI_WEIGHT = { 1: 0.2, 2: 0.5, 3: 1, 4: 1.5, 5: 2 };
   fresh.sort((a, b) => {
@@ -958,7 +964,10 @@ function buildSession(macroFilter, mode) {
   due.sort((a, b) => (getRec(vocab[a].w).lastSeen || 0) - (getRec(vocab[b].w).lastSeen || 0));
 
   let indices;
-  if (mode === 'review') {
+  if (mode === 'train') {
+    // 即时应答训练：全量抽取（含已掌握），复习 2026 听力占比最大的题型模式
+    indices = train.slice(0, MAX_SESSION);
+  } else if (mode === 'review') {
     indices = box1.concat(due).slice(0, MAX_SESSION);
   } else if (mode === 'new') {
     indices = fresh.slice(0, MAX_SESSION);
@@ -966,6 +975,18 @@ function buildSession(macroFilter, mode) {
     indices = box1.concat(due, fresh.slice(0, MAX_NEW)).slice(0, MAX_SESSION);
   }
   return indices.map(i => vocab[i]);
+}
+
+function startResponseTraining() {
+  studyCategory = '听力-应答';
+  studyQueue = buildSession('听力-应答', 'train');
+  studyIdx = 0;
+  studyResults = { right: 0, wrong: 0 };
+  studyStarted = true;
+  if ($('study-cat-filter')) $('study-cat-filter').value = '';
+  switchTab('study');
+  renderStudyCard();
+  if (studyQueue.length) speak(studyQueue[0].w);
 }
 
 function getStats() {
@@ -1052,6 +1073,11 @@ function renderDashboard() {
   if (rc) rc.textContent = reviewCount;
   const rb = $('btn-study-review');
   if (rb) rb.style.display = reviewCount > 0 ? '' : 'none';
+  // 即时应答训练入口：2026 听力占比最大的题型（Listen and Choose a Response）
+  const tc = $('train-count');
+  if (tc) tc.textContent = String(vocab.filter(e => e.c.startsWith('听力-应答-')).length);
+  const tb = $('btn-response-train');
+  if (tb) tb.addEventListener('click', startResponseTraining);
 }
 
 function priClass(r) {
