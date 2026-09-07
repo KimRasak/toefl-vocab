@@ -865,6 +865,7 @@ function patternSpeak(text) {
   // 由 TTS 自然读出，让句型卡也能听出结构。
   let s = String(text)
     .replace(/^(\w+)\s*\.\.\.\s*$/, '$1')   // Well... 单字拖长 → Well
+    .replace(/((?:^|\s)(?:on|in|to|at|with|of|for|from|about|that|what|which|how|where|when)\s)\.\.\./g, '$1blank') // 介词/关系词后槽位不插逗号
     .replace(/\.\.\./g, ' blank,')          // 其余省略号均为槽位 → blank + 停顿
     .replace(/\s+/g, ' ')
     .replace(/,+/g, ',')                    // 折叠重复逗号

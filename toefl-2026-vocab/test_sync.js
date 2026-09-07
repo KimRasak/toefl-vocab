@@ -303,12 +303,22 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     run('studyQueue.length'));
   chk('train 模式含已掌握词', run('buildSession("听力-应答","train").length') > 0);
 
+  // 18d. 写作-学术讨论（2026 在线讨论写作）短语库
+  chk('学术讨论归写作宏', run("getMacro('写作-学术讨论')") === 'writing');
+  chk('学术讨论短语已补齐', run("['make a contribution to the discussion', 'Building on what ... said', 'While I agree with ... on ...', 'I see your point, but', \"That's a great point\", \"I'd like to add that\", 'One thing worth mentioning is', 'From my perspective', \"I'd argue that\", 'This relates to ...'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('学术讨论均高优先级', run("VOCAB.filter(e => e.c === '写作-学术讨论').every(e => e.r === 5)"));
+
   // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
   chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
     run("patternSpeak('Take ... for example')"));
   chk('not only...but also 可读', run("patternSpeak('not only ... but also')") === 'not only blank, but also');
   chk('句尾省略号去掉', run("patternSpeak('Well...')") === 'Well', run("patternSpeak('Well...')"));
   chk('句尾省略号+问号保留问号', run("patternSpeak('You mean ...?')") === 'You mean blank?', run("patternSpeak('You mean ...?')"));
+  chk('介词后槽位不插逗号', run("patternSpeak('While I agree with ... on ...')") === 'While I agree with blank on blank',
+    run("patternSpeak('While I agree with ... on ...')"));
+  chk('关系词后槽位不插逗号', run("patternSpeak('Building on what ... said')") === 'Building on what blank said',
+    run("patternSpeak('Building on what ... said')"));
+  chk('介词 to 后槽位干净', run("patternSpeak('This relates to ...')") === 'This relates to blank');
   chk('X/Y 双占位可读', run("patternSpeak('While X ..., Y ...')") === 'While X blank, Y blank',
     run("patternSpeak('While X ..., Y ...')"));
   chk('列举句型两槽位', run("patternSpeak('The first is ... the second ...')") === 'The first is blank, the second blank');

@@ -505,3 +505,15 @@ Listen and Choose a Response 是官方听力占比最大的题型（**112 / 161 
 - `train-count` 显示应答训练条目数
 
 **数据零改动**——仅页面功能。回归测试 146 → 151 条全绿（新增：仪表盘按钮存在、计数=应答条目数、训练队列全为应答句且含已掌握词、train 模式可抽取）。修复一处类型问题（textContent 需字符串）。
+
+## 第二十轮：写作-学术讨论短语库 + 槽位 TTS 优化（3344→3354）
+
+### 1. 新增「写作-学术讨论」分类（2026 在线讨论写作任务）
+官方语料确认 Academic Discussion 任务（"make a contribution to the discussion" 为题目指令原话）。此前无对应分类，本轮新增 10 条应答短语库（r=5，同写作-邮件生产短语库理念）：
+
+承接（Building on what ... said）、先认同再补充（While I agree with ... on ...）、委婉反驳（I see your point, but）、肯定对方（That's a great point）、补充（I'd like to add that / One thing worth mentioning is）、个人观点（From my perspective / I'd argue that）、联系他人（This relates to ...）、题目指令（make a contribution to the discussion）。
+
+### 2. patternSpeak 槽位 TTS 优化
+新短语含「介词/关系词 + 省略号」槽位（on ... / what ... / to ...），原逻辑一律插逗号会读成 "with blank, on blank"。优化：介词/关系词（on/in/to/at/with/of/for/from/about/that/what/which/how/where/when）后的槽位不插逗号 → 读作 "with blank on blank"。既有 8 条 patternSpeak 断言全部保持通过。
+
+**仅尾部追加**，索引/进度兼容。回归测试 151 → 157 条全绿。
