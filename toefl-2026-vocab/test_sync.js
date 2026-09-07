@@ -413,6 +413,15 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     && run("VOCAB.find(e => e.w === 'sex').r") === 1);
   const awlCount = run("vocab.filter(e => e.c.startsWith('AWL')).length");
   chk('AWL 词数 ≥ 570', awlCount >= 570, awlCount);
+
+  // 21k. 邮件正式连接词 + 易混淆对补齐
+  chk('regarding 已入写作-邮件', run("VOCAB.find(e => e.w === 'regarding').c") === '写作-邮件');
+  const confMiss = ['moral', 'morale', 'historic', 'historical', 'continual', 'continuous',
+                    'council', 'counsel', 'economic', 'economical'].filter(w => !wset.has(w));
+  chk('易混淆对已补齐', confMiss.length === 0, confMiss.join(','));
+  chk('易混淆对均含对照标注', ['moral', 'morale', 'historic', 'historical', 'continual', 'continuous',
+    'council', 'counsel', 'economic', 'economical']
+    .every(w => /≠/.test(run("VOCAB.find(e => e.w === '" + w + "').m"))));
   chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
 
   // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
