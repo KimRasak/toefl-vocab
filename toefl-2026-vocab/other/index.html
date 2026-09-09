@@ -164,7 +164,7 @@ button { cursor: pointer; border: none; background: none; }
   background: var(--card); border: 1px solid var(--border);
   border-radius: 20px; min-height: 280px; padding: 28px 24px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; cursor: pointer; user-select: none;
+  text-align: center; cursor: pointer;
   transition: transform .25s, border-color .2s, box-shadow .2s;
   position: relative; overflow: hidden;
 }
@@ -1156,11 +1156,15 @@ function renderStudyCard() {
 
   card.addEventListener('click', e => {
     if (e.target.closest('.speak-btn')) return;
+    if (window.getSelection().toString().length > 0) return;
     if (!cardRevealed) {
       cardRevealed = true;
       card.classList.add('revealed');
-      actions.classList.add('show');
       $('fc-skip').classList.add('hidden');
+    } else {
+      cardRevealed = false;
+      card.classList.remove('revealed');
+      $('fc-skip').classList.remove('hidden');
     }
   });
 
