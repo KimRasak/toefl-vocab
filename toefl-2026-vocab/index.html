@@ -398,6 +398,7 @@ button { cursor: pointer; border: none; background: none; }
           </tr></thead>
           <tbody id="list-body"></tbody>
         </table>
+        <div id="list-sentinel" style="height:1px"></div>
       </div>
     </div>
 
@@ -1444,16 +1445,31 @@ function getFilteredList() {
   return items;
 }
 
+let _listItems = [];
+let _listRendered = 0;
+const LIST_PAGE = 80;
+
 function renderList() {
-  const items = getFilteredList();
-  $('list-stats').textContent = '显示 ' + items.length + ' / ' + vocab.length + ' 词 · 点击行播放发音';
+  listDirty = false;
+  _listItems = getFilteredList();
+  _listRendered = 0;
+  $('list-stats').textContent = '显示 ' + _listItems.length + ' / ' + vocab.length + ' 词 · 点击行播放发音';
   const tbody = $('list-body');
-  if (!items.length) {
+  if (!_listItems.length) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px">无匹配结果</td></tr>';
     return;
   }
+  tbody.innerHTML = '';
+  renderListPage();
+}
+
+function renderListPage() {
+  const tbody = $('list-body');
+  if (!tbody || _listRendered >= _listItems.length) return;
+  const end = Math.min(_listRendered + LIST_PAGE, _listItems.length);
   const frag = document.createDocumentFragment();
-  items.forEach(x => {
+  for (let i = _listRendered; i < end; i++) {
+    const x = _listItems[i];
     const tr = document.createElement('tr');
     tr.innerHTML =
       '<td class="w">' + esc(x.e.w) + '</td>' +
@@ -1463,10 +1479,22 @@ function renderList() {
       '<td class="cnt">' + x.rec.right + '/' + x.rec.wrong + '</td>';
     tr.addEventListener('click', () => speak(x.e.w));
     frag.appendChild(tr);
-  });
-  tbody.innerHTML = '';
+  }
   tbody.appendChild(frag);
+  _listRendered = end;
 }
+
+// Infinite scroll for word list
+(function() {
+  const sentinel = document.getElementById('list-sentinel');
+  if (sentinel && typeof IntersectionObserver !== 'undefined') {
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && _listRendered < _listItems.length) {
+        renderListPage();
+      }
+    }, { rootMargin: '200px' }).observe(sentinel);
+  }
+})();
 
 function renderSync() {
   const seen = Object.keys(progress).filter(w => getRec(w).box > 0).length;
@@ -1479,10 +1507,12 @@ function renderSync() {
 
 function renderAll() {
   renderDashboard();
-  renderList();
+  if (currentTab === 'list') renderList();
+  else listDirty = true;
   renderSync();
   if (currentTab === 'browse' && MACRO[browseMacro]) renderBrowse();
 }
+let listDirty = true;
 
 function switchTab(tab) {
   currentTab = tab;
@@ -1496,7 +1526,7 @@ function switchTab(tab) {
   if (nav) nav.classList.add('active');
   if (tab === 'study') renderStudyCard();
   if (tab === 'browse') renderBrowse();
-  if (tab === 'list') renderList();
+  if (tab === 'list' && listDirty) renderList();
   if (tab === 'sync') renderSync();
 }
 
