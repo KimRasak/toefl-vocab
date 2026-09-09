@@ -199,9 +199,8 @@ button { cursor: pointer; border: none; background: none; }
 .flashcard.revealed .fc-hint { display: none; }
 
 .fc-actions {
-  display: none; width: 100%; gap: 10px; margin-top: 20px;
+  display: flex; width: 100%; gap: 10px; margin-top: 20px;
 }
-.flashcard.revealed + .fc-actions, .fc-actions.show { display: flex; }
 .fc-actions .btn-ok { background: rgba(52,199,89,.15); border-color: var(--ok); color: var(--ok); flex: 1; padding: 14px; font-size: 16px; }
 .fc-actions .btn-no { background: rgba(255,69,58,.12); border-color: var(--bad); color: var(--bad); flex: 1; padding: 14px; font-size: 16px; }
 
@@ -1140,7 +1139,7 @@ function renderStudyCard() {
         '<div class="fc-meaning">' + esc(entry.m) + '</div>' +
         '<div class="fc-word">' + esc(entry.w) + '</div>' +
         '<div class="fc-pos">' + esc(entry.p) + '</div>' +
-        '<div class="fc-hint"><span class="listen-icon">🔊</span>先听发音，再点击卡片查看答案</div>' +
+        '<div class="fc-hint"><span class="listen-icon">🔊</span>先听发音，可直接选认识/不认识，或点卡片翻面</div>' +
       '</div>' +
     '</div>' +
     '<div class="fc-actions" id="fc-actions">' +
@@ -1148,7 +1147,7 @@ function renderStudyCard() {
       '<button class="btn btn-ok" id="fc-right" type="button">✅ 认识</button>' +
     '</div>' +
     '<button class="fc-skip" id="fc-skip" type="button">⏭ 已认识，跳过</button>' +
-    '<div class="swipe-hint">← 不认识 · 认识 → · 点「跳过」直接下一个</div>';
+    '<div class="swipe-hint">可先作答再翻面验证 · 翻面后左右滑动切换</div>';
 
   const card = $('fc-card');
   const actions = $('fc-actions');
@@ -1173,8 +1172,24 @@ function renderStudyCard() {
     submitAnswer(true, true);
   });
 
-  $('fc-right').addEventListener('click', e => { e.stopPropagation(); submitAnswer(true, false); });
-  $('fc-wrong').addEventListener('click', e => { e.stopPropagation(); submitAnswer(false, false); });
+  $('fc-right').addEventListener('click', e => {
+    e.stopPropagation();
+    if (!cardRevealed) {
+      cardRevealed = true;
+      card.classList.add('revealed');
+      $('fc-skip').classList.add('hidden');
+    }
+    submitAnswer(true, false);
+  });
+  $('fc-wrong').addEventListener('click', e => {
+    e.stopPropagation();
+    if (!cardRevealed) {
+      cardRevealed = true;
+      card.classList.add('revealed');
+      $('fc-skip').classList.add('hidden');
+    }
+    submitAnswer(false, false);
+  });
 
   setupSwipe(entry);
 }
@@ -1185,25 +1200,31 @@ function setupSwipe(entry) {
   let sx = 0, sy = 0, tracking = false;
 
   wrap.addEventListener('touchstart', e => {
-    if (!cardRevealed) return;
     sx = e.touches[0].clientX;
     sy = e.touches[0].clientY;
     tracking = true;
   }, { passive: true });
 
   wrap.addEventListener('touchmove', e => {
-    if (!tracking || !cardRevealed) return;
+    if (!tracking) return;
     const dx = e.touches[0].clientX - sx;
     const dy = e.touches[0].clientY - sy;
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) e.preventDefault();
   }, { passive: false });
 
   wrap.addEventListener('touchend', e => {
-    if (!tracking || !cardRevealed) return;
+    if (!tracking) return;
     tracking = false;
     const dx = e.changedTouches[0].clientX - sx;
     const dy = e.changedTouches[0].clientY - sy;
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (!cardRevealed) {
+        cardRevealed = true;
+        const card = $('fc-card');
+        if (card) card.classList.add('revealed');
+        const skip = $('fc-skip');
+        if (skip) skip.classList.add('hidden');
+      }
       submitAnswer(dx > 0);
     }
   }, { passive: true });
