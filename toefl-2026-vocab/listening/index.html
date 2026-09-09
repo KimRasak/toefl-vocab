@@ -158,6 +158,11 @@ button { cursor: pointer; border: none; background: none; }
 .study-area { display: flex; flex-direction: column; align-items: center; min-height: 420px; }
 .study-meta { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
 .study-meta .due { color: var(--warn); font-weight: 600; }
+.study-meta .meta-btn {
+  background: var(--card2); border: 1px solid var(--border); color: var(--muted);
+  border-radius: 8px; padding: 5px 10px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.study-meta .meta-btn:disabled { opacity: .4; cursor: default; }
 
 .flashcard-wrap { width: 100%; perspective: 1000px; touch-action: pan-y; }
 .flashcard {
@@ -466,8 +471,6 @@ const PROGRESS_KEY = 'toefl2026-progress';
 const SETTINGS_KEY = 'toefl2026-settings';
 const EPOCH = 86400000;
 const INTERVALS = { 1: 0, 2: 1, 3: 3, 4: 7 };
-const MAX_SESSION = 30;
-const MAX_NEW = 20;
 
 const MACRO = {
   awl:      { name: 'AWL学术词', icon: '📚', color: '#4c8dff' },
@@ -493,6 +496,7 @@ let currentTab = 'dashboard';
 let studyQueue = [];
 let studyIdx = 0;
 let studyResults = { right: 0, wrong: 0, wrongList: [] };
+let studyHistory = []; // 每张卡作答前的快照，供「回到上一个」回退进度，避免重复计分
 let studyCategory = '';
 let studyStarted = false;
 let cardRevealed = false;
@@ -968,13 +972,13 @@ function buildSession(macroFilter, mode) {
   let indices;
   if (mode === 'train') {
     // 即时应答训练：全量抽取（含已掌握），复习 2026 听力占比最大的题型模式
-    indices = train.slice(0, MAX_SESSION);
+    indices = train;
   } else if (mode === 'review') {
-    indices = box1.concat(due).slice(0, MAX_SESSION);
+    indices = box1.concat(due);
   } else if (mode === 'new') {
-    indices = fresh.slice(0, MAX_SESSION);
+    indices = fresh;
   } else {
-    indices = box1.concat(due, fresh.slice(0, MAX_NEW)).slice(0, MAX_SESSION);
+    indices = box1.concat(due, fresh);
   }
   return indices.map(i => vocab[i]);
 }
@@ -984,6 +988,7 @@ function startResponseTraining() {
   studyQueue = buildSession('听力-应答', 'train');
   studyIdx = 0;
   studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
@@ -1100,7 +1105,7 @@ function isSentenceCard(entry) {
 function renderStudyCard() {
   const area = $('study-area');
   if (!studyStarted) {
-    area.innerHTML = '<div class="empty-study"><div class="icon">🃏</div><p>点击上方「开始」或从总览选择分类</p><p style="font-size:13px;margin-top:8px">每轮最多 30 张新词</p><button class="btn btn-primary" style="margin-top:16px" id="btn-start-inline">开始学新词</button></div>';
+    area.innerHTML = '<div class="empty-study"><div class="icon">🃏</div><p>点击上方「开始」或从总览选择分类</p><p style="font-size:13px;margin-top:8px">将连续显示所有符合当前条件的单词</p><button class="btn btn-primary" style="margin-top:16px" id="btn-start-inline">开始学新词</button></div>';
     $('btn-start-inline')?.addEventListener('click', () => startStudy(studyCategory, 'new'));
     return;
   }
@@ -1122,6 +1127,7 @@ function renderStudyCard() {
   area.innerHTML =
     '<div class="study-meta">' +
       '<span>第 ' + (studyIdx + 1) + ' / ' + studyQueue.length + ' 题</span>' +
+      '<button class="meta-btn" id="fc-prev" type="button" ' + (studyIdx > 0 ? '' : 'disabled') + '>⏮ 上一个</button>' +
     '</div>' +
     '<div class="flashcard-wrap" id="fc-wrap">' +
       '<div class="flashcard' + (isSentenceCard(entry) ? ' long' : '') + '" id="fc-card">' +
@@ -1138,8 +1144,8 @@ function renderStudyCard() {
       '</div>' +
     '</div>' +
     '<div class="fc-actions" id="fc-actions">' +
-      '<button class="btn btn-no" id="fc-wrong" type="button">❌ 不认识</button>' +
-      '<button class="btn btn-ok" id="fc-right" type="button">✅ 认识</button>' +
+      '<button class="btn btn-no" id="fc-wrong" type="button">不认识</button>' +
+      '<button class="btn btn-ok" id="fc-right" type="button">认识</button>' +
     '</div>' +
 
     '<div class="swipe-hint">可先作答再翻面验证 · 翻面后左右滑动切换</div>';
@@ -1180,6 +1186,8 @@ function renderStudyCard() {
     }
     submitAnswer(false, false);
   });
+
+  $('fc-prev')?.addEventListener('click', goPrevCard);
 
   setupSwipe(entry);
 }
@@ -1224,6 +1232,12 @@ function submitAnswer(correct, skipped) {
   if (card) {
     card.classList.add(correct ? 'swipe-right' : 'swipe-left');
   }
+  // 记录作答前快照，供「回到上一个」回退进度，避免重复计分
+  const rec = getRec(entry.w);
+  studyHistory[studyIdx] = {
+    prev: { box: rec.box, right: rec.right, wrong: rec.wrong, lastSeen: rec.lastSeen },
+    resBefore: { right: studyResults.right, wrong: studyResults.wrong, wrongList: studyResults.wrongList.slice() }
+  };
   answer(entry.w, correct, skipped);
   // Do not autoplay the next card; let the learner choose when to hear it.
   setTimeout(() => {
@@ -1231,6 +1245,30 @@ function submitAnswer(correct, skipped) {
     renderStudyCard();
     renderDashboard();
   }, 280);
+}
+
+// 回到上一张卡片：回退该卡已提交的进度（不重复计分）；在完成页也会回看最后一张
+function goPrevCard() {
+  if (!studyQueue.length) return;
+  let idx = studyIdx;
+  if (idx >= studyQueue.length) idx = studyQueue.length;
+  if (idx <= 0) { toast('已经是第一张卡片了'); return; }
+  const prevIdx = idx - 1;
+  const h = studyHistory[prevIdx];
+  if (h) {
+    const word = studyQueue[prevIdx].w;
+    const rec = getRec(word);
+    rec.box = h.prev.box; rec.right = h.prev.right; rec.wrong = h.prev.wrong; rec.lastSeen = h.prev.lastSeen;
+    progress[word] = rec;
+    studyResults.right = h.resBefore.right;
+    studyResults.wrong = h.resBefore.wrong;
+    studyResults.wrongList = h.resBefore.wrongList.slice();
+    studyHistory[prevIdx] = null;
+    saveProgress();
+  }
+  studyIdx = prevIdx;
+  renderStudyCard();
+  renderDashboard();
 }
 
 function renderSummary() {
@@ -1248,13 +1286,15 @@ function renderSummary() {
       '<div class="acc">' + acc + '%</div>' +
       '<p style="color:var(--muted);font-size:13px;margin-top:8px">正确率</p>' +
       (nErr ? '<p style="color:var(--warn);font-size:13px;margin-top:8px">答错的 ' + nErr + ' 词已进入记忆曲线的回炉队列，可立即重练：</p>' : '') +
-      '<div style="margin-top:20px;display:flex;gap:8px">' +
+      '<div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">' +
         (nErr ? '<button class="btn btn-primary" id="btn-redo-err" style="flex:1">🔁 重练错词 (' + nErr + ')</button>' : '') +
+        '<button class="btn" id="btn-last" style="flex:1">⏮ 上一张</button>' +
         '<button class="btn btn-primary" id="btn-again" style="flex:1">再来一轮</button>' +
         '<button class="btn" id="btn-done" style="flex:1">返回总览</button>' +
       '</div>' +
     '</div>';
   $('btn-redo-err')?.addEventListener('click', startErrorRedo);
+  $('btn-last')?.addEventListener('click', goPrevCard);
   $('btn-again').addEventListener('click', () => startStudy(studyCategory, 'new'));
   $('btn-done').addEventListener('click', () => switchTab('dashboard'));
 }
@@ -1266,6 +1306,7 @@ function startErrorRedo() {
   studyQueue = vocab.filter(e => words.indexOf(e.w) >= 0);
   studyIdx = 0;
   studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
@@ -1377,6 +1418,7 @@ function startStudyAt(pos) {
   studyQueue = flat;
   studyIdx = Math.max(0, Math.min(pos, flat.length - 1));
   studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
@@ -1389,6 +1431,7 @@ function startStudy(macroFilter, mode) {
   studyQueue = buildSession(studyCategory || null, mode || 'new');
   studyIdx = 0;
   studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
