@@ -201,16 +201,10 @@ button { cursor: pointer; border: none; background: none; }
 .fc-actions {
   display: flex; width: 100%; gap: 10px; margin-top: 20px;
 }
-.fc-actions .btn-ok { background: rgba(52,199,89,.15); border-color: var(--ok); color: var(--ok); flex: 1; padding: 14px; font-size: 16px; }
-.fc-actions .btn-no { background: rgba(255,69,58,.12); border-color: var(--bad); color: var(--bad); flex: 1; padding: 14px; font-size: 16px; }
+.fc-actions .btn-ok { background: var(--card2); border-color: var(--border); color: var(--muted); flex: 1; padding: 14px; font-size: 16px; }
+.fc-actions .btn-no { background: var(--card2); border-color: var(--border); color: var(--muted); flex: 1; padding: 14px; font-size: 16px; }
 
-.fc-skip {
-  width: 100%; margin-top: 12px; padding: 12px; border-radius: 12px; font-size: 14px;
-  background: var(--card2); border: 1px solid var(--border); color: var(--muted);
-  transition: opacity .2s;
-}
-.fc-skip:active { transform: scale(.97); }
-.fc-skip.hidden { display: none; }
+
 
 .speak-btn {
   position: absolute; top: 16px; right: 16px;
@@ -1149,7 +1143,7 @@ function renderStudyCard() {
       '<button class="btn btn-no" id="fc-wrong" type="button">❌ 不认识</button>' +
       '<button class="btn btn-ok" id="fc-right" type="button">✅ 认识</button>' +
     '</div>' +
-    '<button class="fc-skip" id="fc-skip" type="button">⏭ 已认识，跳过</button>' +
+
     '<div class="swipe-hint">可先作答再翻面验证 · 翻面后左右滑动切换</div>';
 
   const card = $('fc-card');
@@ -1161,11 +1155,9 @@ function renderStudyCard() {
     if (!cardRevealed) {
       cardRevealed = true;
       card.classList.add('revealed');
-      $('fc-skip').classList.add('hidden');
     } else {
       cardRevealed = false;
       card.classList.remove('revealed');
-      $('fc-skip').classList.remove('hidden');
     }
   });
 
@@ -1174,17 +1166,11 @@ function renderStudyCard() {
     speak(entry.w);
   });
 
-  $('fc-skip').addEventListener('click', e => {
-    e.stopPropagation();
-    submitAnswer(true, true);
-  });
-
   $('fc-right').addEventListener('click', e => {
     e.stopPropagation();
     if (!cardRevealed) {
       cardRevealed = true;
       card.classList.add('revealed');
-      $('fc-skip').classList.add('hidden');
     }
     submitAnswer(true, false);
   });
@@ -1193,7 +1179,6 @@ function renderStudyCard() {
     if (!cardRevealed) {
       cardRevealed = true;
       card.classList.add('revealed');
-      $('fc-skip').classList.add('hidden');
     }
     submitAnswer(false, false);
   });
@@ -1229,8 +1214,6 @@ function setupSwipe(entry) {
         cardRevealed = true;
         const card = $('fc-card');
         if (card) card.classList.add('revealed');
-        const skip = $('fc-skip');
-        if (skip) skip.classList.add('hidden');
       }
       submitAnswer(dx > 0);
     }
