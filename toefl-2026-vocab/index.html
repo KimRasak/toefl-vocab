@@ -955,14 +955,16 @@ function playRemoteAudio(clean, generation) {
   _audio.onended = null;
   _audio.volume = 1;
   _audio.src = '';
-  // 有道对部分短语会返回 500：短语优先百度，单词优先有道。
-  // 有道美音(type=2)对 locally grown 等短语无词条会 500，但英音(type=1)可播，最后追加英音兜底
+  // 音质优先：有道是词典音源（160kbps，发音最自然流畅），常见短语/习语多有词条，
+  // 故短语同样有道优先（美音→英音），无词条(500)再退百度/谷歌通用整句TTS
+  // （页面已 no-referrer，百度/谷歌可正常返回音频）。
+  // 单词本就优先有道；最后保留有道英音兜底（locally grown 等仅英音有词条）。
   const isPhrase = /\s/.test(clean);
   const candidates = isPhrase ? [
-    BAIDU_TTS + encodeURIComponent(clean),
-    GOOGLE_TTS + encodeURIComponent(clean),
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
-    YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'
+    YOUDAO_TTS + encodeURIComponent(clean) + '&type=1',
+    BAIDU_TTS + encodeURIComponent(clean),
+    GOOGLE_TTS + encodeURIComponent(clean)
   ] : [
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
     BAIDU_TTS + encodeURIComponent(clean),
@@ -970,27 +972,41 @@ function playRemoteAudio(clean, generation) {
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'
   ];
   let candidate = 0;
+  const release = (a) => { a.onerror = null; a.onended = null; if (_wordEl === a) _wordEl = null; };
   const tryNext = () => {
     if (generation !== _speakGeneration) return;
     if (candidate >= candidates.length) {
-      _audio.onerror = null;
-      // 有道是词典音源：长句/句型无词条会 500（如 "Is it OK if I" 英美音都 500）。
-      // 若此时百度/谷歌又不可达，最后退化为「逐词用有道播报」，保证每个词都能听到
+      // 有道是词典音源：长句/句型无词条会 500。若百度/谷歌也不可达，
+      // 最后退化为「逐词用有道播报」，保证每个词都能听到
       if (isPhrase && playWordByWord(clean, generation)) return;
       toast('发音不可用（在线音源 有道/百度/谷歌 均失败），请检查网络');
       return;
     }
-    _audio.onerror = tryNext;
-    _audio.src = candidates[candidate++];
-    _audio.load();
-    const p = _audio.play();
+    // 每个候选用独立 Audio 元素（复用同一 <audio> 有状态残留）；
+    // error 事件与 play() 拒绝可能先后到达，用 settled 防止重复推进跳过候选
+    if (_wordEl) { try { _wordEl.pause(); } catch (e) {} release(_wordEl); }
+    const a = new Audio();
+    _wordEl = a;
+    let settled = false;
+    const advance = () => {
+      if (settled || generation !== _speakGeneration) return;
+      settled = true;
+      release(a);
+      tryNext();
+    };
+    a.onerror = advance;
+    a.src = candidates[candidate++];
+    const p = a.play();
     if (p && p.catch) p.catch(err => {
-      // 自动播放被浏览器拦截（非用户手势）：静默等待，点🔊时自然发声
+      // 自动播放被浏览器拦截：稍候重试一次（点🔊手势解锁后即可发声），仍失败则换下一候选
       if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
-        _audio.onerror = null;
+        setTimeout(() => {
+          if (generation !== _speakGeneration) return;
+          a.play().catch(advance);
+        }, 150);
         return;
       }
-      tryNext();
+      advance();
     });
   };
   tryNext();
