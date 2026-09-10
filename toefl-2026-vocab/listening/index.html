@@ -948,14 +948,17 @@ function speak(text) {
   if (!clean) return;
   const generation = ++_speakGeneration;
   _speakPending = clean;
+  // 取词条上预计算的有道分块（ac）：整句有道无词条时，用同一有道声分块连播
+  const entry = (typeof VOCAB !== 'undefined' && Array.isArray(VOCAB)) ? VOCAB.find(x => x.w === raw) : null;
+  const ac = entry && Array.isArray(entry.ac) ? entry.ac : null;
   if (settings.nativeTTS === false) {   // 发音开关关闭：跳过本地 TTS，直接使用在线发音
-    playRemoteAudio(clean, generation);
+    playRemoteAudio(clean, generation, ac);
     return;
   }
-  nativeSpeak(clean, () => playRemoteAudio(clean, generation));
+  nativeSpeak(clean, () => playRemoteAudio(clean, generation, ac));
 }
 
-function playRemoteAudio(clean, generation) {
+function playRemoteAudio(clean, generation, ac) {
   if (generation !== _speakGeneration) return;
   _audio.pause();
   _audio.onerror = null;
@@ -967,12 +970,14 @@ function playRemoteAudio(clean, generation) {
   // 谷歌 64kbps 音色优于百度 24kbps，但部分地区不可达——页面加载时异步探测一次，
   // 可达则谷歌排在百度之前，不可达则维持百度在前，避免每个短语都白等谷歌超时。
   const isPhrase = /\s/.test(clean);
+  // 该词条已预计算有道分块时，整句无词条就直接走分块连播，不再尝试谷歌/百度（保持同一有道声）
+  const hasAc = !!(isPhrase && Array.isArray(ac) && ac.length > 1);
   const generic = _googleOk
     ? [GOOGLE_TTS + encodeURIComponent(clean), BAIDU_TTS + encodeURIComponent(clean)]
     : [BAIDU_TTS + encodeURIComponent(clean), GOOGLE_TTS + encodeURIComponent(clean)];
   const candidates = isPhrase
     ? [YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
-       YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'].concat(generic)
+       YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'].concat(hasAc ? [] : generic)
     : [YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
        BAIDU_TTS + encodeURIComponent(clean),
        GOOGLE_TTS + encodeURIComponent(clean),
@@ -982,8 +987,9 @@ function playRemoteAudio(clean, generation) {
   const tryNext = () => {
     if (generation !== _speakGeneration) return;
     if (candidate >= candidates.length) {
-      // 有道是词典音源：长句/句型无词条会 500。若百度/谷歌也不可达，
-      // 最后退化为「逐词用有道播报」，保证每个词都能听到
+      // 有道是词典音源：长句/句型无词条会 500。先用预计算的有道分块连播（同一有道声），
+      // 没有分块且百度/谷歌也不可达时，最后退化为「逐词用有道播报」，保证每个词都能听到
+      if (hasAc && playChunks(ac, generation)) return;
       if (isPhrase && playWordByWord(clean, generation)) return;
       toast('发音不可用（在线音源 有道/百度/谷歌 均失败），请检查网络');
       return;
@@ -1024,13 +1030,11 @@ function playRemoteAudio(clean, generation) {
   tryNext();
 }
 
-// 兜底：短语/句型整体播不出时（有道对长句 500、百度/谷歌不可达），
-// 按空格拆成单词、用有道逐词播报，任何网络下只要词典单词可播就一定能出声。
-// 关键：WebKit/Safari 复用一个 <audio> 连续播多段短音频只会响第一段（经典 bug），
-// 因此第 1 词沿用已解锁的 _audio，第 2 词起改用独立 Audio 元素，每段单独发声。
-function playWordByWord(clean, generation) {
-  const words = clean.split(/\s+/).filter(Boolean);
-  if (words.length < 2) return false;
+// 顺序连播一组音频 URL：第 1 段沿用已解锁的 _audio，第 2 段起用独立 Audio 元素
+// （WebKit/Safari 复用一个 <audio> 连播多段短音频只会响第一段，经典 bug）。
+// 任何一段失败/超时都跳到下一段，不中断整条链。
+function playSequence(urls, generation) {
+  if (!Array.isArray(urls) || urls.length < 2) return false;
   let i = 0;
   const stop = () => {
     clearTimeout(_wordTimer);
@@ -1039,19 +1043,19 @@ function playWordByWord(clean, generation) {
   };
   const playNext = () => {
     if (generation !== _speakGeneration) return;
-    if (i >= words.length) { stop(); return; }
-    const w = words[i];
-    const a = (i === 0) ? _audio : new Audio(); // 第 1 词(下标0)用已解锁的 _audio，后续用独立元素
+    if (i >= urls.length) { stop(); return; }
+    const url = urls[i];
+    const a = (i === 0) ? _audio : new Audio(); // 第 1 段(下标0)用已解锁的 _audio，后续用独立元素
     i++;
     clearTimeout(_wordTimer);
     if (i > 1) _wordEl = a;
     a.onended = () => { if (generation !== _speakGeneration) return; a.onended = null; a.onerror = null; playNext(); };
     a.onerror = () => { if (generation !== _speakGeneration) return; a.onerror = null; a.onended = null; playNext(); };
     // src 赋值即触发加载；不显式调 load()，避免 Safari 重置元素使 play() 以 AbortError 拒绝
-    a.src = YOUDAO_TTS + encodeURIComponent(w) + '&type=2';
+    a.src = url;
     const pp = a.play();
     if (pp && pp.catch) pp.catch(err => {
-      // 任何失败不中断链条：拦截/竞态稍后重试一次，仍失败则跳到下一词
+      // 任何失败不中断链条：拦截/竞态稍后重试一次，仍失败则跳到下一段
       if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
         setTimeout(() => {
           if (generation !== _speakGeneration) return;
@@ -1061,7 +1065,7 @@ function playWordByWord(clean, generation) {
       }
       playNext();
     });
-    // 看门狗：单词最长约 4s，防止个别词 ended 事件丢失导致链条卡死
+    // 看门狗：每段最长约 4s，防止个别段 ended 事件丢失导致链条卡死
     _wordTimer = setTimeout(() => {
       if (generation !== _speakGeneration) return;
       a.onerror = null; a.onended = null;
@@ -1070,6 +1074,22 @@ function playWordByWord(clean, generation) {
   };
   playNext();
   return true;
+}
+
+// 预计算的有道分块连播：ac = [[文本, 有道type], ...]。
+// 整句有道无词条时，用与 "pedestrian crossing" 同源的有道声按词组分段连播，
+// 比逐词更连贯，音色也和整句一致。
+function playChunks(ac, generation) {
+  if (!Array.isArray(ac) || ac.length < 2) return false;
+  const urls = ac.map(p => YOUDAO_TTS + encodeURIComponent(p[0]) + '&type=' + (p[1] === 1 ? 1 : 2));
+  return playSequence(urls, generation);
+}
+
+// 兜底：连分块都没有时，按空格拆成单词、全部用有道逐词播报
+function playWordByWord(clean, generation) {
+  const words = clean.split(/\s+/).filter(Boolean);
+  if (words.length < 2) return false;
+  return playSequence(words.map(w => YOUDAO_TTS + encodeURIComponent(w) + '&type=2'), generation);
 }
 
 function stopSpeech() {
