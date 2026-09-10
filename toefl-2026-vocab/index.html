@@ -948,6 +948,7 @@ function playRemoteAudio(clean, generation) {
   if (generation !== _speakGeneration) return;
   _audio.pause();
   _audio.onerror = null;
+  _audio.onended = null;
   _audio.volume = 1;
   _audio.src = '';
   // 有道对部分短语会返回 500：短语优先百度，单词优先有道。
@@ -969,6 +970,9 @@ function playRemoteAudio(clean, generation) {
     if (generation !== _speakGeneration) return;
     if (candidate >= candidates.length) {
       _audio.onerror = null;
+      // 有道是词典音源：长句/句型无词条会 500（如 "Is it OK if I" 英美音都 500）。
+      // 若此时百度/谷歌又不可达，最后退化为「逐词用有道播报」，保证每个词都能听到
+      if (isPhrase && playWordByWord(clean, generation)) return;
       toast('发音不可用（在线音源 有道/百度/谷歌 均失败），请检查网络');
       return;
     }
@@ -988,11 +992,40 @@ function playRemoteAudio(clean, generation) {
   tryNext();
 }
 
+// 兜底：短语/句型整体播不出时（有道对长句 500、百度/谷歌不可达），
+// 按空格拆成单词、用有道逐词播报，任何网络下只要词典单词可播就一定能出声
+function playWordByWord(clean, generation) {
+  const words = clean.split(/\s+/).filter(Boolean);
+  if (words.length < 2) return false;
+  let i = 0;
+  const playNext = () => {
+    if (generation !== _speakGeneration) return;
+    if (i >= words.length) { _audio.onerror = null; _audio.onended = null; return; }
+    const w = words[i++];
+    _audio.onended = () => { _audio.onended = null; playNext(); };
+    _audio.onerror = () => { _audio.onerror = null; _audio.onended = null; playNext(); };
+    _audio.src = YOUDAO_TTS + encodeURIComponent(w) + '&type=2';
+    _audio.load();
+    const pp = _audio.play();
+    if (pp && pp.catch) pp.catch(err => {
+      // 自动播放被拦截（非用户手势）：静默等待，点🔊时自然发声
+      if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
+        _audio.onerror = null; _audio.onended = null;
+        return;
+      }
+      playNext();
+    });
+  };
+  playNext();
+  return true;
+}
+
 function stopSpeech() {
   ++_speakGeneration;
   if (window.speechSynthesis) speechSynthesis.cancel();
   _audio.pause();
   _audio.onerror = null;
+  _audio.onended = null;
 }
 
 document.addEventListener('pagehide', stopSpeech);
