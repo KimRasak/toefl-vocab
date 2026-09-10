@@ -994,23 +994,36 @@ function playWordByWord(clean, generation) {
   const words = clean.split(/\s+/).filter(Boolean);
   if (words.length < 2) return false;
   let i = 0;
+  let timer = 0;
+  const stop = () => { clearTimeout(timer); _audio.onended = null; _audio.onerror = null; };
   const playNext = () => {
     if (generation !== _speakGeneration) return;
-    if (i >= words.length) { _audio.onerror = null; _audio.onended = null; return; }
+    if (i >= words.length) { stop(); return; }
     const w = words[i++];
-    _audio.onended = () => { _audio.onended = null; playNext(); };
-    _audio.onerror = () => { _audio.onerror = null; _audio.onended = null; playNext(); };
+    clearTimeout(timer);
+    _audio.onended = () => { clearTimeout(timer); _audio.onended = null; _audio.onerror = null; playNext(); };
+    _audio.onerror = () => { clearTimeout(timer); _audio.onerror = null; _audio.onended = null; playNext(); };
+    // 不显式调 load()：src 赋值即触发加载；显式 load() 在 Safari 上会重置元素状态，
+    // 使紧随其后的 play() 以 AbortError 拒绝，导致链条在第一个词后中断
     _audio.src = YOUDAO_TTS + encodeURIComponent(w) + '&type=2';
-    _audio.load();
     const pp = _audio.play();
     if (pp && pp.catch) pp.catch(err => {
-      // 自动播放被拦截（非用户手势）：静默等待，点🔊时自然发声
+      // 任何原因失败都不中断整条链：拦截/竞态短暂重试一次，仍失败则跳到下一词
       if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
-        _audio.onerror = null; _audio.onended = null;
+        setTimeout(() => {
+          if (generation !== _speakGeneration) return;
+          _audio.play().catch(() => { _audio.onerror = null; _audio.onended = null; playNext(); });
+        }, 150);
         return;
       }
       playNext();
     });
+    // 看门狗：单词最长约 4s，防止个别词 ended 事件丢失导致链条卡死
+    timer = setTimeout(() => {
+      if (generation !== _speakGeneration) return;
+      _audio.onerror = null; _audio.onended = null;
+      playNext();
+    }, 4000);
   };
   playNext();
   return true;
