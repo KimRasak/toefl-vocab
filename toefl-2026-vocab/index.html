@@ -106,6 +106,7 @@ button { cursor: pointer; border: none; background: none; }
 .controls {
   display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;
 }
+.tts-toggle { flex: 0 0 auto; align-self: center; font-size: 13px; color: var(--muted); white-space: nowrap; cursor: pointer; user-select: none; }
 .search {
   flex: 1; min-width: 140px; padding: 10px 14px;
   background: var(--card); border: 1px solid var(--border);
@@ -369,6 +370,7 @@ button { cursor: pointer; border: none; background: none; }
         </select>
         <button class="btn btn-primary" id="btn-start-session" style="flex:0 0 auto;padding:10px 16px">📖 过单词</button>
         <button class="btn btn-block" id="btn-start-collect" style="flex:0 0 auto;padding:10px 16px;border-color:var(--warn);color:var(--warn)">📚 学习模式</button>
+        <label class="tts-toggle" title="关闭后跳过本地语音，直接用在线发音（本地无声时建议关闭）"><input type="checkbox" id="tts-native" checked> 🔊 本地发音</label>
       </div>
       <div class="study-area" id="study-area"></div>
     </div>
@@ -934,6 +936,10 @@ function speak(text) {
   if (!clean) return;
   const generation = ++_speakGeneration;
   _speakPending = clean;
+  if (settings.nativeTTS === false) {   // 发音开关关闭：跳过本地 TTS，直接使用在线发音
+    playRemoteAudio(clean, generation);
+    return;
+  }
   nativeSpeak(clean, () => playRemoteAudio(clean, generation));
 }
 
@@ -1733,6 +1739,18 @@ function init() {
   if (settings.listCat) $('list-cat-filter').value = settings.listCat;
   if (settings.listStatus) $('list-status-filter').value = settings.listStatus;
   if (settings.listSort) $('list-sort').value = settings.listSort;
+
+  // 发音开关：关闭后跳过本地 TTS，直接用远程在线发音
+  const ttsToggle = $('tts-native');
+  if (ttsToggle) {
+    ttsToggle.checked = settings.nativeTTS !== false;
+    ttsToggle.addEventListener('change', () => {
+      settings.nativeTTS = ttsToggle.checked;
+      saveSettings();
+      // 即时试听当前词，确认是否已恢复/切换
+      if (studyStarted && studyIdx < studyQueue.length) speak(studyQueue[studyIdx].w);
+    });
+  }
 
   renderAll();
   if (currentTab === 'browse') renderBrowse();
