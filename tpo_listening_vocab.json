@@ -1,0 +1,2396 @@
+{
+ "校园对话 Campus": [
+  {
+   "word": "paper",
+   "ipa": "/ˈpeɪpər/",
+   "def": "n. 纸；论文",
+   "freq": 89,
+   "docs": 37,
+   "listening_specific": true,
+   "example": "Your paper on John Dewey's political philosophy has a few issues I'd like to cover."
+  },
+  {
+   "word": "university",
+   "ipa": "/ˌjuːnɪˈvɜːrsəti/",
+   "def": "n. 大学",
+   "freq": 76,
+   "docs": 38,
+   "listening_specific": true,
+   "example": "University administrator: You hear about your graduation form, right? I'm about to print it out."
+  },
+  {
+   "word": "library",
+   "ipa": "/ˈlaɪbreri/",
+   "def": "n. 图书馆；借书处",
+   "freq": 57,
+   "docs": 20,
+   "listening_specific": true,
+   "example": "So it's a video library, basically?"
+  },
+  {
+   "word": "semester",
+   "ipa": "/səˈmestər/",
+   "def": "n. 学期",
+   "freq": 52,
+   "docs": 27,
+   "listening_specific": true,
+   "example": "Last semester when all the printers broke down, the president of the college got involved."
+  },
+  {
+   "word": "thanks",
+   "ipa": "/θæŋks/",
+   "def": "n. 感谢 int. 谢谢",
+   "freq": 47,
+   "docs": 38,
+   "listening_specific": true,
+   "example": "Thanks. I know it's not your fault, and that you’re doing everything you can."
+  },
+  {
+   "word": "computer",
+   "ipa": "/kəmˈpjuːtər/",
+   "def": "n. 计算机；电脑",
+   "freq": 43,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "Computer science books are sold across the street in the computer store."
+  },
+  {
+   "word": "campus",
+   "ipa": "/ˈkæmpəs/",
+   "def": "n. 校园",
+   "freq": 40,
+   "docs": 24,
+   "listening_specific": true,
+   "example": "I'll be on campus about ten tomorrow morning, and I'll come by to see you then."
+  },
+  {
+   "word": "working",
+   "ipa": "/ˈwɜːrkɪŋ/",
+   "def": "v./adj. 工作（的）；忙于…（如 working on 正在做）",
+   "freq": 39,
+   "docs": 28,
+   "listening_specific": true,
+   "example": "Working there really opened my eyes."
+  },
+  {
+   "word": "department",
+   "ipa": "/dɪˈpɑːrtmənt/",
+   "def": "n. 系；部门",
+   "freq": 38,
+   "docs": 24,
+   "listening_specific": true,
+   "example": "Right—the department has many prominent alumni."
+  },
+  {
+   "word": "office",
+   "ipa": "/ˈɔːfɪs/",
+   "def": "n. 办公室",
+   "freq": 36,
+   "docs": 20,
+   "listening_specific": true,
+   "example": "That's what office hours are for."
+  },
+  {
+   "word": "manager",
+   "ipa": "/ˈmænɪdʒər/",
+   "def": "n. 经理；管理人员",
+   "freq": 34,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Manager: I hope you are not here about your window again."
+  },
+  {
+   "word": "research",
+   "ipa": "/rɪˈsɜːrtʃ/",
+   "def": "n./v. 研究",
+   "freq": 33,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "He did exhaustive research over thirty years to develop and test his theory."
+  },
+  {
+   "word": "name",
+   "ipa": "/neɪm/",
+   "def": "n. 名字 v. 命名",
+   "freq": 30,
+   "docs": 19,
+   "listening_specific": true,
+   "example": "It was the name of an art and design school in Germany in the early twentieth century."
+  },
+  {
+   "word": "building",
+   "ipa": "/ˈbɪldɪŋ/",
+   "def": "n. 建筑，建筑物",
+   "freq": 30,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "This building was renamed after one of our professors."
+  },
+  {
+   "word": "center",
+   "ipa": "/ˈsentər/",
+   "def": "n. 中心；中心机构（如 student center 学生活动中心）",
+   "freq": 29,
+   "docs": 15,
+   "listening_specific": true,
+   "example": "The director of the community center, he loved the idea. So now any adult can come in if they want to become better readers."
+  },
+  {
+   "word": "program",
+   "ipa": "/ˈproʊɡræm/",
+   "def": "n. 项目；计划；课程；节目",
+   "freq": 29,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "‘cause their computer program crashed after all the information was processed,"
+  },
+  {
+   "word": "music",
+   "ipa": "/ˈmjuːzɪk/",
+   "def": "n. 音乐",
+   "freq": 29,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "So. The music is generally based on folk ballads and instrumental dance tunes."
+  },
+  {
+   "word": "writing",
+   "ipa": "/ˈraɪtɪŋ/",
+   "def": "n. 写作；文字，书写",
+   "freq": 28,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "writing a play based on some other written work—novels, short stories…"
+  },
+  {
+   "word": "couple",
+   "ipa": "/ˈkʌpl/",
+   "def": "n. 一对；夫妇；几个（a couple of 两三个）",
+   "freq": 27,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "A couple of us are doing all the work."
+  },
+  {
+   "word": "information",
+   "ipa": "/ˌɪnfərˈmeɪʃn/",
+   "def": "n. 信息；资料",
+   "freq": 27,
+   "docs": 20,
+   "listening_specific": true,
+   "example": "I have that Information around here somewhere, but I'd have to find it first."
+  },
+  {
+   "word": "interested",
+   "ipa": "/ˈɪntrəstɪd/",
+   "def": "adj. 感兴趣的（be interested in 对…感兴趣）",
+   "freq": 26,
+   "docs": 22,
+   "listening_specific": true,
+   "example": "I'm interested in the Greater Yellowstone Ecosystem."
+  },
+  {
+   "word": "graduate",
+   "ipa": "/ˈɡrædʒuət/",
+   "def": "n. 毕业生；研究生 v. /ˈɡrædʒueɪt/ 毕业",
+   "freq": 26,
+   "docs": 20,
+   "listening_specific": true,
+   "example": "Graduate school tuition's expensive, and these courses will give you a good overview of the field before committing yourself."
+  },
+  {
+   "word": "hall",
+   "ipa": "/hɔːl/",
+   "def": "n. 大厅；宿舍楼（residence hall 学生宿舍）",
+   "freq": 25,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "Student: Baker Hall, Room 622."
+  },
+  {
+   "word": "topic",
+   "ipa": "/ˈtɑːpɪk/",
+   "def": "n. 话题；主题",
+   "freq": 25,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "You chose the topic?"
+  },
+  {
+   "word": "dorm",
+   "ipa": "/dɔːrm/",
+   "def": "n. 宿舍（dormitory 的缩写）",
+   "freq": 25,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "The dorms can sometimes get pretty noisy."
+  },
+  {
+   "word": "club",
+   "ipa": "/klʌb/",
+   "def": "n. 俱乐部；社团",
+   "freq": 25,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Civic clubs, foundations—organizations from all over the country offer scholarships or other financial assistance to college students. And all kinds of companies have programs to help their employees'children go to college."
+  },
+  {
+   "word": "painting",
+   "ipa": "/ˈpeɪntɪŋ/",
+   "def": "n. 绘画，油画",
+   "freq": 24,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Millet's painting is located near my family's house in Connecticut."
+  },
+  {
+   "word": "trip",
+   "ipa": "/trɪp/",
+   "def": "n. 旅行；行程",
+   "freq": 24,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "The trip’s in two days …"
+  },
+  {
+   "word": "history",
+   "ipa": "/ˈhɪstəri/",
+   "def": "n. 历史",
+   "freq": 23,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "Some history of the music that was performed that evening. Where it originated, how it’s developed over time…"
+  },
+  {
+   "word": "reading",
+   "ipa": "/ˈriːdɪŋ/",
+   "def": "n. 阅读；读物",
+   "freq": 22,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "I was just reading an article about an archaeological site in Turkey where scientists found evidence that ancient people had been harvesting the branches from pistachio and almond trees."
+  },
+  {
+   "word": "change",
+   "ipa": "/tʃeɪndʒ/",
+   "def": "n. 变化；零钱 v. 改变；更换",
+   "freq": 22,
+   "docs": 15,
+   "listening_specific": true,
+   "example": "Well, things change fast around here."
+  },
+  {
+   "word": "fair",
+   "ipa": "/fer/",
+   "def": "n. 展览会；集市（job fair 招聘会） adj. 公平的",
+   "freq": 22,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "But that's not fair."
+  },
+  {
+   "word": "plan",
+   "ipa": "/plæn/",
+   "def": "n. 计划 v. 计划；打算",
+   "freq": 21,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "And if you plan on attending future career fairs, I recommend you sign up for one of our interview workshops."
+  },
+  {
+   "word": "review",
+   "ipa": "/rɪˈvjuː/",
+   "def": "n./v. 复习；回顾；评论",
+   "freq": 21,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "We have a gallery review committee. But we already have our exhibitions planned for the rest of this school year."
+  },
+  {
+   "word": "bring",
+   "ipa": "/brɪŋ/",
+   "def": "v. 带来；拿来",
+   "freq": 20,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "It'll bring so much publicity to our program."
+  },
+  {
+   "word": "open",
+   "ipa": "/ˈoʊpən/",
+   "def": "adj. 开放的；开着的 v. 打开；开放",
+   "freq": 20,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "Is this sale open to the public?"
+  },
+  {
+   "word": "list",
+   "ipa": "/lɪst/",
+   "def": "n. 清单；列表 v. 列出",
+   "freq": 20,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "We list all our food suppliers,"
+  },
+  {
+   "word": "schedule",
+   "ipa": "/ˈskedʒuːl/",
+   "def": "n.时间表,进度表 v.安排,预定",
+   "freq": 20,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "My schedule says the meeting room is in Johnson Hall,"
+  },
+  {
+   "word": "experience",
+   "ipa": "/ɪkˈspɪriəns/",
+   "def": "n. 经验；经历；v. 经历",
+   "freq": 19,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "In fact, the experience solved my problem of what to do with my life—"
+  },
+  {
+   "word": "material",
+   "ipa": "/məˈtɪriəl/",
+   "def": "n. 材料，素材",
+   "freq": 19,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "So I went and got material for their sections as well."
+  },
+  {
+   "word": "service",
+   "ipa": "/ˈsɜːrvɪs/",
+   "def": "n. 服务，服务处",
+   "freq": 19,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Student: The service was already there. Oh, wow! I really made a stupid mistake."
+  },
+  {
+   "word": "director",
+   "ipa": "/dəˈrektər/",
+   "def": "n. 导演；主任，主管",
+   "freq": 19,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "The director of the community center, he loved the idea. So now any adult can come in if they want to become better readers."
+  },
+  {
+   "word": "marketing",
+   "ipa": "/ˈmɑːrkɪtɪŋ/",
+   "def": "n. 市场营销",
+   "freq": 19,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Marketing focuses on selling your product or service? uh, y'know, attracting customers through advertising, and also building relationships with customers."
+  },
+  {
+   "word": "teaching",
+   "ipa": "/ˈtiːtʃɪŋ/",
+   "def": "n. 教学；教导",
+   "freq": 18,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "I’m teaching two seminars, your intro course, finishing up my research …"
+  },
+  {
+   "word": "chapter",
+   "ipa": "/ˈtʃæptər/",
+   "def": "n. 章节",
+   "freq": 18,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Chapters 3 and 4 from your textbook …"
+  },
+  {
+   "word": "author",
+   "ipa": "/ˈɔːθər/",
+   "def": "n. 作者，作家",
+   "freq": 18,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "And the author leaves the reader with unanswered questions about the motives of the main character? Why would the author do this?"
+  },
+  {
+   "word": "employee",
+   "ipa": "/ɪmˈplɔɪiː/",
+   "def": "n. 雇员，员工",
+   "freq": 93,
+   "docs": 24,
+   "listening_specific": false,
+   "example": "Employee: Yes. I have it right here."
+  },
+  {
+   "word": "check",
+   "ipa": "/tʃek/",
+   "def": "v. 检查，核实 n. 检查；支票（check out 借出）",
+   "freq": 42,
+   "docs": 27,
+   "listening_specific": false,
+   "example": "Check across the street."
+  },
+  {
+   "word": "company",
+   "ipa": "/ˈkʌmpəni/",
+   "def": "n. 公司；陪伴",
+   "freq": 30,
+   "docs": 10,
+   "listening_specific": false,
+   "example": "I never imagined that one company could have over 30 audiences to communicate with."
+  },
+  {
+   "word": "copy",
+   "ipa": "/ˈkɑːpi/",
+   "def": "n. 副本，一份；v. 复制",
+   "freq": 26,
+   "docs": 14,
+   "listening_specific": false,
+   "example": "Seven cents a copy."
+  },
+  {
+   "word": "career",
+   "ipa": "/kəˈrɪr/",
+   "def": "n. 职业，生涯",
+   "freq": 25,
+   "docs": 7,
+   "listening_specific": false,
+   "example": "Ask at the career services office—they’ll tell you the same thing."
+  }
+ ],
+ "日常短语 Daily Phrases": [
+  {
+   "word": "jot down",
+   "ipa": "/ˈdʒɑːt daʊn/",
+   "def": "v. 匆匆记下，草草记下",
+   "freq": 2,
+   "docs": 2,
+   "listening_specific": true,
+   "example": "I carry a little pad with me all the time and jot down questions or ideas that I don't want to forget. （来源：TPO2-C1 研究项目写作）"
+  },
+  {
+   "word": "put sb. off",
+   "ipa": "/ˌpʊt ˈɔːf/",
+   "def": "v. 使…打消念头/失去兴趣；使…反感",
+   "freq": 1,
+   "docs": 1,
+   "listening_specific": true,
+   "example": "So that was enough to put people off for over 200 years! （来源：TPO10-L2 美洲粮食作物）"
+  }
+ ],
+ "生物学 Biology": [
+  {
+   "word": "specie",
+   "ipa": "/ˈspiːʃiːz/",
+   "def": "物种",
+   "freq": 167,
+   "docs": 43,
+   "listening_specific": true,
+   "example": "The species in a system, uh—and even the landscape itself—they're interdependent."
+  },
+  {
+   "word": "behavior",
+   "ipa": "/bɪˈheɪvjər/",
+   "def": "n. 行为",
+   "freq": 82,
+   "docs": 22,
+   "listening_specific": true,
+   "example": "the behavior makes sense—"
+  },
+  {
+   "word": "temperature",
+   "ipa": "/ˈtɛmpərətʃər/",
+   "def": "n. 温度",
+   "freq": 62,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "Cold temperatures actually seem to help spores survive."
+  },
+  {
+   "word": "environment",
+   "ipa": "/ɪnˈvaɪrənmənt/",
+   "def": "n. 环境",
+   "freq": 61,
+   "docs": 31,
+   "listening_specific": true,
+   "example": "The immediate environment of the bird—its immediate, um, its relationship to its immediate environment seems to play a part in which behavior it will display."
+  },
+  {
+   "word": "habitat",
+   "ipa": "/ˈhæbɪtæt/",
+   "def": "n. 栖息地；生长地",
+   "freq": 61,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "With active habitat selection, an organism is able to physically select where to live and breed,"
+  },
+  {
+   "word": "researcher",
+   "ipa": "/rɪˈsɜːrtʃər/",
+   "def": "n. 研究者；研究员",
+   "freq": 60,
+   "docs": 23,
+   "listening_specific": true,
+   "example": "Researchers give them a mirror mark test."
+  },
+  {
+   "word": "energy",
+   "ipa": "/ˈenərdʒi/",
+   "def": "n. 能量；精力",
+   "freq": 60,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "Well, some of the energy is gonna be reflected back, and some of it's gonna be transmitted into the second medium."
+  },
+  {
+   "word": "system",
+   "ipa": "/ˈsɪstəm/",
+   "def": "n. 系统；体系；制度",
+   "freq": 53,
+   "docs": 22,
+   "listening_specific": true,
+   "example": "This system–organizing all life into these two kingdoms– worked very well for quite a while, even into the age of the microscope."
+  },
+  {
+   "word": "life",
+   "ipa": "/laɪf/",
+   "def": "n. 生活；生命",
+   "freq": 52,
+   "docs": 32,
+   "listening_specific": true,
+   "example": "So, later on in life, there are fewer and fewer of these naive T cells left to deal with any new disease-causing organisms that might attack. Which means less immunity, and the animal—or person—is more likely to get sick."
+  },
+  {
+   "word": "forest",
+   "ipa": "/ˈfɔːrɪst/",
+   "def": "n. 森林",
+   "freq": 52,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "Forests management impacts soil quality."
+  },
+  {
+   "word": "biology",
+   "ipa": "/baɪˈɑːlədʒi/",
+   "def": "n. 生物学",
+   "freq": 51,
+   "docs": 47,
+   "listening_specific": true,
+   "example": "I spoke to my biology professor, and she doesn't mind that I'm using the lab over the break."
+  },
+  {
+   "word": "experiment",
+   "ipa": "/ɪkˈsperɪmənt/",
+   "def": "n. 实验；v. 做实验",
+   "freq": 51,
+   "docs": 19,
+   "listening_specific": true,
+   "example": "This experiment was called the Pampas experiment."
+  },
+  {
+   "word": "process",
+   "ipa": "/ˈprɑːsɛs/",
+   "def": "n. 过程，作用；v. 处理",
+   "freq": 50,
+   "docs": 26,
+   "listening_specific": true,
+   "example": "In order to process the solid waste, the kind we find in landfills, you had to pretreat the solids to turn them into sludge."
+  },
+  {
+   "word": "predator",
+   "ipa": "/ˈpredətər/",
+   "def": "n. 捕食者；掠食动物",
+   "freq": 49,
+   "docs": 19,
+   "listening_specific": true,
+   "example": "predators that would just love some little chicks to snack on."
+  },
+  {
+   "word": "dinosaur",
+   "ipa": "/ˈdaɪnəsɔːr/",
+   "def": "n. 恐龙",
+   "freq": 49,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "But dinosaurs were ferocious reptiles—and reptiles don't take care of their young, do they?"
+  },
+  {
+   "word": "population",
+   "ipa": "/ˌpɑːpjuˈleɪʃn/",
+   "def": "n. 人口",
+   "freq": 48,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "And its population increased dramatically, with various sub-populations migrating into different parts of the ocean."
+  },
+  {
+   "word": "ability",
+   "ipa": "/əˈbɪləti/",
+   "def": "n. 能力；才能",
+   "freq": 44,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "So the ability to share a focus of attention with someone else that's joint attention."
+  },
+  {
+   "word": "theory",
+   "ipa": "/ˈθɪəri/",
+   "def": "n. 理论，学说",
+   "freq": 42,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "One theory is that they were hunted to extinction by humans."
+  },
+  {
+   "word": "nest",
+   "ipa": "/nest/",
+   "def": "n. 巢；窝",
+   "freq": 42,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "They actually nest in the shrubs, not the trees."
+  },
+  {
+   "word": "coral",
+   "ipa": "/ˈkɔːrəl/",
+   "def": "n. 珊瑚",
+   "freq": 41,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Coral reefs, for example, support over 4000 types of fish, along with sponges, crustaceans, and many other organisms."
+  },
+  {
+   "word": "flower",
+   "ipa": "/ˈflaʊər/",
+   "def": "n. 花；v. 开花",
+   "freq": 40,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "When the flowers of the royal water lily first open up, when they first bloom, they are white."
+  },
+  {
+   "word": "organism",
+   "ipa": "/ˈɔːrɡənɪzəm/",
+   "def": "n. 生物，有机体",
+   "freq": 39,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "And the organism, the plant, reacts to this signal."
+  },
+  {
+   "word": "relationship",
+   "ipa": "/rɪˈleɪʃnʃɪp/",
+   "def": "n. 关系",
+   "freq": 35,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "sure. Relationships take time and emotional energy. And most of us don't have unlimited amounts of either."
+  },
+  {
+   "word": "bacteria",
+   "ipa": "/bækˈtɪriə/",
+   "def": "n. 细菌（复数）",
+   "freq": 35,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Bacteria are one example of microbes."
+  },
+  {
+   "word": "organic",
+   "ipa": "/ɔːrˈɡænɪk/",
+   "def": "adj. 有机的",
+   "freq": 35,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "So organic waste from landfills could be processed this way?"
+  },
+  {
+   "word": "research",
+   "ipa": "/rɪˈsɜːrtʃ/",
+   "def": "n./v. 研究",
+   "freq": 34,
+   "docs": 26,
+   "listening_specific": true,
+   "example": "The research showed that in adulthood, the songbirds’ brains created new neurons and that these new cells helped them remember how to sing new songs."
+  },
+  {
+   "word": "survive",
+   "ipa": "/sərˈvaɪv/",
+   "def": "v. 存活；幸存",
+   "freq": 32,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "You survive on what's left over. Water, food, nesting or breeding sites, ...whatever."
+  },
+  {
+   "word": "ecosystem",
+   "ipa": "/ˈiːkoʊsɪstəm/",
+   "def": "n. 生态系统",
+   "freq": 31,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "Ecosystems are fragmented."
+  },
+  {
+   "word": "leaf",
+   "ipa": "/liːf/",
+   "def": "n. 叶；叶子",
+   "freq": 30,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "since, um, when they stop beating their wings, they’d be much harder for the bat to distinguish from, oh, a-a leaf… or-or some other object…"
+  },
+  {
+   "word": "fossil",
+   "ipa": "/ˈfɑːsəl/",
+   "def": "n. 化石",
+   "freq": 30,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "By \"fossils,\"we mean traces of prehistoric animals–such as bones, which become mineralized ...or impressions of bones or organs that're left in stone..."
+  },
+  {
+   "word": "pressure",
+   "ipa": "/ˈprɛʃər/",
+   "def": "n. 压力，压强",
+   "freq": 30,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "The pressure decreases and the supercritical carbon dioxide changes back into a gas, which then releases the caffeine in a crystallized form."
+  },
+  {
+   "word": "protein",
+   "ipa": "/ˈproʊtiːn/",
+   "def": "n. 蛋白质",
+   "freq": 28,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "Those proteins are very difficult to make, to just assemble in a lab,"
+  },
+  {
+   "word": "chemical",
+   "ipa": "/ˈkemɪkl/",
+   "def": "adj. 化学的 n. 化学物质",
+   "freq": 27,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "and this chemical reaction is what produces organic material, which is the food for larger organisms."
+  },
+  {
+   "word": "creature",
+   "ipa": "/ˈkriːtʃər/",
+   "def": "n. 生物；动物",
+   "freq": 27,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "Warm-blooded creatures are closer to us. They are more active. They move faster. They can live in a wider range of environments than cold-blooded creatures."
+  },
+  {
+   "word": "affect",
+   "ipa": "/əˈfekt/",
+   "def": "v. 影响",
+   "freq": 26,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "It also affects our relationships with people around us."
+  },
+  {
+   "word": "surface",
+   "ipa": "/ˈsɜːrfəs/",
+   "def": "n. 表面，地表",
+   "freq": 25,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "Their vast surface area allows them to break down and take in huge amounts of nutrients. But beyond that, the filiments also pull out of the soil a great deal of the pollution that might be in there, especially heavy metals."
+  },
+  {
+   "word": "cycle",
+   "ipa": "/ˈsaɪkl/",
+   "def": "n. 循环；周期",
+   "freq": 25,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "It happens in cycles."
+  },
+  {
+   "word": "mammal",
+   "ipa": "/ˈmæml/",
+   "def": "n. 哺乳动物",
+   "freq": 25,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "—mammals and birds are the classes that fall under this category"
+  },
+  {
+   "word": "material",
+   "ipa": "/məˈtɪriəl/",
+   "def": "n. 材料，素材",
+   "freq": 24,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "But a new material developed recently has a tensile strength higher than diamond, yet it's much more flexible."
+  },
+  {
+   "word": "nutrient",
+   "ipa": "/ˈnuːtriənt/",
+   "def": "n. 营养物质",
+   "freq": 24,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "Some nutrients are quite scarce; there just isn’t much of them in the environment,"
+  },
+  {
+   "word": "seed",
+   "ipa": "/siːd/",
+   "def": "n. 种子",
+   "freq": 24,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "And if the seeds land in a suitable habitat, they do well and reproduce."
+  },
+  {
+   "word": "feather",
+   "ipa": "/ˈfeðər/",
+   "def": "n. 羽毛",
+   "freq": 23,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "And, feathers are very useful for conserving body heat in cold temperatures."
+  },
+  {
+   "word": "attention",
+   "ipa": "/əˈtenʃn/",
+   "def": "n. 注意力",
+   "freq": 23,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "So what kind of attention are they attracting? And why?"
+  },
+  {
+   "word": "migration",
+   "ipa": "/maɪˈɡreɪʃn/",
+   "def": "n. 迁移，迁徙",
+   "freq": 23,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Assisted migration means picking up members of a species—or members of a group of interdependent species—and physically moving, or translocating them..."
+  },
+  {
+   "word": "insect",
+   "ipa": "/ˈɪnsekt/",
+   "def": "n. 昆虫",
+   "freq": 22,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "The insects, for instance, rest. But they don't sleep."
+  },
+  {
+   "word": "support",
+   "ipa": "/səˈpɔːrt/",
+   "def": "v. 支持；支撑；n. 支持",
+   "freq": 20,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "Some scientists support it because, well for one thing, it means you don't have to rely on the existing coral to reestablish itself because it might not be able to."
+  },
+  {
+   "word": "structure",
+   "ipa": "/ˈstrʌktʃər/",
+   "def": "n. 结构；建筑物",
+   "freq": 20,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "and that long skeletal structure suggests that it was aquatic …"
+  },
+  {
+   "word": "oxygen",
+   "ipa": "/ˈɑːksɪdʒən/",
+   "def": "n. 氧气",
+   "freq": 19,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Oxygen, sulfur, hydrogen, nitrogen, and organic compounds."
+  },
+  {
+   "word": "biologist",
+   "ipa": "/baɪˈɑːlədʒɪst/",
+   "def": "n. 生物学家",
+   "freq": 18,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Biologists now recognize three domains."
+  },
+  {
+   "word": "evolution",
+   "ipa": "/ˌevəˈluːʃn/",
+   "def": "n. 进化",
+   "freq": 17,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Well, as you know, the evolution of any species is largely influenced by its interactions with other species."
+  },
+  {
+   "word": "organ",
+   "ipa": "/ˈɔːrɡən/",
+   "def": "n. 器官",
+   "freq": 16,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "Organelles are parts that function, like miniature organs, specialized parts of a cell, like the nucleus that stores the DNA or mitochondria, which are the powerhouse of a cell. Okay?"
+  },
+  {
+   "word": "reptile",
+   "ipa": "/ˈreptaɪl/",
+   "def": "n. 爬行动物",
+   "freq": 16,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Well, some reptiles incubate their eggs—crocodiles do."
+  },
+  {
+   "word": "cognitive",
+   "ipa": "/ˈkɑːɡnətɪv/",
+   "def": "adj. 认知的",
+   "freq": 16,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "In cognitive psychology we have a phrase for this kind of inaccurate “filling in” of details."
+  },
+  {
+   "word": "social",
+   "ipa": "/ˈsoʊʃl/",
+   "def": "adj. 社会的；群居的",
+   "freq": 16,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "So, um, their social behavior's so different from the eastern marmots' because of the climate where they live?"
+  },
+  {
+   "word": "prey",
+   "ipa": "/preɪ/",
+   "def": "n. 猎物；v. 捕食",
+   "freq": 15,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "The octopus is prey to many species, including humans, so how does it escape its predators?"
+  },
+  {
+   "word": "evidence",
+   "ipa": "/ˈɛvɪdəns/",
+   "def": "n. 证据",
+   "freq": 38,
+   "docs": 22,
+   "listening_specific": false,
+   "example": "there's evidence of sauropods in the fossil record for an"
+  },
+  {
+   "word": "hypothesis",
+   "ipa": "/haɪˈpɑːθəsɪs/",
+   "def": "n. 假说，假设",
+   "freq": 37,
+   "docs": 12,
+   "listening_specific": false,
+   "example": "One hypothesis is that it's a natural phenomenon, that the starfish naturally undergo population fluctuations following particularly good spawning years."
+  },
+  {
+   "word": "liquid",
+   "ipa": "/ˈlɪkwɪd/",
+   "def": "n. 液体",
+   "freq": 22,
+   "docs": 7,
+   "listening_specific": false,
+   "example": "Ethanol is a liquid, a kind of alcohol that is derived from processing sugars from plants, often corn,"
+  },
+  {
+   "word": "climate",
+   "ipa": "/ˈklaɪmət/",
+   "def": "n. 气候",
+   "freq": 20,
+   "docs": 11,
+   "listening_specific": false,
+   "example": "Because the climate is so harsh, cooperation increases the survival rate of the Olympic marmots."
+  }
+ ],
+ "地质学 Geology": [
+  {
+   "word": "temperature",
+   "ipa": "/ˈtɛmpərətʃər/",
+   "def": "n. 温度",
+   "freq": 62,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "If temperatures overnight are already very close to the freezing point, then, this drop of just a few degrees can take the temperature below freezing..."
+  },
+  {
+   "word": "layer",
+   "ipa": "/ˈleɪər/",
+   "def": "n. 层，地层，岩层",
+   "freq": 59,
+   "docs": 15,
+   "listening_specific": true,
+   "example": "Some layers are mostly limestone,and limestone erodes pretty quickly in the presence of any kind of acid."
+  },
+  {
+   "word": "life",
+   "ipa": "/laɪf/",
+   "def": "n. 生活；生命",
+   "freq": 43,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "So life during the Permian Period was abundant and diverse."
+  },
+  {
+   "word": "mineral",
+   "ipa": "/ˈmɪnərəl/",
+   "def": "n. 矿物，矿物质",
+   "freq": 42,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Clay minerals are called secondary minerals, because their composition has been altered."
+  },
+  {
+   "word": "process",
+   "ipa": "/ˈprɑːsɛs/",
+   "def": "n. 过程，作用；v. 处理",
+   "freq": 40,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "The process is going on within the earth during that time, the convection of molten rock within earth's mantle, rising to the surface cooling and then sinking again, the volcanic activity, earthquakes."
+  },
+  {
+   "word": "energy",
+   "ipa": "/ˈenərdʒi/",
+   "def": "n. 能量；精力",
+   "freq": 37,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "and the heat energy that was stored in the water vapor is released into the new environment. Okay?"
+  },
+  {
+   "word": "surface",
+   "ipa": "/ˈsɜːrfəs/",
+   "def": "n. 表面，地表",
+   "freq": 36,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "Also, in surface water, there's a weak acid, carbonic acid—not sulfuric acid, but carbonic acid, that helps dissolve the rock."
+  },
+  {
+   "word": "material",
+   "ipa": "/məˈtɪriəl/",
+   "def": "n. 材料，素材",
+   "freq": 34,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "Some materials move more easily than others."
+  },
+  {
+   "word": "plate",
+   "ipa": "/pleɪt/",
+   "def": "n. 板块（地壳）；板",
+   "freq": 31,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "These plates…uh…now these tectonic plates support the continents and oceans."
+  },
+  {
+   "word": "fossil",
+   "ipa": "/ˈfɑːsəl/",
+   "def": "n. 化石",
+   "freq": 30,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "The exploitation of fossil fuels has brought planetwide developments—industrialization, construction, uh, mass transport. And these developments have caused major changes, like additional erosion of the Earth's surface and deforestation."
+  },
+  {
+   "word": "crack",
+   "ipa": "/kræk/",
+   "def": "n. 裂缝，裂隙；v. 裂开",
+   "freq": 29,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Dried mud has cracks, because when it dries, it contracts, it shrinks."
+  },
+  {
+   "word": "flow",
+   "ipa": "/floʊ/",
+   "def": "n./v. 流动，水流，熔岩流",
+   "freq": 25,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "But how they flow, the way they flow needs some explaining."
+  },
+  {
+   "word": "mass",
+   "ipa": "/mæs/",
+   "def": "n. 质量；大量（物质）",
+   "freq": 24,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "and masses of cooler air over polar regions"
+  },
+  {
+   "word": "researcher",
+   "ipa": "/rɪˈsɜːrtʃər/",
+   "def": "n. 研究者；研究员",
+   "freq": 23,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Researchers can drill core samples, uh, basically get a cross section of a tree without having to kill it, look at the rings and get a picture of what the climate was like in the basin for each of the tree's years."
+  },
+  {
+   "word": "pressure",
+   "ipa": "/ˈprɛʃər/",
+   "def": "n. 压力，压强",
+   "freq": 22,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "and with less pressure, the oil and gas are able to separate."
+  },
+  {
+   "word": "sediment",
+   "ipa": "/ˈsɛdɪmənt/",
+   "def": "n. 沉积物，沉淀",
+   "freq": 21,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Uh, sediment, as you know, is material like sand, gravel ⋯ fossil fragments ⋯ that is transported by natural processes, like wind, water flow, or the movement of glaciers."
+  },
+  {
+   "word": "chemical",
+   "ipa": "/ˈkemɪkl/",
+   "def": "adj. 化学的 n. 化学物质",
+   "freq": 16,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Now, chemical weathering, uh... that's the chemical breakup of rocks."
+  },
+  {
+   "word": "geology",
+   "ipa": "/dʒiˈɑːlədʒi/",
+   "def": "n. 地质学",
+   "freq": 15,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "Is this for a geology class?"
+  },
+  {
+   "word": "fuel",
+   "ipa": "/ˈfjuːəl/",
+   "def": "n. 燃料",
+   "freq": 14,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "So burning biomass fuel produces sort of “not-so-bad” carbon."
+  },
+  {
+   "word": "climate",
+   "ipa": "/ˈklaɪmət/",
+   "def": "n. 气候",
+   "freq": 52,
+   "docs": 14,
+   "listening_specific": false,
+   "example": "A microclimate is a group of climate conditions that affect a localized area—weather features like temperature, wind, moisture, and so on ..."
+  },
+  {
+   "word": "desert",
+   "ipa": "/ˈdɛzərt/",
+   "def": "n. 沙漠",
+   "freq": 29,
+   "docs": 6,
+   "listening_specific": false,
+   "example": "In desert conditions, annual plants grow in the fall or spring to avoid the heat of summer and the cold of winter."
+  },
+  {
+   "word": "atmosphere",
+   "ipa": "/ˈætməsfɪr/",
+   "def": "n. 大气，大气层",
+   "freq": 23,
+   "docs": 7,
+   "listening_specific": false,
+   "example": "Think of the atmosphere as a big bathtub:"
+  },
+  {
+   "word": "crust",
+   "ipa": "/krʌst/",
+   "def": "n. 地壳",
+   "freq": 20,
+   "docs": 5,
+   "listening_specific": false,
+   "example": "OK, we know the Earth's surface—the crust—is made up of tectonic plates … and that these huge slabs of rocky crust are slowly sliding over or under or past each other."
+  },
+  {
+   "word": "hypothesis",
+   "ipa": "/haɪˈpɑːθəsɪs/",
+   "def": "n. 假说，假设",
+   "freq": 20,
+   "docs": 5,
+   "listening_specific": false,
+   "example": "This hypothesis is based on the direction the Americas are moving in now."
+  },
+  {
+   "word": "impact",
+   "ipa": "/ˈɪmpækt/",
+   "def": "n. 撞击，影响；v. 撞击",
+   "freq": 15,
+   "docs": 6,
+   "listening_specific": false,
+   "example": "In the centers of impact craters on the moon's surface."
+  }
+ ],
+ "天文学 Astronomy": [
+  {
+   "word": "planet",
+   "ipa": "/ˈplænɪt/",
+   "def": "n. 行星",
+   "freq": 112,
+   "docs": 19,
+   "listening_specific": true,
+   "example": "Exoplanets are planets that orbit around a star other than our Sun, right?"
+  },
+  {
+   "word": "star",
+   "ipa": "/stɑːr/",
+   "def": "n. 恒星，星星",
+   "freq": 80,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "Small stars, well, that term is relative, isn’t it? It’s hard to imagine the massive distance we are talking about here."
+  },
+  {
+   "word": "solar",
+   "ipa": "/ˈsoʊlər/",
+   "def": "adj. 太阳的",
+   "freq": 71,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "Solar energy is everywhere, but it's also quite diffused."
+  },
+  {
+   "word": "energy",
+   "ipa": "/ˈenərdʒi/",
+   "def": "n. 能量；精力",
+   "freq": 51,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Solar energy is everywhere, but it's also quite diffused."
+  },
+  {
+   "word": "moon",
+   "ipa": "/muːn/",
+   "def": "n. 月球，月亮；卫星",
+   "freq": 51,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "A moon in a system as complex as Saturn's—and Saturn has at least 49 known moons, which vary tremendously in size and shape."
+  },
+  {
+   "word": "theory",
+   "ipa": "/ˈθɪəri/",
+   "def": "n. 理论，学说",
+   "freq": 50,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "The theory is that huge rivers and wind carried the sand west, where it mixed in with the sand that was already there."
+  },
+  {
+   "word": "system",
+   "ipa": "/ˈsɪstəm/",
+   "def": "n. 系统；体系；制度",
+   "freq": 46,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "Passive systems take advantage of the location or design of a house—"
+  },
+  {
+   "word": "surface",
+   "ipa": "/ˈsɜːrfəs/",
+   "def": "n. 表面，地表",
+   "freq": 33,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "A surface's albedo is the percentage of incoming solar energy...sunlight...that's reflected off that surface back into space."
+  },
+  {
+   "word": "telescope",
+   "ipa": "/ˈtɛlɪskoʊp/",
+   "def": "n. 望远镜",
+   "freq": 29,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "And telescopes, remember, were getting better."
+  },
+  {
+   "word": "material",
+   "ipa": "/məˈtɪriəl/",
+   "def": "n. 材料，素材",
+   "freq": 24,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Material, meaning gas."
+  },
+  {
+   "word": "particle",
+   "ipa": "/ˈpɑːrtɪkəl/",
+   "def": "n. 粒子，微粒",
+   "freq": 23,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "These particles break off from the sun and blow away in all directions. This movement of charged particles is called “solar wind”."
+  },
+  {
+   "word": "giant",
+   "ipa": "/ˈdʒaɪənt/",
+   "def": "adj. 巨大的；n. 巨人，巨星",
+   "freq": 23,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "When a giant star explodes like this, it’s called a supernova."
+  },
+  {
+   "word": "orbit",
+   "ipa": "/ˈɔːrbɪt/",
+   "def": "n. 轨道；v. 绕…运行",
+   "freq": 23,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Gliese 581e orbits its host star in a much shorter period of time than the other planets in the system, meaning it's very close to the star. And therefore too hot for water, for an ocean."
+  },
+  {
+   "word": "astronomer",
+   "ipa": "/əˈstrɑːnəmər/",
+   "def": "n. 天文学家",
+   "freq": 22,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Astronomers tried to estimate what solar mass could produce the required luminosity to explain liquid water on these planets."
+  },
+  {
+   "word": "magnetic",
+   "ipa": "/mæɡˈnɛtɪk/",
+   "def": "adj. 磁性的",
+   "freq": 22,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Well, geomagnetic activity… the natural variations in the Earth’s magnetic field… it fluctuates in eleven-year cycles. Um,"
+  },
+  {
+   "word": "saturn",
+   "ipa": "/ˈsætərn/",
+   "def": "n. 土星",
+   "freq": 22,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "But Saturn's rings—most of them, anyway—are pristine...so bright and shiny that they make Saturn the jewel of the solar system."
+  },
+  {
+   "word": "dust",
+   "ipa": "/dʌst/",
+   "def": "n. 尘埃，宇宙尘埃",
+   "freq": 20,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Um, dust—little grains of rock and metal within the disk collided with each other and stuck together. And this process sorta snowballed over millions of years ...until the chunks grew into mini-planets—protoplanets."
+  },
+  {
+   "word": "formation",
+   "ipa": "/fɔːrˈmeɪʃən/",
+   "def": "n. 形成，构成；地层",
+   "freq": 19,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Last week we discussed the formation of Earth and the other rocky planets—the planets in the inner solar system."
+  },
+  {
+   "word": "universe",
+   "ipa": "/ˈjuːnɪvɜːrs/",
+   "def": "n. 宇宙",
+   "freq": 17,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "If the Sun was at the center of the universe, things would fall toward the Sun—and away from the Earth. Which of course they didn't."
+  },
+  {
+   "word": "jupiter",
+   "ipa": "/ˈdʒuːpɪtər/",
+   "def": "n. 木星",
+   "freq": 15,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Jupiter, Saturn, Uranus, and Neptune."
+  },
+  {
+   "word": "discovery",
+   "ipa": "/dɪˈskʌvəri/",
+   "def": "n. 发现",
+   "freq": 14,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "The discovery of...?"
+  },
+  {
+   "word": "century",
+   "ipa": "/ˈsentʃəri/",
+   "def": "n. 世纪",
+   "freq": 14,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "By the early twentieth century, it was found that Earth’s magnetic field is constantly being bombarded by charged particles streaming from the Sun—we call it solar wind."
+  },
+  {
+   "word": "radiation",
+   "ipa": "/ˌreɪdiˈeɪʃən/",
+   "def": "n. 辐射",
+   "freq": 14,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "And one way we keep track of the radiation budget is by looking at the albedo of the different surfaces on the planet."
+  },
+  {
+   "word": "molecule",
+   "ipa": "/ˈmɑːlɪkjuːl/",
+   "def": "n. 分子",
+   "freq": 14,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Any water molecules that found their way to the floors of craters near the Moon's poles, that water would be perpetually frozen because the floors of those craters are always in shadow."
+  },
+  {
+   "word": "mass",
+   "ipa": "/mæs/",
+   "def": "n. 质量；大量（物质）",
+   "freq": 13,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "This mass reaches our planet’s magnetic field in anywhere from just several hours to a few days."
+  },
+  {
+   "word": "astronomy",
+   "ipa": "/əˈstrɑːnəmi/",
+   "def": "n. 天文学",
+   "freq": 26,
+   "docs": 17,
+   "listening_specific": false,
+   "example": "In astronomy, for example, the distinction between the solar system and the universe wasn't clear until modern times."
+  },
+  {
+   "word": "atmosphere",
+   "ipa": "/ˈætməsfɪr/",
+   "def": "n. 大气，大气层",
+   "freq": 22,
+   "docs": 10,
+   "listening_specific": false,
+   "example": "When these bits enter Earth's atmosphere, well, that makes them so special that they get a special name. They are called “meteors.”"
+  },
+  {
+   "word": "evidence",
+   "ipa": "/ˈɛvɪdəns/",
+   "def": "n. 证据",
+   "freq": 17,
+   "docs": 7,
+   "listening_specific": false,
+   "example": "So what evidence of a liquid water environment did we find in rock samples taken from the oldest rocks on Earth?"
+  }
+ ],
+ "历史学/考古学 History & Archaeology": [
+  {
+   "word": "site",
+   "ipa": "/saɪt/",
+   "def": "n. 遗址；地点",
+   "freq": 48,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "At the site in Kuk, they used an array of modern archaeological methods to analyze sediment samples from the soil."
+  },
+  {
+   "word": "ancient",
+   "ipa": "/ˈeɪnʃənt/",
+   "def": "adj. 古代的",
+   "freq": 42,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "Well, ancient peoples nevertheless had literature, but it was an oral literature, a spoken body of legends, myths, poems, which were occasionally written down, but mostly memorized and passed down from generation to generation."
+  },
+  {
+   "word": "stone",
+   "ipa": "/stoʊn/",
+   "def": "n. 石头，石材",
+   "freq": 33,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "The stone blocks are too narrow to provide a base."
+  },
+  {
+   "word": "american",
+   "ipa": "/əˈmerɪkən/",
+   "def": "adj. 美国的；n. 美国人",
+   "freq": 29,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "American crops’ve probably contributed a lot to European cooking over the years, but…"
+  },
+  {
+   "word": "history",
+   "ipa": "/ˈhɪstəri/",
+   "def": "n. 历史",
+   "freq": 27,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "So, in the early history of the United States, Columbus represented an escape from the political institutions of Europe;"
+  },
+  {
+   "word": "culture",
+   "ipa": "/ˈkʌltʃər/",
+   "def": "n. 文化",
+   "freq": 26,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "The Botai culture thrived over 5,000 years ago in central Asia, in what is now northern Kazakhstan."
+  },
+  {
+   "word": "period",
+   "ipa": "/ˈpɪriəd/",
+   "def": "n. 时期，时代",
+   "freq": 25,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "The period after this—after the Classic period—is called the“Postclassic period.”"
+  },
+  {
+   "word": "settlement",
+   "ipa": "/ˈsetlmənt/",
+   "def": "n. 定居点；殖民地",
+   "freq": 24,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "In one settlement that was only partially excavated, archaeologists have already found four of these structures."
+  },
+  {
+   "word": "europe",
+   "ipa": "/ˈjʊrəp/",
+   "def": "n. 欧洲",
+   "freq": 24,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Student: Medieval Europe. But what about the South?"
+  },
+  {
+   "word": "structure",
+   "ipa": "/ˈstrʌktʃər/",
+   "def": "n. 结构；建筑物",
+   "freq": 24,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "These structures are called “passage graves”—because the inner chamber—sometimes several chambers, in fact—could only be entered from the outside through a narrow passageway."
+  },
+  {
+   "word": "america",
+   "ipa": "/əˈmerɪkə/",
+   "def": "n. 美洲；美国",
+   "freq": 23,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "South America, right—the Andes Mountains."
+  },
+  {
+   "word": "system",
+   "ipa": "/ˈsɪstəm/",
+   "def": "n. 系统；体系；制度",
+   "freq": 23,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "With no formal system of education,most people were illiterate."
+  },
+  {
+   "word": "society",
+   "ipa": "/səˈsaɪəti/",
+   "def": "n. 社会",
+   "freq": 22,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "The center of Lamanai society had previously been in the northern part of the city—"
+  },
+  {
+   "word": "civilization",
+   "ipa": "/ˌsɪvələˈzeɪʃn/",
+   "def": "n. 文明",
+   "freq": 21,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "the civilization was in what's considered a “golden age” of cultural achievement—what we call the“Classic period.”"
+  },
+  {
+   "word": "archaeologist",
+   "ipa": "/ˌɑːrkiˈɑːlədʒɪst/",
+   "def": "n. 考古学家",
+   "freq": 20,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Archaeologists have uncovered numerous circular structures.... dating from that period.... that appear to have been used to store grain."
+  },
+  {
+   "word": "archaeology",
+   "ipa": "/ˌɑːrkiˈɑːlədʒi/",
+   "def": "n. 考古学",
+   "freq": 17,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "I've worked in archaeology pretty much all my adult life."
+  },
+  {
+   "word": "agricultural",
+   "ipa": "/ˌæɡrɪˈkʌltʃərəl/",
+   "def": "adj. 农业的",
+   "freq": 17,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "This used to be an agricultural area, and we already know that where the main lecture hall now stands there once were a farmhouse and barn that were erected in the late 1700s."
+  },
+  {
+   "word": "crop",
+   "ipa": "/krɑːp/",
+   "def": "n. 农作物，庄稼",
+   "freq": 16,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "The crops on chinampas definitely benefitted from the water surrounding them,"
+  },
+  {
+   "word": "tool",
+   "ipa": "/tuːl/",
+   "def": "n. 工具",
+   "freq": 16,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "The sharpest tools of the entire Stone Age were made of obsidian,"
+  },
+  {
+   "word": "egyptian",
+   "ipa": "/ɪˈdʒɪpʃn/",
+   "def": "adj. 埃及的；n. 埃及人",
+   "freq": 16,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Egyptian life basically revolved around the mysterious rise and fall of the river."
+  },
+  {
+   "word": "century",
+   "ipa": "/ˈsentʃəri/",
+   "def": "n. 世纪",
+   "freq": 15,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Within the next century and a half, that becomes the accepted, dominant number system in Western Europe."
+  },
+  {
+   "word": "historian",
+   "ipa": "/hɪˈstɔːriən/",
+   "def": "n. 历史学家",
+   "freq": 15,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "So, as historians, we wouldn’t want to study these myths about Columbus and mistake them for facts about Columbus."
+  },
+  {
+   "word": "trade",
+   "ipa": "/treɪd/",
+   "def": "n. 贸易；v. 交易",
+   "freq": 13,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Did they trade with those other civilizations?"
+  },
+  {
+   "word": "egypt",
+   "ipa": "/ˈiːdʒɪpt/",
+   "def": "n. 埃及",
+   "freq": 12,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "He visited Egypt around 450 B.C.E., when the Pyramid was already 2000 years old."
+  },
+  {
+   "word": "agriculture",
+   "ipa": "/ˈæɡrɪkʌltʃər/",
+   "def": "n. 农业",
+   "freq": 12,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Those cradles of agriculture include the Middle East, China and Southeast Asia, and parts of the Americas."
+  },
+  {
+   "word": "asia",
+   "ipa": "/ˈeɪʒə/",
+   "def": "n. 亚洲",
+   "freq": 12,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "But other number systems developed in Asia, systems that do incorporate zero."
+  }
+ ],
+ "艺术史/艺术 Art History": [
+  {
+   "word": "artist",
+   "ipa": "/ˈɑːrtɪst/",
+   "def": "n. 艺术家",
+   "freq": 150,
+   "docs": 30,
+   "listening_specific": true,
+   "example": "Artists had to plan the work carefully.... divide it into several days."
+  },
+  {
+   "word": "painting",
+   "ipa": "/ˈpeɪntɪŋ/",
+   "def": "n. 绘画，油画",
+   "freq": 141,
+   "docs": 28,
+   "listening_specific": true,
+   "example": "Paintings were signed by the artist, and that used to be understood to be a mark of Renaissance individualism."
+  },
+  {
+   "word": "music",
+   "ipa": "/ˈmjuːzɪk/",
+   "def": "n. 音乐",
+   "freq": 121,
+   "docs": 17,
+   "listening_specific": true,
+   "example": "Music critics called the piece ridiculous."
+  },
+  {
+   "word": "play",
+   "ipa": "/pleɪ/",
+   "def": "n. 戏剧，剧本；v. 演奏",
+   "freq": 104,
+   "docs": 26,
+   "listening_specific": true,
+   "example": "I do play an instrument, but I'm a history major."
+  },
+  {
+   "word": "story",
+   "ipa": "/ˈstɔːri/",
+   "def": "n. 故事",
+   "freq": 88,
+   "docs": 28,
+   "listening_specific": true,
+   "example": "The story doesn't progress in a, in any sort of logical manner. It doesn't have any real ending either. It just stops."
+  },
+  {
+   "word": "century",
+   "ipa": "/ˈsentʃəri/",
+   "def": "n. 世纪",
+   "freq": 86,
+   "docs": 45,
+   "listening_specific": true,
+   "example": "But as the century progressed, some composers, composers of what was called avant-garde music, went further."
+  },
+  {
+   "word": "film",
+   "ipa": "/fɪlm/",
+   "def": "n. 电影；胶片",
+   "freq": 84,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "A film, if available, is shown to the village council, so that they get an idea of the experience of another community."
+  },
+  {
+   "word": "history",
+   "ipa": "/ˈhɪstəri/",
+   "def": "n. 历史",
+   "freq": 70,
+   "docs": 56,
+   "listening_specific": true,
+   "example": "And the history of restoration practices reflects this struggle."
+  },
+  {
+   "word": "life",
+   "ipa": "/laɪf/",
+   "def": "n. 生活；生命",
+   "freq": 66,
+   "docs": 31,
+   "listening_specific": true,
+   "example": "My life has taken some pretty interesting turns, and here I am, very happy with my experiences and where they've brought me."
+  },
+  {
+   "word": "theater",
+   "ipa": "/ˈθiːətər/",
+   "def": "n. 剧院；戏剧",
+   "freq": 65,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "A theater owner would just buy a pile of sheet music, and musicians would play it, no matter what it was."
+  },
+  {
+   "word": "audience",
+   "ipa": "/ˈɔːdiəns/",
+   "def": "n. 观众，听众",
+   "freq": 64,
+   "docs": 23,
+   "listening_specific": true,
+   "example": "and audiences, for the most part, adored her."
+  },
+  {
+   "word": "style",
+   "ipa": "/staɪl/",
+   "def": "n. 风格，样式",
+   "freq": 54,
+   "docs": 27,
+   "listening_specific": true,
+   "example": "And Twain's style… it goes back to what I said earlier, verisimilitude, the realistic way characters act and talk."
+  },
+  {
+   "word": "ancient",
+   "ipa": "/ˈeɪnʃənt/",
+   "def": "adj. 古代的",
+   "freq": 54,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "ancient artists used mineral-based paints with organic binding media that would've disintegrated on its own over time."
+  },
+  {
+   "word": "paint",
+   "ipa": "/peɪnt/",
+   "def": "v. 绘画，涂色；n. 颜料",
+   "freq": 51,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "the paint work was."
+  },
+  {
+   "word": "greek",
+   "ipa": "/ɡriːk/",
+   "def": "adj. 希腊的；n. 希腊语",
+   "freq": 48,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "The Greeks built the first theaters in the fifth century B.C.E."
+  },
+  {
+   "word": "painter",
+   "ipa": "/ˈpeɪntər/",
+   "def": "n. 画家",
+   "freq": 46,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "Painters and sculptors worked in a workshop."
+  },
+  {
+   "word": "stage",
+   "ipa": "/steɪdʒ/",
+   "def": "n. 舞台；阶段",
+   "freq": 45,
+   "docs": 13,
+   "listening_specific": true,
+   "example": "To light the stage?"
+  },
+  {
+   "word": "technique",
+   "ipa": "/tekˈniːk/",
+   "def": "n. 技法，技术",
+   "freq": 43,
+   "docs": 23,
+   "listening_specific": true,
+   "example": "A technique called \"superimposing\""
+  },
+  {
+   "word": "roman",
+   "ipa": "/ˈroʊmən/",
+   "def": "adj. 古罗马的；n. 罗马人",
+   "freq": 43,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Roman sculptors often made copies of famous Greek sculptures."
+  },
+  {
+   "word": "renaissance",
+   "ipa": "/ˈrenəsɑːns/",
+   "def": "n. 文艺复兴",
+   "freq": 42,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "Renaissance artists essentially needed to create a three-dimensional scene on a two-dimensional surface."
+  },
+  {
+   "word": "sculpture",
+   "ipa": "/ˈskʌlptʃər/",
+   "def": "n. 雕塑",
+   "freq": 42,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "This sculpture is called “The Lady with the Hood,” and it was carved from ivory, probably a, a mammoth's tusk."
+  },
+  {
+   "word": "detail",
+   "ipa": "/ˈdiːteɪl/",
+   "def": "n. 细节",
+   "freq": 39,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "those details won't be forgotten."
+  },
+  {
+   "word": "object",
+   "ipa": "/ˈɑːbdʒekt/",
+   "def": "n. 物体，物品",
+   "freq": 35,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "the objects you include can provide more context and help convey your message."
+  },
+  {
+   "word": "literature",
+   "ipa": "/ˈlɪtərətʃər/",
+   "def": "n. 文学",
+   "freq": 34,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "The dramatic literature of early periods is hugely influential in shaping later dramatic works."
+  },
+  {
+   "word": "museum",
+   "ipa": "/mjuˈziːəm/",
+   "def": "n. 博物馆",
+   "freq": 34,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Well, there are museum jobs that don’t involve interacting with the public."
+  },
+  {
+   "word": "statue",
+   "ipa": "/ˈstætʃuː/",
+   "def": "n. 雕像，塑像",
+   "freq": 34,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "statues of him in different roles were sent all over the empire."
+  },
+  {
+   "word": "poem",
+   "ipa": "/ˈpoʊəm/",
+   "def": "n. 诗歌",
+   "freq": 33,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "The poems were sung, uh, performed by a minstrel, a singer who traveled from castle to castle, singing to the local lord and his knights. . ."
+  },
+  {
+   "word": "dance",
+   "ipa": "/dæns/",
+   "def": "n. 舞蹈；v. 跳舞",
+   "freq": 33,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "it's a dance routine you'll be choreographing"
+  },
+  {
+   "word": "traditional",
+   "ipa": "/trəˈdɪʃənl/",
+   "def": "adj. 传统的",
+   "freq": 32,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "Think about a traditional play."
+  },
+  {
+   "word": "material",
+   "ipa": "/məˈtɪriəl/",
+   "def": "n. 材料，素材",
+   "freq": 32,
+   "docs": 18,
+   "listening_specific": true,
+   "example": "They took this glassy material and ground it up into a powder, and then they used metallic dye to color it…"
+  },
+  {
+   "word": "period",
+   "ipa": "/ˈpɪriəd/",
+   "def": "n. 时期，时代",
+   "freq": 31,
+   "docs": 21,
+   "listening_specific": true,
+   "example": "We're talking a period of maybe 30 years where working in movie theaters was the best job for musicians."
+  },
+  {
+   "word": "medium",
+   "ipa": "/ˈmiːdiəm/",
+   "def": "n. 媒介，材料",
+   "freq": 29,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "So oil paint is the medium of choice for many painters."
+  },
+  {
+   "word": "movement",
+   "ipa": "/ˈmuːvmənt/",
+   "def": "运动;乐章",
+   "freq": 26,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "It was a movement of more than 1 million Blacks who left the rural communities in the Southern U.S. and and moved to, to, the cities, many of them in the North, like Chicago, Cleveland, or New York City."
+  },
+  {
+   "word": "portrait",
+   "ipa": "/ˈpɔːrtrət/",
+   "def": "n. 肖像画",
+   "freq": 25,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "her portraits reveal her own interpretation of her subject’s state of mind."
+  },
+  {
+   "word": "approach",
+   "ipa": "/əˈproʊtʃ/",
+   "def": "n. 方法，途径；v. 接近",
+   "freq": 22,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "Oh, that approach…treating film as literature, ignoring what makes it unique…"
+  },
+  {
+   "word": "contemporary",
+   "ipa": "/kənˈtempəreri/",
+   "def": "adj. 当代的，现代",
+   "freq": 22,
+   "docs": 14,
+   "listening_specific": true,
+   "example": "Contemporary reviews."
+  },
+  {
+   "word": "musician",
+   "ipa": "/mjuˈzɪʃn/",
+   "def": "n. 音乐家",
+   "freq": 22,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "So a musician was expected to play complicated pieces of music pretty much without any preparation."
+  },
+  {
+   "word": "wood",
+   "ipa": "/wʊd/",
+   "def": "n. 木材；木头",
+   "freq": 22,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "late-growth wood is denser, less porous."
+  },
+  {
+   "word": "piano",
+   "ipa": "/piˈænoʊ/",
+   "def": "n. 钢琴",
+   "freq": 22,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "As pianos became more available, they brought classical music—the music which previously had been composed only for the upper classes—into the lives of the middle-class people as well."
+  },
+  {
+   "word": "drama",
+   "ipa": "/ˈdrɑːmə/",
+   "def": "n. 戏剧",
+   "freq": 21,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "French drama was changing, though the transition from neoclassical drama to romantic drama was itself pretty uh … dramatic."
+  },
+  {
+   "word": "architect",
+   "ipa": "/ˈɑːrkɪtekt/",
+   "def": "n. 建筑师",
+   "freq": 21,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "the architects looked for sites where you had a natural bowl-like formation on the side of a hill, and that's where they set the theater."
+  },
+  {
+   "word": "perspective",
+   "ipa": "/pərˈspektɪv/",
+   "def": "n.(判断事物的)角度，方法；透视法",
+   "freq": 20,
+   "docs": 9,
+   "listening_specific": true,
+   "example": "Professor: Perspective, this was a brand-new idea in art during the European Renaissance."
+  },
+  {
+   "word": "screen",
+   "ipa": "/skriːn/",
+   "def": "屏幕",
+   "freq": 20,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "screen dance, which is relatively new, isn't"
+  },
+  {
+   "word": "composer",
+   "ipa": "/kəmˈpoʊzər/",
+   "def": "n. 作曲家",
+   "freq": 20,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "A case in point is the composer John Cage."
+  },
+  {
+   "word": "artistic",
+   "ipa": "/ɑːrˈtɪstɪk/",
+   "def": "adj. 艺术的",
+   "freq": 19,
+   "docs": 16,
+   "listening_specific": true,
+   "example": "Yet, as far as his artistic talent, no one's ever really called him a “great” artist or “great” illustrator."
+  },
+  {
+   "word": "actor",
+   "ipa": "/ˈæktər/",
+   "def": "n. 演员",
+   "freq": 19,
+   "docs": 12,
+   "listening_specific": true,
+   "example": "The actors act as if there is no one watching, right?"
+  },
+  {
+   "word": "performance",
+   "ipa": "/pərˈfɔːrməns/",
+   "def": "n. 表演，演出",
+   "freq": 19,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "You know, I saw a performance several years ago…"
+  },
+  {
+   "word": "folk",
+   "ipa": "/foʊk/",
+   "def": "n. 民间音乐；adj. 民间的",
+   "freq": 19,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "Folktales are imaginative stories that um, like folk legends, they've been passed down orally, from storyteller to storyteller, for, since ancient times."
+  },
+  {
+   "word": "playwright",
+   "ipa": "/ˈpleɪraɪt/",
+   "def": "剧作家",
+   "freq": 19,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "So when playwrights reinvent or update an earlier play it shouldn't be construed as a lack of imagination or an artistic failure."
+  },
+  {
+   "word": "abstract",
+   "ipa": "/ˈæbstrækt/",
+   "def": "adj. 抽象的 n. 摘要",
+   "freq": 17,
+   "docs": 8,
+   "listening_specific": true,
+   "example": "Now, Abstract Expressionism is kind of hard to define, but it-it’s basically an attempt by the artist to convey meaning or feeling in an abstract way."
+  },
+  {
+   "word": "realistic",
+   "ipa": "/ˌriːəˈlɪstɪk/",
+   "def": "adj. 写实的，现实主义的",
+   "freq": 16,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "Another realistic touch was using three-dimensional objects on the set, like rocks and bushes, as opposed to two-dimensional painted scenery."
+  },
+  {
+   "word": "composition",
+   "ipa": "/ˌkɑːmpəˈzɪʃn/",
+   "def": "n. 作曲；作品；构成",
+   "freq": 15,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "And this composition was completely silent, literally."
+  },
+  {
+   "word": "critic",
+   "ipa": "/ˈkrɪtɪk/",
+   "def": "n. 评论家",
+   "freq": 14,
+   "docs": 11,
+   "listening_specific": true,
+   "example": "critics back then were unimpressed by it, though it's likely that their own feelings about how plays should be—neoclassical or romantic—affected their opinions about it."
+  },
+  {
+   "word": "unique",
+   "ipa": "/juˈniːk/",
+   "def": "独一无二的；独特的",
+   "freq": 14,
+   "docs": 10,
+   "listening_specific": true,
+   "example": "It’s unique. It’s compelling."
+  },
+  {
+   "word": "theme",
+   "ipa": "/θiːm/",
+   "def": "(谈话, 写作等的)题目, 主题",
+   "freq": 14,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "And the themes, again, the themes changed,"
+  },
+  {
+   "word": "character",
+   "ipa": "/ˈkærəktər/",
+   "def": "n. 角色；人物",
+   "freq": 78,
+   "docs": 14,
+   "listening_specific": false,
+   "example": "characters might make jokes and get into silly situations, but they're still regular people, like not in disguise or anything."
+  },
+  {
+   "word": "design",
+   "ipa": "/dɪˈzaɪn/",
+   "def": "n. 设计；v. 设计",
+   "freq": 68,
+   "docs": 14,
+   "listening_specific": false,
+   "example": "Set designers in the theater at this time were generally painters, so these painters who were creating perspective paintings decided to do the same thing on stage and create perspective set designs."
+  },
+  {
+   "word": "instrument",
+   "ipa": "/ˈɪnstrəmənt/",
+   "def": "n. 乐器；仪器",
+   "freq": 35,
+   "docs": 10,
+   "listening_specific": false,
+   "example": "And what instrument comes to mind when you think of rock and roll?"
+  },
+  {
+   "word": "canvas",
+   "ipa": "/ˈkænvəs/",
+   "def": "n. 画布",
+   "freq": 23,
+   "docs": 10,
+   "listening_specific": false,
+   "example": "Pollock used massive canvases. They seem more like portable murals than anything else."
+  }
+ ],
+ "心理学/认知科学 Psychology & Cognition": [
+  {
+   "word": "development",
+   "ipa": "/dɪˈveləpmənt/",
+   "def": "n. 发展；开发；进展",
+   "freq": 38,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Stages of development are not completely separate from each other."
+  },
+  {
+   "word": "rule",
+   "ipa": "/ruːl/",
+   "def": "n. 规则；规定 v. 统治",
+   "freq": 31,
+   "docs": 4,
+   "listening_specific": true,
+   "example": "Rule number 1: Deposit a chemical marker … called a pheromone."
+  },
+  {
+   "word": "language",
+   "ipa": "/ˈlæŋɡwɪdʒ/",
+   "def": "n. 语言",
+   "freq": 26,
+   "docs": 4,
+   "listening_specific": true,
+   "example": "Once language starts to develop, from about age 2, they do have a system for symbolic representation and can talk about things which aren’t in their immediate environment, in—including the past."
+  },
+  {
+   "word": "business",
+   "ipa": "/ˈbɪznəs/",
+   "def": "n. 商业；生意；商务（business school 商学院）",
+   "freq": 23,
+   "docs": 7,
+   "listening_specific": true,
+   "example": "So a business leader might face a choice: either stick with this old, safe, proven idea or move on to the next big idea, a fresh innovation."
+  },
+  {
+   "word": "knowledge",
+   "ipa": "/ˈnɑːlɪdʒ/",
+   "def": "n. 知识；了解",
+   "freq": 19,
+   "docs": 4,
+   "listening_specific": true,
+   "example": "And other knowledge, he tells us, can be based on that foundation."
+  },
+  {
+   "word": "ability",
+   "ipa": "/əˈbɪləti/",
+   "def": "n. 能力；才能",
+   "freq": 16,
+   "docs": 4,
+   "listening_specific": true,
+   "example": "It's the ability to sort of… judge or estimate the numbers or relative quantities of things."
+  },
+  {
+   "word": "researcher",
+   "ipa": "/rɪˈsɜːrtʃər/",
+   "def": "n. 研究者；研究员",
+   "freq": 13,
+   "docs": 6,
+   "listening_specific": true,
+   "example": "Researchers have set a standard… sort of an expected rate of forgetting. But that expected rate was set based on tests done on adults."
+  },
+  {
+   "word": "skill",
+   "ipa": "/skɪl/",
+   "def": "n. 技能；技巧",
+   "freq": 13,
+   "docs": 4,
+   "listening_specific": true,
+   "example": "Motor skills are forms of implicit memory, like knowing how to ride a bike."
+  },
+  {
+   "word": "market",
+   "ipa": "/ˈmɑːrkɪt/",
+   "def": "n. 市场 v. 推销；营销",
+   "freq": 12,
+   "docs": 5,
+   "listening_specific": true,
+   "example": "Market research data definitely can give you a good idea of, ah…the big picture. But MBWA is, is really useful at kind of filling in the blanks, getting a good on-the-ground sense of how your products are used and how people respond to them."
+  }
+ ],
+ "物理学/化学 Physics & Chemistry": [
+  {
+   "word": "spectroscopy",
+   "ipa": "/spekˈtrɑːskəpi/",
+   "def": "n. 光谱学",
+   "freq": 19,
+   "docs": 3,
+   "listening_specific": true,
+   "example": "Spectroscopy is basically the study of spectra and spectral lines of light, and specifically for us, the light from stars."
+  },
+  {
+   "word": "energy",
+   "ipa": "/ˈenərdʒi/",
+   "def": "n. 能量；精力",
+   "freq": 14,
+   "docs": 4,
+   "listening_specific": true,
+   "example": "Well, muons lose energy as they pass through dense material, like the stone walls of a Mayan pyramid."
+  },
+  {
+   "word": "sunlight",
+   "ipa": "/ˈsʌnlaɪt/",
+   "def": "n. 阳光",
+   "freq": 11,
+   "docs": 3,
+   "listening_specific": true,
+   "example": "Well what happens if the sunlight spectrum is magnified? [pause - then slightly under breath]"
+  },
+  {
+   "word": "chemical",
+   "ipa": "/ˈkemɪkl/",
+   "def": "adj. 化学的 n. 化学物质",
+   "freq": 10,
+   "docs": 3,
+   "listening_specific": true,
+   "example": "Each pattern stands for a distinct chemical element, and so different sets or patterns of spectral lines mean that the star has a different chemical composition."
+  },
+  {
+   "word": "element",
+   "ipa": "/ˈelɪmənt/",
+   "def": "n. 元素；要素；成分",
+   "freq": 49,
+   "docs": 4,
+   "listening_specific": false,
+   "example": "Now, element 43, whether you call it masurium or technetium, is radioactive."
+  }
+ ]
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0f1115">
+<title>原型 · 官方释义 + 释义句朗读</title>
+<style>
+  :root {
+    --bg: #0f1115; --card: #1a1d24; --card2: #22262f; --fg: #e6e8eb;
+    --muted: #8b93a1; --accent: #4c8dff; --accent2: #2a5fc0; --border: #2a2f3a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f4f6fa; --card:#ffffff; --card2:#eef1f6; --fg:#1a1d24; --muted:#5f6672; --accent:#2a5fc0; --accent2:#1c4499; --border:#dde2eb; }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html,body { margin:0; padding:0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    min-height: 100vh; min-height: 100dvh;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    padding: 10px 12px 8px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    border-bottom: 1px solid var(--border);
+  }
+  .top-row { display:flex; align-items:center; gap:8px; }
+  .title { font-weight:700; font-size:16px; flex:0 0 auto; }
+  .badge { font-size:11px; color:#e5484d; background:rgba(229,72,77,.15); border:1px solid rgba(229,72,77,.4); border-radius:6px; padding:1px 6px; margin-left:4px; white-space:nowrap; }
+  main { padding:12px; max-width:640px; margin:0 auto; }
+  .list { display:flex; flex-direction:column; gap:12px; }
+  .item { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px 16px; }
+  .wrow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .w { font-size:20px; font-weight:700; }
+  .ipa { font-size:14px; color:var(--muted); font-family: ui-monospace, Menlo, monospace; }
+  .wbtn { flex:0 0 auto; background:none; border:0; padding:0; cursor:pointer; display:inline-flex; align-items:center; }
+  .wbtn svg { display:block; }
+  .wbtn circle { fill: var(--accent); transition: transform .15s ease; }
+  .wbtn:hover circle { transform: scale(1.12); }
+  .wbtn:active circle { transform: scale(0.95); }
+  .zh { font-size:14px; color:var(--muted); margin-top:6px; line-height:1.55; }
+  .sec { margin-top:10px; }
+  .sec-t { font-size:12px; color:var(--muted); font-weight:600; letter-spacing:.3px; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+  .sec-t .tag { background:rgba(76,141,255,.14); color:var(--accent); border-radius:5px; padding:1px 6px; font-size:11px; }
+  .deflist { display:flex; flex-direction:column; gap:5px; }
+  .defrow { display:flex; align-items:flex-start; gap:8px; font-size:14.5px; line-height:1.55; background:var(--card2); border:1px solid var(--border); border-radius:9px; padding:7px 10px; }
+  .defrow .num { color:var(--muted); font-size:12px; flex:0 0 auto; margin-top:2px; }
+  .defrow .txt { flex:1 1 auto; min-width:0; }
+  .sbtn { flex:0 0 auto; background:none; border:0; padding:3px; cursor:pointer; color:var(--accent); display:inline-flex; align-items:center; opacity:.85; }
+  .sbtn:hover { opacity:1; }
+  .sbtn svg { display:block; }
+  .sbtn.playing { opacity:1; }
+  .sbtn.playing circle { fill:#34c77b; }
+  .exsec { margin-top:8px; }
+  .exrow { display:flex; align-items:flex-start; gap:8px; font-size:13.5px; line-height:1.5; color:var(--muted); padding:3px 0 3px 4px; }
+  .exrow .txt { flex:1 1 auto; min-width:0; }
+  .note { background:rgba(255,149,0,.1); border:1px solid rgba(255,149,0,.35); color:#d99a3d; border-radius:10px; padding:10px 12px; font-size:12.5px; line-height:1.6; margin-bottom:14px; }
+  .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:#000; color:#fff; padding:8px 14px; border-radius:8px; font-size:13px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:50; max-width:86vw; text-align:center; }
+  .toast.show { opacity:.92; }
+  .foot { text-align:center; color:var(--muted); font-size:12px; margin:18px 0 30px; line-height:1.7; }
+</style>
+</head>
+<body>
+<header>
+  <div class="top-row">
+    <div class="title">官方释义原型 <span class="badge">试做 3 词</span></div>
+  </div>
+</header>
+<main>
+  <div class="note">
+    🔍 实测发现：<b>剑桥词典网页上的例句没有官方朗读音频</b>（页面上只有单词本身的英美真人发音 mp3）。
+    因此本原型中：① 单词发音用 <b>剑桥官方美音 mp3</b>；② 释义与例句朗读用 Google TTS 在线合成（与现有页面兜底方案一致）。
+  </div>
+  <div class="list" id="list"></div>
+  <div class="foot">单词 🔊 = 剑桥官方美音 · 释义/例句 🔊 = 在线朗读整句<br>数据来源：dictionary.cambridge.org</div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+// 原型数据：剑桥官方释义（来自 cambridge_fetch.py 抓取）
+const CAMBRIDGE = {
+  "abate": {
+    "ipa": "əˈbeɪt",
+    "us_mp3_url": "https://dictionary.cambridge.org/media/english/us_pron/a/aba/abate/abate.mp3",
+    "defs": [
+      "to become less strong:",
+      "to become less strong, or to make something less strong:",
+      "if something such as a price or level abates, it goes up more slowly than before, or it goes down:",
+      "to become or make something become weaker, lower, less serious, etc.:"
+    ],
+    "examples": [
+      "The wind has now abated.",
+      "The rain was starting to abate.",
+      "The storm has started to abate.",
+      "The fighting in the area shows no sign of abating.",
+      "Inflation is finally showing signs of abating."
+    ],
+    "source": "https://dictionary.cambridge.org/dictionary/english/abate"
+  },
+  "abdicate": {
+    "ipa": "ˈæb.də.keɪt",
+    "us_mp3_url": "https://dictionary.cambridge.org/media/english/us_pron/a/abd/abdic/abdicate.mp3",
+    "defs": [
+      "If a king or queen abdicates, he or she makes a formal statement that he or she no longer wants to be king or queen:",
+      "to stop controlling or managing something that you are in charge of:",
+      "to give up a position as king, or to fail to take responsibility for something:"
+    ],
+    "examples": [
+      "King Edward VIII abdicated (the British throne) in 1936.",
+      "She abdicated all responsibility for the project.",
+      "The administration has abdicated its leadership on this critical issue."
+    ],
+    "source": "https://dictionary.cambridge.org/dictionary/english/abdicate"
+  },
+  "abduct": {
+    "ipa": "æbˈdʌkt",
+    "us_mp3_url": "https://dictionary.cambridge.org/media/english/us_pron/a/abd/abduc/abduct.mp3",
+    "defs": [
+      "to force someone to go somewhere with you, often using threats or violence:",
+      "to move a part of the body away from the central part of the body or away from another body part:",
+      "to take a person away by force:"
+    ],
+    "examples": [
+      "The company director was abducted from his car by terrorists.",
+      "Kidnappers abducted the child from the playground.",
+      "There were fears that the journalist had been abducted."
+    ],
+    "source": "https://dictionary.cambridge.org/dictionary/english/abduct"
+  }
+};
+
+// 中文释义（来自现有词表）
+const ZH = {
+  "abate": "vt. (负面事物)减弱、减轻",
+  "abdicate": "vt. abdicate the throne：退位；abdicate (one's) responsibility / duty：放弃（自己的）责任/义务",
+  "abduct": "vt. 绑架。be abducted by sb：被某人绑架。与 Kidnap 的区别是，后者绑架为了勒索赎金，前者只是绑走的动作。"
+};
+
+const SPEAKER_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor"/><path d="M8 9.5v5h3l4 3.5v-12l-4 3.5H8z" fill="#fff"/></svg>';
+let audioEl = null;
+let playingBtn = null;
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"), 1800); }
+
+function setPlaying(btn, on){
+  if(playingBtn && playingBtn !== btn){ playingBtn.classList.remove("playing"); }
+  playingBtn = on ? btn : null;
+  if(btn) btn.classList.toggle("playing", on);
+}
+
+// 播放单词：剑桥官方美音 mp3 → 有道兜底 → Google TTS
+function playWord(word, btn){
+  const url = CAMBRIDGE[word].us_mp3_url;
+  if(audioEl){ audioEl.onerror = null; audioEl.onended = null; audioEl.pause(); }
+  else { audioEl = new Audio(); }
+  let stage = 0;
+  audioEl.onerror = () => {
+    if(stage === 0){
+      stage = 1;
+      audioEl.src = "https://dict.youdao.com/dictvoice?audio=" + encodeURIComponent(word) + "&type=2";
+      audioEl.play().catch(()=>{});
+    } else if(stage === 1){
+      stage = 2;
+      audioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(word);
+      audioEl.play().catch(()=>{ setPlaying(btn,false); toast("单词发音不可用"); });
+    } else {
+      setPlaying(btn,false); toast("单词发音不可用");
+    }
+  };
+  audioEl.onended = () => setPlaying(btn,false);
+  audioEl.src = url;
+  setPlaying(btn,true);
+  audioEl.play().catch(()=>{ audioEl.onerror && audioEl.onerror(); });
+}
+
+// 朗读整句（释义/例句）：Google TTS → speechSynthesis 兜底
+function speak(text, btn){
+  const clean = text.replace(/\s+/g, " ").trim();
+  if(!clean){ return; }
+  if(audioEl){ audioEl.onerror = null; audioEl.onended = null; audioEl.pause(); }
+  else { audioEl = new Audio(); }
+  let fallback = false;
+  audioEl.onerror = () => {
+    if(fallback) return;
+    fallback = true;
+    setPlaying(btn,false);
+    try {
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = "en-US"; u.rate = 0.95;
+      u.onend = () => setPlaying(btn,false);
+      u.onerror = () => { setPlaying(btn,false); toast("朗读不可用"); };
+      setPlaying(btn,true);
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    } catch(e){ setPlaying(btn,false); toast("朗读不可用"); }
+  };
+  audioEl.onended = () => setPlaying(btn,false);
+  audioEl.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=" + encodeURIComponent(clean);
+  setPlaying(btn,true);
+  audioEl.play().catch(()=>{ audioEl.onerror && audioEl.onerror(); });
+}
+
+function render(){
+  const list = document.getElementById("list");
+  list.innerHTML = Object.keys(CAMBRIDGE).map((word, i) => {
+    const c = CAMBRIDGE[word];
+    const zh = ZH[word] || "";
+    const defs = c.defs.map((d, j) =>
+      '<div class="defrow"><span class="num">' + (j+1) + '</span>' +
+      '<span class="txt">' + esc(d) + '</span>' +
+      '<button class="sbtn" type="button" data-speak="' + esc(d) + '" title="朗读释义">' + SPEAKER_SVG + '</button></div>'
+    ).join("");
+    const exs = c.examples.slice(0,3).map(e =>
+      '<div class="exrow"><span class="txt">· ' + esc(e) + '</span>' +
+      '<button class="sbtn" type="button" data-speak="' + esc(e) + '" title="朗读例句">' + SPEAKER_SVG + '</button></div>'
+    ).join("");
+    return '<div class="item">' +
+      '<div class="wrow"><span class="w">' + (i+1) + '. ' + esc(word) + '</span>' +
+      '<span class="ipa">/' + esc(c.ipa) + '/</span>' +
+      '<button class="wbtn" type="button" data-word="' + esc(word) + '" title="剑桥官方美音">' + SPEAKER_SVG + '</button></div>' +
+      (zh ? '<div class="zh">' + esc(zh) + '</div>' : '') +
+      '<div class="sec"><div class="sec-t">剑桥官方释义 <span class="tag">Cambridge</span></div><div class="deflist">' + defs + '</div></div>' +
+      (exs ? '<div class="sec exsec"><div class="sec-t">官方例句</div>' + exs + '</div>' : '') +
+      '</div>';
+  }).join("");
+}
+
+document.addEventListener("click", e => {
+  const wb = e.target.closest(".wbtn");
+  if(wb && wb.dataset.word){ playWord(wb.dataset.word, wb); return; }
+  const sb = e.target.closest(".sbtn");
+  if(sb && sb.dataset.speak){ speak(sb.dataset.speak, sb); }
+});
+
+render();
+</script>
+</body>
+</html>

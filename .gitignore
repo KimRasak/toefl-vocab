@@ -48,3 +48,6 @@ listening-2026/audio/
 #   xxfasdf/toefl-2026-official-listening-audio  public  仅 audio/，线上页面直接播这份
 #   xxfasdf/toefl-2026-listening-audio           private audio/ + 官方原始 original-zips/
 # 页面「本地优先、镜像兜底」，取用与恢复办法见 ets_official_2026/README.md 第五节。
+
+# ---- TOEIC 样例音频（第三方版权素材，不入库）----
+TOEIC_listening_official/audio/

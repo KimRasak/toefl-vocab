@@ -287,15 +287,16 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run("startStudy('reading', 'new')");
   chk('记忆曲线入口仍走会话上限', run('studyQueue.length') <= 30, run('studyQueue.length'));
 
-  // 13b. 本轮答错词立即重练（错词收集 + 小结按钮 + startErrorRedo）
-  run("studyQueue = [VOCAB.find(e => e.w === 'thus'), VOCAB.find(e => e.w === 'pottery')]; studyIdx = 0; studyResults = { right: 0, wrong: 0, wrongList: [] }; studyStarted = true;");
-  run("answer(studyQueue[0].w, false, false); answer(studyQueue[1].w, true, false);");
-  chk('答错词已收集', run('studyResults.wrongList.length') === 1 && run('studyResults.wrongList[0]') === 'thus',
-    run('JSON.stringify(studyResults.wrongList)'));
+  // 13b. 本轮新收藏词立即重练（收藏收集 + 小结按钮 + startErrorRedo）
+  run("studyQueue = [VOCAB.find(e => e.w === 'thus'), VOCAB.find(e => e.w === 'pottery')]; studyIdx = 0; studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] }; studyStarted = true;");
+  run("markCollect(studyQueue[0].w); markKnown(studyQueue[1].w);");
+  chk('收藏词已标记并收集', run('getRec("thus").fav') === true && run('studyResults.collectedList[0]') === 'thus',
+    run('JSON.stringify(studyResults.collectedList)'));
+  chk('已知词已标记', run('getRec("pottery").known') === true);
   run('studyIdx = studyQueue.length; renderSummary()');
-  chk('小结含重练错词按钮', /btn-redo-err/.test(getEl('study-area').innerHTML));
+  chk('小结含重练收藏按钮', /btn-redo-err/.test(getEl('study-area').innerHTML));
   run('startErrorRedo()');
-  chk('重练队列仅答错词', run('studyQueue.length') === 1 && run('studyQueue[0].w') === 'thus',
+  chk('重练队列仅本轮收藏词', run('studyQueue.length') === 1 && run('studyQueue[0].w') === 'thus',
     run('studyQueue.length') + ':' + run('studyQueue.map(e=>e.w).join(",")'));
 
   // 14. 未选分类时 browse 给出提示而不是崩溃

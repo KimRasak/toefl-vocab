@@ -1,0 +1,8377 @@
+[
+  {
+    "index": 1,
+    "term": "insular",
+    "definition": "海岛的"
+  },
+  {
+    "index": 2,
+    "term": "peninsula",
+    "definition": "半岛"
+  },
+  {
+    "index": 3,
+    "term": "islet",
+    "definition": "小岛"
+  },
+  {
+    "index": 4,
+    "term": "maritime",
+    "definition": "a 海的，海上的"
+  },
+  {
+    "index": 5,
+    "term": "moist",
+    "definition": "潮湿的"
+  },
+  {
+    "index": 6,
+    "term": "ledge",
+    "definition": "暗礁；突出的部分"
+  },
+  {
+    "index": 7,
+    "term": "ebb",
+    "definition": "退潮"
+  },
+  {
+    "index": 8,
+    "term": "terrestrial",
+    "definition": "陆地的"
+  },
+  {
+    "index": 9,
+    "term": "outskirt",
+    "definition": "n.外边，郊区"
+  },
+  {
+    "index": 10,
+    "term": "endemic",
+    "definition": "地方性的"
+  },
+  {
+    "index": 11,
+    "term": "cosmopolitan",
+    "definition": "世界性的"
+  },
+  {
+    "index": 12,
+    "term": "subterrane",
+    "definition": "n.地下"
+  },
+  {
+    "index": 13,
+    "term": "subterranean",
+    "definition": "地下的"
+  },
+  {
+    "index": 14,
+    "term": "cavern",
+    "definition": "大洞穴"
+  },
+  {
+    "index": 15,
+    "term": "cleft",
+    "definition": "裂缝"
+  },
+  {
+    "index": 16,
+    "term": "crevice",
+    "definition": "裂缝"
+  },
+  {
+    "index": 17,
+    "term": "equator",
+    "definition": "赤道"
+  },
+  {
+    "index": 18,
+    "term": "latitude",
+    "definition": "纬度"
+  },
+  {
+    "index": 19,
+    "term": "meridian",
+    "definition": "子午线"
+  },
+  {
+    "index": 20,
+    "term": "subsidiary",
+    "definition": "a.辅助的；次要的"
+  },
+  {
+    "index": 21,
+    "term": "hemisphere",
+    "definition": "半球"
+  },
+  {
+    "index": 22,
+    "term": "contour",
+    "definition": "n. 轮廓，海岸线"
+  },
+  {
+    "index": 23,
+    "term": "lowland",
+    "definition": "n.低地，苏格兰低地 adj.低地的"
+  },
+  {
+    "index": 24,
+    "term": "strait",
+    "definition": "海峡；痛苦"
+  },
+  {
+    "index": 25,
+    "term": "channel",
+    "definition": "海峡"
+  },
+  {
+    "index": 26,
+    "term": "plateau",
+    "definition": "高原"
+  },
+  {
+    "index": 27,
+    "term": "navigation",
+    "definition": "导航，航行"
+  },
+  {
+    "index": 28,
+    "term": "ranges",
+    "definition": "山脉；范围，一系列"
+  },
+  {
+    "index": 29,
+    "term": "salinity",
+    "definition": "n. 盐度；盐分；盐性"
+  },
+  {
+    "index": 30,
+    "term": "sediment",
+    "definition": "沉淀物"
+  },
+  {
+    "index": 31,
+    "term": "elevation",
+    "definition": "n. 高度，海拔"
+  },
+  {
+    "index": 32,
+    "term": "geothermy",
+    "definition": "地热"
+  },
+  {
+    "index": 33,
+    "term": "terrain",
+    "definition": "地形"
+  },
+  {
+    "index": 34,
+    "term": "Topography",
+    "definition": "地形学"
+  },
+  {
+    "index": 35,
+    "term": "temperate",
+    "definition": "温和的"
+  },
+  {
+    "index": 36,
+    "term": "vein",
+    "definition": "n.静脉，血管，矿脉"
+  },
+  {
+    "index": 37,
+    "term": "pit",
+    "definition": "n.坑,陷阱;煤矿,矿井"
+  },
+  {
+    "index": 38,
+    "term": "borehole",
+    "definition": "钻孔"
+  },
+  {
+    "index": 39,
+    "term": "quartz",
+    "definition": "石英"
+  },
+  {
+    "index": 40,
+    "term": "gem",
+    "definition": "宝石"
+  },
+  {
+    "index": 41,
+    "term": "fieldstone",
+    "definition": "散石，大卵石"
+  },
+  {
+    "index": 42,
+    "term": "emerald",
+    "definition": "n.翡翠 a.翠绿色的"
+  },
+  {
+    "index": 43,
+    "term": "granite",
+    "definition": "n. 花岗岩"
+  },
+  {
+    "index": 44,
+    "term": "limestone",
+    "definition": "n. 石灰石"
+  },
+  {
+    "index": 45,
+    "term": "ruby",
+    "definition": "n.红宝石，红宝石色"
+  },
+  {
+    "index": 46,
+    "term": "bonanza",
+    "definition": "富矿带；幸运，带来好运的事"
+  },
+  {
+    "index": 47,
+    "term": "ore",
+    "definition": "矿石"
+  },
+  {
+    "index": 48,
+    "term": "petrify",
+    "definition": "v.石化；吓呆"
+  },
+  {
+    "index": 49,
+    "term": "geology",
+    "definition": "地质学"
+  },
+  {
+    "index": 50,
+    "term": "aluminum",
+    "definition": "铝"
+  },
+  {
+    "index": 51,
+    "term": "core",
+    "definition": "n.果心；核心)；v.去掉某物的中心部分"
+  },
+  {
+    "index": 52,
+    "term": "crater",
+    "definition": "n.火山口；弹坑"
+  },
+  {
+    "index": 53,
+    "term": "glacial",
+    "definition": "冰川的"
+  },
+  {
+    "index": 54,
+    "term": "glacier",
+    "definition": "n. 冰河，冰川"
+  },
+  {
+    "index": 55,
+    "term": "iceberg",
+    "definition": "冰山"
+  },
+  {
+    "index": 56,
+    "term": "tremor",
+    "definition": "震动"
+  },
+  {
+    "index": 57,
+    "term": "seism",
+    "definition": "n.地震"
+  },
+  {
+    "index": 58,
+    "term": "seismic",
+    "definition": "adj. 地震的；由地震引起的"
+  },
+  {
+    "index": 59,
+    "term": "seismology",
+    "definition": "地震学"
+  },
+  {
+    "index": 60,
+    "term": "magnitude",
+    "definition": "震级"
+  },
+  {
+    "index": 61,
+    "term": "cataclysm",
+    "definition": "n.剧变，灾难(常指大洪水或地震)"
+  },
+  {
+    "index": 62,
+    "term": "stratum",
+    "definition": "地层"
+  },
+  {
+    "index": 63,
+    "term": "mantle",
+    "definition": "n. 地幔"
+  },
+  {
+    "index": 64,
+    "term": "lithogenous",
+    "definition": "岩成的"
+  },
+  {
+    "index": 65,
+    "term": "lithosphere",
+    "definition": "岩石圈"
+  },
+  {
+    "index": 66,
+    "term": "layer",
+    "definition": "n. 层，层次；阶层"
+  },
+  {
+    "index": 67,
+    "term": "crust",
+    "definition": "地壳"
+  },
+  {
+    "index": 68,
+    "term": "fault",
+    "definition": "n.错误；(地质学)断层"
+  },
+  {
+    "index": 69,
+    "term": "magma",
+    "definition": "岩浆"
+  },
+  {
+    "index": 70,
+    "term": "squirt",
+    "definition": "vi. 喷出，溅进"
+  },
+  {
+    "index": 71,
+    "term": "gregarious",
+    "definition": "群居的"
+  },
+  {
+    "index": 72,
+    "term": "swarm",
+    "definition": "一大群(蜜蜂/蚂蚁等）"
+  },
+  {
+    "index": 73,
+    "term": "flock",
+    "definition": "n.羊群；鸟群"
+  },
+  {
+    "index": 74,
+    "term": "herd",
+    "definition": "兽群"
+  },
+  {
+    "index": 75,
+    "term": "carnivore",
+    "definition": "食肉动物"
+  },
+  {
+    "index": 76,
+    "term": "carnivorous",
+    "definition": "食肉的"
+  },
+  {
+    "index": 77,
+    "term": "herbivorous",
+    "definition": "食草的"
+  },
+  {
+    "index": 78,
+    "term": "omnivorous",
+    "definition": "杂食的"
+  },
+  {
+    "index": 79,
+    "term": "predator",
+    "definition": "捕食者"
+  },
+  {
+    "index": 80,
+    "term": "predatory",
+    "definition": "adj. 掠夺的；食肉的"
+  },
+  {
+    "index": 81,
+    "term": "prey",
+    "definition": "n.被捕食的动物"
+  },
+  {
+    "index": 82,
+    "term": "poikilotherm",
+    "definition": "变温动物，冷血动物"
+  },
+  {
+    "index": 83,
+    "term": "rodent",
+    "definition": "啮齿动物"
+  },
+  {
+    "index": 84,
+    "term": "scavenger",
+    "definition": "食腐动物"
+  },
+  {
+    "index": 85,
+    "term": "microbe",
+    "definition": "n.微生物；细菌"
+  },
+  {
+    "index": 86,
+    "term": "reptile",
+    "definition": "爬行动物"
+  },
+  {
+    "index": 87,
+    "term": "homotherm",
+    "definition": "恒温动物"
+  },
+  {
+    "index": 88,
+    "term": "Primates",
+    "definition": "灵长类动物"
+  },
+  {
+    "index": 89,
+    "term": "mollusk",
+    "definition": "软体动物"
+  },
+  {
+    "index": 90,
+    "term": "Coelenterate",
+    "definition": "腔肠动物（如水母、海蜇、珊瑚等）"
+  },
+  {
+    "index": 91,
+    "term": "vertebrate",
+    "definition": "脊椎动物"
+  },
+  {
+    "index": 92,
+    "term": "invertebrate",
+    "definition": "无脊椎动物"
+  },
+  {
+    "index": 93,
+    "term": "finch",
+    "definition": "鸣禽"
+  },
+  {
+    "index": 94,
+    "term": "fowl",
+    "definition": "n. 鸡，家禽"
+  },
+  {
+    "index": 95,
+    "term": "hordes",
+    "definition": "昆虫群"
+  },
+  {
+    "index": 96,
+    "term": "aquatic",
+    "definition": "a 水生的，水栖的"
+  },
+  {
+    "index": 97,
+    "term": "amphibian",
+    "definition": "n.两栖动物；水陆两用飞行器"
+  },
+  {
+    "index": 98,
+    "term": "graze",
+    "definition": "放牧"
+  },
+  {
+    "index": 99,
+    "term": "gasp",
+    "definition": "喘气"
+  },
+  {
+    "index": 100,
+    "term": "peck",
+    "definition": "啄"
+  },
+  {
+    "index": 101,
+    "term": "trot",
+    "definition": "小跑"
+  },
+  {
+    "index": 102,
+    "term": "dormant",
+    "definition": "休眠的"
+  },
+  {
+    "index": 103,
+    "term": "offspring",
+    "definition": "n. 后代，子孙；产物"
+  },
+  {
+    "index": 104,
+    "term": "spawn",
+    "definition": "产卵"
+  },
+  {
+    "index": 105,
+    "term": "domesticate",
+    "definition": "驯养，教化"
+  },
+  {
+    "index": 106,
+    "term": "fertilize",
+    "definition": "使...受精 ；施肥"
+  },
+  {
+    "index": 107,
+    "term": "Regeneration",
+    "definition": "再生，重建"
+  },
+  {
+    "index": 108,
+    "term": "squeak",
+    "definition": "v 叽叽地叫 n 叽叽声"
+  },
+  {
+    "index": 109,
+    "term": "chirp",
+    "definition": "n. 喳喳声,唧唧声vt.vi. 吱喳而鸣"
+  },
+  {
+    "index": 110,
+    "term": "hibernate",
+    "definition": "冬眠"
+  },
+  {
+    "index": 111,
+    "term": "camouflage",
+    "definition": "伪装"
+  },
+  {
+    "index": 112,
+    "term": "monogamous",
+    "definition": "单配的，一雌一雄的"
+  },
+  {
+    "index": 113,
+    "term": "polyandrous",
+    "definition": "一妻多夫的，一雌多雄的"
+  },
+  {
+    "index": 114,
+    "term": "niche",
+    "definition": "小生态环境"
+  },
+  {
+    "index": 115,
+    "term": "rhinoceros",
+    "definition": "犀牛"
+  },
+  {
+    "index": 116,
+    "term": "chimpanzee",
+    "definition": "n.非洲的小人猿，黑猩猩"
+  },
+  {
+    "index": 117,
+    "term": "baboon",
+    "definition": "狒狒"
+  },
+  {
+    "index": 118,
+    "term": "gorilla",
+    "definition": "大猩猩"
+  },
+  {
+    "index": 119,
+    "term": "lizard",
+    "definition": "蜥蜴"
+  },
+  {
+    "index": 120,
+    "term": "moth",
+    "definition": "蛾"
+  },
+  {
+    "index": 121,
+    "term": "canary",
+    "definition": "金丝雀"
+  },
+  {
+    "index": 122,
+    "term": "catepillar",
+    "definition": "毛毛虫"
+  },
+  {
+    "index": 123,
+    "term": "dinosaur",
+    "definition": "恐龙"
+  },
+  {
+    "index": 124,
+    "term": "chameleon",
+    "definition": "变色龙"
+  },
+  {
+    "index": 125,
+    "term": "larva",
+    "definition": "幼虫"
+  },
+  {
+    "index": 126,
+    "term": "family",
+    "definition": "n.家，家庭；家族，氏族；(尤指动植物的)系 科"
+  },
+  {
+    "index": 127,
+    "term": "class",
+    "definition": "班;纲"
+  },
+  {
+    "index": 128,
+    "term": "suborder",
+    "definition": "亚目"
+  },
+  {
+    "index": 129,
+    "term": "order",
+    "definition": "目；顺序，命令"
+  },
+  {
+    "index": 130,
+    "term": "genus",
+    "definition": "属"
+  },
+  {
+    "index": 131,
+    "term": "antenna",
+    "definition": "n.触角；天线"
+  },
+  {
+    "index": 132,
+    "term": "tentacle",
+    "definition": "n 触须，触角；触丝，触毛"
+  },
+  {
+    "index": 133,
+    "term": "spleen",
+    "definition": "脾脏"
+  },
+  {
+    "index": 134,
+    "term": "spine",
+    "definition": "脊柱"
+  },
+  {
+    "index": 135,
+    "term": "hide",
+    "definition": "兽皮；隐藏"
+  },
+  {
+    "index": 136,
+    "term": "bill",
+    "definition": "账单;鸟嘴"
+  },
+  {
+    "index": 137,
+    "term": "beak",
+    "definition": "鸟嘴"
+  },
+  {
+    "index": 138,
+    "term": "hump",
+    "definition": "驼峰"
+  },
+  {
+    "index": 139,
+    "term": "scale",
+    "definition": "n.刻度;天平,磅秤;比例尺;规模;音阶;鱼鳞"
+  },
+  {
+    "index": 140,
+    "term": "fluffy",
+    "definition": "绒毛的"
+  },
+  {
+    "index": 141,
+    "term": "carnal",
+    "definition": "肉体的"
+  },
+  {
+    "index": 142,
+    "term": "grease",
+    "definition": "n.动物脂，脂肪"
+  },
+  {
+    "index": 143,
+    "term": "greasy",
+    "definition": "adj. 多脂的，油脂的"
+  },
+  {
+    "index": 144,
+    "term": "beaver",
+    "definition": "海狸"
+  },
+  {
+    "index": 145,
+    "term": "porpoise",
+    "definition": "海豚，小鲸"
+  },
+  {
+    "index": 146,
+    "term": "dolphin",
+    "definition": "海豚"
+  },
+  {
+    "index": 147,
+    "term": "prawn",
+    "definition": "对虾，明虾，大虾"
+  },
+  {
+    "index": 148,
+    "term": "shrimp",
+    "definition": "n 小虾；河虾"
+  },
+  {
+    "index": 149,
+    "term": "lobster",
+    "definition": "龙虾"
+  },
+  {
+    "index": 150,
+    "term": "plankton",
+    "definition": "浮游生物"
+  },
+  {
+    "index": 151,
+    "term": "oyster",
+    "definition": "n 蚝，牡蛎"
+  },
+  {
+    "index": 152,
+    "term": "clam",
+    "definition": "蛤"
+  },
+  {
+    "index": 153,
+    "term": "coral",
+    "definition": "珊瑚"
+  },
+  {
+    "index": 154,
+    "term": "penal",
+    "definition": "受刑罚的，刑事的"
+  },
+  {
+    "index": 155,
+    "term": "illicit",
+    "definition": "违法的"
+  },
+  {
+    "index": 156,
+    "term": "unruly",
+    "definition": "不守规矩的"
+  },
+  {
+    "index": 157,
+    "term": "illegitimate",
+    "definition": "adj. 非法的，私生的"
+  },
+  {
+    "index": 158,
+    "term": "default",
+    "definition": "不履行义务，玩忽职守：nonperformance"
+  },
+  {
+    "index": 159,
+    "term": "violate",
+    "definition": "v.违反，触犯"
+  },
+  {
+    "index": 160,
+    "term": "violation",
+    "definition": "违反"
+  },
+  {
+    "index": 161,
+    "term": "infringe",
+    "definition": "v.违反，侵害(法规，协议)"
+  },
+  {
+    "index": 162,
+    "term": "bound",
+    "definition": "adj. 有义务的；必定的；受约束的；装有封面的vt. 束缚；使跳跃n. 范围；跳跃vi. 限制；弹起"
+  },
+  {
+    "index": 163,
+    "term": "compulsory",
+    "definition": "强制性的"
+  },
+  {
+    "index": 164,
+    "term": "oblige",
+    "definition": "强迫"
+  },
+  {
+    "index": 165,
+    "term": "obligatory",
+    "definition": "强制性的"
+  },
+  {
+    "index": 166,
+    "term": "domineering",
+    "definition": "专权的"
+  },
+  {
+    "index": 167,
+    "term": "mandatory",
+    "definition": "adj. 命令的，强制的"
+  },
+  {
+    "index": 168,
+    "term": "licensed",
+    "definition": "被许可的"
+  },
+  {
+    "index": 169,
+    "term": "heirship",
+    "definition": "继承权"
+  },
+  {
+    "index": 170,
+    "term": "jurisdiction",
+    "definition": "司法权"
+  },
+  {
+    "index": 171,
+    "term": "arbitration",
+    "definition": "n. 调停，仲裁"
+  },
+  {
+    "index": 172,
+    "term": "confiscate",
+    "definition": "没收"
+  },
+  {
+    "index": 173,
+    "term": "convict",
+    "definition": "v 证明......有罪，宣告......有罪，定......的罪"
+  },
+  {
+    "index": 174,
+    "term": "verdict",
+    "definition": "n.(陪审团的)裁决，决定"
+  },
+  {
+    "index": 175,
+    "term": "indemnity",
+    "definition": "赔偿"
+  },
+  {
+    "index": 176,
+    "term": "imprisonment",
+    "definition": "监禁"
+  },
+  {
+    "index": 177,
+    "term": "invalidate",
+    "definition": "v.使无效，使作废"
+  },
+  {
+    "index": 178,
+    "term": "captivity",
+    "definition": "囚禁"
+  },
+  {
+    "index": 179,
+    "term": "trail",
+    "definition": "审判;n.痕迹;足迹"
+  },
+  {
+    "index": 180,
+    "term": "detain",
+    "definition": "拘留"
+  },
+  {
+    "index": 181,
+    "term": "extenuate",
+    "definition": "减轻罪过"
+  },
+  {
+    "index": 182,
+    "term": "saddle",
+    "definition": "使某人担负：load"
+  },
+  {
+    "index": 183,
+    "term": "bar",
+    "definition": "n. 条，棒；酒吧；障碍；法庭vt. 禁止；阻拦prep. 除......外"
+  },
+  {
+    "index": 184,
+    "term": "authorize",
+    "definition": "授权"
+  },
+  {
+    "index": 185,
+    "term": "empower",
+    "definition": "授权，准许"
+  },
+  {
+    "index": 186,
+    "term": "oath",
+    "definition": "誓言"
+  },
+  {
+    "index": 187,
+    "term": "pledge",
+    "definition": "n.誓言，保证；v.使发誓"
+  },
+  {
+    "index": 188,
+    "term": "plaintiff",
+    "definition": "原告"
+  },
+  {
+    "index": 189,
+    "term": "proscribe",
+    "definition": "v. 禁止"
+  },
+  {
+    "index": 190,
+    "term": "abstinence",
+    "definition": "n.节制,禁欲,戒酒"
+  },
+  {
+    "index": 191,
+    "term": "abstain",
+    "definition": "v.禁绝，放弃"
+  },
+  {
+    "index": 192,
+    "term": "veto",
+    "definition": "否决"
+  },
+  {
+    "index": 193,
+    "term": "revise",
+    "definition": "修改"
+  },
+  {
+    "index": 194,
+    "term": "verify",
+    "definition": "验证"
+  },
+  {
+    "index": 195,
+    "term": "stipulate",
+    "definition": "v 约定；规定；保证"
+  },
+  {
+    "index": 196,
+    "term": "testify",
+    "definition": "v 证明；证实"
+  },
+  {
+    "index": 197,
+    "term": "testimony",
+    "definition": "n.证词，证明"
+  },
+  {
+    "index": 198,
+    "term": "substantiate",
+    "definition": "证实"
+  },
+  {
+    "index": 199,
+    "term": "affirm",
+    "definition": "断言"
+  },
+  {
+    "index": 200,
+    "term": "assure",
+    "definition": "v.向某人保证，确信"
+  },
+  {
+    "index": 201,
+    "term": "observance",
+    "definition": "n.遵守"
+  },
+  {
+    "index": 202,
+    "term": "abide",
+    "definition": "vt.遵守 vt.忍受"
+  },
+  {
+    "index": 203,
+    "term": "accusation",
+    "definition": "n. 谴责；控告"
+  },
+  {
+    "index": 204,
+    "term": "impeach",
+    "definition": "v.怀疑，提出异议；弹劾"
+  },
+  {
+    "index": 205,
+    "term": "indictment",
+    "definition": "n.起诉,控告,起诉状"
+  },
+  {
+    "index": 206,
+    "term": "incriminate",
+    "definition": "归罪于：accuse of a crime"
+  },
+  {
+    "index": 207,
+    "term": "prosecute",
+    "definition": "v.(法)告发，检举"
+  },
+  {
+    "index": 208,
+    "term": "denounce",
+    "definition": "谴责，公开抨击"
+  },
+  {
+    "index": 209,
+    "term": "lawsuit",
+    "definition": "诉讼"
+  },
+  {
+    "index": 210,
+    "term": "query",
+    "definition": "v.质疑，疑问；n.问题，疑问"
+  },
+  {
+    "index": 211,
+    "term": "interrogate",
+    "definition": "v.审问，审讯"
+  },
+  {
+    "index": 212,
+    "term": "impunity",
+    "definition": "免罚"
+  },
+  {
+    "index": 213,
+    "term": "exempt",
+    "definition": "被豁免的"
+  },
+  {
+    "index": 214,
+    "term": "condone",
+    "definition": "宽恕；忽视：forgive"
+  },
+  {
+    "index": 215,
+    "term": "liberate",
+    "definition": "v.释放，解放"
+  },
+  {
+    "index": 216,
+    "term": "remit",
+    "definition": "赦免"
+  },
+  {
+    "index": 217,
+    "term": "absolve",
+    "definition": "v.赦免，免除"
+  },
+  {
+    "index": 218,
+    "term": "acquit",
+    "definition": "v.宣告无罪；脱卸义务和责任；还清(债务)"
+  },
+  {
+    "index": 219,
+    "term": "abolish",
+    "definition": "vt. 废除，取消"
+  },
+  {
+    "index": 220,
+    "term": "term",
+    "definition": "v.把...称为n.学期 条款"
+  },
+  {
+    "index": 221,
+    "term": "clause",
+    "definition": "条款，从句，分句"
+  },
+  {
+    "index": 222,
+    "term": "constitution",
+    "definition": "宪法"
+  },
+  {
+    "index": 223,
+    "term": "decree",
+    "definition": "法令"
+  },
+  {
+    "index": 224,
+    "term": "legislate",
+    "definition": "vi.立法（make law）"
+  },
+  {
+    "index": 225,
+    "term": "legislation",
+    "definition": "n.立法"
+  },
+  {
+    "index": 226,
+    "term": "legalize",
+    "definition": "v. 合法化，法律认可"
+  },
+  {
+    "index": 227,
+    "term": "prescribe",
+    "definition": "v.(医)开处方；规定"
+  },
+  {
+    "index": 228,
+    "term": "credential",
+    "definition": "凭证"
+  },
+  {
+    "index": 229,
+    "term": "enact",
+    "definition": "制定法律,扮演"
+  },
+  {
+    "index": 230,
+    "term": "hackneyed",
+    "definition": "陈腐的"
+  },
+  {
+    "index": 231,
+    "term": "caustic",
+    "definition": "腐蚀性的"
+  },
+  {
+    "index": 232,
+    "term": "decay",
+    "definition": ""
+  },
+  {
+    "index": 233,
+    "term": "stale",
+    "definition": "陈腐的"
+  },
+  {
+    "index": 234,
+    "term": "erosion",
+    "definition": "腐蚀"
+  },
+  {
+    "index": 235,
+    "term": "Decomposition",
+    "definition": "n.分解，腐烂，崩溃"
+  },
+  {
+    "index": 236,
+    "term": "silica",
+    "definition": "n 硅石，硅土"
+  },
+  {
+    "index": 237,
+    "term": "gasoline",
+    "definition": "汽油"
+  },
+  {
+    "index": 238,
+    "term": "Methane",
+    "definition": "n 甲烷，沼气"
+  },
+  {
+    "index": 239,
+    "term": "hydrocarbon",
+    "definition": "碳氢化合物"
+  },
+  {
+    "index": 240,
+    "term": "petroleum",
+    "definition": "石油"
+  },
+  {
+    "index": 241,
+    "term": "intermediary",
+    "definition": "n. 媒介物，居间者"
+  },
+  {
+    "index": 242,
+    "term": "catalysis",
+    "definition": "催化作用"
+  },
+  {
+    "index": 243,
+    "term": "catalyst",
+    "definition": "催化剂"
+  },
+  {
+    "index": 244,
+    "term": "adhesive",
+    "definition": "a.黏着的，带黏性的；n.黏合剂"
+  },
+  {
+    "index": 245,
+    "term": "bleach",
+    "definition": "vt.漂白 vi.变白"
+  },
+  {
+    "index": 246,
+    "term": "tint",
+    "definition": "涂浅色，微染：slight coloration to"
+  },
+  {
+    "index": 247,
+    "term": "hydronic",
+    "definition": "液体循环加热或冷却的"
+  },
+  {
+    "index": 248,
+    "term": "alchemy",
+    "definition": "炼金术，魔力"
+  },
+  {
+    "index": 249,
+    "term": "ion",
+    "definition": "离子"
+  },
+  {
+    "index": 250,
+    "term": "molecule",
+    "definition": "分子"
+  },
+  {
+    "index": 251,
+    "term": "Solubility",
+    "definition": "溶度，溶性，可解决性，溶解性"
+  },
+  {
+    "index": 252,
+    "term": "solvent",
+    "definition": "(n.) 溶剂(adj.) 有偿付能力的"
+  },
+  {
+    "index": 253,
+    "term": "dissolve",
+    "definition": "v.溶解,解散"
+  },
+  {
+    "index": 254,
+    "term": "element",
+    "definition": "元素"
+  },
+  {
+    "index": 255,
+    "term": "impurity",
+    "definition": "杂质"
+  },
+  {
+    "index": 256,
+    "term": "blend",
+    "definition": "混合"
+  },
+  {
+    "index": 257,
+    "term": "Compound",
+    "definition": "n.混合物,化合物 a.混合的,化合的；vt.混合"
+  },
+  {
+    "index": 258,
+    "term": "substance",
+    "definition": "n.物质,实质"
+  },
+  {
+    "index": 259,
+    "term": "particle",
+    "definition": "n 颗粒，微粒"
+  },
+  {
+    "index": 260,
+    "term": "explosive",
+    "definition": "adj. 爆炸的；爆炸性的；爆发性的n. 炸药；爆炸物"
+  },
+  {
+    "index": 261,
+    "term": "blast",
+    "definition": "爆炸"
+  },
+  {
+    "index": 262,
+    "term": "kindle",
+    "definition": "点燃"
+  },
+  {
+    "index": 263,
+    "term": "sear",
+    "definition": "烧灼"
+  },
+  {
+    "index": 264,
+    "term": "neutralize",
+    "definition": "中和"
+  },
+  {
+    "index": 265,
+    "term": "polymerization",
+    "definition": "聚合"
+  },
+  {
+    "index": 266,
+    "term": "synthetic",
+    "definition": "合成的"
+  },
+  {
+    "index": 267,
+    "term": "copper",
+    "definition": "铜"
+  },
+  {
+    "index": 268,
+    "term": "mercury",
+    "definition": "n 贡，水银；（M-）水星"
+  },
+  {
+    "index": 269,
+    "term": "nickel",
+    "definition": "n. 镍；镍币"
+  },
+  {
+    "index": 270,
+    "term": "platinum",
+    "definition": "白金，铂"
+  },
+  {
+    "index": 271,
+    "term": "sodium",
+    "definition": "钠"
+  },
+  {
+    "index": 272,
+    "term": "zinc",
+    "definition": "锌"
+  },
+  {
+    "index": 273,
+    "term": "tin",
+    "definition": "锡，马口铁"
+  },
+  {
+    "index": 274,
+    "term": "calcium",
+    "definition": "钙"
+  },
+  {
+    "index": 275,
+    "term": "helium",
+    "definition": "氦"
+  },
+  {
+    "index": 276,
+    "term": "silicon",
+    "definition": "n.[化]硅,硅元素"
+  },
+  {
+    "index": 277,
+    "term": "Ammonia",
+    "definition": "氨水；氨"
+  },
+  {
+    "index": 278,
+    "term": "sulfur",
+    "definition": "硫磺；硫黄"
+  },
+  {
+    "index": 279,
+    "term": "iodine",
+    "definition": "碘酒；碘"
+  },
+  {
+    "index": 280,
+    "term": "nitrogen",
+    "definition": "氮"
+  },
+  {
+    "index": 281,
+    "term": "noxious",
+    "definition": "有害的，有毒的"
+  },
+  {
+    "index": 282,
+    "term": "pollutant",
+    "definition": "污染物"
+  },
+  {
+    "index": 283,
+    "term": "contaminate",
+    "definition": "污染"
+  },
+  {
+    "index": 284,
+    "term": "sewage",
+    "definition": "下水道，污水"
+  },
+  {
+    "index": 285,
+    "term": "fume",
+    "definition": "冒烟，冒气，熏，烟，气"
+  },
+  {
+    "index": 286,
+    "term": "fauna",
+    "definition": "动物群"
+  },
+  {
+    "index": 287,
+    "term": "decibel",
+    "definition": "分贝"
+  },
+  {
+    "index": 288,
+    "term": "ozonosphere",
+    "definition": "臭氧层"
+  },
+  {
+    "index": 289,
+    "term": "didactic",
+    "definition": "a.教诲的；说教的"
+  },
+  {
+    "index": 290,
+    "term": "sermon",
+    "definition": "说教"
+  },
+  {
+    "index": 291,
+    "term": "initiate",
+    "definition": "v.发起，创始；接纳或介绍某人加入某团体等;启蒙"
+  },
+  {
+    "index": 292,
+    "term": "instill",
+    "definition": "灌输"
+  },
+  {
+    "index": 293,
+    "term": "edify",
+    "definition": "v.陶冶，启发"
+  },
+  {
+    "index": 294,
+    "term": "conduct",
+    "definition": "引导"
+  },
+  {
+    "index": 295,
+    "term": "curriculum",
+    "definition": "课程"
+  },
+  {
+    "index": 296,
+    "term": "discipline",
+    "definition": "v.训练，训导；n.纪律；惩罚，处分；学科"
+  },
+  {
+    "index": 297,
+    "term": "toll",
+    "definition": "费"
+  },
+  {
+    "index": 298,
+    "term": "prosperous",
+    "definition": "繁荣的"
+  },
+  {
+    "index": 299,
+    "term": "prosperity",
+    "definition": "繁荣"
+  },
+  {
+    "index": 300,
+    "term": "asset",
+    "definition": "资产"
+  },
+  {
+    "index": 301,
+    "term": "opulence",
+    "definition": "n. 财富，富裕"
+  },
+  {
+    "index": 302,
+    "term": "indigent",
+    "definition": "贫穷的"
+  },
+  {
+    "index": 303,
+    "term": "penury",
+    "definition": "贫穷"
+  },
+  {
+    "index": 304,
+    "term": "Depression",
+    "definition": "萧条，沮丧"
+  },
+  {
+    "index": 305,
+    "term": "bidding",
+    "definition": "投标；邀请"
+  },
+  {
+    "index": 306,
+    "term": "exponent",
+    "definition": "指数;解释者，支持者"
+  },
+  {
+    "index": 307,
+    "term": "redress",
+    "definition": "补偿"
+  },
+  {
+    "index": 308,
+    "term": "compensation",
+    "definition": "补偿"
+  },
+  {
+    "index": 309,
+    "term": "deficit",
+    "definition": "n. 赤字"
+  },
+  {
+    "index": 310,
+    "term": "levy",
+    "definition": "征税"
+  },
+  {
+    "index": 311,
+    "term": "ration",
+    "definition": "定额供应量，配给量：amount allotted；按比例分配：share or portion"
+  },
+  {
+    "index": 312,
+    "term": "rebate",
+    "definition": "n.折扣，回扣"
+  },
+  {
+    "index": 313,
+    "term": "merchandise",
+    "definition": "n. 商品"
+  },
+  {
+    "index": 314,
+    "term": "commerce",
+    "definition": "商业"
+  },
+  {
+    "index": 315,
+    "term": "enterprise",
+    "definition": "企业"
+  },
+  {
+    "index": 316,
+    "term": "currency",
+    "definition": "n. 通货，货币"
+  },
+  {
+    "index": 317,
+    "term": "inventory",
+    "definition": "n. 存货，存货清单；详细目录；财产清册"
+  },
+  {
+    "index": 318,
+    "term": "quota",
+    "definition": "配额，限额：proportional"
+  },
+  {
+    "index": 319,
+    "term": "tariff",
+    "definition": "关税"
+  },
+  {
+    "index": 320,
+    "term": "inflation",
+    "definition": "通货膨胀"
+  },
+  {
+    "index": 321,
+    "term": "yen",
+    "definition": "日元"
+  },
+  {
+    "index": 322,
+    "term": "consume",
+    "definition": "消费"
+  },
+  {
+    "index": 323,
+    "term": "disburse",
+    "definition": "v. 支付，支出，分配"
+  },
+  {
+    "index": 324,
+    "term": "inertia",
+    "definition": "不活动，惰性"
+  },
+  {
+    "index": 325,
+    "term": "audit",
+    "definition": "审计"
+  },
+  {
+    "index": 326,
+    "term": "surplus",
+    "definition": "n. 剩余；[贸易] 顺差；盈余；过剩adj. 剩余的；过剩的"
+  },
+  {
+    "index": 327,
+    "term": "residue",
+    "definition": "n 残余，残渣"
+  },
+  {
+    "index": 328,
+    "term": "Bankruptcy",
+    "definition": "破产"
+  },
+  {
+    "index": 329,
+    "term": "collateral",
+    "definition": "抵押品"
+  },
+  {
+    "index": 330,
+    "term": "depreciate",
+    "definition": "贬值"
+  },
+  {
+    "index": 331,
+    "term": "merge",
+    "definition": "合并"
+  },
+  {
+    "index": 332,
+    "term": "reimburse",
+    "definition": "偿还"
+  },
+  {
+    "index": 333,
+    "term": "garner",
+    "definition": "储存"
+  },
+  {
+    "index": 334,
+    "term": "underestimate",
+    "definition": "低估"
+  },
+  {
+    "index": 335,
+    "term": "consolidate",
+    "definition": "v.巩固；(使)坚强；合并"
+  },
+  {
+    "index": 336,
+    "term": "refund",
+    "definition": "n.退款 vt.退还(钱款)"
+  },
+  {
+    "index": 337,
+    "term": "utility",
+    "definition": "效用"
+  },
+  {
+    "index": 338,
+    "term": "contract",
+    "definition": "n.合同 v.感染"
+  },
+  {
+    "index": 339,
+    "term": "transaction",
+    "definition": "n. 交易"
+  },
+  {
+    "index": 340,
+    "term": "patronage",
+    "definition": "赞助"
+  },
+  {
+    "index": 341,
+    "term": "barter",
+    "definition": "物物交换"
+  },
+  {
+    "index": 342,
+    "term": "deposit",
+    "definition": "自然积累，沉积，矿藏：accumulation；存钱：put in account"
+  },
+  {
+    "index": 343,
+    "term": "commission",
+    "definition": "佣金，委托; 委员会"
+  },
+  {
+    "index": 344,
+    "term": "ransom",
+    "definition": "n.赎金；赎身；v.赎回"
+  },
+  {
+    "index": 345,
+    "term": "bond",
+    "definition": "n.联结，粘结，公债"
+  },
+  {
+    "index": 346,
+    "term": "custom",
+    "definition": "进口税;n. 习惯，传统，惯例"
+  },
+  {
+    "index": 347,
+    "term": "bonus",
+    "definition": "n. 奖金；红利；额外津贴"
+  },
+  {
+    "index": 348,
+    "term": "revenue",
+    "definition": "收入"
+  },
+  {
+    "index": 349,
+    "term": "confidential",
+    "definition": "机密的"
+  },
+  {
+    "index": 350,
+    "term": "clandestine",
+    "definition": "秘密的"
+  },
+  {
+    "index": 351,
+    "term": "cipher",
+    "definition": "密码"
+  },
+  {
+    "index": 352,
+    "term": "dissimulate",
+    "definition": "v. 假装，掩饰"
+  },
+  {
+    "index": 353,
+    "term": "scout",
+    "definition": "侦查员，童子军"
+  },
+  {
+    "index": 354,
+    "term": "fortress",
+    "definition": "堡垒"
+  },
+  {
+    "index": 355,
+    "term": "hatchet",
+    "definition": "短柄斧"
+  },
+  {
+    "index": 356,
+    "term": "dagger",
+    "definition": "n.短剑，匕首"
+  },
+  {
+    "index": 357,
+    "term": "armor",
+    "definition": "n. [军] 装甲；盔甲vt. 为...装甲"
+  },
+  {
+    "index": 358,
+    "term": "corps",
+    "definition": "n. 军团，兵团"
+  },
+  {
+    "index": 359,
+    "term": "corpse",
+    "definition": "尸体"
+  },
+  {
+    "index": 360,
+    "term": "armament",
+    "definition": "n. 兵力，军力"
+  },
+  {
+    "index": 361,
+    "term": "enlist",
+    "definition": "征募"
+  },
+  {
+    "index": 362,
+    "term": "recruit",
+    "definition": "v 招募（新兵），召集"
+  },
+  {
+    "index": 363,
+    "term": "array",
+    "definition": "排列, 阵列: arrangement排列, 摆放: arrange or display装饰, 装修: dress or decorate"
+  },
+  {
+    "index": 364,
+    "term": "squad",
+    "definition": "小队"
+  },
+  {
+    "index": 365,
+    "term": "raid",
+    "definition": "袭击"
+  },
+  {
+    "index": 366,
+    "term": "encroach",
+    "definition": "v.侵占，蚕食"
+  },
+  {
+    "index": 367,
+    "term": "despoil",
+    "definition": "夺取，掠夺，蹂躏"
+  },
+  {
+    "index": 368,
+    "term": "exterminate",
+    "definition": "v.消灭，灭绝"
+  },
+  {
+    "index": 369,
+    "term": "extinguish",
+    "definition": "熄灭"
+  },
+  {
+    "index": 370,
+    "term": "onset",
+    "definition": "攻击，进攻：attack, assault；起始，开始：begins"
+  },
+  {
+    "index": 371,
+    "term": "repulse",
+    "definition": "击退"
+  },
+  {
+    "index": 372,
+    "term": "expedition",
+    "definition": "远征"
+  },
+  {
+    "index": 373,
+    "term": "siege",
+    "definition": "n.包围，围攻"
+  },
+  {
+    "index": 374,
+    "term": "beset",
+    "definition": "v.镶嵌；困扰;包围"
+  },
+  {
+    "index": 375,
+    "term": "besiege",
+    "definition": "包围"
+  },
+  {
+    "index": 376,
+    "term": "morale",
+    "definition": "士气，斗志"
+  },
+  {
+    "index": 377,
+    "term": "mandate",
+    "definition": "n.命令，指令"
+  },
+  {
+    "index": 378,
+    "term": "tactics",
+    "definition": "n 战术；策略"
+  },
+  {
+    "index": 379,
+    "term": "naval",
+    "definition": "海军的"
+  },
+  {
+    "index": 380,
+    "term": "military",
+    "definition": "军事的，军用的：soldiers, arms, or war"
+  },
+  {
+    "index": 381,
+    "term": "archeology",
+    "definition": "考古学"
+  },
+  {
+    "index": 382,
+    "term": "invaluable",
+    "definition": "无价的"
+  },
+  {
+    "index": 383,
+    "term": "unearth",
+    "definition": "v.挖出；发现"
+  },
+  {
+    "index": 384,
+    "term": "exhume",
+    "definition": "v.掘出"
+  },
+  {
+    "index": 385,
+    "term": "excavate",
+    "definition": "v.挖掘；挖出"
+  },
+  {
+    "index": 386,
+    "term": "Neolithic",
+    "definition": "新石器时代的"
+  },
+  {
+    "index": 387,
+    "term": "mesolithic",
+    "definition": "中石器时代的"
+  },
+  {
+    "index": 388,
+    "term": "Paleolithic",
+    "definition": "旧石器时代的"
+  },
+  {
+    "index": 389,
+    "term": "chronological",
+    "definition": "adj. 按年代顺序排列的"
+  },
+  {
+    "index": 390,
+    "term": "archaic",
+    "definition": "古老的"
+  },
+  {
+    "index": 391,
+    "term": "ascend",
+    "definition": "v．上升，攀登;追溯"
+  },
+  {
+    "index": 392,
+    "term": "primitive",
+    "definition": "a 原始的，上古的；早期的"
+  },
+  {
+    "index": 393,
+    "term": "remnant",
+    "definition": "n 剩余，残屑"
+  },
+  {
+    "index": 394,
+    "term": "porcelain",
+    "definition": "瓷器"
+  },
+  {
+    "index": 395,
+    "term": "antiquity",
+    "definition": "n.古；古人；古迹"
+  },
+  {
+    "index": 396,
+    "term": "artifact",
+    "definition": "人工制品"
+  },
+  {
+    "index": 397,
+    "term": "prolific",
+    "definition": "多产的"
+  },
+  {
+    "index": 398,
+    "term": "aquaculture",
+    "definition": "水产业"
+  },
+  {
+    "index": 399,
+    "term": "arable",
+    "definition": "适于耕种的"
+  },
+  {
+    "index": 400,
+    "term": "indigenous",
+    "definition": "a.土产的，本地的"
+  },
+  {
+    "index": 401,
+    "term": "husbandry",
+    "definition": "n. 耕种，管理"
+  },
+  {
+    "index": 402,
+    "term": "graze",
+    "definition": "吃草"
+  },
+  {
+    "index": 403,
+    "term": "cultivate",
+    "definition": "vt.培养,耕作"
+  },
+  {
+    "index": 404,
+    "term": "cultivation",
+    "definition": "n. 耕种，培养"
+  },
+  {
+    "index": 405,
+    "term": "manure",
+    "definition": "vt. 施肥于；耕种n. 肥料；粪肥"
+  },
+  {
+    "index": 406,
+    "term": "horticulture",
+    "definition": "园艺，园艺学"
+  },
+  {
+    "index": 407,
+    "term": "hydroponics",
+    "definition": "水耕法，水栽培"
+  },
+  {
+    "index": 408,
+    "term": "insecticide",
+    "definition": "杀虫剂"
+  },
+  {
+    "index": 409,
+    "term": "irrigate",
+    "definition": "灌溉"
+  },
+  {
+    "index": 410,
+    "term": "ridge",
+    "definition": "n 脊；脊背；山脊；分水岭"
+  },
+  {
+    "index": 411,
+    "term": "silt",
+    "definition": "n.淤泥，淤沙"
+  },
+  {
+    "index": 412,
+    "term": "tractor",
+    "definition": "拖拉机"
+  },
+  {
+    "index": 413,
+    "term": "squash",
+    "definition": "南瓜"
+  },
+  {
+    "index": 414,
+    "term": "eggplant",
+    "definition": "茄子"
+  },
+  {
+    "index": 415,
+    "term": "fodder",
+    "definition": "饲料，草料"
+  },
+  {
+    "index": 416,
+    "term": "haystack",
+    "definition": "干草堆"
+  },
+  {
+    "index": 417,
+    "term": "sorghum",
+    "definition": "高粱"
+  },
+  {
+    "index": 418,
+    "term": "livestock",
+    "definition": "n. 牲畜；家畜"
+  },
+  {
+    "index": 419,
+    "term": "poultry",
+    "definition": "n.家禽"
+  },
+  {
+    "index": 420,
+    "term": "buffalo",
+    "definition": "n.水牛"
+  },
+  {
+    "index": 421,
+    "term": "cattle",
+    "definition": "n.牛;牲口,家畜"
+  },
+  {
+    "index": 422,
+    "term": "sow",
+    "definition": "vt. 播种；散布；使密布vi. 播种n. 母猪"
+  },
+  {
+    "index": 423,
+    "term": "conservatory",
+    "definition": "温室；音乐学校"
+  },
+  {
+    "index": 424,
+    "term": "cowshed",
+    "definition": "牛棚"
+  },
+  {
+    "index": 425,
+    "term": "granary",
+    "definition": "谷仓"
+  },
+  {
+    "index": 426,
+    "term": "sheepfold",
+    "definition": "羊圈"
+  },
+  {
+    "index": 427,
+    "term": "orchard",
+    "definition": "果园"
+  },
+  {
+    "index": 428,
+    "term": "pasture",
+    "definition": "n. 牧场；草地v. 放牧"
+  },
+  {
+    "index": 429,
+    "term": "pigpen",
+    "definition": "n.猪舍，猪舍似的地方"
+  },
+  {
+    "index": 430,
+    "term": "pigsty",
+    "definition": "猪舍，脏房子"
+  },
+  {
+    "index": 431,
+    "term": "plantation",
+    "definition": "n.农园,大农场"
+  },
+  {
+    "index": 432,
+    "term": "ranch",
+    "definition": "n 大牧场，大农场 v 经营牧场"
+  },
+  {
+    "index": 433,
+    "term": "trough",
+    "definition": "饲料槽"
+  },
+  {
+    "index": 434,
+    "term": "balmy",
+    "definition": "温和的"
+  },
+  {
+    "index": 435,
+    "term": "humid",
+    "definition": "潮湿的"
+  },
+  {
+    "index": 436,
+    "term": "humidity",
+    "definition": "湿度"
+  },
+  {
+    "index": 437,
+    "term": "damp",
+    "definition": "n 湿气，潮湿 a 有湿气的，潮湿的 v 弄湿，打湿"
+  },
+  {
+    "index": 438,
+    "term": "dank",
+    "definition": "阴湿的"
+  },
+  {
+    "index": 439,
+    "term": "moisture",
+    "definition": "n. 潮湿，湿气；湿度"
+  },
+  {
+    "index": 440,
+    "term": "saturate",
+    "definition": "v.浸透；使充满"
+  },
+  {
+    "index": 441,
+    "term": "arid",
+    "definition": "干旱的"
+  },
+  {
+    "index": 442,
+    "term": "frigid",
+    "definition": "严寒的"
+  },
+  {
+    "index": 443,
+    "term": "serene",
+    "definition": "a.清澈的，晴朗的；安静的，平静的"
+  },
+  {
+    "index": 444,
+    "term": "tepid",
+    "definition": "微温的"
+  },
+  {
+    "index": 445,
+    "term": "gale",
+    "definition": "大风"
+  },
+  {
+    "index": 446,
+    "term": "hurricane",
+    "definition": "飓风"
+  },
+  {
+    "index": 447,
+    "term": "barometer",
+    "definition": "气压计"
+  },
+  {
+    "index": 448,
+    "term": "whirlwind",
+    "definition": "旋风"
+  },
+  {
+    "index": 449,
+    "term": "meteorology",
+    "definition": "n.气象学,气象状态"
+  },
+  {
+    "index": 450,
+    "term": "troposphere",
+    "definition": "对流层"
+  },
+  {
+    "index": 451,
+    "term": "current",
+    "definition": "气流;n.电流,水流;潮流,趋势 a.当前的;流通的"
+  },
+  {
+    "index": 452,
+    "term": "funnel",
+    "definition": "漏斗，漏斗云"
+  },
+  {
+    "index": 453,
+    "term": "smog",
+    "definition": "烟雾"
+  },
+  {
+    "index": 454,
+    "term": "precipitate",
+    "definition": "v 促成，促使，使沉淀；使（水蒸气）凝结；向下投掷"
+  },
+  {
+    "index": 455,
+    "term": "drizzle",
+    "definition": "v.下毛毛雨；n.毛毛雨"
+  },
+  {
+    "index": 456,
+    "term": "blizzard",
+    "definition": "n.暴风雪，大风雪"
+  },
+  {
+    "index": 457,
+    "term": "downpour",
+    "definition": "倾盆大雨"
+  },
+  {
+    "index": 458,
+    "term": "droplet",
+    "definition": "小滴"
+  },
+  {
+    "index": 459,
+    "term": "vapor",
+    "definition": "n 汽，蒸汽"
+  },
+  {
+    "index": 460,
+    "term": "tempest",
+    "definition": "暴风雨"
+  },
+  {
+    "index": 461,
+    "term": "hail",
+    "definition": "冰雹"
+  },
+  {
+    "index": 462,
+    "term": "condense",
+    "definition": "vt.使浓缩,摘要,缩短vi.浓缩,凝结"
+  },
+  {
+    "index": 463,
+    "term": "juvenile",
+    "definition": "adj. 青少年的；幼稚的n. 青少年；少年读物"
+  },
+  {
+    "index": 464,
+    "term": "anthropology",
+    "definition": "人类学"
+  },
+  {
+    "index": 465,
+    "term": "tribe",
+    "definition": "n 部落，部族；家族"
+  },
+  {
+    "index": 466,
+    "term": "ethnic",
+    "definition": "种族的"
+  },
+  {
+    "index": 467,
+    "term": "ethnology",
+    "definition": "n.人种学，人类文化学"
+  },
+  {
+    "index": 468,
+    "term": "minority",
+    "definition": "n.少数, 少数民族"
+  },
+  {
+    "index": 469,
+    "term": "descent",
+    "definition": "血统"
+  },
+  {
+    "index": 470,
+    "term": "hybrid",
+    "definition": "杂交品种，混合品种：mixed origin；杂交的：parents of different races"
+  },
+  {
+    "index": 471,
+    "term": "intelligence",
+    "definition": "智力"
+  },
+  {
+    "index": 472,
+    "term": "aboriginal",
+    "definition": "土著的"
+  },
+  {
+    "index": 473,
+    "term": "forerunner",
+    "definition": "n. 先驱，祖先"
+  },
+  {
+    "index": 474,
+    "term": "hominid",
+    "definition": "原始人类"
+  },
+  {
+    "index": 475,
+    "term": "cranial",
+    "definition": "adj. 头盖的, 头盖形的"
+  },
+  {
+    "index": 476,
+    "term": "counsel",
+    "definition": "n. 法律顾问；忠告；商议；讨论；决策vt. 建议；劝告vi. 商讨；提出忠告"
+  },
+  {
+    "index": 477,
+    "term": "aviator",
+    "definition": "飞行员"
+  },
+  {
+    "index": 478,
+    "term": "playwright",
+    "definition": "剧作家"
+  },
+  {
+    "index": 479,
+    "term": "clergy",
+    "definition": "神职人员"
+  },
+  {
+    "index": 480,
+    "term": "auditor",
+    "definition": "审计员，旁听者"
+  },
+  {
+    "index": 481,
+    "term": "athlete",
+    "definition": "运动员"
+  },
+  {
+    "index": 482,
+    "term": "satirist",
+    "definition": "讽刺作家"
+  },
+  {
+    "index": 483,
+    "term": "sculptor",
+    "definition": "雕刻家"
+  },
+  {
+    "index": 484,
+    "term": "mathematician",
+    "definition": "数学家"
+  },
+  {
+    "index": 485,
+    "term": "astronaut",
+    "definition": "宇航员"
+  },
+  {
+    "index": 486,
+    "term": "astronomer",
+    "definition": "天文学家"
+  },
+  {
+    "index": 487,
+    "term": "botanist",
+    "definition": "植物学家"
+  },
+  {
+    "index": 488,
+    "term": "choreographer",
+    "definition": "舞蹈编排家"
+  },
+  {
+    "index": 489,
+    "term": "geographer",
+    "definition": "地理学家"
+  },
+  {
+    "index": 490,
+    "term": "geologist",
+    "definition": "地质学家"
+  },
+  {
+    "index": 491,
+    "term": "educator",
+    "definition": "教育家"
+  },
+  {
+    "index": 492,
+    "term": "Treasurer",
+    "definition": "n.司库，财务主管"
+  },
+  {
+    "index": 493,
+    "term": "Archeology",
+    "definition": "考古学"
+  },
+  {
+    "index": 494,
+    "term": "paleoanthropologist",
+    "definition": "古人类学家"
+  },
+  {
+    "index": 495,
+    "term": "meteorologist",
+    "definition": "气象学家"
+  },
+  {
+    "index": 496,
+    "term": "anthropologist",
+    "definition": "人类学家"
+  },
+  {
+    "index": 497,
+    "term": "mechanic",
+    "definition": "n.技工,机修工"
+  },
+  {
+    "index": 498,
+    "term": "imagist",
+    "definition": "意象派诗人"
+  },
+  {
+    "index": 499,
+    "term": "biographer",
+    "definition": "传记作者"
+  },
+  {
+    "index": 500,
+    "term": "censor",
+    "definition": "v.审查，检查(书报)"
+  },
+  {
+    "index": 501,
+    "term": "physician",
+    "definition": "n 医生，内科医生"
+  },
+  {
+    "index": 502,
+    "term": "hermit",
+    "definition": "隐居者"
+  },
+  {
+    "index": 503,
+    "term": "recluse",
+    "definition": "隐士"
+  },
+  {
+    "index": 504,
+    "term": "ecologist",
+    "definition": "n.生态学家，生态学者"
+  },
+  {
+    "index": 505,
+    "term": "philanthropist",
+    "definition": "慈善家"
+  },
+  {
+    "index": 506,
+    "term": "attorney",
+    "definition": "n. 代理人，辩护律师"
+  },
+  {
+    "index": 507,
+    "term": "congressman",
+    "definition": "国会议员"
+  },
+  {
+    "index": 508,
+    "term": "connoisseur",
+    "definition": "n.鉴赏家，行家"
+  },
+  {
+    "index": 509,
+    "term": "entrepreneur",
+    "definition": "企业家"
+  },
+  {
+    "index": 510,
+    "term": "commander",
+    "definition": "司令官，指挥员"
+  },
+  {
+    "index": 511,
+    "term": "commentator",
+    "definition": "n. 注释着，解说员"
+  },
+  {
+    "index": 512,
+    "term": "attendant",
+    "definition": "n.陪从；出席人；服务员 a.出席的；伴随的"
+  },
+  {
+    "index": 513,
+    "term": "orator",
+    "definition": "n. 演讲者"
+  },
+  {
+    "index": 514,
+    "term": "idiocy",
+    "definition": "白痴"
+  },
+  {
+    "index": 515,
+    "term": "moron",
+    "definition": "低能儿，白痴"
+  },
+  {
+    "index": 516,
+    "term": "illiterate",
+    "definition": "文盲的"
+  },
+  {
+    "index": 517,
+    "term": "proxy",
+    "definition": "代理人"
+  },
+  {
+    "index": 518,
+    "term": "deputy",
+    "definition": "n.代表；副警长"
+  },
+  {
+    "index": 519,
+    "term": "proprietor",
+    "definition": "n.所有者,经营者"
+  },
+  {
+    "index": 520,
+    "term": "debtor",
+    "definition": "债务人"
+  },
+  {
+    "index": 521,
+    "term": "arbitrator",
+    "definition": "仲裁者"
+  },
+  {
+    "index": 522,
+    "term": "superintendent",
+    "definition": "n 管理人，监督人，指挥人；（某一部门的）主管，负责人"
+  },
+  {
+    "index": 523,
+    "term": "apprentice",
+    "definition": "学徒"
+  },
+  {
+    "index": 524,
+    "term": "tenant",
+    "definition": "n.房客，租户"
+  },
+  {
+    "index": 525,
+    "term": "miser",
+    "definition": "n.守财奴，吝啬鬼"
+  },
+  {
+    "index": 526,
+    "term": "personnel",
+    "definition": "n. 人员，职员"
+  },
+  {
+    "index": 527,
+    "term": "recipient",
+    "definition": "接受者"
+  },
+  {
+    "index": 528,
+    "term": "mortal",
+    "definition": "凡人"
+  },
+  {
+    "index": 529,
+    "term": "benefactor",
+    "definition": "n.行善者，捐助者"
+  },
+  {
+    "index": 530,
+    "term": "inhabitant",
+    "definition": "居民"
+  },
+  {
+    "index": 531,
+    "term": "bachelor",
+    "definition": "单身汉"
+  },
+  {
+    "index": 532,
+    "term": "novice",
+    "definition": "新信徒；生手"
+  },
+  {
+    "index": 533,
+    "term": "cult",
+    "definition": "n.宗派；崇拜"
+  },
+  {
+    "index": 534,
+    "term": "fanatic",
+    "definition": "狂热者：unreasoning enthusiasm；狂热的；盲信的：intense uncritical devotion"
+  },
+  {
+    "index": 535,
+    "term": "adherent",
+    "definition": "n.拥护者，信徒"
+  },
+  {
+    "index": 536,
+    "term": "disciple",
+    "definition": "门徒"
+  },
+  {
+    "index": 537,
+    "term": "champion",
+    "definition": "冠军"
+  },
+  {
+    "index": 538,
+    "term": "assassin",
+    "definition": "n. 刺客"
+  },
+  {
+    "index": 539,
+    "term": "bandit",
+    "definition": "强盗"
+  },
+  {
+    "index": 540,
+    "term": "burglar",
+    "definition": "夜盗，窃贼"
+  },
+  {
+    "index": 541,
+    "term": "barbarian",
+    "definition": "n.粗鲁无礼的人, 野蛮人；adj.野蛮的, 粗鲁的"
+  },
+  {
+    "index": 542,
+    "term": "exile",
+    "definition": "n. 流放，充军；放逐，被放逐者；流犯vt. 放逐，流放；使背井离乡"
+  },
+  {
+    "index": 543,
+    "term": "rebel",
+    "definition": "v.反抗,反叛,起义 n.叛逆者,起义者"
+  },
+  {
+    "index": 544,
+    "term": "egoist",
+    "definition": "n. 自我主义者"
+  },
+  {
+    "index": 545,
+    "term": "eyewitness",
+    "definition": "目击者"
+  },
+  {
+    "index": 546,
+    "term": "spectator",
+    "definition": "观众，目击者，旁观者：watches"
+  },
+  {
+    "index": 547,
+    "term": "spouse",
+    "definition": "n. 配偶vt. 和...结婚"
+  },
+  {
+    "index": 548,
+    "term": "beneficiary",
+    "definition": "n.受惠者,受益人a.受封的"
+  },
+  {
+    "index": 549,
+    "term": "inferior",
+    "definition": "下级；晚辈"
+  },
+  {
+    "index": 550,
+    "term": "zealot",
+    "definition": "热心者"
+  },
+  {
+    "index": 551,
+    "term": "precursor",
+    "definition": "先驱"
+  },
+  {
+    "index": 552,
+    "term": "avant-garde",
+    "definition": "a&n 先锋（的），先驱（的）"
+  },
+  {
+    "index": 553,
+    "term": "alumni",
+    "definition": "男毕业生，男校友"
+  },
+  {
+    "index": 554,
+    "term": "skeptic",
+    "definition": "怀疑论者"
+  },
+  {
+    "index": 555,
+    "term": "malcontent",
+    "definition": "不满分子：opposition；不满的：dissatisfied"
+  },
+  {
+    "index": 556,
+    "term": "opponent",
+    "definition": "n.对手，敌手"
+  },
+  {
+    "index": 557,
+    "term": "celebrity",
+    "definition": "n. 名人"
+  },
+  {
+    "index": 558,
+    "term": "figurehead",
+    "definition": "名誉领袖"
+  },
+  {
+    "index": 559,
+    "term": "veteran",
+    "definition": "老兵；有丰富经验的人：knowledge through long experience；经验丰富的，资深的：knowledge, experience"
+  },
+  {
+    "index": 560,
+    "term": "advocate",
+    "definition": "n 拥护者，鼓吹者，提倡者 v 拥护；鼓吹；提倡；主张；辩护"
+  },
+  {
+    "index": 561,
+    "term": "feminist",
+    "definition": "男女平等主义者"
+  },
+  {
+    "index": 562,
+    "term": "humanitarian",
+    "definition": "人道主义者"
+  },
+  {
+    "index": 563,
+    "term": "throng",
+    "definition": "n.一大群；群众v.拥挤"
+  },
+  {
+    "index": 564,
+    "term": "civilian",
+    "definition": "n 市民，平民"
+  },
+  {
+    "index": 565,
+    "term": "monarch",
+    "definition": "n.君主，帝王"
+  },
+  {
+    "index": 566,
+    "term": "conservative",
+    "definition": "守旧的，不愿改变的：oppose change；不招摇的，低调的：not showy；谨慎小心的：close attentiveness"
+  },
+  {
+    "index": 567,
+    "term": "envoy",
+    "definition": "使者"
+  },
+  {
+    "index": 568,
+    "term": "aristocrat",
+    "definition": "贵族"
+  },
+  {
+    "index": 569,
+    "term": "gentry",
+    "definition": "贵族"
+  },
+  {
+    "index": 570,
+    "term": "autocrat",
+    "definition": "n. 独裁者，专制君主；独断独行的人"
+  },
+  {
+    "index": 571,
+    "term": "delegate",
+    "definition": "n.代表；v.委派...为代表，授权"
+  },
+  {
+    "index": 572,
+    "term": "democrat",
+    "definition": "民主党人"
+  },
+  {
+    "index": 573,
+    "term": "candidate",
+    "definition": "n.候选人；参加考试的人"
+  },
+  {
+    "index": 574,
+    "term": "urban",
+    "definition": "城市的"
+  },
+  {
+    "index": 575,
+    "term": "rustic",
+    "definition": "乡村的;粗俗的"
+  },
+  {
+    "index": 576,
+    "term": "metropolitan",
+    "definition": "adj. 主要都市的，大城市的"
+  },
+  {
+    "index": 577,
+    "term": "exotic",
+    "definition": "a.珍奇的；来自异国的"
+  },
+  {
+    "index": 578,
+    "term": "conventional",
+    "definition": "a.因循守旧的，传统的"
+  },
+  {
+    "index": 579,
+    "term": "convention",
+    "definition": "n. 大会；[法] 惯例；[计] 约定；[法] 协定；习俗"
+  },
+  {
+    "index": 580,
+    "term": "patriarchal",
+    "definition": "家长的，族长的"
+  },
+  {
+    "index": 581,
+    "term": "institutionalize",
+    "definition": "使制度化或习俗化"
+  },
+  {
+    "index": 582,
+    "term": "clan",
+    "definition": "（有共同爱好的）团体，帮派：united by a common interest"
+  },
+  {
+    "index": 583,
+    "term": "status",
+    "definition": "n. 地位；状态；情形；重要身份"
+  },
+  {
+    "index": 584,
+    "term": "taboo",
+    "definition": "禁忌，忌讳，禁止"
+  },
+  {
+    "index": 585,
+    "term": "ethics",
+    "definition": "道德规范：governing conduct"
+  },
+  {
+    "index": 586,
+    "term": "genteel",
+    "definition": "有教养的，不粗俗的：free from vulgarity"
+  },
+  {
+    "index": 587,
+    "term": "marital",
+    "definition": "婚姻的"
+  },
+  {
+    "index": 588,
+    "term": "polygamous",
+    "definition": "一夫多妻的，一妻多夫的"
+  },
+  {
+    "index": 589,
+    "term": "household",
+    "definition": "a&n 家庭（的），一家（的）"
+  },
+  {
+    "index": 590,
+    "term": "parasite",
+    "definition": "寄生虫"
+  },
+  {
+    "index": 591,
+    "term": "parasitic",
+    "definition": "寄生的"
+  },
+  {
+    "index": 592,
+    "term": "mimicry",
+    "definition": "n. （生物）拟态；模仿"
+  },
+  {
+    "index": 593,
+    "term": "symbiotic",
+    "definition": "共生的"
+  },
+  {
+    "index": 594,
+    "term": "symbiosis",
+    "definition": "共生关系：living together"
+  },
+  {
+    "index": 595,
+    "term": "organism",
+    "definition": "n.生物；有机体"
+  },
+  {
+    "index": 596,
+    "term": "species",
+    "definition": "物种"
+  },
+  {
+    "index": 597,
+    "term": "vital",
+    "definition": "a.极其重要的；充满活力的"
+  },
+  {
+    "index": 598,
+    "term": "evolve",
+    "definition": "v 发展；进化"
+  },
+  {
+    "index": 599,
+    "term": "Darwinism",
+    "definition": "达尔文学说"
+  },
+  {
+    "index": 600,
+    "term": "proliferate",
+    "definition": "激增，繁殖"
+  },
+  {
+    "index": 601,
+    "term": "propagate",
+    "definition": "繁殖"
+  },
+  {
+    "index": 602,
+    "term": "subsist",
+    "definition": "生存"
+  },
+  {
+    "index": 603,
+    "term": "posterity",
+    "definition": "后代"
+  },
+  {
+    "index": 604,
+    "term": "fermentation",
+    "definition": "发酵"
+  },
+  {
+    "index": 605,
+    "term": "respiration",
+    "definition": "n. 呼吸；呼吸作用"
+  },
+  {
+    "index": 606,
+    "term": "stodgy",
+    "definition": "难消化的"
+  },
+  {
+    "index": 607,
+    "term": "secretion",
+    "definition": "分泌物"
+  },
+  {
+    "index": 608,
+    "term": "secrete",
+    "definition": "分泌"
+  },
+  {
+    "index": 609,
+    "term": "assimilate",
+    "definition": "吸收"
+  },
+  {
+    "index": 610,
+    "term": "immune",
+    "definition": "免疫的"
+  },
+  {
+    "index": 611,
+    "term": "immunity",
+    "definition": "免疫力"
+  },
+  {
+    "index": 612,
+    "term": "metabolism",
+    "definition": "新陈代谢"
+  },
+  {
+    "index": 613,
+    "term": "morphology",
+    "definition": "形态学"
+  },
+  {
+    "index": 614,
+    "term": "microscope",
+    "definition": "显微镜"
+  },
+  {
+    "index": 615,
+    "term": "glucose",
+    "definition": "葡萄糖"
+  },
+  {
+    "index": 616,
+    "term": "protein",
+    "definition": "蛋白质"
+  },
+  {
+    "index": 617,
+    "term": "discrete",
+    "definition": "离散的，不连续的：separate"
+  },
+  {
+    "index": 618,
+    "term": "symmetry",
+    "definition": "n.对称；均衡"
+  },
+  {
+    "index": 619,
+    "term": "sequence",
+    "definition": "序列"
+  },
+  {
+    "index": 620,
+    "term": "dual",
+    "definition": "adj. 双的；双重的n. 双数；双数词"
+  },
+  {
+    "index": 621,
+    "term": "induction",
+    "definition": "n.归纳法,感应,就职,入门"
+  },
+  {
+    "index": 622,
+    "term": "inference",
+    "definition": "n.推论"
+  },
+  {
+    "index": 623,
+    "term": "qualitative",
+    "definition": "a.性质上的,质的,定性的"
+  },
+  {
+    "index": 624,
+    "term": "dispersion",
+    "definition": "离差，差量"
+  },
+  {
+    "index": 625,
+    "term": "vertical",
+    "definition": "adj. 垂直的，直立的；[解剖] 头顶的，顶点的n. 垂直线，垂直面"
+  },
+  {
+    "index": 626,
+    "term": "plumb",
+    "definition": "测深度：measure the depth；垂直的：vertical；仔细深入地检查；探索，探究：examine deeply"
+  },
+  {
+    "index": 627,
+    "term": "upright",
+    "definition": "a.垂直的；正直的"
+  },
+  {
+    "index": 628,
+    "term": "cubic",
+    "definition": "adj. 立方体的"
+  },
+  {
+    "index": 629,
+    "term": "circuitous",
+    "definition": "a.迂回的，绕圈子的"
+  },
+  {
+    "index": 630,
+    "term": "facet",
+    "definition": "n. 方面，平面"
+  },
+  {
+    "index": 631,
+    "term": "sphere",
+    "definition": "n. 球体"
+  },
+  {
+    "index": 632,
+    "term": "loop",
+    "definition": "vi. 打环；翻筋斗n. 环；圈；弯曲部分；翻筋斗vt. 使成环；以环连结；使翻筋斗"
+  },
+  {
+    "index": 633,
+    "term": "triangle",
+    "definition": "n 三角形；三角形的东西；三角板"
+  },
+  {
+    "index": 634,
+    "term": "circumference",
+    "definition": "n.周围；圆周；周长"
+  },
+  {
+    "index": 635,
+    "term": "cone",
+    "definition": "圆锥"
+  },
+  {
+    "index": 636,
+    "term": "caliber",
+    "definition": "口径，才干，品质"
+  },
+  {
+    "index": 637,
+    "term": "diameter",
+    "definition": "直径"
+  },
+  {
+    "index": 638,
+    "term": "column",
+    "definition": "n. 专栏；圆柱"
+  },
+  {
+    "index": 639,
+    "term": "ellipse",
+    "definition": "椭圆"
+  },
+  {
+    "index": 640,
+    "term": "diagram",
+    "definition": "n.图解，图表"
+  },
+  {
+    "index": 641,
+    "term": "polygon",
+    "definition": "n 多边形，多角形"
+  },
+  {
+    "index": 642,
+    "term": "intersect",
+    "definition": "v.横截，横断；(线条)相交"
+  },
+  {
+    "index": 643,
+    "term": "radius",
+    "definition": "半径，范围"
+  },
+  {
+    "index": 644,
+    "term": "rectangle",
+    "definition": "n.长方形，矩形"
+  },
+  {
+    "index": 645,
+    "term": "square",
+    "definition": "正方形，平方,广场，直角尺"
+  },
+  {
+    "index": 646,
+    "term": "parallel",
+    "definition": "a.平行的；类似的；n.平行线；v.与...相似"
+  },
+  {
+    "index": 647,
+    "term": "deduction",
+    "definition": "n. 扣除，减除；推论；减除额"
+  },
+  {
+    "index": 648,
+    "term": "degree",
+    "definition": "n. 程度，等级；度；学位；阶层"
+  },
+  {
+    "index": 649,
+    "term": "geometry",
+    "definition": "n.几何，几何学"
+  },
+  {
+    "index": 650,
+    "term": "mathematics",
+    "definition": "n. 数学；数学运算"
+  },
+  {
+    "index": 651,
+    "term": "arithmetic",
+    "definition": "算术"
+  },
+  {
+    "index": 652,
+    "term": "Statistics",
+    "definition": "n 统计学，统计法；统计数字（资料）"
+  },
+  {
+    "index": 653,
+    "term": "even",
+    "definition": "adj. [数] 偶数的；平坦的；相等的adv. 甚至；即使；还；实际上vt. 使平坦；使相等vi. 变平；变得可比较；成为相等"
+  },
+  {
+    "index": 654,
+    "term": "odd",
+    "definition": "adj. 奇数的；古怪的"
+  },
+  {
+    "index": 655,
+    "term": "decimal",
+    "definition": "adj. 小数的；十进位的n. 小数"
+  },
+  {
+    "index": 656,
+    "term": "ratio",
+    "definition": "n. 比率，比例"
+  },
+  {
+    "index": 657,
+    "term": "estimate",
+    "definition": "v 估计，估算"
+  },
+  {
+    "index": 658,
+    "term": "enumerate",
+    "definition": "v.列举，枚举"
+  },
+  {
+    "index": 659,
+    "term": "variant",
+    "definition": "变体，变种"
+  },
+  {
+    "index": 660,
+    "term": "variable",
+    "definition": "adj. 多变的;易变的;反复无常的 n. 变量;变项;变元"
+  },
+  {
+    "index": 661,
+    "term": "abacus",
+    "definition": "算盘"
+  },
+  {
+    "index": 662,
+    "term": "aggregate",
+    "definition": "v.集合；合计"
+  },
+  {
+    "index": 663,
+    "term": "calculus",
+    "definition": "微积分"
+  },
+  {
+    "index": 664,
+    "term": "digit",
+    "definition": "n.手指，足趾；数字，数码"
+  },
+  {
+    "index": 665,
+    "term": "function",
+    "definition": "函数，功能"
+  },
+  {
+    "index": 666,
+    "term": "subtract",
+    "definition": "v.减，减去，去掉"
+  },
+  {
+    "index": 667,
+    "term": "addition",
+    "definition": "加法, 增加的人(或物)"
+  },
+  {
+    "index": 668,
+    "term": "minus",
+    "definition": "a.负的,减的 prep.减去 n.负号,减号"
+  },
+  {
+    "index": 669,
+    "term": "multiply",
+    "definition": "v.乘；大量增加；繁殖"
+  },
+  {
+    "index": 670,
+    "term": "multiplication",
+    "definition": "n.增加；繁殖；乘法"
+  },
+  {
+    "index": 671,
+    "term": "numeral",
+    "definition": "n.数字,数a.数字的,表示数字的"
+  },
+  {
+    "index": 672,
+    "term": "percentage",
+    "definition": "n [数]百分法；百分数；百分比；[商]手续费，佣金"
+  },
+  {
+    "index": 673,
+    "term": "quarter",
+    "definition": "n. 四分之一"
+  },
+  {
+    "index": 674,
+    "term": "fraction",
+    "definition": "分数"
+  },
+  {
+    "index": 675,
+    "term": "divide",
+    "definition": "v. 分割，除"
+  },
+  {
+    "index": 676,
+    "term": "celestial",
+    "definition": "a.天体的，天上的"
+  },
+  {
+    "index": 677,
+    "term": "orbit",
+    "definition": "轨道"
+  },
+  {
+    "index": 678,
+    "term": "comet",
+    "definition": "n. 彗星"
+  },
+  {
+    "index": 679,
+    "term": "constellation",
+    "definition": "n.星座，星群"
+  },
+  {
+    "index": 680,
+    "term": "asteroid",
+    "definition": "n.小游星,小行星,海盘车a.星状的"
+  },
+  {
+    "index": 681,
+    "term": "chondrite",
+    "definition": "n. [地质] 球粒状陨石"
+  },
+  {
+    "index": 682,
+    "term": "cluster",
+    "definition": "星团;从，束"
+  },
+  {
+    "index": 683,
+    "term": "meteor",
+    "definition": "n.流星,大气现象"
+  },
+  {
+    "index": 684,
+    "term": "dwarf",
+    "definition": "n.侏儒；矮小的植物；白矮星v.使变矮小"
+  },
+  {
+    "index": 685,
+    "term": "stellar",
+    "definition": "恒星的"
+  },
+  {
+    "index": 686,
+    "term": "cosmos",
+    "definition": "n.宇宙；秩序，和谐"
+  },
+  {
+    "index": 687,
+    "term": "cosmic",
+    "definition": "a.宇宙的；广大无边的"
+  },
+  {
+    "index": 688,
+    "term": "cosmology",
+    "definition": "n.宇宙哲学,宇宙论"
+  },
+  {
+    "index": 689,
+    "term": "nebula",
+    "definition": "n 星云；云状，雾影"
+  },
+  {
+    "index": 690,
+    "term": "quasar",
+    "definition": "恒星状球体，类星体"
+  },
+  {
+    "index": 691,
+    "term": "planeroid",
+    "definition": "位面"
+  },
+  {
+    "index": 692,
+    "term": "intergalactic",
+    "definition": "adj. 星系间的；银河间的"
+  },
+  {
+    "index": 693,
+    "term": "interplanetary",
+    "definition": "行星间的，太阳系内的"
+  },
+  {
+    "index": 694,
+    "term": "interstellar",
+    "definition": "adj. [航][天] 星际的"
+  },
+  {
+    "index": 695,
+    "term": "corona",
+    "definition": "n.日冕，光环"
+  },
+  {
+    "index": 696,
+    "term": "chromosphere",
+    "definition": "太阳的色球层"
+  },
+  {
+    "index": 697,
+    "term": "photosphere",
+    "definition": "光球；光球层"
+  },
+  {
+    "index": 698,
+    "term": "pseudoscience",
+    "definition": "伪科学"
+  },
+  {
+    "index": 699,
+    "term": "astronomy",
+    "definition": "n. 天文学"
+  },
+  {
+    "index": 700,
+    "term": "astronomical",
+    "definition": "天文学的"
+  },
+  {
+    "index": 701,
+    "term": "astrology",
+    "definition": "n.占星术；占星学"
+  },
+  {
+    "index": 702,
+    "term": "astrophysics",
+    "definition": "天文物理学"
+  },
+  {
+    "index": 703,
+    "term": "Jupiter",
+    "definition": "n 木星；[罗神]（主神）朱庇特"
+  },
+  {
+    "index": 704,
+    "term": "lunar",
+    "definition": "adj.月球的，阴历的"
+  },
+  {
+    "index": 705,
+    "term": "Uranus",
+    "definition": "天王星"
+  },
+  {
+    "index": 706,
+    "term": "Venus",
+    "definition": "n. [天] 金星；维纳斯（爱与美的女神）"
+  },
+  {
+    "index": 707,
+    "term": "Pluto",
+    "definition": "n. [天] 冥王星；冥王"
+  },
+  {
+    "index": 708,
+    "term": "Neptune",
+    "definition": "海王星"
+  },
+  {
+    "index": 709,
+    "term": "Saturn",
+    "definition": "n.农神；土星"
+  },
+  {
+    "index": 710,
+    "term": "emission",
+    "definition": "n. 散发；发射"
+  },
+  {
+    "index": 711,
+    "term": "infinite",
+    "definition": "无尽的，无限的：no boundaries"
+  },
+  {
+    "index": 712,
+    "term": "interferometer",
+    "definition": "干扰仪，干涉仪"
+  },
+  {
+    "index": 713,
+    "term": "revolve",
+    "definition": "vi. 旋转；循环出现；反复考虑vt. 使...旋转；使...循环；反复考虑n. 旋转；循环；旋转舞台"
+  },
+  {
+    "index": 714,
+    "term": "spacecraft",
+    "definition": "太空飞船"
+  },
+  {
+    "index": 715,
+    "term": "telescope",
+    "definition": "望远镜"
+  },
+  {
+    "index": 716,
+    "term": "compatible",
+    "definition": "adj. 兼容的；能共处的；可并立的"
+  },
+  {
+    "index": 717,
+    "term": "boundary",
+    "definition": "边界"
+  },
+  {
+    "index": 718,
+    "term": "boundless",
+    "definition": "a.无限的，无边无际的"
+  },
+  {
+    "index": 719,
+    "term": "cohesive",
+    "definition": "有粘性的；有凝聚力的：cohesion or coherence"
+  },
+  {
+    "index": 720,
+    "term": "horizontal",
+    "definition": "n. 水平线adj. 地平线的；水平的"
+  },
+  {
+    "index": 721,
+    "term": "bulk",
+    "definition": "n 体积，容积，大小；物体"
+  },
+  {
+    "index": 722,
+    "term": "brim",
+    "definition": "边缘，边界：outer margin；充满：full often to overflowing；加满，倒满：as much as can be;杯、碗的边"
+  },
+  {
+    "index": 723,
+    "term": "rim",
+    "definition": "n.边；边缘，(眼镜)框"
+  },
+  {
+    "index": 724,
+    "term": "brink",
+    "definition": "边缘 边沿"
+  },
+  {
+    "index": 725,
+    "term": "constituent",
+    "definition": "n.成分；选区内的选民"
+  },
+  {
+    "index": 726,
+    "term": "dimension",
+    "definition": "n.维度，尺寸"
+  },
+  {
+    "index": 727,
+    "term": "elasticity",
+    "definition": "n. 弹力，弹性"
+  },
+  {
+    "index": 728,
+    "term": "cohesion",
+    "definition": "n.（人、物）内聚力，凝聚力"
+  },
+  {
+    "index": 729,
+    "term": "mechanics",
+    "definition": "n. 机械学，力学"
+  },
+  {
+    "index": 730,
+    "term": "gravity",
+    "definition": "n 重力，引力"
+  },
+  {
+    "index": 731,
+    "term": "impetus",
+    "definition": "n.推动力, 促进"
+  },
+  {
+    "index": 732,
+    "term": "Decelerate",
+    "definition": "减速[accelerate反]"
+  },
+  {
+    "index": 733,
+    "term": "expedite",
+    "definition": "加速"
+  },
+  {
+    "index": 734,
+    "term": "quiver",
+    "definition": "颤抖，抖动"
+  },
+  {
+    "index": 735,
+    "term": "jar",
+    "definition": "\"1 v 使震动，使摇动2 n （圆柱形、大口的）罐子，坛子，瓶子\""
+  },
+  {
+    "index": 736,
+    "term": "vibration",
+    "definition": "n. 振动；犹豫；心灵感应"
+  },
+  {
+    "index": 737,
+    "term": "discharge",
+    "definition": "v.流出；释放；解雇；履行义务"
+  },
+  {
+    "index": 738,
+    "term": "diffuse",
+    "definition": "v.散播,传播a.散开的,弥漫的"
+  },
+  {
+    "index": 739,
+    "term": "emit",
+    "definition": "v.放射(光、热、味等)"
+  },
+  {
+    "index": 740,
+    "term": "transpire",
+    "definition": "v.发生，蒸发，泄露"
+  },
+  {
+    "index": 741,
+    "term": "constitute",
+    "definition": "v.组成，构成；建立"
+  },
+  {
+    "index": 742,
+    "term": "eject",
+    "definition": "v 喷出，吐出（烟等）；发射，喷射"
+  },
+  {
+    "index": 743,
+    "term": "electron",
+    "definition": "电子"
+  },
+  {
+    "index": 744,
+    "term": "neutron",
+    "definition": "中子"
+  },
+  {
+    "index": 745,
+    "term": "nucleus",
+    "definition": "原子核"
+  },
+  {
+    "index": 746,
+    "term": "proton",
+    "definition": "质子"
+  },
+  {
+    "index": 747,
+    "term": "atom",
+    "definition": "原子"
+  },
+  {
+    "index": 748,
+    "term": "nuclear",
+    "definition": "a 核的，核心的；原子能的；核动力的"
+  },
+  {
+    "index": 749,
+    "term": "fusion",
+    "definition": "n.熔合；聚变"
+  },
+  {
+    "index": 750,
+    "term": "thermometer",
+    "definition": "n.温度计,体温计"
+  },
+  {
+    "index": 751,
+    "term": "thaw",
+    "definition": "融化"
+  },
+  {
+    "index": 752,
+    "term": "centigrade",
+    "definition": "a.百分度的，摄氏温度计的"
+  },
+  {
+    "index": 753,
+    "term": "clot",
+    "definition": "n.凝块；v.使凝结成块"
+  },
+  {
+    "index": 754,
+    "term": "sublimate",
+    "definition": "v.（使）升华，净化"
+  },
+  {
+    "index": 755,
+    "term": "distillation",
+    "definition": "n. 蒸馏"
+  },
+  {
+    "index": 756,
+    "term": "clutter",
+    "definition": "n.杂乱vt.弄乱,混乱"
+  },
+  {
+    "index": 757,
+    "term": "equilibrium",
+    "definition": "均势，平衡：opposing forces are equal；（感情上的）平静：evenness of emotions"
+  },
+  {
+    "index": 758,
+    "term": "density",
+    "definition": "密度"
+  },
+  {
+    "index": 759,
+    "term": "liquid",
+    "definition": "n.液体"
+  },
+  {
+    "index": 760,
+    "term": "dilute",
+    "definition": "v.把(液体)弄稀，弄淡"
+  },
+  {
+    "index": 761,
+    "term": "dehydrate",
+    "definition": "脱水"
+  },
+  {
+    "index": 762,
+    "term": "declivity",
+    "definition": "斜坡，倾斜"
+  },
+  {
+    "index": 763,
+    "term": "ventilation",
+    "definition": "通风"
+  },
+  {
+    "index": 764,
+    "term": "evaporate",
+    "definition": "蒸发"
+  },
+  {
+    "index": 765,
+    "term": "evaporation",
+    "definition": "n. 蒸发；消失"
+  },
+  {
+    "index": 766,
+    "term": "thermodynamics",
+    "definition": "热力学"
+  },
+  {
+    "index": 767,
+    "term": "attrition",
+    "definition": "n.磨损，摩擦"
+  },
+  {
+    "index": 768,
+    "term": "chafe",
+    "definition": "擦热"
+  },
+  {
+    "index": 769,
+    "term": "resonance",
+    "definition": "n 回声，反响 v 共鸣"
+  },
+  {
+    "index": 770,
+    "term": "ultrasonics",
+    "definition": "n. 超音波学"
+  },
+  {
+    "index": 771,
+    "term": "sonar",
+    "definition": "声纳"
+  },
+  {
+    "index": 772,
+    "term": "acoustic",
+    "definition": "原声的、声音的、听觉的"
+  },
+  {
+    "index": 773,
+    "term": "electromagnet",
+    "definition": "n.电磁石,电磁体"
+  },
+  {
+    "index": 774,
+    "term": "electromagnetism",
+    "definition": "电磁，电磁学"
+  },
+  {
+    "index": 775,
+    "term": "electronic",
+    "definition": "电子的"
+  },
+  {
+    "index": 776,
+    "term": "electronics",
+    "definition": "电子学"
+  },
+  {
+    "index": 777,
+    "term": "amplifier",
+    "definition": "n.放大器，扩大器"
+  },
+  {
+    "index": 778,
+    "term": "conductor",
+    "definition": "导体"
+  },
+  {
+    "index": 779,
+    "term": "semiconductor",
+    "definition": "半导体"
+  },
+  {
+    "index": 780,
+    "term": "insulator",
+    "definition": "绝缘体"
+  },
+  {
+    "index": 781,
+    "term": "magnetism",
+    "definition": "n. 磁，磁力"
+  },
+  {
+    "index": 782,
+    "term": "transistor",
+    "definition": "晶体管"
+  },
+  {
+    "index": 783,
+    "term": "ultraviolet",
+    "definition": "a.紫外的n.紫外线辐射"
+  },
+  {
+    "index": 784,
+    "term": "microwave",
+    "definition": "微波炉"
+  },
+  {
+    "index": 785,
+    "term": "gravitation",
+    "definition": "n. 引力作用，重力"
+  },
+  {
+    "index": 786,
+    "term": "oscillation",
+    "definition": "振荡，摆动"
+  },
+  {
+    "index": 787,
+    "term": "statics",
+    "definition": "静力学"
+  },
+  {
+    "index": 788,
+    "term": "relativity",
+    "definition": "n.相关(性);相对论"
+  },
+  {
+    "index": 789,
+    "term": "velocity",
+    "definition": "n. 速度"
+  },
+  {
+    "index": 790,
+    "term": "acceleration",
+    "definition": "n. 加速度"
+  },
+  {
+    "index": 791,
+    "term": "transparent",
+    "definition": "透明的"
+  },
+  {
+    "index": 792,
+    "term": "opaque",
+    "definition": "a.不透明的；难懂的"
+  },
+  {
+    "index": 793,
+    "term": "translucent",
+    "definition": "半透明的"
+  },
+  {
+    "index": 794,
+    "term": "optical",
+    "definition": "a.视觉的；光学的"
+  },
+  {
+    "index": 795,
+    "term": "spectrum",
+    "definition": "n．光谱，范围"
+  },
+  {
+    "index": 796,
+    "term": "magnifier",
+    "definition": "放大镜，放大器"
+  },
+  {
+    "index": 797,
+    "term": "lens",
+    "definition": "透镜，镜头"
+  },
+  {
+    "index": 798,
+    "term": "contagious",
+    "definition": "传染性的"
+  },
+  {
+    "index": 799,
+    "term": "catching",
+    "definition": "adj. 传染的；有魅力的，迷人的"
+  },
+  {
+    "index": 800,
+    "term": "infectious",
+    "definition": "adj.有传染性的, 易传染的, 有感染力的"
+  },
+  {
+    "index": 801,
+    "term": "acute",
+    "definition": "adj. 急性的；敏锐的"
+  },
+  {
+    "index": 802,
+    "term": "feverish",
+    "definition": "发烧的"
+  },
+  {
+    "index": 803,
+    "term": "invalid",
+    "definition": "n.病人,伤残人 a.有病的,伤残的;无效的"
+  },
+  {
+    "index": 804,
+    "term": "morbid",
+    "definition": "a.病态的，不正常的"
+  },
+  {
+    "index": 805,
+    "term": "unconscious",
+    "definition": "无意识的"
+  },
+  {
+    "index": 806,
+    "term": "fragile",
+    "definition": "a.易碎的，易坏的"
+  },
+  {
+    "index": 807,
+    "term": "susceptible",
+    "definition": "a.易受影响的，脆弱的,易受感染的"
+  },
+  {
+    "index": 808,
+    "term": "malady",
+    "definition": "n.疾病"
+  },
+  {
+    "index": 809,
+    "term": "gash",
+    "definition": "深长的伤口或切口：deep cut；砍伤，切开：make gash"
+  },
+  {
+    "index": 810,
+    "term": "symptom",
+    "definition": "n.症状；征候，征兆"
+  },
+  {
+    "index": 811,
+    "term": "fracture",
+    "definition": "n.骨折；折断；裂口"
+  },
+  {
+    "index": 812,
+    "term": "tingle",
+    "definition": "v. 刺痛，激动"
+  },
+  {
+    "index": 813,
+    "term": "recur",
+    "definition": "vi. 重现，再来；复发"
+  },
+  {
+    "index": 814,
+    "term": "relapse",
+    "definition": "故态复萌，再犯：fall back"
+  },
+  {
+    "index": 815,
+    "term": "fester",
+    "definition": "感染，溃烂，腐烂：corrupt"
+  },
+  {
+    "index": 816,
+    "term": "intoxicate",
+    "definition": "v.(使)沉醉，(使)欣喜若狂；(使)喝醉, 使中毒"
+  },
+  {
+    "index": 817,
+    "term": "diagnose",
+    "definition": "v.判断，诊断"
+  },
+  {
+    "index": 818,
+    "term": "diagnosis",
+    "definition": "n. 诊断"
+  },
+  {
+    "index": 819,
+    "term": "remedy",
+    "definition": "n. 补救方法；解决方法，解决良方；药品；治疗方法v. 纠正；补救；矫正"
+  },
+  {
+    "index": 820,
+    "term": "prescription",
+    "definition": "n.药方，处方的药"
+  },
+  {
+    "index": 821,
+    "term": "dissect",
+    "definition": "解剖"
+  },
+  {
+    "index": 822,
+    "term": "sterile",
+    "definition": "贫瘠的：not productive；无菌的：free from bacteria"
+  },
+  {
+    "index": 823,
+    "term": "anatomy",
+    "definition": "n. 解剖；解剖学；剖析；骨骼"
+  },
+  {
+    "index": 824,
+    "term": "hygiene",
+    "definition": "卫生"
+  },
+  {
+    "index": 825,
+    "term": "sanitation",
+    "definition": "n 公共卫生，卫生设备，下水道设备"
+  },
+  {
+    "index": 826,
+    "term": "sustenance",
+    "definition": "n 食物，营养；生计；支持（物）"
+  },
+  {
+    "index": 827,
+    "term": "malnourished",
+    "definition": "营养失调的 营养不良的"
+  },
+  {
+    "index": 828,
+    "term": "picturesque",
+    "definition": "a.如画的；独特的，别具风格的"
+  },
+  {
+    "index": 829,
+    "term": "statue",
+    "definition": "n.塑像,雕像"
+  },
+  {
+    "index": 830,
+    "term": "portrait",
+    "definition": "n 肖像，肖像画；相片"
+  },
+  {
+    "index": 831,
+    "term": "impressionism",
+    "definition": "印象主义"
+  },
+  {
+    "index": 832,
+    "term": "portray",
+    "definition": "v 画（人物、风景），画（肖像），描绘；描写；描述"
+  },
+  {
+    "index": 833,
+    "term": "mold",
+    "definition": "vt. 塑造；使发霉；用模子制作vi. 发霉n. 霉菌；模子"
+  },
+  {
+    "index": 834,
+    "term": "embroider",
+    "definition": "v.刺绣，修饰"
+  },
+  {
+    "index": 835,
+    "term": "tragedy",
+    "definition": "n.悲剧，惨事，灾难"
+  },
+  {
+    "index": 836,
+    "term": "rehearse",
+    "definition": "v.排练，预演；详述"
+  },
+  {
+    "index": 837,
+    "term": "prelude",
+    "definition": "n.(行动，事情的)序幕，前奏"
+  },
+  {
+    "index": 838,
+    "term": "profile",
+    "definition": "n. 侧面；轮廓；外形；剖面；简况vt. 描...的轮廓；扼要描述vi. 给出轮廓"
+  },
+  {
+    "index": 839,
+    "term": "renaissance",
+    "definition": "n 复兴；新生；文艺复兴（期）"
+  },
+  {
+    "index": 840,
+    "term": "conjure",
+    "definition": "v.恳求，祈求；变魔术，变戏法"
+  },
+  {
+    "index": 841,
+    "term": "aesthetic",
+    "definition": "a.美学的，有审美感的"
+  },
+  {
+    "index": 842,
+    "term": "euphonious",
+    "definition": "悦耳的，动听的"
+  },
+  {
+    "index": 843,
+    "term": "harsh",
+    "definition": "刺耳的"
+  },
+  {
+    "index": 844,
+    "term": "movement",
+    "definition": "运动;乐章"
+  },
+  {
+    "index": 845,
+    "term": "score",
+    "definition": "n.得分,分数;二十 v.得(分),记(...的)分数；乐谱"
+  },
+  {
+    "index": 846,
+    "term": "episode",
+    "definition": "n.一段情节；插曲，片段"
+  },
+  {
+    "index": 847,
+    "term": "orchestra",
+    "definition": "管弦乐队"
+  },
+  {
+    "index": 848,
+    "term": "chorus",
+    "definition": "n.合唱队，歌舞团"
+  },
+  {
+    "index": 849,
+    "term": "percussion",
+    "definition": "n 敲打，打击；（乐队的）打击乐器组"
+  },
+  {
+    "index": 850,
+    "term": "string",
+    "definition": "n. 弦;弦乐"
+  },
+  {
+    "index": 851,
+    "term": "wind",
+    "definition": "风；管乐"
+  },
+  {
+    "index": 852,
+    "term": "implicit",
+    "definition": "a.含蓄的，不言而喻的"
+  },
+  {
+    "index": 853,
+    "term": "concise",
+    "definition": "简明的，简洁的"
+  },
+  {
+    "index": 854,
+    "term": "succinct",
+    "definition": "简明的，简洁的"
+  },
+  {
+    "index": 855,
+    "term": "cogent",
+    "definition": "有说服力的"
+  },
+  {
+    "index": 856,
+    "term": "persuasive",
+    "definition": "a.易使人信服的，有说服力的"
+  },
+  {
+    "index": 857,
+    "term": "character",
+    "definition": "n.性格,品质,特性;人物,角色;字符,(汉)字"
+  },
+  {
+    "index": 858,
+    "term": "glossary",
+    "definition": "n.词汇表；难词表(术语或专业词语汇编)"
+  },
+  {
+    "index": 859,
+    "term": "linguistic",
+    "definition": "adj. 语言的；语言学的"
+  },
+  {
+    "index": 860,
+    "term": "tense",
+    "definition": "时态；紧张"
+  },
+  {
+    "index": 861,
+    "term": "genre",
+    "definition": "n （文艺作品的）类型，（诗、剧、小说、散文的）体裁"
+  },
+  {
+    "index": 862,
+    "term": "slogan",
+    "definition": "n.标语，口号"
+  },
+  {
+    "index": 863,
+    "term": "verse",
+    "definition": "n. 诗，韵文"
+  },
+  {
+    "index": 864,
+    "term": "byword",
+    "definition": "n. （某一特征的）代名词，代表人物，典型事物; 谚语，俗语；口头禅"
+  },
+  {
+    "index": 865,
+    "term": "fable",
+    "definition": "寓言故事：story teach a basic truth；神话，传说：story of supernatural happenings；谎言，虚构：statement in order to deceive"
+  },
+  {
+    "index": 866,
+    "term": "maxim",
+    "definition": "n. 格言，普遍真理"
+  },
+  {
+    "index": 867,
+    "term": "satire",
+    "definition": "讽刺诗，讽刺文学：literary ridicule"
+  },
+  {
+    "index": 868,
+    "term": "farce",
+    "definition": "（带有嘲讽元素的）滑稽戏：broadly satirical comedy；闹剧：ridiculous"
+  },
+  {
+    "index": 869,
+    "term": "adage",
+    "definition": "格言，谚语"
+  },
+  {
+    "index": 870,
+    "term": "synopsis",
+    "definition": "摘要，概要：outline, abstract, summary"
+  },
+  {
+    "index": 871,
+    "term": "compile",
+    "definition": "vt.编辑，编制，搜集"
+  },
+  {
+    "index": 872,
+    "term": "entitle",
+    "definition": "起标题"
+  },
+  {
+    "index": 873,
+    "term": "emend",
+    "definition": "修订"
+  },
+  {
+    "index": 874,
+    "term": "paraphrase",
+    "definition": "转述，意译，改写；in different words"
+  },
+  {
+    "index": 875,
+    "term": "excerpt",
+    "definition": "n.摘录，选录，节录"
+  },
+  {
+    "index": 876,
+    "term": "abridge",
+    "definition": "v.删减；缩短"
+  },
+  {
+    "index": 877,
+    "term": "coin",
+    "definition": "vt. 铸造（货币）；杜撰，创造n. 硬币，钱币"
+  },
+  {
+    "index": 878,
+    "term": "factious",
+    "definition": "党派的"
+  },
+  {
+    "index": 879,
+    "term": "partisan",
+    "definition": "跟随者，信徒：follows；（狂热。坚定的）拥护者，支持者：excessively devoted；偏袒的：one side"
+  },
+  {
+    "index": 880,
+    "term": "board",
+    "definition": "n. 木板；管理委员会；食物v. 乘船；用板铺；供膳食"
+  },
+  {
+    "index": 881,
+    "term": "senate",
+    "definition": "n.参议院,上院"
+  },
+  {
+    "index": 882,
+    "term": "congress",
+    "definition": "n.大会；国会，议会"
+  },
+  {
+    "index": 883,
+    "term": "diplomatic",
+    "definition": "a.外交的；圆滑的"
+  },
+  {
+    "index": 884,
+    "term": "deplomacy",
+    "definition": "外交；策略"
+  },
+  {
+    "index": 885,
+    "term": "confederate",
+    "definition": "n. 同盟者，盟友"
+  },
+  {
+    "index": 886,
+    "term": "league",
+    "definition": "n. 同盟，联盟；联合会"
+  },
+  {
+    "index": 887,
+    "term": "affiliate",
+    "definition": "v.加入；联合"
+  },
+  {
+    "index": 888,
+    "term": "unconventional",
+    "definition": "adj. 非传统的，与先前不同的"
+  },
+  {
+    "index": 889,
+    "term": "dictatorial",
+    "definition": "adj. 独裁的，专政的；专横傲慢的"
+  },
+  {
+    "index": 890,
+    "term": "potent",
+    "definition": "adj. 有效的；强有力的，有权势的；有说服力的"
+  },
+  {
+    "index": 891,
+    "term": "authoritative",
+    "definition": "a.权威的，官方的；专断的"
+  },
+  {
+    "index": 892,
+    "term": "centralized",
+    "definition": "集中的，中央集权的"
+  },
+  {
+    "index": 893,
+    "term": "privilege",
+    "definition": "n.特权，特别利益"
+  },
+  {
+    "index": 894,
+    "term": "petition",
+    "definition": "n.请愿 vt.向...请愿"
+  },
+  {
+    "index": 895,
+    "term": "domain",
+    "definition": "n.领土；领域"
+  },
+  {
+    "index": 896,
+    "term": "territory",
+    "definition": "n.领土, 版图, 地域"
+  },
+  {
+    "index": 897,
+    "term": "nationality",
+    "definition": "n.国籍,国家,部落,民族,民族性"
+  },
+  {
+    "index": 898,
+    "term": "realm",
+    "definition": "n.王国；领域，范围"
+  },
+  {
+    "index": 899,
+    "term": "sovereignty",
+    "definition": "n. 主权，统治权"
+  },
+  {
+    "index": 900,
+    "term": "autonomy",
+    "definition": "n. 自治，自治权"
+  },
+  {
+    "index": 901,
+    "term": "committee",
+    "definition": "n.委员会,全体委员"
+  },
+  {
+    "index": 902,
+    "term": "election",
+    "definition": "n. 选举"
+  },
+  {
+    "index": 903,
+    "term": "ballot",
+    "definition": "选票"
+  },
+  {
+    "index": 904,
+    "term": "ideology",
+    "definition": "n.思想体系，思想意识，意识形态"
+  },
+  {
+    "index": 905,
+    "term": "confer",
+    "definition": "v.讨论，商谈；赠予"
+  },
+  {
+    "index": 906,
+    "term": "govern",
+    "definition": "vt. 统治，管理；控制"
+  },
+  {
+    "index": 907,
+    "term": "oust",
+    "definition": "v.驱逐；把...赶走"
+  },
+  {
+    "index": 908,
+    "term": "banish",
+    "definition": "驱逐出境：leave, country; 赶出：force out"
+  },
+  {
+    "index": 909,
+    "term": "deport",
+    "definition": "v.(将外国人、罪犯等)驱逐出境"
+  },
+  {
+    "index": 910,
+    "term": "reign",
+    "definition": "n.统治时期；王朝；领域"
+  },
+  {
+    "index": 911,
+    "term": "dominate",
+    "definition": "vt. 控制；支配；占优势；在...中占主要地位vi. 占优势；处于支配地位"
+  },
+  {
+    "index": 912,
+    "term": "abdicate",
+    "definition": "v.退位，辞职，放弃"
+  },
+  {
+    "index": 913,
+    "term": "administer",
+    "definition": "vt. 管理；执行；给予vi. 给予帮助；执行遗产管理人的职责；担当管理人"
+  },
+  {
+    "index": 914,
+    "term": "administration",
+    "definition": "n.经营，管理；行政，行政机关，管理部门"
+  },
+  {
+    "index": 915,
+    "term": "institute",
+    "definition": "创立，制定：establish；机构：organization"
+  },
+  {
+    "index": 916,
+    "term": "amendment",
+    "definition": "n.改正，修正；[法]修正案"
+  },
+  {
+    "index": 917,
+    "term": "monarchy",
+    "definition": "n.君主政体；君主国"
+  },
+  {
+    "index": 918,
+    "term": "republican",
+    "definition": "a.共和政体的；共和国的n.共和党人"
+  },
+  {
+    "index": 919,
+    "term": "anarchism",
+    "definition": "无政府主义"
+  },
+  {
+    "index": 920,
+    "term": "doctrine",
+    "definition": "n.教义，主义；学说"
+  },
+  {
+    "index": 921,
+    "term": "municipal",
+    "definition": "a 市政的，地方性的，市营的"
+  },
+  {
+    "index": 922,
+    "term": "scandal",
+    "definition": "n.丑闻；恶意的诽谤，流言蜚语"
+  },
+  {
+    "index": 923,
+    "term": "laurel",
+    "definition": "n. 月桂树"
+  },
+  {
+    "index": 924,
+    "term": "prairie",
+    "definition": "n. 大草原；牧场"
+  },
+  {
+    "index": 925,
+    "term": "sequoia",
+    "definition": "美洲杉"
+  },
+  {
+    "index": 926,
+    "term": "fern",
+    "definition": "n.羊齿植物，蕨"
+  },
+  {
+    "index": 927,
+    "term": "orchid",
+    "definition": "n （温室栽培种）兰，兰花"
+  },
+  {
+    "index": 928,
+    "term": "rosette",
+    "definition": "花环，玫瑰型花饰"
+  },
+  {
+    "index": 929,
+    "term": "germinate",
+    "definition": "v.发芽；发展"
+  },
+  {
+    "index": 930,
+    "term": "sprout",
+    "definition": "v.长出，萌芽；n.嫩芽"
+  },
+  {
+    "index": 931,
+    "term": "timber",
+    "definition": "n. 木材，木料"
+  },
+  {
+    "index": 932,
+    "term": "bark",
+    "definition": "树皮"
+  },
+  {
+    "index": 933,
+    "term": "twig",
+    "definition": "小树枝"
+  },
+  {
+    "index": 934,
+    "term": "bough",
+    "definition": "大或者粗的树枝"
+  },
+  {
+    "index": 935,
+    "term": "stem",
+    "definition": "n.(植物的)茎，叶柄；v.阻止，遏制(水流等)"
+  },
+  {
+    "index": 936,
+    "term": "stalk",
+    "definition": "n 茎，柄，秆，轴"
+  },
+  {
+    "index": 937,
+    "term": "trunk",
+    "definition": "n 树干；躯干"
+  },
+  {
+    "index": 938,
+    "term": "leafstalk",
+    "definition": "叶柄"
+  },
+  {
+    "index": 939,
+    "term": "leaflet",
+    "definition": "n.小叶, 传单"
+  },
+  {
+    "index": 940,
+    "term": "foliage",
+    "definition": "n.叶子(总称)"
+  },
+  {
+    "index": 941,
+    "term": "petal",
+    "definition": "n.花瓣"
+  },
+  {
+    "index": 942,
+    "term": "husk",
+    "definition": "（果类或谷物的）外壳：outer covering；剥去：remove"
+  },
+  {
+    "index": 943,
+    "term": "pollen",
+    "definition": "花粉；传授花粉给..."
+  },
+  {
+    "index": 944,
+    "term": "flora",
+    "definition": "n. 植物区系；植物群"
+  },
+  {
+    "index": 945,
+    "term": "crossbreed",
+    "definition": "n.杂交动物"
+  },
+  {
+    "index": 946,
+    "term": "necrosis",
+    "definition": "坏疽，骨疽"
+  },
+  {
+    "index": 947,
+    "term": "Photosynthesis",
+    "definition": "n 光合作用；光能合成"
+  },
+  {
+    "index": 948,
+    "term": "pollinate",
+    "definition": "v.给...授粉"
+  },
+  {
+    "index": 949,
+    "term": "starch",
+    "definition": "淀粉，淀粉类食物"
+  },
+  {
+    "index": 950,
+    "term": "luxuriant",
+    "definition": "茂盛的"
+  },
+  {
+    "index": 951,
+    "term": "scenic",
+    "definition": "风景优美的"
+  },
+  {
+    "index": 952,
+    "term": "spectacle",
+    "definition": "n.场面；景象，奇观"
+  },
+  {
+    "index": 953,
+    "term": "meadow",
+    "definition": "草地，牧场"
+  },
+  {
+    "index": 954,
+    "term": "summit",
+    "definition": "n 顶，绝顶；顶点"
+  },
+  {
+    "index": 955,
+    "term": "lawn",
+    "definition": "n.草地，草坪"
+  },
+  {
+    "index": 956,
+    "term": "gorge",
+    "definition": "峡谷：canyon；狼吞虎咽：eat greedily"
+  },
+  {
+    "index": 957,
+    "term": "puddle",
+    "definition": "n （路上的）水坑，污水坑"
+  },
+  {
+    "index": 958,
+    "term": "creek",
+    "definition": "小溪，小河：smaller"
+  },
+  {
+    "index": 959,
+    "term": "canyon",
+    "definition": "峡谷"
+  },
+  {
+    "index": 960,
+    "term": "trickle",
+    "definition": "v.成小股流动；n.细流"
+  },
+  {
+    "index": 961,
+    "term": "limpid",
+    "definition": "透明清澈的：transparent clearness；镇定的，淡定的：free from agitation"
+  },
+  {
+    "index": 962,
+    "term": "invocation",
+    "definition": "n. 祈祷"
+  },
+  {
+    "index": 963,
+    "term": "pious",
+    "definition": "虔诚的"
+  },
+  {
+    "index": 964,
+    "term": "devout",
+    "definition": "虔诚的"
+  },
+  {
+    "index": 965,
+    "term": "consecrate",
+    "definition": "vt.供神用,奉献,使神圣a.神圣的"
+  },
+  {
+    "index": 966,
+    "term": "creed",
+    "definition": "n.教义；信条"
+  },
+  {
+    "index": 967,
+    "term": "doomed",
+    "definition": "adj.命定的，注定失败的"
+  },
+  {
+    "index": 968,
+    "term": "fatalism",
+    "definition": "宿命论"
+  },
+  {
+    "index": 969,
+    "term": "dogma",
+    "definition": "n.教条，信条"
+  },
+  {
+    "index": 970,
+    "term": "rite",
+    "definition": "惯例，仪式：prescribed form"
+  },
+  {
+    "index": 971,
+    "term": "religion",
+    "definition": "n.宗教，信仰"
+  },
+  {
+    "index": 972,
+    "term": "deity",
+    "definition": "n 神；神性；神的身份"
+  },
+  {
+    "index": 973,
+    "term": "oracle",
+    "definition": "神谕"
+  },
+  {
+    "index": 974,
+    "term": "atheism",
+    "definition": "n. 无神论"
+  },
+  {
+    "index": 975,
+    "term": "heresy",
+    "definition": "n.异端邪说"
+  },
+  {
+    "index": 976,
+    "term": "immerse",
+    "definition": "vt. 沉浸；使陷入"
+  },
+  {
+    "index": 977,
+    "term": "invoke",
+    "definition": "vt.祈求,恳求,引起,援引,实行"
+  },
+  {
+    "index": 978,
+    "term": "enchant",
+    "definition": "v.使迷醉；施魔法于"
+  },
+  {
+    "index": 979,
+    "term": "preach",
+    "definition": "v 讲道，布道，宣扬，鼓吹"
+  },
+  {
+    "index": 980,
+    "term": "exodus",
+    "definition": "n.大批离去，成群外出"
+  },
+  {
+    "index": 981,
+    "term": "despicable",
+    "definition": "a.可鄙的，卑劣的"
+  },
+  {
+    "index": 982,
+    "term": "contemptible",
+    "definition": "可鄙的"
+  },
+  {
+    "index": 983,
+    "term": "ignominious",
+    "definition": "a.可耻的；耻辱的"
+  },
+  {
+    "index": 984,
+    "term": "menial",
+    "definition": "adj. 奴仆的，卑贱的"
+  },
+  {
+    "index": 985,
+    "term": "scornful",
+    "definition": "轻蔑的"
+  },
+  {
+    "index": 986,
+    "term": "filthy",
+    "definition": "adj. 污秽的，卑鄙的"
+  },
+  {
+    "index": 987,
+    "term": "shameless",
+    "definition": "a.无耻的，不要脸的"
+  },
+  {
+    "index": 988,
+    "term": "disrespectful",
+    "definition": "adj. 无礼的，轻视的"
+  },
+  {
+    "index": 989,
+    "term": "discrimination",
+    "definition": "n. 歧视"
+  },
+  {
+    "index": 990,
+    "term": "contemn",
+    "definition": "侮辱；鄙视"
+  },
+  {
+    "index": 991,
+    "term": "belittle",
+    "definition": "v.轻视，贬抑"
+  },
+  {
+    "index": 992,
+    "term": "distain",
+    "definition": "贬损，伤害（某人的）名誉：lose honor, respect, reputation；弄脏：dirty"
+  },
+  {
+    "index": 993,
+    "term": "despise",
+    "definition": "v.鄙视，藐视"
+  },
+  {
+    "index": 994,
+    "term": "inert",
+    "definition": "（人）懒惰缺乏活力的；（物品）惰性的：sluggish, deficient"
+  },
+  {
+    "index": 995,
+    "term": "blunt",
+    "definition": "使变钝：less sharp; 减弱（力度等）：weaken in strength or feeling; 直率的：direct, brief粗鲁的"
+  },
+  {
+    "index": 996,
+    "term": "torpid",
+    "definition": "a.懒散的；迟缓的，迟钝的"
+  },
+  {
+    "index": 997,
+    "term": "idiotic",
+    "definition": "a. 白痴的,愚蠢的,呆头呆脑的"
+  },
+  {
+    "index": 998,
+    "term": "fatuous",
+    "definition": "愚笨的，昏庸的：foolish"
+  },
+  {
+    "index": 999,
+    "term": "hoax",
+    "definition": "n./v.骗局，欺骗"
+  },
+  {
+    "index": 1000,
+    "term": "curt",
+    "definition": "a.(言词、行为)简略而草率的"
+  },
+  {
+    "index": 1001,
+    "term": "impudent",
+    "definition": "rush reckless鲁莽的"
+  },
+  {
+    "index": 1002,
+    "term": "imprudent",
+    "definition": "轻率的"
+  },
+  {
+    "index": 1003,
+    "term": "intelligent",
+    "definition": "a.聪明的,明智的,理智的"
+  },
+  {
+    "index": 1004,
+    "term": "versatile",
+    "definition": "a.多才多艺的；多用途的"
+  },
+  {
+    "index": 1005,
+    "term": "astute",
+    "definition": "a.机敏的，精明的"
+  },
+  {
+    "index": 1006,
+    "term": "shrewd",
+    "definition": "精明的，机敏的：cleverness or judgment；刺骨的，强烈的：discomfort"
+  },
+  {
+    "index": 1007,
+    "term": "sensible",
+    "definition": "理智的"
+  },
+  {
+    "index": 1008,
+    "term": "sane",
+    "definition": "a.神志清楚的；明智的，理智的"
+  },
+  {
+    "index": 1009,
+    "term": "exquisite",
+    "definition": "a.精致的；近乎完美的"
+  },
+  {
+    "index": 1010,
+    "term": "expeditious",
+    "definition": "敏捷的，迅速的"
+  },
+  {
+    "index": 1011,
+    "term": "nimble",
+    "definition": "adj. 敏捷的；聪明的；敏感的"
+  },
+  {
+    "index": 1012,
+    "term": "tact",
+    "definition": "老练"
+  },
+  {
+    "index": 1013,
+    "term": "sharpen",
+    "definition": "使敏锐"
+  },
+  {
+    "index": 1014,
+    "term": "adroit",
+    "definition": "机巧的"
+  },
+  {
+    "index": 1015,
+    "term": "acumen",
+    "definition": "n.敏锐,聪明"
+  },
+  {
+    "index": 1016,
+    "term": "gauche",
+    "definition": "笨拙的，缺乏社交经验的：lacking grace"
+  },
+  {
+    "index": 1017,
+    "term": "rugged",
+    "definition": "a.粗糙的；坚固的；崎岖的；高低不平的"
+  },
+  {
+    "index": 1018,
+    "term": "coarse",
+    "definition": "粗糙的粗野的"
+  },
+  {
+    "index": 1019,
+    "term": "grumpy",
+    "definition": "adj. 坏脾气的，性情暴躁的"
+  },
+  {
+    "index": 1020,
+    "term": "brutal",
+    "definition": "adj. 残忍的；野蛮的，不讲理的"
+  },
+  {
+    "index": 1021,
+    "term": "spineless",
+    "definition": "a.(人)没骨气的，懦弱的；(动物)无脊椎的"
+  },
+  {
+    "index": 1022,
+    "term": "genial",
+    "definition": "和蔼的"
+  },
+  {
+    "index": 1023,
+    "term": "benign",
+    "definition": "好心的，仁慈的：kindness, gentleness; 无害的：not causing"
+  },
+  {
+    "index": 1024,
+    "term": "facile",
+    "definition": "a.容易做的；肤浅的； 随和的"
+  },
+  {
+    "index": 1025,
+    "term": "humane",
+    "definition": "a.人道的，慈悲的"
+  },
+  {
+    "index": 1026,
+    "term": "ductile",
+    "definition": "可塑的，有延展性的：malleable；易受影响的：easily led;柔软的，驯良的"
+  },
+  {
+    "index": 1027,
+    "term": "frank",
+    "definition": "adj. 坦白的，直率的"
+  },
+  {
+    "index": 1028,
+    "term": "outspoken",
+    "definition": "adj. 坦率直言的"
+  },
+  {
+    "index": 1029,
+    "term": "moderate",
+    "definition": "a 中等的；适度的；有节制的"
+  },
+  {
+    "index": 1030,
+    "term": "meek",
+    "definition": "a.温顺的，顺服的"
+  },
+  {
+    "index": 1031,
+    "term": "tractable",
+    "definition": "a.易于驾驭的，温顺的"
+  },
+  {
+    "index": 1032,
+    "term": "facetious",
+    "definition": "a.滑稽的,爱开玩笑的"
+  },
+  {
+    "index": 1033,
+    "term": "sociable",
+    "definition": "爱交际的"
+  },
+  {
+    "index": 1034,
+    "term": "courteous",
+    "definition": "礼貌的，谦恭有礼的：polished manners"
+  },
+  {
+    "index": 1035,
+    "term": "gracious",
+    "definition": "a.大方的，和善的；奢华的"
+  },
+  {
+    "index": 1036,
+    "term": "gentility",
+    "definition": "n. 有教养，文雅"
+  },
+  {
+    "index": 1037,
+    "term": "affable",
+    "definition": "和蔼可亲的"
+  },
+  {
+    "index": 1038,
+    "term": "crooked",
+    "definition": "a.不诚实的；弯曲的；狡诈的"
+  },
+  {
+    "index": 1039,
+    "term": "sly",
+    "definition": "狡猾的：clever or cunning；隐秘的，偷偷的：acting in secret"
+  },
+  {
+    "index": 1040,
+    "term": "cunning",
+    "definition": "狡猾"
+  },
+  {
+    "index": 1041,
+    "term": "designing",
+    "definition": "adj. 狡猾的，蓄意的"
+  },
+  {
+    "index": 1042,
+    "term": "frugal",
+    "definition": "adj. 节约的，节俭的"
+  },
+  {
+    "index": 1043,
+    "term": "economize",
+    "definition": "v.节约，节省"
+  },
+  {
+    "index": 1044,
+    "term": "economical",
+    "definition": "a.经济的，节约的"
+  },
+  {
+    "index": 1045,
+    "term": "canny",
+    "definition": "a.精明仔细的"
+  },
+  {
+    "index": 1046,
+    "term": "stoically",
+    "definition": "淡泊地"
+  },
+  {
+    "index": 1047,
+    "term": "austerity",
+    "definition": "n.朴素,节俭,苦行,酸涩,严峻"
+  },
+  {
+    "index": 1048,
+    "term": "thrift",
+    "definition": "节俭，节约"
+  },
+  {
+    "index": 1049,
+    "term": "composed",
+    "definition": "a.镇定的，沉着的"
+  },
+  {
+    "index": 1050,
+    "term": "composure",
+    "definition": "n.镇静，沉着；自若"
+  },
+  {
+    "index": 1051,
+    "term": "prudent",
+    "definition": "a.审慎的，三思而后行的；判断力强的，精明的；"
+  },
+  {
+    "index": 1052,
+    "term": "vigilant",
+    "definition": "警醒的，警惕的：alertly watchful"
+  },
+  {
+    "index": 1053,
+    "term": "hardheaded",
+    "definition": "冷静的"
+  },
+  {
+    "index": 1054,
+    "term": "discreet",
+    "definition": "谨慎的"
+  },
+  {
+    "index": 1055,
+    "term": "discretion",
+    "definition": "n.谨慎，审慎"
+  },
+  {
+    "index": 1056,
+    "term": "circumspect",
+    "definition": "谨慎的，小心的：careful"
+  },
+  {
+    "index": 1057,
+    "term": "meticulously",
+    "definition": "ad 小心翼翼地，细致地"
+  },
+  {
+    "index": 1058,
+    "term": "sanity",
+    "definition": "n.明智；头脑清楚；精神健全；通情达理"
+  },
+  {
+    "index": 1059,
+    "term": "sluggish",
+    "definition": "行动迟缓的"
+  },
+  {
+    "index": 1060,
+    "term": "indolent",
+    "definition": "adj. 懒惰的；无痛的"
+  },
+  {
+    "index": 1061,
+    "term": "slog",
+    "definition": "艰难行进"
+  },
+  {
+    "index": 1062,
+    "term": "sloth",
+    "definition": "怠惰，懒惰：disinclination to action"
+  },
+  {
+    "index": 1063,
+    "term": "slothful",
+    "definition": "a.迟钝的，懒惰的"
+  },
+  {
+    "index": 1064,
+    "term": "stout",
+    "definition": "a 结实的；坚强的；坚牢的（[opp]flimsy）"
+  },
+  {
+    "index": 1065,
+    "term": "stocky",
+    "definition": "adj. (人或动物)矮而结实的，粗壮的"
+  },
+  {
+    "index": 1066,
+    "term": "robust",
+    "definition": "精力充沛的，强壮的，健康的：full of strength"
+  },
+  {
+    "index": 1067,
+    "term": "hardy",
+    "definition": "强壮的"
+  },
+  {
+    "index": 1068,
+    "term": "lusty",
+    "definition": "a.充满活力的，精力充沛的"
+  },
+  {
+    "index": 1069,
+    "term": "stiff",
+    "definition": "a.僵直的，不易变动的；严厉的"
+  },
+  {
+    "index": 1070,
+    "term": "prodigal",
+    "definition": "挥霍的：spendthrift；败家子：spends freely"
+  },
+  {
+    "index": 1071,
+    "term": "improvident",
+    "definition": "浪费的"
+  },
+  {
+    "index": 1072,
+    "term": "lavish",
+    "definition": "奢侈的，大量的，无节制的：extravagance and profusion；挥霍，浪费：give readily carelessly"
+  },
+  {
+    "index": 1073,
+    "term": "luxurious",
+    "definition": "a.豪华的,奢侈的,放纵的"
+  },
+  {
+    "index": 1074,
+    "term": "extravagant",
+    "definition": "a.奢侈的,挥霍无度的,浪费的"
+  },
+  {
+    "index": 1075,
+    "term": "squander",
+    "definition": "浪费"
+  },
+  {
+    "index": 1076,
+    "term": "flamboyant",
+    "definition": "艳丽夺目的，炫耀的，充满装饰的：strikingly elaborate"
+  },
+  {
+    "index": 1077,
+    "term": "deft",
+    "definition": "灵巧的，熟练的"
+  },
+  {
+    "index": 1078,
+    "term": "adept",
+    "definition": "adj. 熟练的，擅长的"
+  },
+  {
+    "index": 1079,
+    "term": "skillful",
+    "definition": "熟练的"
+  },
+  {
+    "index": 1080,
+    "term": "stunt",
+    "definition": "惊人的技艺"
+  },
+  {
+    "index": 1081,
+    "term": "facility",
+    "definition": "n.设备,容易,灵巧"
+  },
+  {
+    "index": 1082,
+    "term": "accomplished",
+    "definition": "adj. 精通的，熟练的"
+  },
+  {
+    "index": 1083,
+    "term": "aptitude",
+    "definition": "n.适宜；才能，资质"
+  },
+  {
+    "index": 1084,
+    "term": "vigor",
+    "definition": "n. [生物] 活力，精力"
+  },
+  {
+    "index": 1085,
+    "term": "temperament",
+    "definition": "气质，性情"
+  },
+  {
+    "index": 1086,
+    "term": "stamina",
+    "definition": "n. 毅力；精力；活力；持久力"
+  },
+  {
+    "index": 1087,
+    "term": "disposition",
+    "definition": "性情"
+  },
+  {
+    "index": 1088,
+    "term": "avid",
+    "definition": "急切渴望的：enthusiasm; 贪婪（钱财）的：eager, for material possessions"
+  },
+  {
+    "index": 1089,
+    "term": "ravenous",
+    "definition": "adj. 贪婪的；渴望的；狼吞虎咽的"
+  },
+  {
+    "index": 1090,
+    "term": "rapacious",
+    "definition": "adj. 贪婪的；贪得无厌的；自私的"
+  },
+  {
+    "index": 1091,
+    "term": "covetous",
+    "definition": "贪婪的"
+  },
+  {
+    "index": 1092,
+    "term": "avarice",
+    "definition": "n.贪财，贪婪"
+  },
+  {
+    "index": 1093,
+    "term": "avaricious",
+    "definition": "a.贪婪的，贪心的"
+  },
+  {
+    "index": 1094,
+    "term": "acquisitive",
+    "definition": "a.渴望得到的，贪婪的"
+  },
+  {
+    "index": 1095,
+    "term": "exacting",
+    "definition": "严格的，苛求的：rigorous；费时间心思的：requiring time, effort, attention"
+  },
+  {
+    "index": 1096,
+    "term": "ascetic",
+    "definition": "苦行的"
+  },
+  {
+    "index": 1097,
+    "term": "grim",
+    "definition": "a.(表情)冷酷的，严厉的，可怕的"
+  },
+  {
+    "index": 1098,
+    "term": "relentless",
+    "definition": "adj. 无情的；残酷的；不间断的"
+  },
+  {
+    "index": 1099,
+    "term": "ruthless",
+    "definition": "无情的，残忍的"
+  },
+  {
+    "index": 1100,
+    "term": "rigid",
+    "definition": "adj.刚硬的, 刚性的, 严格的"
+  },
+  {
+    "index": 1101,
+    "term": "stern",
+    "definition": "adj.严厉的, 苛刻的 n.船尾"
+  },
+  {
+    "index": 1102,
+    "term": "stringent",
+    "definition": "a.(规定)严格的，苛刻的；缺钱的"
+  },
+  {
+    "index": 1103,
+    "term": "scrupulous",
+    "definition": "a.小心谨慎的,细心的"
+  },
+  {
+    "index": 1104,
+    "term": "drastic",
+    "definition": "a.猛烈的，激烈的"
+  },
+  {
+    "index": 1105,
+    "term": "rigor",
+    "definition": "n.严酷；严格，苛刻；(尤指思想)严密，精确"
+  },
+  {
+    "index": 1106,
+    "term": "rigorous",
+    "definition": "a.严格的,严厉的,严酷的,严密的,严谨的"
+  },
+  {
+    "index": 1107,
+    "term": "ordeal",
+    "definition": "n.严峻考验，痛苦经验"
+  },
+  {
+    "index": 1108,
+    "term": "undaunted",
+    "definition": "无畏的，勇敢的"
+  },
+  {
+    "index": 1109,
+    "term": "dauntless",
+    "definition": "大胆的；不屈不挠的"
+  },
+  {
+    "index": 1110,
+    "term": "valiant",
+    "definition": "勇敢的，英勇的：bravery"
+  },
+  {
+    "index": 1111,
+    "term": "gallant",
+    "definition": "英勇的：brave, chivalrous；高贵的，慷慨的：dignified and generous"
+  },
+  {
+    "index": 1112,
+    "term": "intrepid",
+    "definition": "勇敢的"
+  },
+  {
+    "index": 1113,
+    "term": "valor",
+    "definition": "勇气"
+  },
+  {
+    "index": 1114,
+    "term": "flighty",
+    "definition": "a.轻浮的；反复无常的"
+  },
+  {
+    "index": 1115,
+    "term": "skimpy",
+    "definition": "吝啬的"
+  },
+  {
+    "index": 1116,
+    "term": "stingy",
+    "definition": "a.吝啬的，小气的"
+  },
+  {
+    "index": 1117,
+    "term": "snobbish",
+    "definition": "谄上傲下的，自大的：offensive air of superiority"
+  },
+  {
+    "index": 1118,
+    "term": "cabbage",
+    "definition": "卷心菜"
+  },
+  {
+    "index": 1119,
+    "term": "celery",
+    "definition": "n. 芹菜"
+  },
+  {
+    "index": 1120,
+    "term": "cereal",
+    "definition": "n.谷类；谷类食品"
+  },
+  {
+    "index": 1121,
+    "term": "grain",
+    "definition": "n.谷物；小的硬粒"
+  },
+  {
+    "index": 1122,
+    "term": "cucumber",
+    "definition": "n.黄瓜，胡瓜；变形复数： cucumbers"
+  },
+  {
+    "index": 1123,
+    "term": "leek",
+    "definition": "n.韭菜"
+  },
+  {
+    "index": 1124,
+    "term": "lettuce",
+    "definition": "n. 莴苣，生菜"
+  },
+  {
+    "index": 1125,
+    "term": "millet",
+    "definition": "粟，小米"
+  },
+  {
+    "index": 1126,
+    "term": "mustard",
+    "definition": "n.芥子，芥末"
+  },
+  {
+    "index": 1127,
+    "term": "oats",
+    "definition": "n.燕麦，燕麦片"
+  },
+  {
+    "index": 1128,
+    "term": "rye",
+    "definition": "黑麦"
+  },
+  {
+    "index": 1129,
+    "term": "sesame",
+    "definition": "n.芝麻"
+  },
+  {
+    "index": 1130,
+    "term": "soybean",
+    "definition": "n.大豆"
+  },
+  {
+    "index": 1131,
+    "term": "spinach",
+    "definition": "菠菜，胡说八道"
+  },
+  {
+    "index": 1132,
+    "term": "wheat",
+    "definition": "n. 小麦；小麦色"
+  },
+  {
+    "index": 1133,
+    "term": "edible",
+    "definition": "adj. 可食用的n. 食品；食物"
+  },
+  {
+    "index": 1134,
+    "term": "bland",
+    "definition": "味道平淡的，不刺激的：soothing; 无趣的：dull; 温和的，和蔼的：not harsh"
+  },
+  {
+    "index": 1135,
+    "term": "condiment",
+    "definition": "调味品"
+  },
+  {
+    "index": 1136,
+    "term": "chop",
+    "definition": "n. 砍；排骨；商标；削球vt. 剁碎；砍"
+  },
+  {
+    "index": 1137,
+    "term": "cuisine",
+    "definition": "n.烹饪"
+  },
+  {
+    "index": 1138,
+    "term": "dessert",
+    "definition": "甜点"
+  },
+  {
+    "index": 1139,
+    "term": "beverage",
+    "definition": "n.(水，酒等之外的)饮料"
+  },
+  {
+    "index": 1140,
+    "term": "nutriment",
+    "definition": "n. 营养品"
+  },
+  {
+    "index": 1141,
+    "term": "nibble",
+    "definition": "v.一点点地咬，慢慢啃"
+  },
+  {
+    "index": 1142,
+    "term": "imbibe",
+    "definition": "喝水，摄取水分：take in liquid"
+  },
+  {
+    "index": 1143,
+    "term": "barley",
+    "definition": "大麦"
+  },
+  {
+    "index": 1144,
+    "term": "beet",
+    "definition": "n.甜菜；甜菜根"
+  },
+  {
+    "index": 1145,
+    "term": "broccoli",
+    "definition": "n. 花椰菜；西兰花"
+  },
+  {
+    "index": 1146,
+    "term": "intrinsic",
+    "definition": "固有的，内在的：essential"
+  },
+  {
+    "index": 1147,
+    "term": "radical",
+    "definition": "a.根(基)本的；激进(派)的 n.激进分子"
+  },
+  {
+    "index": 1148,
+    "term": "rudimentary",
+    "definition": "a.（贬）初步的；未充分发展的，发育不成熟的"
+  },
+  {
+    "index": 1149,
+    "term": "inherent",
+    "definition": "a 内在的，固有的，生来的"
+  },
+  {
+    "index": 1150,
+    "term": "inherently",
+    "definition": "adv. 内在地；固有地；天性地"
+  },
+  {
+    "index": 1151,
+    "term": "internal",
+    "definition": "adj.内在的,国内的"
+  },
+  {
+    "index": 1152,
+    "term": "incisive",
+    "definition": "adj. 尖锐的，深刻的"
+  },
+  {
+    "index": 1153,
+    "term": "substantive",
+    "definition": "a.根本的，本质上的；独立存在的"
+  },
+  {
+    "index": 1154,
+    "term": "innate",
+    "definition": "a.生来的，天赋的"
+  },
+  {
+    "index": 1155,
+    "term": "inborn",
+    "definition": "天生的"
+  },
+  {
+    "index": 1156,
+    "term": "instinctive",
+    "definition": "adj. 天生的，本能的"
+  },
+  {
+    "index": 1157,
+    "term": "crude",
+    "definition": "a.天然的,粗糙的n.天然的物质"
+  },
+  {
+    "index": 1158,
+    "term": "spontaneous",
+    "definition": "adj. 自发的；自然的；无意识的"
+  },
+  {
+    "index": 1159,
+    "term": "interior",
+    "definition": "n. 内部；本质adj. 内部的；国内的；本质的"
+  },
+  {
+    "index": 1160,
+    "term": "attribute",
+    "definition": "属性，品质；把...归于"
+  },
+  {
+    "index": 1161,
+    "term": "abstruse",
+    "definition": "a.难懂的，深奥的"
+  },
+  {
+    "index": 1162,
+    "term": "comparative",
+    "definition": "比较的"
+  },
+  {
+    "index": 1163,
+    "term": "comparable",
+    "definition": "adj. 可比较的；比得上的"
+  },
+  {
+    "index": 1164,
+    "term": "subordinate",
+    "definition": "adj.次要的, 从属的, 下级的"
+  },
+  {
+    "index": 1165,
+    "term": "monotonous",
+    "definition": "（声音）单调的：unvarying tone；清一色的，无聊的：tediously unvarying"
+  },
+  {
+    "index": 1166,
+    "term": "invert",
+    "definition": "v.颠倒, 转化"
+  },
+  {
+    "index": 1167,
+    "term": "inverse",
+    "definition": "a.相反的；倒转的"
+  },
+  {
+    "index": 1168,
+    "term": "preferable",
+    "definition": "adj.更可取的,更好的,更优越的"
+  },
+  {
+    "index": 1169,
+    "term": "homogeneous",
+    "definition": "a.同类的，相似的"
+  },
+  {
+    "index": 1170,
+    "term": "identical",
+    "definition": "adj. 同一的；完全相同的"
+  },
+  {
+    "index": 1171,
+    "term": "peerless",
+    "definition": "无与伦比的"
+  },
+  {
+    "index": 1172,
+    "term": "equate",
+    "definition": "v.认为...相等或相仿"
+  },
+  {
+    "index": 1173,
+    "term": "equivalent",
+    "definition": "a.相等的，等值的"
+  },
+  {
+    "index": 1174,
+    "term": "intermediate",
+    "definition": "adj. 中间的；中级的"
+  },
+  {
+    "index": 1175,
+    "term": "neutral",
+    "definition": "adj. 中性的，中立的"
+  },
+  {
+    "index": 1176,
+    "term": "relatively",
+    "definition": "adv.相当地;比较而言"
+  },
+  {
+    "index": 1177,
+    "term": "shade",
+    "definition": "n. 树荫；阴影；阴凉处；遮阳物；（照片等的）明暗度； 少量、些微；细微的差别vt. 使阴暗；使渐变；为...遮阳；使阴郁；掩盖vi. （颜色、色彩等）渐变"
+  },
+  {
+    "index": 1178,
+    "term": "reproduction",
+    "definition": "n.生殖；复制; 复制品"
+  },
+  {
+    "index": 1179,
+    "term": "medium",
+    "definition": "n 媒介；（常作[pl]）宣传工具；传播媒介；手段，方法"
+  },
+  {
+    "index": 1180,
+    "term": "counterpart",
+    "definition": "n.相对应或具有相同功能的人或物"
+  },
+  {
+    "index": 1181,
+    "term": "midst",
+    "definition": "n.中部，中间，当中"
+  },
+  {
+    "index": 1182,
+    "term": "contrast",
+    "definition": "n.对比;差异;对照,相反v.使对比,使对照"
+  },
+  {
+    "index": 1183,
+    "term": "imitate",
+    "definition": "v 仿效，模仿"
+  },
+  {
+    "index": 1184,
+    "term": "resemble",
+    "definition": "vt.相似,类似,像"
+  },
+  {
+    "index": 1185,
+    "term": "affinity",
+    "definition": "n.密切关系；吸引力"
+  },
+  {
+    "index": 1186,
+    "term": "extraneous",
+    "definition": "无关的：no relevance；非主要因素的：not essential"
+  },
+  {
+    "index": 1187,
+    "term": "irrelevant",
+    "definition": "a.不恰当的,无关系的,不相干的"
+  },
+  {
+    "index": 1188,
+    "term": "exclude",
+    "definition": "vt.把...排除在外"
+  },
+  {
+    "index": 1189,
+    "term": "exclusive",
+    "definition": "a 独有的，唯一的；专有的"
+  },
+  {
+    "index": 1190,
+    "term": "exclusion",
+    "definition": "n. 除外，拒绝"
+  },
+  {
+    "index": 1191,
+    "term": "external",
+    "definition": "外部的，外面的"
+  },
+  {
+    "index": 1192,
+    "term": "impertinent",
+    "definition": "无关紧要的：not having relevance；粗鲁无礼的，大胆的：insolent rudeness；不守礼节的，不为他人着想的：lack of manners"
+  },
+  {
+    "index": 1193,
+    "term": "scope",
+    "definition": "n.视野，眼界；(处理、研究食物的)范围"
+  },
+  {
+    "index": 1194,
+    "term": "span",
+    "definition": "n. 跨度，跨距；范围vt. 跨越；持续；以手指测量"
+  },
+  {
+    "index": 1195,
+    "term": "content",
+    "definition": "内容"
+  },
+  {
+    "index": 1196,
+    "term": "deviate",
+    "definition": "v.越轨，脱离"
+  },
+  {
+    "index": 1197,
+    "term": "digress",
+    "definition": "脱离主题：turn aside main subject"
+  },
+  {
+    "index": 1198,
+    "term": "comprise",
+    "definition": "vt. 包含；由...组成"
+  },
+  {
+    "index": 1199,
+    "term": "bias",
+    "definition": "n.偏见 v.使有偏见"
+  },
+  {
+    "index": 1200,
+    "term": "deflect",
+    "definition": "v.偏离，转向"
+  },
+  {
+    "index": 1201,
+    "term": "embody",
+    "definition": "v.(作品等)表达，体现"
+  },
+  {
+    "index": 1202,
+    "term": "accomodate",
+    "definition": "容纳"
+  },
+  {
+    "index": 1203,
+    "term": "preclude",
+    "definition": "排除，妨碍，阻止"
+  },
+  {
+    "index": 1204,
+    "term": "forthright",
+    "definition": "直率的，说话率真的；直接的，不绕弯子的;马上"
+  },
+  {
+    "index": 1205,
+    "term": "shortcut",
+    "definition": "n.近路，捷径"
+  },
+  {
+    "index": 1206,
+    "term": "via",
+    "definition": "prep. 经由, 通过"
+  },
+  {
+    "index": 1207,
+    "term": "faint",
+    "definition": "adj. 混晕的，模糊的，微弱的"
+  },
+  {
+    "index": 1208,
+    "term": "gloom",
+    "definition": "n. 昏暗；阴暗"
+  },
+  {
+    "index": 1209,
+    "term": "gloomy",
+    "definition": "黯淡无光的：without light；忧郁的：low spirits"
+  },
+  {
+    "index": 1210,
+    "term": "luminous",
+    "definition": "adj. 发光的, 明亮的"
+  },
+  {
+    "index": 1211,
+    "term": "dingy",
+    "definition": "a.肮脏的；褪色的"
+  },
+  {
+    "index": 1212,
+    "term": "dim",
+    "definition": "v.使暗淡，使模糊"
+  },
+  {
+    "index": 1213,
+    "term": "obscure",
+    "definition": "含义模糊的：平凡的，不知名的 使模糊："
+  },
+  {
+    "index": 1214,
+    "term": "vague",
+    "definition": "adj. 模糊的；含糊的；不明确的；暧昧的"
+  },
+  {
+    "index": 1215,
+    "term": "dusky",
+    "definition": "adj. 微暗的，肤色黑的"
+  },
+  {
+    "index": 1216,
+    "term": "dazzling",
+    "definition": "耀眼的"
+  },
+  {
+    "index": 1217,
+    "term": "dismal",
+    "definition": "adj. 沮丧的，阴暗的"
+  },
+  {
+    "index": 1218,
+    "term": "glossy",
+    "definition": "平滑的，有光泽的"
+  },
+  {
+    "index": 1219,
+    "term": "luster",
+    "definition": "光彩，光泽"
+  },
+  {
+    "index": 1220,
+    "term": "glaze",
+    "definition": "给...上釉，妆点：coat glaze；使平滑：glossy surface"
+  },
+  {
+    "index": 1221,
+    "term": "flare",
+    "definition": "闪耀"
+  },
+  {
+    "index": 1222,
+    "term": "burnish",
+    "definition": "v.擦亮，磨光"
+  },
+  {
+    "index": 1223,
+    "term": "gleam",
+    "definition": "n./v. 微光，闪光"
+  },
+  {
+    "index": 1224,
+    "term": "ablaze",
+    "definition": "闪耀的"
+  },
+  {
+    "index": 1225,
+    "term": "twinkle",
+    "definition": "vi.闪烁，闪耀"
+  },
+  {
+    "index": 1226,
+    "term": "tentative",
+    "definition": "a.试探性的，尝试性的"
+  },
+  {
+    "index": 1227,
+    "term": "theoretical",
+    "definition": "a.不切实际的；理论(上)的"
+  },
+  {
+    "index": 1228,
+    "term": "specimen",
+    "definition": "n. 样品，样本；标本"
+  },
+  {
+    "index": 1229,
+    "term": "symbolic",
+    "definition": "adj.象征的,符号的"
+  },
+  {
+    "index": 1230,
+    "term": "precision",
+    "definition": "n.精确(性)，精密(度)"
+  },
+  {
+    "index": 1231,
+    "term": "threshold",
+    "definition": "n.门槛;入门,开端doorsill"
+  },
+  {
+    "index": 1232,
+    "term": "expertise",
+    "definition": "n.专门技术，专业知识"
+  },
+  {
+    "index": 1233,
+    "term": "contrive",
+    "definition": "v.发明, 设计, 图谋"
+  },
+  {
+    "index": 1234,
+    "term": "devise",
+    "definition": "v.发明，设计；图谋；遗赠给"
+  },
+  {
+    "index": 1235,
+    "term": "gauge",
+    "definition": "测量标准：measurement standard；判定：determine"
+  },
+  {
+    "index": 1236,
+    "term": "hence",
+    "definition": "ad 从此，因此，所以，本来"
+  },
+  {
+    "index": 1237,
+    "term": "framework",
+    "definition": "n.框架，构架，结构"
+  },
+  {
+    "index": 1238,
+    "term": "hypothesis",
+    "definition": "n.假设，假说"
+  },
+  {
+    "index": 1239,
+    "term": "presumption",
+    "definition": "假定"
+  },
+  {
+    "index": 1240,
+    "term": "generalize",
+    "definition": "v.概括，归纳"
+  },
+  {
+    "index": 1241,
+    "term": "incur",
+    "definition": "v.招致，引起"
+  },
+  {
+    "index": 1242,
+    "term": "premise",
+    "definition": "vt. 引出，预先提出；作为...的前提n. 前提；上述各项；房屋连地基vi. 作出前提"
+  },
+  {
+    "index": 1243,
+    "term": "infer",
+    "definition": "v.推断，推定"
+  },
+  {
+    "index": 1244,
+    "term": "demonstrate",
+    "definition": "v.证明，论证；示威"
+  },
+  {
+    "index": 1245,
+    "term": "cursory",
+    "definition": "a.粗略的，草率的"
+  },
+  {
+    "index": 1246,
+    "term": "perennial",
+    "definition": "a.全年的；永久的"
+  },
+  {
+    "index": 1247,
+    "term": "chronic",
+    "definition": "a.慢性的，长期的"
+  },
+  {
+    "index": 1248,
+    "term": "everlasting",
+    "definition": "永恒的，持久的：forever"
+  },
+  {
+    "index": 1249,
+    "term": "hasty",
+    "definition": "adj.轻率的；匆忙的；草率的；懈怠的"
+  },
+  {
+    "index": 1250,
+    "term": "transitory",
+    "definition": "短暂的"
+  },
+  {
+    "index": 1251,
+    "term": "transient",
+    "definition": "短暂的，瞬时的：transitory"
+  },
+  {
+    "index": 1252,
+    "term": "obsolete",
+    "definition": "a.废弃的；过时的"
+  },
+  {
+    "index": 1253,
+    "term": "extemporaneous",
+    "definition": "a.无准备的,即席的,临时的"
+  },
+  {
+    "index": 1254,
+    "term": "pressing",
+    "definition": "紧迫的"
+  },
+  {
+    "index": 1255,
+    "term": "offhand",
+    "definition": "adj.即兴的，没有准备的"
+  },
+  {
+    "index": 1256,
+    "term": "temporal",
+    "definition": "a.时间的；世俗的暂时的"
+  },
+  {
+    "index": 1257,
+    "term": "temporary",
+    "definition": "a.暂时的,临时的"
+  },
+  {
+    "index": 1258,
+    "term": "contemporary",
+    "definition": "adj. 当代的，现代"
+  },
+  {
+    "index": 1259,
+    "term": "impromptu",
+    "definition": "a.即席的，即兴的"
+  },
+  {
+    "index": 1260,
+    "term": "punctual",
+    "definition": "adj.严守时刻的, 准时的"
+  },
+  {
+    "index": 1261,
+    "term": "instantaneous",
+    "definition": "a.立即的，瞬间发生的"
+  },
+  {
+    "index": 1262,
+    "term": "subsequent",
+    "definition": "随后的，后来的"
+  },
+  {
+    "index": 1263,
+    "term": "concurrent",
+    "definition": "a.并发的；协作的，一致的"
+  },
+  {
+    "index": 1264,
+    "term": "extant",
+    "definition": "尚存的，现存的"
+  },
+  {
+    "index": 1265,
+    "term": "nocturnal",
+    "definition": "a.夜晚的，夜间发生的"
+  },
+  {
+    "index": 1266,
+    "term": "eternal",
+    "definition": "a.永久的，永恒的，不朽的"
+  },
+  {
+    "index": 1267,
+    "term": "permanent",
+    "definition": "a. 永久的,持久的"
+  },
+  {
+    "index": 1268,
+    "term": "abiding",
+    "definition": "永久的：enduring"
+  },
+  {
+    "index": 1269,
+    "term": "dated",
+    "definition": "陈旧的，过时的"
+  },
+  {
+    "index": 1270,
+    "term": "beforehand",
+    "definition": "ad.预先；提前地"
+  },
+  {
+    "index": 1271,
+    "term": "simultaneous",
+    "definition": "同时的"
+  },
+  {
+    "index": 1272,
+    "term": "duration",
+    "definition": "n.持续的时间"
+  },
+  {
+    "index": 1273,
+    "term": "epoch",
+    "definition": "n. 新纪元；时代"
+  },
+  {
+    "index": 1274,
+    "term": "interlude",
+    "definition": "n.(活动间的)暂时休息"
+  },
+  {
+    "index": 1275,
+    "term": "schedule",
+    "definition": "n.时间表,进度表 v.安排,预定"
+  },
+  {
+    "index": 1276,
+    "term": "juncture",
+    "definition": "n.关键时刻，危急关头；接合点"
+  },
+  {
+    "index": 1277,
+    "term": "session",
+    "definition": "n 一次，一段时间；会议；会议的一次（一届）"
+  },
+  {
+    "index": 1278,
+    "term": "elapse",
+    "definition": "v.消逝，过去 n. 消逝"
+  },
+  {
+    "index": 1279,
+    "term": "concur",
+    "definition": "同意：agreement；同一时间发生、存在：same time；团结合作：joint"
+  },
+  {
+    "index": 1280,
+    "term": "improvise",
+    "definition": "即兴创作"
+  },
+  {
+    "index": 1281,
+    "term": "synchronize",
+    "definition": "vt. 同步，同时发生"
+  },
+  {
+    "index": 1282,
+    "term": "itinerant",
+    "definition": "巡回的，流动的"
+  },
+  {
+    "index": 1283,
+    "term": "influx",
+    "definition": "n. 流入；汇集；河流的汇集处"
+  },
+  {
+    "index": 1284,
+    "term": "spray",
+    "definition": "n.喷雾, 飞沫 vt.喷射, 喷溅"
+  },
+  {
+    "index": 1285,
+    "term": "fluctuate",
+    "definition": "v.波动；变化"
+  },
+  {
+    "index": 1286,
+    "term": "splash",
+    "definition": "v. 溅，泼"
+  },
+  {
+    "index": 1287,
+    "term": "spurt",
+    "definition": "v. 喷出，涌出"
+  },
+  {
+    "index": 1288,
+    "term": "spout",
+    "definition": "v.喷出；滔滔不绝地讲"
+  },
+  {
+    "index": 1289,
+    "term": "meander",
+    "definition": "v 曲曲折折地流；蜿蜒，弯曲"
+  },
+  {
+    "index": 1290,
+    "term": "gush",
+    "definition": "（使）大量涌出：great volume；（使）情感强烈外溢：exaggerated display"
+  },
+  {
+    "index": 1291,
+    "term": "overflow",
+    "definition": "vt.从...中溢出"
+  },
+  {
+    "index": 1292,
+    "term": "infuse",
+    "definition": "灌输，使...充满：fill；鼓舞：inspire"
+  },
+  {
+    "index": 1293,
+    "term": "submerge",
+    "definition": "v 使浸在水中，潜水；沉没，淹没；消失"
+  },
+  {
+    "index": 1294,
+    "term": "imbue",
+    "definition": "v.浸染，浸透；使充满；灌输，激发"
+  },
+  {
+    "index": 1295,
+    "term": "exude",
+    "definition": "分泌，流出：flow forth"
+  },
+  {
+    "index": 1296,
+    "term": "permeate",
+    "definition": "v.扩散；渗透"
+  },
+  {
+    "index": 1297,
+    "term": "dampen",
+    "definition": "v.(使)潮湿；使沮丧，泼凉水"
+  },
+  {
+    "index": 1298,
+    "term": "moisten",
+    "definition": "v.弄湿，使湿润"
+  },
+  {
+    "index": 1299,
+    "term": "craft",
+    "definition": "手工艺，船"
+  },
+  {
+    "index": 1300,
+    "term": "vessel",
+    "definition": "n.血管；容器；船只"
+  },
+  {
+    "index": 1301,
+    "term": "girdle",
+    "definition": "n.带，腰带，带状物"
+  },
+  {
+    "index": 1302,
+    "term": "canvas",
+    "definition": "n.画布；帆布"
+  },
+  {
+    "index": 1303,
+    "term": "souvenir",
+    "definition": "纪念品"
+  },
+  {
+    "index": 1304,
+    "term": "entity",
+    "definition": "n.实体，统一体"
+  },
+  {
+    "index": 1305,
+    "term": "spur",
+    "definition": "n. 鼓舞，刺激；马刺；山坡vi. 骑马疾驰；给予刺激vt. 激励，鞭策；给...装踢马刺"
+  },
+  {
+    "index": 1306,
+    "term": "leash",
+    "definition": "n. 牵狗的皮带，束缚"
+  },
+  {
+    "index": 1307,
+    "term": "strip",
+    "definition": "v.剥去(衣物，覆盖物，零件)；剥夺(名誉，地位)；n.狭长的一片"
+  },
+  {
+    "index": 1308,
+    "term": "hinge",
+    "definition": "n.合页,铰链 vi.依...而定"
+  },
+  {
+    "index": 1309,
+    "term": "varnish",
+    "definition": "上清漆，使有光泽：smooth glossy；粉饰（令人不悦的东西）：conceal unpleasant"
+  },
+  {
+    "index": 1310,
+    "term": "tug",
+    "definition": "v.用力拖(或拉)；苦干 n.拖；苦干；拖船"
+  },
+  {
+    "index": 1311,
+    "term": "null",
+    "definition": "无效的"
+  },
+  {
+    "index": 1312,
+    "term": "efficient",
+    "definition": "a.有效率的,能干的"
+  },
+  {
+    "index": 1313,
+    "term": "outcome",
+    "definition": "n. 结果，结局；成果"
+  },
+  {
+    "index": 1314,
+    "term": "impotence",
+    "definition": "n. 无效，无力，虚弱"
+  },
+  {
+    "index": 1315,
+    "term": "gratuitous",
+    "definition": "无根据的，无理由的；无报酬的，免费的；多余的"
+  },
+  {
+    "index": 1316,
+    "term": "source",
+    "definition": "n.源,源泉;来源,出处"
+  },
+  {
+    "index": 1317,
+    "term": "account",
+    "definition": "a.叙述，说明；账目，账户 vi.说明，解释(on account原因"
+  },
+  {
+    "index": 1318,
+    "term": "impute",
+    "definition": "v.归咎于；归于"
+  },
+  {
+    "index": 1319,
+    "term": "superficial",
+    "definition": "表面的，肤浅的"
+  },
+  {
+    "index": 1320,
+    "term": "partial",
+    "definition": "部分的"
+  },
+  {
+    "index": 1321,
+    "term": "overall",
+    "definition": "adj. 全部的，全面的"
+  },
+  {
+    "index": 1322,
+    "term": "integral",
+    "definition": "a.构成整体所必需的；完整的"
+  },
+  {
+    "index": 1323,
+    "term": "integrate",
+    "definition": "v 使成整体，使并入，使一体化，使结合起来"
+  },
+  {
+    "index": 1324,
+    "term": "integrity",
+    "definition": "n. 完整性；正直；诚实；廉正"
+  },
+  {
+    "index": 1325,
+    "term": "seemingly",
+    "definition": "adv. 看来似乎；表面上看来"
+  },
+  {
+    "index": 1326,
+    "term": "portion",
+    "definition": "n 一部分，一份"
+  },
+  {
+    "index": 1327,
+    "term": "proportion",
+    "definition": "n 比，比率；[数]比例"
+  },
+  {
+    "index": 1328,
+    "term": "segment",
+    "definition": "n 部分，节，段 v 分割，分裂"
+  },
+  {
+    "index": 1329,
+    "term": "component",
+    "definition": "组成部分"
+  },
+  {
+    "index": 1330,
+    "term": "deceit",
+    "definition": "n.欺骗，欺诈"
+  },
+  {
+    "index": 1331,
+    "term": "deceitful",
+    "definition": "adj.撒谎的，骗人的"
+  },
+  {
+    "index": 1332,
+    "term": "deceive",
+    "definition": "v.欺骗,蒙蔽"
+  },
+  {
+    "index": 1333,
+    "term": "deceptive",
+    "definition": "adj. 虚伪的，骗人的"
+  },
+  {
+    "index": 1334,
+    "term": "gangster",
+    "definition": "n.匪徒，歹徒，暴徒"
+  },
+  {
+    "index": 1335,
+    "term": "fraud",
+    "definition": "n.欺诈，欺骗；骗子"
+  },
+  {
+    "index": 1336,
+    "term": "fraudulent",
+    "definition": "adj. 欺骗的，不诚实的"
+  },
+  {
+    "index": 1337,
+    "term": "homicide",
+    "definition": "杀人，行凶"
+  },
+  {
+    "index": 1338,
+    "term": "theft",
+    "definition": "n. 偷窃"
+  },
+  {
+    "index": 1339,
+    "term": "pilferage",
+    "definition": "n. 1 小窃行为,小盗窃2 (U)失窃之损失; 失窃品"
+  },
+  {
+    "index": 1340,
+    "term": "counterfeit",
+    "definition": "v.伪造，仿造"
+  },
+  {
+    "index": 1341,
+    "term": "conspire",
+    "definition": "v.阴谋，共谋"
+  },
+  {
+    "index": 1342,
+    "term": "conspiracy",
+    "definition": "阴谋"
+  },
+  {
+    "index": 1343,
+    "term": "brew",
+    "definition": "v.酿酒；沏，煮咖啡；酝酿，即将发生"
+  },
+  {
+    "index": 1344,
+    "term": "beguile",
+    "definition": "欺骗; 使着迷；愉快的度过"
+  },
+  {
+    "index": 1345,
+    "term": "forge",
+    "definition": "n. 熔炉，锻铁炉；铁工厂vi. 伪造；做锻工；前进vt. 伪造；锻造；前进"
+  },
+  {
+    "index": 1346,
+    "term": "assassinate",
+    "definition": "vt.暗杀，行刺；中伤"
+  },
+  {
+    "index": 1347,
+    "term": "embezzle",
+    "definition": "盗用"
+  },
+  {
+    "index": 1348,
+    "term": "extort",
+    "definition": "勒索"
+  },
+  {
+    "index": 1349,
+    "term": "blackmail",
+    "definition": "v./n. 敲诈，勒索"
+  },
+  {
+    "index": 1350,
+    "term": "delude",
+    "definition": "v.欺骗，哄骗"
+  },
+  {
+    "index": 1351,
+    "term": "defraud",
+    "definition": "v.欺骗某人"
+  },
+  {
+    "index": 1352,
+    "term": "fabricate",
+    "definition": "v.捏造；制造"
+  },
+  {
+    "index": 1353,
+    "term": "purge",
+    "definition": "v.清洗，清除(政敌)；净化心灵，洗涤罪恶"
+  },
+  {
+    "index": 1354,
+    "term": "belie",
+    "definition": "v.掩饰；证明为假"
+  },
+  {
+    "index": 1355,
+    "term": "accomplice",
+    "definition": "n.同谋者，帮凶"
+  },
+  {
+    "index": 1356,
+    "term": "abduct",
+    "definition": "v．绑架，拐走"
+  },
+  {
+    "index": 1357,
+    "term": "auspicious",
+    "definition": "a.幸运的；吉兆的"
+  },
+  {
+    "index": 1358,
+    "term": "readily",
+    "definition": "adv. 容易地；乐意地；无困难地"
+  },
+  {
+    "index": 1359,
+    "term": "boon",
+    "definition": "n.恩惠，天赐福利"
+  },
+  {
+    "index": 1360,
+    "term": "thrive",
+    "definition": "vi. 繁荣，兴旺；茁壮成长"
+  },
+  {
+    "index": 1361,
+    "term": "furrow",
+    "definition": "犁沟，车辙"
+  },
+  {
+    "index": 1362,
+    "term": "implement",
+    "definition": "n.工具，器具；v.实现，实施"
+  },
+  {
+    "index": 1363,
+    "term": "shaft",
+    "definition": "n.(工具的)柄，杆状物"
+  },
+  {
+    "index": 1364,
+    "term": "snap",
+    "definition": "vt. 突然折断，拉断；猛咬；啪地关上vi. 咬；厉声说；咯嗒一声关上n. 猛咬；劈啪声；突然折断adj. 突然的"
+  },
+  {
+    "index": 1365,
+    "term": "prune",
+    "definition": "n.梅干；v.修剪"
+  },
+  {
+    "index": 1366,
+    "term": "extract",
+    "definition": "用力拔出：take out"
+  },
+  {
+    "index": 1367,
+    "term": "flay",
+    "definition": "v.剥皮；强夺，掠夺；严厉指责"
+  },
+  {
+    "index": 1368,
+    "term": "flush",
+    "definition": "n./v.脸红；奔流；冲洗"
+  },
+  {
+    "index": 1369,
+    "term": "clinch",
+    "definition": "v.钉牢；彻底解决"
+  },
+  {
+    "index": 1370,
+    "term": "gild",
+    "definition": "镀金"
+  },
+  {
+    "index": 1371,
+    "term": "clip",
+    "definition": "n.夹子，别针；v.修剪"
+  },
+  {
+    "index": 1372,
+    "term": "scratch",
+    "definition": "v.抓,搔,扒 n.抓,搔,抓痕;起跑线"
+  },
+  {
+    "index": 1373,
+    "term": "clamp",
+    "definition": "n.夹子 vt.夹住，夹紧"
+  },
+  {
+    "index": 1374,
+    "term": "hew",
+    "definition": "v.砍伐；遵守"
+  },
+  {
+    "index": 1375,
+    "term": "rap",
+    "definition": "敲击，监禁，责备或训斥"
+  },
+  {
+    "index": 1376,
+    "term": "cleanse",
+    "definition": "vt.使清洁,净化,使纯洁"
+  },
+  {
+    "index": 1377,
+    "term": "rend",
+    "definition": "撕裂，猛拉：tear or split apart"
+  },
+  {
+    "index": 1378,
+    "term": "cram",
+    "definition": "v.填塞，塞满；临时抱佛脚，为考试而学习"
+  },
+  {
+    "index": 1379,
+    "term": "smear",
+    "definition": "n.污迹，污点；v.弄脏，玷污；诽谤"
+  },
+  {
+    "index": 1380,
+    "term": "efface",
+    "definition": "v.擦掉，抹去"
+  },
+  {
+    "index": 1381,
+    "term": "tow",
+    "definition": "v 拖着走，拉着走"
+  },
+  {
+    "index": 1382,
+    "term": "incise",
+    "definition": "v.切，切割"
+  },
+  {
+    "index": 1383,
+    "term": "harrow",
+    "definition": "n.耙；v.使痛苦"
+  },
+  {
+    "index": 1384,
+    "term": "shovel",
+    "definition": "n 铲，铁锨 v 拿铲子铲"
+  },
+  {
+    "index": 1385,
+    "term": "sickle",
+    "definition": "n.镰刀;收割机"
+  },
+  {
+    "index": 1386,
+    "term": "spade",
+    "definition": "n.铁锹,铲子"
+  },
+  {
+    "index": 1387,
+    "term": "bore",
+    "definition": "v.钻孔；使厌烦；n.孔；令人厌烦的人"
+  },
+  {
+    "index": 1388,
+    "term": "hectic",
+    "definition": "a.兴奋的，繁忙的，忙乱的"
+  },
+  {
+    "index": 1389,
+    "term": "log",
+    "definition": "n./v.日志，记录；n.一段大木头；圆木"
+  },
+  {
+    "index": 1390,
+    "term": "vocation",
+    "definition": "n.擅长；工作，职业"
+  },
+  {
+    "index": 1391,
+    "term": "audition",
+    "definition": "n. 试听，试唱，试演"
+  },
+  {
+    "index": 1392,
+    "term": "draft",
+    "definition": "n.草稿，草案；汇票"
+  },
+  {
+    "index": 1393,
+    "term": "sketch",
+    "definition": "n.草图，概略 v.画草图，写概略"
+  },
+  {
+    "index": 1394,
+    "term": "assumption",
+    "definition": "n.假定, 设想, 担任, 就职，承当, 假装, 作态"
+  },
+  {
+    "index": 1395,
+    "term": "drudgery",
+    "definition": "苦工；单调、卑贱或无趣的工作：tedious work"
+  },
+  {
+    "index": 1396,
+    "term": "solicit",
+    "definition": "v.恳求；教唆(犯罪)，(妓女)拉客"
+  },
+  {
+    "index": 1397,
+    "term": "register",
+    "definition": "登记，注册"
+  },
+  {
+    "index": 1398,
+    "term": "inaugurate",
+    "definition": "开始"
+  },
+  {
+    "index": 1399,
+    "term": "promote",
+    "definition": "v.提升；促进"
+  },
+  {
+    "index": 1400,
+    "term": "officeholding",
+    "definition": "任职"
+  },
+  {
+    "index": 1401,
+    "term": "provision",
+    "definition": "供应"
+  },
+  {
+    "index": 1402,
+    "term": "accommodate",
+    "definition": "v.与...一致；提供食宿"
+  },
+  {
+    "index": 1403,
+    "term": "furnish",
+    "definition": "v.供应,提供;装备,布置"
+  },
+  {
+    "index": 1404,
+    "term": "render",
+    "definition": "v.呈递，表现；提供...作为报偿或交换"
+  },
+  {
+    "index": 1405,
+    "term": "incompatible",
+    "definition": "a.不相容的,不能并存的,矛盾的"
+  },
+  {
+    "index": 1406,
+    "term": "congruity",
+    "definition": "n. 一致，协调"
+  },
+  {
+    "index": 1407,
+    "term": "incongruous",
+    "definition": "a 不调和的，不相称的"
+  },
+  {
+    "index": 1408,
+    "term": "respective",
+    "definition": "adj. 分别的，各自的"
+  },
+  {
+    "index": 1409,
+    "term": "mutual",
+    "definition": "adj.相互的，共有的"
+  },
+  {
+    "index": 1410,
+    "term": "concerted",
+    "definition": "adj. 商议好的，协定的"
+  },
+  {
+    "index": 1411,
+    "term": "fraternal",
+    "definition": "adj. 兄弟的，兄弟般的，友爱的"
+  },
+  {
+    "index": 1412,
+    "term": "congenial",
+    "definition": "a.意气相投的；性情好的"
+  },
+  {
+    "index": 1413,
+    "term": "complement",
+    "definition": "n.补足物,补语,余角vt.补助,补足"
+  },
+  {
+    "index": 1414,
+    "term": "complementary",
+    "definition": "互补的"
+  },
+  {
+    "index": 1415,
+    "term": "discord",
+    "definition": "意见不一致，不和谐：lack agreement, harmony"
+  },
+  {
+    "index": 1416,
+    "term": "intimate",
+    "definition": "a.亲密的；n.密友；v.暗示"
+  },
+  {
+    "index": 1417,
+    "term": "intimacy",
+    "definition": "n. 亲密，熟悉"
+  },
+  {
+    "index": 1418,
+    "term": "substitute",
+    "definition": "n.代替品；v.代替"
+  },
+  {
+    "index": 1419,
+    "term": "consensus",
+    "definition": "一致"
+  },
+  {
+    "index": 1420,
+    "term": "concurrence",
+    "definition": "n. 一致"
+  },
+  {
+    "index": 1421,
+    "term": "proximity",
+    "definition": "n. 接近，[数]邻近；接近；接近度，距离；亲近"
+  },
+  {
+    "index": 1422,
+    "term": "collaborate",
+    "definition": "v.合作，协作；通敌"
+  },
+  {
+    "index": 1423,
+    "term": "replenish",
+    "definition": "补充"
+  },
+  {
+    "index": 1424,
+    "term": "supplant",
+    "definition": "排挤，篡夺...的位置：usurp the place of"
+  },
+  {
+    "index": 1425,
+    "term": "implicate",
+    "definition": "v.牵连(于罪行中)；暗示"
+  },
+  {
+    "index": 1426,
+    "term": "supersede",
+    "definition": "v.淘汰，取代"
+  },
+  {
+    "index": 1427,
+    "term": "correlate",
+    "definition": "vt. 使相互关联；使相互影响"
+  },
+  {
+    "index": 1428,
+    "term": "grant",
+    "definition": "n.授给物 vt.授予"
+  },
+  {
+    "index": 1429,
+    "term": "derivative",
+    "definition": "a.派生的；无创意的"
+  },
+  {
+    "index": 1430,
+    "term": "refuge",
+    "definition": "n.避难处,藏身处"
+  },
+  {
+    "index": 1431,
+    "term": "depot",
+    "definition": "n. 货站，仓库"
+  },
+  {
+    "index": 1432,
+    "term": "auditorium",
+    "definition": "n.礼堂；观众席"
+  },
+  {
+    "index": 1433,
+    "term": "vault",
+    "definition": "n.拱顶；地窖"
+  },
+  {
+    "index": 1434,
+    "term": "stall",
+    "definition": "n.货摊，书摊；厩"
+  },
+  {
+    "index": 1435,
+    "term": "dormitory",
+    "definition": "n.集体寝室,宿舍"
+  },
+  {
+    "index": 1436,
+    "term": "dwelling",
+    "definition": "n.住宅,寓所"
+  },
+  {
+    "index": 1437,
+    "term": "canopy",
+    "definition": "n. 天篷；华盖；遮篷；苍穹vt. 用天蓬遮盖；遮盖"
+  },
+  {
+    "index": 1438,
+    "term": "laborious",
+    "definition": "adj.费力的,吃力的"
+  },
+  {
+    "index": 1439,
+    "term": "precipitous",
+    "definition": "a.陡峭的,急躁的"
+  },
+  {
+    "index": 1440,
+    "term": "devious",
+    "definition": "a.不正直的；弯曲的"
+  },
+  {
+    "index": 1441,
+    "term": "arduous",
+    "definition": "a.费力的,辛勤的,险峻的"
+  },
+  {
+    "index": 1442,
+    "term": "strenuous",
+    "definition": "费力的"
+  },
+  {
+    "index": 1443,
+    "term": "plight",
+    "definition": "n.境况,誓约,困境vt.宣誓,保证,约定"
+  },
+  {
+    "index": 1444,
+    "term": "painstaking",
+    "definition": "煞费苦心的"
+  },
+  {
+    "index": 1445,
+    "term": "flounder",
+    "definition": "v.挣扎；艰苦地移动；n.比目鱼"
+  },
+  {
+    "index": 1446,
+    "term": "prevail",
+    "definition": "v 胜，压倒，占优势；普遍；传开，盛行"
+  },
+  {
+    "index": 1447,
+    "term": "prevalent",
+    "definition": "流行的"
+  },
+  {
+    "index": 1448,
+    "term": "vogue",
+    "definition": "n. 时尚；流行，时髦adj. 时髦的，流行的"
+  },
+  {
+    "index": 1449,
+    "term": "novelty",
+    "definition": "n. 新奇；新奇的事物；新颖小巧而廉价的物品"
+  },
+  {
+    "index": 1450,
+    "term": "immortal",
+    "definition": "不朽的"
+  },
+  {
+    "index": 1451,
+    "term": "notorious",
+    "definition": "臭名昭著的，声名狼藉的"
+  },
+  {
+    "index": 1452,
+    "term": "infamous",
+    "definition": "臭名昭著的"
+  },
+  {
+    "index": 1453,
+    "term": "legendary",
+    "definition": "a.闻名的；传说的"
+  },
+  {
+    "index": 1454,
+    "term": "glorious",
+    "definition": "a.光荣的；壮丽的"
+  },
+  {
+    "index": 1455,
+    "term": "illustrious",
+    "definition": "著名的，杰出的"
+  },
+  {
+    "index": 1456,
+    "term": "eminent",
+    "definition": "杰出的"
+  },
+  {
+    "index": 1457,
+    "term": "deferential",
+    "definition": "恭敬的"
+  },
+  {
+    "index": 1458,
+    "term": "exemplary",
+    "definition": "adj. 模范的，典范的"
+  },
+  {
+    "index": 1459,
+    "term": "matchless",
+    "definition": "adj. 无敌的；无比的"
+  },
+  {
+    "index": 1460,
+    "term": "excel",
+    "definition": "vt.胜过 vi.杰出"
+  },
+  {
+    "index": 1461,
+    "term": "renowned",
+    "definition": "著名的"
+  },
+  {
+    "index": 1462,
+    "term": "laudable",
+    "definition": "值得赞美的"
+  },
+  {
+    "index": 1463,
+    "term": "supreme",
+    "definition": "a 最高的，无上的，最优秀的，最重要的"
+  },
+  {
+    "index": 1464,
+    "term": "celebrated",
+    "definition": "a.有名的，知名的"
+  },
+  {
+    "index": 1465,
+    "term": "notable",
+    "definition": "a.明显的，出众的，重要的"
+  },
+  {
+    "index": 1466,
+    "term": "preeminent",
+    "definition": "卓越的"
+  },
+  {
+    "index": 1467,
+    "term": "prominent",
+    "definition": "adj. 突出的，显著的；杰出的；卓越的"
+  },
+  {
+    "index": 1468,
+    "term": "dignified",
+    "definition": "adj. 尊严的，高贵的"
+  },
+  {
+    "index": 1469,
+    "term": "lofty",
+    "definition": "崇高的"
+  },
+  {
+    "index": 1470,
+    "term": "odor",
+    "definition": "名声;气味"
+  },
+  {
+    "index": 1471,
+    "term": "feat",
+    "definition": "n.功绩，壮举"
+  },
+  {
+    "index": 1472,
+    "term": "homage",
+    "definition": "尊敬，敬意"
+  },
+  {
+    "index": 1473,
+    "term": "deference",
+    "definition": "n.敬意，尊重"
+  },
+  {
+    "index": 1474,
+    "term": "virtue",
+    "definition": "美德"
+  },
+  {
+    "index": 1475,
+    "term": "prestige",
+    "definition": "n. 威望，声望；声誉"
+  },
+  {
+    "index": 1476,
+    "term": "grandeur",
+    "definition": "庄严，伟大"
+  },
+  {
+    "index": 1477,
+    "term": "reverence",
+    "definition": "尊敬"
+  },
+  {
+    "index": 1478,
+    "term": "awe",
+    "definition": "敬畏"
+  },
+  {
+    "index": 1479,
+    "term": "esteem",
+    "definition": "尊重"
+  },
+  {
+    "index": 1480,
+    "term": "commend",
+    "definition": "赞美"
+  },
+  {
+    "index": 1481,
+    "term": "exalt",
+    "definition": "提升，提拔：raise；赞扬：praise"
+  },
+  {
+    "index": 1482,
+    "term": "exalted",
+    "definition": "adj. 尊贵的，兴奋的"
+  },
+  {
+    "index": 1483,
+    "term": "venerate",
+    "definition": "v.崇敬，敬仰"
+  },
+  {
+    "index": 1484,
+    "term": "embalm",
+    "definition": "使不朽"
+  },
+  {
+    "index": 1485,
+    "term": "tarnish",
+    "definition": "玷污 使晦暗；"
+  },
+  {
+    "index": 1486,
+    "term": "extol",
+    "definition": "赞美，颂扬"
+  },
+  {
+    "index": 1487,
+    "term": "laud",
+    "definition": "赞美"
+  },
+  {
+    "index": 1488,
+    "term": "revere",
+    "definition": "尊敬"
+  },
+  {
+    "index": 1489,
+    "term": "disreputable",
+    "definition": "声名狼藉的"
+  },
+  {
+    "index": 1490,
+    "term": "hilarious",
+    "definition": "a.充满欢乐的；引起大笑的"
+  },
+  {
+    "index": 1491,
+    "term": "sullen",
+    "definition": "闷闷不乐的"
+  },
+  {
+    "index": 1492,
+    "term": "hilarity",
+    "definition": "n.欢闹，狂欢"
+  },
+  {
+    "index": 1493,
+    "term": "aura",
+    "definition": "n. 气味，气氛"
+  },
+  {
+    "index": 1494,
+    "term": "etiquette",
+    "definition": "礼节"
+  },
+  {
+    "index": 1495,
+    "term": "decorum",
+    "definition": "n.礼节，礼貌"
+  },
+  {
+    "index": 1496,
+    "term": "banquet",
+    "definition": "n.宴会，盛宴"
+  },
+  {
+    "index": 1497,
+    "term": "ceremonial",
+    "definition": "adj. 仪式，正式的"
+  },
+  {
+    "index": 1498,
+    "term": "ceremony",
+    "definition": "仪式"
+  },
+  {
+    "index": 1499,
+    "term": "unveil",
+    "definition": "v. 公之于众，揭露"
+  },
+  {
+    "index": 1500,
+    "term": "grip",
+    "definition": "v. 紧握，紧抓"
+  },
+  {
+    "index": 1501,
+    "term": "posture",
+    "definition": "姿势"
+  },
+  {
+    "index": 1502,
+    "term": "jerk",
+    "definition": "v./n. 猛拉"
+  },
+  {
+    "index": 1503,
+    "term": "chuckle",
+    "definition": "轻声笑"
+  },
+  {
+    "index": 1504,
+    "term": "stagger",
+    "definition": "蹒跚"
+  },
+  {
+    "index": 1505,
+    "term": "trudge",
+    "definition": "v.跋涉，吃力地走"
+  },
+  {
+    "index": 1506,
+    "term": "hurl",
+    "definition": "v.猛投；大声叫骂"
+  },
+  {
+    "index": 1507,
+    "term": "erect",
+    "definition": "adj.直立的,竖立的,笔直的;vt.盖,使竖立,使直立,树立,建立;vi.[生理]勃起"
+  },
+  {
+    "index": 1508,
+    "term": "trample",
+    "definition": "践踏"
+  },
+  {
+    "index": 1509,
+    "term": "slump",
+    "definition": "v．猛然落下，暴跌"
+  },
+  {
+    "index": 1510,
+    "term": "creep",
+    "definition": "v.匍匐前进；悄悄地移动"
+  },
+  {
+    "index": 1511,
+    "term": "recoil",
+    "definition": "退却，畏缩：shrink back"
+  },
+  {
+    "index": 1512,
+    "term": "uphold",
+    "definition": "v.维护，支持"
+  },
+  {
+    "index": 1513,
+    "term": "stride",
+    "definition": "v.大步行走"
+  },
+  {
+    "index": 1514,
+    "term": "thrust",
+    "definition": "推力"
+  },
+  {
+    "index": 1515,
+    "term": "gnaw",
+    "definition": "vt.啃，咬断 vi.啮"
+  },
+  {
+    "index": 1516,
+    "term": "spew",
+    "definition": "v.呕吐；大量喷出"
+  },
+  {
+    "index": 1517,
+    "term": "dab",
+    "definition": "轻拍"
+  },
+  {
+    "index": 1518,
+    "term": "plunge",
+    "definition": "v.投入，穿入，进入；俯冲"
+  },
+  {
+    "index": 1519,
+    "term": "dart",
+    "definition": "n.飞镖；v.急驰；投射"
+  },
+  {
+    "index": 1520,
+    "term": "haul",
+    "definition": "v （用力）拽，牵，拖，拖运"
+  },
+  {
+    "index": 1521,
+    "term": "jolt",
+    "definition": "v.颠簸着移动；n.震动，摇晃"
+  },
+  {
+    "index": 1522,
+    "term": "heave",
+    "definition": "v.(用力)举，提，拉；扔；拖；呕吐n.举起"
+  },
+  {
+    "index": 1523,
+    "term": "clutch",
+    "definition": "v.抓住,攫住,掌握 n.离合器"
+  },
+  {
+    "index": 1524,
+    "term": "sprawl",
+    "definition": "vi. 蔓延；伸开手足躺；无计划地扩展vt. 懒散地伸开；使蔓生n. 蔓生；伸开手足躺卧姿势"
+  },
+  {
+    "index": 1525,
+    "term": "footbeat",
+    "definition": "点脚，跺脚"
+  },
+  {
+    "index": 1526,
+    "term": "textile",
+    "definition": "纺织品"
+  },
+  {
+    "index": 1527,
+    "term": "outfit",
+    "definition": "全套服装"
+  },
+  {
+    "index": 1528,
+    "term": "gear",
+    "definition": "齿轮"
+  },
+  {
+    "index": 1529,
+    "term": "fixture",
+    "definition": "n. 固定设备"
+  },
+  {
+    "index": 1530,
+    "term": "cement",
+    "definition": "n.水泥；胶粘剂；v.粘合，巩固"
+  },
+  {
+    "index": 1531,
+    "term": "pivot",
+    "definition": "v 把......放在枢轴上，旋"
+  },
+  {
+    "index": 1532,
+    "term": "manipulate",
+    "definition": "vt. 操纵；操作；巧妙地处理；篡改"
+  },
+  {
+    "index": 1533,
+    "term": "conserve",
+    "definition": "v.保全，保存"
+  },
+  {
+    "index": 1534,
+    "term": "hoist",
+    "definition": "v.吊高，升起；n.起重机"
+  },
+  {
+    "index": 1535,
+    "term": "idyllic",
+    "definition": "田园风光的"
+  },
+  {
+    "index": 1536,
+    "term": "furniture",
+    "definition": "n. 家具"
+  },
+  {
+    "index": 1537,
+    "term": "hurdle",
+    "definition": "n.跳栏；障碍；v.克服(障碍)"
+  },
+  {
+    "index": 1538,
+    "term": "nostalgia",
+    "definition": "n 怀乡病，乡愁，怀旧，留恋过去"
+  },
+  {
+    "index": 1539,
+    "term": "singe",
+    "definition": "轻微烧焦"
+  },
+  {
+    "index": 1540,
+    "term": "regimen",
+    "definition": "n. 统治，控制；养生法"
+  },
+  {
+    "index": 1541,
+    "term": "slag",
+    "definition": "n. 矿渣,炉渣,熔渣"
+  },
+  {
+    "index": 1542,
+    "term": "sojourn",
+    "definition": "逗留；旅居"
+  },
+  {
+    "index": 1543,
+    "term": "dwell",
+    "definition": "vi. 居住；存在于；细想某事"
+  },
+  {
+    "index": 1544,
+    "term": "inhabit",
+    "definition": "vt. 居住于，栖息于"
+  },
+  {
+    "index": 1545,
+    "term": "scorch",
+    "definition": "烧焦"
+  },
+  {
+    "index": 1546,
+    "term": "nurture",
+    "definition": "养育"
+  },
+  {
+    "index": 1547,
+    "term": "reside",
+    "definition": "居住"
+  },
+  {
+    "index": 1548,
+    "term": "desolate",
+    "definition": "adj.荒凉的，无人烟的"
+  },
+  {
+    "index": 1549,
+    "term": "bleak",
+    "definition": "荒凉的"
+  },
+  {
+    "index": 1550,
+    "term": "barren",
+    "definition": "a.不育的；贫瘠的；不结果实的"
+  },
+  {
+    "index": 1551,
+    "term": "agrarian",
+    "definition": "耕地的"
+  },
+  {
+    "index": 1552,
+    "term": "clod",
+    "definition": "土块"
+  },
+  {
+    "index": 1553,
+    "term": "obese",
+    "definition": "a.极肥胖的"
+  },
+  {
+    "index": 1554,
+    "term": "corpulent",
+    "definition": "adj.肥大的, 肥胖的"
+  },
+  {
+    "index": 1555,
+    "term": "ragged",
+    "definition": "衣衫褴褛的：threadbare clothes；凹凸不平的，不光滑的：not smooth"
+  },
+  {
+    "index": 1556,
+    "term": "aspect",
+    "definition": "n.(问题等的)方面；面貌，外表"
+  },
+  {
+    "index": 1557,
+    "term": "costume",
+    "definition": "n. 服装，装束；戏装，剧装vt. 给...穿上服装"
+  },
+  {
+    "index": 1558,
+    "term": "attire",
+    "definition": "v.使穿衣；打扮 n.盛装，服装"
+  },
+  {
+    "index": 1559,
+    "term": "garb",
+    "definition": "n. 服装，装束"
+  },
+  {
+    "index": 1560,
+    "term": "strap",
+    "definition": "n. 带，皮带"
+  },
+  {
+    "index": 1561,
+    "term": "guise",
+    "definition": "n.外观，装束"
+  },
+  {
+    "index": 1562,
+    "term": "cosmetics",
+    "definition": "n. [化工] 化妆品（cosmetic的复数）；装饰品v. 用化妆品打扮（cosmetic的三单形式）"
+  },
+  {
+    "index": 1563,
+    "term": "sole",
+    "definition": "a.单独的,唯一的 n.脚垫,鞋底"
+  },
+  {
+    "index": 1564,
+    "term": "drowsy",
+    "definition": "adj. 昏昏欲睡的；沉寂的；催眠的"
+  },
+  {
+    "index": 1565,
+    "term": "lull",
+    "definition": "n.歇息vt. 使平静；使安静"
+  },
+  {
+    "index": 1566,
+    "term": "doze",
+    "definition": "瞌睡"
+  },
+  {
+    "index": 1567,
+    "term": "bask",
+    "definition": "取暖；曝日"
+  },
+  {
+    "index": 1568,
+    "term": "fateful",
+    "definition": "意义重大的：momentous；带来灾难的，毁灭性的：bringing death"
+  },
+  {
+    "index": 1569,
+    "term": "imminent",
+    "definition": "a.(尤指不愉快的事)即将发生的，逼近的"
+  },
+  {
+    "index": 1570,
+    "term": "estimable",
+    "definition": "值得尊敬的"
+  },
+  {
+    "index": 1571,
+    "term": "apt",
+    "definition": "恰当的，合适的：suitable, appropriate; 有倾向的，可能的：tendency, likely; 聪明的：intelligent, responsive"
+  },
+  {
+    "index": 1572,
+    "term": "provident",
+    "definition": "a.深谋远虑的；节俭的"
+  },
+  {
+    "index": 1573,
+    "term": "prospective",
+    "definition": "adj. 未来的；预期的n. 预期；展望"
+  },
+  {
+    "index": 1574,
+    "term": "perspective",
+    "definition": "n.(判断事物的)角度，方法；透视法"
+  },
+  {
+    "index": 1575,
+    "term": "auspice",
+    "definition": "n.前兆"
+  },
+  {
+    "index": 1576,
+    "term": "prediction",
+    "definition": "n. 预言，预报"
+  },
+  {
+    "index": 1577,
+    "term": "surmise",
+    "definition": "（根据不足的）推测，揣测：based on scantly evidence"
+  },
+  {
+    "index": 1578,
+    "term": "foresee",
+    "definition": "预见"
+  },
+  {
+    "index": 1579,
+    "term": "foresight",
+    "definition": "n.远见，深谋远虑"
+  },
+  {
+    "index": 1580,
+    "term": "disastrous",
+    "definition": "adj. 灾难性的，悲惨的"
+  },
+  {
+    "index": 1581,
+    "term": "calamity",
+    "definition": "不幸之事"
+  },
+  {
+    "index": 1582,
+    "term": "holocaust",
+    "definition": "大屠杀"
+  },
+  {
+    "index": 1583,
+    "term": "carnage",
+    "definition": "n.大屠杀，残杀"
+  },
+  {
+    "index": 1584,
+    "term": "avalanche",
+    "definition": "雪崩，山崩"
+  },
+  {
+    "index": 1585,
+    "term": "casualty",
+    "definition": "n 伤亡（人数）；事故，横祸"
+  },
+  {
+    "index": 1586,
+    "term": "mishap",
+    "definition": "n.不幸之事,灾祸,厄运"
+  },
+  {
+    "index": 1587,
+    "term": "adversity",
+    "definition": "n. 逆境；不幸；灾难；灾祸"
+  },
+  {
+    "index": 1588,
+    "term": "afflict",
+    "definition": "v.使痛苦，折磨"
+  },
+  {
+    "index": 1589,
+    "term": "defunct",
+    "definition": "a.死亡的"
+  },
+  {
+    "index": 1590,
+    "term": "lethal",
+    "definition": "非常有害的，致命的：extremely harmful"
+  },
+  {
+    "index": 1591,
+    "term": "demise",
+    "definition": "n.死亡；财产转让"
+  },
+  {
+    "index": 1592,
+    "term": "smother",
+    "definition": "使窒息：killed by lack of air；抑制（表达，说出），压制：refrain"
+  },
+  {
+    "index": 1593,
+    "term": "expire",
+    "definition": "vi.满期，到期；断气"
+  },
+  {
+    "index": 1594,
+    "term": "overbearing",
+    "definition": "傲慢的"
+  },
+  {
+    "index": 1595,
+    "term": "haughty",
+    "definition": "a.傲慢的，自大的"
+  },
+  {
+    "index": 1596,
+    "term": "insolent",
+    "definition": "粗野的，无礼的：rude"
+  },
+  {
+    "index": 1597,
+    "term": "fussy",
+    "definition": "过分挑剔的"
+  },
+  {
+    "index": 1598,
+    "term": "contemptuous",
+    "definition": "a.鄙视的，表示轻蔑的"
+  },
+  {
+    "index": 1599,
+    "term": "presumptuous",
+    "definition": "放肆的，冒昧的：overstepping bounds；傲慢的：feeling of superiority"
+  },
+  {
+    "index": 1600,
+    "term": "doleful",
+    "definition": "a.忧愁的，消沉的"
+  },
+  {
+    "index": 1601,
+    "term": "sentimental",
+    "definition": "adj. 伤感的；多愁善感的；感情用事的；寓有情感的"
+  },
+  {
+    "index": 1602,
+    "term": "torturous",
+    "definition": "adj. 折磨人的，痛苦的"
+  },
+  {
+    "index": 1603,
+    "term": "pensive",
+    "definition": "沉思的，（尤指）哀思的：thinking"
+  },
+  {
+    "index": 1604,
+    "term": "lament",
+    "definition": "悼词：composition grief；抱怨：resentment；为...哀悼，表达痛苦或遗憾：express sorrow"
+  },
+  {
+    "index": 1605,
+    "term": "torment",
+    "definition": "n.痛苦 vt.折磨"
+  },
+  {
+    "index": 1606,
+    "term": "deplore",
+    "definition": "v.悲悼，哀叹"
+  },
+  {
+    "index": 1607,
+    "term": "inconceivable",
+    "definition": "不可思议的"
+  },
+  {
+    "index": 1608,
+    "term": "uncanny",
+    "definition": "a.不可思议的，异乎寻常的"
+  },
+  {
+    "index": 1609,
+    "term": "marvelous",
+    "definition": "adj. 不可思议的；了不起的"
+  },
+  {
+    "index": 1610,
+    "term": "astound",
+    "definition": "使惊异"
+  },
+  {
+    "index": 1611,
+    "term": "incredible",
+    "definition": "难以置信的"
+  },
+  {
+    "index": 1612,
+    "term": "striking",
+    "definition": "a.引人注目的，明显的"
+  },
+  {
+    "index": 1613,
+    "term": "trepidation",
+    "definition": "n.恐惧，惶恐"
+  },
+  {
+    "index": 1614,
+    "term": "startle",
+    "definition": "使吓一跳，使大吃一惊：frighten or surprise"
+  },
+  {
+    "index": 1615,
+    "term": "dismay",
+    "definition": "n.沮丧，气馁；v.使气馁"
+  },
+  {
+    "index": 1616,
+    "term": "impetuous",
+    "definition": "冲动的，性急的，轻率的：impulsive vehemence；剧烈的，猛烈的：violence of movement"
+  },
+  {
+    "index": 1617,
+    "term": "incentive",
+    "definition": "n.刺激，鼓励；刺激因素"
+  },
+  {
+    "index": 1618,
+    "term": "sinister",
+    "definition": "a.恶意的；凶兆的，不祥的"
+  },
+  {
+    "index": 1619,
+    "term": "malevolent",
+    "definition": "a.有恶意的，恶毒的"
+  },
+  {
+    "index": 1620,
+    "term": "malice",
+    "definition": "n.恶意，怨恨"
+  },
+  {
+    "index": 1621,
+    "term": "malicious",
+    "definition": "adj. 怀恶意的；恶毒的"
+  },
+  {
+    "index": 1622,
+    "term": "ferocious",
+    "definition": "凶猛的"
+  },
+  {
+    "index": 1623,
+    "term": "bothersome",
+    "definition": "a.令人厌恶的；麻烦的"
+  },
+  {
+    "index": 1624,
+    "term": "tedious",
+    "definition": "a.因冗长而沉闷、乏味的"
+  },
+  {
+    "index": 1625,
+    "term": "uproar",
+    "definition": "n.骚动，扰乱；喧嚣"
+  },
+  {
+    "index": 1626,
+    "term": "intrude",
+    "definition": "v.把(思想等)强加于；闯入"
+  },
+  {
+    "index": 1627,
+    "term": "harass",
+    "definition": "骚扰"
+  },
+  {
+    "index": 1628,
+    "term": "disarrange",
+    "definition": "v. 扰乱"
+  },
+  {
+    "index": 1629,
+    "term": "derange",
+    "definition": "vt. 扰乱"
+  },
+  {
+    "index": 1630,
+    "term": "vex",
+    "definition": "vt.使烦恼,恼怒"
+  },
+  {
+    "index": 1631,
+    "term": "grouchy",
+    "definition": "易怒的，脾气不好的"
+  },
+  {
+    "index": 1632,
+    "term": "indignant",
+    "definition": "a.愤慨的，愤愤不平的"
+  },
+  {
+    "index": 1633,
+    "term": "touchy",
+    "definition": "a.敏感的，易发脾气的"
+  },
+  {
+    "index": 1634,
+    "term": "fury",
+    "definition": "n. 狂怒；暴怒；激怒者"
+  },
+  {
+    "index": 1635,
+    "term": "enrage",
+    "definition": "v.激怒，触怒"
+  },
+  {
+    "index": 1636,
+    "term": "outrage",
+    "definition": "n.义愤，愤慨 vt.激起...的义愤"
+  },
+  {
+    "index": 1637,
+    "term": "exasperate",
+    "definition": "v.激怒，使恼怒"
+  },
+  {
+    "index": 1638,
+    "term": "fret",
+    "definition": "n./v.(使)烦躁，焦虑"
+  },
+  {
+    "index": 1639,
+    "term": "provoke",
+    "definition": "vt. 驱使；激怒；煽动；惹起"
+  },
+  {
+    "index": 1640,
+    "term": "incense",
+    "definition": "激怒"
+  },
+  {
+    "index": 1641,
+    "term": "indefatigable",
+    "definition": "a.不知疲倦的,有耐性的,不屈不挠的"
+  },
+  {
+    "index": 1642,
+    "term": "sensuous",
+    "definition": "引起快感的"
+  },
+  {
+    "index": 1643,
+    "term": "listless",
+    "definition": "a 冷淡的；懒洋洋的，无精打采的，倦怠的"
+  },
+  {
+    "index": 1644,
+    "term": "daze",
+    "definition": "n.迷乱，恍惚 v.使茫然，使眩晕"
+  },
+  {
+    "index": 1645,
+    "term": "intuition",
+    "definition": "n. 直觉；直觉力；直觉的知识"
+  },
+  {
+    "index": 1646,
+    "term": "famish",
+    "definition": "vt.使挨饿vi.饥饿,挨饿"
+  },
+  {
+    "index": 1647,
+    "term": "exultant",
+    "definition": "a.非常高兴的,欢跃的"
+  },
+  {
+    "index": 1648,
+    "term": "brisk",
+    "definition": "a.敏捷的，活泼的；清新健康的"
+  },
+  {
+    "index": 1649,
+    "term": "gleeful",
+    "definition": "adj. 及高兴的，兴奋的"
+  },
+  {
+    "index": 1650,
+    "term": "joyous",
+    "definition": "a.快乐的,高兴的"
+  },
+  {
+    "index": 1651,
+    "term": "elation",
+    "definition": "n.得意洋洋,兴高采烈"
+  },
+  {
+    "index": 1652,
+    "term": "ecstacy",
+    "definition": "恍惚；狂喜"
+  },
+  {
+    "index": 1653,
+    "term": "bliss",
+    "definition": "n.狂喜；福佑，天赐的福"
+  },
+  {
+    "index": 1654,
+    "term": "rapture",
+    "definition": "n.狂喜，欢天喜地"
+  },
+  {
+    "index": 1655,
+    "term": "enrapture",
+    "definition": "v.使狂喜，使高兴"
+  },
+  {
+    "index": 1656,
+    "term": "ravish",
+    "definition": "vt.使陶醉，使沉迷"
+  },
+  {
+    "index": 1657,
+    "term": "inquisitive",
+    "definition": "a.过分好问的；好奇的"
+  },
+  {
+    "index": 1658,
+    "term": "suspense",
+    "definition": "n.悬念，不确定；挂念"
+  },
+  {
+    "index": 1659,
+    "term": "fluster",
+    "definition": "使慌乱"
+  },
+  {
+    "index": 1660,
+    "term": "abashed",
+    "definition": "adj. 不安的；窘迫的；尴尬的"
+  },
+  {
+    "index": 1661,
+    "term": "languid",
+    "definition": "a.没精打采的，倦怠的"
+  },
+  {
+    "index": 1662,
+    "term": "downcast",
+    "definition": "沮丧的，悲哀的"
+  },
+  {
+    "index": 1663,
+    "term": "dejected",
+    "definition": "a.沮丧的，失望的"
+  },
+  {
+    "index": 1664,
+    "term": "cheerless",
+    "definition": "无精打采的，无生命力的"
+  },
+  {
+    "index": 1665,
+    "term": "formidable",
+    "definition": "adj. 强大的；可怕的；令人敬畏的；艰难的"
+  },
+  {
+    "index": 1666,
+    "term": "dread",
+    "definition": "v./n.恐惧,担心"
+  },
+  {
+    "index": 1667,
+    "term": "cower",
+    "definition": "v.畏缩，蜷缩"
+  },
+  {
+    "index": 1668,
+    "term": "intimidate",
+    "definition": "恐吓，威胁"
+  },
+  {
+    "index": 1669,
+    "term": "menace",
+    "definition": "威胁，恐吓"
+  },
+  {
+    "index": 1670,
+    "term": "mania",
+    "definition": "n.(医)躁狂，狂；狂热，癖好"
+  },
+  {
+    "index": 1671,
+    "term": "frenzy",
+    "definition": "n.极度激动的状态，狂暴"
+  },
+  {
+    "index": 1672,
+    "term": "fanaticism",
+    "definition": "n. 狂热，盲从"
+  },
+  {
+    "index": 1673,
+    "term": "satiate",
+    "definition": "（使）饱足（的），过分满足（的）：satisfy fully"
+  },
+  {
+    "index": 1674,
+    "term": "gratify",
+    "definition": "使满足"
+  },
+  {
+    "index": 1675,
+    "term": "solicitous",
+    "definition": "adj．热切的，挂念的"
+  }
+]

@@ -147,17 +147,22 @@ button { cursor: pointer; border: none; background: none; }
 /* 应答训练层的 w 是整句刺激句，需要截断，否则单个 chip 会撑满多行 */
 .chip .cw { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 280px; }
 .chip .cm { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; }
-.chip.mastered { border-color: rgba(52,199,89,.5); }
-.chip.learning { border-color: rgba(255,180,84,.5); }
+.chip.known { border-color: rgba(52,199,89,.5); }
+.chip.collected { border-color: rgba(255,180,84,.5); }
 .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.chip .dot.new { background: var(--muted); }
-.chip .dot.learning { background: var(--warn); }
-.chip .dot.mastered { background: var(--ok); }
+.chip .dot.unmarked { background: var(--muted); }
+.chip .dot.collected { background: var(--warn); }
+.chip .dot.known { background: var(--ok); }
 
 /* Flashcard */
 .study-area { display: flex; flex-direction: column; align-items: center; min-height: 420px; }
 .study-meta { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
 .study-meta .due { color: var(--warn); font-weight: 600; }
+.study-meta .meta-btn {
+  background: var(--card2); border: 1px solid var(--border); color: var(--muted);
+  border-radius: 8px; padding: 5px 10px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.study-meta .meta-btn:disabled { opacity: .4; cursor: default; }
 
 .flashcard-wrap { width: 100%; perspective: 1000px; touch-action: pan-y; }
 .flashcard {
@@ -180,9 +185,9 @@ button { cursor: pointer; border: none; background: none; }
 .badge.pri-1 { background: rgba(255,69,58,.18); color: var(--bad); }
 .badge.pri-2 { background: rgba(255,180,84,.18); color: var(--warn); }
 .badge.pri-3 { background: rgba(76,141,255,.15); color: var(--accent); }
-.badge.status-new { background: rgba(139,147,161,.2); }
-.badge.status-learning { background: rgba(255,180,84,.18); color: var(--warn); }
-.badge.status-mastered { background: rgba(52,199,89,.18); color: var(--ok); }
+.badge.status-unmarked { background: rgba(139,147,161,.2); }
+.badge.status-collected { background: rgba(255,180,84,.18); color: var(--warn); }
+.badge.status-known { background: rgba(52,199,89,.18); color: var(--ok); }
 
 .fc-meaning { font-size: 26px; font-weight: 700; line-height: 1.35; margin: 8px 0; display: none; }
 .fc-word { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; display: none; }
@@ -256,9 +261,9 @@ button { cursor: pointer; border: none; background: none; }
 .word-table .cat { font-size: 11px; color: var(--muted); max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .word-table .cnt { font-size: 11px; color: var(--muted); white-space: nowrap; }
 .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
-.status-dot.new { background: var(--muted); }
-.status-dot.learning { background: var(--warn); }
-.status-dot.mastered { background: var(--ok); }
+.status-dot.unmarked { background: var(--muted); }
+.status-dot.collected { background: var(--warn); }
+.status-dot.known { background: var(--ok); }
 
 /* Sync */
 .sync-panel {
@@ -338,8 +343,8 @@ button { cursor: pointer; border: none; background: none; }
     <!-- 总览 -->
     <div class="view" id="view-dashboard">
       <div class="hero-stats" id="dash-stats"></div>
-      <button class="btn btn-primary btn-block" id="btn-study-new">📖 学新词</button>
-      <button class="btn btn-block" id="btn-study-review" style="border-color:var(--warn);color:var(--warn)">🔁 今日复习 · <span id="review-count">0</span> 词待复习</button>
+      <button class="btn btn-primary btn-block" id="btn-study-new">📖 过单词</button>
+      <button class="btn btn-block" id="btn-study-review" style="border-color:var(--warn);color:var(--warn)">📚 学习模式 · <span id="review-count">0</span> 词已收藏</button>
       <button class="btn btn-block" id="btn-response-train" style="border-color:var(--accent);color:var(--accent)">🎯 即时应答训练 · <span id="train-count">0</span> 个模式</button>
       <div class="section-title">分类进度</div>
       <div id="macro-list"></div>
@@ -350,7 +355,7 @@ button { cursor: pointer; border: none; background: none; }
       <button class="btn btn-block" id="btn-browse-back" style="margin-bottom:12px">← 返回总览</button>
       <div class="browse-head" id="browse-head"></div>
       <div class="btn-row" style="margin-bottom:14px">
-        <button class="btn btn-primary" id="btn-browse-study">📖 按记忆曲线学这类</button>
+        <button class="btn btn-primary" id="btn-browse-study">📖 过这类单词</button>
       </div>
       <p class="browse-tip">点击任意单词即可从该词开始进入单词卡模式。</p>
       <div id="browse-list"></div>
@@ -362,7 +367,8 @@ button { cursor: pointer; border: none; background: none; }
         <select class="select" id="study-cat-filter">
           <option value="">全部分类</option>
         </select>
-        <button class="btn btn-primary" id="btn-start-session" style="flex:0 0 auto;padding:10px 16px">开始</button>
+        <button class="btn btn-primary" id="btn-start-session" style="flex:0 0 auto;padding:10px 16px">📖 过单词</button>
+        <button class="btn btn-block" id="btn-start-collect" style="flex:0 0 auto;padding:10px 16px;border-color:var(--warn);color:var(--warn)">📚 学习模式</button>
       </div>
       <div class="study-area" id="study-area"></div>
     </div>
@@ -374,9 +380,9 @@ button { cursor: pointer; border: none; background: none; }
         <select class="select" id="list-cat-filter"><option value="">全部分类</option></select>
         <select class="select" id="list-status-filter">
           <option value="">全部状态</option>
-          <option value="new">新词</option>
-          <option value="learning">学习中</option>
-          <option value="mastered">已掌握</option>
+          <option value="unmarked">未标记</option>
+          <option value="collected">收藏</option>
+          <option value="known">已知</option>
         </select>
         <select class="select" id="list-sort">
           <option value="priority">默认（优先级）</option>
@@ -494,9 +500,11 @@ let settings = {};
 let currentTab = 'dashboard';
 let studyQueue = [];
 let studyIdx = 0;
-let studyResults = { right: 0, wrong: 0, wrongList: [] };
+let studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] };
+let studyHistory = []; // 每张卡作答前的快照，供「回到上一个」回退进度，避免重复计分
 let studyCategory = '';
 let studyStarted = false;
+let studyMode = 'new'; // new=过单词（未标记） | review=学习模式（收藏） | train=即时应答
 let cardRevealed = false;
 let touchStartX = 0, touchStartY = 0;
 
@@ -531,18 +539,26 @@ function getMacro(c) {
 }
 
 function getRec(word) {
-  return progress[word] || { box: 0, right: 0, wrong: 0, lastSeen: 0 };
+  const r = progress[word];
+  if (!r) return { box: 0, right: 0, wrong: 0, lastSeen: 0, fav: false, known: false };
+  // 旧格式进度（无 fav/known 字段）：按 box 推导（box≥5→已知；box 1-4→收藏）
+  if (typeof r.fav === 'undefined' || typeof r.known === 'undefined') {
+    if (typeof r.fav === 'undefined') r.fav = r.box >= 1 && r.box < 5;
+    if (typeof r.known === 'undefined') r.known = r.box >= 5;
+  }
+  return r;
 }
 
+// 每词状态：收藏（在收藏列表）> 已知 > 未标记
 function getStatus(word) {
-  const b = getRec(word).box;
-  if (b >= 5) return 'mastered';
-  if (b > 0) return 'learning';
-  return 'new';
+  const rec = getRec(word);
+  if (rec.fav) return 'collected';
+  if (rec.known) return 'known';
+  return 'unmarked';
 }
 
 function statusLabel(s) {
-  return { new: '新词', learning: '学习中', mastered: '已掌握' }[s] || s;
+  return { unmarked: '未标记', collected: '收藏', known: '已知' }[s] || s;
 }
 
 function isDue(rec) {
@@ -556,6 +572,22 @@ function isDue(rec) {
 function loadProgress() {
   try { progress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}') || {}; }
   catch(e) { progress = {}; }
+  migrateProgress();
+}
+
+// 旧进度自动迁移：已掌握(box≥5)→已知；学习中/答错过(box 1-4)→收藏；未标记(box 0)→保持未标记
+function migrateProgress() {
+  let changed = false;
+  Object.keys(progress).forEach(w => {
+    const r = progress[w];
+    if (!r) return;
+    if (typeof r.fav === 'undefined' || typeof r.known === 'undefined') {
+      if (typeof r.fav === 'undefined') r.fav = r.box >= 1 && r.box < 5;
+      if (typeof r.known === 'undefined') r.known = r.box >= 5;
+      changed = true;
+    }
+  });
+  if (changed) saveProgress();
 }
 
 function saveProgress() {
@@ -594,7 +626,7 @@ function encodeProgress() {
     const idx = wordToIndex[word];
     if (idx === undefined) return;
     const days = rec.lastSeen ? Math.floor(rec.lastSeen / EPOCH) : 0;
-    parts.push(idx + ':' + rec.box + ':' + rec.right + ':' + rec.wrong + ':' + days);
+    parts.push(idx + ':' + rec.box + ':' + rec.right + ':' + rec.wrong + ':' + days + ':' + (rec.fav ? 1 : 0) + ':' + (rec.known ? 1 : 0));
   });
   return btoa(unescape(encodeURIComponent(parts.join(';'))));
 }
@@ -609,7 +641,10 @@ function decodeProgress(str) {
       const idx = +p[0], box = +p[1], right = +p[2], wrong = +p[3], days = +p[4];
       const entry = vocab[idx];
       if (!entry) return;
-      out[entry.w] = { box, right, wrong, lastSeen: days * EPOCH };
+      // 旧格式(5字段)按 box 推导收藏/已知；新格式带 fav/known
+      const fav = p[5] === undefined ? (box >= 1 && box < 5) : p[5] === '1';
+      const known = p[6] === undefined ? (box >= 5) : p[6] === '1';
+      out[entry.w] = { box, right, wrong, lastSeen: days * EPOCH, fav, known };
     });
   } catch(e) {}
   return out;
@@ -772,7 +807,7 @@ function gistSchedulePush() {
 }
 
 function gistSeenCount() {
-  return Object.keys(progress).filter(w => getRec(w).box > 0).length;
+  return Object.keys(progress).filter(w => { const r = getRec(w); return r.box > 0 || r.fav || r.known; }).length;
 }
 
 async function gistLogin() {
@@ -946,8 +981,41 @@ function answer(word, correct, skipped) {
   saveProgress();
 }
 
+// ⭐ 收藏：切换 fav（进入/移出收藏列表）
+function markCollect(word) {
+  const rec = getRec(word);
+  const wasFav = !!rec.fav;
+  rec.fav = !wasFav;
+  if (rec.fav) {
+    if (rec.box < 1) rec.box = 1;
+    studyResults.fav++;
+    if (studyResults.collectedList.indexOf(word) < 0) studyResults.collectedList.push(word);
+  } else if (studyResults.fav > 0) {
+    studyResults.fav--;
+  }
+  rec.lastSeen = Date.now();
+  progress[word] = rec;
+  saveProgress();
+}
+
+// ✓ 已知：切换 known（标记已知，但保留在收藏列表里，不移除）
+function markKnown(word) {
+  const rec = getRec(word);
+  const wasKnown = !!rec.known;
+  rec.known = !wasKnown;
+  if (rec.known) {
+    if (rec.box < 5) rec.box++;
+    studyResults.known++;
+  } else if (studyResults.known > 0) {
+    studyResults.known--;
+  }
+  rec.lastSeen = Date.now();
+  progress[word] = rec;
+  saveProgress();
+}
+
 function buildSession(macroFilter, mode) {
-  const box1 = [], due = [], fresh = [], train = [];
+  const pass = [], collected = [], train = [];
   vocab.forEach((entry, i) => {
     if (macroFilter) {
       if (macroFilter === '听力-应答') {
@@ -955,37 +1023,39 @@ function buildSession(macroFilter, mode) {
       } else if (getMacro(entry.c) !== macroFilter) return;
     }
     const rec = getRec(entry.w);
-    if (rec.box === 0) fresh.push(i);
-    else if (rec.box === 1) box1.push(i);
-    else if (rec.box >= 2 && rec.box <= 4 && isDue(rec)) due.push(i);
+    if (rec.fav) collected.push(i);        // 收藏列表 → 学习模式
+    else if (!rec.known) pass.push(i);     // 未标记（既未收藏也未已知）→ 过单词
     train.push(i);
   });
   const PRI_WEIGHT = { 1: 0.2, 2: 0.5, 3: 1, 4: 1.5, 5: 2 };
-  fresh.sort((a, b) => {
+  pass.sort((a, b) => {
     const wa = PRI_WEIGHT[vocab[a].r] || 1, wb = PRI_WEIGHT[vocab[b].r] || 1;
     return (Math.random() / wa) - (Math.random() / wb);
   });
-  due.sort((a, b) => (getRec(vocab[a].w).lastSeen || 0) - (getRec(vocab[b].w).lastSeen || 0));
+  // 学习模式按记忆曲线排序：最近看过的排后、老早的排前
+  collected.sort((a, b) => (getRec(vocab[a].w).lastSeen || 0) - (getRec(vocab[b].w).lastSeen || 0));
 
   let indices;
   if (mode === 'train') {
-    // 即时应答训练：全量抽取（含已掌握），复习 2026 听力占比最大的题型模式
+    // 即时应答训练：全量抽取（含已标记），复习 2026 听力占比最大的题型模式
     indices = train.slice(0, MAX_SESSION);
   } else if (mode === 'review') {
-    indices = box1.concat(due).slice(0, MAX_SESSION);
-  } else if (mode === 'new') {
-    indices = fresh.slice(0, MAX_SESSION);
+    // 学习模式：只过已收藏的词
+    indices = collected.slice(0, MAX_SESSION);
   } else {
-    indices = box1.concat(due, fresh.slice(0, MAX_NEW)).slice(0, MAX_SESSION);
+    // 过单词：只过还没标记的词
+    indices = pass.slice(0, MAX_SESSION);
   }
   return indices.map(i => vocab[i]);
 }
 
 function startResponseTraining() {
   studyCategory = '听力-应答';
+  studyMode = 'train';
   studyQueue = buildSession('听力-应答', 'train');
   studyIdx = 0;
-  studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
@@ -994,47 +1064,47 @@ function startResponseTraining() {
 }
 
 function getStats() {
-  let mastered = 0, learning = 0, fresh = 0;
+  let collected = 0, known = 0, unmarked = 0;
   vocab.forEach(e => {
-    const s = getStatus(e.w);
-    if (s === 'mastered') mastered++;
-    else if (s === 'learning') learning++;
-    else fresh++;
+    const rec = getRec(e.w);
+    if (rec.fav) collected++;
+    if (rec.known) known++;
+    if (!rec.fav && !rec.known) unmarked++;
   });
-  return { total: vocab.length, mastered, learning, new: fresh };
+  return { total: vocab.length, collected, known, unmarked };
 }
 
 function getMacroStats() {
   const stats = {};
-  Object.keys(MACRO).forEach(k => { stats[k] = { total: 0, mastered: 0 }; });
+  Object.keys(MACRO).forEach(k => { stats[k] = { total: 0, known: 0 }; });
   vocab.forEach(e => {
     const m = getMacro(e.c);
     stats[m].total++;
-    if (getStatus(e.w) === 'mastered') stats[m].mastered++;
+    if (getRec(e.w).known) stats[m].known++;
   });
   return stats;
 }
 
 function renderDashboard() {
   const s = getStats();
-  const pct = s.total ? Math.round(s.mastered / s.total * 100) : 0;
+  const pct = s.total ? Math.round(s.known / s.total * 100) : 0;
   // 重点词进度：P4+P5（2026 备考的核心目标词）
   const priTotal = vocab.filter(e => e.r >= 4).length;
-  const priMastered = vocab.filter(e => e.r >= 4 && getStatus(e.w) === 'mastered').length;
-  const priPct = priTotal ? Math.round(priMastered / priTotal * 100) : 0;
+  const priKnown = vocab.filter(e => e.r >= 4 && getRec(e.w).known).length;
+  const priPct = priTotal ? Math.round(priKnown / priTotal * 100) : 0;
   $('dash-stats').innerHTML =
     '<div class="nums">' +
       '<div class="num"><strong>' + s.total + '</strong><span>总词数</span></div>' +
-      '<div class="num"><strong style="color:var(--ok)">' + s.mastered + '</strong><span>已掌握</span></div>' +
-      '<div class="num"><strong style="color:var(--warn)">' + s.learning + '</strong><span>学习中</span></div>' +
-      '<div class="num"><strong>' + s.new + '</strong><span>新词</span></div>' +
+      '<div class="num"><strong style="color:var(--warn)">' + s.collected + '</strong><span>收藏</span></div>' +
+      '<div class="num"><strong style="color:var(--ok)">' + s.known + '</strong><span>已知</span></div>' +
+      '<div class="num"><strong>' + s.unmarked + '</strong><span>未标记</span></div>' +
     '</div>' +
     '<div class="progress-wrap">' +
-      '<div class="label"><span>掌握进度</span><span>' + pct + '%</span></div>' +
+      '<div class="label"><span>已知进度</span><span>' + pct + '%</span></div>' +
       '<div class="bar"><i style="width:' + pct + '%"></i></div>' +
     '</div>' +
     '<div class="progress-wrap">' +
-      '<div class="label"><span>重点词进度（P4+P5）</span><span>' + priMastered + ' / ' + priTotal + ' · ' + priPct + '%</span></div>' +
+      '<div class="label"><span>重点词进度（P4+P5）</span><span>' + priKnown + ' / ' + priTotal + ' · ' + priPct + '%</span></div>' +
       '<div class="bar"><i style="width:' + priPct + '%;background:var(--warn)"></i></div>' +
     '</div>';
 
@@ -1043,19 +1113,19 @@ function renderDashboard() {
   Object.keys(MACRO).forEach(key => {
     const m = MACRO[key], st = ms[key];
     if (!st.total) return;
-    const mp = st.total ? Math.round(st.mastered / st.total * 100) : 0;
+    const mp = st.total ? Math.round(st.known / st.total * 100) : 0;
     html += '<div class="macro-card">' +
       '<div class="macro-head">' +
         '<div class="macro-icon" style="background:' + m.color + '22">' + m.icon + '</div>' +
         '<div class="macro-info">' +
           '<div class="name">' + m.name + '</div>' +
-          '<div class="sub">' + st.mastered + ' / ' + st.total + ' 已掌握</div>' +
+          '<div class="sub">' + st.known + ' / ' + st.total + ' 已知</div>' +
         '</div>' +
       '</div>' +
       '<div class="macro-bar"><div class="bar"><i style="width:' + mp + '%;background:' + m.color + '"></i></div></div>' +
       '<div class="btn-row">' +
         '<button class="btn btn-primary" data-browse="' + key + '">一览全部 ' + st.total + ' 词</button>' +
-        '<button class="btn" data-macro="' + key + '">按记忆曲线学</button>' +
+        '<button class="btn" data-macro="' + key + '">过这类单词</button>' +
       '</div>' +
     '</div>';
   });
@@ -1071,16 +1141,13 @@ function renderDashboard() {
     });
   });
 
-  // Update review count
-  let reviewCount = 0;
-  vocab.forEach(e => {
-    const rec = getRec(e.w);
-    if (rec.box === 1 || (rec.box >= 2 && rec.box <= 4 && isDue(rec))) reviewCount++;
-  });
+  // 学习模式入口：已收藏的词数
+  let collectedCount = 0;
+  vocab.forEach(e => { if (getRec(e.w).fav) collectedCount++; });
   const rc = $('review-count');
-  if (rc) rc.textContent = reviewCount;
+  if (rc) rc.textContent = collectedCount;
   const rb = $('btn-study-review');
-  if (rb) rb.style.display = reviewCount > 0 ? '' : 'none';
+  if (rb) rb.style.display = collectedCount > 0 ? '' : 'none';
   // 即时应答训练入口：2026 听力占比最大的题型（Listen and Choose a Response）
   const tc = $('train-count');
   if (tc) tc.textContent = String(vocab.filter(e => e.c.startsWith('听力-应答-')).length);
@@ -1102,13 +1169,21 @@ function isSentenceCard(entry) {
 function renderStudyCard() {
   const area = $('study-area');
   if (!studyStarted) {
-    area.innerHTML = '<div class="empty-study"><div class="icon">🃏</div><p>点击上方「开始」或从总览选择分类</p><p style="font-size:13px;margin-top:8px">每轮最多 30 张新词</p><button class="btn btn-primary" style="margin-top:16px" id="btn-start-inline">开始学新词</button></div>';
+    area.innerHTML = '<div class="empty-study"><div class="icon">🃏</div><p>点「过单词」逐词标记（不会的收藏），再点「学习模式」复习收藏的词</p><p style="font-size:13px;margin-top:8px">每轮最多 30 个未标记词</p><button class="btn btn-primary" style="margin-top:16px" id="btn-start-inline">📖 过单词</button><button class="btn" style="margin-top:8px" id="btn-start-collect-inline">📚 学习模式</button></div>';
     $('btn-start-inline')?.addEventListener('click', () => startStudy(studyCategory, 'new'));
+    $('btn-start-collect-inline')?.addEventListener('click', () => startStudy(studyCategory, 'review'));
     return;
   }
   if (!studyQueue.length) {
-    area.innerHTML = '<div class="empty-study"><div class="icon">🎉</div><p>暂无待复习单词</p><p style="font-size:13px;margin-top:8px">所有到期词已复习完毕，或该分类已全部掌握</p><button class="btn btn-primary" style="margin-top:16px" id="btn-back-dash">返回总览</button></div>';
-    $('btn-back-dash')?.addEventListener('click', () => switchTab('dashboard'));
+    if (studyMode === 'review') {
+      area.innerHTML = '<div class="empty-study"><div class="icon">⭐</div><p>收藏列表还没有词</p><p style="font-size:13px;margin-top:8px">先去「过单词」把不会的词收藏起来</p><button class="btn btn-primary" style="margin-top:16px" id="btn-go-pass">📖 去过单词</button><button class="btn" style="margin-top:8px" id="btn-back-dash2">返回总览</button></div>';
+      $('btn-go-pass')?.addEventListener('click', () => startStudy(studyCategory, 'new'));
+      $('btn-back-dash2')?.addEventListener('click', () => switchTab('dashboard'));
+    } else {
+      area.innerHTML = '<div class="empty-study"><div class="icon">🎉</div><p>所有词都已标记完毕</p><p style="font-size:13px;margin-top:8px">可去「学习模式」复习收藏的词</p><button class="btn btn-primary" style="margin-top:16px" id="btn-go-collect">📚 去学习模式</button><button class="btn" style="margin-top:8px" id="btn-back-dash">返回总览</button></div>';
+      $('btn-go-collect')?.addEventListener('click', () => startStudy(studyCategory, 'review'));
+      $('btn-back-dash')?.addEventListener('click', () => switchTab('dashboard'));
+    }
     return;
   }
   if (studyIdx >= studyQueue.length) {
@@ -1124,6 +1199,7 @@ function renderStudyCard() {
   area.innerHTML =
     '<div class="study-meta">' +
       '<span>第 ' + (studyIdx + 1) + ' / ' + studyQueue.length + ' 题</span>' +
+      '<button class="meta-btn" id="fc-prev" type="button" ' + (studyIdx > 0 ? '' : 'disabled') + '>⏮ 上一个</button>' +
     '</div>' +
     '<div class="flashcard-wrap" id="fc-wrap">' +
       '<div class="flashcard' + (isSentenceCard(entry) ? ' long' : '') + '" id="fc-card">' +
@@ -1136,12 +1212,12 @@ function renderStudyCard() {
         '<div class="fc-meaning">' + esc(entry.m) + '</div>' +
         '<div class="fc-word">' + esc(entry.w) + '</div>' +
         '<div class="fc-pos">' + esc(entry.p) + '</div>' +
-        '<div class="fc-hint"><span class="listen-icon">🔊</span>先听发音，可直接选认识/不认识，或点卡片翻面</div>' +
+        '<div class="fc-hint"><span class="listen-icon">🔊</span>先听发音：不会的收藏 ⭐，会的标记已知 ✓，或点卡片翻面</div>' +
       '</div>' +
     '</div>' +
     '<div class="fc-actions" id="fc-actions">' +
-      '<button class="btn btn-no" id="fc-wrong" type="button">❌ 不认识</button>' +
-      '<button class="btn btn-ok" id="fc-right" type="button">✅ 认识</button>' +
+      '<button class="btn btn-no" id="fc-fav" type="button">⭐ 收藏</button>' +
+      '<button class="btn btn-ok" id="fc-known" type="button">✓ 已知</button>' +
     '</div>' +
 
     '<div class="swipe-hint">可先作答再翻面验证 · 翻面后左右滑动切换</div>';
@@ -1166,22 +1242,24 @@ function renderStudyCard() {
     speak(entry.w);
   });
 
-  $('fc-right').addEventListener('click', e => {
+  $('fc-known').addEventListener('click', e => {
     e.stopPropagation();
     if (!cardRevealed) {
       cardRevealed = true;
       card.classList.add('revealed');
     }
-    submitAnswer(true, false);
+    submitMark('known');
   });
-  $('fc-wrong').addEventListener('click', e => {
+  $('fc-fav').addEventListener('click', e => {
     e.stopPropagation();
     if (!cardRevealed) {
       cardRevealed = true;
       card.classList.add('revealed');
     }
-    submitAnswer(false, false);
+    submitMark('fav');
   });
+
+  $('fc-prev')?.addEventListener('click', goPrevCard);
 
   setupSwipe(entry);
 }
@@ -1215,18 +1293,26 @@ function setupSwipe(entry) {
         const card = $('fc-card');
         if (card) card.classList.add('revealed');
       }
-      submitAnswer(dx > 0);
+      submitMark(dx > 0 ? 'known' : 'fav');
     }
   }, { passive: true });
 }
 
-function submitAnswer(correct, skipped) {
+// 收藏/已知：action = 'fav'（⭐收藏）| 'known'（✓已知）
+function submitMark(action) {
   const entry = studyQueue[studyIdx];
   const card = $('fc-card');
   if (card) {
-    card.classList.add(correct ? 'swipe-right' : 'swipe-left');
+    card.classList.add(action === 'known' ? 'swipe-right' : 'swipe-left');
   }
-  answer(entry.w, correct, skipped);
+  // 记录作答前快照，供「回到上一个」回退进度，避免重复计分
+  const rec = getRec(entry.w);
+  studyHistory[studyIdx] = {
+    prev: { box: rec.box, right: rec.right, wrong: rec.wrong, lastSeen: rec.lastSeen, fav: !!rec.fav, known: !!rec.known },
+    resBefore: { right: studyResults.right, wrong: studyResults.wrong, wrongList: studyResults.wrongList.slice(), fav: studyResults.fav, known: studyResults.known, collectedList: studyResults.collectedList.slice() }
+  };
+  if (action === 'fav') markCollect(entry.w);
+  else markKnown(entry.w);
   // Do not autoplay the next card; let the learner choose when to hear it.
   setTimeout(() => {
     studyIdx++;
@@ -1235,39 +1321,69 @@ function submitAnswer(correct, skipped) {
   }, 280);
 }
 
+// 回到上一张卡片：回退该卡已提交的进度（不重复计分）；在完成页也会回看最后一张
+function goPrevCard() {
+  if (!studyQueue.length) return;
+  let idx = studyIdx;
+  if (idx >= studyQueue.length) idx = studyQueue.length;
+  if (idx <= 0) { toast('已经是第一张卡片了'); return; }
+  const prevIdx = idx - 1;
+  const h = studyHistory[prevIdx];
+  if (h) {
+    const word = studyQueue[prevIdx].w;
+    const rec = getRec(word);
+    rec.box = h.prev.box; rec.right = h.prev.right; rec.wrong = h.prev.wrong; rec.lastSeen = h.prev.lastSeen;
+    rec.fav = h.prev.fav; rec.known = h.prev.known;
+    progress[word] = rec;
+    studyResults.right = h.resBefore.right;
+    studyResults.wrong = h.resBefore.wrong;
+    studyResults.wrongList = h.resBefore.wrongList.slice();
+    studyResults.fav = h.resBefore.fav;
+    studyResults.known = h.resBefore.known;
+    studyResults.collectedList = h.resBefore.collectedList.slice();
+    studyHistory[prevIdx] = null;
+    saveProgress();
+  }
+  studyIdx = prevIdx;
+  renderStudyCard();
+  renderDashboard();
+}
+
 function renderSummary() {
-  const total = studyResults.right + studyResults.wrong;
-  const acc = total ? Math.round(studyResults.right / total * 100) : 0;
-  const nErr = (studyResults.wrongList || []).length;
+  const favN = studyResults.fav || 0;
+  const knownN = studyResults.known || 0;
+  const nNew = (studyResults.collectedList || []).length;
   $('study-area').innerHTML =
     '<div class="summary">' +
-      '<div class="emoji">' + (acc >= 80 ? '🎉' : acc >= 50 ? '💪' : '📖') + '</div>' +
-      '<h2>本轮学习完成</h2>' +
+      '<div class="emoji">🎉</div>' +
+      '<h2>本轮完成</h2>' +
       '<div class="stats-row">' +
-        '<div class="stat"><strong style="color:var(--ok)">' + studyResults.right + '</strong><span>认识</span></div>' +
-        '<div class="stat"><strong style="color:var(--bad)">' + studyResults.wrong + '</strong><span>不认识</span></div>' +
+        '<div class="stat"><strong style="color:var(--warn)">' + favN + '</strong><span>收藏</span></div>' +
+        '<div class="stat"><strong style="color:var(--ok)">' + knownN + '</strong><span>已知</span></div>' +
       '</div>' +
-      '<div class="acc">' + acc + '%</div>' +
-      '<p style="color:var(--muted);font-size:13px;margin-top:8px">正确率</p>' +
-      (nErr ? '<p style="color:var(--warn);font-size:13px;margin-top:8px">答错的 ' + nErr + ' 词已进入记忆曲线的回炉队列，可立即重练：</p>' : '') +
-      '<div style="margin-top:20px;display:flex;gap:8px">' +
-        (nErr ? '<button class="btn btn-primary" id="btn-redo-err" style="flex:1">🔁 重练错词 (' + nErr + ')</button>' : '') +
+      (nNew ? '<p style="color:var(--warn);font-size:13px;margin-top:8px">本轮新收藏的 ' + nNew + ' 词已进入收藏列表，可立即重练：</p>' : '<p style="color:var(--muted);font-size:13px;margin-top:8px">收藏的词会一直留在列表里反复复习</p>') +
+      '<div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">' +
+        (nNew ? '<button class="btn btn-primary" id="btn-redo-err" style="flex:1">🔁 重练本轮收藏 (' + nNew + ')</button>' : '') +
+        '<button class="btn" id="btn-last" style="flex:1">⏮ 上一张</button>' +
         '<button class="btn btn-primary" id="btn-again" style="flex:1">再来一轮</button>' +
         '<button class="btn" id="btn-done" style="flex:1">返回总览</button>' +
       '</div>' +
     '</div>';
   $('btn-redo-err')?.addEventListener('click', startErrorRedo);
-  $('btn-again').addEventListener('click', () => startStudy(studyCategory, 'new'));
+  $('btn-last')?.addEventListener('click', goPrevCard);
+  $('btn-again').addEventListener('click', () => startStudy(studyCategory, studyMode));
   $('btn-done').addEventListener('click', () => switchTab('dashboard'));
 }
 
-// 立即重练本轮答错的词（与 今日复习 的记忆曲线队列互补：即时、聚焦）
+// 立即重练本轮新收藏的词（即时、聚焦）
 function startErrorRedo() {
-  const words = (studyResults.wrongList || []).slice();
+  const words = (studyResults.collectedList || []).slice();
   studyCategory = '';
+  studyMode = 'redo';
   studyQueue = vocab.filter(e => words.indexOf(e.w) >= 0);
   studyIdx = 0;
-  studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
@@ -1311,17 +1427,17 @@ function renderBrowse() {
     return;
   }
   const groups = browseGroups(browseMacro);
-  let total = 0, mastered = 0;
+  let total = 0, known = 0;
   groups.forEach(g => g.items.forEach(e => {
     total++;
-    if (getStatus(e.w) === 'mastered') mastered++;
+    if (getRec(e.w).known) known++;
   }));
 
   head.innerHTML =
     '<div class="icon" style="background:' + m.color + '22">' + m.icon + '</div>' +
     '<div class="meta">' +
       '<div class="name">' + esc(m.name) + '</div>' +
-      '<div class="sub">' + total + ' 词 · ' + mastered + ' 已掌握 · ' + groups.length + ' 个子场景</div>' +
+      '<div class="sub">' + total + ' 词 · ' + known + ' 已知 · ' + groups.length + ' 个子场景</div>' +
     '</div>';
 
   const frag = document.createDocumentFragment();
@@ -1376,9 +1492,11 @@ function startStudyAt(pos) {
   const flat = renderBrowse._flat || [];
   if (!flat.length) return;
   studyCategory = browseMacro;
+  studyMode = 'browse';
   studyQueue = flat;
   studyIdx = Math.max(0, Math.min(pos, flat.length - 1));
-  studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
@@ -1388,9 +1506,11 @@ function startStudyAt(pos) {
 
 function startStudy(macroFilter, mode) {
   studyCategory = macroFilter || '';
-  studyQueue = buildSession(studyCategory || null, mode || 'new');
+  studyMode = mode || 'new';
+  studyQueue = buildSession(studyCategory || null, studyMode);
   studyIdx = 0;
-  studyResults = { right: 0, wrong: 0, wrongList: [] };
+  studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] };
+  studyHistory = [];
   studyStarted = true;
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
@@ -1463,7 +1583,7 @@ function renderListPage() {
       '<td class="m">' + esc(x.e.m) + '</td>' +
       '<td><span class="status-dot ' + x.status + '"></span>' + statusLabel(x.status) + '</td>' +
       '<td class="cat" title="' + esc(x.e.c) + '">' + esc(x.e.c) + '</td>' +
-      '<td class="cnt">' + x.rec.right + '/' + x.rec.wrong + '</td>';
+      '<td class="cnt">' + (x.rec.fav ? '⭐' : '') + (x.rec.known ? '✓' : '') + '</td>';
     tr.addEventListener('click', () => speak(x.e.w));
     frag.appendChild(tr);
   }
@@ -1484,7 +1604,7 @@ function renderListPage() {
 })();
 
 function renderSync() {
-  const seen = Object.keys(progress).filter(w => getRec(w).box > 0).length;
+  const seen = Object.keys(progress).filter(w => { const r = getRec(w); return r.box > 0 || r.fav || r.known; }).length;
   $('sync-seen').textContent = seen;
   if ($('gist-token')) $('gist-token').value = gistToken;
   if ($('gist-remember')) $('gist-remember').checked = gistRemember;
@@ -1626,6 +1746,7 @@ $('study-cat-filter').addEventListener('change', e => {
 });
 
 $('btn-start-session').addEventListener('click', () => startStudy(studyCategory, 'new'));
+$('btn-start-collect')?.addEventListener('click', () => startStudy(studyCategory, 'review'));
 
 ['list-search', 'list-cat-filter', 'list-status-filter', 'list-sort'].forEach(id => {
   $(id).addEventListener('input', () => {

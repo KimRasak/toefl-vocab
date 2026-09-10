@@ -1,0 +1,5695 @@
+{
+ "new": [
+  {
+   "id": "s1_m1_cr01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 11,
+   "audio_sec": 3.274014,
+   "gross_wpm": 201.58740921694286
+  },
+  {
+   "id": "s1_m1_cr02.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.712086,
+   "gross_wpm": 210.2698112127545
+  },
+  {
+   "id": "s1_m1_cr03.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.835351,
+   "gross_wpm": 126.96840708610681
+  },
+  {
+   "id": "s1_m1_cr04.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 3.67127,
+   "gross_wpm": 114.40182825016957
+  },
+  {
+   "id": "s1_m1_cr05.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 3.331678,
+   "gross_wpm": 108.05365944728152
+  },
+  {
+   "id": "s1_m1_cr06.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.913719,
+   "gross_wpm": 123.55343806317632
+  },
+  {
+   "id": "s1_m1_cr07.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.913719,
+   "gross_wpm": 185.33015709476447
+  },
+  {
+   "id": "s1_m1_cr08.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.476984,
+   "gross_wpm": 203.11662143936562
+  },
+  {
+   "id": "s1_m1_cv01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "conversation",
+   "words": 82,
+   "audio_sec": 31.407891,
+   "gross_wpm": 156.64853141524213
+  },
+  {
+   "id": "s1_m1_cv02.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "conversation",
+   "words": 77,
+   "audio_sec": 26.81576,
+   "gross_wpm": 172.28674480976858
+  },
+  {
+   "id": "s1_m1_an01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "announcement",
+   "words": 70,
+   "audio_sec": 28.64254,
+   "gross_wpm": 146.63504004882248
+  },
+  {
+   "id": "s1_m1_at01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 230,
+   "audio_sec": 96.086712,
+   "gross_wpm": 143.62027498661834
+  },
+  {
+   "id": "s1_m2_cr01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.868821,
+   "gross_wpm": 160.52901802794383
+  },
+  {
+   "id": "s1_m2_cr02.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 1.868821,
+   "gross_wpm": 256.8464288447101
+  },
+  {
+   "id": "s1_m2_cr03.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.921066,
+   "gross_wpm": 187.39595620348285
+  },
+  {
+   "id": "s1_m2_cr04.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.025556,
+   "gross_wpm": 236.97197213999516
+  },
+  {
+   "id": "s1_m2_cr05.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 2.574127,
+   "gross_wpm": 233.08873260721015
+  },
+  {
+   "id": "s1_m2_cr06.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 2.260658,
+   "gross_wpm": 265.4094515844502
+  },
+  {
+   "id": "s1_m2_cr07.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.103923,
+   "gross_wpm": 171.10892366308082
+  },
+  {
+   "id": "s1_m2_cr08.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.835351,
+   "gross_wpm": 169.29120944814238
+  },
+  {
+   "id": "s1_m2_cv01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "conversation",
+   "words": 66,
+   "audio_sec": 24.125147,
+   "gross_wpm": 164.1440775469679
+  },
+  {
+   "id": "s1_m2_an01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "announcement",
+   "words": 52,
+   "audio_sec": 23.580979,
+   "gross_wpm": 132.31002834954393
+  },
+  {
+   "id": "s1_m2_at01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-1",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 177,
+   "audio_sec": 84.259025,
+   "gross_wpm": 126.0399108582137
+  },
+  {
+   "id": "s2_m1_cr01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 1.790454,
+   "gross_wpm": 268.08842896829515
+  },
+  {
+   "id": "s2_m1_cr02.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 4,
+   "audio_sec": 1.633719,
+   "gross_wpm": 146.90408815714332
+  },
+  {
+   "id": "s2_m1_cr03.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 3.46229,
+   "gross_wpm": 173.29570890942122
+  },
+  {
+   "id": "s2_m1_cr04.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 13,
+   "audio_sec": 2.574127,
+   "gross_wpm": 303.0153523893732
+  },
+  {
+   "id": "s2_m1_cr05.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.913719,
+   "gross_wpm": 144.14567774037238
+  },
+  {
+   "id": "s2_m1_cr06.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.574127,
+   "gross_wpm": 139.8532395643261
+  },
+  {
+   "id": "s2_m1_cr07.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.103923,
+   "gross_wpm": 171.10892366308082
+  },
+  {
+   "id": "s2_m1_cr08.mp3",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 2.089792,
+   "gross_wpm": 143.55495666554376
+  },
+  {
+   "id": "s2_m1_cv01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "conversation",
+   "words": 66,
+   "audio_sec": 20.337778,
+   "gross_wpm": 194.71153633400857
+  },
+  {
+   "id": "s2_m1_cv02.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "conversation",
+   "words": 54,
+   "audio_sec": 22.373878,
+   "gross_wpm": 144.8117308943939
+  },
+  {
+   "id": "s2_m1_an01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "announcement",
+   "words": 53,
+   "audio_sec": 18.430454,
+   "gross_wpm": 172.54051365202398
+  },
+  {
+   "id": "s2_m1_at01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 160,
+   "audio_sec": 67.46229,
+   "gross_wpm": 142.30172145060598
+  },
+  {
+   "id": "s2_m2_cr01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.835351,
+   "gross_wpm": 148.1298082671246
+  },
+  {
+   "id": "s2_m2_cr02.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.868821,
+   "gross_wpm": 224.74062523912133
+  },
+  {
+   "id": "s2_m2_cr03.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.574127,
+   "gross_wpm": 186.47098608576812
+  },
+  {
+   "id": "s2_m2_cr04.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.260658,
+   "gross_wpm": 185.78661610911516
+  },
+  {
+   "id": "s2_m2_cr05.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.260658,
+   "gross_wpm": 185.78661610911516
+  },
+  {
+   "id": "s2_m2_cr06.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.947188,
+   "gross_wpm": 184.8819939317621
+  },
+  {
+   "id": "s2_m2_cr07.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.633719,
+   "gross_wpm": 220.35613223571497
+  },
+  {
+   "id": "s2_m2_cr08.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.555351,
+   "gross_wpm": 192.8825069068011
+  },
+  {
+   "id": "s2_m2_cv01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "conversation",
+   "words": 52,
+   "audio_sec": 17.228821,
+   "gross_wpm": 181.09190408327999
+  },
+  {
+   "id": "s2_m2_an01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "announcement",
+   "words": 41,
+   "audio_sec": 13.623923,
+   "gross_wpm": 180.56473161217954
+  },
+  {
+   "id": "s2_m2_at01.ogg",
+   "test": "toefl-ibt-full-length-practice-test-2",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 186,
+   "audio_sec": 75.865397,
+   "gross_wpm": 147.10263758324496
+  },
+  {
+   "id": "t1_m1_cr01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.0375,
+   "gross_wpm": 206.13496932515335
+  },
+  {
+   "id": "t1_m1_cr02.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.0375,
+   "gross_wpm": 206.13496932515335
+  },
+  {
+   "id": "t1_m1_cr03.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.880812,
+   "gross_wpm": 159.5055752515403
+  },
+  {
+   "id": "t1_m1_cr04.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.925687,
+   "gross_wpm": 184.57203385051102
+  },
+  {
+   "id": "t1_m1_cr05.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.429375,
+   "gross_wpm": 148.18626189863647
+  },
+  {
+   "id": "t1_m1_cr06.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.880812,
+   "gross_wpm": 191.40669030184836
+  },
+  {
+   "id": "t1_m1_cr07.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.0375,
+   "gross_wpm": 265.03067484662574
+  },
+  {
+   "id": "t1_m1_cr08.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 3.239125,
+   "gross_wpm": 185.23521012619148
+  },
+  {
+   "id": "t1_m1_cv01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "conversation",
+   "words": 89,
+   "audio_sec": 27.167312,
+   "gross_wpm": 196.55974797948357
+  },
+  {
+   "id": "t1_m1_cv02.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "conversation",
+   "words": 49,
+   "audio_sec": 17.162437,
+   "gross_wpm": 171.30434331674456
+  },
+  {
+   "id": "t1_m1_an01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "announcement",
+   "words": 57,
+   "audio_sec": 23.719125,
+   "gross_wpm": 144.18744367677982
+  },
+  {
+   "id": "t1_m1_at01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 199,
+   "audio_sec": 84.271,
+   "gross_wpm": 141.68575191940286
+  },
+  {
+   "id": "t1_m2_cr01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.802438,
+   "gross_wpm": 199.72947751878291
+  },
+  {
+   "id": "t1_m2_cr02.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.488938,
+   "gross_wpm": 241.78306954352698
+  },
+  {
+   "id": "t1_m2_cr03.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.802438,
+   "gross_wpm": 233.01772377191335
+  },
+  {
+   "id": "t1_m2_cr04.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.429375,
+   "gross_wpm": 197.58168253151533
+  },
+  {
+   "id": "t1_m2_cr05.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.429375,
+   "gross_wpm": 197.58168253151533
+  },
+  {
+   "id": "t1_m2_cr06.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 2.690562,
+   "gross_wpm": 223.00173718353267
+  },
+  {
+   "id": "t1_m2_cr07.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.19425,
+   "gross_wpm": 246.09775549732257
+  },
+  {
+   "id": "t1_m2_cr08.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 6.112625,
+   "gross_wpm": 58.89450113494611
+  },
+  {
+   "id": "t1_m2_cv01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "conversation",
+   "words": 80,
+   "audio_sec": 29.962438,
+   "gross_wpm": 160.20058180846297
+  },
+  {
+   "id": "t1_m2_an01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "announcement",
+   "words": 58,
+   "audio_sec": 20.506063,
+   "gross_wpm": 169.70590600448267
+  },
+  {
+   "id": "t1_m2_at01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-1",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 190,
+   "audio_sec": 82.912625,
+   "gross_wpm": 137.49413916155711
+  },
+  {
+   "id": "t2_m1_cr01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.0375,
+   "gross_wpm": 206.13496932515335
+  },
+  {
+   "id": "t2_m1_cr02.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.50775,
+   "gross_wpm": 215.33246934503038
+  },
+  {
+   "id": "t2_m1_cr03.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.19425,
+   "gross_wpm": 246.09775549732257
+  },
+  {
+   "id": "t2_m1_cr04.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 3.631,
+   "gross_wpm": 148.7193610575599
+  },
+  {
+   "id": "t2_m1_cr05.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.880812,
+   "gross_wpm": 159.5055752515403
+  },
+  {
+   "id": "t2_m1_cr06.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.115875,
+   "gross_wpm": 170.14237608554382
+  },
+  {
+   "id": "t2_m1_cr07.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 1.959125,
+   "gross_wpm": 245.00733745932496
+  },
+  {
+   "id": "t2_m1_cr08.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.959125,
+   "gross_wpm": 214.38142027690932
+  },
+  {
+   "id": "t2_m1_cv01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "conversation",
+   "words": 87,
+   "audio_sec": 25.391,
+   "gross_wpm": 205.58465598046553
+  },
+  {
+   "id": "t2_m1_cv02.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "conversation",
+   "words": 69,
+   "audio_sec": 24.607313,
+   "gross_wpm": 168.2426683482264
+  },
+  {
+   "id": "t2_m1_an01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "announcement",
+   "words": 69,
+   "audio_sec": 24.26775,
+   "gross_wpm": 170.59677967673147
+  },
+  {
+   "id": "t2_m1_at01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 187,
+   "audio_sec": 76.74775,
+   "gross_wpm": 146.1932108758889
+  },
+  {
+   "id": "t2_m2_cr01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.586063,
+   "gross_wpm": 162.40903643878747
+  },
+  {
+   "id": "t2_m2_cr02.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 2.429375,
+   "gross_wpm": 123.48855158219708
+  },
+  {
+   "id": "t2_m2_cr03.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.272625,
+   "gross_wpm": 184.80831637423682
+  },
+  {
+   "id": "t2_m2_cr04.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 1.959125,
+   "gross_wpm": 306.25917182415617
+  },
+  {
+   "id": "t2_m2_cr05.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.50775,
+   "gross_wpm": 215.33246934503038
+  },
+  {
+   "id": "t2_m2_cr06.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.0375,
+   "gross_wpm": 206.13496932515335
+  },
+  {
+   "id": "t2_m2_cr07.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 11,
+   "audio_sec": 2.925687,
+   "gross_wpm": 225.5880413728468
+  },
+  {
+   "id": "t2_m2_cr08.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.272625,
+   "gross_wpm": 237.61069248116166
+  },
+  {
+   "id": "t2_m2_cv01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "conversation",
+   "words": 94,
+   "audio_sec": 29.570563,
+   "gross_wpm": 190.7302204560664
+  },
+  {
+   "id": "t2_m2_an01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "announcement",
+   "words": 32,
+   "audio_sec": 13.165688,
+   "gross_wpm": 145.83362449421557
+  },
+  {
+   "id": "t2_m2_at01.mp3",
+   "test": "toefl-ibt-teachers-resources-practice-test-2",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 205,
+   "audio_sec": 89.54775,
+   "gross_wpm": 137.35688501386133
+  },
+  {
+   "id": "t3_m1_cr01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.149388,
+   "gross_wpm": 261.0084671146732
+  },
+  {
+   "id": "t3_m1_cr02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.959184,
+   "gross_wpm": 153.1249744791709
+  },
+  {
+   "id": "t3_m1_cr03.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.802449,
+   "gross_wpm": 233.01630170950745
+  },
+  {
+   "id": "t3_m1_cr04.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.567347,
+   "gross_wpm": 191.40624252319364
+  },
+  {
+   "id": "t3_m1_cr05.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.724082,
+   "gross_wpm": 174.00564474311548
+  },
+  {
+   "id": "t3_m1_cr06.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.959184,
+   "gross_wpm": 214.37496427083929
+  },
+  {
+   "id": "t3_m1_cr07.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 12,
+   "audio_sec": 3.239184,
+   "gross_wpm": 222.27820339937466
+  },
+  {
+   "id": "t3_m1_cr08.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.115918,
+   "gross_wpm": 226.8518912358607
+  },
+  {
+   "id": "t3_m1_cv01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "conversation",
+   "words": 58,
+   "audio_sec": 26.827755,
+   "gross_wpm": 129.71640750409418
+  },
+  {
+   "id": "t3_m1_cv02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "conversation",
+   "words": 81,
+   "audio_sec": 28.682449,
+   "gross_wpm": 169.4415982400945
+  },
+  {
+   "id": "t3_m1_an01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "announcement",
+   "words": 67,
+   "audio_sec": 24.11102,
+   "gross_wpm": 166.7287406339508
+  },
+  {
+   "id": "t3_m1_at01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 218,
+   "audio_sec": 118.987755,
+   "gross_wpm": 109.92727781106551
+  },
+  {
+   "id": "t3_m2_cr01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.586122,
+   "gross_wpm": 139.20456962200544
+  },
+  {
+   "id": "t3_m2_cr02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.802449,
+   "gross_wpm": 166.44021550679105
+  },
+  {
+   "id": "t3_m2_cr03.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.645714,
+   "gross_wpm": 182.29169831453098
+  },
+  {
+   "id": "t3_m2_cr04.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 1.959184,
+   "gross_wpm": 275.62495406250764
+  },
+  {
+   "id": "t3_m2_cr05.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.115918,
+   "gross_wpm": 170.13891842689554
+  },
+  {
+   "id": "t3_m2_cr06.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.690612,
+   "gross_wpm": 178.39807449011602
+  },
+  {
+   "id": "t3_m2_cr07.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.690612,
+   "gross_wpm": 200.6978338013805
+  },
+  {
+   "id": "t3_m2_cr08.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 9,
+   "audio_sec": 2.35102,
+   "gross_wpm": 229.687539876309
+  },
+  {
+   "id": "t3_m2_cv01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "conversation",
+   "words": 83,
+   "audio_sec": 23.562449,
+   "gross_wpm": 211.353242610732
+  },
+  {
+   "id": "t3_m2_an01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "announcement",
+   "words": 78,
+   "audio_sec": 27.010612,
+   "gross_wpm": 173.26523367926652
+  },
+  {
+   "id": "t3_m2_at01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-3",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 222,
+   "audio_sec": 106.919184,
+   "gross_wpm": 124.58007535859981
+  },
+  {
+   "id": "t4_m1_cr01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 2.037551,
+   "gross_wpm": 147.23557839779227
+  },
+  {
+   "id": "t4_m1_cr02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.724082,
+   "gross_wpm": 243.60790264036166
+  },
+  {
+   "id": "t4_m1_cr03.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 11,
+   "audio_sec": 3.004082,
+   "gross_wpm": 219.70106009090298
+  },
+  {
+   "id": "t4_m1_cr04.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.724082,
+   "gross_wpm": 174.00564474311548
+  },
+  {
+   "id": "t4_m1_cr05.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 12,
+   "audio_sec": 3.004082,
+   "gross_wpm": 239.67388373553052
+  },
+  {
+   "id": "t4_m1_cr06.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.567347,
+   "gross_wpm": 191.40624252319364
+  },
+  {
+   "id": "t4_m1_cr07.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.586122,
+   "gross_wpm": 139.20456962200544
+  },
+  {
+   "id": "t4_m1_cr08.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 2.925714,
+   "gross_wpm": 205.0781450271626
+  },
+  {
+   "id": "t4_m1_cv01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "conversation",
+   "words": 86,
+   "audio_sec": 22.909388,
+   "gross_wpm": 225.23517433115194
+  },
+  {
+   "id": "t4_m1_cv02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "conversation",
+   "words": 93,
+   "audio_sec": 33.227755,
+   "gross_wpm": 167.93189910061633
+  },
+  {
+   "id": "t4_m1_an01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "announcement",
+   "words": 83,
+   "audio_sec": 26.749388,
+   "gross_wpm": 186.17248364710252
+  },
+  {
+   "id": "t4_m1_at01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 223,
+   "audio_sec": 95.79102,
+   "gross_wpm": 139.6790638621449
+  },
+  {
+   "id": "t4_m2_cr01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.645714,
+   "gross_wpm": 218.75003797743716
+  },
+  {
+   "id": "t4_m2_cr02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 3.082449,
+   "gross_wpm": 194.6504224400793
+  },
+  {
+   "id": "t4_m2_cr03.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 10,
+   "audio_sec": 3.317551,
+   "gross_wpm": 180.85630032514948
+  },
+  {
+   "id": "t4_m2_cr04.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.272653,
+   "gross_wpm": 158.40517668117394
+  },
+  {
+   "id": "t4_m2_cr05.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.507755,
+   "gross_wpm": 167.48047556479798
+  },
+  {
+   "id": "t4_m2_cr06.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.724082,
+   "gross_wpm": 208.80677369173858
+  },
+  {
+   "id": "t4_m2_cr07.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.645714,
+   "gross_wpm": 182.29169831453098
+  },
+  {
+   "id": "t4_m2_cr08.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.272653,
+   "gross_wpm": 158.40517668117394
+  },
+  {
+   "id": "t4_m2_cv01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "conversation",
+   "words": 64,
+   "audio_sec": 21.080816,
+   "gross_wpm": 182.15613665049779
+  },
+  {
+   "id": "t4_m2_an01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "announcement",
+   "words": 56,
+   "audio_sec": 21.890612,
+   "gross_wpm": 153.49045517777208
+  },
+  {
+   "id": "t4_m2_at01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-4",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 195,
+   "audio_sec": 77.400816,
+   "gross_wpm": 151.161197060248
+  },
+  {
+   "id": "t5_m1_cr01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 4.284082,
+   "gross_wpm": 84.03200498963372
+  },
+  {
+   "id": "t5_m1_cr02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 2.272653,
+   "gross_wpm": 184.8060394613696
+  },
+  {
+   "id": "t5_m1_cr03.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.802449,
+   "gross_wpm": 233.01630170950745
+  },
+  {
+   "id": "t5_m1_cr04.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 2.037551,
+   "gross_wpm": 176.6826940773507
+  },
+  {
+   "id": "t5_m1_cr05.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.645714,
+   "gross_wpm": 182.29169831453098
+  },
+  {
+   "id": "t5_m1_cr06.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.48898,
+   "gross_wpm": 282.0722910986044
+  },
+  {
+   "id": "t5_m1_cr07.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 3.709388,
+   "gross_wpm": 80.87587494217375
+  },
+  {
+   "id": "t5_m1_cr08.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.410612,
+   "gross_wpm": 255.20837764034334
+  },
+  {
+   "id": "t5_m1_cv01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "conversation",
+   "words": 61,
+   "audio_sec": 20.427755,
+   "gross_wpm": 179.16799961620842
+  },
+  {
+   "id": "t5_m1_cv02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "conversation",
+   "words": 78,
+   "audio_sec": 27.402449,
+   "gross_wpm": 170.78765478224227
+  },
+  {
+   "id": "t5_m1_an01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "announcement",
+   "words": 75,
+   "audio_sec": 22.360816,
+   "gross_wpm": 201.24489195743126
+  },
+  {
+   "id": "t5_m1_at01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 1,
+   "kind": "academic_talk",
+   "words": 205,
+   "audio_sec": 92.36898,
+   "gross_wpm": 133.16158736406965
+  },
+  {
+   "id": "t5_m2_cr01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.959184,
+   "gross_wpm": 214.37496427083929
+  },
+  {
+   "id": "t5_m2_cr02.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.724082,
+   "gross_wpm": 208.80677369173858
+  },
+  {
+   "id": "t5_m2_cr03.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 7,
+   "audio_sec": 1.567347,
+   "gross_wpm": 267.9687395324711
+  },
+  {
+   "id": "t5_m2_cr04.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 5,
+   "audio_sec": 1.07102,
+   "gross_wpm": 280.1068140650968
+  },
+  {
+   "id": "t5_m2_cr05.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.802449,
+   "gross_wpm": 199.72825860814925
+  },
+  {
+   "id": "t5_m2_cr06.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.802449,
+   "gross_wpm": 199.72825860814925
+  },
+  {
+   "id": "t5_m2_cr07.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 6,
+   "audio_sec": 1.645714,
+   "gross_wpm": 218.75003797743716
+  },
+  {
+   "id": "t5_m2_cr08.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "choose_response",
+   "words": 8,
+   "audio_sec": 2.037551,
+   "gross_wpm": 235.5769254364676
+  },
+  {
+   "id": "t5_m2_cv01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "conversation",
+   "words": 80,
+   "audio_sec": 23.484082,
+   "gross_wpm": 204.39376765930217
+  },
+  {
+   "id": "t5_m2_an01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "announcement",
+   "words": 79,
+   "audio_sec": 31.634286,
+   "gross_wpm": 149.8374263923643
+  },
+  {
+   "id": "t5_m2_at01.ogg",
+   "test": "toefl-ibt-teachers-resources-practice-test-5",
+   "module": 2,
+   "kind": "academic_talk",
+   "words": 219,
+   "audio_sec": 100.663923,
+   "gross_wpm": 130.53335900688074
+  }
+ ],
+ "tpo": [
+  {
+   "id": "TPO1_conv1_Find_articles_in_the_library.mp3",
+   "tpo": 1,
+   "kind": "conv",
+   "words": 439,
+   "audio_sec": 160.5225,
+   "span_sec": 150.98939393939392,
+   "gross_wpm": 164.0891463813484,
+   "span_wpm": 174.44933920704847
+  },
+  {
+   "id": "TPO1_lec1_Rose_Frantzen.mp3",
+   "tpo": 1,
+   "kind": "lec",
+   "words": 816,
+   "audio_sec": 341.995,
+   "span_sec": 333.57274074074076,
+   "gross_wpm": 143.1599877191187,
+   "span_wpm": 146.77458323266487
+  },
+  {
+   "id": "TPO1_lec2_Uranium-Lead_Dating.mp3",
+   "tpo": 1,
+   "kind": "lec",
+   "words": 786,
+   "audio_sec": 316.369,
+   "span_sec": 312.69803149606304,
+   "gross_wpm": 149.0664382414206,
+   "span_wpm": 150.81642751113307
+  },
+  {
+   "id": "TPO1_conv2_Classroom_observation_and_feedback.mp3",
+   "tpo": 1,
+   "kind": "conv",
+   "words": 484,
+   "audio_sec": 169.53475,
+   "span_sec": 160.47625,
+   "gross_wpm": 171.29231617706694,
+   "span_wpm": 180.9613572101791
+  },
+  {
+   "id": "TPO1_lec3_Catalhoyuk.mp3",
+   "tpo": 1,
+   "kind": "lec",
+   "words": 754,
+   "audio_sec": 294.0865,
+   "span_sec": 287.0953413654619,
+   "gross_wpm": 153.8322908395999,
+   "span_wpm": 157.57831452378437
+  },
+  {
+   "id": "TPO1_lec4_Marmots.mp3",
+   "tpo": 1,
+   "kind": "lec",
+   "words": 661,
+   "audio_sec": 244.3495,
+   "span_sec": 237.80556074766355,
+   "gross_wpm": 162.30849664108172,
+   "span_wpm": 166.77490583192622
+  },
+  {
+   "id": "TPO2_conv1_Write_up_the_research_project.mp3",
+   "tpo": 2,
+   "kind": "conv",
+   "words": 576,
+   "audio_sec": 174.47175,
+   "span_sec": 167.24034782608695,
+   "gross_wpm": 198.08364391369952,
+   "span_wpm": 206.64869721473497
+  },
+  {
+   "id": "TPO2_lec1_Behaviorism.mp3",
+   "tpo": 2,
+   "kind": "lec",
+   "words": 739,
+   "audio_sec": 301.37475,
+   "span_sec": 296.8501500682128,
+   "gross_wpm": 147.12579603964832,
+   "span_wpm": 149.36829235158265
+  },
+  {
+   "id": "TPO2_lec2_Manila_Hemp.mp3",
+   "tpo": 2,
+   "kind": "lec",
+   "words": 689,
+   "audio_sec": 228.33625,
+   "span_sec": 223.04644513137558,
+   "gross_wpm": 181.04878222358474,
+   "span_wpm": 185.3425638577226
+  },
+  {
+   "id": "TPO2_conv2_Poetry_club_activity_and_time_management.mp3",
+   "tpo": 2,
+   "kind": "conv",
+   "words": 371,
+   "audio_sec": 121.6,
+   "span_sec": 117.39426592797784,
+   "gross_wpm": 183.0592105263158,
+   "span_wpm": 189.61743850126936
+  },
+  {
+   "id": "TPO2_lec3_Aristotle.mp3",
+   "tpo": 2,
+   "kind": "lec",
+   "words": 791,
+   "audio_sec": 329.587,
+   "span_sec": 324.7949042145594,
+   "gross_wpm": 143.99839799506657,
+   "span_wpm": 146.1229821778483
+  },
+  {
+   "id": "TPO2_lec4_Bode's_Law.mp3",
+   "tpo": 2,
+   "kind": "lec",
+   "words": 529,
+   "audio_sec": 243.25225,
+   "span_sec": 237.32034482758618,
+   "gross_wpm": 130.4818352142683,
+   "span_wpm": 133.7432744043044
+  },
+  {
+   "id": "TPO3_conv1_Find_where_to_take_physics_class.mp3",
+   "tpo": 3,
+   "kind": "conv",
+   "words": 495,
+   "audio_sec": 167.9935,
+   "span_sec": 159.77217659137577,
+   "gross_wpm": 176.79255447383377,
+   "span_wpm": 185.88968763916282
+  },
+  {
+   "id": "TPO3_lec1_Humming_Birds.mp3",
+   "tpo": 3,
+   "kind": "lec",
+   "words": 790,
+   "audio_sec": 332.904,
+   "span_sec": 320.8348,
+   "gross_wpm": 142.38338980607023,
+   "span_wpm": 147.73958435930268
+  },
+  {
+   "id": "TPO3_lec2_Jean_Painlevé.mp3",
+   "tpo": 3,
+   "kind": "lec",
+   "words": 743,
+   "audio_sec": 355.187,
+   "span_sec": 346.79069482288827,
+   "gross_wpm": 125.5113503591066,
+   "span_wpm": 128.55016200122597
+  },
+  {
+   "id": "TPO3_conv2_Apply_for_an_archaeology_project.mp3",
+   "tpo": 3,
+   "kind": "conv",
+   "words": 489,
+   "audio_sec": 168.542,
+   "span_sec": 163.0,
+   "gross_wpm": 174.08123791102514,
+   "span_wpm": 180.0
+  },
+  {
+   "id": "TPO3_lec3_Chauvet_Paintings.mp3",
+   "tpo": 3,
+   "kind": "lec",
+   "words": 775,
+   "audio_sec": 342.596,
+   "span_sec": 334.320385126162,
+   "gross_wpm": 135.72837978260108,
+   "span_wpm": 139.08813841086106
+  },
+  {
+   "id": "TPO3_lec4_Spectroscopy.mp3",
+   "tpo": 3,
+   "kind": "lec",
+   "words": 687,
+   "audio_sec": 275.409,
+   "span_sec": 267.63396731054974,
+   "gross_wpm": 149.66831149308845,
+   "span_wpm": 154.0163246624457
+  },
+  {
+   "id": "TPO4_conv1_Discuss_Reviews_of_Play.mp3",
+   "tpo": 4,
+   "kind": "conv",
+   "words": 501,
+   "audio_sec": 156.813,
+   "span_sec": 148.1947878787879,
+   "gross_wpm": 191.6932907348243,
+   "span_wpm": 202.84114192050262
+  },
+  {
+   "id": "TPO4_lec1_Displacement_Activity.mp3",
+   "tpo": 4,
+   "kind": "lec",
+   "words": 694,
+   "audio_sec": 314.912,
+   "span_sec": 311.19874251497004,
+   "gross_wpm": 132.22741591301698,
+   "span_wpm": 133.80516792415037
+  },
+  {
+   "id": "TPO4_lec2_Emerson's_Self-reliance.mp3",
+   "tpo": 4,
+   "kind": "lec",
+   "words": 747,
+   "audio_sec": 289.20175,
+   "span_sec": 278.05114640883977,
+   "gross_wpm": 154.97831531102423,
+   "span_wpm": 161.19336524546367
+  },
+  {
+   "id": "TPO4_conv2_Reasons_for_difficulties_in_a_project.mp3",
+   "tpo": 4,
+   "kind": "conv",
+   "words": 498,
+   "audio_sec": 163.05625,
+   "span_sec": 154.91646341463417,
+   "gross_wpm": 183.24964544444018,
+   "span_wpm": 192.8781443972558
+  },
+  {
+   "id": "TPO4_lec3_Moving_Rocks.mp3",
+   "tpo": 4,
+   "kind": "lec",
+   "words": 699,
+   "audio_sec": 262.9485,
+   "span_sec": 256.24635971223023,
+   "gross_wpm": 159.4989132853011,
+   "span_wpm": 163.67061778789542
+  },
+  {
+   "id": "TPO4_lec4_Government_Support_for_Arts.mp3",
+   "tpo": 4,
+   "kind": "lec",
+   "words": 711,
+   "audio_sec": 289.4105,
+   "span_sec": 283.7517352941176,
+   "gross_wpm": 147.40308316387967,
+   "span_wpm": 150.34269290294054
+  },
+  {
+   "id": "TPO5_conv1_Adjustment_to_life_at_university.mp3",
+   "tpo": 5,
+   "kind": "conv",
+   "words": 498,
+   "audio_sec": 165.747,
+   "span_sec": 158.37604838709677,
+   "gross_wpm": 180.27475610418287,
+   "span_wpm": 188.6648915937619
+  },
+  {
+   "id": "TPO5_lec1_Meme.mp3",
+   "tpo": 5,
+   "kind": "lec",
+   "words": 757,
+   "audio_sec": 320.862,
+   "span_sec": 314.6176111111111,
+   "gross_wpm": 141.55618303195763,
+   "span_wpm": 144.36572650715146
+  },
+  {
+   "id": "TPO5_lec2_Moon_Landing.mp3",
+   "tpo": 5,
+   "kind": "lec",
+   "words": 745,
+   "audio_sec": 324.467,
+   "span_sec": 320.5831292517007,
+   "gross_wpm": 137.7643951465018,
+   "span_wpm": 139.43341343113696
+  },
+  {
+   "id": "TPO5_conv2_Prerequisites_for_a_film_theory_course.mp3",
+   "tpo": 5,
+   "kind": "conv",
+   "words": 492,
+   "audio_sec": 184.764,
+   "span_sec": 181.17056133056133,
+   "gross_wpm": 159.77138403585113,
+   "span_wpm": 162.94037940379405
+  },
+  {
+   "id": "TPO5_lec3_Spectroscopy.mp3",
+   "tpo": 5,
+   "kind": "lec",
+   "words": 762,
+   "audio_sec": 290.351,
+   "span_sec": 287.13257617728533,
+   "gross_wpm": 157.46458596664039,
+   "span_wpm": 159.22958170991694
+  },
+  {
+   "id": "TPO5_lec4_Folk_Tales_and_Fairy_Tales.mp3",
+   "tpo": 5,
+   "kind": "lec",
+   "words": 738,
+   "audio_sec": 304.66625,
+   "span_sec": 298.1987603305785,
+   "gross_wpm": 145.33936725843444,
+   "span_wpm": 148.49156297937617
+  },
+  {
+   "id": "TPO6_conv1_Attend_a_career_fair.mp3",
+   "tpo": 6,
+   "kind": "conv",
+   "words": 544,
+   "audio_sec": 181.49875,
+   "span_sec": 167.9260628465804,
+   "gross_wpm": 179.83594928339727,
+   "span_wpm": 194.37125748502996
+  },
+  {
+   "id": "TPO6_lec1_Boom_and_Bust.mp3",
+   "tpo": 6,
+   "kind": "lec",
+   "words": 807,
+   "audio_sec": 322.116,
+   "span_sec": 310.9126976160602,
+   "gross_wpm": 150.31851879447157,
+   "span_wpm": 155.73503549794827
+  },
+  {
+   "id": "TPO6_lec2_Nightcap_Oak.mp3",
+   "tpo": 6,
+   "kind": "lec",
+   "words": 743,
+   "audio_sec": 286.1715,
+   "span_sec": 280.00744248985114,
+   "gross_wpm": 155.78071191575683,
+   "span_wpm": 159.2100538599641
+  },
+  {
+   "id": "TPO6_conv2_The_plan_for_term_paper.mp3",
+   "tpo": 6,
+   "kind": "conv",
+   "words": 490,
+   "audio_sec": 164.5715,
+   "span_sec": 158.68070539419085,
+   "gross_wpm": 178.64575579611295,
+   "span_wpm": 185.27772438977516
+  },
+  {
+   "id": "TPO6_lec3_Character_Sketch.mp3",
+   "tpo": 6,
+   "kind": "lec",
+   "words": 765,
+   "audio_sec": 350.04075,
+   "span_sec": 341.7238636363636,
+   "gross_wpm": 131.1275901448617,
+   "span_wpm": 134.31897764343222
+  },
+  {
+   "id": "TPO6_lec4_Climate_Change_in_Sahara_De.mp3",
+   "tpo": 6,
+   "kind": "lec",
+   "words": 755,
+   "audio_sec": 318.4065,
+   "span_sec": 311.8381842456609,
+   "gross_wpm": 142.27096494575332,
+   "span_wpm": 145.26764934057408
+  },
+  {
+   "id": "TPO7_conv1_Volunteer_to_help_organize_a_party.mp3",
+   "tpo": 7,
+   "kind": "conv",
+   "words": 497,
+   "audio_sec": 174.498,
+   "span_sec": 168.99024742268043,
+   "gross_wpm": 170.89021077605474,
+   "span_wpm": 176.45988721120608
+  },
+  {
+   "id": "TPO7_lec1_the_Well-made_Play.mp3",
+   "tpo": 7,
+   "kind": "lec",
+   "words": 763,
+   "audio_sec": 347.8465,
+   "span_sec": 342.12796769851946,
+   "gross_wpm": 131.6097761512621,
+   "span_wpm": 133.80958098211073
+  },
+  {
+   "id": "TPO7_lec2_Bats'_Use_of_Ultrasound.mp3",
+   "tpo": 7,
+   "kind": "lec",
+   "words": 766,
+   "audio_sec": 343.82375,
+   "span_sec": 338.7249932523616,
+   "gross_wpm": 133.67313921740427,
+   "span_wpm": 135.68529313028353
+  },
+  {
+   "id": "TPO7_conv2_Learn_about_the_library's_resour.mp3",
+   "tpo": 7,
+   "kind": "conv",
+   "words": 479,
+   "audio_sec": 154.72325,
+   "span_sec": 147.78853556485353,
+   "gross_wpm": 185.75101027156552,
+   "span_wpm": 194.46704637917009
+  },
+  {
+   "id": "TPO7_lec3_Iroquois_people_&_Birch_Tree.mp3",
+   "tpo": 7,
+   "kind": "lec",
+   "words": 754,
+   "audio_sec": 337.84175,
+   "span_sec": 334.48656467315715,
+   "gross_wpm": 133.9088493355247,
+   "span_wpm": 135.2520692249812
+  },
+  {
+   "id": "TPO7_lec4_Glacial_Movement.mp3",
+   "tpo": 7,
+   "kind": "lec",
+   "words": 703,
+   "audio_sec": 274.547,
+   "span_sec": 269.41010416666666,
+   "gross_wpm": 153.63489675720368,
+   "span_wpm": 156.56428377276436
+  },
+  {
+   "id": "TPO8_conv1_Submit_a_document_for_graduation.mp3",
+   "tpo": 8,
+   "kind": "conv",
+   "words": 462,
+   "audio_sec": 168.25475,
+   "span_sec": 159.59174672489084,
+   "gross_wpm": 164.7501779295978,
+   "span_wpm": 173.69319259212438
+  },
+  {
+   "id": "TPO8_lec1_Active_Habitat_Selection.mp3",
+   "tpo": 8,
+   "kind": "lec",
+   "words": 731,
+   "audio_sec": 308.245,
+   "span_sec": 299.63803094233475,
+   "gross_wpm": 142.28941264254084,
+   "span_wpm": 146.3766126818556
+  },
+  {
+   "id": "TPO8_lec2_Women_Artists_in_Paris.mp3",
+   "tpo": 8,
+   "kind": "lec",
+   "words": 778,
+   "audio_sec": 330.24,
+   "span_sec": 320.1753377483444,
+   "gross_wpm": 141.35174418604652,
+   "span_wpm": 145.79511441537124
+  },
+  {
+   "id": "TPO8_conv2_A_strategy_for_attracting_customers.mp3",
+   "tpo": 8,
+   "kind": "conv",
+   "words": 477,
+   "audio_sec": 196.258,
+   "span_sec": 187.6436808510638,
+   "gross_wpm": 145.82845030521048,
+   "span_wpm": 152.52312185623887
+  },
+  {
+   "id": "TPO8_lec3_Vision_Correction.mp3",
+   "tpo": 8,
+   "kind": "lec",
+   "words": 576,
+   "audio_sec": 252.23825,
+   "span_sec": 243.45396825396824,
+   "gross_wpm": 137.01331974829353,
+   "span_wpm": 141.95702065512205
+  },
+  {
+   "id": "TPO8_lec4_The_Periodic_Table_of_Elements.mp3",
+   "tpo": 8,
+   "kind": "lec",
+   "words": 757,
+   "audio_sec": 318.24975,
+   "span_sec": 312.618310626703,
+   "gross_wpm": 142.7181011139836,
+   "span_wpm": 145.2889944576405
+  },
+  {
+   "id": "TPO9_conv1_Advice_on_a_term_paper's_topic.mp3",
+   "tpo": 9,
+   "kind": "conv",
+   "words": 499,
+   "audio_sec": 193.46275,
+   "span_sec": 182.72711967545638,
+   "gross_wpm": 154.75847417655336,
+   "span_wpm": 163.850883509666
+  },
+  {
+   "id": "TPO9_lec1_Philippe_Jacques_de_Loutherbour.mp3",
+   "tpo": 9,
+   "kind": "lec",
+   "words": 802,
+   "audio_sec": 366.23675,
+   "span_sec": 355.49543949044585,
+   "gross_wpm": 131.39041890252687,
+   "span_wpm": 135.36038625129325
+  },
+  {
+   "id": "TPO9_lec2_Shrubs_in_Tundra.mp3",
+   "tpo": 9,
+   "kind": "lec",
+   "words": 773,
+   "audio_sec": 294.24325,
+   "span_sec": 281.89079194630875,
+   "gross_wpm": 157.62468637768242,
+   "span_wpm": 164.53180212014135
+  },
+  {
+   "id": "TPO9_conv2_Return_a_sociology_book.mp3",
+   "tpo": 9,
+   "kind": "conv",
+   "words": 458,
+   "audio_sec": 154.253,
+   "span_sec": 143.12242696629212,
+   "gross_wpm": 178.14888527289582,
+   "span_wpm": 192.00345174744717
+  },
+  {
+   "id": "TPO9_lec3_Desert_Lakes.mp3",
+   "tpo": 9,
+   "kind": "lec",
+   "words": 774,
+   "audio_sec": 343.301224,
+   "span_sec": 335.37308996088655,
+   "gross_wpm": 135.2747871356264,
+   "span_wpm": 138.4726484925077
+  },
+  {
+   "id": "TPO9_lec4_Features_of_Human_Language.mp3",
+   "tpo": 9,
+   "kind": "lec",
+   "words": 813,
+   "audio_sec": 356.258,
+   "span_sec": 350.73214559386975,
+   "gross_wpm": 136.92324102195602,
+   "span_wpm": 139.08049379792178
+  },
+  {
+   "id": "TPO10_conv1_How_to_get_photographs_exhibited.mp3",
+   "tpo": 10,
+   "kind": "conv",
+   "words": 438,
+   "audio_sec": 149.2375,
+   "span_sec": 142.06252983293555,
+   "gross_wpm": 176.09515034760028,
+   "span_wpm": 184.98896247240617
+  },
+  {
+   "id": "TPO10_lec1_Whales.mp3",
+   "tpo": 10,
+   "kind": "lec",
+   "words": 660,
+   "audio_sec": 287.2425,
+   "span_sec": 286.91723076923074,
+   "gross_wpm": 137.86260737878274,
+   "span_wpm": 138.01889797218388
+  },
+  {
+   "id": "TPO10_lec2_American_Food_Crops.mp3",
+   "tpo": 10,
+   "kind": "lec",
+   "words": 761,
+   "audio_sec": 306.2595,
+   "span_sec": 297.592698630137,
+   "gross_wpm": 149.08925274154763,
+   "span_wpm": 153.431183662031
+  },
+  {
+   "id": "TPO10_conv2_Return_a_literature_book.mp3",
+   "tpo": 10,
+   "kind": "conv",
+   "words": 471,
+   "audio_sec": 160.235,
+   "span_sec": 149.7412987012987,
+   "gross_wpm": 176.365962492589,
+   "span_wpm": 188.72549019607845
+  },
+  {
+   "id": "TPO10_lec3_Phosphorus_Cycle.mp3",
+   "tpo": 10,
+   "kind": "lec",
+   "words": 763,
+   "audio_sec": 300.2515,
+   "span_sec": 287.66509234828493,
+   "gross_wpm": 152.47217749120318,
+   "span_wpm": 159.1433970186857
+  },
+  {
+   "id": "TPO10_lec4_Childhood_Amnesia.mp3",
+   "tpo": 10,
+   "kind": "lec",
+   "words": 776,
+   "audio_sec": 368.24825,
+   "span_sec": 361.2745191040843,
+   "gross_wpm": 126.43644606593513,
+   "span_wpm": 128.87706588182024
+  },
+  {
+   "id": "TPO11_conv1_Use_the_gym_pass.mp3",
+   "tpo": 11,
+   "kind": "conv",
+   "words": 412,
+   "audio_sec": 142.733,
+   "span_sec": 133.99043902439024,
+   "gross_wpm": 173.19050254671308,
+   "span_wpm": 184.49077546122695
+  },
+  {
+   "id": "TPO11_lec1_Distraction_Display.mp3",
+   "tpo": 11,
+   "kind": "lec",
+   "words": 613,
+   "audio_sec": 248.1895,
+   "span_sec": 241.27473949579831,
+   "gross_wpm": 148.19321526494878,
+   "span_wpm": 152.4403262308382
+  },
+  {
+   "id": "TPO11_lec2_Cape_Cod_House.mp3",
+   "tpo": 11,
+   "kind": "lec",
+   "words": 848,
+   "audio_sec": 400.9535,
+   "span_sec": 390.7558655043586,
+   "gross_wpm": 126.89750806514971,
+   "span_wpm": 130.20917788227663
+  },
+  {
+   "id": "TPO11_conv2_Work_for_the_biology_committee.mp3",
+   "tpo": 11,
+   "kind": "conv",
+   "words": 467,
+   "audio_sec": 164.049,
+   "span_sec": 154.87307189542486,
+   "gross_wpm": 170.8026260446574,
+   "span_wpm": 180.92234923137562
+  },
+  {
+   "id": "TPO11_lec3_Landscape_&_Climate.mp3",
+   "tpo": 11,
+   "kind": "lec",
+   "words": 754,
+   "audio_sec": 288.1305,
+   "span_sec": 280.71841746248293,
+   "gross_wpm": 157.0121871860147,
+   "span_wpm": 161.15793330890438
+  },
+  {
+   "id": "TPO11_lec4_Advertising.mp3",
+   "tpo": 11,
+   "kind": "lec",
+   "words": 788,
+   "audio_sec": 386.6905,
+   "span_sec": 380.32855313700384,
+   "gross_wpm": 122.26832570233819,
+   "span_wpm": 124.31356943891763
+  },
+  {
+   "id": "TPO12_conv1_Revise_a_Hemingway_paper.mp3",
+   "tpo": 12,
+   "kind": "conv",
+   "words": 412,
+   "audio_sec": 132.467,
+   "span_sec": 125.16169576059849,
+   "gross_wpm": 186.6125148150105,
+   "span_wpm": 197.50451485798723
+  },
+  {
+   "id": "TPO12_lec1_Cell_Division.mp3",
+   "tpo": 12,
+   "kind": "lec",
+   "words": 724,
+   "audio_sec": 307.46125,
+   "span_sec": 302.0624673439768,
+   "gross_wpm": 141.28609702848735,
+   "span_wpm": 143.81131287831352
+  },
+  {
+   "id": "TPO12_lec2_Managing_by_Wandering_Around.mp3",
+   "tpo": 12,
+   "kind": "lec",
+   "words": 826,
+   "audio_sec": 340.454,
+   "span_sec": 332.3656966707768,
+   "gross_wpm": 145.57032668143125,
+   "span_wpm": 149.11286121410842
+  },
+  {
+   "id": "TPO12_conv2_A_problem_of_the_TA's_payroll.mp3",
+   "tpo": 12,
+   "kind": "conv",
+   "words": 506,
+   "audio_sec": 163.44825,
+   "span_sec": 156.2404081632653,
+   "gross_wpm": 185.74686483336467,
+   "span_wpm": 194.31592861863848
+  },
+  {
+   "id": "TPO12_lec3_Opera.mp3",
+   "tpo": 12,
+   "kind": "lec",
+   "words": 801,
+   "audio_sec": 369.44975,
+   "span_sec": 363.2932442748092,
+   "gross_wpm": 130.08534990211797,
+   "span_wpm": 132.28982580156526
+  },
+  {
+   "id": "TPO12_lec4_Solar_Energy.mp3",
+   "tpo": 12,
+   "kind": "lec",
+   "words": 724,
+   "audio_sec": 301.453,
+   "span_sec": 296.75507331378293,
+   "gross_wpm": 144.10206566197715,
+   "span_wpm": 146.3833440652501
+  },
+  {
+   "id": "TPO13_conv1_Understand_the_assignment_in_psychology_course.mp3",
+   "tpo": 13,
+   "kind": "conv",
+   "words": 454,
+   "audio_sec": 180.19275,
+   "span_sec": 172.7913563218391,
+   "gross_wpm": 151.1714539014472,
+   "span_wpm": 157.64677458323266
+  },
+  {
+   "id": "TPO13_lec1_Pedestrian_Malls.mp3",
+   "tpo": 13,
+   "kind": "lec",
+   "words": 792,
+   "audio_sec": 371.174,
+   "span_sec": 365.85456436931076,
+   "gross_wpm": 128.02620873229267,
+   "span_wpm": 129.8876784055401
+  },
+  {
+   "id": "TPO13_lec2_Interrelationships.mp3",
+   "tpo": 13,
+   "kind": "lec",
+   "words": 745,
+   "audio_sec": 293.747,
+   "span_sec": 288.15313370473535,
+   "gross_wpm": 152.1717668605977,
+   "span_wpm": 155.12585070757265
+  },
+  {
+   "id": "TPO13_conv2_How_to_use_language_lab.mp3",
+   "tpo": 13,
+   "kind": "conv",
+   "words": 486,
+   "audio_sec": 159.84325,
+   "span_sec": 151.01000000000002,
+   "gross_wpm": 182.4287231397009,
+   "span_wpm": 193.09979471558174
+  },
+  {
+   "id": "TPO13_lec3_Medieval_Poetry.mp3",
+   "tpo": 13,
+   "kind": "lec",
+   "words": 907,
+   "audio_sec": 456.516,
+   "span_sec": 453.2304914285714,
+   "gross_wpm": 119.20721289067633,
+   "span_wpm": 120.07135669197696
+  },
+  {
+   "id": "TPO13_lec4_Meteorites.mp3",
+   "tpo": 13,
+   "kind": "lec",
+   "words": 680,
+   "audio_sec": 321.4105,
+   "span_sec": 317.6526315789474,
+   "gross_wpm": 126.9404702086584,
+   "span_wpm": 128.44219107267122
+  },
+  {
+   "id": "TPO14_conv1_Locate_a_political_book.mp3",
+   "tpo": 14,
+   "kind": "conv",
+   "words": 453,
+   "audio_sec": 153.4695,
+   "span_sec": 145.68641425389754,
+   "gross_wpm": 177.10359387370127,
+   "span_wpm": 186.56509695290862
+  },
+  {
+   "id": "TPO14_lec1_Cognition.mp3",
+   "tpo": 14,
+   "kind": "lec",
+   "words": 691,
+   "audio_sec": 276.454,
+   "span_sec": 268.7256651718983,
+   "gross_wpm": 149.97070036968177,
+   "span_wpm": 154.28373755621328
+  },
+  {
+   "id": "TPO14_lec2_Microclimate.mp3",
+   "tpo": 14,
+   "kind": "lec",
+   "words": 705,
+   "audio_sec": 265.45625,
+   "span_sec": 258.90088235294115,
+   "gross_wpm": 159.34829185600262,
+   "span_wpm": 163.38298894762136
+  },
+  {
+   "id": "TPO14_conv2_Prepare_for_a_career_in_journalism.mp3",
+   "tpo": 14,
+   "kind": "conv",
+   "words": 476,
+   "audio_sec": 165.90375,
+   "span_sec": 158.61253731343282,
+   "gross_wpm": 172.14800750435114,
+   "span_wpm": 180.06142820578452
+  },
+  {
+   "id": "TPO14_lec3_Seafarers_and_Stars.mp3",
+   "tpo": 14,
+   "kind": "lec",
+   "words": 736,
+   "audio_sec": 305.44975,
+   "span_sec": 298.54,
+   "gross_wpm": 144.573698292436,
+   "span_wpm": 147.91987673343604
+  },
+  {
+   "id": "TPO14_lec4_Passage_Graves.mp3",
+   "tpo": 14,
+   "kind": "lec",
+   "words": 743,
+   "audio_sec": 306.4685,
+   "span_sec": 302.2852868852459,
+   "gross_wpm": 145.46356313944173,
+   "span_wpm": 147.47657902689633
+  },
+  {
+   "id": "TPO15_conv1_The_campus_newspaper's_reporter_position.mp3",
+   "tpo": 15,
+   "kind": "conv",
+   "words": 497,
+   "audio_sec": 162.19425,
+   "span_sec": 152.87558044806516,
+   "gross_wpm": 183.85361996494942,
+   "span_wpm": 195.0605839899358
+  },
+  {
+   "id": "TPO15_lec1_Distraction.mp3",
+   "tpo": 15,
+   "kind": "lec",
+   "words": 735,
+   "audio_sec": 301.81875,
+   "span_sec": 297.1970375722543,
+   "gross_wpm": 146.1141827669752,
+   "span_wpm": 148.3864050605768
+  },
+  {
+   "id": "TPO15_lec2_Geologic_Time_Periods.mp3",
+   "tpo": 15,
+   "kind": "lec",
+   "words": 508,
+   "audio_sec": 253.04825,
+   "span_sec": 249.02517598343687,
+   "gross_wpm": 120.45133684979051,
+   "span_wpm": 122.39726316678632
+  },
+  {
+   "id": "TPO15_conv2_Performance_on_a_biology_exam.mp3",
+   "tpo": 15,
+   "kind": "conv",
+   "words": 519,
+   "audio_sec": 176.82275,
+   "span_sec": 166.4345962732919,
+   "gross_wpm": 176.10856069142687,
+   "span_wpm": 187.10052295177226
+  },
+  {
+   "id": "TPO15_lec3_Palimpsest.mp3",
+   "tpo": 15,
+   "kind": "lec",
+   "words": 687,
+   "audio_sec": 281.835,
+   "span_sec": 272.9784090909091,
+   "gross_wpm": 146.25578796104102,
+   "span_wpm": 151.0009532888465
+  },
+  {
+   "id": "TPO15_lec4_Biological_community.mp3",
+   "tpo": 15,
+   "kind": "lec",
+   "words": 769,
+   "audio_sec": 320.209,
+   "span_sec": 310.81930446194224,
+   "gross_wpm": 144.0933890053059,
+   "span_wpm": 148.44637812916002
+  },
+  {
+   "id": "TPO16_conv1_Reserve_the_room_for_a_rehearsal.mp3",
+   "tpo": 16,
+   "kind": "conv",
+   "words": 491,
+   "audio_sec": 166.32175,
+   "span_sec": 157.7532135306554,
+   "gross_wpm": 177.1265634230039,
+   "span_wpm": 186.74738435217478
+  },
+  {
+   "id": "TPO16_lec1_Lechuguilla_Cave.mp3",
+   "tpo": 16,
+   "kind": "lec",
+   "words": 724,
+   "audio_sec": 319.138,
+   "span_sec": 309.89409153952846,
+   "gross_wpm": 136.11666426436213,
+   "span_wpm": 140.17692232915329
+  },
+  {
+   "id": "TPO16_lec2_Piano.mp3",
+   "tpo": 16,
+   "kind": "lec",
+   "words": 805,
+   "audio_sec": 344.6595,
+   "span_sec": 334.6769180754226,
+   "gross_wpm": 140.13831041941393,
+   "span_wpm": 144.31828844890683
+  },
+  {
+   "id": "TPO16_conv2_Reschedule_the_medieval_history_test.mp3",
+   "tpo": 16,
+   "kind": "conv",
+   "words": 488,
+   "audio_sec": 173.71425,
+   "span_sec": 165.22141078838175,
+   "gross_wpm": 168.55266623204488,
+   "span_wpm": 177.2167412218886
+  },
+  {
+   "id": "TPO16_lec3_Foraging_Behavior_Among_Beavers.mp3",
+   "tpo": 16,
+   "kind": "lec",
+   "words": 781,
+   "audio_sec": 318.485,
+   "span_sec": 310.02874677002586,
+   "gross_wpm": 147.13408794762702,
+   "span_wpm": 151.14727420667208
+  },
+  {
+   "id": "TPO16_lec4_Stained_Glass_Art.mp3",
+   "tpo": 16,
+   "kind": "lec",
+   "words": 841,
+   "audio_sec": 368.66625,
+   "span_sec": 361.4872848484849,
+   "gross_wpm": 136.87176409557426,
+   "span_wpm": 139.58997208200557
+  },
+  {
+   "id": "TPO17_conv1_Find_materials_for_an_opera_paper.mp3",
+   "tpo": 17,
+   "kind": "conv",
+   "words": 393,
+   "audio_sec": 152.0065,
+   "span_sec": 142.67419889502762,
+   "gross_wpm": 155.1249453148385,
+   "span_wpm": 165.27164815096637
+  },
+  {
+   "id": "TPO17_lec1_Prehistoric_Art_Dating.mp3",
+   "tpo": 17,
+   "kind": "lec",
+   "words": 805,
+   "audio_sec": 362.24,
+   "span_sec": 355.269220945083,
+   "gross_wpm": 133.33701413427562,
+   "span_wpm": 135.953235328163
+  },
+  {
+   "id": "TPO17_lec2_Milankovitch_Hypothesis.mp3",
+   "tpo": 17,
+   "kind": "lec",
+   "words": 729,
+   "audio_sec": 315.45475,
+   "span_sec": 306.48115384615386,
+   "gross_wpm": 138.65697061147438,
+   "span_wpm": 142.71676888150984
+  },
+  {
+   "id": "TPO17_conv2_Reschedule_part-time_job_in_campus_dining_hall.mp3",
+   "tpo": 17,
+   "kind": "conv",
+   "words": 450,
+   "audio_sec": 164.885,
+   "span_sec": 156.73318385650225,
+   "gross_wpm": 163.75049276768658,
+   "span_wpm": 172.26728466589415
+  },
+  {
+   "id": "TPO17_lec3_Ancient_Egyptian_Calendar.mp3",
+   "tpo": 17,
+   "kind": "lec",
+   "words": 821,
+   "audio_sec": 419.004,
+   "span_sec": 414.03914786967414,
+   "gross_wpm": 117.56451012400835,
+   "span_wpm": 118.97425703210418
+  },
+  {
+   "id": "TPO17_lec4_Octopus.mp3",
+   "tpo": 17,
+   "kind": "lec",
+   "words": 756,
+   "audio_sec": 327.5755,
+   "span_sec": 320.9820560747663,
+   "gross_wpm": 138.47189426559677,
+   "span_wpm": 141.31631080783623
+  },
+  {
+   "id": "TPO18_conv1_Apply_for_a_part-time_job_on_campus.mp3",
+   "tpo": 18,
+   "kind": "conv",
+   "words": 455,
+   "audio_sec": 170.60575,
+   "span_sec": 161.9515625,
+   "gross_wpm": 160.01805331883597,
+   "span_wpm": 168.5689201053556
+  },
+  {
+   "id": "TPO18_lec1_Sunspots.mp3",
+   "tpo": 18,
+   "kind": "lec",
+   "words": 648,
+   "audio_sec": 276.00975,
+   "span_sec": 268.53644859813085,
+   "gross_wpm": 140.8645890226704,
+   "span_wpm": 144.78481488442023
+  },
+  {
+   "id": "TPO18_lec2_Copies_of_Greek_Sculptures.mp3",
+   "tpo": 18,
+   "kind": "lec",
+   "words": 665,
+   "audio_sec": 296.6465,
+   "span_sec": 293.1163043478261,
+   "gross_wpm": 134.5035252396371,
+   "span_wpm": 136.12344113295285
+  },
+  {
+   "id": "TPO18_conv2_Possible_participation_in_a_sociology_project.mp3",
+   "tpo": 18,
+   "kind": "conv",
+   "words": 424,
+   "audio_sec": 145.476,
+   "span_sec": 139.6251318944844,
+   "gross_wpm": 174.87420605460693,
+   "span_wpm": 182.20215554908242
+  },
+  {
+   "id": "TPO18_lec3_Spices.mp3",
+   "tpo": 18,
+   "kind": "lec",
+   "words": 738,
+   "audio_sec": 321.515,
+   "span_sec": 312.27768595041323,
+   "gross_wpm": 137.72296782420727,
+   "span_wpm": 141.796875
+  },
+  {
+   "id": "TPO18_lec4_North_American_Wood_Frog.mp3",
+   "tpo": 18,
+   "kind": "lec",
+   "words": 725,
+   "audio_sec": 268.591,
+   "span_sec": 263.1832386363636,
+   "gross_wpm": 161.95628297299612,
+   "span_wpm": 165.28408201596494
+  },
+  {
+   "id": "TPO19_conv1_A_discussion_about_animal's_deception.mp3",
+   "tpo": 19,
+   "kind": "conv",
+   "words": 430,
+   "audio_sec": 172.72175,
+   "span_sec": 165.0914691943128,
+   "gross_wpm": 149.37319706406402,
+   "span_wpm": 156.27700283915567
+  },
+  {
+   "id": "TPO19_lec1_Family_Tree_Model.mp3",
+   "tpo": 19,
+   "kind": "lec",
+   "words": 574,
+   "audio_sec": 268.356,
+   "span_sec": 261.3178330373002,
+   "gross_wpm": 128.3369851987658,
+   "span_wpm": 131.79353127072685
+  },
+  {
+   "id": "TPO19_lec2_Difficulties_in_Astronomy.mp3",
+   "tpo": 19,
+   "kind": "lec",
+   "words": 762,
+   "audio_sec": 273.31925,
+   "span_sec": 267.0357276368492,
+   "gross_wpm": 167.27691152379498,
+   "span_wpm": 171.21304480341357
+  },
+  {
+   "id": "TPO19_conv2_Issues_related_to_cafeteria's_food_policy.mp3",
+   "tpo": 19,
+   "kind": "conv",
+   "words": 493,
+   "audio_sec": 159.39925,
+   "span_sec": 150.54834710743802,
+   "gross_wpm": 185.57176398257835,
+   "span_wpm": 196.48173207036535
+  },
+  {
+   "id": "TPO19_lec3_Plants_in_salt_marshes.mp3",
+   "tpo": 19,
+   "kind": "lec",
+   "words": 694,
+   "audio_sec": 305.76325,
+   "span_sec": 280.56837555886733,
+   "gross_wpm": 136.18379579625739,
+   "span_wpm": 148.41302023813913
+  },
+  {
+   "id": "TPO19_lec4_Cecilia_Beaux.mp3",
+   "tpo": 19,
+   "kind": "lec",
+   "words": 646,
+   "audio_sec": 259.1085,
+   "span_sec": 250.6727272727273,
+   "gross_wpm": 149.58984363693202,
+   "span_wpm": 154.62392108508016
+  },
+  {
+   "id": "TPO20_conv1_Library_policies_for_returning_books.mp3",
+   "tpo": 20,
+   "kind": "conv",
+   "words": 420,
+   "audio_sec": 131.7355,
+   "span_sec": 123.92530120481928,
+   "gross_wpm": 191.29240030212054,
+   "span_wpm": 203.3483054307881
+  },
+  {
+   "id": "TPO20_lec1_Gricean_Maxims.mp3",
+   "tpo": 20,
+   "kind": "lec",
+   "words": 747,
+   "audio_sec": 325.2245,
+   "span_sec": 319.4009387755102,
+   "gross_wpm": 137.81249567606378,
+   "span_wpm": 140.32519807808572
+  },
+  {
+   "id": "TPO20_lec2_Interglacial_Periods.mp3",
+   "tpo": 20,
+   "kind": "lec",
+   "words": 704,
+   "audio_sec": 300.09475,
+   "span_sec": 289.2549397590361,
+   "gross_wpm": 140.75554470713,
+   "span_wpm": 146.03034968110845
+  },
+  {
+   "id": "TPO20_conv2_Apply_for_the_undergraduate_research_fund.mp3",
+   "tpo": 20,
+   "kind": "conv",
+   "words": 469,
+   "audio_sec": 177.97225,
+   "span_sec": 170.33876086956522,
+   "gross_wpm": 158.1145375191919,
+   "span_wpm": 165.2002154785419
+  },
+  {
+   "id": "TPO20_lec3_Folk_Tales.mp3",
+   "tpo": 20,
+   "kind": "lec",
+   "words": 753,
+   "audio_sec": 299.70275,
+   "span_sec": 291.61822888283376,
+   "gross_wpm": 150.74936749829624,
+   "span_wpm": 154.92858650531204
+  },
+  {
+   "id": "TPO20_lec4_Snowshoe_Hare.mp3",
+   "tpo": 20,
+   "kind": "lec",
+   "words": 803,
+   "audio_sec": 305.76325,
+   "span_sec": 298.84845360824744,
+   "gross_wpm": 157.57289340690878,
+   "span_wpm": 161.21883656509692
+  },
+  {
+   "id": "TPO21_conv1_Find_a_building_for_orientation.mp3",
+   "tpo": 21,
+   "kind": "conv",
+   "words": 452,
+   "audio_sec": 151.3535,
+   "span_sec": 143.45159550561797,
+   "gross_wpm": 179.18317052463274,
+   "span_wpm": 189.0533172838632
+  },
+  {
+   "id": "TPO21_lec1_Geocentric_Theory.mp3",
+   "tpo": 21,
+   "kind": "lec",
+   "words": 692,
+   "audio_sec": 322.82125,
+   "span_sec": 304.5003529411765,
+   "gross_wpm": 128.61606848991508,
+   "span_wpm": 136.35452175656704
+  },
+  {
+   "id": "TPO21_lec2_Software_Development.mp3",
+   "tpo": 21,
+   "kind": "lec",
+   "words": 728,
+   "audio_sec": 270.57625,
+   "span_sec": 265.2597701149425,
+   "gross_wpm": 161.43323739611293,
+   "span_wpm": 164.66876971608835
+  },
+  {
+   "id": "TPO21_conv2_Which_elective_courses_to_take.mp3",
+   "tpo": 21,
+   "kind": "conv",
+   "words": 554,
+   "audio_sec": 215.61475,
+   "span_sec": 214.28301886792454,
+   "gross_wpm": 154.1638501076573,
+   "span_wpm": 155.1219512195122
+  },
+  {
+   "id": "TPO21_lec3_Evolution_Theory.mp3",
+   "tpo": 21,
+   "kind": "lec",
+   "words": 757,
+   "audio_sec": 332.9305,
+   "span_sec": 329.26932157394845,
+   "gross_wpm": 136.42486945473604,
+   "span_wpm": 137.9417911844527
+  },
+  {
+   "id": "TPO21_lec4_Alice_Neel.mp3",
+   "tpo": 21,
+   "kind": "lec",
+   "words": 753,
+   "audio_sec": 339.5395,
+   "span_sec": 330.4901632653061,
+   "gross_wpm": 133.0625744574637,
+   "span_wpm": 136.7060355249698
+  },
+  {
+   "id": "TPO22_conv1_Complain_about_a_biased_article.mp3",
+   "tpo": 22,
+   "kind": "conv",
+   "words": 447,
+   "audio_sec": 168.725,
+   "span_sec": 163.58363013698633,
+   "gross_wpm": 158.9568825011113,
+   "span_wpm": 163.95283548568216
+  },
+  {
+   "id": "TPO22_lec1_State_Formation.mp3",
+   "tpo": 22,
+   "kind": "lec",
+   "words": 345,
+   "audio_sec": 217.78275,
+   "span_sec": 215.18468468468467,
+   "gross_wpm": 95.04885028772941,
+   "span_wpm": 96.19643716899375
+  },
+  {
+   "id": "TPO22_lec2_Faint_Young_Sun_Paradox.mp3",
+   "tpo": 22,
+   "kind": "lec",
+   "words": 557,
+   "audio_sec": 281.33875,
+   "span_sec": 282.47857142857146,
+   "gross_wpm": 118.78918208032132,
+   "span_wpm": 118.30985915492957
+  },
+  {
+   "id": "TPO22_conv2_Revise_a_music_history_paper.mp3",
+   "tpo": 22,
+   "kind": "conv",
+   "words": 402,
+   "audio_sec": 181.39425,
+   "span_sec": 174.3675,
+   "gross_wpm": 132.97003626079658,
+   "span_wpm": 138.328530259366
+  },
+  {
+   "id": "TPO22_lec3_Pleistocene_Rewilding.mp3",
+   "tpo": 22,
+   "kind": "lec",
+   "words": 639,
+   "audio_sec": 327.915,
+   "span_sec": 325.1157673667205,
+   "gross_wpm": 116.92054343351172,
+   "span_wpm": 117.92722423318727
+  },
+  {
+   "id": "TPO22_lec4_Musicians_&_Film_Industry.mp3",
+   "tpo": 22,
+   "kind": "lec",
+   "words": 584,
+   "audio_sec": 289.77625,
+   "span_sec": 286.2515679442509,
+   "gross_wpm": 120.92088292259976,
+   "span_wpm": 122.40980984538831
+  },
+  {
+   "id": "TPO23_conv1_Post_a_student_announcement.mp3",
+   "tpo": 23,
+   "kind": "conv",
+   "words": 401,
+   "audio_sec": 161.254,
+   "span_sec": 153.16785894206546,
+   "gross_wpm": 149.20560110136802,
+   "span_wpm": 157.08256396729098
+  },
+  {
+   "id": "TPO23_lec1_Antikythera_Mechanism.mp3",
+   "tpo": 23,
+   "kind": "lec",
+   "words": 556,
+   "audio_sec": 287.71275,
+   "span_sec": 280.7032044198895,
+   "gross_wpm": 115.94898036322687,
+   "span_wpm": 118.84438608010505
+  },
+  {
+   "id": "TPO23_lec2_Earth_Radiation_Budget.mp3",
+   "tpo": 23,
+   "kind": "lec",
+   "words": 448,
+   "audio_sec": 228.258,
+   "span_sec": 220.56740740740742,
+   "gross_wpm": 117.76148043003968,
+   "span_wpm": 121.86750669989186
+  },
+  {
+   "id": "TPO23_conv2_Advice_on_choosing_courses.mp3",
+   "tpo": 23,
+   "kind": "conv",
+   "words": 447,
+   "audio_sec": 198.0865,
+   "span_sec": 190.7133033707865,
+   "gross_wpm": 135.3953954459289,
+   "span_wpm": 140.62993784894132
+  },
+  {
+   "id": "TPO23_lec3_Dolphin's_navigation.mp3",
+   "tpo": 23,
+   "kind": "lec",
+   "words": 534,
+   "audio_sec": 266.5535,
+   "span_sec": 262.12711729622265,
+   "gross_wpm": 120.20101030374765,
+   "span_wpm": 122.23077234619903
+  },
+  {
+   "id": "TPO23_lec4_Screen_Dance.mp3",
+   "tpo": 23,
+   "kind": "lec",
+   "words": 373,
+   "audio_sec": 310.56975,
+   "span_sec": 307.5201126760563,
+   "gross_wpm": 72.06110704600174,
+   "span_wpm": 72.77572775727758
+  },
+  {
+   "id": "TPO24_conv1_Find_a_science_book.mp3",
+   "tpo": 24,
+   "kind": "conv",
+   "words": 405,
+   "audio_sec": 157.858,
+   "span_sec": 145.9904702970297,
+   "gross_wpm": 153.93581573312724,
+   "span_wpm": 166.44922062761793
+  },
+  {
+   "id": "TPO24_lec1_Crocodile_Vocalization.mp3",
+   "tpo": 24,
+   "kind": "lec",
+   "words": 618,
+   "audio_sec": 300.0425,
+   "span_sec": 299.37626262626264,
+   "gross_wpm": 123.58249248023195,
+   "span_wpm": 123.85751520417027
+  },
+  {
+   "id": "TPO24_lec2_Modern_Dance.mp3",
+   "tpo": 24,
+   "kind": "lec",
+   "words": 432,
+   "audio_sec": 275.25225,
+   "span_sec": 278.5002985074627,
+   "gross_wpm": 94.16816756266297,
+   "span_wpm": 93.06991819725268
+  },
+  {
+   "id": "TPO24_conv2_Discussion_about_hydrologic_cycle.mp3",
+   "tpo": 24,
+   "kind": "conv",
+   "words": 354,
+   "audio_sec": 181.4205,
+   "span_sec": 179.16504347826088,
+   "gross_wpm": 117.07607464426566,
+   "span_wpm": 118.5499112307428
+  },
+  {
+   "id": "TPO24_lec3_Megafauna.mp3",
+   "tpo": 24,
+   "kind": "lec",
+   "words": 610,
+   "audio_sec": 299.1805,
+   "span_sec": 287.09999999999997,
+   "gross_wpm": 122.3341761912959,
+   "span_wpm": 127.48171368861024
+  },
+  {
+   "id": "TPO24_lec4_Shield_Volcanoes_on_Venus.mp3",
+   "tpo": 24,
+   "kind": "lec",
+   "words": 508,
+   "audio_sec": 316.4735,
+   "span_sec": 309.9112295081967,
+   "gross_wpm": 96.31138152167559,
+   "span_wpm": 98.35074401262975
+  },
+  {
+   "id": "TPO25_conv1_Graduation_requirements.mp3",
+   "tpo": 25,
+   "kind": "conv",
+   "words": 417,
+   "audio_sec": 158.90275,
+   "span_sec": 153.16019704433498,
+   "gross_wpm": 157.45479546452154,
+   "span_wpm": 163.35836909871244
+  },
+  {
+   "id": "TPO25_lec1_Assisted_Migration_Conservation.mp3",
+   "tpo": 25,
+   "kind": "lec",
+   "words": 694,
+   "audio_sec": 296.90775,
+   "span_sec": 290.24108925869893,
+   "gross_wpm": 140.24558132955437,
+   "span_wpm": 143.46693676747213
+  },
+  {
+   "id": "TPO25_lec2_Béla_Bartók.mp3",
+   "tpo": 25,
+   "kind": "lec",
+   "words": 579,
+   "audio_sec": 263.20975,
+   "span_sec": 258.0789107142857,
+   "gross_wpm": 131.98599216024485,
+   "span_wpm": 134.60999158687554
+  },
+  {
+   "id": "TPO25_conv2_Discuss_whales'_breath.mp3",
+   "tpo": 25,
+   "kind": "conv",
+   "words": 443,
+   "audio_sec": 136.725,
+   "span_sec": 129.62609699769052,
+   "gross_wpm": 194.40482720789907,
+   "span_wpm": 205.05130228887134
+  },
+  {
+   "id": "TPO25_lec3_Egyptian_Hieroglyphs.mp3",
+   "tpo": 25,
+   "kind": "lec",
+   "words": 694,
+   "audio_sec": 327.9935,
+   "span_sec": 324.7472913616398,
+   "gross_wpm": 126.95373536365814,
+   "span_wpm": 128.22277847309138
+  },
+  {
+   "id": "TPO25_lec4_Animal_Play.mp3",
+   "tpo": 25,
+   "kind": "lec",
+   "words": 650,
+   "audio_sec": 255.373,
+   "span_sec": 249.0590062111801,
+   "gross_wpm": 152.71778927294585,
+   "span_wpm": 156.5893986059329
+  },
+  {
+   "id": "TPO26_conv1_Advertise_the_printing_business.mp3",
+   "tpo": 26,
+   "kind": "conv",
+   "words": 319,
+   "audio_sec": 178.83425,
+   "span_sec": 174.87475409836065,
+   "gross_wpm": 107.02647842904813,
+   "span_wpm": 109.44976076555025
+  },
+  {
+   "id": "TPO26_lec1_Green_Marketing.mp3",
+   "tpo": 26,
+   "kind": "lec",
+   "words": 535,
+   "audio_sec": 251.8205,
+   "span_sec": 246.5234555984556,
+   "gross_wpm": 127.47175071132017,
+   "span_wpm": 130.21073358749842
+  },
+  {
+   "id": "TPO26_lec2_Carbon_Cycling.mp3",
+   "tpo": 26,
+   "kind": "lec",
+   "words": 699,
+   "audio_sec": 303.778,
+   "span_sec": 299.9289956331878,
+   "gross_wpm": 138.06134743134788,
+   "span_wpm": 139.833095868105
+  },
+  {
+   "id": "TPO26_conv2_A_paper_topic_about_jellyfish.mp3",
+   "tpo": 26,
+   "kind": "conv",
+   "words": 349,
+   "audio_sec": 191.6865,
+   "span_sec": 180.59,
+   "gross_wpm": 109.24086985781472,
+   "span_wpm": 115.95326430034886
+  },
+  {
+   "id": "TPO26_lec3_Comets.mp3",
+   "tpo": 26,
+   "kind": "lec",
+   "words": 558,
+   "audio_sec": 298.5535,
+   "span_sec": 300.1396153846154,
+   "gross_wpm": 112.14070509975599,
+   "span_wpm": 111.54808723632463
+  },
+  {
+   "id": "TPO26_lec4_Archimedes_Palimpsest.mp3",
+   "tpo": 26,
+   "kind": "lec",
+   "words": 504,
+   "audio_sec": 343.275,
+   "span_sec": 340.36457142857137,
+   "gross_wpm": 88.09263709853616,
+   "span_wpm": 88.84590976398418
+  },
+  {
+   "id": "TPO27_conv1_Look_for_information_on_a_volcano.mp3",
+   "tpo": 27,
+   "kind": "conv",
+   "words": 424,
+   "audio_sec": 166.34775,
+   "span_sec": 159.44208530805687,
+   "gross_wpm": 152.93263660013437,
+   "span_wpm": 159.55636776104356
+  },
+  {
+   "id": "TPO27_lec1_Coral_Reefs_Marine.mp3",
+   "tpo": 27,
+   "kind": "lec",
+   "words": 704,
+   "audio_sec": 276.55825,
+   "span_sec": 273.1436686390532,
+   "gross_wpm": 152.7345504970472,
+   "span_wpm": 154.6438920237914
+  },
+  {
+   "id": "TPO27_lec2_Cremonese_Violins.mp3",
+   "tpo": 27,
+   "kind": "lec",
+   "words": 693,
+   "audio_sec": 315.115,
+   "span_sec": 309.02477104874447,
+   "gross_wpm": 131.95182711073736,
+   "span_wpm": 134.55232038159593
+  },
+  {
+   "id": "TPO27_conv2_Write_a_paper_about_hydroponic_farming.mp3",
+   "tpo": 27,
+   "kind": "conv",
+   "words": 477,
+   "audio_sec": 224.39175,
+   "span_sec": 217.56499999999997,
+   "gross_wpm": 127.54479609878705,
+   "span_wpm": 131.54689403166873
+  },
+  {
+   "id": "TPO27_lec3_Sauropod.mp3",
+   "tpo": 27,
+   "kind": "lec",
+   "words": 363,
+   "audio_sec": 320.57475,
+   "span_sec": 316.5610344827586,
+   "gross_wpm": 67.94047254189546,
+   "span_wpm": 68.80189798339265
+  },
+  {
+   "id": "TPO27_lec4_Primary_Colors.mp3",
+   "tpo": 27,
+   "kind": "lec",
+   "words": 619,
+   "audio_sec": 280.111,
+   "span_sec": 276.50046822742473,
+   "gross_wpm": 132.59029456179871,
+   "span_wpm": 134.32165318957775
+  },
+  {
+   "id": "TPO28_conv1_Suggestions_on_paper_revision.mp3",
+   "tpo": 28,
+   "kind": "conv",
+   "words": 409,
+   "audio_sec": 169.95275,
+   "span_sec": 157.45487623762375,
+   "gross_wpm": 144.3930739573205,
+   "span_wpm": 155.8541760432071
+  },
+  {
+   "id": "TPO28_lec1_Foundationalism.mp3",
+   "tpo": 28,
+   "kind": "lec",
+   "words": 614,
+   "audio_sec": 314.1225,
+   "span_sec": 309.6518272425249,
+   "gross_wpm": 117.27908698039778,
+   "span_wpm": 118.97233201581028
+  },
+  {
+   "id": "TPO28_lec2_Mirror_Self-Recognition.mp3",
+   "tpo": 28,
+   "kind": "lec",
+   "words": 728,
+   "audio_sec": 324.33625,
+   "span_sec": 317.49797752808985,
+   "gross_wpm": 134.67504788626,
+   "span_wpm": 137.57567950534587
+  },
+  {
+   "id": "TPO28_conv2_Requirements_of_the_senior_thesis.mp3",
+   "tpo": 28,
+   "kind": "conv",
+   "words": 454,
+   "audio_sec": 161.8285,
+   "span_sec": 156.8204535147392,
+   "gross_wpm": 168.32634548302678,
+   "span_wpm": 173.70183154992452
+  },
+  {
+   "id": "TPO28_lec3_Plants'_photoreceptors.mp3",
+   "tpo": 28,
+   "kind": "lec",
+   "words": 701,
+   "audio_sec": 299.99025,
+   "span_sec": 295.4611911764706,
+   "gross_wpm": 140.20455664809108,
+   "span_wpm": 142.3537210844004
+  },
+  {
+   "id": "TPO28_lec4_Gonur-depe.mp3",
+   "tpo": 28,
+   "kind": "lec",
+   "words": 673,
+   "audio_sec": 303.080812,
+   "span_sec": 294.3736722306525,
+   "gross_wpm": 133.23179297803915,
+   "span_wpm": 137.17259323503902
+  },
+  {
+   "id": "TPO29_conv1_Fix_a_problem_with_class_schedule.mp3",
+   "tpo": 29,
+   "kind": "conv",
+   "words": 472,
+   "audio_sec": 155.298,
+   "span_sec": 146.94727668845317,
+   "gross_wpm": 182.3590773867017,
+   "span_wpm": 192.7221833449965
+  },
+  {
+   "id": "TPO29_lec1_Pedodiversity_Plant.mp3",
+   "tpo": 29,
+   "kind": "lec",
+   "words": 756,
+   "audio_sec": 297.7175,
+   "span_sec": 289.6959786950732,
+   "gross_wpm": 152.35919957678001,
+   "span_wpm": 156.57794148307738
+  },
+  {
+   "id": "TPO29_lec2_Reverberation.mp3",
+   "tpo": 29,
+   "kind": "lec",
+   "words": 734,
+   "audio_sec": 342.178,
+   "span_sec": 336.5225977653631,
+   "gross_wpm": 128.70494304134104,
+   "span_wpm": 130.86788314497213
+  },
+  {
+   "id": "TPO29_conv2_Instructions_on_a_world_music_assignment.mp3",
+   "tpo": 29,
+   "kind": "conv",
+   "words": 501,
+   "audio_sec": 178.39025,
+   "span_sec": 171.29914460285133,
+   "gross_wpm": 168.50696716888953,
+   "span_wpm": 175.48248749106503
+  },
+  {
+   "id": "TPO29_lec3_Clovis_people_&_caches.mp3",
+   "tpo": 29,
+   "kind": "lec",
+   "words": 697,
+   "audio_sec": 264.80325,
+   "span_sec": 258.1039912280702,
+   "gross_wpm": 157.92857527239565,
+   "span_wpm": 162.02771526708517
+  },
+  {
+   "id": "TPO29_lec4_Carbon_Nanotubes.mp3",
+   "tpo": 29,
+   "kind": "lec",
+   "words": 707,
+   "audio_sec": 317.59675,
+   "span_sec": 310.34397360703815,
+   "gross_wpm": 133.56559851446843,
+   "span_wpm": 136.68704278985868
+  },
+  {
+   "id": "TPO30_conv1_Arrange_Work_Space_For_A_Club.mp3",
+   "tpo": 30,
+   "kind": "conv",
+   "words": 509,
+   "audio_sec": 175.0465,
+   "span_sec": 165.48583665338646,
+   "gross_wpm": 174.46792709365798,
+   "span_wpm": 184.54751547086576
+  },
+  {
+   "id": "TPO30_lec1_Metacognition.mp3",
+   "tpo": 30,
+   "kind": "lec",
+   "words": 768,
+   "audio_sec": 315.24575,
+   "span_sec": 306.2000536912752,
+   "gross_wpm": 146.17167717566375,
+   "span_wpm": 150.4898495101505
+  },
+  {
+   "id": "TPO30_lec2_Oviraptor.mp3",
+   "tpo": 30,
+   "kind": "lec",
+   "words": 729,
+   "audio_sec": 282.1225,
+   "span_sec": 277.3258741258741,
+   "gross_wpm": 155.03903446198018,
+   "span_wpm": 157.72058823529414
+  },
+  {
+   "id": "TPO30_conv2_Student's_Ideas_About_The_Class_Assignment.mp3",
+   "tpo": 30,
+   "kind": "conv",
+   "words": 495,
+   "audio_sec": 167.3665,
+   "span_sec": 161.64094736842105,
+   "gross_wpm": 177.4548670134107,
+   "span_wpm": 183.74057120753014
+  },
+  {
+   "id": "TPO30_lec3_Jarosite.mp3",
+   "tpo": 30,
+   "kind": "lec",
+   "words": 578,
+   "audio_sec": 232.516,
+   "span_sec": 227.95327370304116,
+   "gross_wpm": 149.1510261659413,
+   "span_wpm": 152.13644198494057
+  },
+  {
+   "id": "TPO30_lec4_Electric_Guitar.mp3",
+   "tpo": 30,
+   "kind": "lec",
+   "words": 704,
+   "audio_sec": 316.96975,
+   "span_sec": 311.63528384279476,
+   "gross_wpm": 133.26192799155123,
+   "span_wpm": 135.54306007694584
+  },
+  {
+   "id": "TPO31_conv1_Discussion_About_Colonial_Settlements.mp3",
+   "tpo": 31,
+   "kind": "conv",
+   "words": 466,
+   "audio_sec": 190.093,
+   "span_sec": 180.5620842572062,
+   "gross_wpm": 147.08590005944458,
+   "span_wpm": 154.8497854077253
+  },
+  {
+   "id": "TPO31_lec1_Music_In_Ancient_Greece.mp3",
+   "tpo": 31,
+   "kind": "lec",
+   "words": 654,
+   "audio_sec": 249.67825,
+   "span_sec": 245.13759375,
+   "gross_wpm": 157.16226783870843,
+   "span_wpm": 160.0733669598566
+  },
+  {
+   "id": "TPO31_lec2_Plate_Drift.mp3",
+   "tpo": 31,
+   "kind": "lec",
+   "words": 735,
+   "audio_sec": 282.018,
+   "span_sec": 276.44278846153844,
+   "gross_wpm": 156.37299746824672,
+   "span_wpm": 159.5266790840364
+  },
+  {
+   "id": "TPO31_conv2_An_Error_In_Registration_Record.mp3",
+   "tpo": 31,
+   "kind": "conv",
+   "words": 419,
+   "audio_sec": 148.29725,
+   "span_sec": 141.63641277641278,
+   "gross_wpm": 169.52438430247358,
+   "span_wpm": 177.4967291757523
+  },
+  {
+   "id": "TPO31_lec3_Decline_Of_Coral_Reefs.mp3",
+   "tpo": 31,
+   "kind": "lec",
+   "words": 583,
+   "audio_sec": 242.28575,
+   "span_sec": 236.91,
+   "gross_wpm": 144.37497871831093,
+   "span_wpm": 147.6510067114094
+  },
+  {
+   "id": "TPO31_lec4_The_Botai_Culture.mp3",
+   "tpo": 31,
+   "kind": "lec",
+   "words": 751,
+   "audio_sec": 309.0025,
+   "span_sec": 299.1757671232877,
+   "gross_wpm": 145.82406291211237,
+   "span_wpm": 150.6138028265878
+  },
+  {
+   "id": "TPO32_conv1_The_Bookstore's_Buyback_Policies.mp3",
+   "tpo": 32,
+   "kind": "conv",
+   "words": 402,
+   "audio_sec": 142.34125,
+   "span_sec": 125.03999999999999,
+   "gross_wpm": 169.45193329410836,
+   "span_wpm": 192.8982725527831
+  },
+  {
+   "id": "TPO32_lec1_Ancient_Bananas.mp3",
+   "tpo": 32,
+   "kind": "lec",
+   "words": 553,
+   "audio_sec": 254.64175,
+   "span_sec": 246.8786106032907,
+   "gross_wpm": 130.3007067772665,
+   "span_wpm": 134.39803439803438
+  },
+  {
+   "id": "TPO32_lec2_Relationships_Among_Species.mp3",
+   "tpo": 32,
+   "kind": "lec",
+   "words": 693,
+   "audio_sec": 267.12825,
+   "span_sec": 261.26305637982193,
+   "gross_wpm": 155.65556993691234,
+   "span_wpm": 159.1499409681228
+  },
+  {
+   "id": "TPO32_conv2_Paper_Topic_About_Wood_Harvesting_Techniques.mp3",
+   "tpo": 32,
+   "kind": "conv",
+   "words": 452,
+   "audio_sec": 166.11275,
+   "span_sec": 156.08381818181817,
+   "gross_wpm": 163.26260326194105,
+   "span_wpm": 173.75279715677243
+  },
+  {
+   "id": "TPO32_lec3_The_Copper_Basin.mp3",
+   "tpo": 32,
+   "kind": "lec",
+   "words": 623,
+   "audio_sec": 275.435,
+   "span_sec": 264.54632952691674,
+   "gross_wpm": 135.71260006898177,
+   "span_wpm": 141.29850172877454
+  },
+  {
+   "id": "TPO32_lec4_Harriet_Morrison_Irwin.mp3",
+   "tpo": 32,
+   "kind": "lec",
+   "words": 679,
+   "audio_sec": 261.27675,
+   "span_sec": 253.90147540983605,
+   "gross_wpm": 155.92661804006673,
+   "span_wpm": 160.45594037702762
+  },
+  {
+   "id": "TPO33_conv1_University's_policies_regarding_dorm_rooms.mp3",
+   "tpo": 33,
+   "kind": "conv",
+   "words": 456,
+   "audio_sec": 140.19925,
+   "span_sec": 132.9151708428246,
+   "gross_wpm": 195.15082997947562,
+   "span_wpm": 205.84557674273208
+  },
+  {
+   "id": "TPO33_lec1_the_Great_Pyramid.mp3",
+   "tpo": 33,
+   "kind": "lec",
+   "words": 762,
+   "audio_sec": 280.6595,
+   "span_sec": 272.67408,
+   "gross_wpm": 162.90202184497585,
+   "span_wpm": 167.6727028839705
+  },
+  {
+   "id": "TPO33_lec2_Colorado's_water.mp3",
+   "tpo": 33,
+   "kind": "lec",
+   "words": 676,
+   "audio_sec": 255.0595,
+   "span_sec": 245.01811320754717,
+   "gross_wpm": 159.0217184617707,
+   "span_wpm": 165.53878188443517
+  },
+  {
+   "id": "TPO33_conv2_Write_about_genetic_explanation_of_picky_eaters.mp3",
+   "tpo": 33,
+   "kind": "conv",
+   "words": 450,
+   "audio_sec": 168.2025,
+   "span_sec": 159.8684210526316,
+   "gross_wpm": 160.52080082043966,
+   "span_wpm": 168.88888888888886
+  },
+  {
+   "id": "TPO33_lec3_Notothenioids.mp3",
+   "tpo": 33,
+   "kind": "lec",
+   "words": 738,
+   "audio_sec": 333.9495,
+   "span_sec": 325.6514563106796,
+   "gross_wpm": 132.5948983304362,
+   "span_wpm": 135.97359735973598
+  },
+  {
+   "id": "TPO33_lec4_the_Renaissance_gardens.mp3",
+   "tpo": 33,
+   "kind": "lec",
+   "words": 719,
+   "audio_sec": 275.174,
+   "span_sec": 267.5876614060258,
+   "gross_wpm": 156.77353238314666,
+   "span_wpm": 161.2181958365459
+  },
+  {
+   "id": "TPO34_conv1_Policies_For_Library's_Annual_Book_Sale.mp3",
+   "tpo": 34,
+   "kind": "conv",
+   "words": 469,
+   "audio_sec": 141.68825,
+   "span_sec": 130.9064731182796,
+   "gross_wpm": 198.60503605627142,
+   "span_wpm": 214.96263194390937
+  },
+  {
+   "id": "TPO34_lec1_Dadasim.mp3",
+   "tpo": 34,
+   "kind": "lec",
+   "words": 723,
+   "audio_sec": 287.556,
+   "span_sec": 280.4515994436718,
+   "gross_wpm": 150.8575720903059,
+   "span_wpm": 154.6790964503406
+  },
+  {
+   "id": "TPO34_lec2_APS_digestion.mp3",
+   "tpo": 34,
+   "kind": "lec",
+   "words": 728,
+   "audio_sec": 309.49875,
+   "span_sec": 300.51019718309857,
+   "gross_wpm": 141.13142621739183,
+   "span_wpm": 145.35280469496385
+  },
+  {
+   "id": "TPO34_conv2_Discuss_Welty's_Writing_Style.mp3",
+   "tpo": 34,
+   "kind": "conv",
+   "words": 500,
+   "audio_sec": 177.86775,
+   "span_sec": 169.01422764227644,
+   "gross_wpm": 168.6646398799108,
+   "span_wpm": 177.4998496783116
+  },
+  {
+   "id": "TPO34_lec3_Plants_And_Pollinators.mp3",
+   "tpo": 34,
+   "kind": "lec",
+   "words": 619,
+   "audio_sec": 267.36325,
+   "span_sec": 262.52158940397345,
+   "gross_wpm": 138.9121354561631,
+   "span_wpm": 141.47407870081202
+  },
+  {
+   "id": "TPO34_lec4_The_Life_Cycle_Of_Innovation.mp3",
+   "tpo": 34,
+   "kind": "lec",
+   "words": 752,
+   "audio_sec": 291.16075,
+   "span_sec": 284.39272727272726,
+   "gross_wpm": 154.96594235315027,
+   "span_wpm": 158.65384615384616
+  },
+  {
+   "id": "TPO40_conv1_Disscuss_A_Project_On_Service_Design.mp3",
+   "tpo": 40,
+   "kind": "conv",
+   "words": 491,
+   "audio_sec": 163.004082,
+   "span_sec": 157.7657828810021,
+   "gross_wpm": 180.73167026577897,
+   "span_wpm": 186.7325060100058
+  },
+  {
+   "id": "TPO40_lec1_A_Formal_Analysis_Of_Art.mp3",
+   "tpo": 40,
+   "kind": "lec",
+   "words": 694,
+   "audio_sec": 252.342857,
+   "span_sec": 246.23693215339233,
+   "gross_wpm": 165.01358704993976,
+   "span_wpm": 169.10542068506817
+  },
+  {
+   "id": "TPO40_lec2_Cape_Cod.mp3",
+   "tpo": 40,
+   "kind": "lec",
+   "words": 727,
+   "audio_sec": 287.843265,
+   "span_sec": 282.626384180791,
+   "gross_wpm": 151.54080468063063,
+   "span_wpm": 154.33803226275248
+  },
+  {
+   "id": "TPO40_conv2_Ask_A_Librarian_For_Recommendation_For_A_Job.mp3",
+   "tpo": 40,
+   "kind": "conv",
+   "words": 398,
+   "audio_sec": 135.57551,
+   "span_sec": 129.18502590673575,
+   "gross_wpm": 176.13800604548712,
+   "span_wpm": 184.8511453428047
+  },
+  {
+   "id": "TPO40_lec3_Greenhouse_Effect.mp3",
+   "tpo": 40,
+   "kind": "lec",
+   "words": 730,
+   "audio_sec": 303.542857,
+   "span_sec": 296.17862068965513,
+   "gross_wpm": 144.2959338028501,
+   "span_wpm": 147.88373278939318
+  },
+  {
+   "id": "TPO40_lec4_Infrastructure_Privatization.mp3",
+   "tpo": 40,
+   "kind": "lec",
+   "words": 707,
+   "audio_sec": 293.511837,
+   "span_sec": 287.80197406340056,
+   "gross_wpm": 144.52568739161273,
+   "span_wpm": 147.3930126367208
+  },
+  {
+   "id": "TPO41_conv1_Suggestions_On_Research_Project.mp3",
+   "tpo": 41,
+   "kind": "conv",
+   "words": 420,
+   "audio_sec": 130.951837,
+   "span_sec": 131.73861386138614,
+   "gross_wpm": 192.43716298535008,
+   "span_wpm": 191.28787878787878
+  },
+  {
+   "id": "TPO41_lec1_Desert_Plants.mp3",
+   "tpo": 41,
+   "kind": "lec",
+   "words": 605,
+   "audio_sec": 229.929796,
+   "span_sec": 230.18957264957263,
+   "gross_wpm": 157.87427567673743,
+   "span_wpm": 157.69610926408484
+  },
+  {
+   "id": "TPO41_lec2_Christopher_Columbus.mp3",
+   "tpo": 41,
+   "kind": "lec",
+   "words": 697,
+   "audio_sec": 310.700408,
+   "span_sec": 311.4473145400594,
+   "gross_wpm": 134.59911517077893,
+   "span_wpm": 134.27632234286284
+  },
+  {
+   "id": "TPO41_conv2_Get_Help_On_Paying_Tuition.mp3",
+   "tpo": 41,
+   "kind": "conv",
+   "words": 472,
+   "audio_sec": 163.761633,
+   "span_sec": 165.75101321585905,
+   "gross_wpm": 172.93427942306855,
+   "span_wpm": 170.85868406197076
+  },
+  {
+   "id": "TPO41_lec3_Analysing_The_Ownership_Of_Works_Of_Art.mp3",
+   "tpo": 41,
+   "kind": "lec",
+   "words": 789,
+   "audio_sec": 300.382041,
+   "span_sec": 298.63345758354757,
+   "gross_wpm": 157.59930201686058,
+   "span_wpm": 158.5220905355384
+  },
+  {
+   "id": "TPO41_lec4_Exoplanets.mp3",
+   "tpo": 41,
+   "kind": "lec",
+   "words": 668,
+   "audio_sec": 263.601633,
+   "span_sec": 264.3110773899848,
+   "gross_wpm": 152.04761648802076,
+   "span_wpm": 151.6395014381592
+  },
+  {
+   "id": "TPO42_conv1_Discussion_About_The_Bauhaus.mp3",
+   "tpo": 42,
+   "kind": "conv",
+   "words": 501,
+   "audio_sec": 187.297959,
+   "span_sec": 181.99963636363637,
+   "gross_wpm": 160.4929394879311,
+   "span_wpm": 165.16516516516515
+  },
+  {
+   "id": "TPO42_lec1_Greek_And_Roman_Statues.mp3",
+   "tpo": 42,
+   "kind": "lec",
+   "words": 721,
+   "audio_sec": 293.511837,
+   "span_sec": 288.95948755490485,
+   "gross_wpm": 147.38758219144665,
+   "span_wpm": 149.70956782230667
+  },
+  {
+   "id": "TPO42_lec2_Distribution_Of_Galaxies.mp3",
+   "tpo": 42,
+   "kind": "lec",
+   "words": 707,
+   "audio_sec": 329.351837,
+   "span_sec": 327.38896755162244,
+   "gross_wpm": 128.79843144764365,
+   "span_wpm": 129.57064594215825
+  },
+  {
+   "id": "TPO42_conv2_Find_A_Rehearsal_Space.mp3",
+   "tpo": 42,
+   "kind": "conv",
+   "words": 347,
+   "audio_sec": 124.499592,
+   "span_sec": 118.23514705882353,
+   "gross_wpm": 167.2294636917364,
+   "span_wpm": 176.0897712559344
+  },
+  {
+   "id": "TPO42_lec3_Fungi.mp3",
+   "tpo": 42,
+   "kind": "lec",
+   "words": 663,
+   "audio_sec": 263.497143,
+   "span_sec": 257.9530126182965,
+   "gross_wpm": 150.96937882168993,
+   "span_wpm": 154.2141322414562
+  },
+  {
+   "id": "TPO42_lec4_Service_Failures.mp3",
+   "tpo": 42,
+   "kind": "lec",
+   "words": 754,
+   "audio_sec": 305.684898,
+   "span_sec": 304.29874316939885,
+   "gross_wpm": 147.9955349315294,
+   "span_wpm": 148.66969060997903
+  },
+  {
+   "id": "TPO43_conv1_Printers_In_The_Student_Center_Broken_Down.mp3",
+   "tpo": 43,
+   "kind": "conv",
+   "words": 440,
+   "audio_sec": 146.259592,
+   "span_sec": 139.31627906976746,
+   "gross_wpm": 180.50098211678315,
+   "span_wpm": 189.49687844289383
+  },
+  {
+   "id": "TPO43_lec1_Leaves_Turn_Color.mp3",
+   "tpo": 43,
+   "kind": "lec",
+   "words": 762,
+   "audio_sec": 307.330612,
+   "span_sec": 300.4232231404959,
+   "gross_wpm": 148.76487474667834,
+   "span_wpm": 152.18530552353
+  },
+  {
+   "id": "TPO43_lec2_Approximate_Number_Sense.mp3",
+   "tpo": 43,
+   "kind": "lec",
+   "words": 783,
+   "audio_sec": 334.027755,
+   "span_sec": 329.94921259842516,
+   "gross_wpm": 140.6469950378824,
+   "span_wpm": 142.38554967299908
+  },
+  {
+   "id": "TPO43_conv2_Discussion_About_A_Professor.mp3",
+   "tpo": 43,
+   "kind": "conv",
+   "words": 517,
+   "audio_sec": 182.125714,
+   "span_sec": 174.3129745596869,
+   "gross_wpm": 170.3219129177992,
+   "span_wpm": 177.95577224447152
+  },
+  {
+   "id": "TPO43_lec3_Theodor_Seuss_Geisel.mp3",
+   "tpo": 43,
+   "kind": "lec",
+   "words": 682,
+   "audio_sec": 282.540408,
+   "span_sec": 277.7722678843227,
+   "gross_wpm": 144.82884161475408,
+   "span_wpm": 147.31492208229008
+  },
+  {
+   "id": "TPO43_lec4_Electromagnetic_Waves.mp3",
+   "tpo": 43,
+   "kind": "lec",
+   "words": 668,
+   "audio_sec": 301.00898,
+   "span_sec": 297.14764525993877,
+   "gross_wpm": 133.1521737324913,
+   "span_wpm": 134.88244190842846
+  },
+  {
+   "id": "TPO44_conv1_Discuss_a_Research_Project.mp3",
+   "tpo": 44,
+   "kind": "conv",
+   "words": 478,
+   "audio_sec": 187.637551,
+   "span_sec": 183.7182608695652,
+   "gross_wpm": 152.8478699873886,
+   "span_wpm": 156.10859728506787
+  },
+  {
+   "id": "TPO44_lec1_An_Application_Of_Nanotechnology.mp3",
+   "tpo": 44,
+   "kind": "lec",
+   "words": 675,
+   "audio_sec": 302.315102,
+   "span_sec": 301.08282674772045,
+   "gross_wpm": 133.9661820797824,
+   "span_wpm": 134.51448040885856
+  },
+  {
+   "id": "TPO44_lec2_The_Structure_Of_Theater.mp3",
+   "tpo": 44,
+   "kind": "lec",
+   "words": 745,
+   "audio_sec": 268.59102,
+   "span_sec": 261.2162726008345,
+   "gross_wpm": 166.42403011090988,
+   "span_wpm": 171.12257040856804
+  },
+  {
+   "id": "TPO44_conv2_Discussion_About_The_Monthly_Exhibition.mp3",
+   "tpo": 44,
+   "kind": "conv",
+   "words": 458,
+   "audio_sec": 154.357551,
+   "span_sec": 150.1952466367713,
+   "gross_wpm": 178.02821968845566,
+   "span_wpm": 182.96184876247779
+  },
+  {
+   "id": "TPO44_lec3_New_Guinea.mp3",
+   "tpo": 44,
+   "kind": "lec",
+   "words": 673,
+   "audio_sec": 316.238367,
+   "span_sec": 312.2678963414634,
+   "gross_wpm": 127.68849138409574,
+   "span_wpm": 129.31204415533216
+  },
+  {
+   "id": "TPO44_lec4_Renewable_Energy_Sources.mp3",
+   "tpo": 44,
+   "kind": "lec",
+   "words": 738,
+   "audio_sec": 260.101224,
+   "span_sec": 255.75765690376568,
+   "gross_wpm": 170.24141339680892,
+   "span_wpm": 173.13264649066326
+  },
+  {
+   "id": "TPO45_conv1_Rent_A_Mailbox_Or_Not.mp3",
+   "tpo": 45,
+   "kind": "conv",
+   "words": 410,
+   "audio_sec": 131.709388,
+   "span_sec": 125.6071794871795,
+   "gross_wpm": 186.77484098551884,
+   "span_wpm": 195.84867760294608
+  },
+  {
+   "id": "TPO45_lec1_Techniques_used_during_the_Renaissance.mp3",
+   "tpo": 45,
+   "kind": "lec",
+   "words": 679,
+   "audio_sec": 302.680816,
+   "span_sec": 298.85217194570134,
+   "gross_wpm": 134.59723195671575,
+   "span_wpm": 136.32157910969468
+  },
+  {
+   "id": "TPO45_lec2_T-cells.mp3",
+   "tpo": 45,
+   "kind": "lec",
+   "words": 764,
+   "audio_sec": 288.130612,
+   "span_sec": 282.96147368421055,
+   "gross_wpm": 159.0945150944253,
+   "span_wpm": 162.00085263606647
+  },
+  {
+   "id": "TPO45_conv2_Get_Information_About_A_Program.mp3",
+   "tpo": 45,
+   "kind": "conv",
+   "words": 475,
+   "audio_sec": 178.782041,
+   "span_sec": 171.86177105831533,
+   "gross_wpm": 159.411984786548,
+   "span_wpm": 165.83094555873924
+  },
+  {
+   "id": "TPO45_lec3_Homogeneous_And_Heterogeneous.mp3",
+   "tpo": 45,
+   "kind": "lec",
+   "words": 763,
+   "audio_sec": 305.946122,
+   "span_sec": 304.4473108108108,
+   "gross_wpm": 149.63418951262275,
+   "span_wpm": 150.37084702137028
+  },
+  {
+   "id": "TPO45_lec4_Early_Pottery.mp3",
+   "tpo": 45,
+   "kind": "lec",
+   "words": 679,
+   "audio_sec": 269.505306,
+   "span_sec": 265.50371517027867,
+   "gross_wpm": 151.1658549683619,
+   "span_wpm": 153.44418052256532
+  },
+  {
+   "id": "TPO46_conv1_Apply_For_Housing.mp3",
+   "tpo": 46,
+   "kind": "conv",
+   "words": 454,
+   "audio_sec": 138.083265,
+   "span_sec": 132.37520547945203,
+   "gross_wpm": 197.27227626026948,
+   "span_wpm": 205.77871740662442
+  },
+  {
+   "id": "TPO46_lec1_swarm_intelligence.mp3",
+   "tpo": 46,
+   "kind": "lec",
+   "words": 733,
+   "audio_sec": 266.44898,
+   "span_sec": 264.0239270687237,
+   "gross_wpm": 165.05974239420996,
+   "span_wpm": 166.57581185265946
+  },
+  {
+   "id": "TPO46_lec2_preference_in_portrait_painting.mp3",
+   "tpo": 46,
+   "kind": "lec",
+   "words": 671,
+   "audio_sec": 272.378776,
+   "span_sec": 269.7256838905775,
+   "gross_wpm": 147.80887333159907,
+   "span_wpm": 149.26275992438565
+  },
+  {
+   "id": "TPO46_conv2_Using_Old_Newspaper_to_Finish_the_Term_Paper_about_French_Revolution.mp3",
+   "tpo": 46,
+   "kind": "conv",
+   "words": 495,
+   "audio_sec": 184.502857,
+   "span_sec": 181.95774193548388,
+   "gross_wpm": 160.97311707211122,
+   "span_wpm": 163.22471187035626
+  },
+  {
+   "id": "TPO46_lec3_Precious_Blue_Pigment.mp3",
+   "tpo": 46,
+   "kind": "lec",
+   "words": 511,
+   "audio_sec": 197.799184,
+   "span_sec": 194.84240740740742,
+   "gross_wpm": 155.00569506899484,
+   "span_wpm": 157.35794074793586
+  },
+  {
+   "id": "TPO46_lec4_Copper.mp3",
+   "tpo": 46,
+   "kind": "lec",
+   "words": 690,
+   "audio_sec": 246.987755,
+   "span_sec": 242.86784140969164,
+   "gross_wpm": 167.61964575936165,
+   "span_wpm": 170.4630788485607
+  },
+  {
+   "id": "TPO47_conv1_background_knowledge_of_a_concert.mp3",
+   "tpo": 47,
+   "kind": "conv",
+   "words": 547,
+   "audio_sec": 182.595918,
+   "span_sec": 178.67298311444654,
+   "gross_wpm": 179.74114843027323,
+   "span_wpm": 183.68753589890866
+  },
+  {
+   "id": "TPO47_lec1_Hernani.mp3",
+   "tpo": 47,
+   "kind": "lec",
+   "words": 789,
+   "audio_sec": 361.299592,
+   "span_sec": 358.62680000000006,
+   "gross_wpm": 131.02699545810725,
+   "span_wpm": 132.00352009386916
+  },
+  {
+   "id": "TPO47_lec2_albatross.mp3",
+   "tpo": 47,
+   "kind": "lec",
+   "words": 691,
+   "audio_sec": 254.066939,
+   "span_sec": 249.70136231884058,
+   "gross_wpm": 163.18534069480012,
+   "span_wpm": 166.03834122082296
+  },
+  {
+   "id": "TPO47_conv2_feedback_on_an_assignment.mp3",
+   "tpo": 47,
+   "kind": "conv",
+   "words": 434,
+   "audio_sec": 148.819592,
+   "span_sec": 144.00079439252337,
+   "gross_wpm": 174.97696136675336,
+   "span_wpm": 180.83233575100343
+  },
+  {
+   "id": "TPO47_lec3_things_coaches_should_know.mp3",
+   "tpo": 47,
+   "kind": "lec",
+   "words": 740,
+   "audio_sec": 327.209796,
+   "span_sec": 322.00136986301374,
+   "gross_wpm": 135.69275902730004,
+   "span_wpm": 137.88761215173932
+  },
+  {
+   "id": "TPO47_lec4_the_role_of_wind.mp3",
+   "tpo": 47,
+   "kind": "lec",
+   "words": 716,
+   "audio_sec": 308.323265,
+   "span_sec": 302.2711621233859,
+   "gross_wpm": 139.334279558826,
+   "span_wpm": 142.12404418011897
+  },
+  {
+   "id": "TPO48_conv1_get_a_new_campus_job.mp3",
+   "tpo": 48,
+   "kind": "conv",
+   "words": 490,
+   "audio_sec": 169.116735,
+   "span_sec": 160.8934156378601,
+   "gross_wpm": 173.84441581136247,
+   "span_wpm": 182.72966537160042
+  },
+  {
+   "id": "TPO48_lec1_Georgia_O'Keeffe.mp3",
+   "tpo": 48,
+   "kind": "lec",
+   "words": 709,
+   "audio_sec": 298.370612,
+   "span_sec": 295.26617945007234,
+   "gross_wpm": 142.5743631882888,
+   "span_wpm": 144.07339194495606
+  },
+  {
+   "id": "TPO48_lec2_formation_of_some_special_volcanos.mp3",
+   "tpo": 48,
+   "kind": "lec",
+   "words": 761,
+   "audio_sec": 309.524898,
+   "span_sec": 305.85680053547526,
+   "gross_wpm": 147.51640431846616,
+   "span_wpm": 149.2855477467275
+  },
+  {
+   "id": "TPO48_conv2_Advice_on_Polish_Class.mp3",
+   "tpo": 48,
+   "kind": "conv",
+   "words": 412,
+   "audio_sec": 136.542041,
+   "span_sec": 131.60944038929443,
+   "gross_wpm": 181.04314113775402,
+   "span_wpm": 187.82847132302533
+  },
+  {
+   "id": "TPO48_lec3_Mutualism.mp3",
+   "tpo": 48,
+   "kind": "lec",
+   "words": 744,
+   "audio_sec": 308.323265,
+   "span_sec": 305.1510447761194,
+   "gross_wpm": 144.7831061337522,
+   "span_wpm": 146.2882096069869
+  },
+  {
+   "id": "TPO48_lec4_how_business_leaders_get_political_power_in_19th.mp3",
+   "tpo": 48,
+   "kind": "lec",
+   "words": 801,
+   "audio_sec": 394.736327,
+   "span_sec": 389.84374841168994,
+   "gross_wpm": 121.75215887845053,
+   "span_wpm": 123.28016082291204
+  },
+  {
+   "id": "TPO49_conv1_Restricted_Access.mp3",
+   "tpo": 49,
+   "kind": "conv",
+   "words": 429,
+   "audio_sec": 147.722449,
+   "span_sec": 141.50971896955502,
+   "gross_wpm": 174.2456896311,
+   "span_wpm": 181.89563365282217
+  },
+  {
+   "id": "TPO49_lec1_Thaw_lakes_in_Alaska.mp3",
+   "tpo": 49,
+   "kind": "lec",
+   "words": 860,
+   "audio_sec": 364.068571,
+   "span_sec": 360.19904988123517,
+   "gross_wpm": 141.7315421055667,
+   "span_wpm": 143.25412578687687
+  },
+  {
+   "id": "TPO49_lec2_Montessori_Method.mp3",
+   "tpo": 49,
+   "kind": "lec",
+   "words": 736,
+   "audio_sec": 317.675102,
+   "span_sec": 307.69147679324897,
+   "gross_wpm": 139.00994985751197,
+   "span_wpm": 143.52038756560356
+  },
+  {
+   "id": "TPO49_conv2_Extension_For_Paper.mp3",
+   "tpo": 49,
+   "kind": "conv",
+   "words": 503,
+   "audio_sec": 165.433469,
+   "span_sec": 157.61342741935482,
+   "gross_wpm": 182.4298322608468,
+   "span_wpm": 191.48114785741862
+  },
+  {
+   "id": "TPO49_lec3_Reindeer.mp3",
+   "tpo": 49,
+   "kind": "lec",
+   "words": 758,
+   "audio_sec": 279.04,
+   "span_sec": 273.5551417004049,
+   "gross_wpm": 162.9873853211009,
+   "span_wpm": 166.25532869643257
+  },
+  {
+   "id": "TPO49_lec4_Pottery.mp3",
+   "tpo": 49,
+   "kind": "lec",
+   "words": 616,
+   "audio_sec": 272.613878,
+   "span_sec": 267.56325423728816,
+   "gross_wpm": 135.57637003351678,
+   "span_wpm": 138.1355601514028
+  },
+  {
+   "id": "TPO35_conv1_Part-Time_Position.mp3",
+   "tpo": 35,
+   "kind": "conv",
+   "words": 492,
+   "audio_sec": 171.467755,
+   "span_sec": 164.3053556485356,
+   "gross_wpm": 172.16064909696868,
+   "span_wpm": 179.66547641420783
+  },
+  {
+   "id": "TPO35_lec1_Animal_Navigation_System.mp3",
+   "tpo": 35,
+   "kind": "lec",
+   "words": 715,
+   "audio_sec": 259.866122,
+   "span_sec": 251.09178779069768,
+   "gross_wpm": 165.0850048087453,
+   "span_wpm": 170.85385538678034
+  },
+  {
+   "id": "TPO35_lec2_Earliest_Permanent_Settlement.mp3",
+   "tpo": 35,
+   "kind": "lec",
+   "words": 718,
+   "audio_sec": 309.96898,
+   "span_sec": 300.5749080622348,
+   "gross_wpm": 138.9816490669486,
+   "span_wpm": 143.32533702740142
+  },
+  {
+   "id": "TPO35_conv2_Source_Material_Of_The_Paper.mp3",
+   "tpo": 35,
+   "kind": "conv",
+   "words": 450,
+   "audio_sec": 195.160816,
+   "span_sec": 187.44508009153319,
+   "gross_wpm": 138.34744367947303,
+   "span_wpm": 144.04219084766248
+  },
+  {
+   "id": "TPO35_lec3_Frescos.mp3",
+   "tpo": 35,
+   "kind": "lec",
+   "words": 724,
+   "audio_sec": 332.434286,
+   "span_sec": 329.02480349344984,
+   "gross_wpm": 130.67244213191657,
+   "span_wpm": 132.0265206111271
+  },
+  {
+   "id": "TPO35_lec4_Permian_Extinction.mp3",
+   "tpo": 35,
+   "kind": "lec",
+   "words": 714,
+   "audio_sec": 274.233469,
+   "span_sec": 267.20195121951224,
+   "gross_wpm": 156.21725588863114,
+   "span_wpm": 160.3281705259929
+  },
+  {
+   "id": "TPO39_conv1_Grotowski's_Idea_About_Theater.mp3",
+   "tpo": 39,
+   "kind": "conv",
+   "words": 470,
+   "audio_sec": 170.579592,
+   "span_sec": 162.64529147982063,
+   "gross_wpm": 165.3187211281406,
+   "span_wpm": 173.38343916029544
+  },
+  {
+   "id": "TPO39_lec1_Mineral_Evolution.mp3",
+   "tpo": 39,
+   "kind": "lec",
+   "words": 671,
+   "audio_sec": 309.524898,
+   "span_sec": 312.6245181674566,
+   "gross_wpm": 130.0703118235096,
+   "span_wpm": 128.78068628780684
+  },
+  {
+   "id": "TPO39_lec2_Community-determined_Film.mp3",
+   "tpo": 39,
+   "kind": "lec",
+   "words": 671,
+   "audio_sec": 263.497143,
+   "span_sec": 260.4793272171254,
+   "gross_wpm": 152.79103045151422,
+   "span_wpm": 154.56121002048212
+  },
+  {
+   "id": "TPO39_conv2_Career_Fair.mp3",
+   "tpo": 39,
+   "kind": "conv",
+   "words": 474,
+   "audio_sec": 149.733878,
+   "span_sec": 143.26241379310346,
+   "gross_wpm": 189.93697605294105,
+   "span_wpm": 198.51682829435254
+  },
+  {
+   "id": "TPO39_lec3_Thoreau's_Ideas_About_Train.mp3",
+   "tpo": 39,
+   "kind": "lec",
+   "words": 564,
+   "audio_sec": 253.074286,
+   "span_sec": 252.42253846153847,
+   "gross_wpm": 133.7156790397899,
+   "span_wpm": 134.0609289734886
+  },
+  {
+   "id": "TPO39_lec4_Potential_Alternative_Source_of_Energy-cellulose.mp3",
+   "tpo": 39,
+   "kind": "lec",
+   "words": 575,
+   "audio_sec": 239.307755,
+   "span_sec": 234.4157458563536,
+   "gross_wpm": 144.1658252988918,
+   "span_wpm": 147.17441387721914
+  },
+  {
+   "id": "TPO36_conv1_Change_Of_Academic_Plan.mp3",
+   "tpo": 36,
+   "kind": "conv",
+   "words": 441,
+   "audio_sec": 174.680816,
+   "span_sec": 170.5027868852459,
+   "gross_wpm": 151.4762788834236,
+   "span_wpm": 155.18807922951117
+  },
+  {
+   "id": "TPO36_lec1_Potential_Energy_Source_-_Helium-3.mp3",
+   "tpo": 36,
+   "kind": "lec",
+   "words": 733,
+   "audio_sec": 272.195918,
+   "span_sec": 268.4820738636364,
+   "gross_wpm": 161.5747962833153,
+   "span_wpm": 163.8098192817808
+  },
+  {
+   "id": "TPO36_lec2_Vegetation_Discoloration_And_Mayan_Ruins.mp3",
+   "tpo": 36,
+   "kind": "lec",
+   "words": 734,
+   "audio_sec": 306.860408,
+   "span_sec": 306.33330434782613,
+   "gross_wpm": 143.51802595530668,
+   "span_wpm": 143.76497551828314
+  },
+  {
+   "id": "TPO36_conv2_Talk_Show_Application.mp3",
+   "tpo": 36,
+   "kind": "conv",
+   "words": 409,
+   "audio_sec": 156.05551,
+   "span_sec": 147.60176904176905,
+   "gross_wpm": 157.25173689797947,
+   "span_wpm": 166.25816993464053
+  },
+  {
+   "id": "TPO36_lec3_Suburb_Housing_Design.mp3",
+   "tpo": 36,
+   "kind": "lec",
+   "words": 756,
+   "audio_sec": 270.419592,
+   "span_sec": 265.8140890688259,
+   "gross_wpm": 167.73932563288534,
+   "span_wpm": 170.64558225224533
+  },
+  {
+   "id": "TPO36_lec4_Gause's_Hypothesis.mp3",
+   "tpo": 36,
+   "kind": "lec",
+   "words": 617,
+   "audio_sec": 278.204082,
+   "span_sec": 273.5434768211921,
+   "gross_wpm": 133.06778151443513,
+   "span_wpm": 135.3349764732243
+  },
+  {
+   "id": "TPO38_conv1_Campus_Housing_For_Summer.mp3",
+   "tpo": 38,
+   "kind": "conv",
+   "words": 485,
+   "audio_sec": 172.878367,
+   "span_sec": 166.77774327122154,
+   "gross_wpm": 168.32643959437678,
+   "span_wpm": 174.4837136492263
+  },
+  {
+   "id": "TPO38_lec1_Tulip-breaking_Virus.mp3",
+   "tpo": 38,
+   "kind": "lec",
+   "words": 703,
+   "audio_sec": 264.881633,
+   "span_sec": 257.88558208955226,
+   "gross_wpm": 159.24093914054055,
+   "span_wpm": 163.56090812922125
+  },
+  {
+   "id": "TPO38_lec2_Congruent_and_Incongruent_Media.mp3",
+   "tpo": 38,
+   "kind": "lec",
+   "words": 689,
+   "audio_sec": 266.34449,
+   "span_sec": 264.32637702503683,
+   "gross_wpm": 155.21252194854867,
+   "span_wpm": 156.39755844754117
+  },
+  {
+   "id": "TPO38_conv2_Domestic_Exchange_Program.mp3",
+   "tpo": 38,
+   "kind": "conv",
+   "words": 472,
+   "audio_sec": 161.880816,
+   "span_sec": 157.17299363057325,
+   "gross_wpm": 174.94352141145617,
+   "span_wpm": 180.18362662586074
+  },
+  {
+   "id": "TPO38_lec3_Found_Sound.mp3",
+   "tpo": 38,
+   "kind": "lec",
+   "words": 697,
+   "audio_sec": 296.463673,
+   "span_sec": 292.0684379562043,
+   "gross_wpm": 141.062814127652,
+   "span_wpm": 143.185618729097
+  },
+  {
+   "id": "TPO38_lec4_The_Formation_Of_Gas_Planets.mp3",
+   "tpo": 38,
+   "kind": "lec",
+   "words": 721,
+   "audio_sec": 321.253875,
+   "span_sec": 321.6941325811001,
+   "gross_wpm": 134.65985429747735,
+   "span_wpm": 134.47556426629578
+  },
+  {
+   "id": "TPO37_conv1_Ancient_Peru_Featherwork.mp3",
+   "tpo": 37,
+   "kind": "conv",
+   "words": 429,
+   "audio_sec": 132.571429,
+   "span_sec": 127.79847826086956,
+   "gross_wpm": 194.15948213094998,
+   "span_wpm": 201.41084894186332
+  },
+  {
+   "id": "TPO37_lec1_Soil_Formation.mp3",
+   "tpo": 37,
+   "kind": "lec",
+   "words": 712,
+   "audio_sec": 318.955102,
+   "span_sec": 317.70366863905326,
+   "gross_wpm": 133.93734645448623,
+   "span_wpm": 134.4649250762498
+  },
+  {
+   "id": "TPO37_lec2_Cats'_Domestication.mp3",
+   "tpo": 37,
+   "kind": "lec",
+   "words": 740,
+   "audio_sec": 349.64898,
+   "span_sec": 347.4382681564246,
+   "gross_wpm": 126.98449742367332,
+   "span_wpm": 127.79248594461134
+  },
+  {
+   "id": "TPO37_conv2_Preparation_Of_A_Shakespeare_Play.mp3",
+   "tpo": 37,
+   "kind": "conv",
+   "words": 455,
+   "audio_sec": 147.957551,
+   "span_sec": 143.3149779735683,
+   "gross_wpm": 184.51238085172145,
+   "span_wpm": 190.48951048951048
+  },
+  {
+   "id": "TPO37_lec3_Vasari's_Biographies_Of_Famous_Artists.mp3",
+   "tpo": 37,
+   "kind": "lec",
+   "words": 599,
+   "audio_sec": 220.081633,
+   "span_sec": 215.02692953020133,
+   "gross_wpm": 163.30304128559425,
+   "span_wpm": 167.1418555737322
+  },
+  {
+   "id": "TPO37_lec4_Endotherms_And_Ectotherms.mp3",
+   "tpo": 37,
+   "kind": "lec",
+   "words": 698,
+   "audio_sec": 322.586122,
+   "span_sec": 321.2351111111111,
+   "gross_wpm": 129.82579579167387,
+   "span_wpm": 130.37180106228874
+  },
+  {
+   "id": "TPO50_conv1_Straw_Poll.mp3",
+   "tpo": 50,
+   "kind": "conv",
+   "words": 478,
+   "audio_sec": 165.903673,
+   "span_sec": 160.5377969762419,
+   "gross_wpm": 172.87139869410848,
+   "span_wpm": 178.64951768488746
+  },
+  {
+   "id": "TPO50_lec1_Ancient_Egyptian_Glass.mp3",
+   "tpo": 50,
+   "kind": "lec",
+   "words": 707,
+   "audio_sec": 298.704,
+   "span_sec": 292.15228120516497,
+   "gross_wpm": 142.0134983127109,
+   "span_wpm": 145.19825012151935
+  },
+  {
+   "id": "TPO50_lec2_The_Classification_of_Creatures.mp3",
+   "tpo": 50,
+   "kind": "lec",
+   "words": 726,
+   "audio_sec": 291.576,
+   "span_sec": 287.05875,
+   "gross_wpm": 149.39501193513868,
+   "span_wpm": 151.7459405086938
+  },
+  {
+   "id": "TPO50_conv2_Disturbance_from_Library_Maintenance.mp3",
+   "tpo": 50,
+   "kind": "conv",
+   "words": 500,
+   "audio_sec": 166.464,
+   "span_sec": 157.14859437751005,
+   "gross_wpm": 180.21914648212226,
+   "span_wpm": 190.90212113467925
+  },
+  {
+   "id": "TPO50_lec3_American_Realism.mp3",
+   "tpo": 50,
+   "kind": "lec",
+   "words": 763,
+   "audio_sec": 322.176,
+   "span_sec": 314.31903095558545,
+   "gross_wpm": 142.09624553039333,
+   "span_wpm": 145.64819654992158
+  },
+  {
+   "id": "TPO50_lec4_Petroleum.mp3",
+   "tpo": 50,
+   "kind": "lec",
+   "words": 723,
+   "audio_sec": 288.24,
+   "span_sec": 282.5372610556348,
+   "gross_wpm": 150.49958368026643,
+   "span_wpm": 153.5372709352413
+  },
+  {
+   "id": "TPO51_conv1_Biology_Experiment_Reproduction.mp3",
+   "tpo": 51,
+   "kind": "conv",
+   "words": 480,
+   "audio_sec": 177.0,
+   "span_sec": 170.19696312364425,
+   "gross_wpm": 162.71186440677965,
+   "span_wpm": 169.2157102655084
+  },
+  {
+   "id": "TPO51_lec1_Maize_and_Teosinte.mp3",
+   "tpo": 51,
+   "kind": "lec",
+   "words": 713,
+   "audio_sec": 291.96,
+   "span_sec": 285.2204005722461,
+   "gross_wpm": 146.52692149609538,
+   "span_wpm": 149.9892711537086
+  },
+  {
+   "id": "TPO51_lec2_The_Transmission_of_A_Number_System.mp3",
+   "tpo": 51,
+   "kind": "lec",
+   "words": 700,
+   "audio_sec": 319.2,
+   "span_sec": 313.3577712609971,
+   "gross_wpm": 131.57894736842107,
+   "span_wpm": 134.03209957418932
+  },
+  {
+   "id": "TPO51_conv2_Trip_to_the_New_York_City.mp3",
+   "tpo": 51,
+   "kind": "conv",
+   "words": 499,
+   "audio_sec": 157.608,
+   "span_sec": 148.49030303030304,
+   "gross_wpm": 189.96497639713718,
+   "span_wpm": 201.6293279022403
+  },
+  {
+   "id": "TPO51_lec3_Audubon_the_Famous_Illustrator.mp3",
+   "tpo": 51,
+   "kind": "lec",
+   "words": 727,
+   "audio_sec": 287.52,
+   "span_sec": 282.9443611111111,
+   "gross_wpm": 151.7111853088481,
+   "span_wpm": 154.16458496895297
+  },
+  {
+   "id": "TPO51_lec4_Heliocentric_Theory.mp3",
+   "tpo": 51,
+   "kind": "lec",
+   "words": 744,
+   "audio_sec": 284.616,
+   "span_sec": 277.8337297297297,
+   "gross_wpm": 156.84290412345055,
+   "span_wpm": 160.67163638995441
+  },
+  {
+   "id": "TPO52_conv1_Explication_of_Pablo_Neruda’s_Poem.mp3",
+   "tpo": 52,
+   "kind": "conv",
+   "words": 462,
+   "audio_sec": 164.568,
+   "span_sec": 157.48545034642032,
+   "gross_wpm": 168.4410091876914,
+   "span_wpm": 176.01626016260164
+  },
+  {
+   "id": "TPO52_lec1_Still-life_Painting.mp3",
+   "tpo": 52,
+   "kind": "lec",
+   "words": 647,
+   "audio_sec": 270.192,
+   "span_sec": 262.06661237785016,
+   "gross_wpm": 143.67560845620892,
+   "span_wpm": 148.13027744270204
+  },
+  {
+   "id": "TPO52_lec2_Interactions_within_an_Ecosystem.mp3",
+   "tpo": 52,
+   "kind": "lec",
+   "words": 672,
+   "audio_sec": 315.864,
+   "span_sec": 308.0767123287671,
+   "gross_wpm": 127.64987462958744,
+   "span_wpm": 130.8764940239044
+  },
+  {
+   "id": "TPO52_conv2_Selling_Self-made_Ceramic_Bowls.mp3",
+   "tpo": 52,
+   "kind": "conv",
+   "words": 516,
+   "audio_sec": 178.56,
+   "span_sec": 169.95238095238096,
+   "gross_wpm": 173.38709677419354,
+   "span_wpm": 182.16867469879517
+  },
+  {
+   "id": "TPO52_lec3_Snowflakes_and_Ozone.mp3",
+   "tpo": 52,
+   "kind": "lec",
+   "words": 696,
+   "audio_sec": 256.608,
+   "span_sec": 249.57885462555066,
+   "gross_wpm": 162.7384960718294,
+   "span_wpm": 167.32186732186733
+  },
+  {
+   "id": "TPO52_lec4_Maya_Civilization.mp3",
+   "tpo": 52,
+   "kind": "lec",
+   "words": 672,
+   "audio_sec": 309.792,
+   "span_sec": 303.66315789473686,
+   "gross_wpm": 130.15184381778744,
+   "span_wpm": 132.77870216306155
+  },
+  {
+   "id": "TPO53_conv1_Questions_about_a_Drama_Class.mp3",
+   "tpo": 53,
+   "kind": "conv",
+   "words": 483,
+   "audio_sec": 168.202449,
+   "span_sec": 161.11874186550978,
+   "gross_wpm": 172.29237845401406,
+   "span_wpm": 179.86734295747172
+  },
+  {
+   "id": "TPO53_lec1_Sounds_in_the_Film.mp3",
+   "tpo": 53,
+   "kind": "lec",
+   "words": 742,
+   "audio_sec": 297.221224,
+   "span_sec": 290.31898211829434,
+   "gross_wpm": 149.78741894959694,
+   "span_wpm": 153.34856741079275
+  },
+  {
+   "id": "TPO53_lec2_Two_Kinds_of_Pollution.mp3",
+   "tpo": 53,
+   "kind": "lec",
+   "words": 758,
+   "audio_sec": 305.057959,
+   "span_sec": 299.5203883495145,
+   "gross_wpm": 149.08642327866622,
+   "span_wpm": 151.84275184275185
+  },
+  {
+   "id": "TPO53_conv2_Advice_for_Cafeteria.mp3",
+   "tpo": 53,
+   "kind": "conv",
+   "words": 440,
+   "audio_sec": 155.297959,
+   "span_sec": 147.5816513761468,
+   "gross_wpm": 169.9957949865909,
+   "span_wpm": 178.88402625820567
+  },
+  {
+   "id": "TPO53_lec3_The_History_of_Tea.mp3",
+   "tpo": 53,
+   "kind": "lec",
+   "words": 699,
+   "audio_sec": 310.8,
+   "span_sec": 303.1899555555555,
+   "gross_wpm": 134.94208494208493,
+   "span_wpm": 138.32912084158755
+  },
+  {
+   "id": "TPO53_lec4_Saturn's_Rings.mp3",
+   "tpo": 53,
+   "kind": "lec",
+   "words": 730,
+   "audio_sec": 322.063673,
+   "span_sec": 317.50898876404494,
+   "gross_wpm": 135.99795218133775,
+   "span_wpm": 137.94885042624645
+  },
+  {
+   "id": "TPO54_conv1_Story_Theater.mp3",
+   "tpo": 54,
+   "kind": "conv",
+   "words": 494,
+   "audio_sec": 191.79102,
+   "span_sec": 186.43963265306124,
+   "gross_wpm": 154.54321062581553,
+   "span_wpm": 158.97907316281837
+  },
+  {
+   "id": "TPO54_lec1_Migration_of_Zooplankton.mp3",
+   "tpo": 54,
+   "kind": "lec",
+   "words": 641,
+   "audio_sec": 261.642449,
+   "span_sec": 256.9781170886076,
+   "gross_wpm": 146.99449629444496,
+   "span_wpm": 149.66254884161503
+  },
+  {
+   "id": "TPO54_lec2_Benefits_of_Muon_Detectors.mp3",
+   "tpo": 54,
+   "kind": "lec",
+   "words": 684,
+   "audio_sec": 294.321633,
+   "span_sec": 288.0143558282208,
+   "gross_wpm": 139.4392915725634,
+   "span_wpm": 142.49289720987838
+  },
+  {
+   "id": "TPO54_conv2_Finding_Historical_Material.mp3",
+   "tpo": 54,
+   "kind": "conv",
+   "words": 415,
+   "audio_sec": 145.005714,
+   "span_sec": 135.0470731707317,
+   "gross_wpm": 171.7173710823561,
+   "span_wpm": 184.38015290061463
+  },
+  {
+   "id": "TPO54_lec3_William_Wheatley_and_Broadway_Theaters.mp3",
+   "tpo": 54,
+   "kind": "lec",
+   "words": 678,
+   "audio_sec": 251.245714,
+   "span_sec": 244.44824281150161,
+   "gross_wpm": 161.9132097911131,
+   "span_wpm": 166.41559592379264
+  },
+  {
+   "id": "TPO54_lec4_New_Evidence_of_River_Hypothesis.mp3",
+   "tpo": 54,
+   "kind": "lec",
+   "words": 711,
+   "audio_sec": 303.25551,
+   "span_sec": 297.27925714285715,
+   "gross_wpm": 140.6734538805247,
+   "span_wpm": 143.50143501435014
+  },
+  {
+   "id": "TPO55_conv1_Campus_Hotel_Project.mp3",
+   "tpo": 55,
+   "kind": "conv",
+   "words": 382,
+   "audio_sec": 136.96,
+   "span_sec": 132.56144846796658,
+   "gross_wpm": 167.3481308411215,
+   "span_wpm": 172.9009471825333
+  },
+  {
+   "id": "TPO55_lec1_First_Public_Art_Museum.mp3",
+   "tpo": 55,
+   "kind": "lec",
+   "words": 600,
+   "audio_sec": 228.257937,
+   "span_sec": 226.31578947368422,
+   "gross_wpm": 157.7163119633382,
+   "span_wpm": 159.06976744186045
+  },
+  {
+   "id": "TPO55_lec2_Exercise_and_Cognition.mp3",
+   "tpo": 55,
+   "kind": "lec",
+   "words": 663,
+   "audio_sec": 259.84,
+   "span_sec": 255.50840873634945,
+   "gross_wpm": 153.09421182266013,
+   "span_wpm": 155.68959235720357
+  },
+  {
+   "id": "TPO55_conv2_Forgetting_to_Drop_a_Course.mp3",
+   "tpo": 55,
+   "kind": "conv",
+   "words": 431,
+   "audio_sec": 141.662,
+   "span_sec": 137.1314536340852,
+   "gross_wpm": 182.5471897897813,
+   "span_wpm": 188.57818038597875
+  },
+  {
+   "id": "TPO55_lec3_CMEs_&_the_Aurora.mp3",
+   "tpo": 55,
+   "kind": "lec",
+   "words": 663,
+   "audio_sec": 279.379563,
+   "span_sec": 274.9198104265403,
+   "gross_wpm": 142.3869361553837,
+   "span_wpm": 144.69673879914657
+  },
+  {
+   "id": "TPO56_conv1_Philosophy_Major.mp3",
+   "tpo": 56,
+   "kind": "conv",
+   "words": 501,
+   "audio_sec": 206.001625,
+   "span_sec": 202.18928571428572,
+   "gross_wpm": 145.9211790198257,
+   "span_wpm": 148.6725663716814
+  },
+  {
+   "id": "TPO56_lec1_Jackson_Pollock.mp3",
+   "tpo": 56,
+   "kind": "lec",
+   "words": 736,
+   "audio_sec": 290.40325,
+   "span_sec": 285.465062937063,
+   "gross_wpm": 152.06441387966558,
+   "span_wpm": 154.69493725659885
+  },
+  {
+   "id": "TPO56_lec2_Archaeopteryx.mp3",
+   "tpo": 56,
+   "kind": "lec",
+   "words": 745,
+   "audio_sec": 290.377125,
+   "span_sec": 286.3828785811733,
+   "gross_wpm": 153.93774561270968,
+   "span_wpm": 156.08474997338251
+  },
+  {
+   "id": "TPO56_conv2_Concert_Trip.mp3",
+   "tpo": 56,
+   "kind": "conv",
+   "words": 498,
+   "audio_sec": 150.56975,
+   "span_sec": 144.51109756097563,
+   "gross_wpm": 198.44623505053306,
+   "span_wpm": 206.76612733767595
+  },
+  {
+   "id": "TPO56_lec3_Iceland.mp3",
+   "tpo": 56,
+   "kind": "lec",
+   "words": 788,
+   "audio_sec": 332.199125,
+   "span_sec": 328.58478654592494,
+   "gross_wpm": 142.32427614010123,
+   "span_wpm": 143.8898023764465
+  },
+  {
+   "id": "TPO57_conv1_Piaget.mp3",
+   "tpo": 57,
+   "kind": "conv",
+   "words": 475,
+   "audio_sec": 163.84,
+   "span_sec": 157.8623417721519,
+   "gross_wpm": 173.9501953125,
+   "span_wpm": 180.53704056370216
+  },
+  {
+   "id": "TPO57_lec1_Sentimental_Comedy.mp3",
+   "tpo": 57,
+   "kind": "lec",
+   "words": 680,
+   "audio_sec": 289.332187,
+   "span_sec": 277.26948640483386,
+   "gross_wpm": 141.01438358118105,
+   "span_wpm": 147.14926091949764
+  },
+  {
+   "id": "TPO57_lec2_Craters_and_Age.mp3",
+   "tpo": 57,
+   "kind": "lec",
+   "words": 753,
+   "audio_sec": 268.8,
+   "span_sec": 266.56199999999995,
+   "gross_wpm": 168.08035714285714,
+   "span_wpm": 169.49152542372886
+  },
+  {
+   "id": "TPO57_conv2_Library_Loan.mp3",
+   "tpo": 57,
+   "kind": "conv",
+   "words": 378,
+   "audio_sec": 119.640812,
+   "span_sec": 114.60318302387267,
+   "gross_wpm": 189.5674195190183,
+   "span_wpm": 197.9002624671916
+  },
+  {
+   "id": "TPO57_lec3_The_New_West.mp3",
+   "tpo": 57,
+   "kind": "lec",
+   "words": 739,
+   "audio_sec": 339.017125,
+   "span_sec": 332.27861581920905,
+   "gross_wpm": 130.78985316744692,
+   "span_wpm": 133.44223157630205
+  },
+  {
+   "id": "TPO58_conv1_Museum_Job.mp3",
+   "tpo": 58,
+   "kind": "conv",
+   "words": 479,
+   "audio_sec": 167.079125,
+   "span_sec": 158.8683333333333,
+   "gross_wpm": 172.01430759228597,
+   "span_wpm": 180.90452261306535
+  },
+  {
+   "id": "TPO58_lec1_Homing_Behavior_in_Birds.mp3",
+   "tpo": 58,
+   "kind": "lec",
+   "words": 745,
+   "audio_sec": 281.103625,
+   "span_sec": 266.9376388888889,
+   "gross_wpm": 159.01609237518724,
+   "span_wpm": 167.45484146057834
+  },
+  {
+   "id": "TPO58_conv2_Film_Class_Misunderstanding.mp3",
+   "tpo": 58,
+   "kind": "conv",
+   "words": 489,
+   "audio_sec": 194.50775,
+   "span_sec": 190.5246947368421,
+   "gross_wpm": 150.84231862226568,
+   "span_wpm": 153.99578537850545
+  },
+  {
+   "id": "TPO58_lec2_Interferometers.mp3",
+   "tpo": 58,
+   "kind": "lec",
+   "words": 634,
+   "audio_sec": 252.682437,
+   "span_sec": 248.87081433224753,
+   "gross_wpm": 150.54469337732405,
+   "span_wpm": 152.8503858600946
+  },
+  {
+   "id": "TPO58_lec3_Harlem_Renaissance.mp3",
+   "tpo": 58,
+   "kind": "lec",
+   "words": 765,
+   "audio_sec": 359.497125,
+   "span_sec": 351.77142857142854,
+   "gross_wpm": 127.67835069612866,
+   "span_wpm": 130.48245614035088
+  },
+  {
+   "id": "TPO64_conv1_grand_narrative.mp3",
+   "tpo": 64,
+   "kind": "conv",
+   "words": 486,
+   "audio_sec": 203.154286,
+   "span_sec": 209.33585774058577,
+   "gross_wpm": 143.53622842099426,
+   "span_wpm": 139.29768322890862
+  },
+  {
+   "id": "TPO64_lec1_international_trade.mp3",
+   "tpo": 64,
+   "kind": "lec",
+   "words": 760,
+   "audio_sec": 317.048163,
+   "span_sec": 314.9148936170213,
+   "gross_wpm": 143.82672830689137,
+   "span_wpm": 144.80102695763802
+  },
+  {
+   "id": "TPO64_lec2_continental_polar_air_mass.mp3",
+   "tpo": 64,
+   "kind": "lec",
+   "words": 787,
+   "audio_sec": 348.36898,
+   "span_sec": 350.8952526595745,
+   "gross_wpm": 135.54593752865136,
+   "span_wpm": 134.57007366757134
+  },
+  {
+   "id": "TPO64_conv2_arrange_a_display_spot.mp3",
+   "tpo": 64,
+   "kind": "conv",
+   "words": 542,
+   "audio_sec": 170.840816,
+   "span_sec": 171.06173258003767,
+   "gross_wpm": 190.35263797850274,
+   "span_wpm": 190.10680828211707
+  },
+  {
+   "id": "TPO64_lec3_Gila_lizard.mp3",
+   "tpo": 64,
+   "kind": "lec",
+   "words": 743,
+   "audio_sec": 314.749388,
+   "span_sec": 316.77779020979017,
+   "gross_wpm": 141.63649461964957,
+   "span_wpm": 140.7295630494686
+  },
+  {
+   "id": "TPO69_conv1_Unreturned_CD.mp3",
+   "tpo": 69,
+   "kind": "conv",
+   "words": 461,
+   "audio_sec": 157.126531,
+   "span_sec": 157.2853794642857,
+   "gross_wpm": 176.0364708872749,
+   "span_wpm": 175.8586849852797
+  },
+  {
+   "id": "TPO69_lec1_The_formation_of_hydrothermal_vents.mp3",
+   "tpo": 69,
+   "kind": "lec",
+   "words": 695,
+   "audio_sec": 331.859592,
+   "span_sec": 330.69069767441863,
+   "gross_wpm": 125.65555133931461,
+   "span_wpm": 126.09970674486803
+  },
+  {
+   "id": "TPO69_conv2_Rewrite_Paper.mp3",
+   "tpo": 69,
+   "kind": "conv",
+   "words": 512,
+   "audio_sec": 172.146939,
+   "span_sec": 172.5176082474227,
+   "gross_wpm": 178.4522000707779,
+   "span_wpm": 178.06877983111002
+  },
+  {
+   "id": "TPO69_lec2_How_to_convey_a_personal_point_of_view_in_painting.mp3",
+   "tpo": 69,
+   "kind": "conv",
+   "words": 820,
+   "audio_sec": 361.848163,
+   "span_sec": 360.6688806888069,
+   "gross_wpm": 135.96863278811227,
+   "span_wpm": 136.41321066025336
+  },
+  {
+   "id": "TPO69_lec3_the_fiddler_crab's_visual_field.mp3",
+   "tpo": 69,
+   "kind": "lec",
+   "words": 762,
+   "audio_sec": 300.251429,
+   "span_sec": 300.6530612244898,
+   "gross_wpm": 152.27238102503753,
+   "span_wpm": 152.06896551724137
+  },
+  {
+   "id": "TPO68_conv1_Reschedule_An_Exam.mp3",
+   "tpo": 68,
+   "kind": "conv",
+   "words": 464,
+   "audio_sec": 175.516735,
+   "span_sec": 173.8688695652174,
+   "gross_wpm": 158.61735349623495,
+   "span_wpm": 160.12067065034518
+  },
+  {
+   "id": "TPO68_lec1_Two_Ancient_Arctic_Cultures.mp3",
+   "tpo": 68,
+   "kind": "lec",
+   "words": 742,
+   "audio_sec": 311.745306,
+   "span_sec": 310.305836791148,
+   "gross_wpm": 142.80888643115608,
+   "span_wpm": 143.47135864532345
+  },
+  {
+   "id": "TPO68_lec2_Zircon.mp3",
+   "tpo": 68,
+   "kind": "lec",
+   "words": 744,
+   "audio_sec": 321.149388,
+   "span_sec": 320.89355371900825,
+   "gross_wpm": 139.0007319584243,
+   "span_wpm": 139.11155111295628
+  },
+  {
+   "id": "TPO68_conv2_A_Problem_with_The_Ending_of_The_Man’s_Paper.mp3",
+   "tpo": 68,
+   "kind": "conv",
+   "words": 513,
+   "audio_sec": 177.606531,
+   "span_sec": 177.0051968503937,
+   "gross_wpm": 173.30443777430685,
+   "span_wpm": 173.89319945230488
+  },
+  {
+   "id": "TPO68_lec3_A_Group_of_Mostly_Undisturbed_Archaeological_Sites.mp3",
+   "tpo": 68,
+   "kind": "lec",
+   "words": 767,
+   "audio_sec": 301.191837,
+   "span_sec": 297.8824045261669,
+   "gross_wpm": 152.79298555491727,
+   "span_wpm": 154.49049457353047
+  },
+  {
+   "id": "TPO67_conv1_The_Stove_Maintenance.mp3",
+   "tpo": 67,
+   "kind": "conv",
+   "words": 509,
+   "audio_sec": 178.546939,
+   "span_sec": 177.3368047337278,
+   "gross_wpm": 171.04745772202793,
+   "span_wpm": 172.2146739130435
+  },
+  {
+   "id": "TPO67_lec1_Animal_Behavior_Patterns.mp3",
+   "tpo": 67,
+   "kind": "lec",
+   "words": 718,
+   "audio_sec": 272.953469,
+   "span_sec": 272.2561768901569,
+   "gross_wpm": 157.82909870253383,
+   "span_wpm": 158.23332455513338
+  },
+  {
+   "id": "TPO67_lec2_Emotional_Connection.mp3",
+   "tpo": 67,
+   "kind": "lec",
+   "words": 722,
+   "audio_sec": 315.350204,
+   "span_sec": 315.4128995756719,
+   "gross_wpm": 137.37108601965576,
+   "span_wpm": 137.34378035355823
+  },
+  {
+   "id": "TPO67_conv2_Career_Discussion.mp3",
+   "tpo": 67,
+   "kind": "conv",
+   "words": 493,
+   "audio_sec": 171.964082,
+   "span_sec": 171.03693089430894,
+   "gross_wpm": 172.01266483078717,
+   "span_wpm": 172.94510516140372
+  },
+  {
+   "id": "TPO67_lec3_New_Wallpaper_Designs.mp3",
+   "tpo": 67,
+   "kind": "lec",
+   "words": 780,
+   "audio_sec": 360.150204,
+   "span_sec": 359.0052631578948,
+   "gross_wpm": 129.94578228810335,
+   "span_wpm": 130.36020583190393
+  },
+  {
+   "id": "TPO66_conv1_Science_Fiction_And_Sci-fi.mp3",
+   "tpo": 66,
+   "kind": "conv",
+   "words": 450,
+   "audio_sec": 172.617143,
+   "span_sec": 171.2706013363029,
+   "gross_wpm": 156.41551893834784,
+   "span_wpm": 157.64526888641817
+  },
+  {
+   "id": "TPO66_lec1_Sleep.mp3",
+   "tpo": 66,
+   "kind": "lec",
+   "words": 794,
+   "audio_sec": 327.941224,
+   "span_sec": 328.81359795134443,
+   "gross_wpm": 145.26993410258177,
+   "span_wpm": 144.88451906131155
+  },
+  {
+   "id": "TPO66_conv2_Financial_Advice.mp3",
+   "tpo": 66,
+   "kind": "conv",
+   "words": 498,
+   "audio_sec": 169.717551,
+   "span_sec": 169.61655030800821,
+   "gross_wpm": 176.0572187375011,
+   "span_wpm": 176.1620546210888
+  },
+  {
+   "id": "TPO66_lec2_Fish_Movement.mp3",
+   "tpo": 66,
+   "kind": "lec",
+   "words": 754,
+   "audio_sec": 294.844082,
+   "span_sec": 296.78856353591163,
+   "gross_wpm": 153.43702913460544,
+   "span_wpm": 152.4317495964629
+  },
+  {
+   "id": "TPO66_lec3_Whether_Animals_have_a_Theory_of_Mind.mp3",
+   "tpo": 66,
+   "kind": "lec",
+   "words": 747,
+   "audio_sec": 332.747755,
+   "span_sec": 332.13702300405953,
+   "gross_wpm": 134.6966262777641,
+   "span_wpm": 134.94430580071824
+  },
+  {
+   "id": "TPO65_conv1_Phone_Bill.mp3",
+   "tpo": 65,
+   "kind": "conv",
+   "words": 424,
+   "audio_sec": 133.250612,
+   "span_sec": 134.9463613231552,
+   "gross_wpm": 190.91844771414634,
+   "span_wpm": 188.5193476175248
+  },
+  {
+   "id": "TPO65_lec1_Whether_dinosaurs_are_warm_blooded_animals.mp3",
+   "tpo": 65,
+   "kind": "lec",
+   "words": 680,
+   "audio_sec": 305.841633,
+   "span_sec": 304.2401225114854,
+   "gross_wpm": 133.40237429349588,
+   "span_wpm": 134.10460021905809
+  },
+  {
+   "id": "TPO65_lec2_Resilience.mp3",
+   "tpo": 65,
+   "kind": "lec",
+   "words": 783,
+   "audio_sec": 346.853878,
+   "span_sec": 347.4838389261745,
+   "gross_wpm": 135.44608545503993,
+   "span_wpm": 135.2005323331922
+  },
+  {
+   "id": "TPO65_conv2_Modern_Drama_Course.mp3",
+   "tpo": 65,
+   "kind": "conv",
+   "words": 493,
+   "audio_sec": 192.261224,
+   "span_sec": 193.96927659574467,
+   "gross_wpm": 153.8531763430363,
+   "span_wpm": 152.49837767683323
+  },
+  {
+   "id": "TPO65_lec3_Perspective_in_Painting.mp3",
+   "tpo": 65,
+   "kind": "lec",
+   "words": 780,
+   "audio_sec": 309.838367,
+   "span_sec": 309.5461847389558,
+   "gross_wpm": 151.04649709182078,
+   "span_wpm": 151.18907066959017
+  },
+  {
+   "id": "TPO70_conv1_information_about_a_previous_ski_trip.mp3",
+   "tpo": 70,
+   "kind": "conv",
+   "words": 454,
+   "audio_sec": 141.426939,
+   "span_sec": 140.51879350348028,
+   "gross_wpm": 192.6082837725845,
+   "span_wpm": 193.85307346326834
+  },
+  {
+   "id": "TPO70_lec1_To_present_a_theory_and_an_argument_that_refutes_it.mp3",
+   "tpo": 70,
+   "kind": "lec",
+   "words": 737,
+   "audio_sec": 305.737143,
+   "span_sec": 305.5141907514451,
+   "gross_wpm": 144.63404598505065,
+   "span_wpm": 144.73959422714913
+  },
+  {
+   "id": "TPO70_lec2_several_solutions_for_a_common_artistic_problem.mp3",
+   "tpo": 70,
+   "kind": "lec",
+   "words": 776,
+   "audio_sec": 313.129796,
+   "span_sec": 314.97984084880636,
+   "gross_wpm": 148.6923333223773,
+   "span_wpm": 147.8189838261722
+  },
+  {
+   "id": "TPO70_conv2_concern_he_has_about_his_major_field_of_study.mp3",
+   "tpo": 70,
+   "kind": "conv",
+   "words": 510,
+   "audio_sec": 167.340408,
+   "span_sec": 166.3925196850394,
+   "gross_wpm": 182.8607947460006,
+   "span_wpm": 183.9024978882587
+  },
+  {
+   "id": "TPO70_lec3_the_process_of_aurora's_formation.mp3",
+   "tpo": 70,
+   "kind": "lec",
+   "words": 752,
+   "audio_sec": 302.027755,
+   "span_sec": 303.40268125854993,
+   "gross_wpm": 149.39024395291088,
+   "span_wpm": 148.7132539924728
+  },
+  {
+   "id": "TPO63_conv1_student_and_building_manager.mp3",
+   "tpo": 63,
+   "kind": "conv",
+   "words": 501,
+   "audio_sec": 146.442449,
+   "span_sec": 145.7768016194332,
+   "gross_wpm": 205.26835084545738,
+   "span_wpm": 206.20564908863224
+  },
+  {
+   "id": "TPO63_lec1_geology_class.mp3",
+   "tpo": 63,
+   "kind": "lec",
+   "words": 794,
+   "audio_sec": 286.772245,
+   "span_sec": 287.498028534371,
+   "gross_wpm": 166.1248633039784,
+   "span_wpm": 165.7054841136225
+  },
+  {
+   "id": "TPO63_conv2_student_and_sociology_professor.mp3",
+   "tpo": 63,
+   "kind": "conv",
+   "words": 494,
+   "audio_sec": 172.956735,
+   "span_sec": 172.7032285115304,
+   "gross_wpm": 171.37233771208736,
+   "span_wpm": 171.6238906212521
+  },
+  {
+   "id": "TPO63_lec2_hearing_and_read_the_ancient_text.mp3",
+   "tpo": 63,
+   "kind": "lec",
+   "words": 842,
+   "audio_sec": 352.809796,
+   "span_sec": 352.11192592592596,
+   "gross_wpm": 143.19330294332303,
+   "span_wpm": 143.47710565937473
+  },
+  {
+   "id": "TPO63_lec3_characteristics_of_the_lens_of_human_eyes.mp3",
+   "tpo": 63,
+   "kind": "lec",
+   "words": 630,
+   "audio_sec": 257.436735,
+   "span_sec": 257.0584690553746,
+   "gross_wpm": 146.83219160622124,
+   "span_wpm": 147.04825769368938
+  },
+  {
+   "id": "TPO62_conv1_Philosophy.mp3",
+   "tpo": 62,
+   "kind": "conv",
+   "words": 529,
+   "audio_sec": 196.336327,
+   "span_sec": 195.0952,
+   "gross_wpm": 161.66137201904564,
+   "span_wpm": 162.68980477223425
+  },
+  {
+   "id": "TPO62_lec1_Landscape_Architecture.mp3",
+   "tpo": 62,
+   "kind": "lec",
+   "words": 759,
+   "audio_sec": 294.635102,
+   "span_sec": 294.25690253671564,
+   "gross_wpm": 154.5640682012152,
+   "span_wpm": 154.7627247055582
+  },
+  {
+   "id": "TPO62_lec2_Encounter_of_Galaxies.mp3",
+   "tpo": 62,
+   "kind": "lec",
+   "words": 794,
+   "audio_sec": 290.246531,
+   "span_sec": 290.88992227979276,
+   "gross_wpm": 164.13632864401055,
+   "span_wpm": 163.77329137644523
+  },
+  {
+   "id": "TPO62_conv2_Car_Parking.mp3",
+   "tpo": 62,
+   "kind": "conv",
+   "words": 346,
+   "audio_sec": 139.833469,
+   "span_sec": 138.73681415929204,
+   "gross_wpm": 148.46231126540954,
+   "span_wpm": 149.6358419774884
+  },
+  {
+   "id": "TPO62_lec3_Pest.mp3",
+   "tpo": 62,
+   "kind": "lec",
+   "words": 786,
+   "audio_sec": 337.345306,
+   "span_sec": 333.56811989100817,
+   "gross_wpm": 139.7974098385706,
+   "span_wpm": 141.38041733547354
+  },
+  {
+   "id": "TPO61_conv1_Essay_Discussion.mp3",
+   "tpo": 61,
+   "kind": "conv",
+   "words": 478,
+   "audio_sec": 178.729796,
+   "span_sec": 178.17296137339054,
+   "gross_wpm": 160.46568978347628,
+   "span_wpm": 160.9671848013817
+  },
+  {
+   "id": "TPO61_lec1_The_connection_between_neocortex_size_and_social_relationships_in_mammals.mp3",
+   "tpo": 61,
+   "kind": "lec",
+   "words": 775,
+   "audio_sec": 352.235102,
+   "span_sec": 352.92385620915036,
+   "gross_wpm": 132.01410005979474,
+   "span_wpm": 131.7564658265637
+  },
+  {
+   "id": "TPO61_lec2_A_method_of_decaffeinating_coffee_while_preserving_its_flavor.mp3",
+   "tpo": 61,
+   "kind": "lec",
+   "words": 734,
+   "audio_sec": 3.239184,
+   "span_sec": 296.4762078651686,
+   "gross_wpm": 13596.016774595084,
+   "span_wpm": 148.54480336590282
+  },
+  {
+   "id": "TPO61_conv2_Dormitory_Fine.mp3",
+   "tpo": 61,
+   "kind": "conv",
+   "words": 506,
+   "audio_sec": 176.927347,
+   "span_sec": 174.82754491017963,
+   "gross_wpm": 171.59585849665172,
+   "span_wpm": 173.65684575389952
+  },
+  {
+   "id": "TPO61_lec3_To_present_opposing_viewpoints_about_art_restoration.mp3",
+   "tpo": 61,
+   "kind": "lec",
+   "words": 750,
+   "audio_sec": 313.939592,
+   "span_sec": 314.21370967741933,
+   "gross_wpm": 143.3396779084812,
+   "span_wpm": 143.21462945139558
+  },
+  {
+   "id": "TPO60_conv1_Dormitory_facilities_Problem.mp3",
+   "tpo": 60,
+   "kind": "conv",
+   "words": 518,
+   "audio_sec": 174.733061,
+   "span_sec": 172.481906614786,
+   "gross_wpm": 177.8713188112695,
+   "span_wpm": 180.19281332164766
+  },
+  {
+   "id": "TPO60_lec1_historical_development_and_use_of_oil_paint.mp3",
+   "tpo": 60,
+   "kind": "lec",
+   "words": 754,
+   "audio_sec": 285.64898,
+   "span_sec": 285.65157181571817,
+   "gross_wpm": 158.376200048045,
+   "span_wpm": 158.3747630458886
+  },
+  {
+   "id": "TPO60_lec2_Building_Design.mp3",
+   "tpo": 60,
+   "kind": "lec",
+   "words": 834,
+   "audio_sec": 321.828571,
+   "span_sec": 321.33529411764704,
+   "gross_wpm": 155.48650588887585,
+   "span_wpm": 155.72519083969468
+  },
+  {
+   "id": "TPO60_conv2_French_Film.mp3",
+   "tpo": 60,
+   "kind": "conv",
+   "words": 504,
+   "audio_sec": 173.035102,
+   "span_sec": 171.35999999999999,
+   "gross_wpm": 174.7622283020933,
+   "span_wpm": 176.47058823529414
+  },
+  {
+   "id": "TPO60_lec3_Psychological_Development.mp3",
+   "tpo": 60,
+   "kind": "lec",
+   "words": 826,
+   "audio_sec": 363.337143,
+   "span_sec": 361.4192686002522,
+   "gross_wpm": 136.40223950349056,
+   "span_wpm": 137.12605913885528
+  },
+  {
+   "id": "TPO71_conv1_Leasing.mp3",
+   "tpo": 71,
+   "kind": "conv",
+   "words": 463,
+   "audio_sec": 147.513469,
+   "span_sec": 138.36068131868132,
+   "gross_wpm": 188.32178639904402,
+   "span_wpm": 200.77958373170554
+  },
+  {
+   "id": "TPO71_lec1_Fire_affect_savanna_ecosystem.mp3",
+   "tpo": 71,
+   "kind": "lec",
+   "words": 685,
+   "audio_sec": 280.137143,
+   "span_sec": 275.6040500736377,
+   "gross_wpm": 146.71385436382494,
+   "span_wpm": 149.1269812218602
+  },
+  {
+   "id": "TPO71_conv2_Faculty_adviser.mp3",
+   "tpo": 71,
+   "kind": "conv",
+   "words": 463,
+   "audio_sec": 159.945562,
+   "span_sec": 159.18525054466232,
+   "gross_wpm": 173.68409384187854,
+   "span_wpm": 174.51365566187187
+  },
+  {
+   "id": "TPO71_lec2_The_discovery_of_51_Pegacy_B.mp3",
+   "tpo": 71,
+   "kind": "lec",
+   "words": 718,
+   "audio_sec": 339.121633,
+   "span_sec": 337.96706214689266,
+   "gross_wpm": 127.03406626966793,
+   "span_wpm": 127.46804296945328
+  },
+  {
+   "id": "TPO71_lec3_The_houses_of_the_Inuit_people.mp3",
+   "tpo": 71,
+   "kind": "lec",
+   "words": 720,
+   "audio_sec": 280.973061,
+   "span_sec": 280.90241820768136,
+   "gross_wpm": 153.7513946933155,
+   "span_wpm": 153.7900608889051
+  },
+  {
+   "id": "TPO74_conv1_Questions_about_the_dormitory_fire_inspections.mp3",
+   "tpo": 74,
+   "kind": "conv",
+   "words": 483,
+   "audio_sec": 158.076,
+   "span_sec": 159.51491379310346,
+   "gross_wpm": 183.32953769073106,
+   "span_wpm": 181.6758026624902
+  },
+  {
+   "id": "TPO74_lec1_The_courting_behavior_of_the_Bower_bird.mp3",
+   "tpo": 74,
+   "kind": "lec",
+   "words": 747,
+   "audio_sec": 291.456,
+   "span_sec": 292.02936227951153,
+   "gross_wpm": 153.77964426877472,
+   "span_wpm": 153.47771761765932
+  },
+  {
+   "id": "TPO75_conv1_Community_Achievement_Award.mp3",
+   "tpo": 75,
+   "kind": "conv",
+   "words": 505,
+   "audio_sec": 170.657959,
+   "span_sec": 169.01622718052738,
+   "gross_wpm": 177.54812126869513,
+   "span_wpm": 179.27272727272728
+  },
+  {
+   "id": "TPO75_lec1_The_Statue_of_Hatshepsut.mp3",
+   "tpo": 75,
+   "kind": "lec",
+   "words": 799,
+   "audio_sec": 312.398367,
+   "span_sec": 307.3076923076923,
+   "gross_wpm": 153.45790844034727,
+   "span_wpm": 156.0
+  },
+  {
+   "id": "TPO75_lec2_Origin_of_Life.mp3",
+   "tpo": 75,
+   "kind": "lec",
+   "words": 785,
+   "audio_sec": 300.669388,
+   "span_sec": 296.9308139534884,
+   "gross_wpm": 156.65046685763699,
+   "span_wpm": 158.62280971411005
+  },
+  {
+   "id": "TPO75_conv2_Fail_on_a_biology_experiment.mp3",
+   "tpo": 75,
+   "kind": "conv",
+   "words": 477,
+   "audio_sec": 174.706939,
+   "span_sec": 170.8230769230769,
+   "gross_wpm": 163.81719102754124,
+   "span_wpm": 167.54176610978521
+  },
+  {
+   "id": "TPO75_lec3_Method_acting.mp3",
+   "tpo": 75,
+   "kind": "lec",
+   "words": 742,
+   "audio_sec": 299.990204,
+   "span_sec": 295.784952120383,
+   "gross_wpm": 148.40484591290186,
+   "span_wpm": 150.51475634866162
+  },
+  {
+   "id": "TPO74_lec2_Utilization_of_Ocean_Energy.mp3",
+   "tpo": 74,
+   "kind": "lec",
+   "words": 750,
+   "audio_sec": 261.756,
+   "span_sec": 263.0495251017639,
+   "gross_wpm": 171.9158300096273,
+   "span_wpm": 171.07044759952032
+  },
+  {
+   "id": "TPO74_conv2_The_essay_contest.mp3",
+   "tpo": 74,
+   "kind": "conv",
+   "words": 438,
+   "audio_sec": 155.412,
+   "span_sec": 156.09007025761125,
+   "gross_wpm": 169.09891128098215,
+   "span_wpm": 168.36432936846947
+  },
+  {
+   "id": "TPO74_lec3_The_Olmec_civilization.mp3",
+   "tpo": 74,
+   "kind": "lec",
+   "words": 805,
+   "audio_sec": 368.604,
+   "span_sec": 368.6305979643766,
+   "gross_wpm": 131.03493179672495,
+   "span_wpm": 131.02547717611756
+  },
+  {
+   "id": "TPO73_conv1_To_Guide_The_Paper.mp3",
+   "tpo": 73,
+   "kind": "conv",
+   "words": 508,
+   "audio_sec": 175.428,
+   "span_sec": 174.5728256513026,
+   "gross_wpm": 173.746494288255,
+   "span_wpm": 174.5976207137859
+  },
+  {
+   "id": "TPO73_lec1_Infant_Communication_And_Vocabulary_Development.mp3",
+   "tpo": 73,
+   "kind": "lec",
+   "words": 770,
+   "audio_sec": 340.488,
+   "span_sec": 344.4931412894376,
+   "gross_wpm": 135.68760132515683,
+   "span_wpm": 134.11007205273648
+  },
+  {
+   "id": "TPO73_lec2_Autobiography_And_Memoir.mp3",
+   "tpo": 73,
+   "kind": "lec",
+   "words": 756,
+   "audio_sec": 314.604,
+   "span_sec": 314.225642384106,
+   "gross_wpm": 144.18125643666323,
+   "span_wpm": 144.35486440839998
+  },
+  {
+   "id": "TPO73_conv2_Booking_Accommodation.mp3",
+   "tpo": 73,
+   "kind": "conv",
+   "words": 521,
+   "audio_sec": 182.232,
+   "span_sec": 182.95154598825832,
+   "gross_wpm": 171.53957592519424,
+   "span_wpm": 170.86491306286226
+  },
+  {
+   "id": "TPO73_lec3_Organic_Compounds.mp3",
+   "tpo": 73,
+   "kind": "lec",
+   "words": 719,
+   "audio_sec": 308.088,
+   "span_sec": 307.5368428571428,
+   "gross_wpm": 140.02492794266573,
+   "span_wpm": 140.27587588924888
+  },
+  {
+   "id": "TPO72_conv1_The_Class_Project.mp3",
+   "tpo": 72,
+   "kind": "conv",
+   "words": 448,
+   "audio_sec": 175.104,
+   "span_sec": 176.23421911421912,
+   "gross_wpm": 153.50877192982455,
+   "span_wpm": 152.5242948566011
+  },
+  {
+   "id": "TPO72_lec1_Astrobiology.mp3",
+   "tpo": 72,
+   "kind": "lec",
+   "words": 749,
+   "audio_sec": 326.268,
+   "span_sec": 327.22704918032787,
+   "gross_wpm": 137.73952701460152,
+   "span_wpm": 137.33583489681052
+  },
+  {
+   "id": "TPO72_lec2_The_process_of_maple_sap_production.mp3",
+   "tpo": 72,
+   "kind": "lec",
+   "words": 780,
+   "audio_sec": 293.976,
+   "span_sec": 293.9421875,
+   "gross_wpm": 159.1966691158462,
+   "span_wpm": 159.21498168751296
+  },
+  {
+   "id": "TPO72_conv2_Applying_For_A_Study_Space.mp3",
+   "tpo": 72,
+   "kind": "conv",
+   "words": 476,
+   "audio_sec": 157.32,
+   "span_sec": 157.5611182795699,
+   "gross_wpm": 181.5408085430969,
+   "span_wpm": 181.26299376299374
+  },
+  {
+   "id": "TPO72_lec3_Investigations_about_infants’_ability_to_retain_information.mp3",
+   "tpo": 72,
+   "kind": "lec",
+   "words": 761,
+   "audio_sec": 326.772,
+   "span_sec": 326.63991978609624,
+   "gross_wpm": 139.73045426168707,
+   "span_wpm": 139.78695570921323
+  }
+ ]
+}

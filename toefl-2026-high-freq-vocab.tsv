@@ -1,0 +1,3307 @@
+# 2026新托福高频词汇表
+# 来源: AWL (Academic Word List) + TOEFL 2026真题高频词 + 12学科主题词汇
+# 格式: 单词\t词性\t中文释义\t分类\t优先级(1最高)
+# 优先级说明: 1=AWL Sublist1-3(必背) 2=AWL Sublist4-6(高频) 3=AWL Sublist7-10(进阶) 4=学科专项 5=功能词/转折词
+#
+# ===== AWL Sublist 1 (60词, 最高频学术词) =====
+analyse	v	分析	AWL-1	1
+approach	n/v	方法；接近	AWL-1	1
+area	n	领域；地区	AWL-1	1
+assess	v	评估	AWL-1	1
+assume	v	假设；承担	AWL-1	1
+authority	n	权威；当局	AWL-1	1
+available	adj	可用的	AWL-1	1
+benefit	n/v	利益；受益	AWL-1	1
+concept	n	概念	AWL-1	1
+consist	v	由…组成	AWL-1	1
+constitute	v	构成	AWL-1	1
+context	n	语境；背景	AWL-1	1
+contract	n/v	合同；收缩	AWL-1	1
+create	v	创造	AWL-1	1
+data	n	数据	AWL-1	1
+define	v	定义	AWL-1	1
+derive	v	源于；推导	AWL-1	1
+distribute	v	分配；分布	AWL-1	1
+economy	n	经济	AWL-1	1
+environment	n	环境	AWL-1	1
+establish	v	建立	AWL-1	1
+estimate	v/n	估计	AWL-1	1
+evident	adj	明显的	AWL-1	1
+export	v/n	出口	AWL-1	1
+factor	n	因素	AWL-1	1
+finance	n/v	金融；资助	AWL-1	1
+formula	n	公式；配方	AWL-1	1
+function	n/v	功能；运作	AWL-1	1
+identify	v	识别；认定	AWL-1	1
+income	n	收入	AWL-1	1
+indicate	v	表明	AWL-1	1
+individual	n/adj	个人；个别的	AWL-1	1
+interpret	v	解释；口译	AWL-1	1
+involve	v	涉及；包含	AWL-1	1
+issue	n/v	问题；发行	AWL-1	1
+labour	n/v	劳动	AWL-1	1
+legal	adj	法律的；合法的	AWL-1	1
+legislate	v	立法	AWL-1	1
+major	adj/n	主要的；专业	AWL-1	1
+method	n	方法	AWL-1	1
+occur	v	发生	AWL-1	1
+percent	n	百分比	AWL-1	1
+period	n	时期	AWL-1	1
+policy	n	政策	AWL-1	1
+principle	n	原则	AWL-1	1
+proceed	v	继续进行	AWL-1	1
+process	n/v	过程；处理	AWL-1	1
+require	v	要求；需要	AWL-1	1
+research	n/v	研究	AWL-1	1
+respond	v	回应	AWL-1	1
+role	n	角色	AWL-1	1
+section	n	部分	AWL-1	1
+sector	n	部门；领域	AWL-1	1
+significant	adj	重要的；显著的	AWL-1	1
+similar	adj	相似的	AWL-1	1
+source	n	来源	AWL-1	1
+specific	adj	具体的；特定的	AWL-1	1
+structure	n/v	结构	AWL-1	1
+theory	n	理论	AWL-1	1
+vary	v	变化	AWL-1	1
+#
+# ===== AWL Sublist 2 (60词) =====
+achieve	v	达成	AWL-2	1
+acquire	v	获得	AWL-2	1
+administrate	v	管理	AWL-2	1
+affect	v	影响	AWL-2	1
+appropriate	adj	适当的	AWL-2	1
+aspect	n	方面	AWL-2	1
+assist	v	协助	AWL-2	1
+category	n	类别	AWL-2	1
+chapter	n	章节	AWL-2	1
+commission	n/v	委员会；委托	AWL-2	1
+community	n	社区	AWL-2	1
+complex	adj/n	复杂的；综合体	AWL-2	1
+compute	v	计算	AWL-2	1
+conclude	v	得出结论	AWL-2	1
+conduct	v/n	进行；行为	AWL-2	1
+consequent	adj	随之而来的	AWL-2	1
+construct	v	构建	AWL-2	1
+consume	v	消费	AWL-2	1
+credit	n/v	信用；归功于	AWL-2	1
+culture	n	文化	AWL-2	1
+design	n/v	设计	AWL-2	1
+distinct	adj	不同的；明确的	AWL-2	1
+element	n	元素	AWL-2	1
+equate	v	等同	AWL-2	1
+evaluate	v	评价	AWL-2	1
+feature	n/v	特征	AWL-2	1
+final	adj	最终的	AWL-2	1
+focus	n/v	焦点；关注	AWL-2	1
+impact	n/v	影响	AWL-2	1
+injure	v	损伤	AWL-2	1
+institute	n/v	机构；设立	AWL-2	1
+invest	v	投资	AWL-2	1
+item	n	项目；条目	AWL-2	1
+journal	n	期刊；日志	AWL-2	1
+maintain	v	维持；保养	AWL-2	1
+normal	adj	正常的	AWL-2	1
+obtain	v	获得	AWL-2	1
+participate	v	参与	AWL-2	1
+perceive	v	感知	AWL-2	1
+positive	adj	积极的	AWL-2	1
+potential	adj/n	潜在的	AWL-2	1
+previous	adj	之前的	AWL-2	1
+primary	adj	主要的	AWL-2	1
+purchase	v/n	购买	AWL-2	1
+range	n/v	范围	AWL-2	1
+region	n	地区	AWL-2	1
+regulate	v	调节；管理	AWL-2	1
+relevant	adj	相关的	AWL-2	1
+reside	v	居住	AWL-2	1
+resource	n	资源	AWL-2	1
+restrict	v	限制	AWL-2	1
+secure	adj/v	安全的；获得	AWL-2	1
+seek	v	寻求	AWL-2	1
+select	v	选择	AWL-2	1
+site	n	地点	AWL-2	1
+strategy	n	策略	AWL-2	1
+survey	n/v	调查	AWL-2	1
+text	n	文本	AWL-2	1
+tradition	n	传统	AWL-2	1
+transfer	v/n	转移	AWL-2	1
+#
+# ===== AWL Sublist 3 (60词) =====
+alternative	n/adj	替代方案；替代的	AWL-3	1
+circumstance	n	情况	AWL-3	1
+comment	n/v	评论	AWL-3	1
+compensate	v	补偿	AWL-3	1
+component	n	组成部分	AWL-3	1
+consent	n/v	同意	AWL-3	1
+considerable	adj	相当大的	AWL-3	1
+constant	adj/n	持续的；常量	AWL-3	1
+constrain	v	约束	AWL-3	1
+contribute	v	贡献；导致	AWL-3	1
+convene	v	召集	AWL-3	1
+coordinate	v/n	协调	AWL-3	1
+core	n/adj	核心	AWL-3	1
+corporate	adj	公司的	AWL-3	1
+correspond	v	对应；通信	AWL-3	1
+criterion	n	标准(复数criteria)	AWL-3	1
+deduce	v	推断	AWL-3	1
+demonstrate	v	证明；展示	AWL-3	1
+document	n/v	文件；记录	AWL-3	1
+dominate	v	主导	AWL-3	1
+emphasis	n	强调	AWL-3	1
+ensure	v	确保	AWL-3	1
+exclude	v	排除	AWL-3	1
+framework	n	框架	AWL-3	1
+fund	n/v	基金；资助	AWL-3	1
+illustrate	v	说明；图示	AWL-3	1
+immigrate	v	移民	AWL-3	1
+imply	v	暗示	AWL-3	1
+initial	adj	最初的	AWL-3	1
+instance	n	例子	AWL-3	1
+interact	v	互动	AWL-3	1
+justify	v	证明…合理	AWL-3	1
+layer	n	层	AWL-3	1
+link	n/v	联系	AWL-3	1
+locate	v	定位	AWL-3	1
+maximise	v	最大化	AWL-3	1
+minor	adj	较小的；次要的	AWL-3	1
+negate	v	否定	AWL-3	1
+outcome	n	结果	AWL-3	1
+partner	n	伙伴	AWL-3	1
+philosophy	n	哲学	AWL-3	1
+physical	adj	物理的；身体的	AWL-3	1
+proportion	n	比例	AWL-3	1
+publish	v	出版	AWL-3	1
+react	v	反应	AWL-3	1
+register	v/n	注册；登记	AWL-3	1
+rely	v	依赖	AWL-3	1
+remove	v	移除	AWL-3	1
+scheme	n	方案；计划	AWL-3	1
+sequence	n	序列	AWL-3	1
+shift	v/n	转变	AWL-3	1
+specify	v	指定	AWL-3	1
+sufficient	adj	足够的	AWL-3	1
+task	n	任务	AWL-3	1
+technical	adj	技术的	AWL-3	1
+technique	n	技术；技巧	AWL-3	1
+technology	n	科技	AWL-3	1
+valid	adj	有效的	AWL-3	1
+volume	n	体积；音量；卷	AWL-3	1
+#
+# ===== AWL Sublist 4 (60词) =====
+access	n/v	通道；访问	AWL-4	2
+adequate	adj	充分的	AWL-4	2
+annual	adj	年度的	AWL-4	2
+apparent	adj	明显的	AWL-4	2
+approximate	adj/v	大约的；近似	AWL-4	2
+attitude	n	态度	AWL-4	2
+attribute	v/n	归因于；属性	AWL-4	2
+civil	adj	公民的；民事的	AWL-4	2
+code	n	代码；准则	AWL-4	2
+commit	v	承诺；犯罪	AWL-4	2
+communicate	v	交流	AWL-4	2
+concentrate	v	集中	AWL-4	2
+confer	v	授予；商议	AWL-4	2
+contrast	n/v	对比	AWL-4	2
+cycle	n	循环	AWL-4	2
+debate	n/v	辩论	AWL-4	2
+despite	prep	尽管	AWL-4	2
+dimension	n	维度；方面	AWL-4	2
+domestic	adj	国内的	AWL-4	2
+emerge	v	出现	AWL-4	2
+error	n	错误	AWL-4	2
+ethnic	adj	种族的	AWL-4	2
+goal	n	目标	AWL-4	2
+grant	v/n	授予；拨款	AWL-4	2
+hence	adv	因此	AWL-4	2
+hypothesis	n	假设(复数hypotheses)	AWL-4	2
+implement	v	实施	AWL-4	2
+implicate	v	暗示牵连	AWL-4	2
+impose	v	施加；强制	AWL-4	2
+integrate	v	整合	AWL-4	2
+internal	adj	内部的	AWL-4	2
+investigate	v	调查	AWL-4	2
+job	n	工作	AWL-4	2
+label	n/v	标签	AWL-4	2
+mechanism	n	机制	AWL-4	2
+obvious	adj	明显的	AWL-4	2
+occupy	v	占据	AWL-4	2
+option	n	选项	AWL-4	2
+output	n	产出	AWL-4	2
+overall	adj/adv	总体的	AWL-4	2
+parallel	adj/n	平行的	AWL-4	2
+parameter	n	参数	AWL-4	2
+phase	n	阶段	AWL-4	2
+predict	v	预测	AWL-4	2
+principal	adj/n	主要的；校长	AWL-4	2
+prior	adj	先前的	AWL-4	2
+professional	adj/n	专业的	AWL-4	2
+project	n/v	项目；投射	AWL-4	2
+promote	v	促进；晋升	AWL-4	2
+regime	n	政权；制度	AWL-4	2
+resolve	v	解决	AWL-4	2
+retain	v	保留	AWL-4	2
+series	n	系列	AWL-4	2
+statistic	n	统计数据	AWL-4	2
+status	n	地位；状态	AWL-4	2
+stress	n/v	压力；强调	AWL-4	2
+subsequent	adj	随后的	AWL-4	2
+sum	n/v	总和	AWL-4	2
+summary	n	摘要	AWL-4	2
+undertake	v	承担	AWL-4	2
+#
+# ===== AWL Sublist 5 (60词) =====
+academy	n	学院	AWL-5	2
+adjust	v	调整	AWL-5	2
+alter	v	改变	AWL-5	2
+amend	v	修正	AWL-5	2
+aware	adj	意识到的	AWL-5	2
+capacity	n	能力；容量	AWL-5	2
+challenge	n/v	挑战	AWL-5	2
+clause	n	条款；从句	AWL-5	2
+compound	n/adj	化合物；复合的	AWL-5	2
+conflict	n/v	冲突	AWL-5	2
+consult	v	咨询	AWL-5	2
+contact	n/v	联系	AWL-5	2
+decline	v/n	下降；婉拒	AWL-5	2
+discrete	adj	离散的；分立的	AWL-5	2
+draft	n/v	草稿；起草	AWL-5	2
+enable	v	使能够	AWL-5	2
+energy	n	能量	AWL-5	2
+enforce	v	执行；实施	AWL-5	2
+entity	n	实体	AWL-5	2
+equivalent	adj/n	等价的	AWL-5	2
+evolve	v	进化；发展	AWL-5	2
+expand	v	扩展	AWL-5	2
+expose	v	暴露	AWL-5	2
+external	adj	外部的	AWL-5	2
+facilitate	v	促进	AWL-5	2
+fundamental	adj	基本的	AWL-5	2
+generate	v	产生	AWL-5	2
+generation	n	一代；产生	AWL-5	2
+image	n	图像；形象	AWL-5	2
+liberal	adj	自由的	AWL-5	2
+licence	n	许可证	AWL-5	2
+logic	n	逻辑	AWL-5	2
+margin	n	边缘；利润	AWL-5	2
+medical	adj	医学的	AWL-5	2
+mental	adj	精神的	AWL-5	2
+modify	v	修改	AWL-5	2
+monitor	v/n	监控	AWL-5	2
+network	n	网络	AWL-5	2
+notion	n	概念；观念	AWL-5	2
+objective	n/adj	目标；客观的	AWL-5	2
+orient	v	定向	AWL-5	2
+perspective	n	视角	AWL-5	2
+precise	adj	精确的	AWL-5	2
+prime	adj/n	首要的	AWL-5	2
+psychology	n	心理学	AWL-5	2
+pursue	v	追求	AWL-5	2
+ratio	n	比率	AWL-5	2
+reject	v	拒绝	AWL-5	2
+revenue	n	收入	AWL-5	2
+stable	adj	稳定的	AWL-5	2
+style	n	风格	AWL-5	2
+substitute	v/n	替代	AWL-5	2
+sustain	v	维持	AWL-5	2
+symbol	n	符号；象征	AWL-5	2
+target	n/v	目标	AWL-5	2
+transit	n	运输	AWL-5	2
+trend	n	趋势	AWL-5	2
+version	n	版本	AWL-5	2
+welfare	n	福利	AWL-5	2
+whereas	conj	然而；鉴于	AWL-5	2
+#
+# ===== AWL Sublist 6 (60词) =====
+abstract	adj/n	抽象的；摘要	AWL-6	2
+accurate	adj	准确的	AWL-6	2
+acknowledge	v	承认	AWL-6	2
+aggregate	v/adj	聚合	AWL-6	2
+allocate	v	分配	AWL-6	2
+assign	v	分配；指派	AWL-6	2
+attach	v	附加	AWL-6	2
+author	n	作者	AWL-6	2
+bond	n	纽带；债券	AWL-6	2
+brief	adj	简要的	AWL-6	2
+capable	adj	有能力的	AWL-6	2
+cite	v	引用	AWL-6	2
+cooperate	v	合作	AWL-6	2
+discriminate	v	歧视；辨别	AWL-6	2
+display	v/n	展示	AWL-6	2
+diverse	adj	多样的	AWL-6	2
+domain	n	领域	AWL-6	2
+edit	v	编辑	AWL-6	2
+enhance	v	增强	AWL-6	2
+estate	n	地产	AWL-6	2
+exceed	v	超过	AWL-6	2
+expert	n/adj	专家	AWL-6	2
+explicit	adj	明确的	AWL-6	2
+federal	adj	联邦的	AWL-6	2
+fee	n	费用	AWL-6	2
+flexible	adj	灵活的	AWL-6	2
+furthermore	adv	此外	AWL-6	2
+gender	n	性别	AWL-6	2
+ignorance	n	无知	AWL-6	2
+incentive	n	激励	AWL-6	2
+incidence	n	发生率	AWL-6	2
+incorporate	v	纳入	AWL-6	2
+index	n	指数；索引	AWL-6	2
+inhibit	v	抑制	AWL-6	2
+initiate	v	启动	AWL-6	2
+input	n	输入	AWL-6	2
+instruct	v	指示	AWL-6	2
+intelligence	n	智力；情报	AWL-6	2
+interval	n	间隔	AWL-6	2
+lecture	n	讲座	AWL-6	2
+migrate	v	迁移	AWL-6	2
+minimum	n/adj	最小值	AWL-6	2
+ministry	n	部委	AWL-6	2
+motive	n	动机	AWL-6	2
+neutral	adj	中立的	AWL-6	2
+nevertheless	adv	然而	AWL-6	2
+overseas	adv/adj	海外	AWL-6	2
+precede	v	先于	AWL-6	2
+presume	v	推测	AWL-6	2
+rational	adj	理性的	AWL-6	2
+recover	v	恢复	AWL-6	2
+reveal	v	揭示	AWL-6	2
+scope	n	范围	AWL-6	2
+subsidy	n	补贴	AWL-6	2
+tape	n	磁带	AWL-6	2
+trace	v/n	追溯；痕迹	AWL-6	2
+transform	v	转变	AWL-6	2
+transport	v/n	运输	AWL-6	2
+underlie	v	构成…的基础	AWL-6	2
+utilise	v	利用	AWL-6	2
+#
+# ===== AWL Sublist 7 (60词) =====
+adapt	v	适应	AWL-7	3
+adult	n/adj	成人	AWL-7	3
+advocate	v/n	提倡	AWL-7	3
+aid	n/v	援助	AWL-7	3
+channel	n	渠道；频道	AWL-7	3
+chemical	adj/n	化学的	AWL-7	3
+classic	adj	经典的	AWL-7	3
+comprehensive	adj	全面的	AWL-7	3
+comprise	v	包含	AWL-7	3
+confirm	v	确认	AWL-7	3
+contrary	adj/n	相反的	AWL-7	3
+convert	v	转化	AWL-7	3
+couple	n/v	一对；结合	AWL-7	3
+decade	n	十年	AWL-7	3
+definite	adj	明确的	AWL-7	3
+deny	v	否认	AWL-7	3
+differentiate	v	区分	AWL-7	3
+dispose	v	处置	AWL-7	3
+dynamic	adj	动态的	AWL-7	3
+eliminate	v	消除	AWL-7	3
+empirical	adj	经验的；实证的	AWL-7	3
+equip	v	装备	AWL-7	3
+extract	v/n	提取	AWL-7	3
+file	n/v	文件；归档	AWL-7	3
+finite	adj	有限的	AWL-7	3
+foundation	n	基础；基金会	AWL-7	3
+global	adj	全球的	AWL-7	3
+grade	n	等级	AWL-7	3
+guarantee	v/n	保证	AWL-7	3
+hierarchy	n	等级制度	AWL-7	3
+identical	adj	相同的	AWL-7	3
+ideology	n	意识形态	AWL-7	3
+infer	v	推断	AWL-7	3
+innovate	v	创新	AWL-7	3
+insert	v	插入	AWL-7	3
+intervene	v	干预	AWL-7	3
+isolate	v	隔离	AWL-7	3
+media	n	媒体	AWL-7	3
+mode	n	模式	AWL-7	3
+paradigm	n	范式	AWL-7	3
+phenomenon	n	现象(复数phenomena)	AWL-7	3
+priority	n	优先事项	AWL-7	3
+prohibit	v	禁止	AWL-7	3
+publication	n	出版物	AWL-7	3
+quote	v/n	引用	AWL-7	3
+release	v/n	释放；发布	AWL-7	3
+reverse	v/adj	逆转	AWL-7	3
+simulate	v	模拟	AWL-7	3
+sole	adj	唯一的	AWL-7	3
+somewhat	adv	稍微	AWL-7	3
+submit	v	提交	AWL-7	3
+successor	n	继任者	AWL-7	3
+survive	v	幸存	AWL-7	3
+thesis	n	论文(复数theses)	AWL-7	3
+topic	n	主题	AWL-7	3
+transmit	v	传输	AWL-7	3
+ultimate	adj	最终的	AWL-7	3
+unique	adj	独特的	AWL-7	3
+visible	adj	可见的	AWL-7	3
+voluntary	adj	自愿的	AWL-7	3
+#
+# ===== AWL Sublist 8 (60词) =====
+abandon	v	放弃	AWL-8	3
+accompany	v	陪伴	AWL-8	3
+accumulate	v	积累	AWL-8	3
+ambiguous	adj	含糊的	AWL-8	3
+appendix	n	附录	AWL-8	3
+appreciate	v	欣赏；感激	AWL-8	3
+arbitrary	adj	任意的	AWL-8	3
+automate	v	自动化	AWL-8	3
+bias	n	偏见	AWL-8	3
+chart	n/v	图表	AWL-8	3
+clarify	v	澄清	AWL-8	3
+commodity	n	商品	AWL-8	3
+complement	v/n	补充	AWL-8	3
+conform	v	遵从	AWL-8	3
+contemporary	adj	当代的	AWL-8	3
+contradict	v	矛盾	AWL-8	3
+crucial	adj	关键的	AWL-8	3
+currency	n	货币	AWL-8	3
+denote	v	表示	AWL-8	3
+detect	v	检测	AWL-8	3
+deviate	v	偏离	AWL-8	3
+displace	v	取代；使流离失所	AWL-8	3
+drama	n	戏剧	AWL-8	3
+eventual	adj	最终的	AWL-8	3
+exhibit	v/n	展示；展览	AWL-8	3
+exploit	v	利用；开发	AWL-8	3
+fluctuate	v	波动	AWL-8	3
+guideline	n	指导方针	AWL-8	3
+highlight	v/n	强调	AWL-8	3
+implicit	adj	隐含的	AWL-8	3
+induce	v	诱导	AWL-8	3
+inevitable	adj	不可避免的	AWL-8	3
+infrastructure	n	基础设施	AWL-8	3
+inspect	v	检查	AWL-8	3
+intense	adj	强烈的	AWL-8	3
+manipulate	v	操纵	AWL-8	3
+minimise	v	最小化	AWL-8	3
+nuclear	adj	核的	AWL-8	3
+offset	v/n	抵消	AWL-8	3
+paragraph	n	段落	AWL-8	3
+plus	prep/conj	加上	AWL-8	3
+practitioner	n	从业者	AWL-8	3
+predominant	adj	主导的	AWL-8	3
+prospect	n	前景	AWL-8	3
+radical	adj	激进的；根本的	AWL-8	3
+random	adj	随机的	AWL-8	3
+reinforce	v	加强	AWL-8	3
+restore	v	恢复	AWL-8	3
+revise	v	修改	AWL-8	3
+schedule	n/v	时间表；安排	AWL-8	3
+tense	adj/n	紧张的；时态	AWL-8	3
+terminate	v	终止	AWL-8	3
+theme	n	主题	AWL-8	3
+thereby	adv	因此	AWL-8	3
+uniform	adj	统一的	AWL-8	3
+vehicle	n	车辆；载体	AWL-8	3
+via	prep	通过	AWL-8	3
+virtual	adj	虚拟的	AWL-8	3
+visual	adj	视觉的	AWL-8	3
+widespread	adj	广泛的	AWL-8	3
+#
+# ===== AWL Sublist 9 (60词) =====
+accommodate	v	容纳；适应	AWL-9	3
+analogy	n	类比	AWL-9	3
+anticipate	v	预期	AWL-9	3
+assure	v	保证	AWL-9	3
+attain	v	达到	AWL-9	3
+behalf	n	代表	AWL-9	3
+bulk	n	大部分	AWL-9	3
+cease	v	停止	AWL-9	3
+coherent	adj	连贯的	AWL-9	3
+coincide	v	巧合；同时发生	AWL-9	3
+commence	v	开始	AWL-9	3
+compatible	adj	兼容的	AWL-9	3
+concurrent	adj	同时的	AWL-9	3
+confine	v	限制	AWL-9	3
+controversy	n	争议	AWL-9	3
+converse	adj/n	相反的	AWL-9	3
+device	n	设备	AWL-9	3
+devote	v	投入	AWL-9	3
+diminish	v	减少	AWL-9	3
+distort	v	扭曲	AWL-9	3
+duration	n	持续时间	AWL-9	3
+erode	v	侵蚀	AWL-9	3
+ethic	n	伦理	AWL-9	3
+format	n	格式	AWL-9	3
+found	v	建立	AWL-9	3
+inherent	adj	固有的	AWL-9	3
+insight	n	洞察	AWL-9	3
+integral	adj	不可或缺的	AWL-9	3
+intermediate	adj	中间的	AWL-9	3
+manual	adj/n	手动的；手册	AWL-9	3
+mature	adj/v	成熟的	AWL-9	3
+mediate	v	调解	AWL-9	3
+medium	n/adj	媒介；中等的	AWL-9	3
+military	adj/n	军事的	AWL-9	3
+minimal	adj	最少的	AWL-9	3
+mutual	adj	相互的	AWL-9	3
+norm	n	规范	AWL-9	3
+overlap	v/n	重叠	AWL-9	3
+passive	adj	被动的	AWL-9	3
+portion	n	部分	AWL-9	3
+preliminary	adj	初步的	AWL-9	3
+protocol	n	协议；规程	AWL-9	3
+qualitative	adj	定性的	AWL-9	3
+refine	v	精炼；改进	AWL-9	3
+relax	v	放松	AWL-9	3
+restrain	v	约束	AWL-9	3
+revolution	n	革命	AWL-9	3
+rigid	adj	刚性的；严格的	AWL-9	3
+route	n	路线	AWL-9	3
+scenario	n	情景	AWL-9	3
+sphere	n	领域；球体	AWL-9	3
+subordinate	adj/n	从属的	AWL-9	3
+supplement	v/n	补充	AWL-9	3
+suspend	v	暂停	AWL-9	3
+team	n	团队	AWL-9	3
+temporary	adj	临时的	AWL-9	3
+trigger	v/n	触发	AWL-9	3
+unify	v	统一	AWL-9	3
+violate	v	违反	AWL-9	3
+vision	n	视野；愿景	AWL-9	3
+#
+# ===== AWL Sublist 10 (30词) =====
+adjacent	adj	相邻的	AWL-10	3
+albeit	conj	尽管	AWL-10	3
+assemble	v	组装；集合	AWL-10	3
+collapse	v/n	崩溃	AWL-10	3
+colleague	n	同事	AWL-10	3
+compile	v	汇编	AWL-10	3
+conceive	v	构想	AWL-10	3
+convince	v	说服	AWL-10	3
+depress	v	使沮丧；压低	AWL-10	3
+encounter	v/n	遭遇	AWL-10	3
+enormous	adj	巨大的	AWL-10	3
+forthcoming	adj	即将到来的	AWL-10	3
+incline	v/n	倾向；斜坡	AWL-10	3
+integrity	n	正直；完整性	AWL-10	3
+intrinsic	adj	内在的	AWL-10	3
+invoke	v	援引	AWL-10	3
+levy	v/n	征收	AWL-10	3
+likewise	adv	同样地	AWL-10	3
+nonetheless	adv	尽管如此	AWL-10	3
+notwithstanding	prep	尽管	AWL-10	3
+odd	adj	奇数的；奇怪的	AWL-10	3
+ongoing	adj	正在进行的	AWL-10	3
+panel	n	面板；小组	AWL-10	3
+persist	v	坚持；持续	AWL-10	3
+pose	v	构成；摆姿势	AWL-10	3
+reluctance	n	不情愿	AWL-10	3
+so-called	adj	所谓的	AWL-10	3
+straightforward	adj	简单的	AWL-10	3
+undergo	v	经历	AWL-10	3
+whereby	adv	凭此	AWL-10	3
+#
+# ===== 40个写作/口语高频功能词 (2026新托福band 4.0+必备) =====
+argue	v	论证；主张	功能词-论证	5
+contend	v	主张(有对立意味)	功能词-论证	5
+refute	v	反驳	功能词-论证	5
+concede	v	(不情愿地)承认	功能词-论证	5
+qualify	v	限定(论点条件)	功能词-论证	5
+analyze	v	分析	功能词-分析	5
+undermine	v	削弱	功能词-因果	5
+exacerbate	v	加剧(负面情况)	功能词-因果	5
+mitigate	v	缓解(负面影响)	功能词-因果	5
+gradual	adj	逐渐的	功能词-变化量	5
+accelerate	v	加速	功能词-变化量	5
+plausible	adj	合理的；可信的	功能词-评价	5
+compelling	adj	有说服力的	功能词-评价	5
+dubious	adj	可疑的	功能词-评价	5
+contentious	adj	有争议的	功能词-评价	5
+rigorous	adj	严格的；严谨的	功能词-评价	5
+premise	n	前提	功能词-抽象名词	5
+conversely	adv	相反地	功能词-连接转折	5
+accordingly	adv	因此；相应地	功能词-连接转折	5
+consequently	adv	因此	功能词-连接转折	5
+ultimately	adv	最终	功能词-连接转折	5
+#
+# ===== Complete the Words 专项高频词 (2026新题型) =====
+however	adv	然而	填词-转折连接	5
+although	conj	虽然	填词-转折连接	5
+therefore	adv	因此	填词-转折连接	5
+moreover	adv	而且	填词-转折连接	5
+meanwhile	adv	同时	填词-转折连接	5
+subsequently	adv	随后	填词-转折连接	5
+specifically	adv	具体地	填词-转折连接	5
+particularly	adv	特别地	填词-转折连接	5
+additionally	adv	另外	填词-转折连接	5
+regardless	adv	不管怎样	填词-转折连接	5
+alternatively	adv	或者	填词-转折连接	5
+simultaneously	adv	同时地	填词-转折连接	5
+approximately	adv	大约	填词-转折连接	5
+significantly	adv	显著地	填词-修饰副词	5
+increasingly	adv	日益	填词-修饰副词	5
+relatively	adv	相对地	填词-修饰副词	5
+essentially	adv	本质上	填词-修饰副词	5
+primarily	adv	主要地	填词-修饰副词	5
+effectively	adv	有效地	填词-修饰副词	5
+substantially	adv	大幅地	填词-修饰副词	5
+consistently	adv	一贯地	填词-修饰副词	5
+presumably	adv	大概	填词-修饰副词	5
+inevitably	adv	不可避免地	填词-修饰副词	5
+#
+# ===== 12学科主题高频词汇 =====
+#
+# --- 人类学 Anthropology ---
+ritual	n	仪式	学科-人类学	4
+kinship	n	亲属关系	学科-人类学	4
+ethnography	n	民族志	学科-人类学	4
+artifact	n	手工艺品	学科-人类学	4
+indigenous	adj	土著的	学科-人类学	4
+nomadic	adj	游牧的	学科-人类学	4
+subsistence	n	生存；生计	学科-人类学	4
+taboo	n	禁忌	学科-人类学	4
+lineage	n	世系；血统	学科-人类学	4
+assimilation	n	同化	学科-人类学	4
+matrilineal	adj	母系的	学科-人类学	4
+patrilineal	adj	父系的	学科-人类学	4
+egalitarian	adj	平等主义的	学科-人类学	4
+foraging	n	觅食	学科-人类学	4
+acculturation	n	文化适应	学科-人类学	4
+#
+# --- 艺术与建筑 Art & Architecture ---
+composition	n	构图；作文	学科-艺术建筑	4
+ornament	n	装饰	学科-艺术建筑	4
+motif	n	图案；主题	学科-艺术建筑	4
+aesthetic	adj/n	美学的	学科-艺术建筑	4
+symmetry	n	对称	学科-艺术建筑	4
+facade	n	建筑正面	学科-艺术建筑	4
+patron	n	赞助人	学科-艺术建筑	4
+Renaissance	n	文艺复兴	学科-艺术建筑	4
+mosaic	n	马赛克；镶嵌画	学科-艺术建筑	4
+pigment	n	颜料	学科-艺术建筑	4
+fresco	n	壁画	学科-艺术建筑	4
+canvas	n	画布	学科-艺术建筑	4
+sculpture	n	雕塑	学科-艺术建筑	4
+porcelain	n	瓷器	学科-艺术建筑	4
+vault	n	拱顶	学科-艺术建筑	4
+#
+# --- 天文与物理 Astronomy & Physics ---
+orbit	n/v	轨道；绕行	学科-天文物理	4
+gravity	n	引力	学科-天文物理	4
+radiation	n	辐射	学科-天文物理	4
+particle	n	粒子	学科-天文物理	4
+spectrum	n	光谱	学科-天文物理	4
+nebula	n	星云	学科-天文物理	4
+supernova	n	超新星	学科-天文物理	4
+luminosity	n	光度	学科-天文物理	4
+asteroid	n	小行星	学科-天文物理	4
+wavelength	n	波长	学科-天文物理	4
+velocity	n	速度	学科-天文物理	4
+magnitude	n	星等；量级	学科-天文物理	4
+eclipse	n	日食/月食	学科-天文物理	4
+terrestrial	adj	地球的；陆地的	学科-天文物理	4
+celestial	adj	天体的	学科-天文物理	4
+#
+# --- 生物与生命科学 Biology & Life Sciences ---
+organism	n	有机体	学科-生物	4
+ecosystem	n	生态系统	学科-生物	4
+adaptation	n	适应	学科-生物	4
+species	n	物种	学科-生物	4
+photosynthesis	n	光合作用	学科-生物	4
+symbiosis	n	共生	学科-生物	4
+predator	n	捕食者	学科-生物	4
+prey	n	猎物	学科-生物	4
+metabolism	n	新陈代谢	学科-生物	4
+chromosome	n	染色体	学科-生物	4
+mutation	n	突变	学科-生物	4
+pollination	n	授粉	学科-生物	4
+biodiversity	n	生物多样性	学科-生物	4
+habitat	n	栖息地	学科-生物	4
+larvae	n	幼虫	学科-生物	4
+camouflage	n/v	伪装	学科-生物	4
+migration	n	迁徙	学科-生物	4
+hibernation	n	冬眠	学科-生物	4
+vertebrate	n	脊椎动物	学科-生物	4
+invertebrate	n	无脊椎动物	学科-生物	4
+extinction	n	灭绝	学科-生物	4
+fossil	n	化石	学科-生物	4
+evolution	n	进化	学科-生物	4
+natural selection	n	自然选择	学科-生物	4
+reproductive	adj	生殖的	学科-生物	4
+#
+# --- 校园生活 Campus Life ---
+syllabus	n	教学大纲	学科-校园	4
+registrar	n	教务处	学科-校园	4
+tuition	n	学费	学科-校园	4
+deadline	n	截止日期	学科-校园	4
+enrollment	n	入学注册	学科-校园	4
+prerequisite	n	先修条件	学科-校园	4
+semester	n	学期	学科-校园	4
+scholarship	n	奖学金	学科-校园	4
+transcript	n	成绩单	学科-校园	4
+elective	n/adj	选修课	学科-校园	4
+dormitory	n	宿舍	学科-校园	4
+orientation	n	入学说明会	学科-校园	4
+extracurricular	adj	课外的	学科-校园	4
+dissertation	n	学位论文	学科-校园	4
+#
+# --- 经济学 Economics ---
+demand	n/v	需求	学科-经济	4
+supply	n/v	供给	学科-经济	4
+inflation	n	通货膨胀	学科-经济	4
+equilibrium	n	均衡	学科-经济	4
+surplus	n	盈余	学科-经济	4
+deficit	n	赤字	学科-经济	4
+tariff	n	关税	学科-经济	4
+monopoly	n	垄断	学科-经济	4
+depreciation	n	贬值；折旧	学科-经济	4
+fiscal	adj	财政的	学科-经济	4
+monetary	adj	货币的	学科-经济	4
+recession	n	衰退	学科-经济	4
+GDP	n	国内生产总值	学科-经济	4
+#
+# --- 地质与地球科学 Geology & Earth Sciences ---
+sediment	n	沉积物	学科-地质	4
+erosion	n	侵蚀	学科-地质	4
+stratum	n	地层(复数strata)	学科-地质	4
+tectonic	adj	构造的	学科-地质	4
+volcanic	adj	火山的	学科-地质	4
+glacier	n	冰川	学科-地质	4
+magma	n	岩浆	学科-地质	4
+mineral	n	矿物	学科-地质	4
+limestone	n	石灰岩	学科-地质	4
+granite	n	花岗岩	学科-地质	4
+crust	n	地壳	学科-地质	4
+mantle	n	地幔	学科-地质	4
+seismic	adj	地震的	学科-地质	4
+aquifer	n	含水层	学科-地质	4
+continental drift	n	大陆漂移	学科-地质	4
+weathering	n	风化	学科-地质	4
+geothermal	adj	地热的	学科-地质	4
+permafrost	n	永冻土	学科-地质	4
+alluvial	adj	冲积的	学科-地质	4
+stalactite	n	钟乳石	学科-地质	4
+#
+# --- 历史与考古 History & Archaeology ---
+excavation	n	发掘	学科-历史考古	4
+civilisation	n	文明	学科-历史考古	4
+era	n	时代	学科-历史考古	4
+dynasty	n	朝代	学科-历史考古	4
+conquest	n	征服	学科-历史考古	4
+colonization	n	殖民	学科-历史考古	4
+feudal	adj	封建的	学科-历史考古	4
+hieroglyphics	n	象形文字	学科-历史考古	4
+Mesopotamia	n	美索不达米亚	学科-历史考古	4
+agrarian	adj	农业的	学科-历史考古	4
+archaeology	n	考古学	学科-历史考古	4
+antiquity	n	古代	学科-历史考古	4
+chronicle	n	编年史	学科-历史考古	4
+inscription	n	铭文	学科-历史考古	4
+relic	n	遗物	学科-历史考古	4
+#
+# --- 语言学 Linguistics ---
+morpheme	n	语素	学科-语言学	4
+syntax	n	句法	学科-语言学	4
+phoneme	n	音素	学科-语言学	4
+dialect	n	方言	学科-语言学	4
+semantics	n	语义学	学科-语言学	4
+pragmatics	n	语用学	学科-语言学	4
+phonology	n	音系学	学科-语言学	4
+bilingual	adj	双语的	学科-语言学	4
+creole	n	克里奥尔语	学科-语言学	4
+pidgin	n	皮钦语	学科-语言学	4
+cognate	n/adj	同源词	学科-语言学	4
+lexicon	n	词汇	学科-语言学	4
+inflection	n	词形变化	学科-语言学	4
+etymology	n	词源学	学科-语言学	4
+vernacular	n/adj	方言；本土的	学科-语言学	4
+#
+# --- 心理学 Psychology ---
+cognition	n	认知	学科-心理学	4
+perception	n	感知	学科-心理学	4
+stimulus	n	刺激(复数stimuli)	学科-心理学	4
+conditioning	n	条件反射	学科-心理学	4
+reinforcement	n	强化	学科-心理学	4
+cognitive	adj	认知的	学科-心理学	4
+subconscious	adj/n	潜意识的	学科-心理学	4
+temperament	n	气质	学科-心理学	4
+phobia	n	恐惧症	学科-心理学	4
+placebo	n	安慰剂	学科-心理学	4
+neuron	n	神经元	学科-心理学	4
+synapse	n	突触	学科-心理学	4
+habituation	n	习惯化	学科-心理学	4
+intrinsic motivation	n	内在动机	学科-心理学	4
+developmental	adj	发展的	学科-心理学	4
+#
+# --- 社会学 Sociology ---
+institution	n	制度；机构	学科-社会学	4
+mobility	n	流动性	学科-社会学	4
+stratification	n	分层	学科-社会学	4
+urbanization	n	城市化	学科-社会学	4
+demography	n	人口统计学	学科-社会学	4
+socialization	n	社会化	学科-社会学	4
+bureaucracy	n	官僚体制	学科-社会学	4
+deviance	n	越轨行为	学科-社会学	4
+stigma	n	污名	学科-社会学	4
+patriarchy	n	父权制	学科-社会学	4
+solidarity	n	团结	学科-社会学	4
+marginalization	n	边缘化	学科-社会学	4
+census	n	人口普查	学科-社会学	4
+#
+# ===== 写作必备: 常用词→学术词升级表 =====
+# 格式: 学术词\t词性\t中文(替代日常用词)\t分类\t优先级
+substantial	adj	大量的(替代big)	写作升级	5
+#
+# =====================================
+# 2026新托福听力场景词汇 (新增板块)
+# 来源: https://kimrasak.github.io/toefl-vocab/listening-2026/
+# ETS 蓝图 + 2026 公开考情回忆
+# =====================================
+#
+# ===== Listen and Choose a Response: 日常社交 (15-19题) =====
+# 这是2026全新题型，听一段日常对话后选择最自然的回应
+#
+# --- 购物与客服 Shopping & Customer Service ---
+receipt	n	收据	听力-购物客服	4
+refund	n/v	退款	听力-购物客服	4
+exchange	v/n	换货；兑换	听力-购物客服	4
+warranty	n	保修	听力-购物客服	4
+discount	n/v	折扣	听力-购物客服	4
+coupon	n	优惠券	听力-购物客服	4
+checkout	n	结账处	听力-购物客服	4
+aisle	n	走道；过道	听力-购物客服	4
+on sale	phr	打折中	听力-购物客服	4
+out of stock	phr	缺货	听力-购物客服	4
+bargain	n/v	便宜货；讨价还价	听力-购物客服	4
+complaint	n	投诉	听力-购物客服	4
+defective	adj	有缺陷的	听力-购物客服	4
+#
+# --- 餐饮 Dining ---
+reservation	n	预订	听力-餐饮	4
+appetizer	n	开胃菜	听力-餐饮	4
+entrée	n	主菜	听力-餐饮	4
+side dish	n	配菜	听力-餐饮	4
+beverage	n	饮料	听力-餐饮	4
+tip	n	小费	听力-餐饮	4
+split the bill	phr	AA制/分摊费用	听力-餐饮	4
+takeout	n	外卖	听力-餐饮	4
+allergy	n	过敏	听力-餐饮	4
+gluten-free	adj	无麸质的	听力-餐饮	4
+vegetarian	n/adj	素食者	听力-餐饮	4
+specials	n	今日特餐	听力-餐饮	4
+dine in	phr	堂食	听力-餐饮	4
+wait list	n	等位名单	听力-餐饮	4
+#
+# --- 公交/火车/机场 Transportation ---
+terminal	n	航站楼	听力-交通	4
+boarding pass	n	登机牌	听力-交通	4
+layover	n	转机停留	听力-交通	4
+departure	n	出发	听力-交通	4
+arrival	n	到达	听力-交通	4
+delay	n/v	延误	听力-交通	4
+connecting flight	n	转机航班	听力-交通	4
+platform	n	站台	听力-交通	4
+fare	n	票价	听力-交通	4
+commute	n/v	通勤	听力-交通	4
+round trip	n	往返	听力-交通	4
+one-way	adj	单程的	听力-交通	4
+carry-on	n	随身行李	听力-交通	4
+overhead bin	n	行李架	听力-交通	4
+baggage claim	n	行李提取处	听力-交通	4
+customs	n	海关	听力-交通	4
+express train	n	快车	听力-交通	4
+#
+# --- 旅行 Travel ---
+itinerary	n	行程	听力-旅行	4
+accommodation	n	住宿	听力-旅行	4
+check in	phr	办理入住	听力-旅行	4
+check out	phr	退房	听力-旅行	4
+sightseeing	n	观光	听力-旅行	4
+souvenir	n	纪念品	听力-旅行	4
+guided tour	n	导览	听力-旅行	4
+hostel	n	青旅	听力-旅行	4
+currency exchange	n	货币兑换	听力-旅行	4
+travel insurance	n	旅行保险	听力-旅行	4
+landmark	n	地标	听力-旅行	4
+scenic	adj	风景优美的	听力-旅行	4
+brochure	n	宣传册	听力-旅行	4
+jet lag	n	时差反应	听力-旅行	4
+passport	n	护照	听力-旅行	4
+#
+# --- 健身 Fitness ---
+gym membership	n	健身房会员	听力-健身	4
+workout	n	锻炼	听力-健身	4
+treadmill	n	跑步机	听力-健身	4
+warm up	phr	热身	听力-健身	4
+cool down	phr	放松运动	听力-健身	4
+personal trainer	n	私人教练	听力-健身	4
+stretch	v/n	拉伸	听力-健身	4
+yoga	n	瑜伽	听力-健身	4
+cardio	n	有氧运动	听力-健身	4
+strength training	n	力量训练	听力-健身	4
+locker room	n	更衣室	听力-健身	4
+sign up	phr	报名	听力-健身	4
+#
+# --- 天气 Weather ---
+forecast	n/v	天气预报	听力-天气	4
+overcast	adj	阴天的	听力-天气	4
+drizzle	n/v	毛毛雨	听力-天气	4
+humidity	n	湿度	听力-天气	4
+breeze	n	微风	听力-天气	4
+thunderstorm	n	暴风雨	听力-天气	4
+heatwave	n	热浪	听力-天气	4
+below freezing	phr	零度以下	听力-天气	4
+clear up	phr	放晴	听力-天气	4
+precipitation	n	降水	听力-天气	4
+temperature drop	n	降温	听力-天气	4
+#
+# --- 维修 Repairs & Maintenance ---
+plumber	n	水管工	听力-维修	4
+electrician	n	电工	听力-维修	4
+leak	n/v	漏水	听力-维修	4
+clogged	adj	堵塞的	听力-维修	4
+malfunction	n/v	故障	听力-维修	4
+appliance	n	电器	听力-维修	4
+repair	v/n	修理	听力-维修	4
+replacement	n	更换件	听力-维修	4
+out of order	phr	故障中	听力-维修	4
+maintenance	n	维护保养	听力-维修	4
+thermostat	n	恒温器	听力-维修	4
+#
+# --- 预约 Appointments ---
+appointment	n	预约	听力-预约	4
+reschedule	v	改期	听力-预约	4
+cancel	v	取消	听力-预约	4
+slot	n	时间段	听力-预约	4
+confirmation	n	确认	听力-预约	4
+waiting room	n	候诊室	听力-预约	4
+dentist	n	牙医	听力-预约	4
+check-up	n	体检	听力-预约	4
+prescription	n	处方	听力-预约	4
+follow-up	n/adj	后续复查	听力-预约	4
+walk-in	n/adj	无需预约的	听力-预约	4
+#
+# --- 邀请/时间安排/请求建议 Social Interaction ---
+get together	phr	聚会	听力-社交	4
+turn down	phr	婉拒	听力-社交	4
+rain check	n	改天再约	听力-社交	4
+potluck	n	百乐餐(各带一道菜)	听力-社交	4
+how about	phr	…怎么样	听力-社交	4
+Would you mind	phr	你介意…吗	听力-社交	4
+I was wondering	phr	我想知道…	听力-社交	4
+That works for me	phr	那对我来说可以	听力-社交	4
+I'll pass	phr	我就不去了	听力-社交	4
+count me in	phr	算我一个	听力-社交	4
+#
+# ===== Listen to a Conversation: 短对话 (10题) =====
+# 包含生活短对话和职场沟通，旧式三分钟校园对话不再占主导
+#
+# --- 超市与农夫市场 Grocery & Farmer's Market ---
+organic	adj	有机的	听力-超市	4
+produce	n	农产品	听力-超市	4
+seasonal	adj	时令的	听力-超市	4
+locally grown	phr	本地种植的	听力-超市	4
+ripe	adj	成熟的	听力-超市	4
+expiration date	n	保质期	听力-超市	4
+dairy	n/adj	乳制品	听力-超市	4
+reusable bag	n	环保袋	听力-超市	4
+sample	n/v	样品；品尝	听力-超市	4
+vendor	n	摊贩	听力-超市	4
+#
+# --- 租房 Renting & Housing ---
+lease	n/v	租约	听力-租房	4
+landlord	n	房东	听力-租房	4
+tenant	n	租客	听力-租房	4
+deposit	n	押金	听力-租房	4
+utilities	n	水电费	听力-租房	4
+furnished	adj	带家具的	听力-租房	4
+move in	phr	搬入	听力-租房	4
+move out	phr	搬出	听力-租房	4
+rent	n/v	租金；租	听力-租房	4
+roommate	n	室友	听力-租房	4
+sublease	n/v	转租	听力-租房	4
+renovation	n	翻新	听力-租房	4
+#
+# --- 电脑/手机/汽车 Tech & Auto ---
+crash	v/n	崩溃；死机	听力-科技汽车	4
+backup	n/v	备份	听力-科技汽车	4
+Wi-Fi	n	无线网络	听力-科技汽车	4
+charger	n	充电器	听力-科技汽车	4
+battery	n	电池	听力-科技汽车	4
+storage	n	存储空间	听力-科技汽车	4
+flat tire	n	爆胎	听力-科技汽车	4
+navigation	n	导航	听力-科技汽车	4
+troubleshoot	v	排除故障	听力-科技汽车	4
+#
+# --- 职场沟通 Workplace ---
+agenda	n	议程	听力-职场	4
+minutes	n	会议记录	听力-职场	4
+presentation	n	演示报告	听力-职场	4
+budget	n	预算	听力-职场	4
+client	n	客户	听力-职场	4
+proposal	n	提案	听力-职场	4
+follow up	phr	跟进	听力-职场	4
+brainstorm	v/n	头脑风暴	听力-职场	4
+delegate	v	委派	听力-职场	4
+feedback	n	反馈	听力-职场	4
+remote work	n	远程办公	听力-职场	4
+flexible hours	n	弹性工时	听力-职场	4
+#
+# ===== Listen to an Announcement: 校园公告 (6-10题) =====
+#
+due date	n	截止日期	听力-校园公告	4
+office hours	n	办公时间	听力-校园公告	4
+extension	n	延期	听力-校园公告	4
+make-up class	n	补课	听力-校园公告	4
+venue	n	场地	听力-校园公告	4
+postpone	v	推迟	听力-校园公告	4
+mandatory	adj	强制的	听力-校园公告	4
+optional	adj	可选的	听力-校园公告	4
+assignment	n	作业	听力-校园公告	4
+midterm	n	期中考试	听力-校园公告	4
+final exam	n	期末考试	听力-校园公告	4
+grading rubric	n	评分标准	听力-校园公告	4
+attendance	n	出勤	听力-校园公告	4
+fundraiser	n	募捐活动	听力-校园公告	4
+volunteer	n/v	志愿者	听力-校园公告	4
+guest speaker	n	嘉宾演讲者	听力-校园公告	4
+#
+# ===== Listen to an Academic Talk: 短学术讲座补充词 (8-16题) =====
+# 补充前面12学科中未覆盖的新增考情学科词
+#
+# --- 环境与气候 Environment & Climate ---
+greenhouse effect	n	温室效应	听力-环境气候	4
+carbon footprint	n	碳足迹	听力-环境气候	4
+deforestation	n	森林砍伐	听力-环境气候	4
+renewable energy	n	可再生能源	听力-环境气候	4
+sustainability	n	可持续性	听力-环境气候	4
+ozone layer	n	臭氧层	听力-环境气候	4
+emission	n	排放	听力-环境气候	4
+drought	n	干旱	听力-环境气候	4
+flood	n	洪水	听力-环境气候	4
+conservation	n	保护	听力-环境气候	4
+pollutant	n	污染物	听力-环境气候	4
+ice cap	n	冰盖	听力-环境气候	4
+sea level rise	n	海平面上升	听力-环境气候	4
+biodegradable	adj	可生物降解的	听力-环境气候	4
+#
+# --- 化学与工程 Chemistry & Engineering ---
+catalyst	n	催化剂	听力-化学工程	4
+molecule	n	分子	听力-化学工程	4
+solvent	n	溶剂	听力-化学工程	4
+alloy	n	合金	听力-化学工程	4
+polymer	n	聚合物	听力-化学工程	4
+oxidation	n	氧化	听力-化学工程	4
+prototype	n	原型	听力-化学工程	4
+blueprint	n	蓝图	听力-化学工程	4
+thermal	adj	热的	听力-化学工程	4
+corrosion	n	腐蚀	听力-化学工程	4
+combustion	n	燃烧	听力-化学工程	4
+#
+# --- 神经科学 Neuroscience (心理学扩展) ---
+neurotransmitter	n	神经递质	听力-神经科学	4
+dopamine	n	多巴胺	听力-神经科学	4
+cortex	n	大脑皮层	听力-神经科学	4
+hippocampus	n	海马体	听力-神经科学	4
+amygdala	n	杏仁核	听力-神经科学	4
+plasticity	n	可塑性	听力-神经科学	4
+hemisphere	n	(大脑)半球	听力-神经科学	4
+cognitive load	n	认知负荷	听力-神经科学	4
+working memory	n	工作记忆	听力-神经科学	4
+neural pathway	n	神经通路	听力-神经科学	4
+#
+# ===== 听力高频口语表达 & 否定问句/婉拒 =====
+# 2026新听力重点：听懂问句意图、否定问句、婉拒和自然回应
+#
+I'd rather not	phr	我宁愿不	听力-口语表达	5
+I'm afraid	phr	恐怕(委婉拒绝)	听力-口语表达	5
+No worries	phr	没关系	听力-口语表达	5
+Sounds good	phr	听起来不错	听力-口语表达	5
+Let me check	phr	让我查一下	听力-口语表达	5
+I'll get back to you	phr	我会回复你	听力-口语表达	5
+What do you say	phr	你觉得怎么样	听力-口语表达	5
+Can't complain	phr	还不错	听力-口语表达	5
+Not really	phr	不太(委婉否定)	听力-口语表达	5
+Kind of	phr	有点(模糊回应)	听力-口语表达	5
+It depends	phr	看情况	听力-口语表达	5
+That's a shame	phr	太可惜了	听力-口语表达	5
+By all means	phr	当然可以	听力-口语表达	5
+Don't bother	phr	不用麻烦了	听力-口语表达	5
+You bet	phr	当然/没问题	听力-口语表达	5
+Go ahead	phr	请便	听力-口语表达	5
+No wonder	phr	难怪	听力-口语表达	5
+As a matter of fact	phr	事实上	听力-口语表达	5
+Wouldn't it be better	phr	…不是更好吗(否定问句)	听力-口语表达	5
+Don't you think	phr	你不觉得…吗(否定问句)	听力-口语表达	5
+#
+# =====================================
+# 高频短语动词 Phrasal Verbs
+# 听力+阅读高频，2026新托福生活场景尤其密集
+# =====================================
+#
+bring up	phr v	提出(话题)；抚养	短语动词	4
+come across	phr v	偶然遇到	短语动词	4
+come up with	phr v	想出(主意)	短语动词	4
+cut back on	phr v	削减	短语动词	4
+drop off	phr v	放下(人/物)；减少	短语动词	4
+figure out	phr v	弄清楚	短语动词	4
+fill in	phr v	填写；代替	短语动词	4
+fill out	phr v	填写(表格)	短语动词	4
+get along	phr v	相处	短语动词	4
+get over	phr v	克服；恢复	短语动词	4
+give up	phr v	放弃	短语动词	4
+go over	phr v	仔细检查；复习	短语动词	4
+hand in	phr v	上交	短语动词	4
+hold on	phr v	等一下；坚持	短语动词	4
+keep up with	phr v	跟上	短语动词	4
+look into	phr v	调查	短语动词	4
+look up	phr v	查阅	短语动词	4
+make up for	phr v	弥补	短语动词	4
+pick up	phr v	接(人)；学会；拿起	短语动词	4
+point out	phr v	指出	短语动词	4
+put off	phr v	推迟	短语动词	4
+put up with	phr v	忍受	短语动词	4
+rule out	phr v	排除	短语动词	4
+run into	phr v	偶遇；遭遇	短语动词	4
+run out of	phr v	用完	短语动词	4
+set up	phr v	建立；安装	短语动词	4
+show up	phr v	出现；露面	短语动词	4
+sort out	phr v	解决；整理	短语动词	4
+take on	phr v	承担；呈现	短语动词	4
+take over	phr v	接管	短语动词	4
+turn in	phr v	上交；就寝	短语动词	4
+turn out	phr v	结果是；原来是	短语动词	4
+work out	phr v	解决；锻炼；计算	短语动词	4
+break down	phr v	分解；出故障	短语动词	4
+carry out	phr v	执行；实施	短语动词	4
+deal with	phr v	处理	短语动词	4
+find out	phr v	发现；查明	短语动词	4
+give rise to	phr v	引起；导致	短语动词	4
+go through	phr v	经历；仔细查看	短语动词	4
+lay off	phr v	裁员	短语动词	4
+make sense	phr v	有道理	短语动词	4
+pay off	phr v	还清；取得成效	短语动词	4
+pull off	phr v	成功做到	短语动词	4
+put together	phr v	组合；准备	短语动词	4
+settle down	phr v	安顿；平静下来	短语动词	4
+shut down	phr v	关闭	短语动词	4
+stand out	phr v	突出；显眼	短语动词	4
+take into account	phr v	考虑到	短语动词	4
+take place	phr v	发生	短语动词	4
+try out	phr v	试用	短语动词	4
+turn up	phr v	出现；调大	短语动词	4
+wipe out	phr v	消灭；彻底摧毁	短语动词	4
+call off	phr v	取消	短语动词	4
+catch up	phr v	赶上	短语动词	4
+cope with	phr v	应对	短语动词	4
+cut down	phr v	减少；砍倒	短语动词	4
+die out	phr v	灭绝	短语动词	4
+draw on	phr v	利用；借鉴	短语动词	4
+end up	phr v	最终成为	短语动词	4
+fall behind	phr v	落后	短语动词	4
+get rid of	phr v	摆脱	短语动词	4
+give in	phr v	屈服；让步	短语动词	4
+hold off	phr v	推迟；延缓	短语动词	4
+kick off	phr v	开始	短语动词	4
+let down	phr v	让…失望	短语动词	4
+live up to	phr v	达到(期望)	短语动词	4
+narrow down	phr v	缩小范围	短语动词	4
+opt out	phr v	选择退出	短语动词	4
+phase out	phr v	逐步淘汰	短语动词	4
+put forward	phr v	提出(建议)	短语动词	4
+reach out	phr v	伸出援手；联系	短语动词	4
+scale up	phr v	扩大规模	短语动词	4
+set aside	phr v	留出；搁置	短语动词	4
+stick to	phr v	坚持	短语动词	4
+sum up	phr v	总结	短语动词	4
+take for granted	phr v	视为理所当然	短语动词	4
+touch on	phr v	涉及；谈到	短语动词	4
+use up	phr v	用完	短语动词	4
+wrap up	phr v	结束；总结	短语动词	4
+zero in on	phr v	集中于	短语动词	4
+account for	phr v	占(比例)；解释	短语动词	4
+boil down to	phr v	归结为	短语动词	4
+build on	phr v	以…为基础	短语动词	4
+stem from	phr v	源于	短语动词	4
+result in	phr v	导致	短语动词	4
+lead to	phr v	导致	短语动词	4
+refer to	phr v	指的是；参考	短语动词	4
+#
+# =====================================
+# 学术讲座信号词/路标短语
+# Lecture Signposting Language
+# 听力理解关键：教授用这些短语组织讲座结构
+# =====================================
+#
+In other words	phr	换句话说	讲座信号词-释义	5
+What I mean is	phr	我的意思是	讲座信号词-释义	5
+That is to say	phr	也就是说	讲座信号词-释义	5
+Let me put it this way	phr	这么说吧	讲座信号词-释义	5
+To put it simply	phr	简单来说	讲座信号词-释义	5
+The point is	phr	关键是	讲座信号词-强调	5
+Here's the thing	phr	问题在于	讲座信号词-强调	5
+Keep in mind	phr	记住	讲座信号词-强调	5
+Bear in mind	phr	请注意	讲座信号词-强调	5
+The bottom line is	phr	最重要的是	讲座信号词-强调	5
+What's interesting is	phr	有趣的是	讲座信号词-强调	5
+What's remarkable is	phr	值得注意的是	讲座信号词-强调	5
+Moving on to	phr	接下来讲	讲座信号词-转换	5
+Let's turn to	phr	让我们转向	讲座信号词-转换	5
+That brings us to	phr	这就引出了	讲座信号词-转换	5
+Now, another point	phr	另外一点	讲座信号词-转换	5
+As I mentioned	phr	正如我提到的	讲座信号词-回指	5
+As we discussed	phr	正如我们讨论的	讲座信号词-回指	5
+Going back to	phr	回到(之前的话题)	讲座信号词-回指	5
+To sum up	phr	总结一下	讲座信号词-总结	5
+All in all	phr	总的来说	讲座信号词-总结	5
+In a nutshell	phr	简而言之	讲座信号词-总结	5
+So, to recap	phr	所以回顾一下	讲座信号词-总结	5
+For instance	phr	例如	讲座信号词-举例	5
+Take ... for example	phr	以…为例	讲座信号词-举例	5
+A case in point	phr	一个恰当的例子	讲座信号词-举例	5
+In particular	phr	尤其是	讲座信号词-举例	5
+On the other hand	phr	另一方面	讲座信号词-对比	5
+Having said that	phr	话虽如此	讲座信号词-对比	5
+As opposed to	phr	与…相反	讲座信号词-对比	5
+In contrast to	phr	与…形成对比	讲座信号词-对比	5
+#
+# =====================================
+# 高频学术搭配 Academic Collocations
+# 阅读+写作中反复出现的固定搭配
+# =====================================
+#
+conduct research	phr	进行研究	学术搭配	5
+draw a conclusion	phr	得出结论	学术搭配	5
+reach a consensus	phr	达成共识	学术搭配	5
+pose a threat	phr	构成威胁	学术搭配	5
+raise awareness	phr	提高意识	学术搭配	5
+play a role	phr	发挥作用	学术搭配	5
+shed light on	phr	阐明	学术搭配	5
+cast doubt on	phr	对…产生怀疑	学术搭配	5
+gain insight into	phr	深入了解	学术搭配	5
+lend support to	phr	支持	学术搭配	5
+take measures	phr	采取措施	学术搭配	5
+undergo a transformation	phr	经历转变	学术搭配	5
+come to the conclusion	phr	得出结论	学术搭配	5
+bear a resemblance to	phr	与…相似	学术搭配	5
+have implications for	phr	对…有影响	学术搭配	5
+lay the groundwork	phr	奠定基础	学术搭配	5
+serve as	phr	作为；充当	学术搭配	5
+give way to	phr	让位于	学术搭配	5
+bring about	phr	引起；导致	学术搭配	5
+a growing body of evidence	phr	越来越多的证据	学术搭配	5
+in the wake of	phr	在…之后	学术搭配	5
+in light of	phr	鉴于	学术搭配	5
+in terms of	phr	在…方面	学术搭配	5
+with regard to	phr	关于	学术搭配	5
+with respect to	phr	就…而言	学术搭配	5
+on the grounds that	phr	基于…的理由	学术搭配	5
+to a certain extent	phr	在一定程度上	学术搭配	5
+for the most part	phr	大部分	学术搭配	5
+by and large	phr	总体上	学术搭配	5
+in the long run	phr	从长远来看	学术搭配	5
+at the expense of	phr	以…为代价	学术搭配	5
+in conjunction with	phr	与…一起	学术搭配	5
+in response to	phr	回应；响应	学术搭配	5
+on account of	phr	由于	学术搭配	5
+as a result of	phr	由于	学术搭配	5
+prior to	phr	在…之前	学术搭配	5
+in the absence of	phr	在缺乏…的情况下	学术搭配	5
+on the basis of	phr	基于	学术搭配	5
+with the exception of	phr	除…之外	学术搭配	5
+regardless of	phr	不管	学术搭配	5
+#
+# =====================================
+# TOEFL听力高频习语 Idioms
+# 2026新听力日常场景大量出现
+# =====================================
+#
+a piece of cake	idiom	非常容易	听力-习语	5
+hit the nail on the head	idiom	说到点子上	听力-习语	5
+on the same page	idiom	达成一致	听力-习语	5
+the last straw	idiom	最后一根稻草	听力-习语	5
+bite off more than you can chew	idiom	贪多嚼不烂	听力-习语	5
+break the ice	idiom	打破僵局	听力-习语	5
+get the hang of	idiom	掌握窍门	听力-习语	5
+in the same boat	idiom	处境相同	听力-习语	5
+it's up to you	idiom	由你决定	听力-习语	5
+jump to conclusions	idiom	草率下结论	听力-习语	5
+miss the boat	idiom	错过机会	听力-习语	5
+play it by ear	idiom	见机行事	听力-习语	5
+pull someone's leg	idiom	开玩笑	听力-习语	5
+see eye to eye	idiom	看法一致	听力-习语	5
+sleep on it	idiom	考虑一晚再决定	听力-习语	5
+take it easy	idiom	放轻松	听力-习语	5
+under the weather	idiom	身体不舒服	听力-习语	5
+a long shot	idiom	希望渺茫	听力-习语	5
+back to square one	idiom	回到原点	听力-习语	5
+cut corners	idiom	偷工减料	听力-习语	5
+get cold feet	idiom	临阵退缩	听力-习语	5
+go the extra mile	idiom	加倍努力	听力-习语	5
+hand in hand	idiom	密切相关	听力-习语	5
+be swamped	idiom	忙得不可开交	听力-习语	5
+hit the books	idiom	用功读书	听力-习语	5
+once in a blue moon	idiom	千载难逢	听力-习语	5
+call it a day	idiom	收工；到此为止	听力-习语	5
+from scratch	idiom	从头开始	听力-习语	5
+down the road	idiom	将来	听力-习语	5
+the big picture	idiom	全局；大局	听力-习语	5
+#
+# =====================================
+# 补充遗漏的高频单词
+# (查漏补缺：前面各类中未收录但考试高频)
+# =====================================
+#
+abundant	adj	丰富的	补充高频词	3
+adversely	adv	不利地	补充高频词	3
+analogous	adj	类似的	补充高频词	3
+burgeon	v	迅速发展	补充高频词	3
+chronic	adj	慢性的；长期的	补充高频词	3
+circumvent	v	规避	补充高频词	3
+coexist	v	共存	补充高频词	3
+compel	v	强迫	补充高频词	3
+consensus	n	共识	补充高频词	3
+corresponding	adj	相应的	补充高频词	3
+credible	adj	可信的	补充高频词	3
+curtail	v	缩减	补充高频词	3
+deteriorate	v	恶化	补充高频词	3
+detrimental	adj	有害的	补充高频词	3
+disparity	n	差距	补充高频词	3
+elaborate	adj/v	精心的；详述	补充高频词	3
+encompass	v	包含	补充高频词	3
+endeavor	n/v	努力	补充高频词	3
+entail	v	需要；牵涉	补充高频词	3
+feasible	adj	可行的	补充高频词	3
+hinder	v	阻碍	补充高频词	3
+impede	v	阻碍	补充高频词	3
+incentivize	v	激励	补充高频词	3
+indispensable	adj	不可或缺的	补充高频词	3
+innate	adj	天生的	补充高频词	3
+meticulous	adj	一丝不苟的	补充高频词	3
+negligible	adj	可忽略的	补充高频词	3
+nuance	n	细微差别	补充高频词	3
+obsolete	adj	过时的	补充高频词	3
+paramount	adj	至关重要的	补充高频词	3
+pertinent	adj	相关的	补充高频词	3
+plethora	n	过多；大量	补充高频词	3
+profound	adj	深刻的	补充高频词	3
+proliferate	v	激增	补充高频词	3
+propensity	n	倾向	补充高频词	3
+proximity	n	接近	补充高频词	3
+redundant	adj	多余的	补充高频词	3
+resilience	n	韧性；恢复力	补充高频词	3
+rudimentary	adj	基础的；初步的	补充高频词	3
+scarcity	n	稀缺	补充高频词	3
+scrutinize	v	仔细审查	补充高频词	3
+sparse	adj	稀疏的	补充高频词	3
+stagnant	adj	停滞的	补充高频词	3
+tangible	adj	有形的；切实的	补充高频词	3
+unprecedented	adj	史无前例的	补充高频词	3
+viable	adj	可行的	补充高频词	3
+volatile	adj	不稳定的；挥发性的	补充高频词	3
+#
+# =====================================================================
+#  以下为满分选手视角的深度补充
+#  一个6.0满分选手与5.0选手的差距，不在词汇量，而在：
+#  ① 同义替换的瞬间反应（阅读正确率的核心）
+#  ② 精准的语气/态度判断（听力高分题的关键）
+#  ③ 学科深层词汇（不是认识，是听到就能反应）
+#  ④ 写作中"恰好正确"的高阶表达（不是堆砌大词）
+#  ⑤ 易混淆词对的零失误（Complete the Words的陷阱）
+# =====================================================================
+#
+#
+# ======= A. 同义替换对 Synonym Pairs =======
+# TOEFL阅读的本质就是 paraphrase recognition
+# 正确选项几乎从不原词重现，而是用同义词替换
+# 满分选手对这些替换对有肌肉记忆
+#
+# --- 动词同义替换 ---
+#  原词 → 常见替换词（题目中互相替代出现）
+foster	v	培养；促进(=promote, nurture, cultivate)	同义替换-动词	2
+bolster	v	支撑；加强(=reinforce, strengthen, buttress)	同义替换-动词	2
+supersede	v	取代(=replace, supplant, displace)	同义替换-动词	2
+augment	v	增加(=increase, supplement, enhance)	同义替换-动词	2
+deplete	v	耗尽(=exhaust, drain, use up)	同义替换-动词	2
+elucidate	v	阐明(=clarify, explain, illuminate)	同义替换-动词	2
+precipitate	v	促使(=trigger, cause, bring about)	同义替换-动词	2
+substantiate	v	证实(=verify, confirm, corroborate)	同义替换-动词	2
+postulate	v	假定(=hypothesize, propose, posit)	同义替换-动词	2
+thrive	v	繁荣(=flourish, prosper, boom)	同义替换-动词	2
+wane	v	减弱(=decline, diminish, fade)	同义替换-动词	2
+stipulate	v	规定(=specify, require, mandate)	同义替换-动词	2
+pervade	v	弥漫(=permeate, spread through)	同义替换-动词	2
+supplant	v	取代(=replace, supersede, displace)	同义替换-动词	2
+retard	v	延缓(=slow, delay, impede)	同义替换-动词	2
+propagate	v	传播(=spread, disseminate, proliferate)	同义替换-动词	2
+posit	v	假定(=propose, postulate, suggest)	同义替换-动词	2
+ameliorate	v	改善(=improve, enhance, better)	同义替换-动词	2
+#
+# --- 形容词/副词同义替换 ---
+ubiquitous	adj	无处不在的(=widespread, pervasive, omnipresent)	同义替换-形容词	2
+sporadic	adj	偶发的(=intermittent, occasional, irregular)	同义替换-形容词	2
+prolific	adj	多产的(=productive, fertile, fruitful)	同义替换-形容词	2
+pivotal	adj	关键的(=crucial, critical, decisive)	同义替换-形容词	2
+nascent	adj	新兴的(=emerging, budding, incipient)	同义替换-形容词	2
+conducive	adj	有助于的(=favorable, beneficial)	同义替换-形容词	2
+incessant	adj	不停的(=constant, relentless, unceasing)	同义替换-形容词	2
+transient	adj	短暂的(=temporary, fleeting, ephemeral)	同义替换-形容词	2
+dormant	adj	休眠的(=inactive, latent, quiescent)	同义替换-形容词	2
+robust	adj	强健的(=strong, sturdy, vigorous)	同义替换-形容词	2
+elusive	adj	难以捉摸的(=hard to find, evasive)	同义替换-形容词	2
+ample	adj	充足的(=sufficient, abundant, plentiful)	同义替换-形容词	2
+salient	adj	突出的(=prominent, notable, conspicuous)	同义替换-形容词	2
+prevalent	adj	流行的(=widespread, common, pervasive)	同义替换-形容词	2
+tenuous	adj	脆弱的(=weak, flimsy, insubstantial)	同义替换-形容词	2
+propitious	adj	有利的(=favorable, auspicious, opportune)	同义替换-形容词	2
+#
+# --- 名词同义替换 ---
+ramification	n	后果(=consequence, implication, repercussion)	同义替换-名词	2
+impediment	n	障碍(=obstacle, barrier, hindrance)	同义替换-名词	2
+anomaly	n	异常(=irregularity, deviation, aberration)	同义替换-名词	2
+remnant	n	残余(=remains, vestige, trace)	同义替换-名词	2
+precursor	n	先驱(=forerunner, predecessor, harbinger)	同义替换-名词	2
+proponent	n	支持者(=advocate, supporter, champion)	同义替换-名词	2
+adversity	n	逆境(=hardship, difficulty, misfortune)	同义替换-名词	2
+influx	n	涌入(=inflow, surge, flood)	同义替换-名词	2
+trajectory	n	轨迹(=path, course, arc)	同义替换-名词	2
+#
+#
+# ======= B. 易混淆词对 Confusable Pairs =======
+# Complete the Words 的隐形杀手
+# 满分选手对这些零失误
+#
+# 格式：两个词写在一起，释义标注区别
+effect	n/v	效果(名词)；实现(动词) ≠ affect	易混淆对	2
+compliment	n/v	赞美 ≠ complement 补充	易混淆对	2
+discreet	adj	谨慎的 ≠ discrete 离散的	易混淆对	2
+emigrate	v	移出(离开某国) ≠ immigrate 移入	易混淆对	2
+elicit	v	引出 ≠ illicit 非法的	易混淆对	2
+illicit	adj	非法的 ≠ elicit 引出	易混淆对	2
+stationary	adj	静止的 ≠ stationery 文具	易混淆对	2
+allusion	n	暗指 ≠ illusion 幻觉	易混淆对	2
+illusion	n	幻觉 ≠ allusion 暗指	易混淆对	2
+adverse	adj	不利的 ≠ averse 反对的	易混淆对	2
+averse	adj	反对的 ≠ adverse 不利的	易混淆对	2
+imminent	adj	即将来临的 ≠ eminent 杰出的	易混淆对	2
+eminent	adj	杰出的 ≠ imminent 即将来临的	易混淆对	2
+prescribe	v	开处方；规定 ≠ proscribe 禁止	易混淆对	2
+proscribe	v	禁止 ≠ prescribe 开处方	易混淆对	2
+diffuse	v/adj	扩散；弥漫的 ≠ defuse 化解	易混淆对	2
+defuse	v	化解(紧张) ≠ diffuse 扩散	易混淆对	2
+perpetuate	v	使永久化 ≠ perpetrate 犯(罪)	易混淆对	2
+ambivalent	adj	矛盾的(态度) ≠ ambiguous 模糊的(含义)	易混淆对	2
+#
+#
+# ======= C. 听力语气/态度词 Speaker Attitude =======
+# "What is the speaker's attitude?" 是听力难题
+# 满分选手瞬间识别说话人的微妙情绪
+#
+# --- 积极/赞同 ---
+enthusiastic	adj	热情的	态度词-积极	3
+supportive	adj	支持的	态度词-积极	3
+optimistic	adj	乐观的	态度词-积极	3
+impressed	adj	印象深刻的	态度词-积极	3
+reassuring	adj	令人安心的	态度词-积极	3
+encouraging	adj	鼓舞人心的	态度词-积极	3
+appreciative	adj	感激的	态度词-积极	3
+#
+# --- 消极/反对 ---
+skeptical	adj	怀疑的	态度词-消极	3
+dismissive	adj	轻视的	态度词-消极	3
+frustrated	adj	沮丧的	态度词-消极	3
+irritated	adj	恼怒的	态度词-消极	3
+indifferent	adj	漠不关心的	态度词-消极	3
+condescending	adj	居高临下的	态度词-消极	3
+apologetic	adj	抱歉的	态度词-消极	3
+defensive	adj	防御的；辩护的	态度词-消极	3
+#
+# --- 中性/学术判断 ---
+cautious	adj	谨慎的	态度词-中性	3
+tentative	adj	试探性的	态度词-中性	3
+impartial	adj	公正的	态度词-中性	3
+reserved	adj	保守的；有保留的	态度词-中性	3
+pragmatic	adj	务实的	态度词-中性	3
+#
+# --- 惊讶/不确定 ---
+astonished	adj	惊讶的	态度词-惊讶	3
+bewildered	adj	困惑的	态度词-惊讶	3
+perplexed	adj	迷惑的	态度词-惊讶	3
+incredulous	adj	不敢相信的	态度词-惊讶	3
+uncertain	adj	不确定的	态度词-惊讶	3
+puzzled	adj	困惑的	态度词-惊讶	3
+#
+# --- 说话人语气动词(听力中教授/学生的语气线索) ---
+insist	v	坚持	语气动词	3
+emphasize	v	强调	语气动词	3
+caution	v	警告	语气动词	3
+speculate	v	推测	语气动词	3
+assert	v	断言	语气动词	3
+digress	v	跑题	语气动词	3
+reiterate	v	重申	语气动词	3
+underscore	v	强调	语气动词	3
+downplay	v	淡化	语气动词	3
+overstate	v	夸大	语气动词	3
+#
+#
+# ======= D. 学科深度词汇 (满分选手的硬实力) =======
+#
+# --- 古生物学/进化 Paleontology & Evolution ---
+paleontology	n	古生物学	深度-古生物	4
+Cambrian explosion	n	寒武纪大爆发	深度-古生物	4
+Mesozoic	n/adj	中生代	深度-古生物	4
+Cenozoic	n/adj	新生代	深度-古生物	4
+Pleistocene	n/adj	更新世	深度-古生物	4
+hominid	n	人科动物	深度-古生物	4
+bipedal	adj	两足行走的	深度-古生物	4
+primate	n	灵长类动物	深度-古生物	4
+specimen	n	标本	深度-古生物	4
+petrify	v	石化	深度-古生物	4
+excavate	v	发掘	深度-古生物	4
+radiocarbon dating	n	碳14测年法	深度-古生物	4
+mass extinction	n	大灭绝	深度-古生物	4
+convergent evolution	n	趋同进化	深度-古生物	4
+divergent evolution	n	趋异进化	深度-古生物	4
+phylogeny	n	系统发育	深度-古生物	4
+homologous	adj	同源的	深度-古生物	4
+vestigial	adj	退化的；残余的	深度-古生物	4
+sedimentary rock	n	沉积岩	深度-古生物	4
+#
+# --- 海洋生物/生态 Marine Biology ---
+plankton	n	浮游生物	深度-海洋	4
+coral reef	n	珊瑚礁	深度-海洋	4
+phytoplankton	n	浮游植物	深度-海洋	4
+zooplankton	n	浮游动物	深度-海洋	4
+bioluminescence	n	生物发光	深度-海洋	4
+thermocline	n	温跃层	深度-海洋	4
+salinity	n	盐度	深度-海洋	4
+tide	n	潮汐	深度-海洋	4
+estuary	n	入海口；河口	深度-海洋	4
+aquatic	adj	水生的	深度-海洋	4
+marine	adj	海洋的	深度-海洋	4
+spawn	v	产卵	深度-海洋	4
+predation	n	捕食	深度-海洋	4
+food chain	n	食物链	深度-海洋	4
+trophic level	n	营养级	深度-海洋	4
+benthic	adj	海底的	深度-海洋	4
+pelagic	adj	远洋的	深度-海洋	4
+bleaching	n	白化(珊瑚白化)	深度-海洋	4
+acidification	n	酸化	深度-海洋	4
+upwelling	n	上升流	深度-海洋	4
+#
+# --- 生态学进阶 Advanced Ecology ---
+succession	n	(生态)演替	深度-生态	4
+pioneer species	n	先锋物种	深度-生态	4
+climax community	n	顶极群落	深度-生态	4
+carrying capacity	n	环境承载力	深度-生态	4
+niche	n	生态位	深度-生态	4
+keystone species	n	关键物种	深度-生态	4
+invasive species	n	入侵物种	深度-生态	4
+mutualism	n	互利共生	深度-生态	4
+parasitism	n	寄生	深度-生态	4
+commensalism	n	偏利共生	深度-生态	4
+decomposer	n	分解者	深度-生态	4
+trophic cascade	n	营养级联	深度-生态	4
+biomass	n	生物量	深度-生态	4
+endemic species	n	特有种	深度-生态	4
+biodiversity hotspot	n	生物多样性热点	深度-生态	4
+#
+# --- 美术史/文学进阶 Art History & Literature ---
+Impressionism	n	印象派	深度-美术文学	4
+Baroque	n/adj	巴洛克风格	深度-美术文学	4
+Gothic	adj	哥特式的	深度-美术文学	4
+Neoclassical	adj	新古典主义的	深度-美术文学	4
+Romanticism	n	浪漫主义	深度-美术文学	4
+avant-garde	n/adj	先锋派	深度-美术文学	4
+chiaroscuro	n	明暗对照法	深度-美术文学	4
+still life	n	静物画	深度-美术文学	4
+abstract art	n	抽象艺术	深度-美术文学	4
+mural	n	壁画	深度-美术文学	4
+allegory	n	寓言	深度-美术文学	4
+metaphor	n	隐喻	深度-美术文学	4
+narrative	n/adj	叙事	深度-美术文学	4
+protagonist	n	主人公	深度-美术文学	4
+genre	n	体裁；类型	深度-美术文学	4
+patronage	n	资助；赞助	深度-美术文学	4
+iconography	n	图像学	深度-美术文学	4
+realism	n	现实主义	深度-美术文学	4
+#
+# --- 城市规划/地理 Urban Planning & Geography ---
+zoning	n	区域规划	深度-城市地理	4
+urban sprawl	n	城市蔓延	深度-城市地理	4
+gentrification	n	中产阶级化	深度-城市地理	4
+metropolitan	adj	大都市的	深度-城市地理	4
+suburban	adj	郊区的	深度-城市地理	4
+density	n	密度	深度-城市地理	4
+commuter	n	通勤者	深度-城市地理	4
+congestion	n	拥堵	深度-城市地理	4
+pedestrian	n/adj	行人	深度-城市地理	4
+public transit	n	公共交通	深度-城市地理	4
+land use	n	土地利用	深度-城市地理	4
+mixed-use	adj	综合用途的	深度-城市地理	4
+watershed	n	分水岭；流域	深度-城市地理	4
+topography	n	地形	深度-城市地理	4
+#
+# --- 认知科学/语言习得 Cognitive Science & Language Acquisition ---
+acquisition	n	习得	深度-认知语言	4
+critical period	n	关键期	深度-认知语言	4
+L1 transfer	n	母语迁移	深度-认知语言	4
+metalinguistic	adj	元语言的	深度-认知语言	4
+schema	n	图式(认知框架)	深度-认知语言	4
+automaticity	n	自动化(认知)	深度-认知语言	4
+executive function	n	执行功能	深度-认知语言	4
+attention span	n	注意力持续时间	深度-认知语言	4
+long-term memory	n	长期记忆	深度-认知语言	4
+retrieval	n	提取(记忆)	深度-认知语言	4
+encoding	n	编码(记忆)	深度-认知语言	4
+metacognition	n	元认知	深度-认知语言	4
+priming	n	启动效应	深度-认知语言	4
+interference	n	干扰	深度-认知语言	4
+lateralization	n	偏侧化(大脑)	深度-认知语言	4
+#
+# --- 天文进阶 Advanced Astronomy ---
+accretion	n	吸积(天体形成)	深度-天文	4
+exoplanet	n	系外行星	深度-天文	4
+red dwarf	n	红矮星	深度-天文	4
+white dwarf	n	白矮星	深度-天文	4
+black hole	n	黑洞	深度-天文	4
+light-year	n	光年	深度-天文	4
+solar wind	n	太阳风	深度-天文	4
+cosmic ray	n	宇宙射线	深度-天文	4
+Milky Way	n	银河系	深度-天文	4
+dark matter	n	暗物质	深度-天文	4
+Doppler effect	n	多普勒效应	深度-天文	4
+redshift	n	红移	深度-天文	4
+habitable zone	n	宜居带	深度-天文	4
+pulsar	n	脉冲星	深度-天文	4
+protostar	n	原恒星	深度-天文	4
+#
+#
+# ======= E. 满分写作精准表达 (Band 5.5→6.0的跃升) =======
+# 不是堆大词，而是用"恰好正确"的词
+#
+# --- 让步/反转 (Concession → Counter) ---
+admittedly	adv	诚然	写作精准-让步	5
+granted	adv	的确(让步)	写作精准-让步	5
+undeniably	adv	不可否认地	写作精准-让步	5
+to be fair	phr	公平地说	写作精准-让步	5
+be that as it may	phr	即便如此	写作精准-让步	5
+while it is true that	phr	虽然…是事实	写作精准-让步	5
+#
+# --- 递进/强化 (Intensification) ---
+not only ... but also	phr	不仅…而且	写作精准-递进	5
+what is more	phr	更重要的是	写作精准-递进	5
+to make matters worse	phr	更糟的是	写作精准-递进	5
+equally important	phr	同样重要的是	写作精准-递进	5
+by the same token	phr	同样地	写作精准-递进	5
+along the same lines	phr	同样地	写作精准-递进	5
+#
+# --- 举例/具体化 (Exemplification) ---
+to illustrate	phr	举例说明	写作精准-举例	5
+a notable example	phr	一个显著的例子	写作精准-举例	5
+as evidenced by	phr	正如…所证明的	写作精准-举例	5
+this is exemplified by	phr	这由…所例证	写作精准-举例	5
+#
+# --- 因果/推理精准表达 ---
+it follows that	phr	由此得出	写作精准-因果	5
+this accounts for	phr	这解释了	写作精准-因果	5
+it stands to reason that	phr	有理由认为	写作精准-因果	5
+one can reasonably argue	phr	可以合理地论证	写作精准-因果	5
+the implication is that	phr	这意味着	写作精准-因果	5
+this lends credence to	phr	这为…增加了可信度	写作精准-因果	5
+#
+# --- 对比精准表达 ---
+in stark contrast	phr	形成鲜明对比	写作精准-对比	5
+by contrast	phr	相比之下	写作精准-对比	5
+on the contrary	phr	恰恰相反	写作精准-对比	5
+far from	phr	远非	写作精准-对比	5
+rather than	phr	而不是	写作精准-对比	5
+#
+# --- 总结/定论 ---
+in essence	phr	本质上	写作精准-总结	5
+fundamentally	adv	从根本上	写作精准-总结	5
+on balance	phr	总的来说	写作精准-总结	5
+taken together	phr	综合来看	写作精准-总结	5
+the evidence suggests	phr	证据表明	写作精准-总结	5
+it is worth noting that	phr	值得注意的是	写作精准-总结	5
+#
+# --- Hedging 学术模糊语(满分选手最重要的技巧) ---
+# Band 6.0 从不绝对化表述，用hedging表示学术严谨
+tend to	phr	倾向于	写作精准-Hedging	5
+appear to	phr	似乎	写作精准-Hedging	5
+it seems likely that	phr	似乎很可能	写作精准-Hedging	5
+to some extent	phr	在某种程度上	写作精准-Hedging	5
+arguably	adv	可以说	写作精准-Hedging	5
+conceivably	adv	可以想象地	写作精准-Hedging	5
+in most cases	phr	在大多数情况下	写作精准-Hedging	5
+not necessarily	phr	不一定	写作精准-Hedging	5
+it is plausible that	phr	…是合理的	写作精准-Hedging	5
+one might argue that	phr	可以认为	写作精准-Hedging	5
+#
+#
+# ======= F. 词根词缀高频派生词 =======
+# Complete the Words 的终极武器
+# 满分选手看到前缀+词根就能秒推全词
+#
+# --- un- 否定前缀派生 ---
+unambiguous	adj	毫不含糊的	词缀派生-un	3
+undeniable	adj	不可否认的	词缀派生-un	3
+underestimate	v	低估	词缀派生-un	3
+underrepresented	adj	代表不足的	词缀派生-un	3
+unforeseen	adj	未预见的	词缀派生-un	3
+unparalleled	adj	无与伦比的	词缀派生-un	3
+unsustainable	adj	不可持续的	词缀派生-un	3
+#
+# --- in-/im-/ir-/il- 否定前缀 ---
+inaccessible	adj	不可进入的	词缀派生-in	3
+inadequate	adj	不充分的	词缀派生-in	3
+incompatible	adj	不兼容的	词缀派生-in	3
+inconclusive	adj	不确定的	词缀派生-in	3
+indistinguishable	adj	不可区分的	词缀派生-in	3
+irreversible	adj	不可逆的	词缀派生-in	3
+irrefutable	adj	不可反驳的	词缀派生-in	3
+impractical	adj	不切实际的	词缀派生-in	3
+imperceptible	adj	不可察觉的	词缀派生-in	3
+#
+# --- over-/under- 程度前缀 ---
+overestimate	v	高估	词缀派生-over	3
+overlook	v	忽视	词缀派生-over	3
+oversimplify	v	过度简化	词缀派生-over	3
+underpin	v	支撑；构成基础	词缀派生-over	3
+#
+# --- re- 重复前缀 ---
+redefine	v	重新定义	词缀派生-re	3
+redistribute	v	重新分配	词缀派生-re	3
+reevaluate	v	重新评估	词缀派生-re	3
+reformulate	v	重新阐述	词缀派生-re	3
+reinterpret	v	重新解读	词缀派生-re	3
+restructure	v	重组	词缀派生-re	3
+#
+# --- -tion/-sion 名词后缀 (Complete the Words 最高频) ---
+classification	n	分类	词缀派生-tion	3
+contemplation	n	沉思	词缀派生-tion	3
+deterioration	n	恶化	词缀派生-tion	3
+domestication	n	驯化	词缀派生-tion	3
+diversification	n	多样化	词缀派生-tion	3
+fertilization	n	受精；施肥	词缀派生-tion	3
+globalization	n	全球化	词缀派生-tion	3
+industrialization	n	工业化	词缀派生-tion	3
+liberalization	n	自由化	词缀派生-tion	3
+manifestation	n	表现	词缀派生-tion	3
+modernization	n	现代化	词缀派生-tion	3
+specialization	n	专门化	词缀派生-tion	3
+#
+#
+# ======= G. 更多听力日常高频表达 =======
+# 满分选手对这些"不起眼"的日常表达反应速度为零延迟
+#
+That makes sense	phr	有道理	听力-日常表达	5
+I couldn't agree more	phr	完全同意	听力-日常表达	5
+You've got a point	phr	你说得有道理	听力-日常表达	5
+I'm not so sure about that	phr	我对此不太确定	听力-日常表达	5
+That's easier said than done	phr	说起来容易做起来难	听力-日常表达	5
+Better safe than sorry	phr	安全第一	听力-日常表达	5
+I'll keep that in mind	phr	我会记住的	听力-日常表达	5
+It slipped my mind	phr	我忘了	听力-日常表达	5
+I'm on the fence	phr	我还没拿定主意	听力-日常表达	5
+Let's not get ahead of ourselves	phr	别操之过急	听力-日常表达	5
+That's beside the point	phr	那不是重点	听力-日常表达	5
+It's out of my hands	phr	这不在我控制范围内	听力-日常表达	5
+At the end of the day	phr	归根结底	听力-日常表达	5
+For what it's worth	phr	仅供参考(谦虚)	听力-日常表达	5
+If I were you	phr	如果我是你(建议)	听力-日常表达	5
+It's no big deal	phr	没什么大不了	听力-日常表达	5
+To be honest	phr	说实话	听力-日常表达	5
+Might as well	phr	不如就…吧	听力-日常表达	5
+I have no idea	phr	我完全不知道	听力-日常表达	5
+Do you happen to know	phr	你恰好知道…吗	听力-日常表达	5
+#
+# =====================================================================
+#  6.0 满分听力选手的深度扩充
+#
+#  满分选手听力的核心能力不是"认识单词"，而是：
+#  ① 对话中听到一句话，0.3秒内理解说话人的真实意图
+#  ② 听到语气词/填充词，能判断说话人在犹豫、反对还是转折
+#  ③ 听到间接表达，能解码出字面意思背后的真正含义
+#  ④ 听到否定问句，能正确理解问的是什么
+#  ⑤ 听到场景词，脑中瞬间激活整个场景图式(schema)
+# =====================================================================
+#
+#
+# ======= 1. 医疗/健康场景 Medical & Health =======
+# TOEFL经典场景，2026仍然高频
+#
+symptom	n	症状	听力-医疗健康	4
+diagnosis	n	诊断	听力-医疗健康	4
+treatment	n	治疗	听力-医疗健康	4
+side effect	n	副作用	听力-医疗健康	4
+dosage	n	剂量	听力-医疗健康	4
+over-the-counter	adj	非处方的	听力-医疗健康	4
+pharmacy	n	药房	听力-医疗健康	4
+insurance	n	保险	听力-医疗健康	4
+copay	n	自付额(看病自付部分)	听力-医疗健康	4
+physical therapy	n	物理治疗	听力-医疗健康	4
+referral	n	转诊	听力-医疗健康	4
+emergency room	n	急诊室	听力-医疗健康	4
+fever	n	发烧	听力-医疗健康	4
+sore throat	n	喉咙痛	听力-医疗健康	4
+blood pressure	n	血压	听力-医疗健康	4
+vaccination	n	疫苗接种	听力-医疗健康	4
+sprain	n/v	扭伤	听力-医疗健康	4
+flu shot	n	流感疫苗	听力-医疗健康	4
+clinic	n	诊所	听力-医疗健康	4
+#
+# ======= 2. 银行/金融服务 Banking & Finance =======
+# 日常短对话高频场景
+#
+savings account	n	储蓄账户	听力-银行金融	4
+checking account	n	活期账户	听力-银行金融	4
+withdraw	v	取款	听力-银行金融	4
+balance	n	余额	听力-银行金融	4
+statement	n	账单	听力-银行金融	4
+interest rate	n	利率	听力-银行金融	4
+loan	n/v	贷款	听力-银行金融	4
+mortgage	n	房贷	听力-银行金融	4
+installment	n	分期付款	听力-银行金融	4
+overdue	adj	逾期的	听力-银行金融	4
+penalty	n	罚金	听力-银行金融	4
+direct deposit	n	工资直存	听力-银行金融	4
+ATM	n	自动取款机	听力-银行金融	4
+PIN	n	密码(个人识别码)	听力-银行金融	4
+#
+# ======= 3. 邮局/快递 Post & Delivery =======
+#
+package	n	包裹	听力-邮局快递	4
+parcel	n	包裹(英式)	听力-邮局快递	4
+priority mail	n	快件	听力-邮局快递	4
+tracking number	n	快递单号	听力-邮局快递	4
+postage	n	邮资	听力-邮局快递	4
+fragile	adj	易碎的	听力-邮局快递	4
+signature required	phr	需要签收	听力-邮局快递	4
+return address	n	退回地址	听力-邮局快递	4
+shipping fee	n	运费	听力-邮局快递	4
+estimated delivery	n	预计送达	听力-邮局快递	4
+#
+# ======= 4. 图书馆场景 Library =======
+# TOEFL校园听力经典场景
+#
+return	v	还书	听力-图书馆	4
+overdue fine	n	逾期罚款	听力-图书馆	4
+renew	v	续借	听力-图书馆	4
+interlibrary loan	n	馆际互借	听力-图书馆	4
+reserve	v	预约(书)	听力-图书馆	4
+reference section	n	参考书区	听力-图书馆	4
+periodical	n	期刊	听力-图书馆	4
+database	n	数据库	听力-图书馆	4
+study carrel	n	自习隔间	听力-图书馆	4
+circulation desk	n	借还书台	听力-图书馆	4
+library card	n	借书证	听力-图书馆	4
+on hold	phr	预约等候中	听力-图书馆	4
+stacks	n	书库	听力-图书馆	4
+#
+# ======= 5. 酒店前台 Hotel =======
+#
+front desk	n	前台	听力-酒店	4
+suite	n	套房	听力-酒店	4
+single room	n	单人间	听力-酒店	4
+double room	n	双人间	听力-酒店	4
+vacancy	n	空房	听力-酒店	4
+no vacancy	phr	客满	听力-酒店	4
+room service	n	客房服务	听力-酒店	4
+wake-up call	n	叫醒电话	听力-酒店	4
+complimentary	adj	免费赠送的	听力-酒店	4
+continental breakfast	n	欧陆式早餐(简餐)	听力-酒店	4
+luggage	n	行李	听力-酒店	4
+bellhop	n	行李员	听力-酒店	4
+late checkout	n	延迟退房	听力-酒店	4
+housekeeping	n	客房清洁	听力-酒店	4
+#
+# ======= 6. 电话沟通模式 Phone Patterns =======
+# 2026听力大量短对话通过电话发生
+#
+May I speak to	phr	请问…在吗	听力-电话	5
+I'm calling about	phr	我打电话是关于	听力-电话	5
+Could you put me through to	phr	能帮我转接到…吗	听力-电话	5
+Please hold	phr	请稍等	听力-电话	5
+I'll transfer you	phr	我帮您转接	听力-电话	5
+The line is busy	phr	占线中	听力-电话	5
+Can I take a message	phr	需要留言吗	听力-电话	5
+I'll call back later	phr	我稍后再打	听力-电话	5
+Sorry, you've got the wrong number	phr	您打错了	听力-电话	5
+Is this a good time	phr	现在方便吗	听力-电话	5
+#
+# ======= 7. 投诉与解决 Complaint & Resolution =======
+# Listen and Choose a Response 的核心考点
+#
+I'd like to make a complaint	phr	我想投诉	听力-投诉解决	5
+I'd like to speak to a manager	phr	我想找经理	听力-投诉解决	5
+This isn't what I ordered	phr	这不是我点的	听力-投诉解决	5
+I'm not satisfied with	phr	我对…不满意	听力-投诉解决	5
+I was charged twice	phr	我被收了两次费	听力-投诉解决	5
+We apologize for the inconvenience	phr	很抱歉给您添麻烦	听力-投诉解决	5
+Let me see what I can do	phr	我看看能怎么处理	听力-投诉解决	5
+We'll look into it	phr	我们会调查的	听力-投诉解决	5
+I'd like a full refund	phr	我要全额退款	听力-投诉解决	5
+Is there anything else I can help with	phr	还有什么能帮您的吗	听力-投诉解决	5
+#
+# ======= 8. 问路/指路 Directions =======
+#
+go straight	phr	直走	听力-问路指路	4
+turn left/right	phr	左转/右转	听力-问路指路	4
+intersection	n	十字路口	听力-问路指路	4
+block	n	街区	听力-问路指路	4
+across from	phr	在…对面	听力-问路指路	4
+next to	phr	在…旁边	听力-问路指路	4
+around the corner	phr	转角处	听力-问路指路	4
+You can't miss it	phr	你不会错过的	听力-问路指路	4
+It's a five-minute walk	phr	步行五分钟	听力-问路指路	4
+take the elevator to	phr	乘电梯到	听力-问路指路	4
+ground floor	n	一楼	听力-问路指路	4
+parking lot	n	停车场	听力-问路指路	4
+#
+# ======= 9. 语气填充词与话语标记 Discourse Fillers =======
+# 听力中最"隐形"但最重要的元素
+# 6.0选手靠这些判断说话人在想什么
+#
+# --- 犹豫/不确定 (说话人在组织想法或不太确定) ---
+Well...	filler	嗯…(犹豫/转折前兆)	听力-语气标记	5
+Um / Uh	filler	呃…(在想)	听力-语气标记	5
+I mean	filler	我的意思是(自我修正)	听力-语气标记	5
+you know	filler	你知道的(寻求认同)	听力-语气标记	5
+sort of	filler	有点(模糊化)	听力-语气标记	5
+like	filler	就像(口语填充)	听力-语气标记	5
+I guess	filler	我猜(不太确定)	听力-语气标记	5
+I suppose	filler	我觉得吧(有保留的同意)	听力-语气标记	5
+#
+# --- 强调/确信 (说话人非常确定或想引起注意) ---
+Actually	filler	实际上(纠正或意外信息)	听力-语气标记	5
+Basically	filler	基本上(简化要点)	听力-语气标记	5
+Literally	filler	确实(加强语气)	听力-语气标记	5
+Absolutely	filler	绝对是(强烈肯定)	听力-语气标记	5
+Definitely	filler	肯定(确认)	听力-语气标记	5
+Exactly	filler	没错(完全同意)	听力-语气标记	5
+Obviously	filler	显然(暗示对方也应该知道)	听力-语气标记	5
+Clearly	filler	很明显(强调)	听力-语气标记	5
+#
+# --- 转折/意外 (后面要说相反的话) ---
+The thing is	filler	问题是(即将转折)	听力-语气标记	5
+Honestly	filler	说实话(可能要说不中听的)	听力-语气标记	5
+Look	filler	你看(强调或不耐烦)	听力-语气标记	5
+Here's the deal	filler	事情是这样的(即将解释)	听力-语气标记	5
+#
+# ======= 10. 间接表达解码 Indirect Speech =======
+# 6.0选手的杀手锏：听出字面意思背后的真实意图
+# TOEFL最爱考这个！
+#
+# --- 间接拒绝 (字面没说No但意思是No) ---
+I wish I could, but	phr	我希望我能，但…(=No)	听力-间接表达	5
+I'll have to think about it	phr	我得想想(=大概率No)	听力-间接表达	5
+Maybe some other time	phr	改天吧(=No)	听力-间接表达	5
+That's not really my thing	phr	那不太是我的菜(=No)	听力-间接表达	5
+I'm kind of busy	phr	我有点忙(=No/不太想)	听力-间接表达	5
+I'm not sure that's a good idea	phr	我不确定这是好主意(=不赞成)	听力-间接表达	5
+#
+# --- 间接建议 (不直接说"你应该"但在建议) ---
+Have you considered	phr	你考虑过…吗(=我建议你)	听力-间接表达	5
+You might want to	phr	你也许可以(=我建议你)	听力-间接表达	5
+If I were in your shoes	phr	如果我是你(=我建议你)	听力-间接表达	5
+It wouldn't hurt to	phr	…也没坏处(=你应该)	听力-间接表达	5
+Why not just	phr	为什么不直接(=你应该)	听力-间接表达	5
+Don't you think it would be better to	phr	你不觉得…更好吗(=建议)	听力-间接表达	5
+#
+# --- 间接批评 (字面客气但实际在批评) ---
+That's one way to look at it	phr	那是一种看法(=我不同意)	听力-间接表达	5
+With all due respect	phr	恕我直言(=接下来要反对)	听力-间接表达	5
+That's an interesting point, but	phr	有趣的观点，但(=我不同意)	听力-间接表达	5
+I see where you're coming from	phr	我理解你的出发点(=但我不同意)	听力-间接表达	5
+Not exactly	phr	不完全是(=你说错了)	听力-间接表达	5
+#
+# --- 间接请求 (不直接说"请你做"但在请求) ---
+I don't suppose you could	phr	你不会恰好能…吧(=请帮我)	听力-间接表达	5
+Would it be possible to	phr	有没有可能…(=请帮我)	听力-间接表达	5
+I hate to ask, but	phr	不好意思问，但(=请帮我)	听力-间接表达	5
+Any chance you could	phr	你有没有可能(=请帮我)	听力-间接表达	5
+#
+# ======= 11. 同意/反对的光谱 Agreement Spectrum =======
+# 从强烈同意到强烈反对，TOEFL听力考的就是在这个光谱上定位
+#
+# --- 强烈同意 ---
+That's exactly what I think	phr	这正是我想的	听力-同意反对	5
+You took the words right out of my mouth	phr	你说出了我想说的	听力-同意反对	5
+#
+# --- 部分同意 ---
+I see your point	phr	我明白你的意思	听力-同意反对	5
+That's true to some extent	phr	在某种程度上是对的	听力-同意反对	5
+Fair enough	phr	有道理	听力-同意反对	5
+I agree up to a point	phr	我在一定程度上同意	听力-同意反对	5
+You have a point there	phr	你有道理	听力-同意反对	5
+#
+# --- 委婉反对 ---
+I see what you mean, but	phr	我明白你意思，但	听力-同意反对	5
+That may be true, however	phr	可能是这样，但是	听力-同意反对	5
+I beg to differ	phr	恕我不同意	听力-同意反对	5
+I take your point, but	phr	我听到了你的观点，但	听力-同意反对	5
+#
+# --- 强烈反对 ---
+I don't think so	phr	我不这么认为	听力-同意反对	5
+That doesn't make sense	phr	那没道理	听力-同意反对	5
+No way	phr	不可能	听力-同意反对	5
+I totally disagree	phr	我完全不同意	听力-同意反对	5
+That's out of the question	phr	那不可能/没门	听力-同意反对	5
+#
+# ======= 12. 表达情绪反应 Emotional Reactions =======
+# Listen and Choose a Response 核心——选最自然的情绪反应
+#
+# --- 惊讶 ---
+You're kidding	phr	你开玩笑吧	听力-情绪反应	5
+Are you serious	phr	你认真的吗	听力-情绪反应	5
+I can't believe it	phr	我不敢相信	听力-情绪反应	5
+That's unbelievable	phr	太不可思议了	听力-情绪反应	5
+Wow, I had no idea	phr	哇，我完全不知道	听力-情绪反应	5
+No kidding	phr	不是开玩笑吧(惊讶)	听力-情绪反应	5
+#
+# --- 同情/安慰 ---
+That must be tough	phr	那一定很难	听力-情绪反应	5
+I'm sorry to hear that	phr	听到这个很遗憾	听力-情绪反应	5
+Hang in there	phr	撑住/坚持	听力-情绪反应	5
+Things will work out	phr	事情会好起来的	听力-情绪反应	5
+Don't be too hard on yourself	phr	别对自己太苛刻	听力-情绪反应	5
+#
+# --- 感谢/回应感谢 ---
+I really appreciate it	phr	非常感谢	听力-情绪反应	5
+That's very kind of you	phr	你太好了	听力-情绪反应	5
+Don't mention it	phr	不用谢	听力-情绪反应	5
+Anytime	phr	随时(回应感谢)	听力-情绪反应	5
+My pleasure	phr	我的荣幸	听力-情绪反应	5
+#
+# --- 失望/遗憾 ---
+That's too bad	phr	太遗憾了	听力-情绪反应	5
+What a bummer	phr	太扫兴了	听力-情绪反应	5
+I was really looking forward to it	phr	我真的很期待的	听力-情绪反应	5
+That's disappointing	phr	太令人失望了	听力-情绪反应	5
+#
+# --- 释然/放松 ---
+What a relief	phr	松了口气	听力-情绪反应	5
+Thank goodness	phr	谢天谢地	听力-情绪反应	5
+That's a load off my mind	phr	心中大石落地	听力-情绪反应	5
+#
+# ======= 13. 提供帮助/接受帮助 Offering & Accepting Help =======
+#
+Can I give you a hand	phr	需要帮忙吗	听力-帮助	5
+Do you need any help with that	phr	需要帮忙吗	听力-帮助	5
+I could use some help	phr	我确实需要帮忙	听力-帮助	5
+That would be great	phr	那太好了(接受帮助)	听力-帮助	5
+I can manage	phr	我能应付(婉拒帮助)	听力-帮助	5
+I've got it covered	phr	我搞定了(婉拒)	听力-帮助	5
+Thanks, but I'm good	phr	谢谢，不用了	听力-帮助	5
+#
+# ======= 14. 澄清/确认/重复 Clarification =======
+# 短对话中极高频——听不清时的交际策略
+#
+Sorry, what was that	phr	抱歉，你说什么	听力-澄清确认	5
+Could you say that again	phr	能再说一遍吗	听力-澄清确认	5
+What do you mean by	phr	你说的…是什么意思	听力-澄清确认	5
+Just to clarify	phr	为了确认一下	听力-澄清确认	5
+So what you're saying is	phr	所以你的意思是	听力-澄清确认	5
+Let me make sure I understand	phr	让我确认我理解了	听力-澄清确认	5
+Am I right in thinking	phr	我这样理解对吗	听力-澄清确认	5
+You mean ...?	phr	你是说…？(确认)	听力-澄清确认	5
+So basically	phr	所以基本上(总结对方的话)	听力-澄清确认	5
+#
+# ======= 15. 校园深度场景 Campus Deep =======
+# 不是公告，而是学生与教授/TA/advisor的真实对话
+#
+teaching assistant	n	助教(TA)	听力-校园对话	4
+academic advisor	n	学业顾问	听力-校园对话	4
+drop a class	phr	退课	听力-校园对话	4
+add a class	phr	加课	听力-校园对话	4
+waitlist	n	候补名单(选课)	听力-校园对话	4
+credit hours	n	学分	听力-校园对话	4
+GPA	n	绩点	听力-校园对话	4
+study group	n	学习小组	听力-校园对话	4
+research paper	n	研究论文	听力-校园对话	4
+peer review	n	同行评审	听力-校园对话	4
+plagiarism	n	抄袭	听力-校园对话	4
+citation	n	引用	听力-校园对话	4
+rough draft	n	初稿	听力-校园对话	4
+revision	n	修改	听力-校园对话	4
+extra credit	n	额外加分	听力-校园对话	4
+tutoring center	n	辅导中心	听力-校园对话	4
+writing center	n	写作中心	听力-校园对话	4
+lab report	n	实验报告	听力-校园对话	4
+field trip	n	实地考察	听力-校园对话	4
+internship	n	实习	听力-校园对话	4
+work-study	n	勤工俭学	听力-校园对话	4
+financial aid	n	助学金	听力-校园对话	4
+student ID	n	学生证	听力-校园对话	4
+bulletin board	n	公告栏	听力-校园对话	4
+#
+# ======= 16. 短对话中的时间/频率表达 =======
+# 听力中精确理解时间信息是拿分的基本功
+#
+the day after tomorrow	phr	后天	听力-时间表达	5
+the day before yesterday	phr	前天	听力-时间表达	5
+every other day	phr	每隔一天	听力-时间表达	5
+twice a week	phr	一周两次	听力-时间表达	5
+within a week	phr	一周之内	听力-时间表达	5
+around noon	phr	中午左右	听力-时间表达	5
+first thing in the morning	phr	一大早	听力-时间表达	5
+at the latest	phr	最迟	听力-时间表达	5
+ahead of schedule	phr	提前	听力-时间表达	5
+behind schedule	phr	落后于计划	听力-时间表达	5
+on short notice	phr	临时通知	听力-时间表达	5
+right away	phr	立刻	听力-时间表达	5
+sooner or later	phr	迟早	听力-时间表达	5
+for the time being	phr	暂时	听力-时间表达	5
+in the meantime	phr	与此同时	听力-时间表达	5
+#
+# ======= 17. 学术讲座中教授的"隐形考点信号" =======
+# 教授说这些话时，后面的内容100%会考
+#
+This is really important	phr	这很重要(=会考)	听力-考点信号	5
+Make sure you understand	phr	确保你们理解(=会考)	听力-考点信号	5
+I want to stress	phr	我要强调(=会考)	听力-考点信号	5
+Pay attention to	phr	注意(=会考)	听力-考点信号	5
+Don't confuse this with	phr	别把这跟…搞混(=对比题)	听力-考点信号	5
+A common misconception is	phr	一个常见误解是(=对比题)	听力-考点信号	5
+Contrary to what you might think	phr	与你可能想的相反(=对比题)	听力-考点信号	5
+There are several reasons	phr	有几个原因(=列举题)	听力-考点信号	5
+Let me give you an example	phr	举个例子(=例子题)	听力-考点信号	5
+The key difference is	phr	关键区别是(=对比题)	听力-考点信号	5
+What's interesting about this is	phr	有趣的是(=重点信息)	听力-考点信号	5
+This leads us to	phr	这引出了(=因果题)	听力-考点信号	5
+The question then becomes	phr	那问题就变成了(=主旨转折)	听力-考点信号	5
+Now, here's where it gets tricky	phr	现在事情变复杂了(=难点)	听力-考点信号	5
+So what does this tell us	phr	这告诉我们什么(=结论)	听力-考点信号	5
+#
+# ======= 18. 更多实用习语 (听力高频) =======
+#
+give it a shot	idiom	试一试	听力-习语补充	5
+on top of that	idiom	除此之外	听力-习语补充	5
+think outside the box	idiom	跳出框架思考	听力-习语补充	5
+get to the bottom of	idiom	弄清真相	听力-习语补充	5
+keep an eye on	idiom	留意	听力-习语补充	5
+lose track of	idiom	忘记/跟不上	听力-习语补充	5
+by the way	idiom	顺便说一下	听力-习语补充	5
+off the top of my head	idiom	我一时想到的	听力-习语补充	5
+the bottom line	idiom	归根结底	听力-习语补充	5
+a blessing in disguise	idiom	塞翁失马	听力-习语补充	5
+get the ball rolling	idiom	开始行动	听力-习语补充	5
+at the drop of a hat	idiom	立刻/毫不犹豫	听力-习语补充	5
+beat around the bush	idiom	拐弯抹角	听力-习语补充	5
+cost an arm and a leg	idiom	非常贵	听力-习语补充	5
+it's not rocket science	idiom	没那么难	听力-习语补充	5
+let's face it	idiom	面对现实吧	听力-习语补充	5
+speak of the devil	idiom	说曹操曹操到	听力-习语补充	5
+the sooner the better	idiom	越快越好	听力-习语补充	5
+two heads are better than one	idiom	三个臭皮匠	听力-习语补充	5
+up in the air	idiom	悬而未决	听力-习语补充	5
+you can say that again	idiom	你说得太对了	听力-习语补充	5
+we'll cross that bridge when we come to it	idiom	到时候再说	听力-习语补充	5
+it's worth a try	idiom	值得一试	听力-习语补充	5
+#
+# =====================================================================
+#  听力大幅扩充 — 目标：覆盖2026新托福听力所有出题场景
+# =====================================================================
+#
+#
+# ======= 19. 娱乐/休闲 Entertainment & Leisure =======
+# 日常社交对话高频话题
+#
+box office	n	售票处	听力-娱乐休闲	4
+matinee	n	日场(电影/戏剧)	听力-娱乐休闲	4
+sold out	phr	售罄	听力-娱乐休闲	4
+premiere	n	首映	听力-娱乐休闲	4
+intermission	n	幕间休息	听力-娱乐休闲	4
+admission	n	入场费	听力-娱乐休闲	4
+gallery	n	画廊	听力-娱乐休闲	4
+amusement park	n	游乐园	听力-娱乐休闲	4
+botanical garden	n	植物园	听力-娱乐休闲	4
+aquarium	n	水族馆	听力-娱乐休闲	4
+camping	n	露营	听力-娱乐休闲	4
+hiking trail	n	徒步小径	听力-娱乐休闲	4
+picnic	n	野餐	听力-娱乐休闲	4
+board game	n	桌游	听力-娱乐休闲	4
+streaming	n	流媒体	听力-娱乐休闲	4
+binge-watch	v	追剧	听力-娱乐休闲	4
+podcast	n	播客	听力-娱乐休闲	4
+live performance	n	现场演出	听力-娱乐休闲	4
+season pass	n	季票	听力-娱乐休闲	4
+#
+# ======= 20. 家务/日常琐事 Household & Errands =======
+# "你周末干什么了"类对话的核心词
+#
+grocery shopping	n	买菜	听力-家务琐事	4
+laundry	n	洗衣服	听力-家务琐事	4
+dry cleaner	n	干洗店	听力-家务琐事	4
+vacuum	v/n	吸尘	听力-家务琐事	4
+mow the lawn	phr	割草坪	听力-家务琐事	4
+take out the trash	phr	倒垃圾	听力-家务琐事	4
+do the dishes	phr	洗碗	听力-家务琐事	4
+iron	v	熨衣服	听力-家务琐事	4
+run errands	phr	跑腿办事	听力-家务琐事	4
+pick up groceries	phr	去买菜	听力-家务琐事	4
+drop off the car	phr	把车送去(修理)	听力-家务琐事	4
+get my car serviced	phr	给车做保养	听力-家务琐事	4
+recycle	v	回收	听力-家务琐事	4
+sort the mail	phr	整理邮件	听力-家务琐事	4
+change the light bulb	phr	换灯泡	听力-家务琐事	4
+#
+# ======= 21. 运动/户外 Sports & Outdoors =======
+#
+score	n/v	得分	听力-运动户外	4
+championship	n	锦标赛	听力-运动户外	4
+tournament	n	锦标赛/比赛	听力-运动户外	4
+season	n	赛季	听力-运动户外	4
+league	n	联赛	听力-运动户外	4
+playoffs	n	季后赛	听力-运动户外	4
+overtime	n	加时赛	听力-运动户外	4
+referee	n	裁判	听力-运动户外	4
+spectator	n	观众	听力-运动户外	4
+trail	n	小径	听力-运动户外	4
+kayaking	n	皮划艇	听力-运动户外	4
+rock climbing	n	攀岩	听力-运动户外	4
+cycling	n	骑行	听力-运动户外	4
+marathon	n	马拉松	听力-运动户外	4
+gear	n	装备	听力-运动户外	4
+#
+# ======= 22. 搬家/搬迁 Moving & Relocation =======
+#
+moving truck	n	搬家卡车	听力-搬家	4
+packing	n	打包	听力-搬家	4
+storage unit	n	储物间	听力-搬家	4
+forwarding address	n	转寄地址	听力-搬家	4
+settle in	phr	安顿下来	听力-搬家	4
+unpack	v	开箱整理	听力-搬家	4
+neighborhood	n	社区	听力-搬家	4
+downsize	v	缩小面积	听力-搬家	4
+real estate agent	n	房产经纪人	听力-搬家	4
+#
+# ======= 23. 求职/面试/职业 Job & Career =======
+# 2026新增职场场景的重点
+#
+resume	n	简历	听力-求职职业	4
+cover letter	n	求职信	听力-求职职业	4
+job opening	n	职位空缺	听力-求职职业	4
+apply for	phr	申请	听力-求职职业	4
+interview	n/v	面试	听力-求职职业	4
+qualification	n	资质	听力-求职职业	4
+references	n	推荐人	听力-求职职业	4
+salary	n	薪水	听力-求职职业	4
+benefits	n	福利	听力-求职职业	4
+promotion	n	升职	听力-求职职业	4
+part-time	adj	兼职的	听力-求职职业	4
+full-time	adj	全职的	听力-求职职业	4
+freelance	adj/n	自由职业	听力-求职职业	4
+networking	n	社交/人脉	听力-求职职业	4
+career fair	n	招聘会	听力-求职职业	4
+position	n	职位	听力-求职职业	4
+hire	v	录用	听力-求职职业	4
+laid off	phr	被裁员	听力-求职职业	4
+hand in one's notice	phr	递交辞呈	听力-求职职业	4
+#
+# ======= 24. 节日/假期/季节活动 Holidays & Seasonal =======
+#
+Thanksgiving	n	感恩节	听力-节日假期	4
+Black Friday	n	黑色星期五	听力-节日假期	4
+spring break	n	春假	听力-节日假期	4
+long weekend	n	长周末	听力-节日假期	4
+day off	n	休息日	听力-节日假期	4
+take time off	phr	请假	听力-节日假期	4
+holiday season	n	假期季	听力-节日假期	4
+family reunion	n	家庭聚会	听力-节日假期	4
+barbecue	n	烧烤	听力-节日假期	4
+fireworks	n	烟花	听力-节日假期	4
+decoration	n	装饰	听力-节日假期	4
+gift card	n	礼品卡	听力-节日假期	4
+#
+# ======= 25. 制定计划/约人 Making Plans =======
+# Listen and Choose a Response 的核心场景之一
+#
+Are you free on	phr	你…有空吗	听力-制定计划	5
+Let's meet at	phr	我们在…见	听力-制定计划	5
+Does ... work for you	phr	…对你行吗	听力-制定计划	5
+I'll pencil you in	phr	我先记下你的(暂定)	听力-制定计划	5
+Something came up	phr	有事(临时有变)	听力-制定计划	5
+Can we push it back	phr	能往后推吗	听力-制定计划	5
+Let's play it by ear	phr	到时候再说	听力-制定计划	5
+What time works best	phr	什么时间最方便	听力-制定计划	5
+I'm tied up	phr	我脱不开身	听力-制定计划	5
+We're all set	phr	我们都定好了	听力-制定计划	5
+Shall we say	phr	我们就说(定时间)	听力-制定计划	5
+I'll pick you up at	phr	我…来接你	听力-制定计划	5
+#
+# ======= 26. 给出意见/表态 Giving Opinions =======
+# 日常对话+学术讨论都需要
+#
+If you ask me	phr	要我说的话	听力-表达意见	5
+In my opinion	phr	在我看来	听力-表达意见	5
+Personally	adv	就我个人而言	听力-表达意见	5
+From my point of view	phr	从我的角度来看	听力-表达意见	5
+The way I see it	phr	在我看来	听力-表达意见	5
+I'd say	phr	我会说	听力-表达意见	5
+As far as I'm concerned	phr	就我而言	听力-表达意见	5
+I'm of the opinion that	phr	我认为	听力-表达意见	5
+I have mixed feelings about	phr	我对…感情复杂	听力-表达意见	5
+I'm leaning towards	phr	我倾向于	听力-表达意见	5
+#
+# ======= 27. 话题转换/插话 Topic Shifting =======
+# 对话中突然换话题——TOEFL爱考"为什么说话人提到X"
+#
+Speaking of which	phr	说到这个	听力-话题转换	5
+That reminds me	phr	这让我想起	听力-话题转换	5
+Oh, before I forget	phr	哦对了(差点忘了)	听力-话题转换	5
+On a different note	phr	换个话题	听力-话题转换	5
+Anyway	adv	不管怎样(回到正题)	听力-话题转换	5
+So, getting back to	phr	回到刚才的话题	听力-话题转换	5
+Sorry to change the subject	phr	抱歉换个话题	听力-话题转换	5
+While we're on the topic	phr	既然说到这个	听力-话题转换	5
+Can I just say something	phr	我能说一下吗(插话)	听力-话题转换	5
+Sorry to interrupt, but	phr	抱歉打断一下	听力-话题转换	5
+#
+# ======= 28. 描述问题/解释情况 Describing Problems =======
+# 听力中"发生了什么事"类题目的核心
+#
+What happened was	phr	事情是这样的	听力-描述问题	5
+The problem is	phr	问题是	听力-描述问题	5
+I ran into a problem	phr	我遇到了问题	听力-描述问题	5
+It turns out that	phr	结果发现	听力-描述问题	5
+I got mixed up	phr	我搞混了	听力-描述问题	5
+I'm having trouble with	phr	我在…方面有困难	听力-描述问题	5
+It's not working properly	phr	它没有正常工作	听力-描述问题	5
+There seems to be a mistake	phr	好像出了错	听力-描述问题	5
+I didn't realize that	phr	我没意识到	听力-描述问题	5
+I was under the impression that	phr	我以为(但其实不是)	听力-描述问题	5
+It completely slipped my mind	phr	我完全忘了	听力-描述问题	5
+I'm in a bit of a bind	phr	我有点左右为难	听力-描述问题	5
+#
+# ======= 29. 对比/比较表达 Comparisons =======
+# 听力中对比信息是高频考点
+#
+way more than	phr	比…多得多	听力-对比比较	5
+not nearly as ... as	phr	远没有…那样	听力-对比比较	5
+nothing like	phr	完全不像	听力-对比比较	5
+just as ... as	phr	和…一样	听力-对比比较	5
+even more so	phr	更是如此	听力-对比比较	5
+let alone	phr	更不用说	听力-对比比较	5
+compared to	phr	与…相比	听力-对比比较	5
+the other way around	phr	反过来	听力-对比比较	5
+quite the opposite	phr	恰恰相反	听力-对比比较	5
+#
+# ======= 30. 强调/弱化 Emphasizing & Minimizing =======
+# 判断说话人真实态度的关键
+#
+# --- 强调(说话人在放大) ---
+It was SO good	phr	太棒了(强调好)	听力-强调弱化	5
+I can't stress enough	phr	怎么强调都不为过	听力-强调弱化	5
+That's the whole point	phr	这就是关键所在	听力-强调弱化	5
+What really matters is	phr	真正重要的是	听力-强调弱化	5
+There's no question that	phr	毫无疑问	听力-强调弱化	5
+#
+# --- 弱化(说话人在淡化) ---
+It wasn't that bad	phr	没那么糟(弱化)	听力-强调弱化	5
+It's not a huge deal	phr	也不是什么大事(弱化)	听力-强调弱化	5
+It could have been worse	phr	本来可能更糟(弱化)	听力-强调弱化	5
+It's nothing to worry about	phr	没什么好担心的(弱化)	听力-强调弱化	5
+Slight / slightly	adj/adv	轻微的(弱化词)	听力-强调弱化	5
+#
+# ======= 31. 因果/结果在口语中的表达 Cause in Speech =======
+# 口语因果不用 therefore/consequently，用这些
+#
+That's why	phr	这就是为什么	听力-口语因果	5
+That's how	phr	这就是…的方式	听力-口语因果	5
+Because of that	phr	因为这个	听力-口语因果	5
+So that means	phr	所以这意味着	听力-口语因果	5
+As a result	phr	结果	听力-口语因果	5
+It ended up	phr	最后变成了	听力-口语因果	5
+The reason is	phr	原因是	听力-口语因果	5
+Thanks to	phr	多亏了	听力-口语因果	5
+Due to	phr	由于	听力-口语因果	5
+#
+# ======= 32. 讲座学科听力补充 — 补齐12学科的听力版本 =======
+# 这些词在阅读中能看懂，但听力中教授说出来时必须秒反应
+#
+# --- 生物生态(听力最高频学科) ---
+offspring	n	后代	听力-学术生物	4
+forage	v	觅食	听力-学术生物	4
+territory	n	领地	听力-学术生物	4
+mating	n	交配	听力-学术生物	4
+migratory	adj	迁徙的	听力-学术生物	4
+nocturnal	adj	夜行性的	听力-学术生物	4
+diurnal	adj	昼行性的	听力-学术生物	4
+apex predator	n	顶级捕食者	听力-学术生物	4
+endangered species	n	濒危物种	听力-学术生物	4
+food web	n	食物网	听力-学术生物	4
+canopy	n	树冠层	听力-学术生物	4
+understory	n	林下层	听力-学术生物	4
+pollinator	n	传粉者	听力-学术生物	4
+genetic drift	n	基因漂变	听力-学术生物	4
+phenotype	n	表现型	听力-学术生物	4
+genotype	n	基因型	听力-学术生物	4
+flora	n	植物群	听力-学术生物	4
+fauna	n	动物群	听力-学术生物	4
+amphibian	n	两栖动物	听力-学术生物	4
+mammal	n	哺乳动物	听力-学术生物	4
+#
+# --- 心理/神经(听力高频学科) ---
+classical conditioning	n	经典条件反射	听力-学术心理	4
+operant conditioning	n	操作性条件反射	听力-学术心理	4
+cognitive dissonance	n	认知失调	听力-学术心理	4
+attachment theory	n	依恋理论	听力-学术心理	4
+confirmation bias	n	确认偏误	听力-学术心理	4
+hindsight bias	n	后见之明偏误	听力-学术心理	4
+nature vs. nurture	n	先天vs.后天	听力-学术心理	4
+implicit memory	n	内隐记忆	听力-学术心理	4
+explicit memory	n	外显记忆	听力-学术心理	4
+sleep deprivation	n	睡眠剥夺	听力-学术心理	4
+fight-or-flight response	n	战或逃反应	听力-学术心理	4
+empathy	n	共情	听力-学术心理	4
+self-esteem	n	自尊	听力-学术心理	4
+peer pressure	n	同侪压力	听力-学术心理	4
+attention deficit	n	注意力缺陷	听力-学术心理	4
+#
+# --- 天文地质(听力经典学科) ---
+plate tectonics	n	板块构造	听力-学术天文地质	4
+pangaea	n	盘古大陆	听力-学术天文地质	4
+ice age	n	冰河时代	听力-学术天文地质	4
+fault line	n	断层线	听力-学术天文地质	4
+earthquake	n	地震	听力-学术天文地质	4
+eruption	n	喷发	听力-学术天文地质	4
+lava	n	熔岩	听力-学术天文地质	4
+fossil record	n	化石记录	听力-学术天文地质	4
+geological time scale	n	地质年代表	听力-学术天文地质	4
+solar system	n	太阳系	听力-学术天文地质	4
+constellation	n	星座	听力-学术天文地质	4
+atmosphere	n	大气层	听力-学术天文地质	4
+crater	n	火山口/陨石坑	听力-学术天文地质	4
+rotation	n	自转	听力-学术天文地质	4
+#
+# --- 历史/考古(听力常考) ---
+Industrial Revolution	n	工业革命	听力-学术历史	4
+the Enlightenment	n	启蒙运动	听力-学术历史	4
+Silk Road	n	丝绸之路	听力-学术历史	4
+the Great Depression	n	大萧条	听力-学术历史	4
+westward expansion	n	西进运动	听力-学术历史	4
+abolition	n	废除(奴隶制)	听力-学术历史	4
+suffrage	n	选举权	听力-学术历史	4
+immigration wave	n	移民潮	听力-学术历史	4
+trade route	n	贸易路线	听力-学术历史	4
+irrigation	n	灌溉	听力-学术历史	4
+settlement	n	定居点	听力-学术历史	4
+maritime exploration	n	海上探险	听力-学术历史	4
+barter	n/v	以物易物	听力-学术历史	4
+#
+# --- 经济/社会(听力常考) ---
+supply and demand	n	供需关系	听力-学术经济	4
+market economy	n	市场经济	听力-学术经济	4
+free trade	n	自由贸易	听力-学术经济	4
+cost of living	n	生活成本	听力-学术经济	4
+purchasing power	n	购买力	听力-学术经济	4
+consumer behavior	n	消费行为	听力-学术经济	4
+disposable income	n	可支配收入	听力-学术经济	4
+economic downturn	n	经济衰退	听力-学术经济	4
+stimulus package	n	经济刺激方案	听力-学术经济	4
+income inequality	n	收入不平等	听力-学术经济	4
+minimum wage	n	最低工资	听力-学术经济	4
+unemployment rate	n	失业率	听力-学术经济	4
+#
+# --- 环境/气候(听力高频) ---
+carbon dioxide	n	二氧化碳	听力-学术环境	4
+fossil fuel	n	化石燃料	听力-学术环境	4
+solar panel	n	太阳能板	听力-学术环境	4
+wind turbine	n	风力涡轮机	听力-学术环境	4
+electric vehicle	n	电动汽车	听力-学术环境	4
+carbon neutral	adj	碳中和的	听力-学术环境	4
+endangered habitat	n	受威胁栖息地	听力-学术环境	4
+waste management	n	废物管理	听力-学术环境	4
+water scarcity	n	水资源短缺	听力-学术环境	4
+urban heat island	n	城市热岛效应	听力-学术环境	4
+reforestation	n	重新造林	听力-学术环境	4
+wetland	n	湿地	听力-学术环境	4
+#
+# ======= 33. 讲座中教授的口头禅/填充 Professor Speech Habits =======
+# 6.0选手知道这些不是废话，而是结构信号
+#
+So	filler	那么(引出结论或新段)	听力-教授口头禅	5
+Right	filler	对吧(确认学生跟上了)	听力-教授口头禅	5
+OK so	filler	好那么(过渡到下一点)	听力-教授口头禅	5
+Now	filler	现在(引入新话题)	听力-教授口头禅	5
+Alright	filler	好的(段落结束/开始)	听力-教授口头禅	5
+You see	filler	你看(解释原因)	听力-教授口头禅	5
+The idea is that	phr	意思是说(解释概念)	听力-教授口头禅	5
+Think of it this way	phr	这样想(用类比解释)	听力-教授口头禅	5
+Suppose	v	假设(引入假设场景)	听力-教授口头禅	5
+What if	phr	如果…怎么办(引出思考)	听力-教授口头禅	5
+Does that make sense	phr	明白了吗(检查理解)	听力-教授口头禅	5
+Any questions so far	phr	到目前为止有问题吗	听力-教授口头禅	5
+Let me back up	phr	让我退回去说(补充)	听力-教授口头禅	5
+I should mention	phr	我应该提一下(补充信息)	听力-教授口头禅	5
+That's a good question	phr	好问题(回应学生提问)	听力-教授口头禅	5
+#
+# ======= 34. 数字/数量/程度口语表达 Numbers & Degree =======
+# 听力中数字信息错过就丢分
+#
+a couple of	phr	两三个	听力-数量程度	5
+a handful of	phr	少数	听力-数量程度	5
+a dozen	phr	一打/十二个	听力-数量程度	5
+dozens of	phr	几十个	听力-数量程度	5
+hundreds of	phr	数百个	听力-数量程度	5
+roughly	adv	大约	听力-数量程度	5
+give or take	phr	上下浮动	听力-数量程度	5
+or so	phr	左右/大约	听力-数量程度	5
+at least	phr	至少	听力-数量程度	5
+at most	phr	最多	听力-数量程度	5
+up to	phr	多达	听力-数量程度	5
+no more than	phr	不超过	听力-数量程度	5
+as many as	phr	多达	听力-数量程度	5
+the vast majority	phr	绝大多数	听力-数量程度	5
+a fraction of	phr	一小部分	听力-数量程度	5
+#
+# ======= 35. 日常科技/网络 Everyday Tech =======
+# 2026年考生的日常生活背景词
+#
+app	n	应用程序	听力-日常科技	4
+download	v/n	下载	听力-日常科技	4
+upload	v/n	上传	听力-日常科技	4
+log in	phr	登录	听力-日常科技	4
+sign out	phr	退出登录	听力-日常科技	4
+notification	n	通知	听力-日常科技	4
+social media	n	社交媒体	听力-日常科技	4
+inbox	n	收件箱	听力-日常科技	4
+spam	n	垃圾邮件	听力-日常科技	4
+screenshot	n	截图	听力-日常科技	4
+data plan	n	流量套餐	听力-日常科技	4
+hotspot	n	热点(WiFi共享)	听力-日常科技	4
+bluetooth	n	蓝牙	听力-日常科技	4
+cloud storage	n	云存储	听力-日常科技	4
+two-factor authentication	n	双重验证	听力-日常科技	4
+#
+# ======= 36. 讲座中的"对比结构"信号 =======
+# 教授做对比时用的模板，后面100%出对比题
+#
+Unlike X, Y	phr	与X不同，Y…	听力-对比结构	5
+While X ..., Y ...	phr	X…的同时，Y…	听力-对比结构	5
+On one hand ... on the other	phr	一方面…另一方面	听力-对比结构	5
+The difference between X and Y	phr	X和Y的区别	听力-对比结构	5
+X is similar to Y in that	phr	X与Y相似在于	听力-对比结构	5
+In comparison	phr	相比之下	听力-对比结构	5
+Whereas X ..., Y ...	phr	X…而Y…	听力-对比结构	5
+That's not to say that	phr	并不是说(让步后的转折)	听力-对比结构	5
+#
+# ======= 37. 讲座中的"分类/列举"信号 =======
+# 后面100%出多选题或排序题
+#
+There are three main types	phr	有三种主要类型	听力-列举分类	5
+The first is ... the second ...	phr	第一是…第二是…	听力-列举分类	5
+Another factor is	phr	另一个因素是	听力-列举分类	5
+In addition to that	phr	除此之外	听力-列举分类	5
+Last but not least	phr	最后但同样重要的	听力-列举分类	5
+We can divide this into	phr	我们可以将其分为	听力-列举分类	5
+These fall into two categories	phr	这些分为两类	听力-列举分类	5
+One more thing	phr	还有一件事	听力-列举分类	5
+Not to mention	phr	更不用说	听力-列举分类	5
+#
+# ======= 38. 更多短语动词(听力版) =======
+# 专挑日常对话中高频但学术词表不收录的
+#
+hang out	phr v	出去玩/闲逛	听力-短语动词	4
+chill out	phr v	放松	听力-短语动词	4
+freak out	phr v	抓狂	听力-短语动词	4
+mess up	phr v	搞砸	听力-短语动词	4
+screw up	phr v	搞砸(口语)	听力-短语动词	4
+blow off	phr v	放鸽子/不去	听力-短语动词	4
+zone out	phr v	走神	听力-短语动词	4
+space out	phr v	发呆	听力-短语动词	4
+burn out	phr v	精疲力竭	听力-短语动词	4
+check in on	phr v	查看…的情况	听力-短语动词	4
+get around to	phr v	终于抽出时间做	听力-短语动词	4
+come down with	phr v	染上(病)	听力-短语动词	4
+look forward to	phr v	期待	听力-短语动词	4
+get away	phr v	短途旅行/逃离	听力-短语动词	4
+hold up	phr v	耽搁	听力-短语动词	4
+run late	phr v	迟到/晚了	听力-短语动词	4
+swing by	phr v	顺路去	听力-短语动词	4
+drop by	phr v	顺便拜访	听力-短语动词	4
+tag along	phr v	跟着一起去	听力-短语动词	4
+#
+# ======= 39. 服务场景补充 Service Encounters =======
+#
+# --- 理发/美容 Hair Salon ---
+haircut	n	理发	听力-理发美容	4
+trim	n/v	修剪	听力-理发美容	4
+blow-dry	n	吹干	听力-理发美容	4
+#
+# --- 眼科/配镜 Eye Care ---
+eye exam	n	验光	听力-眼科配镜	4
+contact lenses	n	隐形眼镜	听力-眼科配镜	4
+frames	n	镜框	听力-眼科配镜	4
+reading glasses	n	老花镜	听力-眼科配镜	4
+optometrist	n	验光师	听力-眼科配镜	4
+#
+# --- 服装购物 Clothing ---
+fitting room	n	试衣间	听力-服装购物	4
+size	n	尺码	听力-服装购物	4
+try on	phr	试穿	听力-服装购物	4
+alterations	n	改衣服	听力-服装购物	4
+clearance	n	清仓	听力-服装购物	4
+return policy	n	退换政策	听力-服装购物	4
+gift wrap	n	礼品包装	听力-服装购物	4
+#
+# --- 汽车服务(精简版) Auto Service ---
+mechanic	n	技师	听力-汽车服务	4
+inspection	n	年检/检查	听力-汽车服务	4
+brake	n	刹车	听力-汽车服务	4
+engine	n	发动机	听力-汽车服务	4
+mileage	n	里程数	听力-汽车服务	4
+tow truck	n	拖车	听力-汽车服务	4
+#
+# ======= 40. 邻里/社区 Neighborhood & Community =======
+#
+noise complaint	n	噪音投诉	听力-邻里社区	4
+homeowner's association	n	业主委员会	听力-邻里社区	4
+block party	n	街区派对	听力-邻里社区	4
+community center	n	社区中心	听力-邻里社区	4
+food drive	n	食物捐赠活动	听力-邻里社区	4
+garage sale	n	车库大甩卖	听力-邻里社区	4
+recycling bin	n	回收箱	听力-邻里社区	4
+pedestrian crossing	n	人行横道	听力-邻里社区	4
+speed limit	n	限速	听力-邻里社区	4
+parking meter	n	停车计时器	听力-邻里社区	4
+#
+# ======= 41. 烹饪/食物 Cooking & Food =======
+#
+recipe	n	食谱	听力-烹饪食物	4
+ingredient	n	食材	听力-烹饪食物	4
+bake	v	烘焙	听力-烹饪食物	4
+grill	v/n	烤	听力-烹饪食物	4
+steam	v	蒸	听力-烹饪食物	4
+stir-fry	v	炒	听力-烹饪食物	4
+chop	v	切碎	听力-烹饪食物	4
+preheat	v	预热(烤箱)	听力-烹饪食物	4
+leftovers	n	剩饭剩菜	听力-烹饪食物	4
+meal prep	n	备餐	听力-烹饪食物	4
+homemade	adj	自制的	听力-烹饪食物	4
+microwave	v/n	微波炉加热	听力-烹饪食物	4
+#
+# ======= 42. 天气→活动关联 Weather & Activity =======
+#
+It's supposed to rain	phr	预计要下雨	听力-天气活动	5
+The weather is clearing up	phr	天气正在转晴	听力-天气活动	5
+It's pouring	phr	下大雨	听力-天气活动	5
+We'd better bring an umbrella	phr	我们最好带伞	听力-天气活动	5
+It's freezing outside	phr	外面冷死了	听力-天气活动	5
+Perfect weather for	phr	是…的好天气	听力-天气活动	5
+The game got rained out	phr	比赛因雨取消	听力-天气活动	5
+bundle up	phr	穿暖和	听力-天气活动	5
+#
+# ======= 43. 电话/客服自动语音 Automated & Service =======
+#
+Your call is important to us	phr	您的来电对我们很重要	听力-客服电话	5
+Press 1 for	phr	按1选择	听力-客服电话	5
+For billing inquiries	phr	账单咨询请	听力-客服电话	5
+Please stay on the line	phr	请不要挂断	听力-客服电话	5
+Your estimated wait time is	phr	预计等待时间为	听力-客服电话	5
+How may I direct your call	phr	请问要转接到哪里	听力-客服电话	5
+account number	n	账号	听力-客服电话	5
+#
+# ======= 44. 校园更多服务场景 Campus Services =======
+#
+career services	n	就业指导中心	听力-校园服务	4
+counseling center	n	心理咨询中心	听力-校园服务	4
+health center	n	校医院	听力-校园服务	4
+housing office	n	住宿管理处	听力-校园服务	4
+financial aid office	n	助学金办公室	听力-校园服务	4
+IT help desk	n	IT支持	听力-校园服务	4
+student government	n	学生会	听力-校园服务	4
+parking permit	n	停车许可证	听力-校园服务	4
+meal plan	n	食堂套餐计划	听力-校园服务	4
+campus shuttle	n	校园班车	听力-校园服务	4
+bookstore	n	校园书店	听力-校园服务	4
+commencement	n	毕业典礼	听力-校园服务	4
+#
+# ======= 45. 更多高频习语(日常对话核心) =======
+#
+no strings attached	idiom	没有附加条件	听力-习语2	5
+on the spot	idiom	当场/立刻	听力-习语2	5
+touch and go	idiom	情况不确定	听力-习语2	5
+go with the flow	idiom	随大流/顺其自然	听力-习语2	5
+take it or leave it	idiom	接不接受随你	听力-习语2	5
+in the nick of time	idiom	千钧一发/刚好赶上	听力-习语2	5
+that's the way it goes	idiom	事情就是这样	听力-习语2	5
+get one's act together	idiom	振作起来	听力-习语2	5
+keep it up	idiom	继续保持	听力-习语2	5
+the more the merrier	idiom	人越多越开心	听力-习语2	5
+don't judge a book by its cover	idiom	不可以貌取人	听力-习语2	5
+better late than never	idiom	迟到总比不到好	听力-习语2	5
+kill two birds with one stone	idiom	一举两得	听力-习语2	5
+Actions speak louder than words	idiom	行动胜于言辞	听力-习语2	5
+every cloud has a silver lining	idiom	塞翁失马焉知非福	听力-习语2	5
+#
+# ======= 46. 社交小聊 Small Talk =======
+# Listen and Choose a Response 大量考这种日常对白
+#
+How's it going	phr	最近怎样(问候)	听力-社交小聊	5
+Not bad, yourself	phr	还行，你呢(回复)	听力-社交小聊	5
+What have you been up to	phr	你最近在忙什么	听力-社交小聊	5
+Same old, same old	phr	老样子	听力-社交小聊	5
+Long time no see	phr	好久不见	听力-社交小聊	5
+How did it go	phr	(事情)怎么样了	听力-社交小聊	5
+It went well	phr	进展不错	听力-社交小聊	5
+What are you up to this weekend	phr	这周末你干什么	听力-社交小聊	5
+Nothing much, just	phr	没什么，就…	听力-社交小聊	5
+I've been meaning to tell you	phr	我一直想跟你说	听力-社交小聊	5
+Guess what	phr	你猜怎么着	听力-社交小聊	5
+You'll never guess	phr	你绝对猜不到	听力-社交小聊	5
+Did you hear about	phr	你听说…了吗	听力-社交小聊	5
+Tell me about it	phr	可不是嘛(表示深有同感)	听力-社交小聊	5
+I know what you mean	phr	我懂你的意思	听力-社交小聊	5
+It's been ages	phr	好久了	听力-社交小聊	5
+How time flies	phr	时间过得真快	听力-社交小聊	5
+Small world	phr	世界真小	听力-社交小聊	5
+Take care	phr	保重(告别)	听力-社交小聊	5
+#
+# ======= 47. 紧急/意外情况 Emergencies =======
+#
+call 911	phr	打急救电话	听力-紧急意外	4
+first aid	n	急救	听力-紧急意外	4
+fire alarm	n	火警	听力-紧急意外	4
+evacuation	n	疏散	听力-紧急意外	4
+power outage	n	停电	听力-紧急意外	4
+water damage	n	水灾/漏水损失	听力-紧急意外	4
+car accident	n	车祸	听力-紧急意外	4
+fender bender	n	轻微追尾	听力-紧急意外	4
+insurance claim	n	保险索赔	听力-紧急意外	4
+locksmith	n	锁匠	听力-紧急意外	4
+locked out	phr	锁在外面	听力-紧急意外	4
+slip and fall	phr	滑倒	听力-紧急意外	4
+#
+# ======= 48. 更多回应模式 Response Patterns =======
+# 这些是Listen and Choose a Response的答案选项模板
+#
+# --- 接受邀请 ---
+I'd love to	phr	我很乐意	听力-回应模式	5
+Sure, why not	phr	当然，为什么不呢	听力-回应模式	5
+Sounds like a plan	phr	好主意	听力-回应模式	5
+I'm in	phr	算我一个	听力-回应模式	5
+#
+# --- 拒绝邀请 ---
+I'm afraid I can't make it	phr	恐怕我不能去	听力-回应模式	5
+Maybe next time	phr	下次吧	听力-回应模式	5
+I wish I could	phr	我希望我能(=不能)	听力-回应模式	5
+I've already got plans	phr	我已经有安排了	听力-回应模式	5
+#
+# --- 感谢/回应 ---
+I owe you one	phr	我欠你一个人情	听力-回应模式	5
+You shouldn't have	phr	你太客气了	听力-回应模式	5
+That means a lot	phr	这对我很重要	听力-回应模式	5
+Happy to help	phr	乐意帮忙	听力-回应模式	5
+#
+# --- 道歉/回应 ---
+My bad	phr	我的错	听力-回应模式	5
+I'm terribly sorry	phr	非常抱歉	听力-回应模式	5
+It won't happen again	phr	不会再发生了	听力-回应模式	5
+No harm done	phr	没关系/没造成伤害	听力-回应模式	5
+Don't worry about it	phr	别放在心上	听力-回应模式	5
+These things happen	phr	这种事难免的	听力-回应模式	5
+#
+# --- 表示不知道/不确定 ---
+I haven't got a clue	phr	我一点头绪都没有	听力-回应模式	5
+Your guess is as good as mine	phr	我也不知道	听力-回应模式	5
+Beats me	phr	我也不知道(口语)	听力-回应模式	5
+I'm not entirely sure	phr	我不完全确定	听力-回应模式	5
+#
+# ======= 49. 学术讲座: 艺术/文学/音乐 =======
+#
+Modernism	n	现代主义	听力-学术艺术	4
+Postmodernism	n	后现代主义	听力-学术艺术	4
+Surrealism	n	超现实主义	听力-学术艺术	4
+Cubism	n	立体主义	听力-学术艺术	4
+Expressionism	n	表现主义	听力-学术艺术	4
+folk art	n	民间艺术	听力-学术艺术	4
+figurative	adj	具象的	听力-学术艺术	4
+color palette	n	色彩调色盘	听力-学术艺术	4
+brushstroke	n	笔触	听力-学术艺术	4
+symphony	n	交响乐	听力-学术艺术	4
+orchestra	n	管弦乐团	听力-学术艺术	4
+melody	n	旋律	听力-学术艺术	4
+rhythm	n	节奏	听力-学术艺术	4
+verse	n	诗节	听力-学术艺术	4
+prose	n	散文	听力-学术艺术	4
+playwright	n	剧作家	听力-学术艺术	4
+satire	n	讽刺(文学)	听力-学术艺术	4
+irony	n	反讽	听力-学术艺术	4
+#
+# ======= 50. 学术讲座: 教育/语言习得 =======
+#
+immersion program	n	沉浸式项目	听力-学术教育	4
+bilingual education	n	双语教育	听力-学术教育	4
+literacy	n	读写能力	听力-学术教育	4
+curriculum	n	课程体系	听力-学术教育	4
+standardized test	n	标准化考试	听力-学术教育	4
+gifted program	n	天才班	听力-学术教育	4
+special education	n	特殊教育	听力-学术教育	4
+dropout rate	n	辍学率	听力-学术教育	4
+achievement gap	n	成绩差距	听力-学术教育	4
+hands-on learning	n	动手学习	听力-学术教育	4
+cooperative learning	n	合作学习	听力-学术教育	4
+critical thinking	n	批判性思维	听力-学术教育	4
+#
+# =====================================================================
+#  6.0核心：词组/语块(Chunks)大规模扩充
+#
+#  为什么词组比单词重要？
+#  → 真实语音50-60%是多词块，不是逐词拼接
+#  → Listen and Choose a Response 几乎100%考语块
+#  → 5.0逐词解码，6.0整块识别 — 差距就在这里
+# =====================================================================
+#
+#
+# ======= A. 连读/弱读/缩略形式 Connected Speech =======
+# 考场里听到的不是教科书发音！
+# 这是中国考生听力最大的盲区
+#
+gonna	reduced	= going to (我要…)	听力-连读缩略	5
+wanna	reduced	= want to (想要)	听力-连读缩略	5
+gotta	reduced	= got to / have got to (必须)	听力-连读缩略	5
+kinda	reduced	= kind of (有点)	听力-连读缩略	5
+sorta	reduced	= sort of (有点)	听力-连读缩略	5
+shoulda	reduced	= should have (本应该)	听力-连读缩略	5
+coulda	reduced	= could have (本可以)	听力-连读缩略	5
+woulda	reduced	= would have (本会)	听力-连读缩略	5
+mighta	reduced	= might have (可能已经)	听力-连读缩略	5
+musta	reduced	= must have (一定已经)	听力-连读缩略	5
+hafta	reduced	= have to (必须)	听力-连读缩略	5
+oughta	reduced	= ought to (应该)	听力-连读缩略	5
+lemme	reduced	= let me (让我)	听力-连读缩略	5
+gimme	reduced	= give me (给我)	听力-连读缩略	5
+dunno	reduced	= don't know (不知道)	听力-连读缩略	5
+c'mon	reduced	= come on (来吧/拜托)	听力-连读缩略	5
+y'know	reduced	= you know (你知道)	听力-连读缩略	5
+'cause	reduced	= because (因为)	听力-连读缩略	5
+'bout	reduced	= about (关于)	听力-连读缩略	5
+'em	reduced	= them (他们)	听力-连读缩略	5
+ain't	reduced	= am not / is not / are not	听力-连读缩略	5
+outta	reduced	= out of (离开/用完)	听力-连读缩略	5
+lotsa	reduced	= lots of (很多)	听力-连读缩略	5
+whatcha	reduced	= what are you / what do you	听力-连读缩略	5
+howzit	reduced	= how is it (怎么样)	听力-连读缩略	5
+#
+#
+# ======= B. 高频动词搭配块 Verb Collocations =======
+# 听到动词时，后面跟什么是固定的
+# 听错搭配 = 理解错整个句子
+#
+# --- make 搭配 ---
+make a decision	phr	做决定	听力-动词搭配	5
+make a reservation	phr	预约	听力-动词搭配	5
+make an effort	phr	努力	听力-动词搭配	5
+make progress	phr	取得进展	听力-动词搭配	5
+make an appointment	phr	预约	听力-动词搭配	5
+make a mistake	phr	犯错	听力-动词搭配	5
+make room for	phr	腾出空间	听力-动词搭配	5
+make up one's mind	phr	做出决定	听力-动词搭配	5
+make the most of	phr	充分利用	听力-动词搭配	5
+#
+# --- take 搭配 ---
+take turns	phr	轮流	听力-动词搭配	5
+take notes	phr	做笔记	听力-动词搭配	5
+take a break	phr	休息一下	听力-动词搭配	5
+take advantage of	phr	利用	听力-动词搭配	5
+take into consideration	phr	考虑到	听力-动词搭配	5
+take responsibility	phr	承担责任	听力-动词搭配	5
+take a look at	phr	看一下	听力-动词搭配	5
+take one's time	phr	慢慢来	听力-动词搭配	5
+take part in	phr	参加	听力-动词搭配	5
+take effect	phr	生效	听力-动词搭配	5
+#
+# --- get 搭配(口语之王) ---
+get started	phr	开始	听力-动词搭配	5
+get used to	phr	习惯	听力-动词搭配	5
+get in touch with	phr	联系	听力-动词搭配	5
+get the point	phr	明白要点	听力-动词搭配	5
+get a chance to	phr	有机会	听力-动词搭配	5
+get behind on	phr	落后于	听力-动词搭配	5
+get through	phr	完成/度过(困难)	听力-动词搭配	5
+get away with	phr	侥幸逃脱	听力-动词搭配	5
+get along with	phr	与…相处融洽	听力-动词搭配	5
+#
+# --- have 搭配 ---
+have a hard time	phr	有困难	听力-动词搭配	5
+have a good time	phr	玩得开心	听力-动词搭配	5
+have second thoughts	phr	犹豫/改变主意	听力-动词搭配	5
+have no choice but to	phr	别无选择只能	听力-动词搭配	5
+have something to do with	phr	与…有关	听力-动词搭配	5
+have a lot on one's plate	phr	事情很多/很忙	听力-动词搭配	5
+have it in for someone	phr	故意针对某人	听力-动词搭配	5
+#
+# --- do 搭配 ---
+do research	phr	做研究	听力-动词搭配	5
+do someone a favor	phr	帮某人一个忙	听力-动词搭配	5
+do one's best	phr	尽最大努力	听力-动词搭配	5
+do without	phr	没有…也行	听力-动词搭配	5
+do the trick	phr	奏效	听力-动词搭配	5
+#
+# --- go 搭配 ---
+go wrong	phr	出问题	听力-动词搭配	5
+go through with	phr	坚持完成	听力-动词搭配	5
+go out of one's way	phr	特地/格外费心	听力-动词搭配	5
+#
+# --- put 搭配 ---
+put in a good word for	phr	帮忙说好话	听力-动词搭配	5
+put someone on the spot	phr	让某人当场为难	听力-动词搭配	5
+#
+# --- keep 搭配 ---
+keep track of	phr	追踪记录	听力-动词搭配	5
+keep it down	phr	安静点	听力-动词搭配	5
+keep one's fingers crossed	phr	祈祷好运	听力-动词搭配	5
+#
+#
+# ======= C. 条件/假设/后悔语块 Conditionals & Regrets =======
+# 听力中条件句和虚拟语气是拉分题
+#
+If only I had	phr	要是我当初…就好了	听力-条件假设	5
+I wish I had known	phr	我希望我当时知道	听力-条件假设	5
+Had I known	phr	要是我当时知道(倒装)	听力-条件假设	5
+If it weren't for	phr	如果不是因为	听力-条件假设	5
+Suppose you were	phr	假设你是	听力-条件假设	5
+What would you do if	phr	如果…你会怎么做	听力-条件假设	5
+I should have	phr	我本应该	听力-条件假设	5
+I shouldn't have	phr	我不该	听力-条件假设	5
+If worse comes to worst	phr	在最坏的情况下	听力-条件假设	5
+In that case	phr	那样的话	听力-条件假设	5
+Otherwise	adv	否则	听力-条件假设	5
+As long as	phr	只要	听力-条件假设	5
+Unless	conj	除非	听力-条件假设	5
+Provided that	phr	假如/只要	听力-条件假设	5
+On the condition that	phr	条件是	听力-条件假设	5
+#
+#
+# ======= D. "句首信号"语块 Sentence Starters =======
+# 听到这些开头，就知道后面要说什么类型的内容
+# 6.0选手靠这些实现预判式听力
+#
+# --- 开头 = 接下来是好消息 ---
+The good news is	phr	好消息是	听力-句首信号	5
+On the bright side	phr	好的一面是	听力-句首信号	5
+Fortunately	adv	幸运的是	听力-句首信号	5
+Luckily	adv	幸运地	听力-句首信号	5
+I'm happy to report	phr	我很高兴地说	听力-句首信号	5
+#
+# --- 开头 = 接下来是坏消息 ---
+The bad news is	phr	坏消息是	听力-句首信号	5
+Unfortunately	adv	不幸的是	听力-句首信号	5
+I hate to break it to you	phr	我不想扫你兴	听力-句首信号	5
+I'm sorry to say	phr	很遗憾地说	听力-句首信号	5
+I regret to inform you	phr	遗憾通知您	听力-句首信号	5
+#
+# --- 开头 = 接下来要纠正/反驳 ---
+That's not entirely true	phr	那不完全对	听力-句首信号	5
+#
+# --- 开头 = 接下来要补充 ---
+Come to think of it	phr	想想看(突然想到)	听力-句首信号	5
+Now that you mention it	phr	你这么一说(才想起)	听力-句首信号	5
+I almost forgot	phr	我差点忘了	听力-句首信号	5
+While I'm at it	phr	顺便(趁这个机会)	听力-句首信号	5
+#
+# --- 开头 = 接下来要总结/结束 ---
+To make a long story short	phr	长话短说	听力-句首信号	5
+So in a nutshell	phr	简而言之	听力-句首信号	5
+All things considered	phr	综合考虑	听力-句首信号	5
+#
+#
+# ======= E. 更多场景对话模板(完整交互回合) =======
+# 不是单个词，而是"一问一答"的固定套路
+#
+# --- 打招呼/告别 Greetings & Farewells ---
+Hey, what's up	phr	嘿，怎么了/最近好吗	听力-对话模板	5
+Not much, you	phr	没什么，你呢	听力-对话模板	5
+I gotta run	phr	我得走了	听力-对话模板	5
+Catch you later	phr	回头见	听力-对话模板	5
+It was nice talking to you	phr	很高兴跟你聊	听力-对话模板	5
+Have a good one	phr	祝你愉快	听力-对话模板	5
+See you around	phr	回头见	听力-对话模板	5
+#
+# --- 请求许可 Asking Permission ---
+Do you mind if I	phr	你介意我…吗	听力-对话模板	5
+Is it OK if I	phr	我…可以吗	听力-对话模板	5
+Would it be all right if	phr	如果我…可以吗	听力-对话模板	5
+Go right ahead	phr	请便(允许)	听力-对话模板	5
+Be my guest	phr	请便(随意)	听力-对话模板	5
+I'd rather you didn't	phr	我宁愿你不要(委婉拒绝)	听力-对话模板	5
+#
+# --- 催促 Urging ---
+We'd better get going	phr	我们最好出发了	听力-对话模板	5
+We're running out of time	phr	我们快没时间了	听力-对话模板	5
+Hurry up	phr	快点	听力-对话模板	5
+Time's up	phr	时间到了	听力-对话模板	5
+We can't afford to wait	phr	我们等不起了	听力-对话模板	5
+#
+# --- 安慰/鼓励 Comforting ---
+Don't sweat it	phr	别担心	听力-对话模板	5
+It'll all work out	phr	一切都会好的	听力-对话模板	5
+You'll do great	phr	你会做得很好	听力-对话模板	5
+Look on the bright side	phr	往好处想	听力-对话模板	5
+That's not the end of the world	phr	又不是世界末日	听力-对话模板	5
+Chin up	phr	振作起来	听力-对话模板	5
+#
+# --- 表达惊讶后追问 Surprise + Follow-up ---
+Wait, what	phr	等等，什么(惊讶)	听力-对话模板	5
+How come	phr	怎么会/为什么	听力-对话模板	5
+Since when	phr	从什么时候开始	听力-对话模板	5
+What do you mean	phr	你什么意思	听力-对话模板	5
+Are you for real	phr	你认真的吗	听力-对话模板	5
+You don't say	phr	真的吗(惊讶)	听力-对话模板	5
+#
+#
+# ======= F. 形容词/副词搭配块 Adj/Adv Collocations =======
+# 听力中修饰词+名词是固定搭配
+#
+heavy rain	phr	大雨(不说big rain)	听力-形容搭配	5
+heavy traffic	phr	交通拥堵	听力-形容搭配	5
+strong wind	phr	大风(不说big wind)	听力-形容搭配	5
+high demand	phr	高需求	听力-形容搭配	5
+steep price	phr	高价	听力-形容搭配	5
+tight budget	phr	紧张的预算	听力-形容搭配	5
+tight deadline	phr	紧迫的截止日	听力-形容搭配	5
+sharp decline	phr	急剧下降	听力-形容搭配	5
+steady growth	phr	稳步增长	听力-形容搭配	5
+rough estimate	phr	粗略估计	听力-形容搭配	5
+a close call	phr	好险/千钧一发	听力-形容搭配	5
+a sure thing	phr	十拿九稳	听力-形容搭配	5
+common ground	phr	共同点	听力-形容搭配	5
+wishful thinking	phr	一厢情愿	听力-形容搭配	5
+mixed feelings	phr	复杂的心情	听力-形容搭配	5
+blind spot	phr	盲点	听力-形容搭配	5
+bottom line	phr	底线/关键	听力-形容搭配	5
+short notice	phr	临时通知	听力-形容搭配	5
+last resort	phr	最后手段	听力-形容搭配	5
+#
+#
+# ======= G. 介词搭配块 Preposition Chunks =======
+# 听错介词 = 理解错关系
+#
+on purpose	phr	故意	听力-介词搭配	5
+by accident	phr	偶然/不小心	听力-介词搭配	5
+on time	phr	准时	听力-介词搭配	5
+in time	phr	及时	听力-介词搭配	5
+in advance	phr	提前	听力-介词搭配	5
+in person	phr	亲自	听力-介词搭配	5
+in charge of	phr	负责	听力-介词搭配	5
+on behalf of	phr	代表	听力-介词搭配	5
+in favor of	phr	支持	听力-介词搭配	5
+in spite of	phr	尽管	听力-介词搭配	5
+by means of	phr	通过…方式	听力-介词搭配	5
+for good	phr	永远	听力-介词搭配	5
+for the sake of	phr	为了…的缘故	听力-介词搭配	5
+on the verge of	phr	在…的边缘	听力-介词搭配	5
+out of the blue	phr	突然/出乎意料	听力-介词搭配	5
+off the record	phr	非正式/私下说	听力-介词搭配	5
+on second thought	phr	再想想(改主意)	听力-介词搭配	5
+in the middle of	phr	在…过程中	听力-介词搭配	5
+at this point	phr	在这个时候	听力-介词搭配	5
+for now	phr	目前/暂时	听力-介词搭配	5
+#
+#
+# ======= H. 学术讲座中的"连接语块" Lecture Connective Chunks =======
+# 教授在讲座中串联逻辑用的固定块
+#
+The point I'm trying to make is	phr	我想表达的是	听力-讲座语块	5
+What this means in practice is	phr	实际上这意味着	听力-讲座语块	5
+To put this in perspective	phr	换个角度来看	听力-讲座语块	5
+As I was saying	phr	正如我刚才说的	听力-讲座语块	5
+Where was I	phr	我说到哪了(跑题后回来)	听力-讲座语块	5
+Now where does this leave us	phr	那我们该怎么理解呢	听力-讲座语块	5
+The question is why	phr	问题是为什么	听力-讲座语块	5
+And here's the key	phr	关键在这里	听力-讲座语块	5
+What's particularly interesting is	phr	特别有趣的是	听力-讲座语块	5
+This is consistent with	phr	这与…一致	听力-讲座语块	5
+This contradicts	phr	这与…矛盾	听力-讲座语块	5
+The evidence points to	phr	证据表明	听力-讲座语块	5
+One explanation for this is	phr	一个解释是	听力-讲座语块	5
+The implication here is	phr	这里的含义是	听力-讲座语块	5
+So the takeaway is	phr	所以要点是	听力-讲座语块	5
+It's worth noting that	phr	值得注意的是	听力-讲座语块	5
+What we can say with certainty is	phr	我们能确定的是	听力-讲座语块	5
+The prevailing theory is	phr	主流理论是	听力-讲座语块	5
+Recent studies have shown that	phr	近期研究表明	听力-讲座语块	5
+#
+#
+# ======= I. 校园对话固定套路 Campus Formulaic Exchanges =======
+#
+# --- 找教授 Meeting Professor ---
+I was hoping to talk to you about	phr	我想跟您谈谈关于	听力-校园套路	5
+I'm having trouble understanding	phr	我理解…有困难	听力-校园套路	5
+Could you go over that again	phr	您能再讲一遍吗	听力-校园套路	5
+Is there any way I could	phr	有没有可能我可以	听力-校园套路	5
+I was wondering if I could get an extension	phr	我想问能不能延期	听力-校园套路	5
+My grade doesn't seem right	phr	我的成绩好像不对	听力-校园套路	5
+I'd like to discuss my paper	phr	我想讨论一下我的论文	听力-校园套路	5
+What are you looking for in the final paper	phr	期末论文您期望什么	听力-校园套路	5
+#
+# --- 找advisor/registrar ---
+I need to change my major	phr	我要换专业	听力-校园套路	5
+I'm thinking about dropping a class	phr	我在考虑退课	听力-校园套路	5
+Am I on track to graduate	phr	我能按时毕业吗	听力-校园套路	5
+I still need to fulfill my requirements	phr	我还需要完成必修要求	听力-校园套路	5
+Is this class still open	phr	这门课还有名额吗	听力-校园套路	5
+Can I take this as pass/fail	phr	这门课能不能算通过/不通过	听力-校园套路	5
+#
+# --- 找住宿/图书馆/行政 ---
+I'd like to request a room change	phr	我想申请换房间	听力-校园套路	5
+Is there a study room available	phr	有自习室可以用吗	听力-校园套路	5
+I need to pay my tuition	phr	我要交学费	听力-校园套路	5
+Where do I pick up my student ID	phr	我在哪领学生证	听力-校园套路	5
+My internet isn't working in the dorm	phr	宿舍网坏了	听力-校园套路	5
+How do I sign up for the meal plan	phr	怎么报名食堂套餐	听力-校园套路	5
+#
+#
+# ======= J. 对话中的"连锁反应"语块 Chain Reactions =======
+# A说了X → B用这些语块接话 → 形成自然对话
+#
+That being said	phr	话虽如此	听力-接话语块	5
+With that in mind	phr	考虑到这一点	听力-接话语块	5
+Given that	phr	鉴于	听力-接话语块	5
+That said	phr	话虽这么说	听力-接话语块	5
+Either way	phr	无论如何	听力-接话语块	5
+At any rate	phr	不管怎么说	听力-接话语块	5
+Point taken	phr	我接受你的观点	听力-接话语块	5
+That's a fair point	phr	这说得有道理	听力-接话语块	5
+I hear you	phr	我听到了/我理解	听力-接话语块	5
+I get where you're coming from	phr	我理解你的立场	听力-接话语块	5
+You've got me there	phr	你说得对(我无法反驳)	听力-接话语块	5
+That's news to me	phr	我第一次听说	听力-接话语块	5
+Now you're talking	phr	这才像话	听力-接话语块	5
+#
+#
+# ======= K. 口语中表示"大量/少量/频率"的语块 =======
+# 比 many/few 丰富得多
+#
+a ton of	phr	大量	听力-量词语块	5
+a bunch of	phr	一堆	听力-量词语块	5
+loads of	phr	大量	听力-量词语块	5
+plenty of	phr	足够多	听力-量词语块	5
+quite a few	phr	相当多	听力-量词语块	5
+hardly any	phr	几乎没有	听力-量词语块	5
+next to nothing	phr	几乎为零	听力-量词语块	5
+not a single	phr	一个都没有	听力-量词语块	5
+every now and then	phr	时不时	听力-量词语块	5
+once in a while	phr	偶尔	听力-量词语块	5
+more often than not	phr	通常/多半	听力-量词语块	5
+time and again	phr	反复地	听力-量词语块	5
+nine times out of ten	phr	十有八九	听力-量词语块	5
+all the time	phr	一直/总是	听力-量词语块	5
+on a regular basis	phr	定期地	听力-量词语块	5
+#
+# =====================================================================
+#  "看得懂但听不出"的陷阱词 (Deceptive Pronunciation Words)
+#
+#  这类词的共同特点：
+#  ① 拼写简单，阅读中秒认
+#  ② 但真实发音跟中国学生"脑中默读音"差别巨大
+#  ③ 听力中出现时，反应延迟或完全听不出
+#  ④ 尤其是法语/拉丁语借词、元音不规则词、重音陷阱词
+#
+#  格式: 单词\t词性\t中文(附注音陷阱)\t分类\t优先级
+# =====================================================================
+#
+# ======= 1. 法语/外来语借词(发音完全不按英语规则) =======
+#
+garage	n	车库 [美ɡəˈrɑːʒ 不是"嘎拉基"]	听力-发音陷阱	4
+badge	n	徽章；胸牌 [bædʒ 不是"巴德格"]	听力-发音陷阱	4
+beige	adj	米色 [beɪʒ 不是"贝格"]	听力-发音陷阱	4
+debris	n	碎片；残骸 [dəˈbriː 不是"德布里斯"]	听力-发音陷阱	4
+depot	n	仓库；车站 [ˈdiːpoʊ t不发音]	听力-发音陷阱	4
+debut	n	首次亮相 [deɪˈbjuː t不发音]	听力-发音陷阱	4
+detour	n	绕路 [ˈdiːtʊr]	听力-发音陷阱	4
+rapport	n	融洽关系 [ræˈpɔːr t不发音]	听力-发音陷阱	4
+bouquet	n	花束 [buˈkeɪ t不发音]	听力-发音陷阱	4
+boutique	n	精品店 [buːˈtiːk 不是"波提克"]	听力-发音陷阱	4
+fiancé	n	未婚夫 [ˌfiːɑːnˈseɪ]	听力-发音陷阱	4
+résumé	n	简历 [ˈrezəmeɪ 三个音节]	听力-发音陷阱	4
+entrepreneur	n	企业家 [ˌɑːntrəprəˈnɜːr]	听力-发音陷阱	4
+chauffeur	n	司机 [ʃoʊˈfɜːr]	听力-发音陷阱	4
+cuisine	n	菜系 [kwɪˈziːn]	听力-发音陷阱	4
+lingerie	n	内衣 [ˌlɑːnʒəˈreɪ]	听力-发音陷阱	4
+cliché	n	陈词滥调 [kliːˈʃeɪ]	听力-发音陷阱	4
+plateau	n	高原；平台期 [plæˈtoʊ]	听力-发音陷阱	4
+silhouette	n	轮廓；剪影 [ˌsɪluˈet]	听力-发音陷阱	4
+#
+# ======= 2. 元音陷阱(元音发音跟拼写不符) =======
+#
+colonel	n	上校 [ˈkɜːrnl 听起来像kernel]	听力-发音陷阱	4
+choir	n	合唱团 [ˈkwaɪər 不是"翘"]	听力-发音陷阱	4
+subtle	adj	微妙的 [ˈsʌtl b不发音]	听力-发音陷阱	4
+doubt	v/n	怀疑 [daʊt b不发音]	听力-发音陷阱	4
+debt	n	债务 [det b不发音]	听力-发音陷阱	4
+salmon	n	三文鱼 [ˈsæmən l不发音]	听力-发音陷阱	4
+almond	n	杏仁 [ˈɑːmənd l常不发音]	听力-发音陷阱	4
+bury	v	埋葬 [ˈberi 听起来像berry]	听力-发音陷阱	4
+women	n	女人(复数) [ˈwɪmɪn 不是"窝门"]	听力-发音陷阱	4
+tomb	n	坟墓 [tuːm b不发音]	听力-发音陷阱	4
+herb	n	草药 [ɜːrb 美音h不发音]	听力-发音陷阱	4
+quay	n	码头 [kiː 听起来像key]	听力-发音陷阱	4
+queue	n	排队 [kjuː 听起来像字母Q]	听力-发音陷阱	4
+gauge	n/v	测量仪；衡量 [ɡeɪdʒ]	听力-发音陷阱	4
+plaid	n/adj	格子花纹 [plæd 不是"普莱德"]	听力-发音陷阱	4
+plaque	n	牌匾；斑块 [plæk 不是"普拉克"]	听力-发音陷阱	4
+#
+# ======= 3. 重音陷阱(重音位置跟你以为的不同) =======
+#
+statistics	n	统计 [重音在TIS: stəˈtɪstɪks]	听力-发音陷阱	4
+photographer	n	摄影师 [重音在TO: fəˈtɑːɡrəfər]	听力-发音陷阱	4
+advertisement	n	广告 [美重音在TI: ˌædvərˈtaɪzmənt]	听力-发音陷阱	4
+museum	n	博物馆 [重音在SE: mjuˈziːəm]	听力-发音陷阱	4
+particular	adj	特定的 [重音在TI: pərˈtɪkjələr]	听力-发音陷阱	4
+comfortable	adj	舒服的 [三音节ˈkʌmftərbl 不是四音节]	听力-发音陷阱	4
+vegetable	n	蔬菜 [三音节ˈvedʒtəbl]	听力-发音陷阱	4
+temperature	n	温度 [三音节ˈtemprətʃər]	听力-发音陷阱	4
+interesting	adj	有趣的 [三音节ˈɪntrəstɪŋ]	听力-发音陷阱	4
+laboratory	n	实验室 [美重音在LA: ˈlæbrətɔːri]	听力-发音陷阱	4
+comparable	adj	可比的 [重音在COM: ˈkɑːmpərəbl]	听力-发音陷阱	4
+applicable	adj	适用的 [重音在APP: ˈæplɪkəbl]	听力-发音陷阱	4
+#
+# ======= 4. 学术场景中的"意外发音"名词 =======
+# 讲座中教授说出来，很多学生第一反应是"什么？"
+#
+chaos	n	混乱 [ˈkeɪɑːs 不是"抄斯"]	听力-发音陷阱	4
+coccyx	n	尾骨 [ˈkɑːksɪks]	听力-发音陷阱	4
+anonymous	adj	匿名的 [əˈnɑːnɪməs]	听力-发音陷阱	4
+autonomous	adj	自治的 [ɔːˈtɑːnəməs]	听力-发音陷阱	4
+epitome	n	典范 [ɪˈpɪtəmi 不是"诶皮投姆"]	听力-发音陷阱	4
+hyperbole	n	夸张 [haɪˈpɜːrbəli 不是"海泼波"]	听力-发音陷阱	4
+thorough	adj	彻底的 [ˈθɜːroʊ 不是"索罗"]	听力-发音陷阱	4
+plough	n/v	犁 [plaʊ 不是"普劳"]	听力-发音陷阱	4
+medieval	adj	中世纪的 [ˌmediˈiːvl]	听力-发音陷阱	4
+archipelago	n	群岛 [ˌɑːrkɪˈpeləɡoʊ]	听力-发音陷阱	4
+mischievous	adj	淘气的 [ˈmɪstʃɪvəs 三音节]	听力-发音陷阱	4
+Connecticut	n	康涅狄格 [kəˈnetɪkət 中间ct不发音]	听力-发音陷阱	4
+Worcester	n	伍斯特 [ˈwʊstər 不是"沃切斯特"]	听力-发音陷阱	4
+Edinburgh	n	爱丁堡 [ˈedɪnbərə 不是"爱丁堡格"]	听力-发音陷阱	4
+#
+# ======= 5. 日常场景中"发音意外"的常见名词 =======
+# 这些词天天见但听到会愣
+#
+cupboard	n	橱柜 [ˈkʌbərd p不发音]	听力-发音陷阱	4
+wardrobe	n	衣柜 [ˈwɔːrdroʊb]	听力-发音陷阱	4
+drawer	n	抽屉 [drɔːr]	听力-发音陷阱	4
+faucet	n	水龙头 [ˈfɔːsɪt]	听力-发音陷阱	4
+towel	n	毛巾 [ˈtaʊəl]	听力-发音陷阱	4
+quinoa	n	藜麦 [ˈkiːnwɑː]	听力-发音陷阱	4
+açai	n	巴西莓 [ɑːˈsɑːiː]	听力-发音陷阱	4
+croissant	n	牛角包 [krwɑːˈsɑːn]	听力-发音陷阱	4
+espresso	n	浓缩咖啡 [eˈspresoʊ 不是ex-]	听力-发音陷阱	4
+latte	n	拿铁 [ˈlɑːteɪ]	听力-发音陷阱	4
+Worcester sauce	n	伍斯特酱 [ˈwʊstər 不是"沃彻斯特"]	听力-发音陷阱	4
+jewelry	n	珠宝 [ˈdʒuːəlri 两音节]	听力-发音陷阱	4
+cinnamon	n	肉桂 [ˈsɪnəmən]	听力-发音陷阱	4
+cocoa	n	可可 [ˈkoʊkoʊ]	听力-发音陷阱	4
+#
+# ======= 6. 易混淆发音对(听起来几乎一样) =======
+# 听力中这些词如果分不清，直接答错
+#
+dessert / desert	n/n	甜点[dɪˈzɜːrt] vs 沙漠[ˈdezərt] 重音不同	听力-混淆音	4
+accept / except	v/prep	接受 vs 除了 [ək- vs ɪk-]	听力-混淆音	4
+advice / advise	n/v	建议(名词s音) vs 建议(动词z音)	听力-混淆音	4
+breath / breathe	n/v	呼吸(名词θ) vs 呼吸(动词ð)	听力-混淆音	4
+loose / lose	adj/v	松的[luːs] vs 丢失[luːz]	听力-混淆音	4
+quite / quiet	adv/adj	完全[kwaɪt] vs 安静[ˈkwaɪət]	听力-混淆音	4
+thorough / through	adj/prep	彻底的 vs 通过	听力-混淆音	4
+whether / weather	conj/n	是否 vs 天气 [同音]	听力-混淆音	4
+personal / personnel	adj/n	个人的 vs 人事部门 [重音不同]	听力-混淆音	4
+principal / principle	n/n	校长 vs 原则 [同音]	听力-混淆音	4
+conscious / conscience	adj/n	有意识的 vs 良心	听力-混淆音	4
+emigrate / immigrate	v/v	移出 vs 移入 [前缀不同]	听力-混淆音	4
+compliment / complement	n/n	赞美 vs 补充 [同音]	听力-混淆音	4
+stationary / stationery	adj/n	静止的 vs 文具 [同音]	听力-混淆音	4
+affect / effect	v/n	影响(动词) vs 效果(名词)	听力-混淆音	4
