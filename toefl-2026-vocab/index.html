@@ -950,16 +950,19 @@ function playRemoteAudio(clean, generation) {
   _audio.onerror = null;
   _audio.volume = 1;
   _audio.src = '';
-  // 有道对部分短语会返回 500：短语优先百度，单词优先有道
+  // 有道对部分短语会返回 500：短语优先百度，单词优先有道。
+  // 有道美音(type=2)对 locally grown 等短语无词条会 500，但英音(type=1)可播，最后追加英音兜底
   const isPhrase = /\s/.test(clean);
   const candidates = isPhrase ? [
     BAIDU_TTS + encodeURIComponent(clean),
     GOOGLE_TTS + encodeURIComponent(clean),
-    YOUDAO_TTS + encodeURIComponent(clean) + '&type=2'
+    YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
+    YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'
   ] : [
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
     BAIDU_TTS + encodeURIComponent(clean),
-    GOOGLE_TTS + encodeURIComponent(clean)
+    GOOGLE_TTS + encodeURIComponent(clean),
+    YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'
   ];
   let candidate = 0;
   const tryNext = () => {
