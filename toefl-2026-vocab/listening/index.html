@@ -865,6 +865,7 @@ function gistLogout() {
 
 const _audio = new Audio();
 const YOUDAO_TTS = 'https://dict.youdao.com/dictvoice?audio=';
+const BAIDU_TTS = 'https://fanyi.baidu.com/gettts?lan=en&spd=3&source=web&text=';
 const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
 let _speakPending = '';
 let _speakGeneration = 0;
@@ -947,6 +948,7 @@ function playRemoteAudio(clean, generation) {
   _audio.src = '';
   const candidates = [
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
+    BAIDU_TTS + encodeURIComponent(clean),
     GOOGLE_TTS + encodeURIComponent(clean)
   ];
   let candidate = 0;
@@ -954,7 +956,7 @@ function playRemoteAudio(clean, generation) {
     if (generation !== _speakGeneration) return;
     if (candidate >= candidates.length) {
       _audio.onerror = null;
-      toast('发音不可用，请点击🔊重试');
+      toast('发音不可用（在线音源 有道/百度/谷歌 均失败），请检查网络');
       return;
     }
     _audio.onerror = tryNext;
