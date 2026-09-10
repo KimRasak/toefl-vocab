@@ -946,7 +946,13 @@ function playRemoteAudio(clean, generation) {
   _audio.onerror = null;
   _audio.volume = 1;
   _audio.src = '';
-  const candidates = [
+  // 有道对部分短语会返回 500：短语优先百度，单词优先有道
+  const isPhrase = /\s/.test(clean);
+  const candidates = isPhrase ? [
+    BAIDU_TTS + encodeURIComponent(clean),
+    GOOGLE_TTS + encodeURIComponent(clean),
+    YOUDAO_TTS + encodeURIComponent(clean) + '&type=2'
+  ] : [
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
     BAIDU_TTS + encodeURIComponent(clean),
     GOOGLE_TTS + encodeURIComponent(clean)
