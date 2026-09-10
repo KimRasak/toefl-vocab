@@ -868,6 +868,9 @@ function gistLogout() {
 }
 
 const _audio = new Audio();
+// 逐词播放的独立元素与看门狗（playWordByWord 使用：WebKit 复用一个 <audio> 只会响第一段）
+let _wordEl = null;
+let _wordTimer = 0;
 const YOUDAO_TTS = 'https://dict.youdao.com/dictvoice?audio=';
 const BAIDU_TTS = 'https://fanyi.baidu.com/gettts?lan=en&spd=3&source=web&text=';
 const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
@@ -993,39 +996,46 @@ function playRemoteAudio(clean, generation) {
 }
 
 // 兜底：短语/句型整体播不出时（有道对长句 500、百度/谷歌不可达），
-// 按空格拆成单词、用有道逐词播报，任何网络下只要词典单词可播就一定能出声
+// 按空格拆成单词、用有道逐词播报，任何网络下只要词典单词可播就一定能出声。
+// 关键：WebKit/Safari 复用一个 <audio> 连续播多段短音频只会响第一段（经典 bug），
+// 因此第 1 词沿用已解锁的 _audio，第 2 词起改用独立 Audio 元素，每段单独发声。
 function playWordByWord(clean, generation) {
   const words = clean.split(/\s+/).filter(Boolean);
   if (words.length < 2) return false;
   let i = 0;
-  let timer = 0;
-  const stop = () => { clearTimeout(timer); _audio.onended = null; _audio.onerror = null; };
+  const stop = () => {
+    clearTimeout(_wordTimer);
+    if (_wordEl) { try { _wordEl.pause(); } catch (e) {} _wordEl.onended = null; _wordEl.onerror = null; _wordEl = null; }
+    _audio.onended = null; _audio.onerror = null;
+  };
   const playNext = () => {
     if (generation !== _speakGeneration) return;
     if (i >= words.length) { stop(); return; }
-    const w = words[i++];
-    clearTimeout(timer);
-    _audio.onended = () => { clearTimeout(timer); _audio.onended = null; _audio.onerror = null; playNext(); };
-    _audio.onerror = () => { clearTimeout(timer); _audio.onerror = null; _audio.onended = null; playNext(); };
-    // 不显式调 load()：src 赋值即触发加载；显式 load() 在 Safari 上会重置元素状态，
-    // 使紧随其后的 play() 以 AbortError 拒绝，导致链条在第一个词后中断
-    _audio.src = YOUDAO_TTS + encodeURIComponent(w) + '&type=2';
-    const pp = _audio.play();
+    const w = words[i];
+    const a = (i === 0) ? _audio : new Audio(); // 第 1 词(下标0)用已解锁的 _audio，后续用独立元素
+    i++;
+    clearTimeout(_wordTimer);
+    if (i > 1) _wordEl = a;
+    a.onended = () => { if (generation !== _speakGeneration) return; a.onended = null; a.onerror = null; playNext(); };
+    a.onerror = () => { if (generation !== _speakGeneration) return; a.onerror = null; a.onended = null; playNext(); };
+    // src 赋值即触发加载；不显式调 load()，避免 Safari 重置元素使 play() 以 AbortError 拒绝
+    a.src = YOUDAO_TTS + encodeURIComponent(w) + '&type=2';
+    const pp = a.play();
     if (pp && pp.catch) pp.catch(err => {
-      // 任何原因失败都不中断整条链：拦截/竞态短暂重试一次，仍失败则跳到下一词
+      // 任何失败不中断链条：拦截/竞态稍后重试一次，仍失败则跳到下一词
       if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
         setTimeout(() => {
           if (generation !== _speakGeneration) return;
-          _audio.play().catch(() => { _audio.onerror = null; _audio.onended = null; playNext(); });
+          a.play().catch(() => { a.onerror = null; a.onended = null; playNext(); });
         }, 150);
         return;
       }
       playNext();
     });
     // 看门狗：单词最长约 4s，防止个别词 ended 事件丢失导致链条卡死
-    timer = setTimeout(() => {
+    _wordTimer = setTimeout(() => {
       if (generation !== _speakGeneration) return;
-      _audio.onerror = null; _audio.onended = null;
+      a.onerror = null; a.onended = null;
       playNext();
     }, 4000);
   };
@@ -1036,6 +1046,8 @@ function playWordByWord(clean, generation) {
 function stopSpeech() {
   ++_speakGeneration;
   if (window.speechSynthesis) speechSynthesis.cancel();
+  clearTimeout(_wordTimer);
+  if (_wordEl) { try { _wordEl.pause(); } catch (e) {} _wordEl.onended = null; _wordEl.onerror = null; _wordEl = null; }
   _audio.pause();
   _audio.onerror = null;
   _audio.onended = null;
