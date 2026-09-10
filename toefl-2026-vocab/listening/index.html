@@ -879,16 +879,25 @@ function cleanForSpeech(text) {
     .split(/\s+\/\s+/)[0].replace(/^['’]+/, '').trim();
 }
 
-function nativeSpeak(clean) {
-  if (!window.speechSynthesis || !_voices.length) return false;
+function nativeSpeak(clean, onFail) {
+  if (!window.speechSynthesis || !_voices.length) { if (onFail) onFail(); return; }
   const english = _voices.filter(v => /^en(-|_)/i.test(v.lang));
-  if (!english.length) return false;
+  if (!english.length) { if (onFail) onFail(); return; }
   const voice = english.find(v => /Samantha|Google US English|Microsoft.*(Jenny|Aria|Guy)|Alex/i.test(v.name)) || english[0];
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(clean);
   u.voice = voice; u.lang = voice.lang || 'en-US'; u.rate = 0.88; u.pitch = 1; u.volume = 0.92;
+  // macOS/浏览器 TTS 可能“静默失败”（不报错也无声音）：650ms 未真正开声 → 交给远程音频兜底
+  let started = false;
+  const failTimer = setTimeout(() => {
+    if (!started) {
+      speechSynthesis.cancel();
+      if (onFail) onFail();
+    }
+  }, 650);
+  u.onstart = () => { started = true; clearTimeout(failTimer); };
+  u.onerror = () => { clearTimeout(failTimer); if (onFail) onFail(); };
   speechSynthesis.speak(u);
-  return true;
 }
 
 function patternSpeak(text) {
@@ -921,9 +930,14 @@ function speak(text) {
   if (!clean) return;
   const generation = ++_speakGeneration;
   _speakPending = clean;
-  if (nativeSpeak(clean)) return;
+  nativeSpeak(clean, () => playRemoteAudio(clean, generation));
+}
+
+function playRemoteAudio(clean, generation) {
+  if (generation !== _speakGeneration) return;
   _audio.pause();
   _audio.onerror = null;
+  _audio.volume = 1;
   _audio.src = '';
   const candidates = [
     YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
@@ -934,14 +948,21 @@ function speak(text) {
     if (generation !== _speakGeneration) return;
     if (candidate >= candidates.length) {
       _audio.onerror = null;
-      if (!nativeSpeak(clean)) toast('发音不可用，请点击🔊重试');
+      toast('发音不可用，请点击🔊重试');
       return;
     }
     _audio.onerror = tryNext;
     _audio.src = candidates[candidate++];
     _audio.load();
     const p = _audio.play();
-    if (p && p.catch) p.catch(() => tryNext());
+    if (p && p.catch) p.catch(err => {
+      // 自动播放被浏览器拦截（非用户手势）：静默等待，点🔊时自然发声
+      if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
+        _audio.onerror = null;
+        return;
+      }
+      tryNext();
+    });
   };
   tryNext();
 }
