@@ -873,11 +873,22 @@ const _audio = new Audio();
 let _wordEl = null;
 let _wordTimer = 0;
 const YOUDAO_TTS = 'https://dict.youdao.com/dictvoice?audio=';
-const BAIDU_TTS = 'https://fanyi.baidu.com/gettts?lan=en&spd=3&source=web&text=';
+const BAIDU_TTS = 'https://fanyi.baidu.com/gettts?lan=en&spd=4&source=web&text=';
 const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
 let _speakPending = '';
 let _speakGeneration = 0;
 let _voices = [];
+// 谷歌 TTS 音色更好（64kbps）但在部分地区不可达：页面加载后异步探测一次
+// （no-cors fetch，不会发声）。探测完成前/失败时按不可达处理（短语回退维持百度在前），
+// 探测可达则把谷歌排到百度之前。
+let _googleOk = false;
+try {
+  const _gCtl = ('AbortController' in window) ? new AbortController() : null;
+  const _gTimer = _gCtl ? setTimeout(() => { try { _gCtl.abort(); } catch (e) {} }, 2500) : 0;
+  fetch(GOOGLE_TTS + 'probe', { mode: 'no-cors', signal: _gCtl ? _gCtl.signal : undefined })
+    .then(() => { _googleOk = true; clearTimeout(_gTimer); })
+    .catch(() => { clearTimeout(_gTimer); });
+} catch (e) {}
 
 function loadVoices() {
   _voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
@@ -956,23 +967,22 @@ function playRemoteAudio(clean, generation) {
   _audio.volume = 1;
   _audio.src = '';
   // 音质优先：有道是词典音源（160kbps，发音最自然流畅），常见短语/习语多有词条，
-  // 故短语同样有道优先（美音→英音），无词条(500)再退百度/谷歌通用整句TTS
-  // （页面已 no-referrer，百度/谷歌可正常返回音频）。
-  // 单词本就优先有道；最后保留有道英音兜底（locally grown 等仅英音有词条）。
+  // 故短语同样有道优先（美音→英音）。无词条(500)再退通用整句TTS：
+  // 谷歌 64kbps 音色优于百度 24kbps，但部分地区不可达——页面加载时异步探测一次，
+  // 可达则谷歌排在百度之前，不可达则维持百度在前，避免每个短语都白等谷歌超时。
   const isPhrase = /\s/.test(clean);
-  const candidates = isPhrase ? [
-    YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
-    YOUDAO_TTS + encodeURIComponent(clean) + '&type=1',
-    BAIDU_TTS + encodeURIComponent(clean),
-    GOOGLE_TTS + encodeURIComponent(clean)
-  ] : [
-    YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
-    BAIDU_TTS + encodeURIComponent(clean),
-    GOOGLE_TTS + encodeURIComponent(clean),
-    YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'
-  ];
+  const generic = _googleOk
+    ? [GOOGLE_TTS + encodeURIComponent(clean), BAIDU_TTS + encodeURIComponent(clean)]
+    : [BAIDU_TTS + encodeURIComponent(clean), GOOGLE_TTS + encodeURIComponent(clean)];
+  const candidates = isPhrase
+    ? [YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
+       YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'].concat(generic)
+    : [YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
+       BAIDU_TTS + encodeURIComponent(clean),
+       GOOGLE_TTS + encodeURIComponent(clean),
+       YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'];
   let candidate = 0;
-  const release = (a) => { a.onerror = null; a.onended = null; if (_wordEl === a) _wordEl = null; };
+  const release = (a) => { try { a.pause(); } catch (e) {} a.onerror = null; a.onended = null; if (_wordEl === a) _wordEl = null; };
   const tryNext = () => {
     if (generation !== _speakGeneration) return;
     if (candidate >= candidates.length) {
@@ -984,30 +994,36 @@ function playRemoteAudio(clean, generation) {
     }
     // 每个候选用独立 Audio 元素（复用同一 <audio> 有状态残留）；
     // error 事件与 play() 拒绝可能先后到达，用 settled 防止重复推进跳过候选
-    if (_wordEl) { try { _wordEl.pause(); } catch (e) {} release(_wordEl); }
+    if (_wordEl) { release(_wordEl); }
     const a = new Audio();
     _wordEl = a;
     let settled = false;
+    let watchdog = 0;
     const advance = () => {
       if (settled || generation !== _speakGeneration) return;
       settled = true;
+      clearTimeout(watchdog);
       release(a);
       tryNext();
     };
     a.onerror = advance;
     a.src = candidates[candidate++];
+    // 被墙时谷歌连接会长时间挂起：仅对谷歌候选设启动看门狗，超时即退下一候选
+    if (a.src.indexOf(GOOGLE_TTS) === 0) watchdog = setTimeout(advance, 1600);
     const p = a.play();
-    if (p && p.catch) p.catch(err => {
-      // 自动播放被浏览器拦截：稍候重试一次（点🔊手势解锁后即可发声），仍失败则换下一候选
-      if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
-        setTimeout(() => {
-          if (generation !== _speakGeneration) return;
-          a.play().catch(advance);
-        }, 150);
-        return;
-      }
-      advance();
-    });
+    if (p && p.then) {
+      p.then(() => { clearTimeout(watchdog); }, err => {
+        // 自动播放被浏览器拦截：稍候重试一次（点🔊手势解锁后即可发声），仍失败则换下一候选
+        if (err && (err.name === 'NotAllowedError' || err.name === 'AbortError')) {
+          setTimeout(() => {
+            if (generation !== _speakGeneration || settled) return;
+            a.play().catch(advance);
+          }, 150);
+          return;
+        }
+        advance();
+      });
+    } else if (p && p.catch) { p.catch(advance); }
   };
   tryNext();
 }
