@@ -255,6 +255,10 @@ button { cursor: pointer; border: none; background: none; }
   color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border);
 }
 .word-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+/* 词表内收藏切换按钮：⭐=已收藏（点击取消），☆=未收藏（点击收藏） */
+.fav-btn { background: none; border: none; font-size: 16px; line-height: 1; cursor: pointer; padding: 2px 6px; border-radius: 6px; vertical-align: middle; }
+.fav-btn:active { background: rgba(127,127,127,.15); }
+.cnt .kn { margin-left: 2px; color: var(--ok); font-size: 13px; }
 .word-table tr:last-child td { border-bottom: none; }
 .word-table tr { cursor: pointer; transition: background .1s; }
 .word-table tr:active { background: var(--card2); }
@@ -1815,7 +1819,7 @@ function renderList() {
   listDirty = false;
   _listItems = getFilteredList();
   _listRendered = 0;
-  $('list-stats').textContent = '显示 ' + _listItems.length + ' / ' + vocab.length + ' 词 · 点击行播放发音';
+  $('list-stats').textContent = '显示 ' + _listItems.length + ' / ' + vocab.length + ' 词 · 点击行播放发音，点 ⭐ 收藏/取消收藏';
   const tbody = $('list-body');
   if (!_listItems.length) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:32px">无匹配结果</td></tr>';
@@ -1838,8 +1842,25 @@ function renderListPage() {
       '<td class="m">' + esc(x.e.m) + '</td>' +
       '<td><span class="status-dot ' + x.status + '"></span>' + statusLabel(x.status) + '</td>' +
       '<td class="cat" title="' + esc(x.e.c) + '">' + esc(x.e.c) + '</td>' +
-      '<td class="cnt">' + (x.rec.fav ? '⭐' : '') + (x.rec.known ? '✓' : '') + '</td>';
+      '<td class="cnt"></td>';
     tr.addEventListener('click', () => speak(x.e.w));
+    // 词表内直接切换收藏：⭐=已收藏（点击取消），☆=未收藏（点击收藏）。
+    // 行点击是播放发音，按钮用 stopPropagation 隔开。
+    const paintCnt = () => {
+      const rec = getRec(x.e.w);
+      tr.children[4].innerHTML =
+        '<button class="fav-btn" type="button" title="点击收藏 / 取消收藏">' + (rec.fav ? '⭐' : '☆') + '</button>' +
+        (rec.known ? '<span class="kn">✓</span>' : '');
+      tr.children[4].querySelector('.fav-btn').addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        markCollect(x.e.w);                    // 切换收藏并持久化
+        const st = getStatus(x.e.w);
+        tr.children[2].innerHTML = '<span class="status-dot ' + st + '"></span>' + statusLabel(st);
+        paintCnt();                            // 重绘本行收藏态（并重新绑定按钮）
+        renderDashboard();                     // 总览/学习模式/循环入口的收藏计数保持同步
+      });
+    };
+    paintCnt();
     frag.appendChild(tr);
   }
   tbody.appendChild(frag);
