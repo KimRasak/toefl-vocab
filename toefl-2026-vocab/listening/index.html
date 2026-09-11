@@ -973,6 +973,12 @@ function speak(text, onDone) {
   // 取词条上预计算的有道分块（ac）：整句有道无词条时，用同一有道声分块连播
   const entry = (typeof VOCAB !== 'undefined' && Array.isArray(VOCAB)) ? VOCAB.find(x => x.w === raw) : null;
   const ac = entry && Array.isArray(entry.ac) ? entry.ac : null;
+  // 词条级音频文本覆盖（at）：有道整句检索区分大小写，句首大写可能查无词条；
+  // 显示保留原样，播放改用有词条的写法（如小写习语形式），拿到流畅的整句有道声
+  if (entry && typeof entry.at === 'string' && entry.at) {
+    const alt = cleanForSpeech(entry.at);
+    if (alt) clean = alt;
+  }
   if (settings.nativeTTS === false) {   // 发音开关关闭：跳过本地 TTS，直接使用在线发音
     playRemoteAudio(clean, generation, ac, onDone);
     return;
