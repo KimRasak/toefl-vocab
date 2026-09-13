@@ -748,6 +748,9 @@ function gistMsg(text, cls) {
   el.textContent = text;
 }
 
+let gistQuotaRemaining = null;      // 最近一次响应的剩余配额（共享 Token 账号的小时限额）
+let gistRateLimitedUntil = 0;       // 403 限额后暂停自动推送的截止时间
+
 async function gistFetch(url, opts) {
   const res = await fetch(url, Object.assign({}, opts, {
     headers: Object.assign({
@@ -755,7 +758,19 @@ async function gistFetch(url, opts) {
       'Accept': 'application/vnd.github.v3+json'
     }, (opts && opts.headers) || {})
   }));
-  if (!res.ok) throw new Error(res.status + ' ' + (await res.text()).slice(0, 100));
+  const remain = parseInt(res.headers.get('x-ratelimit-remaining') || '', 10);
+  if (!isNaN(remain)) gistQuotaRemaining = remain;
+  if (!res.ok) {
+    const body = await res.text();
+    // 共享 Token 的多个设备/页面共用同一账号小时配额(5000次/时)，超限即 403
+    if (res.status === 403 && /rate limit/i.test(body)) {
+      const reset = parseInt(res.headers.get('x-ratelimit-reset') || '', 10);
+      gistRateLimitedUntil = reset ? reset * 1000 : Date.now() + 10 * 60 * 1000;
+      const at = new Date(gistRateLimitedUntil).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+      throw new Error('403 GitHub API 小时限额已用尽（此 Token 账号共享配额），约 ' + at + ' 恢复；本机进度已保留，之后可再同步');
+    }
+    throw new Error(res.status + ' ' + body.slice(0, 100));
+  }
   return res.json();
 }
 
@@ -787,6 +802,7 @@ async function gistPush() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ files: { [GIST_FILE]: { content: gistPayload() } } })
   });
+  gistSchedulePush._last = JSON.stringify(progress);   // 手动推送成功也记录指纹，避免随后重复自动推送
 }
 
 async function gistPull() {
@@ -809,8 +825,11 @@ function gistSchedulePush() {
   if (!gistToken || !gistId) return;
   clearTimeout(gistSchedulePush._t);
   gistSchedulePush._t = setTimeout(() => {
-    gistPush().catch(e => console.warn('Gist push failed:', e));
-  }, 2000);
+    if (Date.now() < gistRateLimitedUntil) return;        // 限额期内不再打 API
+    const fp = JSON.stringify(progress);                  // 内容没变就省一次调用
+    if (fp === gistSchedulePush._last) return;
+    gistPush().then(() => { gistSchedulePush._last = fp; }).catch(e => console.warn('Gist push failed:', e));
+  }, 15000);
 }
 
 function gistSeenCount() {
