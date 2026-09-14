@@ -340,6 +340,7 @@ body.autobar-open{padding-bottom:100px}
       <option value="5000">5 秒</option>
     </select>
     <button class="filter-btn" id="abHardOnly">⭐ 仅难词</button>
+    <button class="filter-btn" id="ab2026Only" title="只连播 🆕 2026 真题新词">🆕 仅新词</button>
     <button class="filter-btn" id="abFocusBtn">🎯 专注</button>
     <button id="abPrev" title="上一个">⏮</button>
     <button id="abNext" title="下一个">⏭</button>
@@ -384,6 +385,7 @@ body.autobar-open{padding-bottom:100px}
     <button class="primary" id="focusPlayBtn" onclick="focusTogglePlay()">▶ 连播</button>
     <button onclick="focusNext()">⏭ 下一个</button>
     <button class="filter-btn" id="focusHardBtn" onclick="focusToggleHard()">⭐ 仅难词</button>
+    <button class="filter-btn" id="focus2026Btn" onclick="focusToggle2026()">🆕 仅新词</button>
     <button onclick="focusClose()">✕ 退出</button>
   </div>
 </div>
@@ -862,7 +864,7 @@ updateHeadOffset();
 
 // ─── Auto-play ───
 
-let abPlaying = false, abIdx = 0, abToken = 0, abHardOnly = false;
+let abPlaying = false, abIdx = 0, abToken = 0, abHardOnly = false, ab2026Only = false;
 function abGetBaseList() {
   return abTopic ? ALL_WORDS.filter(w => WORD_TOPIC[w.w] === abTopic) : ALL_WORDS;
 }
@@ -875,7 +877,8 @@ function abGetList() {
   const base = abGetBaseList();
   const { start, end } = abGetRangeBounds(base);
   const ranged = base.slice(start - 1, end);
-  return abHardOnly ? ranged.filter(w => hardWords.has(w.w)) : ranged;
+  let list = ab2026Only ? ranged.filter(w => w.s.indexOf('2026') >= 0) : ranged;
+  return abHardOnly ? list.filter(w => hardWords.has(w.w)) : list;
 }
 function abScopePosition(word, base = abGetBaseList()) {
   return word ? base.findIndex(w => w.w === word.w) + 1 : 0;
@@ -908,6 +911,9 @@ function abLoad() {
     if (Number.isInteger(s.rangeEnd) && s.rangeEnd >= abRangeStart) abRangeEnd = s.rangeEnd;
     if (s.idx >= 0) abIdx = s.idx;
     if (s.gap != null) abGapSel.value = String(s.gap);
+    if (s.only2026 === true) ab2026Only = true;
+    // 恢复的序号可能落在过滤后的列表之外（如上次开着 🆕 过滤），夹回有效范围
+    if (ab2026Only && abIdx >= abGetList().length) abIdx = 0;
   } catch(e) {}
   abTopicSelect.value = abTopic || '';
   abRangeStartInput.value = abRangeStart;
@@ -920,7 +926,8 @@ function abSave() {
       gap: parseInt(abGapSel.value),
       topic: abTopic || '',
       rangeStart: abRangeStart,
-      rangeEnd: abRangeEnd
+      rangeEnd: abRangeEnd,
+      only2026: ab2026Only
     }));
   } catch(e) {}
 }
@@ -965,6 +972,7 @@ function abUpdateUI() {
   abPosEl.textContent = posTxt;
   abStartInput.value = list.length ? gPos : 0;
   document.getElementById('abHardOnly').classList.toggle('active', abHardOnly);
+  document.getElementById('ab2026Only').classList.toggle('active', ab2026Only);
 
   // Highlight current word in list
   document.querySelectorAll('.witem.playing').forEach(el => el.classList.remove('playing'));
@@ -1102,6 +1110,11 @@ function abJumpToInput() {
     list = abGetList();
     if (!list.some(w => w.w === target.w) && abHardOnly) {
       abHardOnly = false;
+      clearedScope = true;
+      list = abGetList();
+    }
+    if (!list.some(w => w.w === target.w) && ab2026Only) {
+      ab2026Only = false;
       clearedScope = true;
       list = abGetList();
     }
@@ -1244,6 +1257,58 @@ function toggleHardOnly() {
 
 document.getElementById('abHardOnly').onclick = toggleHardOnly;
 
+// 切换「🆕 仅新词」：只连播/浏览 2026 真题新词（s 数组含 2026 的词条）。
+// 开启时：当前词是 🆕 → 原地不动；否则跳到离当前词最近的 🆕 词。
+// 当前范围（学科/区间）里一个 🆕 词都没有 → 自动放宽到全部学科，
+// 保证一定进入可浏览的列表；与 ⭐ 叠加后为空 → 提示并保持原状。
+function toggle2026Only() {
+  const currentWord = abGetList()[abIdx];
+  const turningOn = !ab2026Only;
+  ab2026Only = turningOn;
+  let base = abGetBaseList();
+  let currentPos = abScopePosition(currentWord, base);
+  if (turningOn) {
+    if (!abGetList().length && (abTopic || abRangeEnd != null || abRangeStart !== 1)) {
+      if (abTopic) { abTopic = null; abTopicSelect.value = ''; }
+      abResetRange();
+      base = abGetBaseList();          // 放宽后按新范围重算就近坐标
+      currentPos = abScopePosition(currentWord, base);
+      abFlashMsg('当前范围没有 🆕 词，已放宽到全部学科');
+    }
+    const fresh = abGetList();
+    if (!fresh.length) {
+      ab2026Only = false;
+      abFlashMsg(abHardOnly ? '没有既是 ⭐ 又是 🆕 的词' : '当前范围没有 🆕 词');
+      if (abPlaying) { abStop(); abStart(); }
+      else abUpdateUI();
+      return;
+    }
+    if (currentWord && fresh.some(w => w.w === currentWord.w)) {
+      abIdx = fresh.findIndex(w => w.w === currentWord.w);
+    } else {
+      let best = 0, bestDist = Infinity;
+      for (let i = 0; i < fresh.length; i++) {
+        const dist = Math.abs(abScopePosition(fresh[i], base) - currentPos);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      }
+      abIdx = best;
+    }
+  } else {
+    // 关闭：当前词在完整列表里依然存在，保持位置
+    const full = abGetList();
+    const keep = currentWord ? full.findIndex(w => w.w === currentWord.w) : -1;
+    abIdx = keep >= 0 ? keep : 0;
+  }
+  abSave();
+  if (abPlaying) { abStop(); abStart(); }
+  else {
+    abUpdateUI();
+    abScrollToCurrent();
+  }
+}
+
+document.getElementById('ab2026Only').onclick = toggle2026Only;
+
 function selectAbTopic(topicKey) {
   abTopic = abTopic === topicKey ? null : topicKey;
   abTopicSelect.value = abTopic || '';
@@ -1316,6 +1381,7 @@ function focusUpdateUI(keepRevealed) {
   focusMarkEl.classList.toggle('marked', w ? hardWords.has(w.w) : false);
   focusPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
   document.getElementById('focusHardBtn').classList.toggle('active', abHardOnly);
+  document.getElementById('focus2026Btn').classList.toggle('active', ab2026Only);
   if (!keepRevealed) {
     focusOverlay.classList.remove('revealed');
     document.getElementById('focusHint').style.display = '';
@@ -1400,6 +1466,13 @@ function focusToggleHard() {
   toggleHardOnly();
   document.getElementById('focusHardBtn').classList.toggle('active', abHardOnly);
   document.getElementById('abHardOnly').classList.toggle('active', abHardOnly);
+  focusUpdateUI();
+}
+
+function focusToggle2026() {
+  toggle2026Only();
+  document.getElementById('focus2026Btn').classList.toggle('active', ab2026Only);
+  document.getElementById('ab2026Only').classList.toggle('active', ab2026Only);
   focusUpdateUI();
 }
 
