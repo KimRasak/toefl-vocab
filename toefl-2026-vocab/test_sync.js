@@ -94,7 +94,10 @@ let gistStore = null; // 模拟远端 gist 文件内容
 
 function fakeFetch(url, opts) {
   fetchLog.push({ url, method: (opts && opts.method) || 'GET', body: opts && opts.body });
-  const json = body => Promise.resolve({ ok: true, json: () => Promise.resolve(body), text: () => Promise.resolve('') });
+  // 页面的 gistFetch 会读 res.headers.get('x-ratelimit-remaining') 做限额检测，
+  // 桩响应必须带 headers（get 一律返回 null → 走「无配额头」分支）。
+  const headers = { get: () => null };
+  const json = body => Promise.resolve({ ok: true, headers, json: () => Promise.resolve(body), text: () => Promise.resolve('') });
   if (url === 'https://api.github.com/user') return json({ login: 'tester' });
   if (url.startsWith('https://api.github.com/gists?')) {
     return json(gistStore ? [{ id: 'gid123456789', description: 'TOEFL-2026-vocab-progress-sync' }] : []);
@@ -110,7 +113,7 @@ function fakeFetch(url, opts) {
     }
     return json({ files: { 'toefl2026-progress.json': { content: gistStore, truncated: false } } });
   }
-  return Promise.resolve({ ok: false, status: 404, text: () => Promise.resolve('not found') });
+  return Promise.resolve({ ok: false, status: 404, headers, text: () => Promise.resolve('not found') });
 }
 
 const DOM = makeDom(html, ids);
@@ -215,7 +218,8 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   // 4. 自动推送：saveProgress 触发去抖上传
   fetchLog = [];
   run("progress['seminar'] = { box: 1, right: 0, wrong: 1, lastSeen: 3 }; saveProgress();");
-  await new Promise(r => setTimeout(r, 2300));
+  // 页面的推送去抖是 15s（省 API 调用），等待必须盖过它
+  await new Promise(r => setTimeout(r, 15600));
   const pushed = fetchLog.filter(f => f.method === 'PATCH');
   chk('saveProgress 后自动 PATCH 一次', pushed.length === 1, pushed.length);
   chk('自动推送内容含新词', gistStore && !!JSON.parse(gistStore).progress.seminar);
@@ -234,7 +238,7 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('退出后本机进度保留', !!run("progress['aisle']"));
   fetchLog = [];
   run("progress['flyer'] = { box: 1, right: 0, wrong: 1, lastSeen: 4 }; saveProgress();");
-  await new Promise(r => setTimeout(r, 2300));
+  await new Promise(r => setTimeout(r, 15600));
   chk('退出后不再自动上传', fetchLog.length === 0, fetchLog.length);
 
   // 7. 未连接时点「立即同步」给出提示
@@ -631,10 +635,12 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   vm.runInContext('init();', ctx2);
   const run2 = expr => vm.runInContext(expr, ctx2);
 
-  chk('听力版页面加载 2042 词', run2('vocab.length') === 2042, run2('vocab.length'));
+  // 词数不硬编码快照：data.js 增词后仍应等于 listening/data.js 的全量
+  chk('听力版页面加载全部听力词', run2('vocab.length') === LVOCAB.length,
+    run2('vocab.length') + ' vs ' + LVOCAB.length);
   chk('听力版仅听力宏', run2("vocab.every(e => getMacro(e.c) === 'listening')"));
   chk('听力版打开即落在单词表', run2('currentTab') === 'browse' && run2('browseMacro') === 'listening'
-    && run2('(renderBrowse._flat || []).length') === 2042,
+    && run2('(renderBrowse._flat || []).length') === LVOCAB.length,
     run2('currentTab') + '/' + run2('browseMacro') + '/' + run2('(renderBrowse._flat || []).length'));
   // 真 DOM 行为断言：只能有一个视图 active（曾因 `classList.add(..) || fallback` 同时点亮两个）
   chk('听力版只点亮 view-browse 一个视图',
