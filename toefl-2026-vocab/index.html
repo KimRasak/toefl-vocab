@@ -1201,6 +1201,22 @@ function markKnown(word) {
   saveProgress();
 }
 
+// 学习模式「会/不会」：不改变收藏状态，只记录记忆信号（box/对错计数）。
+// 会 → box+1（重现间隔按 1/2/4/7 天拉长），不会 → box 归 1（下一轮最先重现）
+function markReviewSignal(word, good) {
+  const rec = getRec(word);
+  if (good) {
+    rec.right = (rec.right || 0) + 1;
+    if (rec.box < 5) rec.box++;
+  } else {
+    rec.wrong = (rec.wrong || 0) + 1;
+    rec.box = 1;
+  }
+  rec.lastSeen = Date.now();
+  progress[word] = rec;
+  saveProgress();
+}
+
 function buildSession(macroFilter, mode) {
   const pass = [], collected = [], train = [];
   vocab.forEach((entry, i) => {
@@ -1219,8 +1235,12 @@ function buildSession(macroFilter, mode) {
     const wa = PRI_WEIGHT[vocab[a].r] || 1, wb = PRI_WEIGHT[vocab[b].r] || 1;
     return (Math.random() / wa) - (Math.random() / wb);
   });
-  // 学习模式按记忆曲线排序：最近看过的排后、老早的排前
-  collected.sort((a, b) => (getRec(vocab[a].w).lastSeen || 0) - (getRec(vocab[b].w).lastSeen || 0));
+  // 学习模式按记忆曲线排序：答「会」的词按 box 拉长重现间隔(1/2/4/7天)，答「不会」的最先重现
+  const REVIEW_INTERVAL = { 1: 0, 2: 1, 3: 2, 4: 4, 5: 7 };   // 天
+  collected.sort((a, b) => {
+    const due = r => (r.lastSeen || 0) + (REVIEW_INTERVAL[Math.min(Math.max(r.box || 1, 1), 5)] || 0) * 86400000;
+    return due(getRec(vocab[a].w)) - due(getRec(vocab[b].w));
+  });
 
   let indices;
   if (mode === 'train') {
@@ -1382,6 +1402,7 @@ function renderStudyCard() {
   const rec = getRec(entry.w);
   const st = getStatus(entry.w);
   cardRevealed = false;
+  const reviewish = studyMode === 'review' || studyMode === 'redo';
 
   area.innerHTML =
     '<div class="study-meta">' +
@@ -1399,12 +1420,14 @@ function renderStudyCard() {
         '<div class="fc-meaning">' + esc(entry.m) + '</div>' +
         '<div class="fc-word">' + esc(entry.w) + '</div>' +
         '<div class="fc-pos">' + esc(entry.p) + '</div>' +
-        '<div class="fc-hint"><span class="listen-icon">🔊</span>先听发音：不会的收藏 ⭐，会的标记已知 ✓，或点卡片翻面</div>' +
+        '<div class="fc-hint"><span class="listen-icon">🔊</span>' + (reviewish
+          ? '先听发音回忆：会点「会」，不会点「不会」（不影响收藏状态），或先翻面验证'
+          : '先听发音：不会的收藏 ⭐，会的标记已知 ✓，或点卡片翻面') + '</div>' +
       '</div>' +
     '</div>' +
     '<div class="fc-actions" id="fc-actions">' +
-      '<button class="btn btn-no" id="fc-fav" type="button">⭐ 收藏</button>' +
-      '<button class="btn btn-ok" id="fc-known" type="button">✓ 已知</button>' +
+      '<button class="btn btn-no" id="fc-fav" type="button">' + (reviewish ? '❌ 不会' : '⭐ 收藏') + '</button>' +
+      '<button class="btn btn-ok" id="fc-known" type="button">' + (reviewish ? '✅ 会' : '✓ 已知') + '</button>' +
     '</div>' +
 
     '<div class="swipe-hint">可先作答再翻面验证 · 翻面后左右滑动切换</div>';
@@ -1492,13 +1515,23 @@ function submitMark(action) {
   if (card) {
     card.classList.add(action === 'known' ? 'swipe-right' : 'swipe-left');
   }
+  const reviewish = studyMode === 'review' || studyMode === 'redo';
   // 记录作答前快照，供「回到上一个」回退进度，避免重复计分
   const rec = getRec(entry.w);
   studyHistory[studyIdx] = {
     prev: { box: rec.box, right: rec.right, wrong: rec.wrong, lastSeen: rec.lastSeen, fav: !!rec.fav, known: !!rec.known },
     resBefore: { right: studyResults.right, wrong: studyResults.wrong, wrongList: studyResults.wrongList.slice(), fav: studyResults.fav, known: studyResults.known, collectedList: studyResults.collectedList.slice() }
   };
-  if (action === 'fav') markCollect(entry.w);
+  if (reviewish) {
+    // 学习模式：会/不会只写记忆信号，不改收藏状态
+    const good = action === 'known';
+    markReviewSignal(entry.w, good);
+    if (good) studyResults.right++;
+    else {
+      studyResults.wrong++;
+      if (studyResults.wrongList.indexOf(entry.w) < 0) studyResults.wrongList.push(entry.w);
+    }
+  } else if (action === 'fav') markCollect(entry.w);
   else markKnown(entry.w);
   // Do not autoplay the next card; let the learner choose when to hear it.
   setTimeout(() => {
@@ -1537,6 +1570,34 @@ function goPrevCard() {
 }
 
 function renderSummary() {
+  const reviewish = studyMode === 'review' || studyMode === 'redo';
+  if (reviewish) {
+    const yesN = studyResults.right || 0;
+    const nNo = (studyResults.wrongList || []).length;
+    $('study-area').innerHTML =
+      '<div class="summary">' +
+        '<div class="emoji">🎉</div>' +
+        '<h2>本轮完成</h2>' +
+        '<div class="stats-row">' +
+          '<div class="stat"><strong style="color:var(--ok)">' + yesN + '</strong><span>会</span></div>' +
+          '<div class="stat"><strong style="color:var(--warn)">' + nNo + '</strong><span>不会</span></div>' +
+        '</div>' +
+        (nNo
+          ? '<p style="color:var(--warn);font-size:13px;margin-top:8px">「不会」的词下轮会最先重现，也可立即重练：</p>'
+          : '<p style="color:var(--muted);font-size:13px;margin-top:8px">全对！这批词会按间隔逐渐拉长重现</p>') +
+        '<div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">' +
+          (nNo ? '<button class="btn btn-primary" id="btn-redo-err" style="flex:1">🔁 重练不会的词 (' + nNo + ')</button>' : '') +
+          '<button class="btn" id="btn-last" style="flex:1">⏮ 上一张</button>' +
+          '<button class="btn btn-primary" id="btn-again" style="flex:1">再来一轮</button>' +
+          '<button class="btn" id="btn-done" style="flex:1">返回总览</button>' +
+        '</div>' +
+      '</div>';
+    $('btn-redo-err')?.addEventListener('click', startErrorRedo);
+    $('btn-last')?.addEventListener('click', goPrevCard);
+    $('btn-again').addEventListener('click', () => startStudy(studyCategory, studyMode));
+    $('btn-done').addEventListener('click', () => switchTab('dashboard'));
+    return;
+  }
   const favN = studyResults.fav || 0;
   const knownN = studyResults.known || 0;
   const nNew = (studyResults.collectedList || []).length;
@@ -1564,7 +1625,8 @@ function renderSummary() {
 
 // 立即重练本轮新收藏的词（即时、聚焦）
 function startErrorRedo() {
-  const words = (studyResults.collectedList || []).slice();
+  // 学习模式的重练对象是「不会」的词；过单词流程则是本轮新收藏
+  const words = (studyMode === 'review' ? studyResults.wrongList : studyResults.collectedList || []).slice();
   studyCategory = '';
   studyMode = 'redo';
   studyQueue = vocab.filter(e => words.indexOf(e.w) >= 0);
