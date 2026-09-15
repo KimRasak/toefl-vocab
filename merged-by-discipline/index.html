@@ -659,7 +659,7 @@ function playChain(word, requestId, done) {
   const next = () => {
     if (requestId !== audioRequestId) return;
     if (index >= urls.length) {
-      playFallback(word, requestId, done);
+      playWithChunks(word, requestId, done);
       return;
     }
     const url = urls[index++];
@@ -684,8 +684,9 @@ function playChain(word, requestId, done) {
   next();
 }
 
-// 多词术语（如 extended technique / artificial intelligence）有道没有整句词条，
-// 原链路会直接静音。兜底顺序：google 整句 → baidu 整句 → 有道逐词。
+// 多词术语（如 extended technique / musical borrowing）有道没有整句词条，
+// 原链路会直接静音。与主词库 ac 策略一致：先按词连播有 道（音色统一），
+// 全失败再走 google 整句 → baidu 整句兜底。
 const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
 const BAIDU_TTS = 'https://fanyi.baidu.com/gettts?lan=en&spd=4&source=web&text=';
 function playOne(url, requestId, onOk, onFail, cacheKey) {
@@ -700,12 +701,7 @@ function playOne(url, requestId, onOk, onFail, cacheKey) {
   if (cacheKey) audio.onplaying = () => { ttsPreferred.set(cacheKey, url); };
   audio.play().catch(bad);
 }
-function playFallback(word, requestId, done) {
-  audioEl = null;
-  const tryBaidu = () => playOne(BAIDU_TTS + encodeURIComponent(word), requestId, done, () => playWordByWord(word, requestId, done), word);
-  playOne(GOOGLE_TTS + encodeURIComponent(word), requestId, done, tryBaidu, word);
-}
-// 逐词兜底：整句合成不可用时按词播放（每词仍走 ttsUrls，含 preferred 缓存）
+// 按词连播：每词仍走 ttsUrls（含 preferred 缓存）；单个词失败则跳过继续
 function playWordByWord(word, requestId, done) {
   const parts = String(word).split(/\s+/).filter(Boolean);
   if (parts.length <= 1) { done(); return; }
@@ -723,6 +719,16 @@ function playWordByWord(word, requestId, done) {
     nxt();
   };
   step();
+}
+function playWithChunks(word, requestId, done) {
+  const parts = String(word).split(/\s+/).filter(Boolean);
+  if (parts.length > 1) { playWordByWord(word, requestId, done); return; }
+  playFallback(word, requestId, done);
+}
+function playFallback(word, requestId, done) {
+  audioEl = null;
+  const tryBaidu = () => playOne(BAIDU_TTS + encodeURIComponent(word), requestId, done, () => playWordByWord(word, requestId, done), word);
+  playOne(GOOGLE_TTS + encodeURIComponent(word), requestId, done, tryBaidu, word);
 }
 function stopAudio() {
   audioRequestId++;
