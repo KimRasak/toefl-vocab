@@ -702,7 +702,8 @@ function playOne(url, requestId, onOk, onFail, cacheKey) {
   audio.play().catch(bad);
 }
 // 按词连播：每词仍走 ttsUrls（含 preferred 缓存）；
-// 任一分词在有道无词条时立即中止、转整句合成兜底——宁可换音色也保证完整
+// 分词无词条时：连字符词拆段重试（last-mile → last + mile，连字符不发音），
+// 仍失败则转整句合成兜底——宁可换音色也保证完整
 function playWordByWord(word, requestId, done) {
   const parts = String(word).split(/\s+/).filter(Boolean);
   if (parts.length <= 1) { done(); return; }
@@ -710,11 +711,37 @@ function playWordByWord(word, requestId, done) {
   const step = () => {
     if (requestId !== audioRequestId) return;
     if (i >= parts.length) { audioEl = null; done(); return; }
-    const urls = ttsUrls(parts[i++]);
+    const part = parts[i++];
+    const urls = ttsUrls(part);
     let k = 0;
     const nxt = () => {
       if (requestId !== audioRequestId) return;
-      if (k >= urls.length) { playFallback(word, requestId, done, true); return; }
+      if (k >= urls.length) {
+        const segs = part.split('-').filter(Boolean);
+        if (segs.length > 1) {
+          playSegs(segs, requestId, step, () => playFallback(word, requestId, done, true));
+          return;
+        }
+        playFallback(word, requestId, done, true);
+        return;
+      }
+      playOne(urls[k++], requestId, step, nxt);
+    };
+    nxt();
+  };
+  step();
+}
+// 连字符词段连播（last-mile → last、mile）
+function playSegs(segs, requestId, onDone, onFail) {
+  let i = 0;
+  const step = () => {
+    if (requestId !== audioRequestId) return;
+    if (i >= segs.length) { audioEl = null; onDone(); return; }
+    const urls = ttsUrls(segs[i++]);
+    let k = 0;
+    const nxt = () => {
+      if (requestId !== audioRequestId) return;
+      if (k >= urls.length) { onFail(); return; }
       playOne(urls[k++], requestId, step, nxt);
     };
     nxt();
