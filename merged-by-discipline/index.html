@@ -701,7 +701,8 @@ function playOne(url, requestId, onOk, onFail, cacheKey) {
   if (cacheKey) audio.onplaying = () => { ttsPreferred.set(cacheKey, url); };
   audio.play().catch(bad);
 }
-// 按词连播：每词仍走 ttsUrls（含 preferred 缓存）；单个词失败则跳过继续
+// 按词连播：每词仍走 ttsUrls（含 preferred 缓存）；
+// 任一分词在有道无词条时立即中止、转整句合成兜底——宁可换音色也保证完整
 function playWordByWord(word, requestId, done) {
   const parts = String(word).split(/\s+/).filter(Boolean);
   if (parts.length <= 1) { done(); return; }
@@ -713,7 +714,7 @@ function playWordByWord(word, requestId, done) {
     let k = 0;
     const nxt = () => {
       if (requestId !== audioRequestId) return;
-      if (k >= urls.length) { step(); return; }
+      if (k >= urls.length) { playFallback(word, requestId, done, true); return; }
       playOne(urls[k++], requestId, step, nxt);
     };
     nxt();
@@ -725,9 +726,11 @@ function playWithChunks(word, requestId, done) {
   if (parts.length > 1) { playWordByWord(word, requestId, done); return; }
   playFallback(word, requestId, done);
 }
-function playFallback(word, requestId, done) {
+function playFallback(word, requestId, done, fromWords) {
   audioEl = null;
-  const tryBaidu = () => playOne(BAIDU_TTS + encodeURIComponent(word), requestId, done, () => playWordByWord(word, requestId, done), word);
+  // fromWords：已从分词链路转来，最后的逐词兜底不再回头，避免循环
+  const last = fromWords ? done : () => playWordByWord(word, requestId, done);
+  const tryBaidu = () => playOne(BAIDU_TTS + encodeURIComponent(word), requestId, done, last, word);
   playOne(GOOGLE_TTS + encodeURIComponent(word), requestId, done, tryBaidu, word);
 }
 function stopAudio() {
