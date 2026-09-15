@@ -659,23 +659,70 @@ function playChain(word, requestId, done) {
   const next = () => {
     if (requestId !== audioRequestId) return;
     if (index >= urls.length) {
-      audioEl = null;
-      done();
+      playFallback(word, requestId, done);
       return;
     }
     const url = urls[index++];
     const audio = new Audio(url);
     audioEl = audio;
-    audio.onerror = next;
+    let settled = false;   // 同一 URL 的 error 事件与 play() 拒绝只算一次失败
+    const fail = () => {
+      if (settled) return;
+      settled = true;
+      audioEl = null;
+      next();
+    };
+    audio.onerror = fail;
     audio.onended = () => {
       if (requestId !== audioRequestId) return;
       audioEl = null;
       done();
     };
     audio.onplaying = () => { ttsPreferred.set(word, url); };
-    audio.play().catch(next);
+    audio.play().catch(fail);
   };
   next();
+}
+
+// 多词术语（如 extended technique / artificial intelligence）有道没有整句词条，
+// 原链路会直接静音。兜底顺序：google 整句 → baidu 整句 → 有道逐词。
+const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
+const BAIDU_TTS = 'https://fanyi.baidu.com/gettts?lan=en&spd=4&source=web&text=';
+function playOne(url, requestId, onOk, onFail, cacheKey) {
+  if (requestId !== audioRequestId) return;
+  const audio = new Audio(url);
+  audioEl = audio;
+  let settled = false;   // 防止 error 事件与 play() 拒绝双触发
+  const end = () => { if (settled) return; settled = true; audioEl = null; onOk(); };
+  const bad = () => { if (settled) return; settled = true; audioEl = null; onFail(); };
+  audio.onerror = bad;
+  audio.onended = () => { if (requestId !== audioRequestId) return; end(); };
+  if (cacheKey) audio.onplaying = () => { ttsPreferred.set(cacheKey, url); };
+  audio.play().catch(bad);
+}
+function playFallback(word, requestId, done) {
+  audioEl = null;
+  const tryBaidu = () => playOne(BAIDU_TTS + encodeURIComponent(word), requestId, done, () => playWordByWord(word, requestId, done), word);
+  playOne(GOOGLE_TTS + encodeURIComponent(word), requestId, done, tryBaidu, word);
+}
+// 逐词兜底：整句合成不可用时按词播放（每词仍走 ttsUrls，含 preferred 缓存）
+function playWordByWord(word, requestId, done) {
+  const parts = String(word).split(/\s+/).filter(Boolean);
+  if (parts.length <= 1) { done(); return; }
+  let i = 0;
+  const step = () => {
+    if (requestId !== audioRequestId) return;
+    if (i >= parts.length) { audioEl = null; done(); return; }
+    const urls = ttsUrls(parts[i++]);
+    let k = 0;
+    const nxt = () => {
+      if (requestId !== audioRequestId) return;
+      if (k >= urls.length) { step(); return; }
+      playOne(urls[k++], requestId, step, nxt);
+    };
+    nxt();
+  };
+  step();
 }
 function stopAudio() {
   audioRequestId++;
