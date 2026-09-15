@@ -645,11 +645,11 @@ function ttsUrls(word) {
   const cached = ttsPreferred.get(word);
   const w = encodeURIComponent(word);
   const youdaoUs = "https://dict.youdao.com/dictvoice?audio=" + w + "&type=2";
-  // The UK recording is clearer for ken; keep the standard US recording for other words.
-  const preferred = word === "ken"
-    ? "https://dict.youdao.com/dictvoice?audio=" + w + "&type=1"
-    : youdaoUs;
-  const chain = [preferred];
+  const youdaoUk = "https://dict.youdao.com/dictvoice?audio=" + w + "&type=1";
+  // 先美音；部分词条（如 op art）只有英音录制，整句失败时回退英音再进分词
+  const preferred = word === "ken" ? youdaoUk : youdaoUs;
+  const second = word === "ken" ? youdaoUs : youdaoUk;
+  const chain = [preferred, second];
   if (cached) return [cached].concat(chain.filter(u => u !== cached));
   return chain;
 }
