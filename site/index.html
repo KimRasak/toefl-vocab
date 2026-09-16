@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0f1115">
+<title>TOEFL 单词本</title>
+<style>
+  :root {
+    --bg: #0f1115; --card: #1a1d24; --card2: #22262f; --fg: #e6e8eb;
+    --muted: #8b93a1; --accent: #4c8dff; --accent2: #2a5fc0; --border: #2a2f3a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f4f6fa; --card:#ffffff; --card2:#eef1f6; --fg:#1a1d24; --muted:#5f6672; --accent:#2a5fc0; --accent2:#1c4499; --border:#dde2eb; }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html,body { margin:0; padding:0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    min-height: 100vh; min-height: 100dvh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 48px 20px 32px; }
+  .hero { text-align: center; margin-bottom: 36px; }
+  .hero h1 { font-size: 26px; font-weight: 800; margin: 0 0 8px; }
+  .hero p { margin: 0; color: var(--muted); font-size: 14px; }
+  .cards { display: flex; flex-direction: column; gap: 16px; }
+  .card {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px;
+    text-decoration: none; color: inherit;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card:active { transform: scale(.98); }
+  .badge {
+    flex: 0 0 auto; width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .badge.b1791 { background: rgba(76,141,255,.16); }
+  .badge.b1925 { background: rgba(255,204,0,.14); }
+  .badge.bphr { background: rgba(255,180,84,.16); }
+  .badge.b1675 { background: rgba(52,199,123,.16); }
+  .badge.bproper { background: rgba(175,82,222,.16); }
+  .badge.blisten { background: rgba(255,149,0,.16); }
+  .badge.blistenall { background: rgba(52,199,89,.16); }
+  .badge.blisten2026 { background: rgba(255,69,58,.16); }
+  .badge.bflash { background: rgba(255,214,10,.18); }
+  .badge.bscene { background: rgba(101,214,173,.16); }
+  .badge.bmerged { background: rgba(255,99,71,.16); }
+  .card .body { flex: 1 1 auto; min-width: 0; }
+  .card .name { font-size: 18px; font-weight: 700; }
+  .card .desc { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+  .card .go { flex: 0 0 auto; font-size: 16px; color: var(--muted); }
+  .foot { text-align: center; margin-top: 40px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>📚 TOEFL 单词本</h1>
+    <p>点击卡片进入对应单词表 · 单词旁 🔊 可听发音</p>
+  </div>
+  <div class="cards">
+    <a class="card" id="cmerged" href="vocab/disciplines/">
+      <div class="badge bmerged">🏷️</div>
+      <div class="body">
+        <div class="name">学科分类总表</div>
+        <div class="desc">4074 词 · 三大词表合并 · 按 42 个学科话题分组 · 便于按学科背诵</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="cflash2026" href="vocab/2026/">
+      <div class="badge bflash">🃏</div>
+      <div class="body">
+        <div class="name">2026 词汇卡</div>
+        <div class="desc">2670 高频词 · 翻卡记忆 · 间隔复习 · 多端同步 · 错题优先</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="cscenevocab" href="vocab/daily.html">
+      <div class="badge bscene">🧩</div>
+      <div class="body">
+        <div class="name">场景词汇小册</div>
+        <div class="desc">日常社交 · 校园事务 · 职场短对话 · 校园公告 · 搜索/发音/学习进度</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="c1791" href="vocab/1791/">
+      <div class="badge b1791">📘</div>
+      <div class="body">
+        <div class="name">1791 词版</div>
+        <div class="desc">带发音 · 原词表</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="c1925" href="vocab/1925/">
+      <div class="badge b1925">📙</div>
+      <div class="body">
+        <div class="name">1925 词版</div>
+        <div class="desc">带发音 · 4 册合并 · 含短语/例句</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="cphr" href="vocab/phrases.html">
+      <div class="badge bphr">💬</div>
+      <div class="body">
+        <div class="name">日常短语</div>
+        <div class="desc">口语常用表达 · 原句+发音</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="c1675" href="vocab/1675/">
+      <div class="badge b1675">📗</div>
+      <div class="body">
+        <div class="name">1675 词版</div>
+        <div class="desc">带发音 · 原词表</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="cproper" href="vocab/proper/">
+      <div class="badge bproper">📌</div>
+      <div class="body">
+        <div class="name">专有名词</div>
+        <div class="desc">学科术语 · 例句+发音 · 随机抽词造句</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="clisten" href="listening/selected/">
+      <div class="badge blisten">🎧</div>
+      <div class="body">
+        <div class="name">英语听力精选</div>
+        <div class="desc">200 集 · 字幕+原文 · 标注出题时间</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="clistenall" href="listening/all/">
+      <div class="badge blistenall">🎧</div>
+      <div class="body">
+        <div class="name">英语听力全库</div>
+        <div class="desc">424 集 · 1–75 套全覆盖 · 中英逐句对照 · 按学科领域筛选与进度统计</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="ctoeic" href="listening/toeic/">
+      <div class="badge blisten">🗣️</div>
+      <div class="body">
+        <div class="name">TOEIC 听力补充</div>
+        <div class="desc">Part 2 听答题 · Part 3 短对话 · Part 4 通知</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="cscene2026" href="listening/2026/#sceneSummary">
+      <div class="badge blisten2026">🧭</div>
+      <div class="body">
+        <div class="name">2026 听力场景总结</div>
+        <div class="desc">日常社交 · 校园公告 · 短对话 · 学术讲座 · 题材范围提要</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+    <a class="card" id="clisten2026" href="listening/2026/">
+      <div class="badge blisten2026">🆕</div>
+      <div class="body">
+        <div class="name">2026 新格式听力</div>
+        <div class="desc">官方对版练习卷 · 238 题带答案 · 听答题/对话/公告/学术讲座四类</div>
+      </div>
+      <div class="go">→</div>
+    </a>
+  </div>
+  <div class="foot">点击单词旁喇叭按钮即可播放美式发音 · 🎧 听力分三个入口：精选 200 集、全库 424 集、2026 新格式</div>
+</div>
+</body>
+</html>
