@@ -143,7 +143,7 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .browse-head .meta .name { font-weight: 800; font-size: 18px; }
 .browse-head .meta .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .browse-tip { font-size: 12px; color: var(--muted); margin: 0 0 14px; }
-.browse-group { margin-bottom: 18px; }
+.browse-group { margin-bottom: 18px; content-visibility: auto; contain-intrinsic-size: auto 80px; }
 .browse-group h4 {
   margin: 0 0 8px; font-size: 13px; font-weight: 700; color: var(--muted);
   display: flex; justify-content: space-between; gap: 8px;
@@ -345,6 +345,11 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
   background: var(--card); border: 1px solid var(--border); border-radius: 16px;
   max-height: calc(100dvh - 430px); min-height: 140px;
   overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.seq-more, .browse-more {
+  display: block; width: 100%; margin: 4px 0 0; padding: 10px 12px;
+  background: var(--card2); border: 1px dashed var(--border); border-radius: 12px;
+  color: var(--accent); font-size: 13px; font-weight: 600;
 }
 .seq-words .empty { text-align: center; color: var(--muted); font-size: 13px; padding: 24px; }
 .seq-item {
@@ -1410,6 +1415,7 @@ function seqSetCat(cat) {
   seq.cat = cat;
   seq.list = !cat ? [] : (MACRO[cat] ? vocab.filter(e => getMacro(e.c) === cat) : vocab.filter(e => e.c === cat));
   seq.idx = 0;
+  seqShown = 0;
   renderSeqWords();
   renderSeqPanel();
 }
@@ -1419,17 +1425,35 @@ function seqGapMs() {
   return isNaN(v) ? 1000 : v;
 }
 
+const SEQ_PAGE = 80;
+let seqShown = 0;
+
 function renderSeqWords() {
   const box = $('seq-words');
   seqRows = [];
+  seqShown = 0;
   if (!box) return;
   box.innerHTML = '';
   if (!seq.list.length) {
     box.innerHTML = '<div class="empty">该分区没有词条</div>';
     return;
   }
+  renderSeqPage(true);
+  seqHighlight();
+}
+
+function renderSeqPage(reset) {
+  const box = $('seq-words');
+  if (!box || !seq.list.length) return;
+  if (reset) {
+    const more = box.querySelector('.seq-more');
+    if (more) more.remove();
+  }
+  const start = seqShown;
+  const end = Math.min(seq.list.length, Math.max(start + SEQ_PAGE, (seq.idx || 0) + 1));
   const frag = document.createDocumentFragment();
-  seq.list.forEach((entry, i) => {
+  for (let i = start; i < end; i++) {
+    const entry = seq.list[i];
     const row = document.createElement('button');
     row.type = 'button';
     row.className = 'seq-item';
@@ -1443,13 +1467,33 @@ function renderSeqWords() {
     m.className = 'm';
     m.textContent = entry.m;
     row.appendChild(n); row.appendChild(w); row.appendChild(m);
-    // 点任意词：从该词开始（/跳到该词）连读
     row.addEventListener('click', () => seqJump(i));
     frag.appendChild(row);
     seqRows.push(row);
-  });
+  }
   box.appendChild(frag);
-  seqHighlight();
+  seqShown = end;
+  let more = box.querySelector('.seq-more');
+  if (seqShown < seq.list.length) {
+    if (!more) {
+      more = document.createElement('button');
+      more.type = 'button';
+      more.className = 'seq-more';
+      more.addEventListener('click', () => { renderSeqPage(false); seqHighlight(); });
+      box.appendChild(more);
+    }
+    more.textContent = '显示更多（已展示 ' + seqShown + ' / ' + seq.list.length + '）';
+  } else if (more) more.remove();
+}
+
+function seqEnsureVisible(i) {
+  if (!seq.list.length) return;
+  let guard = 0;
+  while (seqShown <= i && seqShown < seq.list.length && guard++ < 64) {
+    const before = seqShown;
+    renderSeqPage(false);
+    if (seqShown <= before) break;
+  }
 }
 
 function renderSeqPanel() {
@@ -1469,6 +1513,7 @@ function renderSeqPanel() {
 
 function seqHighlight() {
   const active = seq.on || seq.paused;
+  seqEnsureVisible(seq.idx);
   seqRows.forEach((r, i) => r.classList.toggle('playing', active && i === seq.idx));
   const row = seqRows[seq.idx];
   if (active && row && typeof row.scrollIntoView === 'function') {
@@ -1578,6 +1623,7 @@ function seqJump(i) {
   clearTimeout(seq.timer);
   seq.timer = 0;
   seq.idx = Math.max(0, Math.min(i, seq.list.length - 1));
+  seqEnsureVisible(seq.idx);
   seq.paused = false;
   seq.on = true;
   seqPlayCurrent();
@@ -2153,6 +2199,9 @@ function openBrowse(macroKey) {
   switchTab('browse');
 }
 
+const BROWSE_PAGE = 160;
+let browseShownGroups = 0;
+
 function renderBrowse() {
   const m = MACRO[browseMacro];
   const head = $('browse-head');
@@ -2160,13 +2209,18 @@ function renderBrowse() {
   if (!m) {
     head.innerHTML = '';
     listEl.innerHTML = '<div class="empty-study"><p>请从总览选择一个分类</p></div>';
+    renderBrowse._flat = [];
+    renderBrowse._groups = [];
+    browseShownGroups = 0;
     return;
   }
   const groups = browseGroups(browseMacro);
   let total = 0, known = 0;
+  const flat = [];
   groups.forEach(g => g.items.forEach(e => {
     total++;
     if (getRec(e.w).known) known++;
+    flat.push(e);
   }));
 
   head.innerHTML =
@@ -2176,20 +2230,54 @@ function renderBrowse() {
       '<div class="sub">' + total + ' 词 · ' + known + ' 已知 · ' + groups.length + ' 个子场景</div>' +
     '</div>';
 
+  listEl.innerHTML = '';
+  renderBrowse._flat = flat;
+  renderBrowse._groups = groups;
+  browseShownGroups = 0;
+  renderBrowsePage();
+}
+
+function browseChip(entry, pos) {
+  const st = getStatus(entry.w);
+  const chip = document.createElement('button');
+  chip.type = 'button';
+  chip.className = 'chip ' + st;
+  const dot = document.createElement('i');
+  dot.className = 'dot ' + st;
+  const w = document.createElement('span');
+  w.className = 'cw';
+  w.textContent = entry.w;
+  const mean = document.createElement('span');
+  mean.className = 'cm';
+  mean.textContent = entry.m;
+  chip.appendChild(dot);
+  chip.appendChild(w);
+  chip.appendChild(mean);
+  chip.addEventListener('click', () => startStudyAt(pos));
+  return chip;
+}
+
+function renderBrowsePage() {
+  const listEl = $('browse-list');
+  const groups = renderBrowse._groups || [];
+  if (!listEl || !groups.length) return;
+  const moreOld = listEl.querySelector('.browse-more');
+  if (moreOld) moreOld.remove();
+  let count = 0;
+  let base = 0;
+  for (let gi = 0; gi < browseShownGroups; gi++) base += groups[gi].items.length;
   const frag = document.createDocumentFragment();
-  // The full queue mirrors the display order, so clicking any word can resume from it.
-  const flat = [];
-  groups.forEach(g => {
+  while (browseShownGroups < groups.length && count < BROWSE_PAGE) {
+    const g = groups[browseShownGroups];
     const section = document.createElement('div');
     section.className = 'browse-group';
     const h = document.createElement('h4');
     const title = document.createElement('b');
     title.textContent = g.cat;
-    const count = document.createElement('span');
-    count.textContent = g.items.length + ' 词';
+    const cnt = document.createElement('span');
+    cnt.textContent = g.items.length + ' 词';
     h.appendChild(title);
-    h.appendChild(count);
-    // 分区连读入口：点击即切到连读页，从头播放该分区
+    h.appendChild(cnt);
     const play = document.createElement('button');
     play.type = 'button';
     play.className = 'grp-play';
@@ -2198,37 +2286,24 @@ function renderBrowse() {
     play.addEventListener('click', () => seqChoose(g.cat));
     h.appendChild(play);
     section.appendChild(h);
-
     const chips = document.createElement('div');
     chips.className = 'chips';
-    g.items.forEach(entry => {
-      const pos = flat.length;
-      flat.push(entry);
-      const st = getStatus(entry.w);
-      const chip = document.createElement('button');
-      chip.type = 'button';
-      chip.className = 'chip ' + st;
-      const dot = document.createElement('i');
-      dot.className = 'dot ' + st;
-      const w = document.createElement('span');
-      w.className = 'cw';
-      w.textContent = entry.w;
-      const mean = document.createElement('span');
-      mean.className = 'cm';
-      mean.textContent = entry.m;
-      chip.appendChild(dot);
-      chip.appendChild(w);
-      chip.appendChild(mean);
-      chip.addEventListener('click', () => startStudyAt(pos));
-      chips.appendChild(chip);
-    });
+    g.items.forEach((entry, i) => chips.appendChild(browseChip(entry, base + i)));
     section.appendChild(chips);
     frag.appendChild(section);
-  });
-
-  listEl.innerHTML = '';
+    count += g.items.length;
+    base += g.items.length;
+    browseShownGroups++;
+  }
   listEl.appendChild(frag);
-  renderBrowse._flat = flat;
+  if (browseShownGroups < groups.length) {
+    const more = document.createElement('button');
+    more.type = 'button';
+    more.className = 'browse-more';
+    more.textContent = '显示更多子场景（已展示 ' + browseShownGroups + ' / ' + groups.length + '）';
+    more.addEventListener('click', renderBrowsePage);
+    listEl.appendChild(more);
+  }
 }
 
 // Enter flashcard mode from the browse list, keeping the whole category as the queue.
@@ -2392,11 +2467,15 @@ function switchTab(tab) {
   if (view) view.classList.add('active');
   const nav = document.querySelector('.nav-item[data-tab="' + (tab === 'browse' ? 'dashboard' : tab) + '"]');
   if (nav) nav.classList.add('active');
+  if (tab !== 'browse') {
+    const listEl = $('browse-list');
+    if (listEl) { listEl.innerHTML = ''; browseShownGroups = 0; }
+  }
   if (tab === 'study') renderStudyCard();
   if (tab === 'browse') renderBrowse();
   if (tab === 'list' && listDirty) renderList();
   if (tab === 'sync') renderSync();
-  if (tab === 'seq') renderSeqPanel();
+  if (tab === 'seq') { renderSeqPanel(); seqHighlight(); }
   seqSyncPill();
 }
 

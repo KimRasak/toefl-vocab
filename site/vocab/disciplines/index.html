@@ -88,7 +88,7 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
 .prio-banner a{color:var(--accent)}
 
 /* Section */
-.section{margin-bottom:28px}
+.section{margin-bottom:28px;content-visibility:auto;contain-intrinsic-size:auto 120px}
 .sec-head{
   position:sticky;top:var(--head-h);z-index:10;background:var(--bg);
   padding:10px 0 6px;display:flex;align-items:center;gap:8px;
@@ -104,6 +104,11 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
 
 /* Word list */
 .wlist{display:flex;flex-direction:column;gap:6px}
+.wlist-more{
+  display:block;width:100%;margin-top:4px;padding:10px 12px;
+  background:var(--card);border:1px dashed var(--border);border-radius:10px;
+  color:var(--accent);font-size:13px;cursor:pointer;font-weight:600;
+}
 .witem{
   background:var(--card);border:1px solid var(--border);border-radius:10px;
   padding:10px 14px;display:flex;align-items:flex-start;gap:10px;
@@ -460,6 +465,9 @@ const searchInput = document.getElementById('searchInput');
 const statsEl = document.getElementById('stats');
 
 let collapsed = {};
+let secLimit = {};
+const SEC_PAGE = 80;
+DATA.forEach((_, i) => { if (i) collapsed[i] = true; });
 let hardWords = new Set();
 let showHardOnly = false;
 // 2026 视图状态：仅真题词 / 仅高频学科 / 按 2026 优先级排序
@@ -852,20 +860,24 @@ function highlight(text, q) {
   return escHtml(text).replace(new RegExp('(' + esc + ')', 'gi'), '<mark>$1</mark>');
 }
 
-function render(query) {
+function getWordFilter(query) {
   const q = (query || '').trim().toLowerCase();
-  let html = '';
-  let totalShown = 0;
-  const hardCnt = hardWords.size;
-
-  // 词条级筛选：搜索 → 难词 → 2026 真题词
-  const wordFilter = (ws) => {
+  return (ws) => {
     let r = ws;
     if (q) r = r.filter(w => w.w.includes(q) || w.d.includes(q) || w.f.toLowerCase().includes(q));
     if (showHardOnly) r = r.filter(w => hardWords.has(w.w));
     if (show2026Only) r = r.filter(w => w.s.indexOf('2026') >= 0);
     return r;
   };
+}
+
+function render(query) {
+  const q = (query || '').trim().toLowerCase();
+  let html = '';
+  let totalShown = 0;
+  const hardCnt = hardWords.size;
+
+  const wordFilter = getWordFilter(query);
   // 学科级筛选：只看 2026 讲座高频（含全学科通用词）
   const topicPass = (t) => !showHighYieldOnly || t.tier === '讲座高频' || t.tier === '全学科通用';
 
@@ -923,7 +935,8 @@ function render(query) {
     if (items.length === 0) return;
     totalShown += items.length;
 
-    const isCollapsed = collapsed[ti] && !q;
+    const forceOpen = !!(q || showHardOnly || show2026Only);
+    const isCollapsed = collapsed[ti] && !forceOpen;
     const secBadge = t.w26 != null
       ? `<span class="w26 sec-w26" style="color:${t.tierColor}">${t.tierEmoji} 2026 讲座 ${t.w26}%</span>`
       : `<span class="w26 sec-w26" style="color:${t.tierColor}">${t.tierEmoji} ${t.tier}</span>`;
@@ -941,22 +954,25 @@ function render(query) {
     }
 
     if (!isCollapsed) {
+      const page = q ? 200 : SEC_PAGE;
+      const limit = Math.max(page, secLimit[ti] || page);
+      const shown = items.slice(0, limit);
       html += '<div class="wlist">';
-      items.forEach(w => {
+      shown.forEach(w => {
         const srcBadge = w.s.join('+');
         const isHard = hardWords.has(w.w);
         const gIdx = WORD_IDX[w.w];
         const is2026 = w.s.indexOf('2026') >= 0;
-        html += `<div class="witem${isHard ? ' is-hard' : ''}" onclick="this.classList.toggle('expanded')">`;
+        html += `<div class="witem${isHard ? ' is-hard' : ''}" data-word="${escAttr(w.w)}">`;
         html += `<div class="ww"><span class="widx">${gIdx + 1}</span><span class="wtext">${highlight(w.w, q)}</span>${is2026 ? '<span class="w26" style="color:#ff6b4a" title="2026 真实考场讲座话题反推出的术语">🆕</span>' : ''}<button class="spk-btn" data-word="${escAttr(w.w)}" title="发音" aria-label="发音">🔊</button><button class="mark-btn${isHard ? ' marked' : ''}" data-word="${escAttr(w.w)}" title="${isHard ? '取消标记' : '标记为难词'}">⭐</button></div>`;
         html += `<div class="wd">${highlight(w.d, q)}</div>`;
         html += `<div class="wsrc">${srcBadge}</div>`;
-        if (w.f) {
-          html += `<div class="full">${highlight(w.f, q)}</div>`;
-        }
         html += '</div>';
       });
       html += '</div>';
+      if (items.length > shown.length) {
+        html += `<button class="wlist-more" data-sec="${ti}" type="button">显示更多（已展示 ${shown.length} / ${items.length}）</button>`;
+      }
     }
     html += '</div>';
   });
@@ -977,7 +993,37 @@ function render(query) {
 
 function toggleSec(idx) {
   collapsed[idx] = !collapsed[idx];
+  if (!collapsed[idx] && !secLimit[idx]) secLimit[idx] = SEC_PAGE;
   render(searchInput.value);
+}
+
+function revealWord(word) {
+  if (!word) return false;
+  const ti = DATA.findIndex(t => t.words.some(x => x.w === word.w));
+  if (ti < 0) return false;
+  let changed = false;
+  if (collapsed[ti]) { collapsed[ti] = false; changed = true; }
+  const items = getWordFilter(searchInput.value)(DATA[ti].words);
+  const pos = items.findIndex(x => x.w === word.w);
+  if (pos >= 0 && (secLimit[ti] || SEC_PAGE) < pos + 1) {
+    secLimit[ti] = pos + 1;
+    changed = true;
+  }
+  if (changed) render(searchInput.value);
+  return changed;
+}
+
+function expandItem(el) {
+  el.classList.toggle('expanded');
+  if (!el.classList.contains('expanded') || el.querySelector('.full')) return;
+  const word = el.dataset.word;
+  const w = word && WORD_IDX[word] != null ? ALL_WORDS[WORD_IDX[word]] : null;
+  if (!w || !w.f) return;
+  const q = (searchInput.value || '').trim().toLowerCase();
+  const div = document.createElement('div');
+  div.className = 'full';
+  div.innerHTML = highlight(w.f, q);
+  el.appendChild(div);
 }
 
 let debounceTimer;
@@ -1095,6 +1141,9 @@ function sleepCancelable(ms) {
 }
 
 function abScrollToCurrent() {
+  const list = abGetList();
+  const w = list[abIdx];
+  if (w) revealWord(w);
   const playing = document.querySelector('.witem.playing');
   if (playing) playing.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -1120,15 +1169,12 @@ function abUpdateUI() {
   document.getElementById('abHardOnly').classList.toggle('active', abHardOnly);
   document.getElementById('ab2026Only').classList.toggle('active', ab2026Only);
 
-  // Highlight current word in list
+  // Highlight current word in list（词条按需挂载，先保证当前词所在组已展开）
+  if (w) revealWord(w);
   document.querySelectorAll('.witem.playing').forEach(el => el.classList.remove('playing'));
   if (w) {
-    const items = document.querySelectorAll('.witem');
-    items.forEach(el => {
-      const wt = el.querySelector('.wtext');
-      if (wt && wt.textContent.trim() === w.w) {
-        el.classList.add('playing');
-      }
+    document.querySelectorAll('.witem').forEach(el => {
+      if (el.dataset.word === w.w) el.classList.add('playing');
     });
   }
 }
@@ -1292,12 +1338,7 @@ function abJumpToInput() {
   abSave();
   if (abPlaying) { abStop(); abStart(); }
   else {
-    // 目标学科若被折叠，先展开再定位，否则滚动无对象
-    const ti = DATA.findIndex(t => t.words.some(w => w.w === target.w));
-    if (ti >= 0 && collapsed[ti]) {
-      collapsed[ti] = false;
-      render(searchInput.value);
-    }
+    revealWord(target);
     if (fuzzyMsg) { abFlashMsg(fuzzyMsg); }
     else if (clearedScope) { abFlashMsg('已跳转到「' + target.w + '」（自动放宽了范围）'); }
     abUpdateUI();
@@ -1482,13 +1523,14 @@ function selectAbTopic(topicKey) {
   abResetRange();
   abIdx = 0;
   abSave();
+  if (abTopic) {
+    const ti = DATA.findIndex(t => (t.emoji + ' ' + t.name.split(' ')[0]) === abTopic);
+    if (ti >= 0) collapsed[ti] = false;
+  }
   if (abPlaying) { abStop(); abStart(); }
   render(searchInput.value);
   abUpdateUI();
-  const section = [...document.querySelectorAll('.section')].find(el => {
-    const title = el.querySelector('.sec-title');
-    return title && (el.querySelector('.sec-emoji')?.textContent + ' ' + title.textContent.split(' ')[0]) === topicKey;
-  });
+  const section = document.getElementById(abTopic ? 'sec' + DATA.findIndex(t => (t.emoji + ' ' + t.name.split(' ')[0]) === abTopic) : '');
   if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -1516,11 +1558,26 @@ document.addEventListener('click', (e) => {
     if (word) toggleHard(word);
     return;
   }
+  const more = e.target.closest('.wlist-more');
+  if (more && mainEl.contains(more)) {
+    e.stopPropagation();
+    const ti = parseInt(more.dataset.sec, 10);
+    if (!Number.isInteger(ti)) return;
+    secLimit[ti] = (secLimit[ti] || SEC_PAGE) + SEC_PAGE;
+    collapsed[ti] = false;
+    render(searchInput.value);
+    return;
+  }
   const chip = e.target.closest('.topic-chip');
   if (chip && mainEl.contains(chip)) {
     e.preventDefault();
     const key = chip.dataset.topic;
     if (key) selectAbTopic(key);
+    return;
+  }
+  const item = e.target.closest('.witem');
+  if (item && mainEl.contains(item) && !e.target.closest('button')) {
+    expandItem(item);
   }
 }, true);
 
