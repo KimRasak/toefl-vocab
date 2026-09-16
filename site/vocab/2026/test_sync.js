@@ -738,6 +738,8 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     if (av.length !== 1 || av[0] !== 'view-browse') landProblems.push(k + ':视图 ' + (av.join('+') || '无'));
     if (vm.runInContext('(renderBrowse._flat || []).length', c) === 0) landProblems.push(k + ':单词表为空');
     if (vm.runInContext('browseMacro', c) !== k) landProblems.push(k + ':宏 ' + vm.runInContext('browseMacro', c));
+    if (vm.runInContext('seqInit._cats.filter(x => MACRO[x]).length', c) !== 1)
+      landProblems.push(k + ':整类连读选项异常');
     if (d.activeNavs().length !== 1) landProblems.push(k + ':底栏高亮 ' + d.activeNavs().length + ' 个');
   });
   chk('8 个子路径页真跑：打开即单词表且只亮一个视图', landProblems.length === 0,
@@ -767,6 +769,20 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('分区分组数 = 全部唯一分区数', allCatCount === uniqCats, allCatCount + '/' + uniqCats);
   chk('每个宏都有非空分区组', Object.keys(MACRO_PAGES).every(k => Array.isArray(groupData[k]) && groupData[k].length > 0),
     Object.keys(MACRO_PAGES).map(k => k + ':' + (groupData[k] || []).length).join(','));
+
+  // 整类连读：宏 key（如 listening = 整个「听力场景」）也是可选播放范围
+  chk('下拉含 8 个整类选项', run("seqInit._cats.filter(c => MACRO[c]).length") === 8,
+    run("seqInit._cats.filter(c => MACRO[c]).join(',')"));
+  run("seqSetCat('listening')");
+  const listenAll = run("vocab.filter(e => getMacro(e.c) === 'listening').length");
+  chk('整类连读=听力场景全部词条', run('seq.list.length') === listenAll,
+    run('seq.list.length') + '/' + listenAll);
+  chk('整类词表已渲染', run('seqRows.length') === listenAll, run('seqRows.length'));
+  chk('整类范围显示名带（整类）', run('seqCatName()') === run("MACRO.listening.name + '（整类）'"), run('seqCatName()'));
+  chk('总览卡片含整类连读按钮', /data-seqread="/.test(html));
+  run('seqStart()');
+  chk('整类连读可开始', run('seq.on') === true && run('seq.idx') === 0);
+  run('seqStop()');
 
   // 选分区 → 词表渲染 + 开始连读
   run("seqSetCat('AWL-1')");

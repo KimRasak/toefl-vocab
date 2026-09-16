@@ -488,7 +488,7 @@ button { cursor: pointer; border: none; background: none; }
             <option value="loop">循环播放</option>
           </select>
         </div>
-        <p class="seq-tip">选择一个分区，按顺序自动朗读全部单词；「间隔」是每词之间的停顿，播完后可停止或从头循环。</p>
+        <p class="seq-tip">可选一个子场景，或每组第一项的「🎧 整类」（如整个「听力场景」全部词条）；按顺序自动朗读，「间隔」是每词之间的停顿，播完后可停止或从头循环。</p>
         <button class="btn btn-primary btn-block" id="seq-start">▶ 开始连读</button>
       </div>
       <div class="seq-now" id="seq-now" hidden>
@@ -1277,8 +1277,15 @@ function seqInit() {
   Object.keys(MACRO).forEach(m => {
     const list = groups[m];
     if (!list || !list.length) return;
+    const total = list.reduce((s, g) => s + g.count, 0);
     const og = document.createElement('optgroup');
     og.label = MACRO[m].name;
+    // 整类连读：每组第一项是本宏全部词条（值为宏 key，子场景名不会与其撞名）
+    const all = document.createElement('option');
+    all.value = m;
+    all.textContent = '🎧 整类：' + MACRO[m].name + ' 全部 ' + total + ' 词';
+    og.appendChild(all);
+    cats.push(m);
     list.forEach(g => {
       const o = document.createElement('option');
       o.value = g.cat;
@@ -1298,10 +1305,16 @@ function seqInit() {
   seqSetCat(c);
 }
 
-// 只换分区和词表，不动播放状态；change 事件里再决定是否从头连读新分区
+// 当前连读范围的显示名：宏 key 显示类别名（如「听力场景」），子场景显示原名
+function seqCatName() {
+  if (!seq.cat) return '';
+  return MACRO[seq.cat] ? MACRO[seq.cat].name + '（整类）' : seq.cat;
+}
+
+// 只换分区和词表，不动播放状态；cat 可以是子场景名，也可以是宏 key（整类连读）
 function seqSetCat(cat) {
   seq.cat = cat;
-  seq.list = cat ? vocab.filter(e => e.c === cat) : [];
+  seq.list = !cat ? [] : (MACRO[cat] ? vocab.filter(e => getMacro(e.c) === cat) : vocab.filter(e => e.c === cat));
   seq.idx = 0;
   renderSeqWords();
   renderSeqPanel();
@@ -1421,7 +1434,7 @@ function seqStep(delta) {
       seq.on = false; seq.paused = false; seq.idx = 0;
       renderSeqPanel();
       seqHighlight();
-      toast('「' + seq.cat + '」已连读完（共 ' + seq.list.length + ' 词）');
+      toast('「' + seqCatName() + '」已连读完（共 ' + seq.list.length + ' 词）');
       return;
     }
   }
@@ -1432,7 +1445,7 @@ function seqStep(delta) {
 
 function seqStart() {
   if (seq.on) return;
-  if (!seq.list.length) { toast('请先选择一个分区'); return; }
+  if (!seq.list.length) { toast('请先选择连读范围'); return; }
   if (seq.idx >= seq.list.length) seq.idx = 0;
   seq.paused = false;
   seq.on = true;
@@ -1476,7 +1489,7 @@ function seqJump(i) {
   seqPlayCurrent();
 }
 
-// 分类一览分组上的「▶ 连读」：切到连读页并从头播放该分区
+// 分类一览分组「▶ 连读」与总览卡片「🎧 连读」：切到连读页并从头播放（子场景或整类）
 function seqChoose(cat) {
   const sel = $('seq-cat');
   if (sel) sel.value = cat;
@@ -1705,6 +1718,7 @@ function renderDashboard() {
       '<div class="btn-row">' +
         '<button class="btn btn-primary" data-browse="' + key + '">一览全部 ' + st.total + ' 词</button>' +
         '<button class="btn" data-macro="' + key + '">过这类单词</button>' +
+        '<button class="btn" data-seqread="' + key + '">🎧 连读</button>' +
       '</div>' +
     '</div>';
   });
@@ -1718,6 +1732,10 @@ function renderDashboard() {
       if (sub) location.href = sub;      // 有独立子路径页 → 跳转
       else openBrowse(btn.dataset.browse); // 否则页内一览
     });
+  });
+  // 整类连读：总览类别卡片上的 🎧 连读，选中该宏全部词条播放
+  $('macro-list').querySelectorAll('[data-seqread]').forEach(btn => {
+    btn.addEventListener('click', () => seqChoose(btn.dataset.seqread));
   });
 
   // 学习模式入口：已收藏的词数
