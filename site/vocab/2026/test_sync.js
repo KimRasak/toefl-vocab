@@ -1,0 +1,874 @@
+// toefl-2026-vocab 云同步 + 分类一览的无头回归测试。
+// 与 ets_official_2026/test_2026_player.js 同一套路：极简 DOM 打桩 + vm 跑页面脚本 + 断言。
+// 用法: node test_sync.js   （退出码非 0 即失败）
+'use strict';
+const fs = require('fs'), path = require('path'), vm = require('vm');
+
+const HERE = __dirname;
+const html = fs.readFileSync(path.join(HERE, 'index.html'), 'utf8');
+const dataJs = fs.readFileSync(path.join(HERE, 'data.js'), 'utf8');
+
+class El {
+  constructor(id) {
+    this.id = id; this.children = []; this._html = ''; this.style = {}; this.dataset = {};
+    this.value = ''; this.textContent = ''; this.className = ''; this.checked = true;
+    this._cls = new Set();
+    this._ev = {};
+    // 真实 DOM 的 classList.add/remove 返回 undefined，toggle 返回 boolean。
+    // 早期打桩让 add 返回 Set（真值），掩盖了 `add(...) || fallback` 这类 bug，务必保持一致。
+    this.classList = {
+      add: c => { this._cls.add(c); },
+      remove: c => { this._cls.delete(c); },
+      toggle: (c, v) => { const on = v === undefined ? !this._cls.has(c) : !!v; on ? this._cls.add(c) : this._cls.delete(c); return on; },
+      contains: c => this._cls.has(c),
+    };
+  }
+  set innerHTML(v) { this._html = v; if (v === '') this.children = []; }
+  get innerHTML() { return this._html; }
+  appendChild(c) { this.children.push(c); return c; }
+  removeAttribute() {}
+  addEventListener(ev, fn) { this._ev[ev] = fn; }
+  removeEventListener() {}
+  querySelectorAll() { return []; }
+  querySelector() { return null; }
+  click() { if (this._ev.click) this._ev.click({ stopPropagation() {}, target: { closest: () => null } }); }
+}
+
+const ids = {};
+const getEl = id => ids[id] || (ids[id] = new El(id));
+
+// 从真实 HTML 里取出 .view 与 .nav-item 清单，让 document.querySelectorAll 具备真 DOM 行为
+// （早期打桩一律返回 []，导致「视图切换/底栏高亮」类 bug 完全测不出来）。
+function makeDom(pageHtml, reg) {
+  reg = reg || {};
+  const gEl = id => reg[id] || (reg[id] = new El(id));
+  const viewIds = [...pageHtml.matchAll(/<div class="view" id="(view-[a-z]+)"/g)].map(m => m[1]);
+  const navTabs = [...pageHtml.matchAll(/class="nav-item[^"]*" data-tab="([a-z]+)"/g)].map(m => m[1]);
+  const views = viewIds.map(gEl);
+  const navs = navTabs.map(t => { const el = gEl('nav-' + t); el.dataset.tab = t; return el; });
+  // 首屏 HTML 里 dashboard 的 nav-item 自带 active，打桩要一致
+  const dash = navs.find(n => n.dataset.tab === 'dashboard');
+  if (dash) dash.classList.add('active');
+  return {
+    reg, getEl: gEl, views, navs,
+    activeViews: () => views.filter(v => v.classList.contains('active')).map(v => v.id),
+    activeNavs: () => navs.filter(n => n.classList.contains('active')).map(n => n.dataset.tab),
+    document: {
+      getElementById: gEl,
+      createElement: t => new El(t),
+      createDocumentFragment: () => new El('frag'),
+      querySelectorAll: sel => (sel === '.view' ? views : sel === '.nav-item' ? navs : []),
+      querySelector: sel => {
+        const m = /^\.nav-item\[data-tab="([a-z]+)"\]$/.exec(sel);
+        return m ? (navs.find(n => n.dataset.tab === m[1]) || null) : null;
+      },
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      readyState: 'complete',
+      body: new El('body'),
+    },
+  };
+}
+
+function memStore() {
+  const m = new Map();
+  return {
+    getItem: k => (m.has(k) ? m.get(k) : null),
+    setItem: (k, v) => m.set(k, String(v)),
+    removeItem: k => m.delete(k),
+    _map: m,
+  };
+}
+
+const results = [];
+const chk = (name, cond, extra) => {
+  results.push((cond ? 'ok   ' : 'FAIL ') + name + (extra !== undefined ? '  ' + extra : ''));
+};
+
+// ── 打桩环境 ──────────────────────────────────────────────
+const localStorage = memStore();
+const sessionStorage = memStore();
+
+let fetchLog = [];
+let gistStore = null; // 模拟远端 gist 文件内容
+let audioLog = [];    // Audio 桩记录每次设置的 src（断言「发起发音请求」用）
+
+function fakeFetch(url, opts) {
+  fetchLog.push({ url, method: (opts && opts.method) || 'GET', body: opts && opts.body });
+  // 页面的 gistFetch 会读 res.headers.get('x-ratelimit-remaining') 做限额检测，
+  // 桩响应必须带 headers（get 一律返回 null → 走「无配额头」分支）。
+  const headers = { get: () => null };
+  const json = body => Promise.resolve({ ok: true, headers, json: () => Promise.resolve(body), text: () => Promise.resolve('') });
+  if (url === 'https://api.github.com/user') return json({ login: 'tester' });
+  if (url.startsWith('https://api.github.com/gists?')) {
+    return json(gistStore ? [{ id: 'gid123456789', description: 'TOEFL-2026-vocab-progress-sync' }] : []);
+  }
+  if (url === 'https://api.github.com/gists' && opts && opts.method === 'POST') {
+    gistStore = JSON.parse(opts.body).files['toefl2026-progress.json'].content;
+    return json({ id: 'gid123456789' });
+  }
+  if (url.startsWith('https://api.github.com/gists/')) {
+    if (opts && opts.method === 'PATCH') {
+      gistStore = JSON.parse(opts.body).files['toefl2026-progress.json'].content;
+      return json({ id: 'gid123456789' });
+    }
+    return json({ files: { 'toefl2026-progress.json': { content: gistStore, truncated: false } } });
+  }
+  return Promise.resolve({ ok: false, status: 404, headers, text: () => Promise.resolve('not found') });
+}
+
+const DOM = makeDom(html, ids);
+
+const sandbox = {
+  console,
+  setTimeout, clearTimeout, setInterval, clearInterval,
+  URLSearchParams, JSON, Math, Date, Object, Array, String, Number, Boolean, Error, Promise,
+  btoa: s => Buffer.from(s, 'binary').toString('base64'),
+  atob: s => Buffer.from(s, 'base64').toString('binary'),
+  escape, unescape, encodeURIComponent, decodeURIComponent,
+  localStorage, sessionStorage,
+  fetch: fakeFetch,
+  confirm: () => true,
+  location: { search: '', pathname: '/toefl-2026-vocab/', hash: '', origin: 'https://example.test' },
+  history: { replaceState() {} },
+  navigator: { clipboard: { writeText: () => Promise.resolve() } },
+  Blob: class { constructor() {} },
+  URL: { createObjectURL: () => 'blob:x', revokeObjectURL() {} },
+  FileReader: class { readAsText() {} },
+  Audio: class {
+    constructor() { this.src = ''; }
+    set src(v) { this._src = v; if (v) audioLog.push(v); }
+    get src() { return this._src; }
+    play() { return Promise.resolve(); }
+    pause() {}
+    load() {}
+  },
+  document: DOM.document,
+};
+sandbox.window = sandbox;
+sandbox.globalThis = sandbox;
+
+const ctx = vm.createContext(sandbox);
+// data.js 用 const 声明，属于 vm 上下文的词法绑定而不是 sandbox 属性，需在上下文里读取
+vm.runInContext(dataJs + '\nvar __vocabLen = VOCAB.length; globalThis.VOCAB = VOCAB;', ctx);
+const vocabLen = vm.runInContext('__vocabLen', ctx);
+chk('data.js 定义 VOCAB', typeof vocabLen === 'number' && vocabLen > 2800, vocabLen);
+
+// 取出页面脚本，去掉 IIFE 外壳，让内部函数暴露到 vm 上下文里以便断言
+let script = html.split('<script>')[1].split('</script>')[0];
+script = script.replace(/^\s*\(function\(\)\s*\{/, '').replace(/\}\)\(\);\s*$/, '');
+vm.runInContext(script, ctx);
+vm.runInContext('init();', ctx);
+// 首屏快照：后面的用例会切视图，必须在这里取
+const MAIN_FIRST_VIEWS = DOM.activeViews();
+const MAIN_FIRST_NAVS = DOM.activeNavs();
+
+// ── 断言 ─────────────────────────────────────────────────
+const run = expr => vm.runInContext(expr, ctx);
+
+const SHARED_KEY = 'toefl-vocab-gist-shared';
+const sharedRec = () => JSON.parse(localStorage.getItem(SHARED_KEY) || sessionStorage.getItem(SHARED_KEY) || '{}');
+
+// 跨页面共享的 Gist 凭证块：两份副本必须逐字一致
+const MERGED = path.join(HERE, '..', 'disciplines', 'index.html');
+if (fs.existsSync(MERGED)) {
+  const BEG = '// ─── 跨页面共享的 Gist 凭证';
+  const END = '// ─── 共享凭证实现结束';
+  const slice = src => {
+    const i = src.indexOf(BEG), j = src.indexOf(END);
+    return i >= 0 && j > i ? src.slice(i, j) : null;
+  };
+  const here = slice(html), there = slice(fs.readFileSync(MERGED, 'utf8'));
+  chk('本页含共享凭证块', !!here);
+  chk('难词页含共享凭证块', !!there);
+  chk('两份共享凭证块逐字一致', !!here && here === there,
+    here && there ? here.length + ' vs ' + there.length : 'missing');
+  chk('难词页用不同的 gistId slot', /const GIST_SLOT = 'hard-words'/.test(fs.readFileSync(MERGED, 'utf8')));
+} else {
+  chk('跳过共享凭证块比对（未找到难词页）', true, MERGED);
+}
+
+chk('云同步函数已定义', ['gistLogin', 'gistSyncNow', 'gistLogout', 'gistPull', 'gistPush', 'gistSchedulePush']
+  .every(f => typeof run('typeof ' + f) === 'function' || run('typeof ' + f) === 'function'));
+
+chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'reading');
+
+(async () => {
+  // 1. 首次连接：远端没有 gist → 创建
+  getEl('gist-token').value = 'ghp_faketoken';
+  getEl('gist-remember').checked = true;
+  run("progress['area'] = { box: 5, right: 1, wrong: 0, lastSeen: 1 }; ");
+  await run('gistLogin()');
+  chk('连接后创建了私密 gist', gistStore !== null);
+  chk('上传内容包含本机进度', gistStore && JSON.parse(gistStore).progress.area.box === 5);
+  chk('remember=true 时 Token 存共享 localStorage 键', !!localStorage.getItem(SHARED_KEY));
+  chk('remember=true 时不写 sessionStorage', sessionStorage.getItem(SHARED_KEY) === null);
+  chk('连接成功提示', /同步|已连接/.test(getEl('gist-msg').textContent), getEl('gist-msg').textContent);
+
+  // 2. 远端有更多练习次数的记录 → 拉取时合并
+  gistStore = JSON.stringify({
+    version: 1,
+    progress: {
+      area: { box: 5, right: 1, wrong: 0, lastSeen: 1 },
+      aisle: { box: 3, right: 4, wrong: 2, lastSeen: 2 },
+    },
+  });
+  const merged = await run('gistPull()');
+  chk('gistPull 返回远端条目数', merged === 2, merged);
+  chk('远端新词已合并', run("progress['aisle'] && progress['aisle'].box") === 3);
+  chk('合并结果已落地 localStorage', JSON.parse(localStorage.getItem('toefl2026-progress')).aisle.right === 4);
+
+  // 3. 练习次数少的远端记录不会覆盖本机
+  run("progress['aisle'] = { box: 5, right: 9, wrong: 1, lastSeen: 9 }; saveProgress();");
+  await run('gistPull()');
+  chk('本机更高练习次数不被覆盖', run("progress['aisle'].right") === 9);
+
+  // 4. 自动推送：saveProgress 触发去抖上传
+  fetchLog = [];
+  run("progress['seminar'] = { box: 1, right: 0, wrong: 1, lastSeen: 3 }; saveProgress();");
+  // 页面的推送去抖是 15s（省 API 调用），等待必须盖过它
+  await new Promise(r => setTimeout(r, 15600));
+  const pushed = fetchLog.filter(f => f.method === 'PATCH');
+  chk('saveProgress 后自动 PATCH 一次', pushed.length === 1, pushed.length);
+  chk('自动推送内容含新词', gistStore && !!JSON.parse(gistStore).progress.seminar);
+
+  // 5. remember=false → 只写 sessionStorage
+  getEl('gist-remember').checked = false;
+  run('gistRemember = false; gistSaveCreds();');
+  chk('remember=false 时写 sessionStorage', !!sessionStorage.getItem(SHARED_KEY));
+  chk('remember=false 时清掉 localStorage', localStorage.getItem(SHARED_KEY) === null);
+
+  // 6. 退出登录：清凭证但保留本机进度
+  run('gistLogout()');
+  chk('退出后清空 Token', run('gistToken') === '' && run('gistId') === '');
+  chk('退出后共享 Token 已清空',
+    (JSON.parse(localStorage.getItem(SHARED_KEY) || sessionStorage.getItem(SHARED_KEY) || '{}').token || '') === '');
+  chk('退出后本机进度保留', !!run("progress['aisle']"));
+  fetchLog = [];
+  run("progress['flyer'] = { box: 1, right: 0, wrong: 1, lastSeen: 4 }; saveProgress();");
+  await new Promise(r => setTimeout(r, 15600));
+  chk('退出后不再自动上传', fetchLog.length === 0, fetchLog.length);
+
+  // 7. 未连接时点「立即同步」给出提示
+  await run('gistSyncNow()');
+  chk('未连接时提示先连接', /请先连接/.test(getEl('gist-msg').textContent), getEl('gist-msg').textContent);
+
+  // 8. Token 无效时不留下半连接状态
+  getEl('gist-token').value = '';
+  await run('gistLogin()');
+  chk('空 Token 报错', /请先粘贴/.test(getEl('gist-msg').textContent));
+
+  // ── 分类一览 → 单词卡 ──────────────────────────────
+  // 9. 总览的分类卡片提供「一览全部」而不是直接开卡
+  const macroHtml = getEl('macro-list').innerHTML;
+  chk('分类卡片有一览按钮', /data-browse="listening"/.test(macroHtml));
+  chk('分类卡片保留记忆曲线入口', /data-macro="listening"/.test(macroHtml));
+
+  // 10. 打开「听力场景」一览：全部词都在，按子场景分组
+  run("openBrowse('listening')");
+  chk('打开一览后切到 browse 视图', run('currentTab') === 'browse');
+  const flatLen = run('(renderBrowse._flat || []).length');
+  const listeningTotal = run("vocab.filter(e => getMacro(e.c) === 'listening').length");
+  chk('一览列出该分类全部单词', flatLen === listeningTotal && flatLen > 1500, flatLen + '/' + listeningTotal);
+  chk('一览不受 30 词会话上限影响', flatLen > 30);
+  const groupCount = run("browseGroups('listening').length");
+  chk('按子场景分组', groupCount > 100, groupCount);
+  chk('一览渲染了子场景标题', getEl('browse-head').innerHTML.includes('个子场景'));
+  chk('browseMacro 已持久化', JSON.parse(localStorage.getItem('toefl2026-settings')).browseMacro === 'listening');
+
+  // 11. 点击某个词才进入单词卡模式，并从该词开始
+  chk('一览阶段还没进入卡片模式', run('studyStarted') === false || run("currentTab") === 'browse');
+  run('startStudyAt(7)');
+  chk('点词后进入 study 视图', run('currentTab') === 'study');
+  chk('从被点击的词开始', run('studyIdx') === 7, run('studyIdx'));
+  chk('队列 = 整个分类', run('studyQueue.length') === listeningTotal, run('studyQueue.length'));
+  chk('当前卡片就是被点的词',
+    run('studyQueue[studyIdx].w') === run("browseGroups('listening').flatMap(g => g.items)[7].w"),
+    run('studyQueue[studyIdx].w'));
+  chk('卡片区已渲染', /flashcard/.test(getEl('study-area').innerHTML));
+
+  // 12. 越界点击被夹到有效范围
+  run('startStudyAt(999999)');
+  chk('越界索引夹到末尾', run('studyIdx') === listeningTotal - 1, run('studyIdx'));
+
+  // 13. 一览页的返回与「按记忆曲线学」仍可用
+  run("openBrowse('reading')");
+  chk('切换到另一分类', run('currentTab') === 'browse' && run('browseMacro') === 'reading');
+  const readingTotal = run("vocab.filter(e => getMacro(e.c) === 'reading').length");
+  chk('日常阅读一览词数正确', run('(renderBrowse._flat || []).length') === readingTotal, readingTotal);
+  run("startStudy('reading', 'new')");
+  chk('记忆曲线入口仍走会话上限', run('studyQueue.length') <= 30, run('studyQueue.length'));
+
+  // 13b. 本轮新收藏词立即重练（收藏收集 + 小结按钮 + startErrorRedo）
+  run("studyQueue = [VOCAB.find(e => e.w === 'thus'), VOCAB.find(e => e.w === 'pottery')]; studyIdx = 0; studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] }; studyStarted = true;");
+  run("markCollect(studyQueue[0].w); markKnown(studyQueue[1].w);");
+  chk('收藏词已标记并收集', run('getRec("thus").fav') === true && run('studyResults.collectedList[0]') === 'thus',
+    run('JSON.stringify(studyResults.collectedList)'));
+  chk('已知词已标记', run('getRec("pottery").known') === true);
+  run('studyIdx = studyQueue.length; renderSummary()');
+  chk('小结含重练收藏按钮', /btn-redo-err/.test(getEl('study-area').innerHTML));
+  run('startErrorRedo()');
+  chk('重练队列仅本轮收藏词', run('studyQueue.length') === 1 && run('studyQueue[0].w') === 'thus',
+    run('studyQueue.length') + ':' + run('studyQueue.map(e=>e.w).join(",")'));
+
+  // 14. 未选分类时 browse 给出提示而不是崩溃
+  run("browseMacro = ''; renderBrowse();");
+  chk('未选分类时有兜底提示', /请从总览选择/.test(getEl('browse-list').innerHTML));
+
+  // ── P0 扩充：缺失分类 + 即时应答训练层 ──────────────────
+  const V = run('VOCAB');
+  const catOf = c => V.filter(e => e.c === c);
+
+  // 15. 两个此前完全缺失的子话题现在有独立分类
+  // e098230 词库去重后：作业任务 29 词、时间日期 38 词，阈值随实际数据放宽
+  chk('新增「作业任务」分类', catOf('听力-作业任务').length >= 25, catOf('听力-作业任务').length);
+  chk('新增「设施维护」分类', catOf('听力-设施维护').length >= 50, catOf('听力-设施维护').length);
+  chk('新增「时间日期」分类', catOf('听力-时间日期').length >= 25, catOf('听力-时间日期').length);
+  ['听力-作业任务', '听力-设施维护', '听力-时间日期'].forEach(c => {
+    chk('新分类归入听力场景 ' + c, run("getMacro('" + c + "')") === 'listening');
+  });
+
+  // 16. Listen and Choose a Response 应答训练层
+  const RESP = ['听力-应答-反问确认', '听力-应答-疑问词匹配', '听力-应答-请求许可',
+                '听力-应答-建议安排', '听力-应答-问题求助', '听力-应答-信息核对'];
+  const resp = V.filter(e => RESP.indexOf(e.c) >= 0);
+  chk('应答层 6 个子类齐全', RESP.every(c => catOf(c).length >= 10), RESP.map(c => catOf(c).length).join('/'));
+  chk('应答层条目数', resp.length >= 70, resp.length);
+  chk('应答层归入听力场景', RESP.every(c => run("getMacro('" + c + "')") === 'listening'));
+  chk('每条都给出正确回应', resp.every(e => e.m.startsWith('✅')));
+  chk('每条都给出干扰项套路提示', resp.every(e => e.m.includes('｜') && e.m.split('｜')[1].length > 3));
+  chk('刺激句是完整问句或陈述句', resp.every(e => /[?.]$/.test(e.w)));
+
+  // 17. 整句卡不会被 cleanForSpeech 截断（斜杠前后带空格会被切掉）
+  const truncated = resp.filter(e => run('cleanForSpeech(' + JSON.stringify(e.w) + ')') !== e.w);
+  chk('应答刺激句 TTS 不被截断', truncated.length === 0, truncated.slice(0, 3).map(e => e.w).join(' ; '));
+
+  // 18. 整句卡走小字号排版，普通单词卡不受影响
+  chk('应答句判定为整句卡', run('isSentenceCard(' + JSON.stringify(resp[0]) + ')') === true, resp[0].w);
+  chk('普通单词不判定为整句卡', run("isSentenceCard({ w: 'aisle' })") === false);
+  chk('短语动词不判定为整句卡', run("isSentenceCard({ w: 'turn in' })") === false);
+
+  // 18c. 即时应答训练入口：仪表盘按钮 + train 模式全量抽取
+  run('renderDashboard()');
+  chk('仪表盘有应答训练按钮', !!run("$('btn-response-train')"));
+  chk('训练按钮计数 = 应答条目数', run("$('train-count').textContent") === String(resp.length), run("$('train-count').textContent"));
+  run('startResponseTraining()');
+  chk('训练进入学习视图', run('currentTab') === 'study' && run('studyStarted') === true);
+  chk('训练队列全为应答句', run('studyQueue.length') <= 30 && run('studyQueue.every(e => e.c.startsWith("听力-应答-"))'),
+    run('studyQueue.length'));
+  chk('train 模式含已掌握词', run('buildSession("听力-应答","train").length') > 0);
+
+  // 18d. 写作-学术讨论（2026 在线讨论写作）短语库
+  chk('学术讨论归写作宏', run("getMacro('写作-学术讨论')") === 'writing');
+  chk('学术讨论短语已补齐', run("['make a contribution to the discussion', 'Building on what ... said', 'While I agree with ... on ...', 'I see your point, but', \"That's a great point\", \"I'd like to add that\", 'One thing worth mentioning is', 'From my perspective', \"I'd argue that\", 'This relates to ...'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('学术讨论均高优先级', run("VOCAB.filter(e => e.c === '写作-学术讨论').every(e => e.r === 5)"));
+
+  // 18e. 同义替换补缺（alleviate / discrepancy / escalate / surge / plummet）
+  chk('同义替换词已补齐', run("['alleviate', 'discrepancy', 'escalate', 'surge', 'plummet'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('同义词均含对照标注', ['alleviate', 'escalate', 'surge', 'plummet', 'discrepancy']
+    .every(w => /=/.test(run("VOCAB.find(e => e.w === '" + w + "').m"))));
+  chk('同义词归位分类正确', run("VOCAB.find(e => e.w === 'discrepancy').c") === '同义替换-名词'
+    && run("VOCAB.find(e => e.w === 'alleviate').c") === '同义替换-动词');
+
+  // 18f. 态度词补缺（reluctant / hesitant / resigned / wary / approving / disapproving）
+  chk('态度词已补齐', run("['reluctant', 'hesitant', 'resigned', 'wary', 'approving', 'disapproving'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('态度词均 r=3', run("['reluctant', 'hesitant', 'resigned', 'wary', 'approving', 'disapproving'].every(w => VOCAB.find(e => e.w === w).r === 3)"));
+
+  // 18g. 语气动词补缺（rebut / recount）
+  chk('语气动词已补齐', run("['rebut', 'recount'].every(w => VOCAB.some(e => e.w === w))"));
+  chk('语气动词归位正确', run("VOCAB.find(e => e.w === 'rebut').c") === '语气动词'
+    && run("VOCAB.find(e => e.w === 'recount').c") === '语气动词');
+
+  // 18b. 句型占位卡（含 ... ）的 TTS 可朗读：槽位读 blank、句尾省略号去掉
+  chk('句中槽位读 blank', run("patternSpeak('Take ... for example')") === 'Take blank, for example',
+    run("patternSpeak('Take ... for example')"));
+  chk('not only...but also 可读', run("patternSpeak('not only ... but also')") === 'not only blank, but also');
+  chk('句尾省略号去掉', run("patternSpeak('Well...')") === 'Well', run("patternSpeak('Well...')"));
+  chk('句尾省略号+问号保留问号', run("patternSpeak('You mean ...?')") === 'You mean blank?', run("patternSpeak('You mean ...?')"));
+  chk('介词后槽位不插逗号', run("patternSpeak('While I agree with ... on ...')") === 'While I agree with blank on blank',
+    run("patternSpeak('While I agree with ... on ...')"));
+  chk('关系词后槽位不插逗号', run("patternSpeak('Building on what ... said')") === 'Building on what blank said',
+    run("patternSpeak('Building on what ... said')"));
+  chk('介词 to 后槽位干净', run("patternSpeak('This relates to ...')") === 'This relates to blank');
+  chk('X/Y 双占位可读', run("patternSpeak('While X ..., Y ...')") === 'While X blank, Y blank',
+    run("patternSpeak('While X ..., Y ...')"));
+  chk('列举句型两槽位', run("patternSpeak('The first is ... the second ...')") === 'The first is blank, the second blank');
+  const pats = V.filter(e => e.w.includes('...'));
+  chk('占位句型卡已收录', pats.length >= 8, pats.length);
+  chk('占位句型卡全部可朗读', pats.every(e => /[A-Za-z]/.test(run("patternSpeak(" + JSON.stringify(e.w) + ")"))), '');
+
+  // 19. 追加而非插入：既有词的索引没被挪动，否则云端进度会错位
+  chk('首条仍是 analyse', V[0].w === 'analyse');
+  chk('既有词索引仍落在原有区间内',
+    ['analyse', 'aisle', 'seminar', 'flyer', 'organic', 'syllabus']
+      .every(w => run("wordToIndex['" + w + "']") < 2862),
+    ['analyse', 'aisle', 'seminar', 'flyer', 'organic', 'syllabus']
+      .map(w => w + '=' + run("wordToIndex['" + w + "']")).join(' '));
+  chk('新词追加在原有区间之后', run("wordToIndex['work order']") >= 2862, run("wordToIndex['work order']"));
+  chk('新词也进了索引', typeof run("wordToIndex['work order']") === 'number');
+  run("progress['work order'] = { box: 3, right: 2, wrong: 1, lastSeen: 5 * EPOCH };");
+  const rt = run("decodeProgress(encodeProgress())['work order']");
+  chk('新词进度可编解码往返', rt && rt.box === 3 && rt.right === 2, JSON.stringify(rt));
+
+  // 20. 全库无重复的「词+分类」组合
+  const seenPair = new Set(), dupPair = [];
+  V.forEach(e => {
+    const k = e.w.toLowerCase() + '\u0000' + e.c;
+    if (seenPair.has(k)) dupPair.push(e.w + '@' + e.c); else seenPair.add(k);
+  });
+  chk('无重复的词+分类组合', dupPair.length === 0, dupPair.slice(0, 5).join(' , '));
+
+  // 21. 中频通用词已补进既有场景（官方对版卷高频但原先缺失的样本）
+  const wset = new Set(V.map(e => e.w.toLowerCase()));
+  const sample = ['downtown', 'lounge', 'facility', 'technician', 'upcoming', 'availability',
+                  'closure', 'inconvenience', 'equipment', 'fitness center', 'cafeteria',
+                  'course load', 'reference desk', 'club', 'transportation'];
+  const stillMissing = sample.filter(w => !wset.has(w));
+  chk('官方高频中频词已补齐', stillMissing.length === 0, stillMissing.join(' , '));
+
+  // 21b. 2026 写作/口语任务分类 + 薄场景分类补齐
+  const taskCats = {
+    '写作-邮件': { min: 20, macro: 'writing' },
+    '口语-虚拟面试': { min: 15, macro: 'speaking' },
+    '听力-学业支持': { min: 5, macro: 'listening' },
+    '听力-可持续环保': { min: 5, macro: 'listening' },
+    '听力-体育设施': { min: 5, macro: 'listening' },
+    '阅读-社交短文': { min: 5, macro: 'reading' },
+  };
+  Object.keys(taskCats).forEach(c => {
+    const spec = taskCats[c];
+    chk('任务分类齐全 ' + c, catOf(c).length >= spec.min, catOf(c).length);
+    chk('任务分类宏正确 ' + c, run("getMacro('" + c + "')") === spec.macro);
+  });
+  chk('邮件语块示例在列', ['i am writing to', 'please find attached', 'best regards']
+    .every(w => wset.has(w)));
+  chk('面试语块示例在列', ['collaborate', 'prioritize', 'relevant experience']
+    .every(w => wset.has(w)));
+
+  // 21c. 学术功能词（写作/阅读论证）补齐
+  const funcWords = ['claim', 'suggest', 'propose', 'assumption', 'correlate', 'originate', 'cause', 'peak'];
+  const funcMiss = funcWords.filter(w => !wset.has(w));
+  chk('学术功能词已补齐', funcMiss.length === 0, funcMiss.join(','));
+  chk('功能词-论证不少于 8 条', catOf('功能词-论证').length >= 8, catOf('功能词-论证').length);
+  chk('功能词-抽象名词不少于 2 条', catOf('功能词-抽象名词').length >= 2, catOf('功能词-抽象名词').length);
+  chk('功能词分类归入写作宏', ['功能词-论证', '功能词-抽象名词', '功能词-分析', '功能词-因果', '功能词-变化量']
+    .every(c => run("getMacro('" + c + "')") === 'writing'));
+
+  // 21f. 技能向分类归入对应卡片，不再堆在「其他」
+  chk('填词归入阅读（Complete the words 新题）', ['填词-转折连接', '填词-修饰副词']
+    .every(c => run("getMacro('" + c + "')") === 'reading'));
+  chk('词缀派生归入阅读', run("getMacro('词缀派生-tion')") === 'reading');
+  chk('讲座信号词/态度词/语气动词归入听力', ['讲座信号词-举例', '态度词-积极', '语气动词']
+    .every(c => run("getMacro('" + c + "')") === 'listening'));
+  chk('同义替换/学术搭配归入写作', ['同义替换-动词', '同义替换-形容词', '同义替换-名词', '学术搭配']
+    .every(c => run("getMacro('" + c + "')") === 'writing'));
+  chk('补充高频词/易混淆对留在其他', ['补充高频词', '易混淆对']
+    .every(c => run("getMacro('" + c + "')") === 'other'));
+
+  // 21g. 词表「优先级」排序与学习队列一致：r=5 在前、r=1 在后
+  run("$('list-search').value = ''; $('list-cat-filter').value = ''; $('list-status-filter').value = ''; $('list-sort').value = 'priority';");
+  const prio = run("getFilteredList().map(x => x.e.r)");
+  chk('优先级排序 r=5 在前', prio[0] === 5 && prio[prio.length - 1] === 1, prio[0] + '..' + prio[prio.length - 1]);
+  chk('优先级排序单调不升', prio.every((r, i) => i === 0 || prio[i - 1] >= r));
+  run("$('list-sort').value = 'error';");
+  const er = run("getFilteredList().map(x => x.rec.right + x.rec.wrong ? x.rec.wrong / (x.rec.right + x.rec.wrong) : 0)");
+  chk('错误率排序首位最高', er[0] >= 0 && er[0] === Math.max.apply(null, er));
+  const grpR = run("browseGroups('listening')[0].items.map(e => e.r)");
+  chk('一览组内高优先级在前', grpR.every((r, i) => i === 0 || grpR[i - 1] >= r), grpR.slice(0, 5).join(','));
+
+  // 21h. 可持续环保主题词补齐（官方语料 ecological footprint 16 次命中）
+  const ecoMiss = ['ecological footprint', 'emissions', 'carbon emissions', 'greenhouse gas',
+                   'environmental impact', 'recyclable'].filter(w => !wset.has(w));
+  chk('可持续环保主题词已补齐', ecoMiss.length === 0, ecoMiss.join(','));
+  chk('可持续环保分类不少于 12 条', catOf('听力-可持续环保').length >= 12, catOf('听力-可持续环保').length);
+  chk('生态足迹为高优先级', run("VOCAB.find(e => e.w === 'ecological footprint').r") >= 4);
+
+  // 21i. 学术语料概念词补齐（language acquisition / genetics / pottery / livestock farming）
+  const acadMiss = ['language acquisition', 'genetics', 'pottery', 'livestock farming']
+    .filter(w => !wset.has(w));
+  chk('学术概念词已补齐', acadMiss.length === 0, acadMiss.join(','));
+  chk('语言习得归认知语言', run("VOCAB.find(e => e.w === 'language acquisition').c") === '深度-认知语言');
+  chk('遗传学归生物', run("VOCAB.find(e => e.w === 'genetics').c") === '学科-生物');
+  chk('陶器归历史考古', run("VOCAB.find(e => e.w === 'pottery').c") === '学科-历史考古');
+  chk('畜牧业归可持续环保', run("VOCAB.find(e => e.w === 'livestock farming').c") === '听力-可持续环保');
+
+  // 21j. AWL 全部 570 个词族头词覆盖（对照官方 AWL 词表）
+  const AWL3 = ['sex', 'alternative', 'circumstance', 'compensate', 'constrain', 'criterion', 'sufficient'];
+  chk('AWL-3 头词齐全', AWL3.every(w => wset.has(w)), AWL3.filter(w => !wset.has(w)).join(','));
+  const AWL6 = ['ignorant', 'intelligent', 'ignorance', 'intelligence'];
+  chk('AWL-6 头词齐全', AWL6.every(w => wset.has(w)), AWL6.filter(w => !wset.has(w)).join(','));
+  const AWL78 = ['globe', 'append'];
+  chk('AWL-7/8 头词齐全', AWL78.every(w => wset.has(w)), AWL78.filter(w => !wset.has(w)).join(','));
+  chk('AWL 头词分位正确', run("VOCAB.find(e => e.w === 'ignorant').r") === 2
+    && run("VOCAB.find(e => e.w === 'append').r") === 3
+    && run("VOCAB.find(e => e.w === 'sex').r") === 1);
+  const awlCount = run("vocab.filter(e => e.c.startsWith('AWL')).length");
+  chk('AWL 词数 ≥ 570', awlCount >= 570, awlCount);
+
+  // 21k. 邮件正式连接词 + 易混淆对补齐
+  chk('regarding 已入写作-邮件', run("VOCAB.find(e => e.w === 'regarding').c") === '写作-邮件');
+  const confMiss = ['moral', 'morale', 'historic', 'historical', 'continual', 'continuous',
+                    'council', 'counsel', 'economic', 'economical'].filter(w => !wset.has(w));
+  chk('易混淆对已补齐', confMiss.length === 0, confMiss.join(','));
+  chk('易混淆对均含对照标注', ['moral', 'morale', 'historic', 'historical', 'continual', 'continuous',
+    'council', 'counsel', 'economic', 'economical']
+    .every(w => /≠/.test(run("VOCAB.find(e => e.w === '" + w + "').m"))));
+
+  // 21l. 学术连接词补齐（thus/namely/in conclusion）
+  chk('thus 已入填词-转折连接', run("VOCAB.find(e => e.w === 'thus').c") === '填词-转折连接');
+  chk('namely 已入写作精准-举例', run("VOCAB.find(e => e.w === 'namely').c") === '写作精准-举例');
+  chk('in conclusion 已入写作精准-总结', run("VOCAB.find(e => e.w === 'in conclusion').c") === '写作精准-总结');
+  chk('连接词均为高优先级', ['thus', 'namely', 'in conclusion']
+    .every(w => run("VOCAB.find(e => e.w === '" + w + "').r") === 5));
+
+  // 21m. 校园习语补齐（all-nighter / brush up on 等）
+  const idiomMiss = ['pull an all-nighter', 'a lot on my plate', 'brush up on',
+                     'get the most out of', 'cut it close', 'burn the midnight oil']
+    .filter(w => !wset.has(w));
+  chk('校园习语已补齐', idiomMiss.length === 0, idiomMiss.join(','));
+  chk('习语均为高优先级', ['pull an all-nighter', 'brush up on', 'burn the midnight oil']
+    .every(w => run("VOCAB.find(e => e.w === '" + w + "').r") === 5));
+  chk('习语分类达 29 条', catOf('听力-习语补充').length >= 29, catOf('听力-习语补充').length);
+
+  // 21n. 仪表盘重点词进度（P4+P5）
+  run('renderDashboard()');
+  const dd = getEl('dash-stats').innerHTML;
+  chk('仪表盘含重点词进度', /重点词进度（P4\+P5）/.test(dd));
+  const priTotal = run("vocab.filter(e => e.r >= 4).length");
+  chk('重点词进度数字正确', dd.indexOf(' / ' + priTotal) > 0, priTotal);
+  chk('cause 为已掌握词不进队列', run("VOCAB.find(e => e.w === 'cause').r") === 1);
+
+  // 21d. AWL 高子表难词提权（555 分可能不会的学术词进入队列）
+  const awlR = w => run("VOCAB.find(e => e.w === '" + w + "' && e.c.startsWith('AWL')).r");
+  const promoted = { constitute: 3, legislate: 3, negate: 3, convene: 3, criterion: 3,
+                     consequent: 3, constrain: 3, derive: 2, proceed: 2, sector: 2,
+                     administrate: 2, perceive: 2, regulate: 2, reside: 2, compensate: 2,
+                     consent: 2, coordinate: 2, deduce: 2, scheme: 2, sequence: 2 };
+  const badPromo = Object.keys(promoted).filter(w => awlR(w) < promoted[w]);
+  chk('AWL 难词已提权', badPromo.length === 0, badPromo.join(','));
+
+  // 21e. CET 级已知词降权出队列（r=1，任一分类下的该词都不得高于 r=1）
+  const demoted = ['borrow', 'discount', 'exchange', 'receipt', 'reception', 'shelf',
+                   'colleague', 'coupon', 'job', 'lecture', 'project', 'confirm', 'file',
+                   'grade', 'schedule', 'team', 'appointment', 'cancel', 'deposit',
+                   'reserve', 'salary', 'terminal', 'withdraw'];
+  const badDemo = demoted.filter(w => run("VOCAB.filter(e => e.w === '" + w + "').some(e => e.r !== 1)"));
+  chk('CET 级已知词已降权', badDemo.length === 0, badDemo.join(','));
+  chk('AWL-1/2/3 不再全是 r=1', run("VOCAB.filter(e => ['AWL-1','AWL-2','AWL-3'].includes(e.c)).some(e => e.r > 1)"));
+
+  // 22. 一览页把新分类一起列出来了
+  run("openBrowse('listening')");
+  const cats = run("browseGroups('listening').map(g => g.cat)");
+  chk('一览包含新分类', ['听力-作业任务', '听力-设施维护', '听力-时间日期'].concat(RESP)
+    .every(c => cats.indexOf(c) >= 0));
+  chk('一览总数含新增词', run('(renderBrowse._flat || []).length') > 1900, run('(renderBrowse._flat || []).length'));
+
+  // ── 跨页面共享 Gist Token ───────────────────────────────
+  // 23. 读到难词页写入的共用 token，但不误用对方的 gistId
+  localStorage.removeItem(SHARED_KEY); sessionStorage.removeItem(SHARED_KEY);
+  localStorage.removeItem('toefl2026_gist_sync'); sessionStorage.removeItem('toefl2026_gist_sync');
+  localStorage.setItem(SHARED_KEY, JSON.stringify({
+    token: 'ghp_shared', remember: true, gists: { 'hard-words': 'hw_gist_id' },
+  }));
+  run('gistLoadCreds();');
+  chk('读到难词页写入的共用 Token', run('gistToken') === 'ghp_shared', run('gistToken'));
+  chk('本页 slot 为空时不误用难词页的 gistId', run('gistId') === '', run('gistId'));
+
+  gistStore = JSON.stringify({ version: 1, progress: {} });
+  const adopted = await run('gistAdoptShared()');
+  chk('用共用 Token 认领本页 Gist', adopted === true && run('gistId') === 'gid123456789', run('gistId'));
+  chk('认领后不覆盖难词页的 slot', sharedRec().gists['hard-words'] === 'hw_gist_id', JSON.stringify(sharedRec().gists));
+  chk('本页 slot 已写入', sharedRec().gists['toefl2026-progress'] === 'gid123456789');
+  chk('共用 Token 未被改写', sharedRec().token === 'ghp_shared');
+
+  // 24. 旧的单页凭证自动迁移到共享键
+  localStorage.removeItem(SHARED_KEY); sessionStorage.removeItem(SHARED_KEY);
+  localStorage.setItem('toefl2026_gist_sync', JSON.stringify({
+    token: 'ghp_legacy', gistId: 'legacy_id', remember: true,
+  }));
+  run('gistLoadCreds();');
+  chk('迁移旧的单页 Token', run('gistToken') === 'ghp_legacy' && run('gistId') === 'legacy_id',
+    run('gistToken') + '/' + run('gistId'));
+  chk('迁移结果已落地共享键',
+    sharedRec().token === 'ghp_legacy' && sharedRec().gists['toefl2026-progress'] === 'legacy_id',
+    localStorage.getItem(SHARED_KEY));
+
+  // 25. 登出清掉共用 Token，但保留两页各自的 gistId
+  localStorage.setItem(SHARED_KEY, JSON.stringify({
+    token: 'ghp_x', remember: true, gists: { 'hard-words': 'hw', 'toefl2026-progress': 'tp' },
+  }));
+  run('gistLoadCreds(); gistLogout();');
+  chk('登出后共用 Token 为空', sharedRec().token === '', sharedRec().token);
+  chk('登出保留两页的 gistId',
+    sharedRec().gists['hard-words'] === 'hw' && sharedRec().gists['toefl2026-progress'] === 'tp',
+    JSON.stringify(sharedRec().gists));
+  chk('登出提示说明会影响难词页', /难词页/.test(getEl('gist-msg').textContent), getEl('gist-msg').textContent);
+  chk('登出后旧单页键也清掉', localStorage.getItem('toefl2026_gist_sync') === null);
+
+  // ── 26. 听力场景独立版（listening/）───────────────────────
+  // 独立 URL、仅听力宏词，但与主站共享进度：本地键相同、Gist 载荷 word-keyed 相同，
+  // 同步码用全量索引 i 编码，与主站逐字兼容。
+  const ldata = fs.readFileSync(path.join(HERE, 'listening/data.js'), 'utf8');
+  const lhtml = fs.readFileSync(path.join(HERE, 'listening/index.html'), 'utf8');
+  const LVOCAB = eval(ldata.match(/const VOCAB\s*=\s*(\[.*\]);/s)[1]);
+
+  const mainListeningCount = run("VOCAB.filter(e => getMacro(e.c) === 'listening').length");
+  chk('听力版词数 = 主站听力宏词数', LVOCAB.length === mainListeningCount,
+    LVOCAB.length + ' vs ' + mainListeningCount);
+
+  let badIdx = [];
+  LVOCAB.forEach(e => {
+    const m = run('VOCAB[' + e.i + ']');
+    if (typeof e.i !== 'number' || !m || m.w !== e.w || run('getMacro("' + e.c + '")') !== 'listening')
+      badIdx.push(e.w + '@' + e.i);
+  });
+  chk('听力版每词带正确全量索引 i', badIdx.length === 0, badIdx.slice(0, 5).join(','));
+
+  chk('听力版 i 唯一（与主站一一对应）', new Set(LVOCAB.map(e => e.i)).size === LVOCAB.length);
+
+  chk('听力版含同步码所需补丁',
+    /wordToIndex\[e\.w\] = e\.i/.test(lhtml) && /byFullIdx\[idx\]/.test(lhtml));
+
+  // 独立 vm 上下文 + 独立 DOM 跑听力版页面，验证与主站同步码/索引互通
+  const dom2 = makeDom(lhtml);
+  const sandbox2 = {};
+  Object.keys(sandbox).forEach(k => sandbox2[k] = sandbox[k]);
+  sandbox2.document = dom2.document;
+  sandbox2.window = sandbox2;
+  sandbox2.globalThis = sandbox2;
+  const ctx2 = vm.createContext(sandbox2);
+  vm.runInContext(ldata + '\nglobalThis.VOCAB = VOCAB;', ctx2);
+  let lScript = lhtml.split('<script>')[1].split('</script>')[0];
+  lScript = lScript.replace(/^\s*\(function\(\)\s*\{/, '').replace(/\}\)\(\);\s*$/, '');
+  vm.runInContext(lScript, ctx2);
+  vm.runInContext('init();', ctx2);
+  const run2 = expr => vm.runInContext(expr, ctx2);
+
+  // 词数不硬编码快照：data.js 增词后仍应等于 listening/data.js 的全量
+  chk('听力版页面加载全部听力词', run2('vocab.length') === LVOCAB.length,
+    run2('vocab.length') + ' vs ' + LVOCAB.length);
+  chk('听力版仅听力宏', run2("vocab.every(e => getMacro(e.c) === 'listening')"));
+  chk('听力版打开即落在单词表', run2('currentTab') === 'browse' && run2('browseMacro') === 'listening'
+    && run2('(renderBrowse._flat || []).length') === LVOCAB.length,
+    run2('currentTab') + '/' + run2('browseMacro') + '/' + run2('(renderBrowse._flat || []).length'));
+  // 真 DOM 行为断言：只能有一个视图 active（曾因 `classList.add(..) || fallback` 同时点亮两个）
+  chk('听力版只点亮 view-browse 一个视图',
+    dom2.activeViews().length === 1 && dom2.activeViews()[0] === 'view-browse',
+    dom2.activeViews().join(','));
+  chk('听力版底栏有且仅有一个高亮', dom2.activeNavs().length === 1, dom2.activeNavs().join(','));
+
+  const syncWords = ['aisle', 'checkout', 'discount', 'optometrist', 'turnstile',
+    'the day after tomorrow', 'flat tire'];
+  let idxMismatch = [];
+  syncWords.forEach(w => {
+    const m = run('wordToIndex[' + JSON.stringify(w) + ']');
+    const l = run2('wordToIndex[' + JSON.stringify(w) + ']');
+    if (m !== l) idxMismatch.push(w + ':' + m + '!=' + l);
+  });
+  chk('听力版 wordToIndex 与主站一致', idxMismatch.length === 0, idxMismatch.join(','));
+
+  run("progress = { checkout: {box:3,right:2,wrong:1,lastSeen:0} };");
+  run2("progress = { checkout: {box:3,right:2,wrong:1,lastSeen:0} };");
+  const codeMain = run('encodeProgress()'), codeListen = run2('encodeProgress()');
+  chk('同一进度在两地生成相同同步码', codeMain === codeListen, codeMain + ' / ' + codeListen);
+
+  run2('progress = {};');
+  const decoded = run2('decodeProgress(' + JSON.stringify(codeMain) + ')');
+  chk('听力版可用主站同步码解码', decoded && decoded.checkout && decoded.checkout.box === 3,
+    JSON.stringify(decoded));
+
+  // ── 27. 各技能卡独立子路径页（一览全部 → 跳子路径 URL）────────
+  const MACRO_PAGES = { awl: 'AWL学术词', listening: '听力场景', reading: '日常阅读',
+    subject: '学科主题', phrasal: '短语动词', writing: '写作表达',
+    speaking: '口语表达', other: '其他' };
+  const MAINVOCAB = eval(dataJs.match(/const VOCAB\s*=\s*(\[.*\]);/s)[1]);
+
+  let pageProblems = [];
+  let subTotal = 0;
+  Object.keys(MACRO_PAGES).forEach(key => {
+    const pd = eval(fs.readFileSync(path.join(HERE, key, 'data.js'), 'utf8')
+      .match(/const VOCAB\s*=\s*(\[.*\]);/s)[1]);
+    const ph = fs.readFileSync(path.join(HERE, key, 'index.html'), 'utf8');
+    const expected = run("VOCAB.filter(e => getMacro(e.c) === '" + key + "').length");
+    if (pd.length !== expected) pageProblems.push(key + ':count ' + pd.length + '!=' + expected);
+    const iuniq = new Set(pd.map(e => e.i));
+    if (iuniq.size !== pd.length) pageProblems.push(key + ':i非唯一');
+    pd.forEach(e => {
+      const m = MAINVOCAB[e.i];
+      if (!m || m.w !== e.w) pageProblems.push(key + ':i错位 ' + e.w + '@' + e.i);
+    });
+    const patchOk = /wordToIndex\[e\.w\] = e\.i/.test(ph) && /byFullIdx\[idx\]/.test(ph)
+      && /const MACRO_SUBPATH = \{\};/.test(ph);
+    if (!patchOk) pageProblems.push(key + ':缺补丁');
+    subTotal += pd.length;
+  });
+  chk('8 个子路径页词数/索引/补丁全部正确', pageProblems.length === 0, pageProblems.slice(0, 3).join(';'));
+  chk('8 个子路径页合计 = 主站 3367', subTotal === MAINVOCAB.length, subTotal);
+
+  chk('主站含 8 个子路径映射', Object.keys(MACRO_PAGES).every(k =>
+    run('MACRO_SUBPATH[' + JSON.stringify(k) + ']') === k + '/'));
+  chk('一览全部跳转子路径', /location\.href = sub/.test(html), '');
+  chk('子路径页一览全部仍页内浏览', Object.keys(MACRO_PAGES).every(k =>
+    /const MACRO_SUBPATH = \{\};/.test(fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8'))));
+  chk('子路径页一打开即该宏的单词表', Object.keys(MACRO_PAGES).every(k =>
+    new RegExp("currentTab = 'browse';\\s*browseMacro = '" + k + "';").test(
+      fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8'))));
+
+  // 8 个子路径页逐个真跑一遍：只点亮 view-browse、单词表真的渲染出词、底栏有高亮
+  let landProblems = [];
+  Object.keys(MACRO_PAGES).forEach(k => {
+    const pHtml = fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8');
+    const pData = fs.readFileSync(path.join(HERE, k, 'data.js'), 'utf8');
+    const d = makeDom(pHtml);
+    const sb = {};
+    Object.keys(sandbox).forEach(x => sb[x] = sandbox[x]);
+    sb.document = d.document;
+    sb.localStorage = memStore();
+    sb.sessionStorage = memStore();
+    sb.window = sb; sb.globalThis = sb;
+    const c = vm.createContext(sb);
+    try {
+      vm.runInContext(pData + '\nglobalThis.VOCAB = VOCAB;', c);
+      let s = pHtml.split('<script>')[1].split('</script>')[0];
+      s = s.replace(/^\s*\(function\(\)\s*\{/, '').replace(/\}\)\(\);\s*$/, '');
+      vm.runInContext(s, c);
+      vm.runInContext('init();', c);
+    } catch (e) { landProblems.push(k + ':抛错 ' + e.message); return; }
+    const av = d.activeViews();
+    if (av.length !== 1 || av[0] !== 'view-browse') landProblems.push(k + ':视图 ' + (av.join('+') || '无'));
+    if (vm.runInContext('(renderBrowse._flat || []).length', c) === 0) landProblems.push(k + ':单词表为空');
+    if (vm.runInContext('browseMacro', c) !== k) landProblems.push(k + ':宏 ' + vm.runInContext('browseMacro', c));
+    if (d.activeNavs().length !== 1) landProblems.push(k + ':底栏高亮 ' + d.activeNavs().length + ' 个');
+  });
+  chk('8 个子路径页真跑：打开即单词表且只亮一个视图', landProblems.length === 0,
+    landProblems.slice(0, 4).join(';'));
+
+  // 主站首屏：只点亮 view-dashboard、底栏高亮总览
+  chk('主站首屏只点亮 view-dashboard',
+    MAIN_FIRST_VIEWS.length === 1 && MAIN_FIRST_VIEWS[0] === 'view-dashboard',
+    MAIN_FIRST_VIEWS.join(','));
+  chk('主站首屏底栏高亮总览',
+    MAIN_FIRST_NAVS.length === 1 && MAIN_FIRST_NAVS[0] === 'dashboard',
+    MAIN_FIRST_NAVS.join(','));
+
+  // ── 28. 分区连读（🎧 标签页）────────────────────────────
+  // 需求：每次选中一个分区播放；间隔可选；播完后可选停止/循环播放。
+  // 打桩环境：Audio.play() 立即 resolve 且不触发 onended（无真实音频），
+  // speak 链路不会回调 onDone → 连读推进由 seqStep/seqGapWait 的定时器驱动可测。
+  const TTS_URL = /^https:\/\/(dict\.youdao\.com|fanyi\.baidu\.com|translate\.google\.com)\//;
+  chk('连读状态对象已初始化', run('seq.on') === false && run('seq.paused') === false);
+  chk('底栏含连读标签', [...html.matchAll(/data-tab="([a-z]+)"/g)].map(m => m[1]).includes('seq'));
+
+  // 下拉覆盖全部分区，按宏类 optgroup 分组
+  chk('连读下拉在 HTML 内（由 seqInit 填充）', html.includes('id="seq-cat"'));
+  const groupData = run('seqCatGroups()');
+  const allCatCount = Object.values(groupData).reduce((s, l) => s + l.length, 0);
+  const uniqCats = new Set(run('vocab.map(e => e.c)')).size;
+  chk('分区分组数 = 全部唯一分区数', allCatCount === uniqCats, allCatCount + '/' + uniqCats);
+  chk('每个宏都有非空分区组', Object.keys(MACRO_PAGES).every(k => Array.isArray(groupData[k]) && groupData[k].length > 0),
+    Object.keys(MACRO_PAGES).map(k => k + ':' + (groupData[k] || []).length).join(','));
+
+  // 选分区 → 词表渲染 + 开始连读
+  run("seqSetCat('AWL-1')");
+  chk('选分区后词表非空', run('seq.list.length') === 60, run('seq.list.length'));
+  chk('选分区后下标指向 0', run('seq.idx') === 0);
+  chk('分区词表已渲染', run('seqRows.length') === 60, run('seqRows.length'));
+  // 空分区的兜底
+  run("seqSetCat('')");
+  chk('无分区时列表为空但不抛错', run('seq.list.length') === 0 && run('seq.idx') === 0);
+  run("seqSetCat('AWL-1')");
+  run('seqStart()');
+  chk('开始后 seq.on=true', run('seq.on') === true);
+  chk('开始后停在当前词', run('seq.idx') === 0, run('seq.idx'));
+  chk('开始即发起当前词发音请求', audioLog.length > 0 && TTS_URL.test(audioLog[audioLog.length - 1]),
+    audioLog[audioLog.length - 1] || '无');
+  chk('seq-words 首行已高亮', run("seqRows[0].classList.contains('playing')") === true);
+
+  // 间隔链路：播放完成回调 → seqAdvance → gap 定时器 → 下一词。
+  // 打桩 Audio 无真实 onended，speak 的 onDone 不触发，这里直接驱动 seqAdvance：
+  // 它应排下 gap 定时器并在到点后步进（gap 默认 1000ms，改为 20ms 快速验证）
+  run("$('seq-gap').value = '20'");
+  run('seqAdvance()');
+  await new Promise(r => setTimeout(r, 80));
+  chk('播完一词后按间隔自动进下一词', run('seq.idx') >= 1, run('seq.idx'));
+
+  // ⏮/⏭ 手动步进不越界
+  run('seqStep(-1)');
+  chk('⏮ 步进不越界到负数', run('seq.idx') >= 0, run('seq.idx'));
+  run('seqStep(1)');
+
+  // 播完后 = 停止（末词之后停、回 0）
+  run("$('seq-end').value = 'stop'");
+  run("seqToken++; seq.on = true; seq.idx = seq.list.length - 1; seqStep(1)");
+  chk('播完「停止」后回到待开始', run('seq.on') === false && run('seq.idx') === 0,
+    run('seq.on') + '/' + run('seq.idx'));
+
+  // 播完后 = 循环播放（末词之后回第 1 词继续）
+  run("$('seq-end').value = 'loop'");
+  run('seqStart()');
+  run("seqToken++; seq.on = true; seq.idx = seq.list.length - 1; seqStep(1)");
+  chk('播完「循环」后回到第 1 词继续', run('seq.on') === true && run('seq.idx') === 0,
+    run('seq.on') + '/' + run('seq.idx'));
+  run('seqStop()');
+
+  // 暂停/继续
+  run('seqStart()');
+  run('seqPause()');
+  chk('暂停后 on=false paused=true', run('seq.on') === false && run('seq.paused') === true);
+  run('seqStart()');
+  chk('继续后 on=true', run('seq.on') === true);
+  run('seqStop()');
+
+  // 其他入口发音会先停连读（避免双声打架）
+  run('seqStart()');
+  audioLog = [];
+  run("_seqInside = false; speak('area')");
+  chk('其他入口发音时连读被停掉', run('seq.on') === false);
+  chk('该次发音仍走 TTS 链路', audioLog.length > 0, audioLog.length);
+  run('seqStop()');
+
+  // 词表行点击 = 跳到该词开始/继续连读
+  run('seqStart()');
+  run('seqJump(5)');
+  chk('点击词表行跳到该词', run('seq.idx') === 5 && run('seq.on') === true);
+  run('seqStop()');
+
+  // 分类一览分组标题上的「▶ 连读」按钮：点分组即连读该分区
+  chk('一览分组含连读按钮 CSS', /grp-play/.test(html));
+  chk('一览分组渲染出连读按钮', /seqChoose\(g\.cat\)/.test(html));
+  run("openBrowse('listening')");
+  run("seqChoose('听力-习语')");
+  chk('「▶ 连读」切到连读页并选中该分区',
+    run('currentTab') === 'seq' && run('seq.cat') === '听力-习语',
+    run('currentTab') + '/' + run('seq.cat'));
+  chk('连读页选中项与分区一致', run("seq.list.length") === run("vocab.filter(e => e.c === '听力-习语').length"),
+    run("seq.list.length"));
+  run('seqStop()');
+
+  // 连读时切标签页 → 浮动胶囊显示；回连读页隐藏；停止后隐藏
+  // （用 dashboard 切走：打桩 DOM 的 El 无真实 children，renderListPage 的 td 断言会误报）
+  run('seqStart()');
+  run("switchTab('dashboard')");
+  chk('切走后浮动胶囊显示', getEl('seq-pill').hidden === false);
+  run("switchTab('seq')");
+  chk('回连读页胶囊隐藏', getEl('seq-pill').hidden === true);
+  run('seqStop()');
+  chk('停止后胶囊隐藏', getEl('seq-pill').hidden === true);
+
+  // 子路径页同样具备连读功能
+  const subSeqOk = Object.keys(MACRO_PAGES).filter(k =>
+    /id="seq-cat"/.test(fs.readFileSync(path.join(HERE, k, 'index.html'), 'utf8')));
+  chk('8 个子路径页都含连读面板', subSeqOk.length === 8, subSeqOk.length);
+
+  // 连读不改写学习进度（连读只是朗读，标记仍走卡片流程）
+  const progressBefore = JSON.stringify(run('progress'));
+  run('seqStart()');
+  await new Promise(r => setTimeout(r, 30));
+  run('seqStop()');
+  chk('连读不改写学习进度', JSON.stringify(run('progress')) === progressBefore);
+
+  console.log(results.join('\n'));
+  const failed = results.filter(r => r.startsWith('FAIL'));
+  console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
+  process.exit(failed.length ? 1 : 0);
+})();
