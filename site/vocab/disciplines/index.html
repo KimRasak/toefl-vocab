@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0f1115">
 <title>TOEFL 学科词汇总表 (5013 词)</title>
 <style>
@@ -16,11 +16,14 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 button,a,input,select,label,textarea,[role=button]{touch-action:manipulation}
+html{height:100%;-webkit-text-size-adjust:100%}
 html,body{margin:0;padding:0}
 body{
   background:var(--bg);color:var(--fg);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  min-height:100vh;padding-bottom:env(safe-area-inset-bottom);
+  min-height:100vh;min-height:100dvh;
+  padding-bottom:env(safe-area-inset-bottom);
+  overscroll-behavior-y:contain;
 }
 header{
   position:sticky;top:0;z-index:20;background:var(--bg);
@@ -73,6 +76,14 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
   background:var(--card);border:1px solid var(--border);border-radius:10px;
   padding:10px 12px;margin-bottom:12px;
 }
+.prio-banner summary{
+  cursor:pointer;list-style:none;font-weight:700;color:var(--fg);
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.prio-banner summary::-webkit-details-marker{display:none}
+.prio-banner summary::after{content:"▾";color:var(--muted);font-weight:500;font-size:11px}
+.prio-banner[open] summary{margin-bottom:8px}
+.prio-banner[open] summary::after{content:"▴"}
 .prio-banner b{color:var(--fg)}
 .prio-banner a{color:var(--accent)}
 
@@ -131,6 +142,8 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
 }
 .autobar.hidden{transform:translateY(100%)}
 .autobar .ab-row{display:flex;align-items:center;gap:8px;width:100%}
+.autobar .ab-now{align-items:flex-start}
+.autobar .ab-now-text{flex:1;min-width:0}
 .autobar .ab-word{
   font-size:18px;font-weight:700;flex:1;min-width:0;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
@@ -139,7 +152,9 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
   font-size:12px;color:var(--muted);width:100%;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
-.autobar .ab-pos{font-size:12px;color:var(--muted);white-space:nowrap}
+.autobar .ab-pos{font-size:12px;color:var(--muted);white-space:nowrap;padding-top:4px}
+.autobar .ab-main{gap:6px}
+.autobar .ab-main .primary{flex:1}
 .autobar button{
   background:var(--card2);border:1px solid var(--border);color:var(--fg);
   border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;
@@ -147,7 +162,7 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
 }
 .autobar button:hover{border-color:var(--accent)}
 .autobar button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
-.autobar select,.autobar input[type=number]{
+.autobar select,.autobar input[type=number],.autobar input[type=text]{
   background:var(--card2);border:1px solid var(--border);color:var(--fg);
   border-radius:8px;padding:5px 8px;font-size:12px;
 }
@@ -155,17 +170,18 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
 .autobar #abStart{width:110px}
 .autobar #abTopicSelect{max-width:170px}
 .autobar #abRangeStart,.autobar #abRangeEnd{width:68px}
+.ab-more-btn{min-width:40px}
 .ab-toggle{
-  position:fixed;bottom:16px;right:16px;z-index:29;
+  position:fixed;right:16px;z-index:29;
+  bottom:calc(16px + env(safe-area-inset-bottom));
   background:var(--accent);color:#fff;border:0;border-radius:50%;
-  width:48px;height:48px;font-size:22px;cursor:pointer;
-  box-shadow:0 2px 12px rgba(76,141,255,.4);
+  width:56px;height:56px;font-size:22px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(76,141,255,.38);
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:env(safe-area-inset-bottom);
 }
 .ab-toggle:hover{opacity:.85}
 .witem.playing{border-color:var(--accent);background:var(--accent2);background:rgba(76,141,255,.08)}
-body.autobar-open{padding-bottom:100px}
+body.autobar-open{padding-bottom:var(--ab-pad, 148px)}
 
 /* Jump feedback toast */
 .ab-toast{
@@ -244,6 +260,7 @@ body.autobar-open{padding-bottom:100px}
 .focus-overlay.revealed .focus-word,.focus-overlay.revealed .focus-def,.focus-overlay.revealed .focus-full{visibility:visible}
 .focus-pos{font-size:13px;color:var(--muted);margin-bottom:20px}
 .focus-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.focus-btns-main,.focus-btns-sub{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%}
 .focus-btns button{
   background:var(--card);border:1px solid var(--border);color:var(--fg);
   border-radius:10px;padding:8px 16px;font-size:14px;cursor:pointer;
@@ -257,41 +274,79 @@ body.autobar-open{padding-bottom:100px}
 .hidden{display:none!important}
 
 @media(max-width:600px){
-  /* 顶部搜索栏：标题一行、搜索框独占一行，高度可预测 */
-  header{padding:8px 12px 6px}
-  .top-row{flex-wrap:wrap;row-gap:8px}
-  .search-wrap{flex-basis:100%;order:3}
+  /* 顶部：回首页 + 标题一行，搜索框独占下一行，避免首屏被撑高 */
+  header{padding:8px 12px 8px;padding-top:max(8px,env(safe-area-inset-top))}
+  .top-row{flex-wrap:wrap;gap:8px}
+  .search-wrap{flex:1 1 100%;min-width:0;padding:8px 12px;order:3}
   .search-wrap input{font-size:16px} /* >=16px 防止 iOS 聚焦自动放大 */
-  .title{font-size:16px}
-  .home-btn{font-size:11px;padding:5px 8px}
-  .stats{margin-top:4px;font-size:11px;line-height:1.4}
+  .title{flex:1;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .home-btn{font-size:13px;padding:8px 10px;min-height:36px}
+  .stats{margin-top:6px;font-size:11px;line-height:1.4}
 
-  /* 单词卡片：词与释义上下堆叠，容纳长短语；增大点按热区 */
-  .witem{flex-direction:column;gap:4px;padding:10px 12px}
-  .witem .ww{min-width:0;width:100%;flex-wrap:wrap;font-size:16px;line-height:1.45;overflow-wrap:anywhere}
+  main{padding:10px 12px 24px}
+
+  /* 筛选条 / 学科芯片：横向滑动，不再折成一面墙 */
+  .filter-bar,.topic-nav{
+    flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;margin-left:-12px;margin-right:-12px;
+    padding:2px 12px 10px;gap:8px;
+  }
+  .filter-bar::-webkit-scrollbar,.topic-nav::-webkit-scrollbar{display:none}
+  .filter-bar > *,.topic-nav > *{flex:0 0 auto;scroll-snap-align:start}
+  .filter-bar{scroll-snap-type:x proximity;margin-bottom:8px}
+  .topic-nav{scroll-snap-type:x proximity;margin-bottom:12px}
+  .filter-btn{padding:8px 12px;font-size:13px;min-height:36px}
+  .topic-chip{padding:8px 12px;font-size:13px;min-height:36px}
+  .hard-count{white-space:nowrap}
+
+  .prio-banner{padding:10px 12px;margin-bottom:10px}
+
+  /* 单词卡片：词与释义上下堆叠；增大点按热区 */
+  .witem{flex-direction:column;gap:4px;padding:12px}
+  .witem .ww{min-width:0;width:100%;flex-wrap:wrap;font-size:17px;line-height:1.45;overflow-wrap:anywhere}
   .witem .ww .wtext{min-width:0;overflow-wrap:anywhere;word-break:break-word}
   .witem .wd{flex:1 1 100%;width:100%;font-size:13px}
   .witem .wsrc{flex:0 0 auto;margin-top:2px}
-  .spk-btn,.mark-btn{padding:8px;min-width:38px;min-height:38px;justify-content:center;font-size:16px}
-  .filter-btn{padding:7px 12px;font-size:13px}
-  .topic-chip{padding:7px 10px;font-size:12px}
-  .sec-toggle{padding:5px 10px;min-height:32px}
-  .sec-head{padding:8px 0 6px}
+  .spk-btn,.mark-btn{padding:8px;min-width:44px;min-height:44px;justify-content:center;font-size:18px}
 
-  /* 连播控制条：整行横向滚动，避免在手机上换行堆成半屏 */
-  .autobar{padding:8px 10px}
-  .autobar .ab-row{gap:6px}
-  .autobar .ab-controls{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .autobar .ab-controls::-webkit-scrollbar{display:none}
+  .sec-head{flex-wrap:wrap;row-gap:4px;padding:8px 0 6px;align-items:center}
+  .sec-title{flex:1 1 140px;min-width:0;font-size:15px;line-height:1.35}
+  .sec-toggle{padding:6px 12px;min-height:36px}
+  .sec-cnt{font-size:12px}
+
+  /* 连播条：主控始终可见，复杂设置收到「⋯」里，避免占半屏 */
+  .autobar{padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom));gap:6px}
+  .autobar.expanded{max-height:min(72dvh,560px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .autobar .ab-row{gap:8px}
+  .autobar .ab-main button{min-height:44px;padding:8px 10px;font-size:15px}
+  .autobar .ab-controls{display:none;flex-wrap:wrap;overflow:visible;padding-top:4px}
+  .autobar.expanded .ab-controls{display:flex}
   .autobar .ab-controls > *{flex:0 0 auto}
-  .autobar button,.autobar select,.autobar input[type=number],.autobar #abStart{font-size:16px}
-  .autobar input[type=number]{width:70px}
-  .autobar #abStart{width:120px}
-  .autobar label{font-size:11px;white-space:nowrap}
-  .autobar .ab-word{font-size:16px}
+  .autobar #abTopicSelect{flex:1 1 100%;max-width:none;min-width:0;font-size:16px}
+  .autobar button,.autobar select,.autobar input[type=number],.autobar input[type=text],.autobar #abStart{font-size:16px}
+  .autobar input[type=number]{width:72px}
+  .autobar #abStart{flex:1 1 120px;width:auto;min-width:0}
+  .autobar #abRangeStart,.autobar #abRangeEnd{width:72px}
+  .autobar label{font-size:12px;white-space:nowrap}
+  .autobar .ab-word{font-size:17px}
+  .autobar .ab-pos{font-size:11px;max-width:42%;text-align:right;white-space:normal;line-height:1.35}
+  .ab-toggle{width:56px;height:56px;right:14px}
 
-  .focus-btns button{padding:9px 14px;font-size:15px;min-height:40px}
-  .focus-mark{padding:6px}
+  .focus-overlay{padding:16px 16px calc(16px + env(safe-area-inset-bottom));justify-content:flex-start}
+  .focus-word{font-size:clamp(28px,9vw,48px)}
+  .focus-btns{margin-top:auto;position:sticky;bottom:0;background:var(--bg);padding-top:12px;flex-direction:column}
+  .focus-btns-main{display:grid;grid-template-columns:1fr 1.3fr 1fr;width:100%}
+  .focus-btns-main button{min-height:48px;width:100%}
+  .focus-btns-sub{width:100%}
+  .focus-btns-sub button{flex:1;min-height:40px}
+  .focus-btns button{padding:10px 12px;font-size:15px;min-height:44px}
+  .focus-mark{padding:8px}
+  .sync-modal{padding:12px;align-items:flex-end}
+  .sync-box{padding:20px 16px calc(16px + env(safe-area-inset-bottom));border-radius:20px 20px 0 0;max-width:none}
+  .sync-box .sync-btns button{min-height:44px;flex:1}
+}
+@media(min-width:601px){
+  .ab-more-btn{display:none!important}
 }
 </style>
 </head>
@@ -312,26 +367,33 @@ body.autobar-open{padding-bottom:100px}
 <!-- Auto-play bar -->
 <button class="ab-toggle" id="abToggle" title="连播模式">▶</button>
 <div class="autobar hidden" id="autobar">
-  <div class="ab-row">
-    <button class="primary" id="abPlayBtn">▶ 连播</button>
-    <span class="ab-word" id="abWord">—</span>
+  <div class="ab-row ab-now">
+    <div class="ab-now-text">
+      <div class="ab-word" id="abWord">—</div>
+      <div class="ab-def" id="abDef">&nbsp;</div>
+    </div>
     <span class="ab-pos" id="abPos"></span>
   </div>
-  <div class="ab-row">
-    <div class="ab-def" id="abDef">&nbsp;</div>
+  <div class="ab-row ab-main">
+    <button id="abPrev" title="上一个">⏮</button>
+    <button class="primary" id="abPlayBtn">▶ 连播</button>
+    <button id="abNext" title="下一个">⏭</button>
+    <button class="filter-btn" id="abFocusBtn">🎯</button>
+    <button class="ab-more-btn" id="abMoreBtn" title="更多设置" aria-expanded="false">⋯</button>
+    <button id="abClose" title="关闭">✕</button>
   </div>
   <div class="ab-row ab-controls">
-    <label style="font-size:12px;color:var(--muted)">学科:</label>
+    <label>学科:</label>
     <select id="abTopicSelect" title="选择连播学科范围"></select>
-    <label style="font-size:12px;color:var(--muted)">范围:</label>
+    <label>范围:</label>
     <input type="number" id="abRangeStart" min="1" value="1" title="所选学科中的原始起始序号">
     <span style="font-size:12px;color:var(--muted)">–</span>
     <input type="number" id="abRangeEnd" min="1" placeholder="末尾" title="所选学科中的原始结束序号；留空表示到最后">
     <button id="abApplyRange" title="应用序号范围并从范围开头播放">应用</button>
-    <label style="font-size:12px;color:var(--muted)">跳转#:</label>
+    <label>跳转:</label>
     <input type="text" id="abStart" value="1" placeholder="序号或单词" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" title="输入全局序号（词条前的灰色序号，1–总词数）或单词，如 2832 或 lithe；超出当前范围会自动放宽并跳转">
     <button id="abJump" title="跳转到指定序号或单词">跳转</button>
-    <label style="font-size:12px;color:var(--muted)">间隔:</label>
+    <label>间隔:</label>
     <select id="abGap">
       <option value="0">无间隔</option>
       <option value="1000" selected>1 秒</option>
@@ -341,10 +403,6 @@ body.autobar-open{padding-bottom:100px}
     </select>
     <button class="filter-btn" id="abHardOnly">⭐ 仅难词</button>
     <button class="filter-btn" id="ab2026Only" title="只连播 🆕 2026 真题新词">🆕 仅新词</button>
-    <button class="filter-btn" id="abFocusBtn">🎯 专注</button>
-    <button id="abPrev" title="上一个">⏮</button>
-    <button id="abNext" title="下一个">⏭</button>
-    <button id="abClose" title="关闭">✕</button>
   </div>
 </div>
 
@@ -380,13 +438,17 @@ body.autobar-open{padding-bottom:100px}
   <div class="focus-full" id="focusFull" aria-live="polite"></div>
   <div class="focus-pos" id="focusPos"></div>
   <div class="focus-btns">
-    <button onclick="focusPrev()">⏮ 上一个</button>
-    <button onclick="focusSpeak()">🔊 发音</button>
-    <button class="primary" id="focusPlayBtn" onclick="focusTogglePlay()">▶ 连播</button>
-    <button onclick="focusNext()">⏭ 下一个</button>
-    <button class="filter-btn" id="focusHardBtn" onclick="focusToggleHard()">⭐ 仅难词</button>
-    <button class="filter-btn" id="focus2026Btn" onclick="focusToggle2026()">🆕 仅新词</button>
-    <button onclick="focusClose()">✕ 退出</button>
+    <div class="focus-btns-main">
+      <button onclick="focusPrev()">⏮</button>
+      <button class="primary" id="focusPlayBtn" onclick="focusTogglePlay()">▶ 连播</button>
+      <button onclick="focusNext()">⏭</button>
+    </div>
+    <div class="focus-btns-sub">
+      <button onclick="focusSpeak()">🔊 发音</button>
+      <button class="filter-btn" id="focusHardBtn" onclick="focusToggleHard()">⭐ 仅难词</button>
+      <button class="filter-btn" id="focus2026Btn" onclick="focusToggle2026()">🆕 仅新词</button>
+      <button onclick="focusClose()">✕ 退出</button>
+    </div>
   </div>
 </div>
 
@@ -831,11 +893,12 @@ function render(query) {
 
   // 2026 权重说明
   if (!q) {
-    html += `<div class="prio-banner">🔥 <b>徽章＝2026 真实考场权重</b>：数字是该学科在 2026 改版后 237 条去重讲座话题（29 个考试日）里的占比。`
+    html += `<details class="prio-banner"><summary>🔥 徽章＝2026 真实考场权重</summary>`
+      + `<b>数字</b>是该学科在 2026 改版后 237 条去重讲座话题（29 个考试日）里的占比。`
       + `<b>艺术 23.2%</b> 居首，<b>经济商业 10.1%</b>（旧格式仅 3.0%），而<b>天文只剩 1.7%</b>（旧格式 11.1%）。`
       + `🎓 对话·公告类不参与讲座统计，但自适应低分支<b>只有</b>对话和公告，属全员必备。`
       + `🆕 标签 = 从 2026 真题话题反推出来的新增术语（本表 ${TOTAL_2026} 词）。`
-      + `口径与样本局限见仓库内 <code>2026听力学科场景占比-2026-09-02.md</code>。</div>`;
+      + `口径与样本局限见仓库内 <code>2026听力学科场景占比-2026-09-02.md</code>。</details>`;
   }
 
   // Topic nav
@@ -942,7 +1005,7 @@ function updateHeadOffset() {
   const head = document.querySelector('header');
   if (head) document.documentElement.style.setProperty('--head-h', head.offsetHeight + 'px');
 }
-window.addEventListener('resize', updateHeadOffset);
+window.addEventListener('resize', () => { updateHeadOffset(); if (typeof abSyncPad === 'function') abSyncPad(); });
 updateHeadOffset();
 
 // ─── Auto-play ───
@@ -1124,8 +1187,26 @@ abToggleBtn.onclick = () => {
   abBar.classList.toggle('hidden', !show);
   document.body.classList.toggle('autobar-open', show);
   abToggleBtn.style.display = show ? 'none' : '';
-  if (show) abUpdateUI();
+  if (show) { abUpdateUI(); abSyncPad(); }
+  else document.body.style.removeProperty('--ab-pad');
 };
+
+const abMoreBtn = document.getElementById('abMoreBtn');
+function abSyncPad() {
+  if (abBar.classList.contains('hidden')) {
+    document.body.style.removeProperty('--ab-pad');
+    return;
+  }
+  document.body.style.setProperty('--ab-pad', abBar.offsetHeight + 16 + 'px');
+}
+if (abMoreBtn) {
+  abMoreBtn.onclick = () => {
+    const open = abBar.classList.toggle('expanded');
+    abMoreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    abMoreBtn.textContent = open ? '▾' : '⋯';
+    abSyncPad();
+  };
+}
 
 abPlayBtn.onclick = () => { abPlaying ? abStop() : abStart(); };
 
@@ -1136,7 +1217,10 @@ abWordEl.onclick = () => {
 document.getElementById('abClose').onclick = () => {
   abStop();
   abBar.classList.add('hidden');
+  abBar.classList.remove('expanded');
   document.body.classList.remove('autobar-open');
+  document.body.style.removeProperty('--ab-pad');
+  if (abMoreBtn) { abMoreBtn.textContent = '⋯'; abMoreBtn.setAttribute('aria-expanded', 'false'); }
   abToggleBtn.style.display = '';
 };
 
@@ -1492,6 +1576,7 @@ function focusClose() {
   abBar.classList.remove('hidden');
   document.body.classList.add('autobar-open');
   abUpdateUI();
+  abSyncPad();
 }
 
 function focusSpeak() {

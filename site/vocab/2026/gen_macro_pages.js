@@ -39,7 +39,7 @@ for (const [key, name] of MACROS) {
   let html = mainHtml
     .replace('<title>2026 新托福词汇卡</title>', '<title>2026 新托福 · ' + name + '词汇卡</title>')
     .replace('<h1>2026 词汇卡</h1>', '<h1>' + name + '词汇卡</h1>')
-    .replace('← 返回 TOEFL 单词本', '← 完整词表')
+    .replace('← 首页', '← 完整词表')
     .replace('href="../../index.html">← 完整词表', 'href="../index.html">← 完整词表')
     .replace(/const MACRO_SUBPATH = \{[^}]*\};/, 'const MACRO_SUBPATH = {};')
     .replace('let wordToIndex = {};\nlet progress = {};',
