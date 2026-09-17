@@ -22,8 +22,8 @@
   }
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { height: 100%; -webkit-text-size-adjust: 100%; }
-html, body { margin: 0; padding: 0; height: 100%; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; }
 body {
   background: var(--bg); color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -37,7 +37,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; border: none; background: none; }
 button, a, input, select, label, textarea, [role=button] { touch-action: manipulation; }
 
-.app { max-width: 560px; margin: 0 auto; min-height: 100dvh; display: flex; flex-direction: column; }
+.app { max-width: 560px; margin: 0 auto; min-height: calc(100dvh - var(--nav-h) - env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
 .topbar {
   position: sticky; top: 0; z-index: 20;
   background: var(--bg);
@@ -55,7 +55,7 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .topbar h1 { flex: 1; margin: 0; font-size: 16px; font-weight: 800; text-align: center; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar .spacer { width: 72px; flex-shrink: 0; }
 
-.main { flex: 1; padding: 16px; padding-bottom: 8px; }
+.main { flex: 1; padding: 16px; padding-bottom: 32px; }
 .view { display: none; }
 .view.active { display: block; }
 
@@ -341,15 +341,25 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .seq-now .meta { margin-top: 4px; font-size: 12px; color: var(--muted); }
 .seq-now .ctrl { display: flex; gap: 8px; margin-top: 12px; }
 .seq-now .ctrl .btn { flex: 1; padding: 10px 0; }
+.seq-now .ctrl .btn-stop { color: var(--bad); border-color: rgba(255,69,58,.45); background: rgba(255,69,58,.08); flex: 0 0 44px; padding: 10px 0; }
+.seq-jump { margin-bottom: 0; }
+.seq-jump .select { flex: 0 0 92px; min-width: 92px; }
+.seq-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin: 0 0 12px; user-select: none; cursor: pointer; }
+.seq-check input { width: 16px; height: 16px; accent-color: var(--accent); }
+.seq-actions { display: flex; gap: 8px; margin-bottom: 0; }
+.seq-actions .btn { flex: 1; }
+.seq-actions .btn-stop { color: var(--bad); border-color: rgba(255,69,58,.45); background: rgba(255,69,58,.08); flex: 0 0 52px; }
+.seq-panel.playing .seq-tip { display: none; }
 .seq-words {
   background: var(--card); border: 1px solid var(--border); border-radius: 16px;
   max-height: calc(100dvh - 430px); min-height: 140px;
   overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
 .seq-more, .browse-more {
-  display: block; width: 100%; margin: 4px 0 0; padding: 10px 12px;
+  display: block; width: 100%; margin: 8px 0 24px; padding: 14px 12px;
   background: var(--card2); border: 1px dashed var(--border); border-radius: 12px;
   color: var(--accent); font-size: 13px; font-weight: 600;
+  min-height: 48px;
 }
 .seq-words .empty { text-align: center; color: var(--muted); font-size: 13px; padding: 24px; }
 .seq-item {
@@ -401,7 +411,7 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
   .topbar .back { font-size: 13px; padding: 8px 10px; min-height: 36px; }
   .topbar h1 { font-size: 15px; text-align: left; }
   .topbar .spacer { display: none; }
-  .main { padding: 12px; padding-bottom: 12px; }
+  .main { padding: 12px; padding-bottom: 32px; }
 
   .hero-stats { padding: 16px; border-radius: 18px; }
   .hero-stats .nums { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
@@ -458,7 +468,8 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
   .seq-row .select.slim { flex: 1 1 calc(50% - 4px); min-width: 0; }
   .seq-now .w { font-size: 22px; }
   .seq-now .ctrl .btn { min-height: 44px; }
-  .seq-words { max-height: calc(100dvh - 390px); }
+  .seq-words { max-height: calc(100dvh - 430px); }
+  .seq-jump .select { flex: 1 1 100%; min-width: 0; }
   .seq-item { padding: 12px 14px; min-height: 48px; align-items: center; }
   .seq-pill { width: calc(100% - 24px); max-width: 420px; }
   .seq-pill-text { max-width: none; flex: 1; }
@@ -582,8 +593,17 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
             <option value="loop">循环播放</option>
           </select>
         </div>
-        <p class="seq-tip">选择一个类别（如「听力场景」全部词条）按顺序朗读；「间隔」是每词之间的停顿，播完后可停止或从头循环。</p>
-        <button class="btn btn-primary btn-block" id="seq-start">▶ 开始连读</button>
+        <div class="seq-row seq-jump">
+          <label for="seq-goto">跳到</label>
+          <input class="select" id="seq-goto" type="number" min="1" step="1" inputmode="numeric" placeholder="第 N 词">
+          <button class="btn" id="seq-goto-btn" type="button" style="flex:0 0 auto;padding:10px 14px">跳转</button>
+        </div>
+        <label class="seq-check"><input type="checkbox" id="seq-fav-only"> 只连读收藏的词</label>
+        <p class="seq-tip">选择一个类别（如「听力场景」全部词条）按顺序朗读；可跳到第 N 词，也可只听收藏。「间隔」是每词之间的停顿，播完后可停止或从头循环。</p>
+        <div class="seq-actions">
+          <button class="btn btn-primary" id="seq-start">▶ 开始连读</button>
+          <button class="btn btn-stop" id="seq-stop" title="停止并回到开头" hidden>⏹</button>
+        </div>
       </div>
       <div class="seq-now" id="seq-now" hidden>
         <div class="w" id="seq-now-word"></div>
@@ -591,7 +611,6 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
         <div class="meta" id="seq-now-meta"></div>
         <div class="ctrl">
           <button class="btn" id="seq-prev" title="上一个">⏮</button>
-          <button class="btn" id="seq-stop" title="停止并回到开头">⏹ 停止</button>
           <button class="btn" id="seq-next" title="下一个">⏭</button>
         </div>
       </div>
@@ -662,7 +681,7 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 <div class="toast" id="toast"></div>
 <div class="seq-pill" id="seq-pill" hidden>
   <button class="seq-pill-text" id="seq-pill-text" title="返回连读面板">🎧</button>
-  <button class="seq-pill-stop" id="seq-pill-stop" title="停止连读">⏹</button>
+  <button class="seq-pill-stop" id="seq-pill-stop" title="停止连读">停止</button>
 </div>
 
 <script>
@@ -1370,6 +1389,7 @@ function seqInit() {
   sel.value = c;
   if ([0, 500, 1000, 2000, 3000, 5000].indexOf(settings.seqGap) >= 0) $('seq-gap').value = String(settings.seqGap);
   if (settings.seqEnd === 'stop' || settings.seqEnd === 'loop') $('seq-end').value = settings.seqEnd;
+  $('seq-fav-only').checked = !!settings.seqFavOnly;
   seqSetCat(c);
 }
 
@@ -1380,11 +1400,21 @@ function seqCatName() {
 }
 
 // 只换类别和词表，不动播放状态；cat 只能是宏 key（整类连读，不含「听力-餐饮」这类子场景）
-function seqSetCat(cat) {
+function seqSetCat(cat, keepIdx) {
   seq.cat = cat;
-  seq.list = cat && MACRO[cat] ? vocab.filter(e => getMacro(e.c) === cat) : [];
-  seq.idx = 0;
+  const all = cat && MACRO[cat] ? vocab.filter(e => getMacro(e.c) === cat) : [];
+  seq.list = $('seq-fav-only') && $('seq-fav-only').checked
+    ? all.filter(e => getRec(e.w).fav)
+    : all;
+  const prev = keepIdx ? seq.idx : 0;
+  seq.idx = seq.list.length ? Math.max(0, Math.min(prev, seq.list.length - 1)) : 0;
   seqShown = 0;
+  const goto = $('seq-goto');
+  if (goto) {
+    goto.max = String(Math.max(1, seq.list.length));
+    goto.placeholder = seq.list.length ? '1–' + seq.list.length : '第 N 词';
+    if (!keepIdx) goto.value = '';
+  }
   renderSeqWords();
   renderSeqPanel();
 }
@@ -1404,7 +1434,7 @@ function renderSeqWords() {
   if (!box) return;
   box.innerHTML = '';
   if (!seq.list.length) {
-    box.innerHTML = '<div class="empty">该类别没有词条</div>';
+    box.innerHTML = '<div class="empty">' + (seqFavOnlyOn() ? '该类别没有收藏的词' : '该类别没有词条') + '</div>';
     return;
   }
   renderSeqPage(true);
@@ -1465,11 +1495,30 @@ function seqEnsureVisible(i) {
   }
 }
 
+function seqFavOnlyOn() {
+  const el = $('seq-fav-only');
+  return !!(el && el.checked);
+}
+
+function seqGoto(n) {
+  if (!seq.list.length) { toast('请先选择连读范围'); return; }
+  const i = (parseInt(n, 10) || 0) - 1;
+  if (i < 0 || i >= seq.list.length) {
+    toast('请输入 1–' + seq.list.length + ' 的序号');
+    return;
+  }
+  seqJump(i);
+}
+
 function renderSeqPanel() {
   const btn = $('seq-start');
   const now = $('seq-now');
+  const stop = $('seq-stop');
+  const panel = document.querySelector('.seq-panel');
   if (!btn || !now) return;
   btn.textContent = seq.on ? '⏸ 暂停' : (seq.paused ? '▶ 继续连读' : '▶ 开始连读');
+  if (stop) stop.hidden = !(seq.on || seq.paused);
+  if (panel) panel.classList.toggle('playing', seq.on || seq.paused);
   const entry = seq.list[seq.idx];
   if (!entry) { now.hidden = true; return; }
   now.hidden = false;
@@ -1477,6 +1526,7 @@ function renderSeqPanel() {
   $('seq-now-meaning').textContent = entry.m;
   $('seq-now-meta').textContent = (entry.p ? entry.p + ' · ' : '') + entry.c +
     ' · 第 ' + (seq.idx + 1) + ' / ' + seq.list.length + ' 词' +
+    (seqFavOnlyOn() ? ' · 仅收藏' : '') +
     (seq.paused ? ' · 已暂停' : '');
 }
 
@@ -1613,6 +1663,16 @@ $('seq-start').addEventListener('click', () => seq.on ? seqPause() : seqStart())
 $('seq-prev').addEventListener('click', () => { if (seq.on || seq.paused) seqStep(-1); });
 $('seq-next').addEventListener('click', () => { if (seq.on || seq.paused) seqStep(1); });
 $('seq-stop').addEventListener('click', seqStop);
+$('seq-goto-btn').addEventListener('click', () => seqGoto($('seq-goto').value));
+$('seq-goto').addEventListener('keydown', e => { if (e.key === 'Enter') seqGoto($('seq-goto').value); });
+$('seq-fav-only').addEventListener('change', e => {
+  settings.seqFavOnly = !!e.target.checked;
+  saveSettings();
+  const keep = seq.on || seq.paused;
+  seqSetCat(seq.cat, keep);
+  if (keep && seq.list.length) seqPlayCurrent();
+  else if (keep && !seq.list.length) { seqStop(); toast('该类别没有收藏的词'); }
+});
 $('seq-cat').addEventListener('change', e => {
   settings.seqCat = e.target.value;
   saveSettings();

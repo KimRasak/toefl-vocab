@@ -11,7 +11,7 @@ const dataJs = fs.readFileSync(path.join(HERE, 'data.js'), 'utf8');
 class El {
   constructor(id) {
     this.id = id; this.children = []; this._html = ''; this.style = {}; this.dataset = {};
-    this.value = ''; this.textContent = ''; this.className = ''; this.checked = true;
+    this.value = ''; this.textContent = ''; this.className = ''; this.checked = true; this.hidden = false;
     this._cls = new Set();
     this._ev = {};
     // 真实 DOM 的 classList.add/remove 返回 undefined，toggle 返回 boolean。
@@ -843,6 +843,29 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run('seqJump(5)');
   chk('点击词表行跳到该词', run('seq.idx') === 5 && run('seq.on') === true);
   run('seqStop()');
+
+  // 跳到第 N 词
+  run("seqGoto(12)");
+  chk('跳到第 12 词', run('seq.idx') === 11 && run('seq.on') === true);
+  run("seqGoto(0)");
+  chk('非法序号不改变当前词', run('seq.idx') === 11);
+  run('seqStop()');
+
+  // 只连读收藏
+  run("progress['analyse'] = { box: 1, right: 0, wrong: 0, lastSeen: 0, fav: true, known: false }");
+  run("$('seq-fav-only').checked = true");
+  run("seqSetCat('awl')");
+  chk('只看收藏只列出收藏词', run('seq.list.length') >= 1 && run('seq.list.every(e => getRec(e.w).fav)'),
+    run('seq.list.length'));
+  chk('只看收藏不含未收藏词', run("seq.list.some(e => e.w === 'analyse')") === true);
+  run("$('seq-fav-only').checked = false");
+  run("seqSetCat('awl')");
+  chk('取消只看收藏恢复整类', run('seq.list.length') === awlAll, run('seq.list.length'));
+
+  run('seqStart()');
+  chk('播放中显示停止按钮', getEl('seq-stop').hidden === false);
+  run('seqStop()');
+  chk('停止后隐藏停止按钮', getEl('seq-stop').hidden === true);
 
   // 总览卡片「🎧 连读」= 整类连读；分类一览不再按子场景连读
   chk('一览分组不含子场景连读按钮', !/grp-play/.test(html) && !/seqChoose\(g\.cat\)/.test(html));
