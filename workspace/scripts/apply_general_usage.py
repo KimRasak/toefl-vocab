@@ -8,10 +8,11 @@
 patch.json 结构：{"acting": {"d": "短释义", "f": "展开释义"}, ...}
   - d 省略时保留原短释义；f 必填。
 
-页面 site/vocab/disciplines/index.html 已经与 build_merged_by_discipline.py
-的输出长期分叉（人工逐词精修过 100+ 词条），所以这里直接改成品页面，不重跑构建。
-同一批内容会另存一份到 workspace/data/overrides/general_usage_expansions.json，
-即便将来重新生成页面也不会丢。
+页面 site/vocab/disciplines/index.html 现在是手工维护的成品（人工逐词精修过
+数百个词条），所以这里直接改页面。同一批内容会另存一份到
+workspace/data/overrides/general_usage_expansions.json 作为脱离 HTML 的数据备份。
+（早期的整页生成脚本 build_merged_by_discipline.py 已废弃删除，其词表合并/学科
+分类逻辑如需重用可从 git 历史中取回。）
 """
 import json
 import os
