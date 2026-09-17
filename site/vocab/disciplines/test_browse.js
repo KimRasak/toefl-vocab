@@ -67,7 +67,14 @@ function boot(ls) {
     setInterval, clearInterval,
     localStorage: ls, sessionStorage: memStore(),
     fetch: () => Promise.resolve({ ok: false, status: 404, text: () => Promise.resolve('') }),
-    Audio: class { constructor() { this.src = ''; } play() { return Promise.resolve(); } pause() {} load() {} },
+    Audio: class {
+      constructor(src) {
+        this.src = src || '';
+        if (src) { try { sandbox.__audioLog.push(src); } catch (e) {} }
+      }
+      play() { return Promise.resolve(); }
+      pause() {} load() {}
+    },
     document: {
       getElementById: gel,
       createElement: t => new El(t),
@@ -80,6 +87,7 @@ function boot(ls) {
     },
   };
   sandbox.window = sandbox;
+  sandbox.__audioLog = [];
   sandbox.addEventListener = () => {};
   sandbox.removeEventListener = () => {};
   sandbox.globalThis = sandbox;
@@ -181,7 +189,32 @@ run('abJumpToInput()');
 chk('跳转非 🆕 词后自动放宽过滤', run('ab2026Only') === false);
 chk('跳转落在目标词上', run('abGetList()[abIdx].w') === plainWord, run('abGetList()[abIdx].w') + ' vs ' + plainWord);
 
-// ── 场景五：持久化恢复（含越界序号夹回）───────────────────────
+// ── 场景五：多词术语发音音源（有道整句听感不对的词条走分词连播）─────
+{
+  const lsA = memStore();
+  const sA = boot(lsA);
+  // 打桩 Audio 只记录 src：play() 立即 resolve、不触发 onended，
+  // 所以每次 speak 只会发出链路里的第一个请求，正好用来断言"先要谁"。
+  const firstUrl = term => {
+    sA.run('__audioLog = []');
+    sA.run('speak(' + JSON.stringify(term) + ')');
+    const log = sA.run('__audioLog');
+    return log.length ? log[0] : '';
+  };
+  chk('页面登记了整句跳过名单', sA.run("typeof PHRASE_SKIP_WHOLE") === 'object'
+    && sA.run("PHRASE_SKIP_WHOLE.has('viral marketing')") === true);
+  const vm1 = firstUrl('viral marketing');
+  chk('viral marketing 不再请求有道整句', vm1.indexOf('audio=viral%20marketing') < 0 && vm1.indexOf('audio=viral+marketing') < 0, vm1);
+  chk('viral marketing 首个请求是分词的 viral', /audio=viral&/.test(vm1), vm1);
+  // 未登记的多词术语仍先试整句（有整句录音的词条不该被牵连）
+  const wom = firstUrl('word of mouth');
+  chk('未登记的多词术语仍先试整句', /audio=word(%20|\+)of(%20|\+)mouth/.test(wom), wom);
+  // 单词词条链路不受影响
+  const one = firstUrl('turnover');
+  chk('单词词条仍走有道整词', /audio=turnover&/.test(one), one);
+}
+
+// ── 场景六：持久化恢复（含越界序号夹回）───────────────────────
 {
   const ls2 = memStore();
   ls2.setItem('merged_autoplay', JSON.stringify({

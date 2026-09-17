@@ -723,7 +723,14 @@ function ttsUrls(word) {
   if (cached) return [cached].concat(chain.filter(u => u !== cached));
   return chain;
 }
+// 有道对个别多词术语虽有整句录音，但听感不对（音色/读法与全站不一致）。
+// 这些词条跳过整句，直接走分词连播——与 musical borrowing 等同一音源。
+const PHRASE_SKIP_WHOLE = new Set(['viral marketing']);
 function playChain(word, requestId, done) {
+  if (PHRASE_SKIP_WHOLE.has(String(word).trim().toLowerCase())) {
+    playWithChunks(word, requestId, done);
+    return;
+  }
   const urls = ttsUrls(word);
   let index = 0;
   const next = () => {
