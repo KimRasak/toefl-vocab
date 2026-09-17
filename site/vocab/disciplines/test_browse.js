@@ -189,7 +189,52 @@ run('abJumpToInput()');
 chk('跳转非 🆕 词后自动放宽过滤', run('ab2026Only') === false);
 chk('跳转落在目标词上', run('abGetList()[abIdx].w') === plainWord, run('abGetList()[abIdx].w') + ' vs ' + plainWord);
 
-// ── 场景五：多词术语发音音源（有道整句听感不对的词条走分词连播）─────
+// ── 场景五：一键折叠/展开全部学科 ────────────────────────────
+{
+  const lsC = memStore();
+  const sC = boot(lsC);
+  const r = sC.run;
+  const bar = () => sC.reg['main'].innerHTML;
+  const collapsedCount = () => r('visibleSecs("").filter(i => !!collapsed[i]).length');
+  const visibleCount = () => r('visibleSecs("").length');
+
+  chk('可见学科数 = 45', visibleCount() === 45, visibleCount());
+  chk('初始只有第 1 个学科展开', collapsedCount() === visibleCount() - 1
+    && r('!!collapsed[0]') === false, collapsedCount());
+  chk('初始按钮显示「折叠全部」', bar().includes('📁 折叠全部') && !bar().includes('📂 展开全部'));
+
+  r('toggleAllSecs()');
+  chk('一键折叠后全部学科折叠', collapsedCount() === visibleCount(), collapsedCount());
+  chk('全折叠后按钮变「展开全部」', bar().includes('📂 展开全部'));
+  chk('全折叠后不再渲染词条', bar().includes('class="witem') === false);
+
+  r('toggleAllSecs()');
+  chk('再点一次全部展开', collapsedCount() === 0, collapsedCount());
+  chk('全展开后按钮回到「折叠全部」', bar().includes('📁 折叠全部'));
+  chk('全展开后 45 个学科都出词条', bar().includes('class="witem'));
+
+  // 搜索/⭐/🆕 下各学科本来就强制展开，按钮不该出现
+  r('toggleAllSecs()');                     // 先全折叠，确保不是因为状态而消失
+  sC.reg['searchInput'].value = 'viral';
+  r('render("viral")');
+  chk('搜索状态下不渲染折叠全部按钮',
+    bar().includes('折叠全部') === false && bar().includes('展开全部') === false);
+  sC.reg['searchInput'].value = '';
+  r('render("")');
+  chk('清空搜索后按钮回来', bar().includes('展开全部') || bar().includes('折叠全部'));
+
+  // 🔥 高频学科筛选下只动可见学科，被挡掉的学科状态不变
+  r('showHighYieldOnly = true; render("")');
+  const vis = visibleCount();
+  chk('🔥 筛选后可见学科变少', vis > 0 && vis < 45, vis);
+  r('collapsed[44] = false');               // 末位学科（通用）在 🔥 下不可见
+  r('toggleAllSecs()');
+  chk('🔥 筛选下不改被挡掉学科的状态',
+    r('visibleSecs("").indexOf(44) < 0') === true && r('!!collapsed[44]') === false);
+  r('showHighYieldOnly = false; render("")');
+}
+
+// ── 场景七：多词术语发音音源（有道整句听感不对的词条走分词连播）─────
 {
   const lsA = memStore();
   const sA = boot(lsA);
@@ -214,7 +259,7 @@ chk('跳转落在目标词上', run('abGetList()[abIdx].w') === plainWord, run('
   chk('单词词条仍走有道整词', /audio=turnover&/.test(one), one);
 }
 
-// ── 场景六：持久化恢复（含越界序号夹回）───────────────────────
+// ── 场景八：持久化恢复（含越界序号夹回）───────────────────────
 {
   const ls2 = memStore();
   ls2.setItem('merged_autoplay', JSON.stringify({

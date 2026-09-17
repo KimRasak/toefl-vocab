@@ -878,6 +878,17 @@ function getWordFilter(query) {
   };
 }
 
+// 学科级筛选：只看 2026 讲座高频（含全学科通用词）
+// 提到顶层，一键折叠/展开要用同一套「哪些学科当前可见」的判断
+function topicPass(t) {
+  return !showHighYieldOnly || t.tier === '讲座高频' || t.tier === '全学科通用';
+}
+
+// 搜索或 ⭐/🆕 筛选时各学科强制展开，此时「折叠全部」无意义（按钮不渲染）
+function forceOpenAll(query) {
+  return !!((query || '').trim() || showHardOnly || show2026Only);
+}
+
 function render(query) {
   const q = (query || '').trim().toLowerCase();
   let html = '';
@@ -885,8 +896,6 @@ function render(query) {
   const hardCnt = hardWords.size;
 
   const wordFilter = getWordFilter(query);
-  // 学科级筛选：只看 2026 讲座高频（含全学科通用词）
-  const topicPass = (t) => !showHighYieldOnly || t.tier === '讲座高频' || t.tier === '全学科通用';
 
   // 视图顺序：DATA 本身不动（连播索引依赖它），只在展示层排序
   let view = DATA.map((t, i) => ({ t, i }));
@@ -903,6 +912,10 @@ function render(query) {
   html += `<button class="filter-btn${show2026Only ? ' active' : ''}" onclick="show2026Only=!show2026Only;render(searchInput.value)">🆕 仅 2026 真题词</button>`;
   html += `<button class="filter-btn${showHighYieldOnly ? ' active' : ''}" onclick="showHighYieldOnly=!showHighYieldOnly;render(searchInput.value)">🔥 仅 2026 高频学科</button>`;
   html += `<button class="filter-btn${prioSort ? ' active' : ''}" onclick="prioSort=!prioSort;render(searchInput.value)">${prioSort ? '↕️ 按 2026 优先级' : '↕️ 按原学科顺序'}</button>`;
+  if (!forceOpenAll(query)) {
+    const shut = allSecsCollapsed(query);
+    html += `<button class="filter-btn" id="secToggleAll" onclick="toggleAllSecs()" title="${shut ? '展开当前显示的全部学科' : '折叠当前显示的全部学科'}">${shut ? '📂 展开全部' : '📁 折叠全部'}</button>`;
+  }
   html += `<span class="hard-count">已标记 ${hardCnt} 个难词</span>`;
   html += `<button class="filter-btn" onclick="syncOpen()">☁️ 云同步</button>`;
   if (hardCnt > 0) {
@@ -942,8 +955,7 @@ function render(query) {
     if (items.length === 0) return;
     totalShown += items.length;
 
-    const forceOpen = !!(q || showHardOnly || show2026Only);
-    const isCollapsed = collapsed[ti] && !forceOpen;
+    const isCollapsed = collapsed[ti] && !forceOpenAll(query);
     const secBadge = t.w26 != null
       ? `<span class="w26 sec-w26" style="color:${t.tierColor}">${t.tierEmoji} 2026 讲座 ${t.w26}%</span>`
       : `<span class="w26 sec-w26" style="color:${t.tierColor}">${t.tierEmoji} ${t.tier}</span>`;
@@ -1002,6 +1014,36 @@ function toggleSec(idx) {
   collapsed[idx] = !collapsed[idx];
   if (!collapsed[idx] && !secLimit[idx]) secLimit[idx] = SEC_PAGE;
   render(searchInput.value);
+}
+
+// 一键折叠/展开：只作用于当前筛选下真正显示出来的学科，
+// 被 🔥 学科筛选挡掉、或该学科在当前条件下 0 词的，状态不动。
+function visibleSecs(query) {
+  const wf = getWordFilter(query);
+  const out = [];
+  DATA.forEach((t, i) => { if (topicPass(t) && wf(t.words).length) out.push(i); });
+  return out;
+}
+
+function allSecsCollapsed(query) {
+  const secs = visibleSecs(query);
+  return secs.length > 0 && secs.every(i => !!collapsed[i]);
+}
+
+function toggleAllSecs() {
+  const query = searchInput.value;
+  const secs = visibleSecs(query);
+  if (!secs.length) return;
+  const shut = !allSecsCollapsed(query);   // 还有展开的 → 全部折叠；已全折叠 → 全部展开
+  secs.forEach(i => {
+    collapsed[i] = shut;
+    if (!shut && !secLimit[i]) secLimit[i] = SEC_PAGE;
+  });
+  // 折叠后内容骤短，回到顶部免得停在空白处
+  if (shut && typeof window.scrollTo === 'function') {
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+  render(query);
 }
 
 function revealWord(word) {
