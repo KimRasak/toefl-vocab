@@ -738,8 +738,8 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     if (av.length !== 1 || av[0] !== 'view-browse') landProblems.push(k + ':视图 ' + (av.join('+') || '无'));
     if (vm.runInContext('(renderBrowse._flat || []).length', c) === 0) landProblems.push(k + ':单词表为空');
     if (vm.runInContext('browseMacro', c) !== k) landProblems.push(k + ':宏 ' + vm.runInContext('browseMacro', c));
-    if (vm.runInContext('seqInit._cats.filter(x => MACRO[x]).length', c) !== 1)
-      landProblems.push(k + ':整类连读选项异常');
+    if (vm.runInContext('seqInit._cats.join(",")', c) !== k)
+      landProblems.push(k + ':整类连读选项 ' + vm.runInContext('seqInit._cats.join(",")', c));
     if (d.activeNavs().length !== 1) landProblems.push(k + ':底栏高亮 ' + d.activeNavs().length + ' 个');
   });
   chk('8 个子路径页真跑：打开即单词表且只亮一个视图', landProblems.length === 0,
@@ -753,46 +753,41 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     MAIN_FIRST_NAVS.length === 1 && MAIN_FIRST_NAVS[0] === 'dashboard',
     MAIN_FIRST_NAVS.join(','));
 
-  // ── 28. 分区连读（🎧 标签页）────────────────────────────
-  // 需求：每次选中一个分区播放；间隔可选；播完后可选停止/循环播放。
+  // ── 28. 整类连读（🎧 标签页）────────────────────────────
+  // 需求：每次选中一个整类（如听力场景）播放；间隔可选；播完后可选停止/循环。
   // 打桩环境：Audio.play() 立即 resolve 且不触发 onended（无真实音频），
   // speak 链路不会回调 onDone → 连读推进由 seqStep/seqGapWait 的定时器驱动可测。
   const TTS_URL = /^https:\/\/(dict\.youdao\.com|fanyi\.baidu\.com|translate\.google\.com)\//;
   chk('连读状态对象已初始化', run('seq.on') === false && run('seq.paused') === false);
   chk('底栏含连读标签', [...html.matchAll(/data-tab="([a-z]+)"/g)].map(m => m[1]).includes('seq'));
 
-  // 下拉覆盖全部分区，按宏类 optgroup 分组
   chk('连读下拉在 HTML 内（由 seqInit 填充）', html.includes('id="seq-cat"'));
-  const groupData = run('seqCatGroups()');
-  const allCatCount = Object.values(groupData).reduce((s, l) => s + l.length, 0);
-  const uniqCats = new Set(run('vocab.map(e => e.c)')).size;
-  chk('分区分组数 = 全部唯一分区数', allCatCount === uniqCats, allCatCount + '/' + uniqCats);
-  chk('每个宏都有非空分区组', Object.keys(MACRO_PAGES).every(k => Array.isArray(groupData[k]) && groupData[k].length > 0),
-    Object.keys(MACRO_PAGES).map(k => k + ':' + (groupData[k] || []).length).join(','));
-
-  // 整类连读：宏 key（如 listening = 整个「听力场景」）也是可选播放范围
-  chk('下拉含 8 个整类选项', run("seqInit._cats.filter(c => MACRO[c]).length") === 8,
-    run("seqInit._cats.filter(c => MACRO[c]).join(',')"));
+  chk('下拉只含 8 个整类、不含子场景', run("seqInit._cats.join(',')") === Object.keys(MACRO_PAGES).join(','),
+    run("seqInit._cats.join(',')"));
+  chk('下拉不含「听力-餐饮」这类子场景', run("seqInit._cats.some(c => c.indexOf('听力-') === 0 || c.indexOf('AWL-') === 0)") === false,
+    run("seqInit._cats.filter(c => !MACRO[c]).join(',')"));
   run("seqSetCat('listening')");
   const listenAll = run("vocab.filter(e => getMacro(e.c) === 'listening').length");
   chk('整类连读=听力场景全部词条', run('seq.list.length') === listenAll,
     run('seq.list.length') + '/' + listenAll);
   chk('整类词表已渲染', run('seqRows.length') > 0 && run('seqRows.length') <= listenAll, run('seqRows.length'));
-  chk('整类范围显示名带（整类）', run('seqCatName()') === run("MACRO.listening.name + '（整类）'"), run('seqCatName()'));
+  chk('整类范围显示名为类别名', run('seqCatName()') === run('MACRO.listening.name'), run('seqCatName()'));
   chk('总览卡片含整类连读按钮', /data-seqread="/.test(html));
   run('seqStart()');
   chk('整类连读可开始', run('seq.on') === true && run('seq.idx') === 0);
   run('seqStop()');
 
-  // 选分区 → 词表渲染 + 开始连读
+  // 选类别 → 词表渲染 + 开始连读（用 AWL 整类，词量较小便于后续步进断言）
+  run("seqSetCat('awl')");
+  const awlAll = run("vocab.filter(e => getMacro(e.c) === 'awl').length");
+  chk('选类别后词表非空', run('seq.list.length') === awlAll, run('seq.list.length') + '/' + awlAll);
+  chk('选类别后下标指向 0', run('seq.idx') === 0);
+  chk('类别词表已渲染', run('seqRows.length') > 0 && run('seqRows.length') <= awlAll, run('seqRows.length'));
   run("seqSetCat('AWL-1')");
-  chk('选分区后词表非空', run('seq.list.length') === 60, run('seq.list.length'));
-  chk('选分区后下标指向 0', run('seq.idx') === 0);
-  chk('分区词表已渲染', run('seqRows.length') > 0 && run('seqRows.length') <= 60, run('seqRows.length'));
-  // 空分区的兜底
+  chk('传入子场景名不选中细分', run('seq.list.length') === 0, run('seq.list.length'));
   run("seqSetCat('')");
-  chk('无分区时列表为空但不抛错', run('seq.list.length') === 0 && run('seq.idx') === 0);
-  run("seqSetCat('AWL-1')");
+  chk('无类别时列表为空但不抛错', run('seq.list.length') === 0 && run('seq.idx') === 0);
+  run("seqSetCat('awl')");
   run('seqStart()');
   chk('开始后 seq.on=true', run('seq.on') === true);
   chk('开始后停在当前词', run('seq.idx') === 0, run('seq.idx'));
@@ -849,16 +844,13 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('点击词表行跳到该词', run('seq.idx') === 5 && run('seq.on') === true);
   run('seqStop()');
 
-  // 分类一览分组标题上的「▶ 连读」按钮：点分组即连读该分区
-  chk('一览分组含连读按钮 CSS', /grp-play/.test(html));
-  chk('一览分组渲染出连读按钮', /seqChoose\(g\.cat\)/.test(html) || /grp-play/.test(html));
-  run("openBrowse('listening')");
-  run("seqChoose('听力-习语')");
-  chk('「▶ 连读」切到连读页并选中该分区',
-    run('currentTab') === 'seq' && run('seq.cat') === '听力-习语',
+  // 总览卡片「🎧 连读」= 整类连读；分类一览不再按子场景连读
+  chk('一览分组不含子场景连读按钮', !/grp-play/.test(html) && !/seqChoose\(g\.cat\)/.test(html));
+  run("seqChoose('listening')");
+  chk('总览「🎧 连读」切到连读页并选中整类',
+    run('currentTab') === 'seq' && run('seq.cat') === 'listening',
     run('currentTab') + '/' + run('seq.cat'));
-  chk('连读页选中项与分区一致', run("seq.list.length") === run("vocab.filter(e => e.c === '听力-习语').length"),
-    run("seq.list.length"));
+  chk('连读页选中项=听力场景全部词条', run('seq.list.length') === listenAll, run('seq.list.length'));
   run('seqStop()');
 
   // 连读时切标签页 → 浮动胶囊显示；回连读页隐藏；停止后隐藏
