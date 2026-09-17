@@ -310,7 +310,7 @@ warehouse	仓库，货栈
 warranty	担保，保证；保修
 warrantable	可证明为正确的，可证实的
 warrior	战士，勇士
-wary	小心翼翼的，机警小心的
+wary	adj. 警惕的、谨慎的[ph]be wary of sb./sth.[ph]remain/stay wary[ph]a wary glance[st]Investors are wary of sudden market swings.
 waste disposal	废物处理
 watercourse	水道，河道
 waterproof	防水的
@@ -352,7 +352,7 @@ wipe out	毁灭，破坏
 wit	智力，才智
 withdraw	撤退
 withdrawal	收回；撤退，退回
-wither	（使）枯萎，凋谢
+wither	v. 枯萎、凋谢；萎缩、消亡[ph]plants/flowers/crops wither[ph]wither away[ph]hopes/support wither[st]The crops withered in the drought.[st]Public support for the plan withered away.
 withstand	承受，抵住
 witness	目击；为...作证
 eyewitness	目击者, 见证人

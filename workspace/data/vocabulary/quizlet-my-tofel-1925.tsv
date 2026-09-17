@@ -181,7 +181,7 @@ index	term	definition
 180	unquestionably	无疑地，无可非议地
 181	request	请求，要求
 182	bequest	遗产，遗赠
-183	sequester	使退隐，使隔绝
+183	sequester	v. 使隔绝；封存[ph]be sequestered from[ph]sequester a jury[ph]sequester carbon/CO2[st]The jury was sequestered during the trial.[st]Forests sequester carbon from the atmosphere.
 184	equestrian	骑马的, (古罗马)市民特权阶层成员的, 骑士阶层的
 185	quiescent	静止的，寂静的
 186	quilt	棉被
@@ -488,7 +488,7 @@ index	term	definition
 487	reveal	展现；揭露
 488	revere	尊崇，尊敬
 489	revered	可敬的，尊敬的
-490	reverently	虔诚地
+490	reverently	虔诚地，恭敬地[ph]bow/kneel reverently[ph]handle/hold/place sth. reverently[ph]speak/talk reverently of[ph]look/gaze reverently at[ph]listen reverently[ph]reverently silent[st]He laid the wreath reverently in front of the memorial.
 491	irreverent	不尊敬的
 492	irreverence	不尊敬
 493	reverse	颠倒，翻转
@@ -511,7 +511,7 @@ index	term	definition
 510	rhythmical	有韵律的，有节奏的
 511	ridge	脊，山脊
 512	ridiculous	荒唐的，可笑的
-513	ridicule	嘲笑
+513	ridicule	嘲笑、讥讽 v./n.[ph]ridicule sb./sth.[ph]ridicule sb. for sth.[ph]face/attract/draw ridicule[ph]become an object/target of ridicule[ph]hold sb./sth. up to ridicule[ph]widespread/public ridicule[ph]fear of ridicule[st]The politician faced widespread ridicule for his controversial statement.[st]She rarely spoke her mind out of fear of being ridiculed.
 514	rifle	来复枪，步枪
 515	rift	裂缝；断裂，长峡谷
 516	drift	漂移；漂流物；（使）漂流
@@ -570,7 +570,7 @@ index	term	definition
 569	ruins	废墟，遗迹
 570	rumble	发出低沉的隆隆声
 571		隆隆声，辘辘行驶声
-572	rupture	断裂，断绝
+572	rupture	破裂；决裂 v./n.[ph]ruptured appendix/tendon[ph]a ruptured pipe[ph]rupture a muscle[ph]a rupture with sb./sth.[ph]a rupture in relations[ph]rupture of an alliance[st]His appendix ruptured and he had to be rushed to hospital.[st]The scandal caused a rupture in relations between the two countries.
 573	rural	农村的，乡下的，田园的
 574	urban	都市的
 575	rust	锈，生锈
@@ -600,8 +600,7 @@ index	term	definition
 599	sandy	沙的，多沙的
 600	sanitation	（公共、环境）卫生，卫生设施
 601	sanitary	（有关）卫生的
-602	sap	树液，汁液
-603		使衰竭
+602	sap	n. 树液；v. 一点点把……耗掉、逐渐削弱[ph]sap sb's strength/energy/confidence[ph]sap sb of sth[ph]sap morale/will/resources[ph]maple sap[st]Constant criticism sapped her of confidence.[st]Taking care of her dying mother had sapped all her energy.
 604	sapphire	蓝宝石
 605	sarcastic	讽刺的，挖苦的
 606	satire	讽刺；讽刺文学
@@ -850,7 +849,7 @@ index	term	definition
 849	skyrocket	猛涨，突增
 850	skyscraper	摩天大楼
 851	slab	（四边形的厚物质）板，片
-852	slander	诽谤
+852	slander	n./v. 诽谤（口头说假话毁人名誉；书面对应词是 libel）[ph]slander sb.[ph]sue sb. for slander[ph]spread slander about sb.[ph]a slander on sb./sth.[st]He sued the newspaper for slander.
 853	slash	大量消减
 854	slender	苗条的；纤细的
 855	slice	薄片；部分，份
@@ -943,12 +942,10 @@ index	term	definition
 942		剩余，备用品
 943	sparingly	节俭地，保守地
 944	sparrow	麻雀
-945	spark	火花，火星
-946		发动，激起
+945	spark	n. 火花；诱因；v. 引发、激起[ph]spark a debate/controversy/interest[ph]a spark of hope/interest[st]The discovery sparked a wave of excitement.
 947	sparse	稀少的；稀疏的
 948	sparsely	稀疏地，稀少地
-949	spawn	产卵，大量生育
-950		造成，酿成
+949	spawn	n./v. 产卵；大量催生、引发[ph]salmon spawn[ph]fish spawn[ph]spawn a movement/industry/debate[st]The invention spawned a whole new industry.
 951	specialized	专业的，专门的
 952	species	类群，种类
 953	subspecies	[生]亚种
@@ -960,7 +957,7 @@ index	term	definition
 959	speck	斑点
 960	flyspeck	蝇粪留下的污点, 污点
 961	spectacle	奇观；展示，景象
-962	spectacular	引人入胜的，壮观的
+962	spectacular	adj. 壮观的、惊人的[ph]a spectacular view/sunset/display[ph]spectacular success/failure[st]The canyon offers spectacular views at sunset.
 963	spectacularly	引人入胜地
 964	spectator	参观者，观众
 965	spectrum	谱，光谱
@@ -1044,7 +1041,7 @@ index	term	definition
 1043	stagnant	停滞的, 迟钝的
 1044	stain	污点，瑕疵
 1045	stained	污染的，玷污的
-1046	sustain	支撑；维持，持续
+1046	sustain	v. 维持、支撑；遭受[ph]sustain life/growth/an economy[ph]sustain an injury/damage/a loss[st]The soil can sustain a variety of crops.[st]He sustained a serious injury in the accident.
 1047	staircase	楼梯
 1048	stalk	隐伏跟踪（猎物）
 1049		茎，柄，梗
@@ -1138,8 +1135,7 @@ index	term	definition
 1137	strikingly	醒目地, 引人侧目地
 1138	string	（乐器的）弦；细绳，带子
 1139	strings	弦乐器
-1140	stringent	严厉的
-1141		缺钱的，银根紧的，周转困难的
+1140	stringent	adj. 严格的、苛刻的[ph]stringent regulations/standards/requirements[ph]stringent controls/measures[st]The industry faces stringent environmental regulations.
 1142	strip	剥夺；剥掉
 1143		条，带
 1144	stripe	斑纹，条纹
@@ -1166,7 +1162,7 @@ index	term	definition
 1165		提交，递交
 1166	subsequent	随后的，后来的
 1167	subsequently	随后
-1168	subside	平息，减退
+1168	subside	v. 平息、减退、退去[ph]flood waters subside[ph]pain/anger/fear/wind subsides[st]The flood waters subsided after three days.
 1169	subsidiary	支流；子公司
 1170	subsidize	补助，资助
 1171	subsidy	补助金，津贴
@@ -1177,7 +1173,7 @@ index	term	definition
 1176	substantially	相当多地，大大地
 1177	substantiate	证实，加强
 1178	unsubstantiated	未被证实的
-1179	substantive	真实的，有实质的
+1179	substantive	adj. 实质性的、重大的[ph]substantive change/difference/issue/agreement[ph]make a substantive contribution[st]The two plans have no substantive difference.
 1180	substitute	代替
 1181		代替者，代替品
 1182	subterranean	地下的，地表下的
@@ -1192,7 +1188,7 @@ index	term	definition
 1191	subversive	颠覆性的，破坏性的
 1192	successive	连续的，相继的
 1193	succinct	简明的，简洁的
-1194	succumb	屈服，屈从
+1194	succumb	v. 屈服；不敌、死于[ph]succumb to temptation/pressure[ph]succumb to disease/injury[st]He succumbed to temptation and ate the cake.
 1195	sue	向...请求，请愿
 1196		提出诉讼，控告
 1197	pursue	追赶，追踪；从事
@@ -1266,7 +1262,7 @@ index	term	definition
 1265	suspense	悬念，情节
 1266	suspicious	可疑的；好猜疑的
 1267	suspicion	怀疑
-1268	sustain	维持；支撑
+1268	sustain	v. 维持、支撑；遭受[ph]sustain life/growth/an economy[ph]sustain an injury/damage/a loss[st]The soil can sustain a variety of crops.
 1269	sustained	持续不变的
 1270	sustenance	食物，生计
 1271	swallow	吞下，咽下
@@ -1320,8 +1316,7 @@ index	term	definition
 1319	tactile	触觉的；可触觉的
 1320	tag	给...加标签；添加，附加
 1321		标签，货签
-1322	taint	污点，瑕疵
-1323		污染；玷污
+1322	taint	n./v. 污点；玷污、污染[ph]taint sb's reputation/image[ph]be tainted by/with[st]The scandal tainted his reputation.
 1324	take into account	考虑到
 1325	talent	才能；天才
 1326	talented	有天才的，有才能的
@@ -1363,7 +1358,7 @@ index	term	definition
 1362	temporary	短暂的，暂时的
 1363	temporarily	临时
 1364	contemporary	当代的，同时代的
-1365	tempt	诱使
+1365	tempt	v. 引诱、诱使[ph]be tempted to do sth.[ph]tempt sb. into doing/to do[ph]a tempting offer[st]I was tempted to skip class, but I didn't.
 1366	tempting	诱惑人的
 1367	tenant	承租人，房客
 1368	tendency	趋势，倾向
@@ -1832,7 +1827,7 @@ index	term	definition
 1831	warranty	担保，保证；保修
 1832	warrantable	可证明为正确的，可证实的
 1833	warrior	战士，勇士
-1834	wary	小心翼翼的，机警小心的
+1834	wary	adj. 警惕的、谨慎的[ph]be wary of sb./sth.[ph]remain/stay wary[ph]a wary glance[st]Investors are wary of sudden market swings.
 1835	waste disposal	废物处理
 1836	watercourse	水道，河道
 1837	wavy	波状的，起浪的；波动的
@@ -1876,7 +1871,7 @@ index	term	definition
 1875	withdraw	撤退
 1876		收回，撤销
 1877	withdrawal	收回；撤退，退回
-1878	wither	（使）枯萎，凋谢
+1878	wither	v. 枯萎、凋谢；萎缩、消亡[ph]plants/flowers/crops wither[ph]wither away[ph]hopes/support wither[st]The crops withered in the drought.
 1879	withstand	承受，抵住
 1880	witness	目击；为...作证
 1881		证人

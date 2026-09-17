@@ -24,7 +24,7 @@ rhythmic	有节奏感的，有规律的（100%)[st]The dancers moved in perfect 
 rhythmical	有韵律的，有节奏的[st]The children clapped their hands in a rhythmical pattern, creating a playful beat.[st]The poet's words flowed in a rhythmical manner, captivating the listeners with their musicality.[syn]Rhythmical 是 rhythm 的形容词形式，与 rhythmic 含义相同。
 ridge	山脊、脊梁（70%）脊线、脊状物（30%）[ph]hike along the ridge[ph]The roof of the house had a ridge
 ridiculous	adj. 荒唐的，可笑的
-ridicule	嘲笑、讥讽（80%）被嘲笑、被讥讽（20%）v./n.[ph]ridicule the teacher/the idea[ph]became the target of ridicule[st]The politician faced widespread ridicule for his controversial statement
+ridicule	嘲笑、讥讽 v./n.[ph]ridicule sb./sth.[ph]ridicule sb. for sth.[ph]face/attract/draw ridicule[ph]become an object/target of ridicule[ph]hold sb./sth. up to ridicule[ph]widespread/public ridicule[ph]fear of ridicule[st]The politician faced widespread ridicule for his controversial statement.[st]She rarely spoke her mind out of fear of being ridiculed.
 rifle	步枪（70%）射击（30%） n./v.[ph]carried his rifle[ph]took aim with his rifle[ph]rifled through his bag/the old documents
 rift	裂缝、裂隙（50%）分裂、分歧（30%）不和、矛盾（20%)[st]The earthquake caused a deep rift in the ground[st]The political party experienced a rift within its members[st]The ongoing rift between the two neighbors has resulted in strained diplomatic relations.
 drift	漂移、漂流（40%）移动方向的变化（30%）飘移、移动（30%） n./v.[ph]drift of ocean currents[ph]drift of the conversation[ph]leaves drifted down[ph]boat started to drift[syn]Drift 更常用于描述物体或人无意识地随着外部力量或环境而移动或改变方向。Float 强调轻轻漂浮或飘浮在液体或空气中的移动。Glide 强调平稳地、优雅地移动或滑行，通常用于描述鸟或滑翔器的运动。Shift 指的是移动或变化位置、方向或态度，强调有意识地改变或转移。
@@ -73,7 +73,7 @@ rugged	高低不平的；崎岖的[mean]rugged 是一个形容词，通常用来
 ruin	破坏，毁灭
 ruins	废墟，遗迹
 rumble	发出低沉的隆隆声 v.[st]The thunder rumbled in the distance[st]The train rumbled past
-rupture	断裂，断绝 v./n.[st]The water pipe ruptured[ph]caused it to rupture[ph]rupture of their alliance
+rupture	破裂；决裂 v./n.[ph]ruptured appendix/tendon[ph]a ruptured pipe[ph]rupture a muscle[ph]a rupture with sb./sth.[ph]a rupture in relations[ph]rupture of an alliance[st]His appendix ruptured and he had to be rushed to hospital.[st]The scandal caused a rupture in relations between the two countries.
 rural	农村的，乡下的，田园的[ph]a quiet rural village
 urban	都市的
 rust	锈，生锈
@@ -100,7 +100,7 @@ infirmary	医院, 医务室<美>养老院, 救济院[mean]医务室，医院，�
 sandy	沙的，多沙的[ph]the sandy beach[ph]vast sandy deserts.[ph]Walking on the sandy path
 sanitation	卫生，卫生设施，公共卫生。指与保持环境清洁、预防疾病传播和提供健康条件相关的措施和设施。 n.[st]"Proper sanitation is essential for preventing the spread of infectious diseases." (翻译：适当的卫生对于预防传染病的传播至关重要。)[st]"The city invested in improving sanitation by installing more public trash bins." (翻译：该市投资改善卫生状况，增设了更多的公共垃圾桶。)[st]"The organization focuses on providing clean water and sanitation facilities to rural communities." (翻译：该组织致力于为农村社区提供清洁水和卫生设施。)
 sanitary	卫生的，清洁的，符合卫生标准的。用来形容与保持环境清洁和健康有关的条件、设施或措施。[ph]maintain sanitary conditions in food handling and preparation areas.[ph]The hospital follows strict sanitary protocols[ph]promote sanitary practices in public places.
-sap	n. 名词（树液）含义的使用频率约为总使用频率的 40%。名词（精力）含义的使用频率约为总使用频率的 30%。[st]The maple tree produces sweet sap that is used to make maple syrup.[st]She woke up feeling full of sap[syn]"sap" 和 "juice" 都可以指树液或液体，但 "sap" 通常用于指树木流出的液体，而 "juice" 更广泛地用于液体的含义，可以指果汁等。"sap" 和 "vitality" 都可以指精力或活力，但 "sap" 带有逐渐消耗的含义，而 "vitality" 更强调生命力或活力的程度。"sap" 和 "weaken"、"drain" 都可以表示削弱或耗尽，但 "sap" 强调逐渐削弱或耗尽。
+sap	n. 树液；v. 一点点把……耗掉、逐渐削弱[ph]sap sb's strength/energy/confidence[ph]sap sb of sth[ph]sap morale/will/resources[ph]maple sap[st]Constant criticism sapped her of confidence.[st]Taking care of her dying mother had sapped all her energy.[st]Maple syrup is obtained from the sap of the sugar maple tree.
 sapphire	蓝宝石[ph]a beautiful sapphire ring[st]The sky turned sapphire as the sun set over the horizon[st]The necklace was adorned with sapphire and diamond gemstones.
 sarcastic	讽刺的，挖苦的[ph]make a sarcastic comment about[st]Her sarcastic tone made it clear that she didn't believe a word he said[ph]The sarcastic remarks from the audience[syn]"sarcastic"、"mocking"和"sardonic" 都可以形容讽刺的特点。"sarcastic" 强调以嘲讽和挖苦的方式表达，通常带有一种尖刻的幽默感。"mocking" 更强调嘲笑或嘲弄的态度，可能没有"sarcastic" 那么尖酸刻薄。"sardonic" 更强调嘲讽的冷嘲热讽，带有一种冷峻、嘲弄的特点。
 satire	n. 讽刺；讽刺文学[ph]a satire on politics.[ph]a biting satire of[syn]"satire"、"mockery"、"parody"和"lampoon" 都可以指对事物进行讽刺或嘲笑。"satire" 是一种更广泛的文学或艺术形式，旨在通过讽刺和嘲笑来批评和揭示社会问题。"mockery" 强调对某人或某事进行嘲弄或讥讽。"parody" 是指模仿某种作品或风格，以幽默或嘲弄的方式呈现。"lampoon" 强调对某人或某事进行尖刻的讽刺和批评，通常是通过文学或艺术作品来实现。
@@ -300,7 +300,7 @@ skull	头骨
 skyrocket	猛涨，突增[mean]v. 表示迅速上升、飞涨，通常用来描述价格、数量、速度等的迅速增加[ph]caused its price to ~[ph]stock value ~
 skyscraper	摩天大楼[st]The city's skyline was dominated by impressive skyscrapers
 slab	（四边形的厚物质）板，片[mean]n. 表示厚板、块，通常指的是扁平的厚物体，常用于建筑、工程等领域。[ph]create a solid foundation slab for[ph]was made of a beautiful marble slab[ph]cut a thick slab of bread
-slander	诽谤 n.[ph]spreading slander about sb's reputation[ph]false slanderv.[ph]~ sb. by doing sth.[ph]~ sb. with false claims.
+slander	n./v. 诽谤（口头说假话毁人名誉；书面对应词是 libel）[ph]slander sb.[ph]sue sb. for slander[ph]spread slander about sb.[ph]a slander on sb./sth.[st]He sued the newspaper for slander.[st]Spreading slander about a colleague can destroy their reputation.
 slash	大量消减[ph]slash its workforce by half
 slender	苗条的；纤细的[mean]adj. 表示苗条的、纤细的、修长的，通常用来形容人体或物体的外貌特征。[ph]She had a slender figure[ph]The tower had a slender spire[ph]The model wore a slender dress
 slice	薄片；部分，份[mean]名词 "slice" 的使用频率约为 40%。[st]He cut a slice of cake for each guest[ph]slices of watermelon, kiwi, and pineapple.
@@ -379,10 +379,10 @@ wingspan	[空]翼展[ph]The wingspan of an albatross[ph]The engineer calculated 
 spare	多余的，备用的[ph]keep a spare tire
 sparingly	节俭地，保守地 adv.[mean]节俭地；保守地。这个副词用来描述行为的方式，指以节俭、保守的方式进行某事，尽量避免浪费或过度使用。[st]She uses her phone's battery sparingly[st]The artist sparingly added touches of color to the painting
 sparrow	麻雀
-spark	火花，火星[ph]The unexpected discovery sparked a wave of excitement
+spark	n. 火花；诱因；v. 引发、激起[ph]spark a debate/controversy/interest[ph]a spark of hope/interest[st]The discovery sparked a wave of excitement.
 sparse	稀少的；稀疏的
 sparsely	稀疏地，稀少地
-spawn	产卵，大量生育动词含义： 产卵；引发；导致。作为动词，指动物产卵或孵化出幼崽；引发或导致某种事件、现象或情况。 （频率：15%）名词含义： 鱼卵；大量产生物。作为名词，指鱼类的卵或大量产生的生物。也可以引申为大量产生的事物。 （频率：5%）[ph]The river was teeming with fish spawn
+spawn	n./v. 产卵；大量催生、引发[ph]salmon spawn[ph]fish spawn[ph]spawn a movement/industry/debate[st]The invention spawned a whole new industry.
 specialized	专业的，专门的[ph]specialized doctors[ph]pursue a specialized degree[ph]offers specialized training programs
 species	类群，种类
 subspecies	[生]亚种
@@ -394,7 +394,7 @@ specimen	标本，样品[mean]样本；标本。这个词用来指代用于研�
 speck	斑点[mean]小斑点；微小颗粒。这个词用来指非常小的斑点、颗粒或痕迹，通常是可以看到但很微小的物体。也可以用来描述微不足道的东西。 （频率：5%）[st]you could see every speck of color on the canvas[st]Even a speck of dust on the camera lens can affect the quality of the photograph,
 flyspeck	蝇粪留下的污点, 污点[mean]名词含义： 蒙蔽的地方；蒙蔽性错误。作为名词，指文本、文件或其他材料中的小错误或蒙蔽，可能是由于疏忽或细节问题引起的。也可以用来形容瑕疵或微小的错误。 （频率：较少见）[ph]it had a few flyspecks[ph]a few minor flyspecks动词含义： 搜索错误；找出问题。作为动词，指仔细搜索、查找错误或问题，尤其是那些细小的、容易被忽视的错误。 （频率：较少见）[ph]flyspecked the text[ph]flyspecking the layout of the magazine
 spectacle	奇观；展示，景象[mean]奇观；场面；眼镜。作为名词，可以指引人入胜的景象、令人震惊的场面，或者指眼镜这种用于矫正视力的光学工具。 （频率：10%）[ph]a breathtaking spectacle[ph]The concert was a visual and auditory spectacle[st]He put on his reading spectacles and began to peruse the newspaper (正式)眼镜，或老式有框架的眼镜
-spectacular	引人入胜的，壮观的[ph]sunset/spectacular stunts/light show
+spectacular	adj. 壮观的、惊人的[ph]a spectacular view/sunset/display[ph]spectacular success/failure[st]The canyon offers spectacular views at sunset.
 spectacularly	引人入胜地[ph]trick went spectacularly wrong[ph]The concert ended spectacularly
 spectator	参观者，观众[mean]观众；旁观者。这个词用来指观看活动、比赛、表演等的人，通常是作为旁观者而不是参与者。也可以用来描述旁观事件或情况的人。 （频率：10%）[ph]enthusiastic spectators[ph]The spectators were on their feet[ph]As a spectator of the ongoing debate
 spectrum	谱，光谱[mean]光谱；范围；领域。作为名词，可以指光线分解后的不同颜色，也可以引申为范围、区域或一系列不同的事物。在科学和其他领域中，也可以指代一种连续变化的范围或分布。 （频率：10%）[ph]it creates a beautiful spectrum of colors[ph]covered a wide spectrum

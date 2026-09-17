@@ -170,7 +170,7 @@ unquestioning	不加疑问的,不犹豫的 [ph] unquestioning obedience/acceptan
 unquestionably	无疑地，无可非议地
 request	请求，要求
 bequest	遗产，遗赠 [ph]make a bequest to sth.
-sequester	使退隐，使隔绝 [ph] sequester sb. [ph] be sequestered
+sequester	v. 使隔绝；封存[ph]be sequestered from[ph]sequester a jury[ph]sequester carbon/CO2[st]The jury was sequestered during the trial.[st]Forests sequester carbon from the atmosphere.
 equestrian	骑马的, (古罗马)市民特权阶层成员的, 骑士阶层的 n./v.
 quiescent	静止的，寂静的 [st] The volcano has been quiescent for several years.[st]The company's profits have remained quiescent in recent months. [syn] 区别: "quiescent"、"dormant"、"inactive"、"idle" 都表示静止或不活动的状态，但在使用上有些许区别。"quiescent" 强调事物处于静止、不活动或沉寂的状态，暗示可能是暂时的或暂停的状态。
 quilt	棉被 [syn]区别: "quilt"、"coverlet"、"bedspread" 都指的是用于盖在床上的覆盖物。然而，它们的材质、结构和用途可能有所不同。"quilt" 是由多层布料缝制而成的被子，通常有填充物，并且经过缝制以保持填充物的均匀分布。
@@ -452,7 +452,7 @@ retrospective	回顾的，怀旧的[ph]conducted a retrospective analysis of
 reveal	展现；揭露
 revere	尊崇，尊敬 [ph]he is revered for his wisdom[ph]revere someone/something[st]be revered as a sacred place.[st]revere sb. for sth.
 revered	可敬的，尊敬的[ph]a revered figure/place
-reverently	虔诚地
+reverently	虔诚地，恭敬地[ph]bow/kneel reverently[ph]handle/hold/place sth. reverently[ph]speak/talk reverently of[ph]look/gaze reverently at[ph]listen reverently[ph]reverently silent[st]He laid the wreath reverently in front of the memorial.
 irreverent	不尊敬的[ph]irreverent attitude towards[ph]irreverent remarks
 irreverence	不尊敬[ph]show irreverence towards sth.
 reverse	颠倒，翻转
