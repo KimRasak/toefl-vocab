@@ -257,6 +257,16 @@ chk('跳转落在目标词上', run('abGetList()[abIdx].w') === plainWord, run('
   // 单词词条链路不受影响
   const one = firstUrl('turnover');
   chk('单词词条仍走有道整词', /audio=turnover&/.test(one), one);
+
+  // 指定音源：acrid 换成词典真人录音，有道退为回退项
+  chk('页面登记了音源覆盖表', sA.run('Array.isArray(WORD_AUDIO_OVERRIDE.acrid)') === true
+    && sA.run('WORD_AUDIO_OVERRIDE.acrid.length') >= 1, sA.run('WORD_AUDIO_OVERRIDE.acrid.length'));
+  const ac = firstUrl('acrid');
+  chk('acrid 首选词典真人录音', /merriam-webster\.com\/audio\/prons/.test(ac), ac);
+  const acChain = JSON.parse(sA.run("JSON.stringify(ttsUrls('acrid'))"));
+  chk('acrid 链路仍保留有道回退', acChain.some(u => u.indexOf('dict.youdao.com') === 0
+    || u.indexOf('https://dict.youdao.com') === 0), acChain.length);
+  chk('未覆盖的词不受影响（arid 仍走有道）', /audio=arid&/.test(firstUrl('arid')), firstUrl('arid'));
 }
 
 // ── 场景八：持久化恢复（含越界序号夹回）───────────────────────

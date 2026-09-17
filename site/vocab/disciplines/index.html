@@ -711,6 +711,15 @@ if (gistToken && gistId) {
 let audioEl = null;
 let audioRequestId = 0;
 const ttsPreferred = new Map();   // word -> url that actually played
+// 个别词条有道的录音听感不好，这里指定更好的音源：词典真人录音优先。
+// 只是把这些 URL 排到链路最前，有道仍作回退，最后还有 google/baidu 整句兜底，
+// 所以外链哪天失效也只是退回原来的发音，不会变静音。
+const WORD_AUDIO_OVERRIDE = {
+  'acrid': [
+    'https://media.merriam-webster.com/audio/prons/en/us/mp3/a/acrid001.mp3',
+    'https://dictionary.cambridge.org/media/english/us_pron/a/acr/acrid/acrid.mp3',
+  ],
+};
 function ttsUrls(word) {
   const cached = ttsPreferred.get(word);
   const w = encodeURIComponent(word);
@@ -719,7 +728,8 @@ function ttsUrls(word) {
   // 先美音；部分词条（如 op art）只有英音录制，整句失败时回退英音再进分词
   const preferred = word === "ken" ? youdaoUk : youdaoUs;
   const second = word === "ken" ? youdaoUs : youdaoUk;
-  const chain = [preferred, second];
+  const better = WORD_AUDIO_OVERRIDE[String(word).trim().toLowerCase()] || [];
+  const chain = better.concat([preferred, second]);
   if (cached) return [cached].concat(chain.filter(u => u !== cached));
   return chain;
 }
