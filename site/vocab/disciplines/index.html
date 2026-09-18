@@ -719,6 +719,11 @@ const WORD_AUDIO_OVERRIDE = {
     'https://media.merriam-webster.com/audio/prons/en/us/mp3/a/acrid001.mp3',
     'https://dictionary.cambridge.org/media/english/us_pron/a/acr/acrid/acrid.mp3',
   ],
+  // 有道对带连字符的 down-hearted 返回 500，去掉连字符则有真人录音（美音优先，英音回退）。
+  'down-hearted': [
+    'https://dict.youdao.com/dictvoice?audio=downhearted&type=2',
+    'https://dict.youdao.com/dictvoice?audio=downhearted&type=1',
+  ],
 };
 function ttsUrls(word) {
   const cached = ttsPreferred.get(word);
