@@ -438,7 +438,6 @@ body.autobar-open{padding-bottom:var(--ab-pad, 148px)}
     <div class="focus-hint" id="focusHint" style="font-size:14px;color:var(--muted);opacity:.5">👆 点击此处揭晓答案</div>
     <div class="focus-word" id="focusWord">—</div>
   </div>
-  <div class="focus-mark" id="focusMark" title="标记难词">⭐</div>
   <div class="focus-def" id="focusDef" aria-live="polite"></div>
   <div class="focus-full" id="focusFull" aria-live="polite"></div>
   <div class="focus-pos" id="focusPos"></div>
@@ -450,6 +449,7 @@ body.autobar-open{padding-bottom:var(--ab-pad, 148px)}
     </div>
     <div class="focus-btns-sub">
       <button onclick="focusSpeak()">🔊 发音</button>
+      <button class="filter-btn" id="focusMarkBtn" onclick="focusMarkToggle()" title="标记/取消标记难词 (M)">⭐ 收藏</button>
       <button class="filter-btn" id="focusHardBtn" onclick="focusToggleHard()">⭐ 仅难词</button>
       <button class="filter-btn" id="focus2026Btn" onclick="focusToggle2026()">🆕 仅新词</button>
       <button onclick="focusClose()">✕ 退出</button>
@@ -1655,7 +1655,7 @@ const focusWordEl = document.getElementById('focusWord');
 const focusDefEl = document.getElementById('focusDef');
 const focusFullEl = document.getElementById('focusFull');
 const focusPosEl = document.getElementById('focusPos');
-const focusMarkEl = document.getElementById('focusMark');
+const focusMarkEl = document.getElementById('focusMarkBtn');
 const focusPlayBtn = document.getElementById('focusPlayBtn');
 
 function focusUpdateUI(keepRevealed) {
@@ -1666,7 +1666,9 @@ function focusUpdateUI(keepRevealed) {
   focusFullEl.textContent = w ? (w.f && w.f !== w.d ? w.f : '') : '';
   focusPosEl.textContent = list.length ? (abIdx + 1) + ' / ' + list.length : '';
   document.getElementById('focusTopic').textContent = w ? (WORD_TOPIC[w.w] || '') : '';
-  focusMarkEl.classList.toggle('marked', w ? hardWords.has(w.w) : false);
+  const isMarked = w ? hardWords.has(w.w) : false;
+  focusMarkEl.classList.toggle('active', isMarked);
+  focusMarkEl.textContent = isMarked ? '⭐ 已收藏' : '⭐ 收藏';
   focusPlayBtn.textContent = abPlaying ? '⏸ 暂停' : '▶ 连播';
   document.getElementById('focusHardBtn').classList.toggle('active', abHardOnly);
   document.getElementById('focus2026Btn').classList.toggle('active', ab2026Only);
@@ -1724,15 +1726,16 @@ function focusTogglePlay() {
   focusUpdateUI();
 }
 
-focusMarkEl.onclick = () => {
+function focusMarkToggle() {
   const list = abGetList();
   const w = list[abIdx];
   if (w) {
     if (hardWords.has(w.w)) hardWords.delete(w.w); else hardWords.add(w.w);
     saveHard();
-    focusUpdateUI();
+    focusUpdateUI(true);
   }
-};
+}
+focusMarkEl.onclick = focusMarkToggle;
 
 document.getElementById('abFocusBtn').onclick = () => { focusEnter(); };
 
@@ -1779,6 +1782,7 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); focusNext(); }
   else if (e.key === ' ') { e.preventDefault(); focusTogglePlay(); }
   else if (e.key === 's' || e.key === 'S') { e.preventDefault(); focusSpeak(); }
+  else if (e.key === 'm' || e.key === 'M') { e.preventDefault(); focusMarkToggle(); }
   else if (e.key === 'Enter' || e.key === 'r' || e.key === 'R') {
     e.preventDefault();
     const revealed = focusOverlay.classList.toggle('revealed');
