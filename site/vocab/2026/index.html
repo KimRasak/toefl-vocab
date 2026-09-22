@@ -346,13 +346,17 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .player-badge.state.st-pause { color: var(--warn); background: rgba(255,180,84,.14); }
 .player-badge.state.st-pause::before { background: var(--warn); }
 @keyframes pulse { 50% { opacity: .3; } }
-.player-help {
-  margin-left: auto; width: 26px; height: 26px; border-radius: 9px; flex-shrink: 0;
+.player-head-btns { margin-left: auto; display: flex; gap: 6px; flex-shrink: 0; }
+.phbtn {
+  width: 26px; height: 26px; border-radius: 9px;
   border: 1px solid var(--border); background: var(--card2); color: var(--muted);
   font-size: 13px; font-weight: 800; line-height: 1; font-family: ui-monospace, monospace;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color .15s, color .15s, background .15s;
 }
-.player-help:hover { border-color: var(--accent); color: var(--accent); }
-.pbtn:focus-visible, .pbtn2:focus-visible, .player-help:focus-visible,
+.phbtn:hover { border-color: var(--accent); color: var(--accent); }
+.phbtn.on { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.pbtn:focus-visible, .pbtn2:focus-visible, .phbtn:focus-visible,
 .seg button:focus-visible, .seq-jump-row input:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 2px;
 }
@@ -391,7 +395,6 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
   padding: 10px 0; color: var(--muted); text-align: center;
 }
 .cloak-ico { font-size: 32px; opacity: .75; line-height: 1; }
-.cloak-t1 { font-size: 15px; font-weight: 700; letter-spacing: .12em; }
 .cloak-t2 { font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
 
 .player-bar {
@@ -772,16 +775,18 @@ kbd {
       <!-- 播放器主卡：当前词 + 进度 + 走带控制 -->
       <section class="player" id="seq-player" hidden>
         <div class="player-head">
-          <span class="player-badge" id="seq-badge-cat">🎧</span>
           <span class="player-badge" id="seq-badge-fav" hidden>⭐ 仅收藏</span>
           <span class="player-badge state st-idle" id="seq-badge-state">待播放</span>
-          <button class="player-help" id="seq-help-btn" type="button" title="键盘快捷键（?）">?</button>
+          <span class="player-head-btns">
+            <button class="phbtn" id="seq-toggle-settings" type="button" title="播放设置（类别、停顿、听测、跳转）" aria-expanded="false">⚙</button>
+            <button class="phbtn" id="seq-toggle-words" type="button" title="词表（点任意行跳词）" aria-expanded="false">☰</button>
+            <button class="phbtn" id="seq-help-btn" type="button" title="键盘快捷键（?）">?</button>
+          </span>
         </div>
         <div class="player-stage" id="seq-stage" title="点击或按 Enter 显示单词与释义">
           <div class="player-face player-front">
             <div class="player-cloak">
               <span class="cloak-ico">🔒</span>
-              <span class="cloak-t1">听音猜词</span>
               <span class="cloak-t2">点击翻面查看<kbd class="kbd-hint">Enter</kbd></span>
             </div>
           </div>
@@ -816,7 +821,7 @@ kbd {
       </section>
 
       <!-- 播放设置 -->
-      <section class="seq-panel" id="seq-settings">
+      <section class="seq-panel" id="seq-settings" hidden>
         <div class="seq-field">
           <label for="seq-cat">类别</label>
           <select class="select" id="seq-cat"></select>
@@ -860,7 +865,7 @@ kbd {
         </div>
         <p class="seq-tip">点击进度条或词表任意一行可跳到该词。键盘：<kbd>空格</kbd> 播放/暂停 · <kbd>J</kbd>/<kbd>L</kbd> 或 <kbd>←</kbd>/<kbd>→</kbd> 切词 · <kbd>Enter</kbd> 翻面 · <kbd>S</kbd> 发音 · <kbd>R</kbd> 重读 · <kbd>F</kbd> 收藏 · <kbd>Esc</kbd> 停止 · <kbd>?</kbd> 全部快捷键。</p>
       </section>
-      <div class="seq-words" id="seq-words"></div>
+      <div class="seq-words" id="seq-words" hidden></div>
     </div>
 
     <!-- 同步 -->
@@ -1680,6 +1685,10 @@ function seqInit() {
       setTimeout(() => toast('已回到上次连读位置：第 ' + (target + 1) + ' / ' + seq.list.length + ' 词'), 0);
     }
   }
+  // 面板折叠状态恢复：配置与词表默认收起，只回显示用户上次主动展开的
+  const panels = settings.seqPanels || {};
+  seqTogglePanel('settings', panels.settings === true, true);
+  seqTogglePanel('words', panels.words === true, true);
 }
 
 // 分段控件（词间停顿 / 播完后）与隐藏 input（供 seqGapMs/seqStep 读取）保持同步
@@ -1972,8 +1981,6 @@ function renderSeqPanel() {
   }
   const favBadge = $('seq-badge-fav');
   if (favBadge) favBadge.hidden = !seqFavOnlyOn();
-  const catBadge = $('seq-badge-cat');
-  if (catBadge) catBadge.textContent = '🎧 ' + seqCatName() + (seq.list.length ? ' · ' + seq.list.length + ' 词' : '');
 
   const entry = seq.list[seq.idx];
   if (!entry) {
@@ -2051,6 +2058,29 @@ function seqSyncPill() {
   const w = entry && (!seqCloakOn() || seqRevealed) ? entry.w + ' ' : '';
   $('seq-pill-text').textContent = '🎧 ' + (entry ? w + (seq.idx + 1) + '/' + seq.list.length : '') +
     (seq.paused ? ' · 已暂停' : '');
+}
+
+// ⚙/☰ 面板折叠：配置与词表默认收起，播放器独占视线；展开状态随设置记忆。
+// which: 'settings' | 'words'；force 省略时取反；传布尔则为显式设定。
+function seqTogglePanel(which, force, skipSave) {
+  const el = which === 'settings' ? $('seq-settings') : $('seq-words');
+  const btn = which === 'settings' ? $('seq-toggle-settings') : $('seq-toggle-words');
+  if (!el) return false;
+  const open = typeof force === 'boolean' ? force : el.hidden;
+  el.hidden = !open;
+  if (btn) {
+    btn.classList.toggle('on', open);
+    if (btn.setAttribute) btn.setAttribute('aria-expanded', String(open));
+  }
+  if (open && which === 'words') seqHighlight();   // 展开词表时把当前行滚进容器可见区
+  if (!skipSave) {
+    settings.seqPanels = settings.seqPanels || {};
+    if (settings.seqPanels[which] !== open) {
+      settings.seqPanels[which] = open;
+      saveSettings();
+    }
+  }
+  return open;
 }
 
 function seqPlayCurrent() {
@@ -2168,6 +2198,8 @@ $('seq-next').addEventListener('click', () => { if (seq.on || seq.paused) seqSte
 $('seq-stop').addEventListener('click', seqStop);
 $('seq-speak').addEventListener('click', seqSpeakCurrent);
 $('seq-replay').addEventListener('click', seqReplay);
+$('seq-toggle-settings').addEventListener('click', function () { seqTogglePanel('settings'); });
+$('seq-toggle-words').addEventListener('click', function () { seqTogglePanel('words'); });
 $('seq-fav-btn').addEventListener('click', seqToggleFavCurrent);
 $('seq-goto-btn').addEventListener('click', () => seqGoto($('seq-goto').value));
 $('seq-goto').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); seqGoto($('seq-goto').value); } });
@@ -2287,6 +2319,7 @@ function seqHandleKey(e) {
     if (seq.on || seq.paused) seqStop();
   } else if (lower === 'g') {
     e.preventDefault();
+    if ($('seq-settings') && $('seq-settings').hidden) seqTogglePanel('settings', true);
     const g = $('seq-goto');
     if (g && typeof g.focus === 'function') {
       g.focus();

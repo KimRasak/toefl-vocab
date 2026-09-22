@@ -1065,6 +1065,28 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('待播放时 S 也可发音', audioLog.length > 0, audioLog.length);
   chk('发音不自动开始连读', run('seq.on') === false && run('seq.paused') === false);
 
+  // ── 34. 配置/词表默认收起、按需展开并记忆；播放器不剧透用途 ──
+  run("settings.seqPanels = undefined; seqInit()");
+  chk('设置面板默认隐藏', getEl('seq-settings').hidden === true);
+  chk('词表默认隐藏', getEl('seq-words').hidden === true);
+  chk('播放器头部无类别文字徽章', html.includes('id="seq-badge-cat"') === false);
+  chk('正面无「听音猜词」文案', html.includes('听音猜词') === false);
+  chk('头部有 ⚙/☰ 触发按钮', html.includes('id="seq-toggle-settings"') && html.includes('id="seq-toggle-words"'));
+  getEl('seq-toggle-settings').click();
+  chk('点 ⚙ 展开设置面板', getEl('seq-settings').hidden === false);
+  chk('展开状态写入设置', run("settings.seqPanels.settings") === true);
+  chk('⚙ 按钮亮起', getEl('seq-toggle-settings').classList.contains('on') === true);
+  getEl('seq-toggle-settings').click();
+  chk('再点 ⚙ 收起', getEl('seq-settings').hidden === true && run("settings.seqPanels.settings") === false);
+  getEl('seq-toggle-words').click();
+  chk('点 ☰ 展开词表', getEl('seq-words').hidden === false);
+  getEl('seq-toggle-words').click();
+  chk('再点 ☰ 收起词表', getEl('seq-words').hidden === true);
+  run("seqHandleKey({key:'g', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('G 键自动展开设置面板', getEl('seq-settings').hidden === false);
+  run("settings.seqCat = 'awl'; seqInit()");
+  chk('刷新后记住面板状态（开设置、关词表）', getEl('seq-settings').hidden === false && getEl('seq-words').hidden === true);
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
