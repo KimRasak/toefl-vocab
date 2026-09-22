@@ -376,6 +376,24 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .player-meaning { text-align: center; font-size: 16px; font-weight: 600; line-height: 1.5; margin-top: 8px; }
 .player-meta { text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px; }
 
+/* 听测翻面：默认盖住单词与释义，点击卡片 / Enter 翻面 */
+.player-stage { position: relative; display: grid; perspective: 900px; cursor: pointer; border-radius: 12px; }
+.player-face { grid-area: 1 / 1; transition: opacity .26s ease, transform .34s ease; }
+.player-front { display: flex; align-items: center; justify-content: center; min-height: 128px; }
+.player-back { opacity: 0; transform: rotateX(-50deg); pointer-events: none; }
+.player.revealed .player-back { opacity: 1; transform: none; pointer-events: auto; }
+.player.revealed .player-front { opacity: 0; transform: rotateX(50deg); pointer-events: none; }
+.player.no-cloak .player-front { display: none; }
+.player.no-cloak .player-back { opacity: 1; transform: none; pointer-events: auto; }
+.player.no-cloak .player-stage { cursor: default; }
+.player-cloak {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  padding: 10px 0; color: var(--muted); text-align: center;
+}
+.cloak-ico { font-size: 32px; opacity: .75; line-height: 1; }
+.cloak-t1 { font-size: 15px; font-weight: 700; letter-spacing: .12em; }
+.cloak-t2 { font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
+
 .player-bar {
   position: relative; height: 20px; margin-top: 14px; cursor: pointer;
   display: flex; align-items: center; touch-action: manipulation;
@@ -557,6 +575,7 @@ kbd {
   .player-eq i, .player-badge.state.st-on::before { animation: none; }
   .player-word.word-in { animation: none; }
   .player-bar-fill, .player-bar-fill::after { transition: none; }
+  .player-face { transition: none; }
 }
 
 /* Bottom nav */
@@ -756,13 +775,24 @@ kbd {
           <span class="player-badge state st-idle" id="seq-badge-state">待播放</span>
           <button class="player-help" id="seq-help-btn" type="button" title="键盘快捷键（?）">?</button>
         </div>
-        <div class="player-word-row">
-          <span class="player-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <div class="player-word" id="seq-now-word" lang="en">—</div>
+        <div class="player-stage" id="seq-stage" title="点击或按 Enter 显示单词与释义">
+          <div class="player-face player-front">
+            <div class="player-cloak">
+              <span class="cloak-ico">🔒</span>
+              <span class="cloak-t1">听音猜词</span>
+              <span class="cloak-t2">点击翻面查看<kbd class="kbd-hint">Enter</kbd></span>
+            </div>
+          </div>
+          <div class="player-face player-back">
+            <div class="player-word-row">
+              <span class="player-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <div class="player-word" id="seq-now-word" lang="en">—</div>
+            </div>
+            <div class="player-phon" id="seq-now-phon"></div>
+            <div class="player-meaning" id="seq-now-meaning"></div>
+            <div class="player-meta" id="seq-now-meta"></div>
+          </div>
         </div>
-        <div class="player-phon" id="seq-now-phon"></div>
-        <div class="player-meaning" id="seq-now-meaning"></div>
-        <div class="player-meta" id="seq-now-meta"></div>
         <div class="player-bar" id="seq-bar" role="slider" tabindex="0" aria-label="连读进度（点击跳词）" title="点击跳到该词">
           <div class="player-bar-fill" id="seq-bar-fill"></div>
         </div>
@@ -814,12 +844,18 @@ kbd {
             <span class="seq-switch"><input type="checkbox" id="seq-fav-only"><i></i></span>
           </label>
         </div>
+        <div class="seq-field">
+          <label class="seq-switch-row" for="seq-cloak">
+            <span><span>👂 听测模式</span><span class="seq-switch-sub">默认盖住，点击 / Enter 翻面</span></span>
+            <span class="seq-switch"><input type="checkbox" id="seq-cloak" checked><i></i></span>
+          </label>
+        </div>
         <div class="seq-field seq-jump-row">
           <label for="seq-goto">跳到</label>
           <input id="seq-goto" type="number" min="1" step="1" inputmode="numeric" placeholder="第 N 词">
           <button class="btn" id="seq-goto-btn" type="button">跳转<kbd class="kbd-hint">G</kbd></button>
         </div>
-        <p class="seq-tip">点击进度条或词表任意一行可跳到该词。键盘：<kbd>空格</kbd> 播放/暂停 · <kbd>J</kbd>/<kbd>L</kbd> 或 <kbd>←</kbd>/<kbd>→</kbd> 切词 · <kbd>R</kbd> 重读 · <kbd>F</kbd> 收藏 · <kbd>Esc</kbd> 停止 · <kbd>?</kbd> 全部快捷键。</p>
+        <p class="seq-tip">点击进度条或词表任意一行可跳到该词。键盘：<kbd>空格</kbd> 播放/暂停 · <kbd>J</kbd>/<kbd>L</kbd> 或 <kbd>←</kbd>/<kbd>→</kbd> 切词 · <kbd>Enter</kbd> 翻面 · <kbd>R</kbd> 重读 · <kbd>F</kbd> 收藏 · <kbd>Esc</kbd> 停止 · <kbd>?</kbd> 全部快捷键。</p>
       </section>
       <div class="seq-words" id="seq-words"></div>
     </div>
@@ -898,6 +934,7 @@ kbd {
       <div class="seq-help-item"><span>播放 / 暂停</span><span class="keys"><kbd>空格</kbd><kbd>K</kbd></span></div>
       <div class="seq-help-item"><span>上一个词</span><span class="keys"><kbd>J</kbd><kbd>←</kbd></span></div>
       <div class="seq-help-item"><span>下一个词</span><span class="keys"><kbd>L</kbd><kbd>→</kbd></span></div>
+      <div class="seq-help-item"><span>翻面显示 / 隐藏单词</span><span class="keys"><kbd>Enter</kbd></span></div>
       <div class="seq-help-item"><span>重读当前词</span><span class="keys"><kbd>R</kbd></span></div>
       <div class="seq-help-item"><span>收藏 / 取消收藏当前词</span><span class="keys"><kbd>F</kbd></span></div>
       <div class="seq-help-item"><span>停止连读</span><span class="keys"><kbd>Esc</kbd></span></div>
@@ -1612,6 +1649,7 @@ function seqInit() {
   if ([0, 500, 1000, 2000, 3000, 5000].indexOf(settings.seqGap) >= 0) $('seq-gap').value = String(settings.seqGap);
   if (settings.seqEnd === 'stop' || settings.seqEnd === 'loop') $('seq-end').value = settings.seqEnd;
   $('seq-fav-only').checked = !!settings.seqFavOnly;
+  if (settings.seqCloak === false) $('seq-cloak').checked = false;
   seqSyncSegs();
   seqSetCat(c);
 }
@@ -1757,6 +1795,35 @@ function seqFavOnlyOn() {
   return !!(el && el.checked);
 }
 
+// ─── 听测翻面：默认盖住单词与释义，点击卡片 / Enter 翻面，换词自动盖回 ───
+let seqRevealed = false;
+
+function seqCloakOn() {
+  const el = $('seq-cloak');
+  return !el || el.checked;   // 默认开启（听测）
+}
+
+// 把翻面状态落到 DOM（player 的 revealed / no-cloak class 与提示文案）
+function seqApplyReveal() {
+  const player = $('seq-player');
+  if (!player) return;
+  const cloak = seqCloakOn();
+  player.classList.toggle('no-cloak', !cloak);
+  player.classList.toggle('revealed', !cloak || seqRevealed);
+  const stage = $('seq-stage');
+  if (stage) stage.title = (cloak && !seqRevealed) ? '点击或按 Enter 显示单词与释义' : '点击隐藏单词与释义';
+  seqSyncPill();
+}
+
+// 单击卡片 / Enter：翻面（听测关闭时无需翻面）
+function seqFlip() {
+  const entry = seq.list[seq.idx];
+  if (!entry) return;
+  if (!seqCloakOn()) return;
+  seqRevealed = !seqRevealed;
+  seqApplyReveal();
+}
+
 function seqGoto(n) {
   if (!seq.list.length) { toast('请先选择连读范围'); return; }
   const i = (parseInt(n, 10) || 0) - 1;
@@ -1871,6 +1938,7 @@ function renderSeqPanel() {
       wEl.classList.remove('word-in');
       void wEl.offsetWidth;   // 重触发入场动画（无 reflow 环境下无副作用）
       wEl.classList.add('word-in');
+      seqRevealed = false;    // 换词自动盖回（听测）
     }
   }
   const phon = $('seq-now-phon');
@@ -1894,6 +1962,7 @@ function renderSeqPanel() {
   }
 
   seqRenderFav();
+  seqApplyReveal();
 }
 
 function seqHighlight() {
@@ -1907,7 +1976,8 @@ function seqHighlight() {
   seqSyncPill();
 }
 
-// 连读进行中切到其他标签页：浮动胶囊显示进度，点击返回连读页（暂停中也保留入口）
+// 连读进行中切到其他标签页：浮动胶囊显示进度，点击返回连读页（暂停中也保留入口）。
+// 听测未翻面时不显示当前词，避免胶囊剧透。
 function seqSyncPill() {
   const pill = $('seq-pill');
   if (!pill) return;
@@ -1915,7 +1985,8 @@ function seqSyncPill() {
   pill.hidden = !show;
   if (!show) return;
   const entry = seq.list[seq.idx];
-  $('seq-pill-text').textContent = '🎧 ' + (entry ? entry.w + ' ' + (seq.idx + 1) + '/' + seq.list.length : '') +
+  const w = entry && (!seqCloakOn() || seqRevealed) ? entry.w + ' ' : '';
+  $('seq-pill-text').textContent = '🎧 ' + (entry ? w + (seq.idx + 1) + '/' + seq.list.length : '') +
     (seq.paused ? ' · 已暂停' : '');
 }
 
@@ -2048,6 +2119,16 @@ $('seq-bar').addEventListener('click', e => {
 $('seq-bar').addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); seqSeekRatio(0); }
 });
+// 听测翻面：点击卡片中心区翻面（选中文本时不翻，便于复制单词）
+$('seq-stage').addEventListener('click', () => {
+  if (window.getSelection && String(window.getSelection()).length > 0) return;
+  seqFlip();
+});
+$('seq-cloak').addEventListener('change', e => {
+  settings.seqCloak = !!e.target.checked;
+  saveSettings();
+  seqApplyReveal();
+});
 // 分段控件：点选「词间停顿」「播完后」
 $('seq-gap-seg').addEventListener('click', e => {
   const b = e.target && e.target.closest ? e.target.closest('button[data-gap]') : null;
@@ -2097,7 +2178,7 @@ $('seq-pill-text').addEventListener('click', () => switchTab('seq'));
 $('seq-pill-stop').addEventListener('click', seqStop);
 
 // ─── 连读键盘快捷键 ───
-// 空格/K 播放暂停 · J/← 上一个 · L/→ 下一个 · R 重读 · F 收藏 · Esc 停止 · G 跳到 · ? 帮助
+// 空格/K 播放暂停 · J/← 上一个 · L/→ 下一个 · Enter 翻面 · R 重读 · F 收藏 · Esc 停止 · G 跳到 · ? 帮助
 // 连读播放中任何标签页都可用；正在输入框打字时不触发。
 function seqKeyTyping(t) {
   if (!t || !t.tagName) return false;
@@ -2115,6 +2196,12 @@ function seqHandleKey(e) {
   if (key === ' ' || key === 'Spacebar' || lower === 'k') {
     e.preventDefault();
     if (seq.on) seqPause(); else seqStart();
+  } else if (key === 'Enter') {
+    // 按钮聚焦时 Enter 由按钮自身响应（原生点击），不再翻面
+    const t = e.target;
+    if (t && t.tagName && String(t.tagName).toLowerCase() === 'button') return;
+    e.preventDefault();
+    seqFlip();
   } else if (key === 'ArrowLeft' || lower === 'j') {
     e.preventDefault();
     if (seq.on || seq.paused) seqStep(-1); else seqStart();

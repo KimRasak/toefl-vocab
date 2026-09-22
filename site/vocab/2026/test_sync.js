@@ -959,6 +959,38 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run("seqHandleKey({key:'Escape', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
   chk('Esc 关闭快捷键面板', getEl('seq-help').hidden === true);
 
+  // ── 30. 听测翻面：默认盖住单词与释义，点击/Enter 翻面，换词自动盖回 ──
+  run("seqSetCat('awl')");
+  run('seqStart()');
+  chk('听测模式默认盖住单词', run('seqRevealed') === false);
+  chk('未翻面时播放器无 revealed', getEl('seq-player').classList.contains('revealed') === false);
+  run("seqHandleKey({key:'Enter', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('Enter 翻面显示单词', run('seqRevealed') === true);
+  chk('翻面后播放器亮 revealed', getEl('seq-player').classList.contains('revealed') === true);
+  run("seqHandleKey({key:'Enter', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BUTTON'}, preventDefault(){}})");
+  chk('按钮聚焦时 Enter 不翻面（由按钮响应）', run('seqRevealed') === true);
+  run("seqHandleKey({key:'Enter', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('再按 Enter 盖回', run('seqRevealed') === false);
+  getEl('seq-stage').click();
+  chk('点击卡片区域翻面', run('seqRevealed') === true);
+  run('seqJump(10)');
+  chk('换词自动盖回听测', run('seqRevealed') === false);
+  run("$('seq-cloak').checked = false");
+  run('seqApplyReveal()');
+  chk('关闭听测后常显单词', getEl('seq-player').classList.contains('revealed') === true);
+  run("$('seq-cloak').checked = true");
+  run('seqApplyReveal()');
+  chk('重开听测盖回', getEl('seq-player').classList.contains('revealed') === false);
+  const cloakWord = run("seq.list[seq.idx].w");
+  run("switchTab('dashboard')");
+  chk('未翻面时胶囊不剧透单词', getEl('seq-pill-text').textContent.indexOf(cloakWord) < 0,
+    getEl('seq-pill-text').textContent);
+  run("seqHandleKey({key:'Enter', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('翻面后胶囊显示当前词', getEl('seq-pill-text').textContent.indexOf(cloakWord) >= 0,
+    getEl('seq-pill-text').textContent);
+  run('seqStop()');
+  run("switchTab('seq')");
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
