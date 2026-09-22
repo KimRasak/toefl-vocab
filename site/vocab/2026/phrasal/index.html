@@ -531,6 +531,7 @@ kbd {
 .seq-help-item .keys { display: flex; gap: 4px; }
 
 .seq-words {
+  position: relative;   /* 作为 offsetParent：行 offsetTop 相对本容器，内部滚动计算才准 */
   background: var(--card); border: 1px solid var(--border); border-radius: 16px;
   max-height: calc(100dvh - 460px); min-height: 140px;
   overflow-y: auto; -webkit-overflow-scrolling: touch;
@@ -2002,6 +2003,18 @@ function renderSeqPanel() {
   seqApplyReveal();
 }
 
+// 只滚词表容器内部、绝不牵动页面：播放器是主视觉，进词时页面不能跳。
+// （scrollIntoView 会连页面一起滚，词表在首屏之下时会把播放器顶出视口）
+function seqScrollRowIntoView(row) {
+  const box = $('seq-words');
+  if (!box || !row || typeof row.offsetTop !== 'number') return;
+  const top = row.offsetTop;
+  const bottom = top + (typeof row.offsetHeight === 'number' ? row.offsetHeight : 0);
+  const view = typeof box.clientHeight === 'number' ? box.clientHeight : 0;
+  if (top < box.scrollTop + 8) box.scrollTop = Math.max(0, top - 8);
+  else if (bottom > box.scrollTop + view - 8) box.scrollTop = bottom - view + 8;
+}
+
 function seqHighlight() {
   const active = seq.on || seq.paused;
   seqEnsureVisible(seq.idx);
@@ -2009,10 +2022,7 @@ function seqHighlight() {
     r.classList.toggle('current', i === seq.idx);              // 待播放时也标出当前位置
     r.classList.toggle('playing', active && i === seq.idx);
   });
-  const row = seqRows[seq.idx];
-  if (row && typeof row.scrollIntoView === 'function') {
-    try { row.scrollIntoView({ block: 'nearest' }); } catch (e) {}
-  }
+  seqScrollRowIntoView(seqRows[seq.idx]);
   seqSyncPill();
 }
 

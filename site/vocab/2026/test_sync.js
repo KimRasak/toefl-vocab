@@ -1009,6 +1009,16 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run("settings.seqCat = 'awl'; seqInit()");
   chk('停止后刷新回到第 1 词', run('seq.idx') === 0, run('seq.idx'));
 
+  // ── 32. 进词只滚词表内部，绝不牵动页面（专心看播放器时视图不跳） ──
+  chk('高亮不再用 scrollIntoView（会连页面一起滚）', !/scrollIntoView/.test(String(run('seqHighlight'))));
+  run("var __b = $('seq-words'); __b.scrollTop = 0; __b.clientHeight = 300; " +
+      "seqRows[5].offsetTop = 500; seqRows[5].offsetHeight = 40; seqScrollRowIntoView(seqRows[5]);");
+  chk('当前行在下方越界时容器内滚动跟随', run("$('seq-words').scrollTop") === 248,
+    run("$('seq-words').scrollTop"));
+  run("seqRows[5].offsetTop = 100; seqScrollRowIntoView(seqRows[5]);");
+  chk('当前行在上方越界时滚回可见', run("$('seq-words').scrollTop") === 92,
+    run("$('seq-words').scrollTop"));
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
