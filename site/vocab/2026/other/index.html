@@ -2282,6 +2282,7 @@ function seqKeyTyping(t) {
 
 function seqHandleKey(e) {
   if (!e || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.repeat) return;                    // 长按不重复触发：忽略键盘自动重复（按住空格不会来回切播放/暂停）
   if (e.isComposing) return;               // 输入法组字中
   if (seqKeyTyping(e.target)) return;      // 正在输入
   if (!(seq.on || seq.paused || currentTab === 'seq')) return;

@@ -1087,6 +1087,22 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run("settings.seqCat = 'awl'; seqInit()");
   chk('刷新后记住面板状态（开设置、关词表）', getEl('seq-settings').hidden === false && getEl('seq-words').hidden === true);
 
+  // ── 35. 长按不重复触发：忽略键盘自动重复（e.repeat） ──
+  const evNoRep = "{key:' ', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}}";
+  const evRep = "{key:' ', repeat:true, metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}}";
+  run('seqStop()');
+  run("seqHandleKey(" + evRep + ")");
+  chk('长按空格的重复事件不切换播放', run('seq.on') === false);
+  run("seqHandleKey(" + evNoRep + ")");
+  chk('单次按下正常开始播放', run('seq.on') === true);
+  run("seqHandleKey(" + evRep + ")");
+  chk('按住期间的重复事件仍不切换', run('seq.on') === true);
+  run("seqHandleKey(" + evNoRep + ")");
+  chk('松开后再按恢复切换（暂停）', run('seq.on') === false);
+  run("seqHandleKey(" + evNoRep + ")");
+  chk('再次按下恢复播放', run('seq.on') === true);
+  run('seqStop()');
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
