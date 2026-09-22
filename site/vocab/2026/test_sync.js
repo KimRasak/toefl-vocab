@@ -1042,6 +1042,29 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('当前行在上方越界时滚回可见', run("$('seq-words').scrollTop") === 92,
     run("$('seq-words').scrollTop"));
 
+  // ── 33. 🔊 发音按钮与 S 键：单独朗读当前词，连读中按下暂停在此词 ──
+  chk('发音按钮在 HTML 内', html.includes('id="seq-speak"'));
+  run("seqSetCat('awl')");
+  run('seqStart()');
+  run('seqJump(50)');
+  audioLog = [];
+  run('seqSpeakCurrent()');
+  chk('发音发起当前词朗读请求', audioLog.length > 0 && TTS_URL.test(audioLog[audioLog.length - 1]),
+    audioLog[audioLog.length - 1] || '无');
+  chk('连读中发音 = 暂停在当前词', run('seq.on') === false && run('seq.paused') === true);
+  chk('发音保留连读位置', run('seq.idx') === 50, run('seq.idx'));
+  audioLog = [];
+  run("seqHandleKey({key:'s', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('S 键触发发音', audioLog.length > 0, audioLog.length);
+  chk('S 键发音后仍暂停不推进', run('seq.on') === false && run('seq.idx') === 50,
+    run('seq.on') + '/' + run('seq.idx'));
+  // 待播放（非连读）状态：S 也可发音，且不自动开始连读
+  run('seqStop()');
+  audioLog = [];
+  run("seqHandleKey({key:'s', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('待播放时 S 也可发音', audioLog.length > 0, audioLog.length);
+  chk('发音不自动开始连读', run('seq.on') === false && run('seq.paused') === false);
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');

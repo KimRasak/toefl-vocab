@@ -437,7 +437,7 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
   background: var(--accent); border-color: var(--accent); color: #fff;
 }
 .pbtn-main:hover { background: var(--accent2); border-color: var(--accent2); }
-.player-subcontrols { display: flex; gap: 8px; margin-top: 10px; }
+.player-subcontrols { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .pbtn2 {
   flex: 1; min-height: 40px; border-radius: 12px; font-size: 13px; font-weight: 600;
   background: var(--card2); border: 1px solid var(--border); color: var(--muted);
@@ -808,7 +808,8 @@ kbd {
           <button class="pbtn" id="seq-next" type="button" title="下一个词（L / →）"><span class="pico">⏭</span><kbd class="kbd-hint">L</kbd></button>
         </div>
         <div class="player-subcontrols">
-          <button class="pbtn2" id="seq-replay" type="button" title="重读当前词（R）"><span class="pico">↻</span>重读<kbd class="kbd-hint">R</kbd></button>
+          <button class="pbtn2" id="seq-speak" type="button" title="朗读当前词一次（S）· 连读中按下会暂停在此词"><span class="pico">🔊</span>发音<kbd class="kbd-hint">S</kbd></button>
+          <button class="pbtn2" id="seq-replay" type="button" title="重读当前词，读完继续连读（R）"><span class="pico">↻</span>重读<kbd class="kbd-hint">R</kbd></button>
           <button class="pbtn2" id="seq-fav-btn" type="button" title="收藏当前词（F）"><span class="pico">☆</span>收藏<kbd class="kbd-hint">F</kbd></button>
           <button class="pbtn2 stop" id="seq-stop" type="button" title="停止并回到开头（Esc）" hidden><span class="pico">⏹</span>停止<kbd class="kbd-hint">Esc</kbd></button>
         </div>
@@ -857,7 +858,7 @@ kbd {
           <input id="seq-goto" type="number" min="1" step="1" inputmode="numeric" placeholder="第 N 词">
           <button class="btn" id="seq-goto-btn" type="button">跳转<kbd class="kbd-hint">G</kbd></button>
         </div>
-        <p class="seq-tip">点击进度条或词表任意一行可跳到该词。键盘：<kbd>空格</kbd> 播放/暂停 · <kbd>J</kbd>/<kbd>L</kbd> 或 <kbd>←</kbd>/<kbd>→</kbd> 切词 · <kbd>Enter</kbd> 翻面 · <kbd>R</kbd> 重读 · <kbd>F</kbd> 收藏 · <kbd>Esc</kbd> 停止 · <kbd>?</kbd> 全部快捷键。</p>
+        <p class="seq-tip">点击进度条或词表任意一行可跳到该词。键盘：<kbd>空格</kbd> 播放/暂停 · <kbd>J</kbd>/<kbd>L</kbd> 或 <kbd>←</kbd>/<kbd>→</kbd> 切词 · <kbd>Enter</kbd> 翻面 · <kbd>S</kbd> 发音 · <kbd>R</kbd> 重读 · <kbd>F</kbd> 收藏 · <kbd>Esc</kbd> 停止 · <kbd>?</kbd> 全部快捷键。</p>
       </section>
       <div class="seq-words" id="seq-words"></div>
     </div>
@@ -937,7 +938,8 @@ kbd {
       <div class="seq-help-item"><span>上一个词</span><span class="keys"><kbd>J</kbd><kbd>←</kbd></span></div>
       <div class="seq-help-item"><span>下一个词</span><span class="keys"><kbd>L</kbd><kbd>→</kbd></span></div>
       <div class="seq-help-item"><span>翻面显示 / 隐藏单词</span><span class="keys"><kbd>Enter</kbd></span></div>
-      <div class="seq-help-item"><span>重读当前词</span><span class="keys"><kbd>R</kbd></span></div>
+      <div class="seq-help-item"><span>发音当前词（暂停连读）</span><span class="keys"><kbd>S</kbd></span></div>
+      <div class="seq-help-item"><span>重读当前词（继续连读）</span><span class="keys"><kbd>R</kbd></span></div>
       <div class="seq-help-item"><span>收藏 / 取消收藏当前词</span><span class="keys"><kbd>F</kbd></span></div>
       <div class="seq-help-item"><span>停止连读</span><span class="keys"><kbd>Esc</kbd></span></div>
       <div class="seq-help-item"><span>跳到第 N 词</span><span class="keys"><kbd>G</kbd></span></div>
@@ -1918,6 +1920,15 @@ function seqReplay() {
   seqPlayCurrent();
 }
 
+// 🔊 发音：单独朗读当前词一次（不推进）。连读中按下 = 暂停并停在该词，便于精听。
+// 与 ↻ 重读的区别：重读播完继续连读；发音播完停在当前词。
+function seqSpeakCurrent() {
+  const entry = seq.list[seq.idx];
+  if (!entry) { toast('请先选择连读范围'); return; }
+  if (seq.on) seqPause();   // 连读中：暂停在当前词（保留位置），避免两路声音打架
+  speak(entry.w);           // 不传 onDone：播完不推进
+}
+
 // 进度条按比例跳词（0 = 第 1 词，1 = 末词）
 function seqSeekRatio(r) {
   if (!seq.list.length) return;
@@ -2153,6 +2164,7 @@ $('seq-start').addEventListener('click', () => seq.on ? seqPause() : seqStart())
 $('seq-prev').addEventListener('click', () => { if (seq.on || seq.paused) seqStep(-1); else seqStart(); });
 $('seq-next').addEventListener('click', () => { if (seq.on || seq.paused) seqStep(1); else seqStart(); });
 $('seq-stop').addEventListener('click', seqStop);
+$('seq-speak').addEventListener('click', seqSpeakCurrent);
 $('seq-replay').addEventListener('click', seqReplay);
 $('seq-fav-btn').addEventListener('click', seqToggleFavCurrent);
 $('seq-goto-btn').addEventListener('click', () => seqGoto($('seq-goto').value));
@@ -2228,7 +2240,7 @@ $('seq-pill-text').addEventListener('click', () => switchTab('seq'));
 $('seq-pill-stop').addEventListener('click', seqStop);
 
 // ─── 连读键盘快捷键 ───
-// 空格/K 播放暂停 · J/← 上一个 · L/→ 下一个 · Enter 翻面 · R 重读 · F 收藏 · Esc 停止 · G 跳到 · ? 帮助
+// 空格/K 播放暂停 · J/← 上一个 · L/→ 下一个 · Enter 翻面 · S 发音 · R 重读 · F 收藏 · Esc 停止 · G 跳到 · ? 帮助
 // 连读播放中任何标签页都可用；正在输入框打字时不触发。
 function seqKeyTyping(t) {
   if (!t || !t.tagName) return false;
@@ -2258,6 +2270,9 @@ function seqHandleKey(e) {
   } else if (key === 'ArrowRight' || lower === 'l') {
     e.preventDefault();
     if (seq.on || seq.paused) seqStep(1); else seqStart();
+  } else if (lower === 's') {
+    e.preventDefault();
+    seqSpeakCurrent();
   } else if (lower === 'r') {
     e.preventDefault();
     seqReplay();
