@@ -991,6 +991,24 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run('seqStop()');
   run("switchTab('seq')");
 
+  // ── 31. 连读进度记忆：pagehide 软停保位置，刷新（重跑 seqInit）后回到上次词 ──
+  run("seqSetCat('awl')");
+  run('seqStart()');
+  run('seqJump(120)');
+  run('seqPageHide()');   // 模拟刷新：pagehide 只静音，不归零
+  chk('刷新前软停不归零', run('seq.idx') === 120 && run('seq.on') === false, run('seq.idx'));
+  chk('连读进度已写入设置', run("(settings.seqPosByCat || {}).awl.idx") === 120);
+  run("settings.seqCat = 'awl'; seqInit()");
+  chk('刷新后恢复到上次词', run('seq.idx') === 120, run('seq.idx'));
+  chk('恢复后不自动播放', run('seq.on') === false && run('seq.paused') === false);
+  chk('当前词行标记 current', run("seqRows[120] && seqRows[120].classList.contains('current')") === true);
+  chk('恢复后播放器显示该词', getEl('seq-now-word').textContent === run("seq.list[120].w"),
+    getEl('seq-now-word').textContent);
+  // ⏹ 停止 = 回到开头，进度归 0
+  run('seqStop()');
+  run("settings.seqCat = 'awl'; seqInit()");
+  chk('停止后刷新回到第 1 词', run('seq.idx') === 0, run('seq.idx'));
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');

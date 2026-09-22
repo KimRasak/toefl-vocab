@@ -557,7 +557,8 @@ kbd {
   background: color-mix(in srgb, var(--accent) 10%, var(--card));
   box-shadow: inset 3px 0 0 var(--accent);
 }
-.seq-item.playing .n { color: var(--accent); font-weight: 700; }
+.seq-item.playing .n, .seq-item.current .n { color: var(--accent); font-weight: 700; }
+.seq-item.current { background: color-mix(in srgb, var(--accent) 4%, var(--card)); }
 /* 连读进行中切到其他标签页：底部浮动胶囊，点击回连读页，⏹ 停止 */
 .seq-pill {
   position: fixed; left: 50%; transform: translateX(-50%);
@@ -1653,7 +1654,29 @@ function seqInit() {
   $('seq-fav-only').checked = !!settings.seqFavOnly;
   if (settings.seqCloak === false) $('seq-cloak').checked = false;
   seqSyncSegs();
+  // 先读取该类别上次连读到的词（seqSetCat 会渲染并回写进度，必须先取）
+  const saved = (settings.seqPosByCat || {})[c];
   seqSetCat(c);
+  // 恢复上次位置：优先按存下的单词定位（词表变动/子路径页也稳），
+  // 找不到再按下标兜底；只回到位置，不自动播放。
+  if (saved && seq.list.length) {
+    let target = -1;
+    if (saved.w) {
+      for (let i = 0; i < seq.list.length; i++) {
+        if (seq.list[i].w === saved.w) { target = i; break; }
+      }
+    }
+    if (target < 0 && typeof saved.idx === 'number') {
+      target = Math.max(0, Math.min(saved.idx, seq.list.length - 1));
+    }
+    if (target > 0) {
+      seq.idx = target;
+      seqEnsureVisible(seq.idx);
+      renderSeqPanel();
+      seqHighlight();
+      setTimeout(() => toast('已回到上次连读位置：第 ' + (target + 1) + ' / ' + seq.list.length + ' 词'), 0);
+    }
+  }
 }
 
 // 分段控件（词间停顿 / 播完后）与隐藏 input（供 seqGapMs/seqStep 读取）保持同步
@@ -1903,12 +1926,26 @@ function seqSeekRatio(r) {
   seqJump(Math.round(ratio * (seq.list.length - 1)));
 }
 
+// 记住每个类别的连读进度（当前词下标 + 单词），刷新后回到上次位置
+function seqPosSave() {
+  if (!seq.cat) return;
+  const pos = settings.seqPosByCat || (settings.seqPosByCat = {});
+  const entry = seq.list[seq.idx];
+  const w = entry ? entry.w : '';
+  const cur = pos[seq.cat];
+  if (!cur || cur.idx !== seq.idx || cur.w !== w) {
+    pos[seq.cat] = { idx: seq.idx, w: w };
+    saveSettings();
+  }
+}
+
 function renderSeqPanel() {
   const btn = $('seq-start');
   const player = $('seq-player');
   const stop = $('seq-stop');
   const panel = document.querySelector('.seq-panel');
   if (!btn || !player) return;
+  seqPosSave();
   const active = seq.on || seq.paused;
   btn.textContent = seq.on ? '⏸ 暂停' : (seq.paused ? '▶ 继续连读' : '▶ 开始连读');
   btn.title = seq.on ? '暂停（空格）' : '播放（空格）';
@@ -1970,9 +2007,12 @@ function renderSeqPanel() {
 function seqHighlight() {
   const active = seq.on || seq.paused;
   seqEnsureVisible(seq.idx);
-  seqRows.forEach((r, i) => r.classList.toggle('playing', active && i === seq.idx));
+  seqRows.forEach((r, i) => {
+    r.classList.toggle('current', i === seq.idx);              // 待播放时也标出当前位置
+    r.classList.toggle('playing', active && i === seq.idx);
+  });
   const row = seqRows[seq.idx];
-  if (active && row && typeof row.scrollIntoView === 'function') {
+  if (row && typeof row.scrollIntoView === 'function') {
     try { row.scrollIntoView({ block: 'nearest' }); } catch (e) {}
   }
   seqSyncPill();
@@ -2234,7 +2274,19 @@ function seqHandleKey(e) {
 }
 document.addEventListener('keydown', seqHandleKey);
 
-document.addEventListener('pagehide', () => { if (seq.on || seq.paused) seqStop(); stopSpeech(); });
+// 刷新/关闭页面前：只静音并保存当前位置，不把进度归零（seqStop 会回开头）
+function seqPageHide() {
+  if (seq.on || seq.paused) {
+    seqToken++;
+    seq.on = false;
+    seq.paused = false;
+    clearTimeout(seq.timer);
+    seq.timer = 0;
+    seqPosSave();
+  }
+  stopSpeech();
+}
+document.addEventListener('pagehide', seqPageHide);
 
 // Unlock audio on first user touch/click (mobile Safari requirement)
 // Explicit 🔊 button/card-row clicks are the supported audio gesture.
