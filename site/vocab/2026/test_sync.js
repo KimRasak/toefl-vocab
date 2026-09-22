@@ -898,6 +898,67 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run('seqStop()');
   chk('连读不改写学习进度', JSON.stringify(run('progress')) === progressBefore);
 
+  // ── 29. 连读 UI 重构：分段控件 / 重读 / 收藏 / 进度条 / 键盘快捷键 ──
+  run("seqSetCat('awl')");
+  run('seqStart()');
+  chk('分段设置词间停顿', run("seqSetGap(2000); $('seq-gap').value") === '2000');
+  chk('分段设置播完后=循环', run("seqSetEnd('loop'); $('seq-end').value") === 'loop');
+  chk('分段设置播完后=停止', run("seqSetEnd('stop'); $('seq-end').value") === 'stop');
+  run('seqStop()');
+
+  // 播放器主卡：进度/收藏/状态徽章随播放更新
+  run('seqStart()');
+  chk('播放中显示进度条位置', /^1 \/ \d+$/.test(String(getEl('seq-pos').textContent).trim()),
+    getEl('seq-pos').textContent);
+  chk('播放中播放器亮 is-playing', getEl('seq-player').classList.contains('is-playing') === true);
+  run('seqStop()');
+  chk('停止后播放器熄灭 is-playing', getEl('seq-player').classList.contains('is-playing') === false);
+
+  // ↻ 重读当前词
+  run('seqStart()');
+  run('seqJump(3)');
+  audioLog = [];
+  run('seqReplay()');
+  chk('重读发起当前词发音', audioLog.length > 0 && TTS_URL.test(audioLog[audioLog.length - 1]),
+    audioLog[audioLog.length - 1] || '无');
+  chk('重读保持当前词不变', run('seq.idx') === 3, run('seq.idx'));
+  run('seqStop()');
+
+  // ⭐ 收藏当前词（F）：只写当前词的 fav，不改 box/计数
+  run('seqStart()');
+  run('seqJump(2)');
+  const favWord = run("seq.list[seq.idx].w");
+  run('seqToggleFavCurrent()');
+  chk('F 键收藏当前词', run("getRec('" + favWord + "').fav") === true);
+  run('seqToggleFavCurrent()');
+  chk('再次 F 取消收藏', run("getRec('" + favWord + "').fav") === false);
+  run('seqStop()');
+
+  // 进度条按比例跳词
+  run('seqStart()');
+  const seekIdx = Math.round((awlAll - 1) * 0.5);
+  run('seqSeekRatio(0.5)');
+  chk('进度条按比例跳到中间词', run('seq.idx') === seekIdx, run('seq.idx') + '/' + seekIdx);
+  run('seqStop()');
+
+  // 键盘快捷键（空格/J/L/Esc + 输入框守卫）。事件对象用内联字面量在 VM 里构造。
+  run("seqHandleKey({key:' ', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('空格键开始连读', run('seq.on') === true);
+  run("seqHandleKey({key:' ', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('空格键暂停连读', run('seq.on') === false && run('seq.paused') === true);
+  run("seqHandleKey({key:'l', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('L 键进下一词并继续播放', run('seq.on') === true && run('seq.idx') === 1,
+    run('seq.on') + '/' + run('seq.idx'));
+  run("seqHandleKey({key:'Escape', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('Esc 键停止连读', run('seq.on') === false && run('seq.idx') === 0);
+  run("seqHandleKey({key:' ', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'INPUT'}, preventDefault(){}})");
+  chk('输入框内按空格不触发连读', run('seq.on') === false);
+  // ? 键帮助浮层开关
+  run("seqHandleKey({key:'?', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('? 键打开快捷键面板', getEl('seq-help').hidden === false);
+  run("seqHandleKey({key:'Escape', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('Esc 关闭快捷键面板', getEl('seq-help').hidden === true);
+
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
   console.log('\n' + (results.length - failed.length) + '/' + results.length + ' 通过');
