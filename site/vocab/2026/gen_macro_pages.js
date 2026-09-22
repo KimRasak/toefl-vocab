@@ -28,7 +28,13 @@ const MACROS = [
   ['speaking', '口语表达'], ['other', '其他'],
 ];
 
-const ser = e => '{' + ['w', 'p', 'm', 'c', 'i', 'r'].map(k => JSON.stringify(k) + ':' + JSON.stringify(e[k])).join(',') + '}';
+// at（词条级音频文本覆盖）/ ac（有道分块）为可选字段：仅存在时序列化，
+// 否则 JSON.stringify(undefined) 会产出非法的 "at:undefined" 字面量。
+// 此前固定六字段会静默丢弃 at/ac——子路径页上「With all due respect」等
+// 词条的音频文本覆盖与分块连播全部失效，等于白写。
+const ser = e => '{' + ['w', 'p', 'm', 'c', 'i', 'r', 'at', 'ac']
+  .filter(k => e[k] !== undefined)
+  .map(k => JSON.stringify(k) + ':' + JSON.stringify(e[k])).join(',') + '}';
 
 let total = 0;
 for (const [key, name] of MACROS) {

@@ -343,6 +343,24 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   const truncated = resp.filter(e => run('cleanForSpeech(' + JSON.stringify(e.w) + ')') !== e.w);
   chk('应答刺激句 TTS 不被截断', truncated.length === 0, truncated.slice(0, 3).map(e => e.w).join(' ; '));
 
+  // 17b. 音符词（entrée / açai）有道 US 音源坏了，词条级 at 覆盖到无音符拼写
+  // 有道 dictvoice 对 audio=entrée&type=2 返回的是逐字母读音（"Enter E"，160kbps 音档），
+  // audio=entree&type=2 才是与剑桥词典同源的 ˈɒntreɪ 规范录音（açai 同理："A.A.I" 坏档）。
+  // 单词卡远程链路第一候选就是有道 US，必须用 at 把请求文本换成无音符拼写。
+  chk('entrée 词条带 at 音频文本覆盖', run("VOCAB.find(e => e.w === 'entrée').at") === 'entree',
+    run("VOCAB.find(e => e.w === 'entrée').at"));
+  chk('açai 词条带 at 音频文本覆盖', run("VOCAB.find(e => e.w === 'açai').at") === 'acai',
+    run("VOCAB.find(e => e.w === 'açai').at"));
+  audioLog = [];
+  run("speak('entrée')");
+  chk('entrée 发音请求改用无音符拼写', audioLog.length > 0
+    && audioLog[0] === 'https://dict.youdao.com/dictvoice?audio=entree&type=2', audioLog[0] || '无');
+  audioLog = [];
+  run("speak('açai')");
+  chk('açai 发音请求改用无音符拼写', audioLog.length > 0
+    && audioLog[0] === 'https://dict.youdao.com/dictvoice?audio=acai&type=2', audioLog[0] || '无');
+  chk('at 覆盖不改显示词', run("VOCAB.find(e => e.w === 'entrée').w") === 'entrée');
+
   // 18. 整句卡走小字号排版，普通单词卡不受影响
   chk('应答句判定为整句卡', run('isSentenceCard(' + JSON.stringify(resp[0]) + ')') === true, resp[0].w);
   chk('普通单词不判定为整句卡', run("isSentenceCard({ w: 'aisle' })") === false);
@@ -696,6 +714,11 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     pd.forEach(e => {
       const m = MAINVOCAB[e.i];
       if (!m || m.w !== e.w) pageProblems.push(key + ':i错位 ' + e.w + '@' + e.i);
+      // at/ac 必须逐字随行：gen_macro_pages.js 曾固定六字段序列化，会静默丢掉
+      // at（音频文本覆盖）与 ac（有道分块），子路径页上的覆盖全部失效
+      if (JSON.stringify(e.at) !== JSON.stringify(m && m.at)
+        || JSON.stringify(e.ac) !== JSON.stringify(m && m.ac))
+        pageProblems.push(key + ':at/ac丢失 ' + e.w);
     });
     const patchOk = /wordToIndex\[e\.w\] = e\.i/.test(ph) && /byFullIdx\[idx\]/.test(ph)
       && /const MACRO_SUBPATH = \{\};/.test(ph);
