@@ -970,8 +970,8 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   run("seqHandleKey({key:' ', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
   chk('空格键暂停连读', run('seq.on') === false && run('seq.paused') === true);
   run("seqHandleKey({key:'l', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
-  chk('L 键进下一词并继续播放', run('seq.on') === true && run('seq.idx') === 1,
-    run('seq.on') + '/' + run('seq.idx'));
+  chk('暂停中 L 切到下一词且保持暂停', run('seq.on') === false && run('seq.paused') === true && run('seq.idx') === 1,
+    run('seq.on') + '/' + run('seq.paused') + '/' + run('seq.idx'));
   run("seqHandleKey({key:'Escape', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
   chk('Esc 键停止连读', run('seq.on') === false && run('seq.idx') === 0);
   run("seqHandleKey({key:' ', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'INPUT'}, preventDefault(){}})");
@@ -1101,6 +1101,37 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('松开后再按恢复切换（暂停）', run('seq.on') === false);
   run("seqHandleKey(" + evNoRep + ")");
   chk('再次按下恢复播放', run('seq.on') === true);
+  run('seqStop()');
+
+  // ── 36. 切词不触发连读：←/→/J/L 与 ⏮⏭ 只换位置，空格/▶ 才开连读 ──
+  run("seqSetCat('awl')");
+  run('seqStop()');
+  audioLog = [];
+  run("seqHandleKey({key:'ArrowRight', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('待播放按 → 只换位置不启动连读', run('seq.on') === false && run('seq.idx') === 1,
+    run('seq.on') + '/' + run('seq.idx'));
+  chk('切词后单独朗读该词一次', audioLog.length > 0 && TTS_URL.test(audioLog[audioLog.length - 1]),
+    audioLog[audioLog.length - 1] || '无');
+  chk('切词后无自动进词（仍待播放）', run('seq.on') === false && run('seq.paused') === false);
+  getEl('seq-next').click();
+  chk('⏭ 按钮待播放时也只换位置', run('seq.idx') === 2 && run('seq.on') === false,
+    run('seq.idx') + '/' + run('seq.on'));
+  getEl('seq-prev').click();
+  chk('⏮ 按钮回退一个词', run('seq.idx') === 1 && run('seq.on') === false);
+  // 连读中切词 = 跳到该词继续连读
+  run('seqStart()');
+  run("seqHandleKey({key:'ArrowRight', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('连读中切词仍连读', run('seq.on') === true && run('seq.idx') === 2,
+    run('seq.on') + '/' + run('seq.idx'));
+  // 末词边界：暂停态不再被重置回开头
+  run("$('seq-end').value = 'stop'");
+  run('seqPause()');
+  run("seqJump(" + (run("seq.list.length") - 1) + ")");
+  run('seqPause()');
+  run("seqHandleKey({key:'ArrowRight', metaKey:false, ctrlKey:false, altKey:false, isComposing:false, target:{tagName:'BODY'}, preventDefault(){}})");
+  chk('暂停态在末词按 → 提示不越界（不重置）',
+    run('seq.idx') === run("seq.list.length - 1") && run('seq.paused') === true,
+    run('seq.idx') + '/' + run('seq.paused'));
   run('seqStop()');
 
   console.log(results.join('\n'));

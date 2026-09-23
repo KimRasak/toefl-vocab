@@ -2111,7 +2111,11 @@ function seqGapWait() {
 }
 
 // 步进（上一个/下一个/自动推进）。越过末尾时按「播完后」设置收尾。
+// ⏮/⏭ 与 J/L（←/→）切词：连读中 = 跳到该词继续连读；
+// 未连读（待播放/已暂停）= 只换位置 + 朗读该词一次，绝不启动连读（不自动进词）。
+// 想开连读请按 空格/▶；暂停态切词保持暂停，空格再续播。
 function seqStep(delta) {
+  if (!seq.list.length) { toast('请先选择连读范围'); return; }
   seqToken++;
   stopSpeech();
   clearTimeout(seq.timer);
@@ -2119,19 +2123,27 @@ function seqStep(delta) {
   let ni = seq.idx + delta;
   if (ni >= seq.list.length) {
     if ($('seq-end').value === 'loop') ni = 0;
-    else {
+    else if (seq.on) {
       seq.on = false; seq.paused = false; seq.idx = 0;
       renderSeqPanel();
       seqHighlight();
       toast('「' + seqCatName() + '」已连读完（共 ' + seq.list.length + ' 词）');
       return;
+    } else {
+      toast('已是最后一个词');
+      return;
     }
   }
   if (ni < 0) ni = 0;
   seq.idx = ni;
-  seq.on = true;        // 暂停中手动切词（⏮/⏭/J/L）= 从该词续播
-  seq.paused = false;
-  seqPlayCurrent();
+  if (seq.on) {
+    seqPlayCurrent();                    // 连读中切词 = 跳到该词，读完继续
+  } else {
+    renderSeqPanel();                    // 未连读：换位置 + 单独朗读一次（同 S 发音）
+    seqHighlight();
+    const entry = seq.list[seq.idx];
+    if (entry) speak(entry.w);           // 无 onDone：播完停在当前词，连读仍未启动
+  }
 }
 
 function seqStart() {
@@ -2193,8 +2205,8 @@ function seqChoose(cat) {
 }
 
 $('seq-start').addEventListener('click', () => seq.on ? seqPause() : seqStart());
-$('seq-prev').addEventListener('click', () => { if (seq.on || seq.paused) seqStep(-1); else seqStart(); });
-$('seq-next').addEventListener('click', () => { if (seq.on || seq.paused) seqStep(1); else seqStart(); });
+$('seq-prev').addEventListener('click', () => seqStep(-1));
+$('seq-next').addEventListener('click', () => seqStep(1));
 $('seq-stop').addEventListener('click', seqStop);
 $('seq-speak').addEventListener('click', seqSpeakCurrent);
 $('seq-replay').addEventListener('click', seqReplay);
@@ -2301,10 +2313,10 @@ function seqHandleKey(e) {
     seqFlip();
   } else if (key === 'ArrowLeft' || lower === 'j') {
     e.preventDefault();
-    if (seq.on || seq.paused) seqStep(-1); else seqStart();
+    seqStep(-1);
   } else if (key === 'ArrowRight' || lower === 'l') {
     e.preventDefault();
-    if (seq.on || seq.paused) seqStep(1); else seqStart();
+    seqStep(1);
   } else if (lower === 's') {
     e.preventDefault();
     seqSpeakCurrent();
