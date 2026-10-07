@@ -186,6 +186,12 @@ main{padding:12px 16px;max-width:800px;margin:0 auto}
 }
 .ab-toggle:hover{opacity:.85}
 .witem.playing{border-color:var(--accent);background:var(--accent2);background:rgba(76,141,255,.08)}
+/* 回到上次位置时，目标词条短暂高亮一下 */
+@keyframes seenPulse{
+  from{background:rgba(76,141,255,.30);border-color:var(--accent)}
+  to{background:var(--card);border-color:var(--border)}
+}
+.witem.seen-restore{animation:seenPulse 2.4s ease-out both}
 body.autobar-open{padding-bottom:var(--ab-pad, 148px)}
 
 /* Jump feedback toast */
@@ -490,6 +496,28 @@ function toggleHard(word) {
   render(searchInput.value);
 }
 loadHard();
+
+// ─── 上次看到的单词（跨会话恢复位置）───
+// 浏览列表时滚动停在哪、连播/专注走到哪、点开哪个词，都把那个词的
+// 全局序号写进 localStorage；关掉浏览器（手机/电脑均适用）后重新
+// 打开页面，会读出它、展开所在学科并定位过去，回到上一次看到的单词。
+// localStorage 由浏览器长期保存，与难词标记同一套存储，不需要登录。
+const SEEN_KEY = 'merged_last_seen';
+function seenRecordExists() {
+  try { return !!localStorage.getItem(SEEN_KEY); } catch(e) { return false; }
+}
+function saveSeen(gi, focus) {
+  try {
+    const w = ALL_WORDS[gi];
+    if (!w) return;
+    localStorage.setItem(SEEN_KEY, JSON.stringify({ g: gi, w: w.w, focus: !!focus, ts: Date.now() }));
+  } catch(e) {}
+}
+// 连播/专注模式每动一步：当前词即“上次看到的词”
+function seenSaveAutoplay(focus) {
+  const w = abGetList()[abIdx];
+  if (w && WORD_IDX[w.w] != null) saveSeen(WORD_IDX[w.w], focus);
+}
 
 // ─── 跨页面共享的 Gist 凭证 ───────────────────────────────
 // 这一段在 toefl-2026-vocab/index.html 与 merged-by-discipline/index.html
@@ -1002,6 +1030,9 @@ function render(query) {
   }
   html += `<span class="hard-count">已标记 ${hardCnt} 个难词</span>`;
   html += `<button class="filter-btn" onclick="syncOpen()">☁️ 云同步</button>`;
+  if (seenRecordExists()) {
+    html += `<button class="filter-btn" onclick="restoreLastSeen(true)" title="回到上一次看到的单词">📍 上次位置</button>`;
+  }
   if (hardCnt > 0) {
     html += `<button class="filter-btn" onclick="if(confirm('确定清空所有难词标记？')){hardWords.clear();saveHard();showHardOnly=false;render(searchInput.value)}">清空标记</button>`;
   }
@@ -1257,6 +1288,8 @@ function abSave() {
       only2026: ab2026Only
     }));
   } catch(e) {}
+  // 位置写入的同时，把当前词记为“上次看到的词”（供重开页面时恢复）
+  try { seenSaveAutoplay(focusOpen); } catch(e) {}
 }
 
 function speakAsync(word) {
@@ -1713,6 +1746,14 @@ document.addEventListener('click', (e) => {
   const item = e.target.closest('.witem');
   if (item && mainEl.contains(item) && !e.target.closest('button')) {
     expandItem(item);
+    // 点开哪个词，哪个词就是“上次看到的词”；连播条也跟着对齐，按 ▶ 从它继续
+    const word = item.dataset.word;
+    if (word && WORD_IDX[word] != null) {
+      saveSeen(WORD_IDX[word], false);
+      const list = abGetList();
+      const idx = list.findIndex(x => x.w === word);
+      if (idx >= 0 && idx !== abIdx) { abIdx = idx; abSave(); abUpdateUI(); }
+    }
   }
 }, true);
 
@@ -1758,6 +1799,8 @@ function focusEnter() {
   abBar.style.display = 'none';
   abToggleBtn.style.display = 'none';
   focusUpdateUI();
+  // 记住“上次停在专注模式”：重开浏览器后直接回到这里继续
+  try { seenSaveAutoplay(true); } catch(e) {}
 }
 
 function focusClose() {
@@ -1771,6 +1814,8 @@ function focusClose() {
   document.body.classList.add('autobar-open');
   abUpdateUI();
   abSyncPad();
+  // 退出了专注模式：下次从列表恢复，不再自动进专注
+  try { seenSaveAutoplay(false); } catch(e) {}
 }
 
 function focusSpeak() {
@@ -1861,6 +1906,81 @@ document.addEventListener('keydown', (e) => {
   }
   else if (e.key === 'Escape') { focusClose(); }
 });
+
+// ─── 列表浏览位置记录 ───
+// 滚动停下约 0.4 秒后，把视口顶部第一个露出的词条记为“上次看到的词”；
+// 手机浏览器随时可能被切到后台甚至直接杀掉，退后台/离开页面的瞬间也立即记一次。
+let seenScrollTimer = null;
+function seenTrackFromScroll() {
+  if (focusOpen) return;
+  const header = document.querySelector('header');
+  const top = (header ? header.offsetHeight : 55) + 8;
+  const items = document.querySelectorAll('.witem');
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].getBoundingClientRect().bottom > top) {
+      const gi = WORD_IDX[items[i].dataset.word];
+      if (gi != null) saveSeen(gi, false);
+      return;
+    }
+  }
+}
+window.addEventListener('scroll', () => {
+  if (seenScrollTimer) return;
+  seenScrollTimer = setTimeout(() => { seenScrollTimer = null; seenTrackFromScroll(); }, 400);
+}, { passive: true });
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') seenTrackFromScroll();
+});
+window.addEventListener('pagehide', seenTrackFromScroll);
+
+// ─── 打开页面时回到上一次看到的单词 ───
+// 读取 merged_last_seen：展开所在学科（含越过“显示更多”边界）、滚动定位、
+// 高亮提示，并把连播条/专注模式也同步到这个词。上一次是停在专注模式时
+// 关掉的浏览器，则直接回到专注模式。
+function restoreLastSeen(manual) {
+  // 用 #secN 锚点直接打开时尊重锚点，自动恢复不抢滚动（手动点击仍可用）
+  if (!manual) {
+    try { if (/^#sec\d+$/i.test(location.hash || '')) return; } catch(e) {}
+  }
+  let rec = null;
+  try { rec = JSON.parse(localStorage.getItem(SEEN_KEY) || 'null'); } catch(e) {}
+  if (!rec) { if (manual) abFlashMsg('还没有上次位置的记录'); return; }
+  // 词表更新后序号可能漂移：优先按词定位，其次按序号
+  let gi = -1;
+  if (rec.w && WORD_IDX[rec.w] != null) gi = WORD_IDX[rec.w];
+  else if (Number.isInteger(rec.g) && rec.g >= 0 && rec.g < ALL_WORDS.length) gi = rec.g;
+  const w = gi >= 0 ? ALL_WORDS[gi] : null;
+  if (!w) { if (manual) abFlashMsg('上次的位置已失效（词表有更新）'); return; }
+  // 搜索状态下先清空，保证目标词可见
+  if (searchInput.value) { searchInput.value = ''; render(''); }
+  // 展开所在学科并渲染到包含这个词的长度，然后定位 + 短暂高亮
+  revealWord(w);
+  let el = null;
+  document.querySelectorAll('.witem').forEach(x => { if (!el && x.dataset.word === w.w) el = x; });
+  if (el) {
+    try { el.scrollIntoView({ block: 'center' }); } catch(e) {}
+    el.classList.add('seen-restore');
+    setTimeout(() => { el.classList.remove('seen-restore'); }, 2600);
+    // 学科区块是 content-visibility:auto，滚进视口后才按真实高度布局，
+    // 首次定位可能被低估的文档高度截住；连补几次滚动，确保词真的进入视口中央。
+    const recenter = () => {
+      const r = el.getBoundingClientRect();
+      if (r.top >= 60 && r.bottom <= window.innerHeight - 60) return;   // 已在视口内不再打扰
+      try { el.scrollIntoView({ block: 'center' }); } catch(e) {}
+    };
+    requestAnimationFrame(() => requestAnimationFrame(recenter));
+    setTimeout(recenter, 300);
+    setTimeout(recenter, 900);
+  }
+  // 连播条/专注模式同步到这个词：按 ▶ / 🎯 就从它继续
+  const list = abGetList();
+  const li = list.findIndex(x => x.w === w.w);
+  if (li >= 0 && li !== abIdx) { abIdx = li; abSave(); abUpdateUI(); }
+  abFlashMsg('📍 已回到上次看到的单词 #' + (gi + 1) + '：' + w.w + '（' + (WORD_TOPIC[w.w] || '') + '）');
+  // 上次关浏览器时还停在专注模式：直接回到专注模式继续
+  if (rec.focus && !focusOpen) { try { focusEnter(); } catch(e) {} }
+}
+restoreLastSeen();
 </script>
 </body>
 </html>

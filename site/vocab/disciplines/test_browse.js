@@ -83,7 +83,8 @@ function boot(ls) {
       addEventListener: () => {},
       removeEventListener: () => {},
       documentElement: htmlEl,
-      body: new El('body'),
+      // body 上的 --ab-pad 由 abSyncPad 用 setProperty 写入，桩也要支持
+      body: Object.assign(new El('body'), { style: { setProperty() {}, removeProperty() {} } }),
     },
   };
   sandbox.window = sandbox;
@@ -281,6 +282,61 @@ chk('跳转落在目标词上', run('abGetList()[abIdx].w') === plainWord, run('
   chk('恢复后列表仍是 🆕 过滤', s2.run('abGetList().every(w => w.s.indexOf("2026") >= 0)') === true);
   chk('恢复后按钮高亮', s2.reg['ab2026Only'].classList.contains('active') === true);
   chk('恢复后连播词与列表一致', s2.reg['abWord'].textContent === s2.run('abGetList()[abIdx].w'));
+}
+
+// ── 场景九：上次看到的单词（关掉浏览器后重开仍能回去）──────────
+{
+  // 干净环境：启动时不写“上次位置”，也不渲染「上次位置」按钮
+  const lsC = memStore();
+  const sC = boot(lsC);
+  chk('干净环境启动不写 merged_last_seen', lsC.getItem('merged_last_seen') === null);
+  chk('干净环境不渲染「上次位置」按钮', sC.reg['main'].innerHTML.indexOf('上次位置') < 0);
+
+  // 连播/专注每动一步 → 当前词写入 merged_last_seen
+  sC.run('abIdx = 42; abSave()');
+  let rec = JSON.parse(lsC.getItem('merged_last_seen') || '{}');
+  chk('abSave 记录当前词序号', rec.g === 42 && rec.w === sC.run('ALL_WORDS[42].w'));
+  chk('abSave 记录默认非专注模式', rec.focus === false);
+  sC.run('focusEnter()');
+  rec = JSON.parse(lsC.getItem('merged_last_seen') || '{}');
+  chk('进入专注模式记录 focus = true', rec.focus === true && rec.g === 42);
+  sC.run('focusNext()');
+  rec = JSON.parse(lsC.getItem('merged_last_seen') || '{}');
+  chk('专注模式前移记录新词', rec.g === 43, rec.g);
+  sC.run('focusClose()');
+  rec = JSON.parse(lsC.getItem('merged_last_seen') || '{}');
+  chk('退出专注模式记录 focus = false', rec.focus === false);
+
+  // 选一个深处的词做恢复目标：学科默认折叠、组内位置也超过默认 80 条
+  const target = sC.run('(function(){for(let g=1000;g<ALL_WORDS.length;g++){const w=ALL_WORDS[g];const ti=DATA.findIndex(t=>t.words.some(x=>x.w===w.w));const pos=DATA[ti].words.findIndex(x=>x.w===w.w);if(ti>=5&&pos>=100)return{g:g,ti:ti,pos:pos,w:w.w};}return null;})()');
+
+  // 模拟“重开浏览器”：全新 boot，只有 localStorage 里的 merged_last_seen 延续
+  const lsR = memStore();
+  lsR.setItem('merged_last_seen', JSON.stringify({ g: target.g, w: target.w, focus: false, ts: Date.now() }));
+  const sR = boot(lsR);
+  const rR = sR.run;
+  chk('恢复：所在学科已展开', rR(`collapsed[${target.ti}]`) === false);
+  chk('恢复：组内渲染长度覆盖该词', rR(`(secLimit[${target.ti}]||0) >= ${target.pos + 1}`), rR(`secLimit[${target.ti}]`));
+  chk('恢复：词条渲染进列表', sR.reg['main'].innerHTML.indexOf(`data-word="${target.w}"`) >= 0);
+  chk('恢复：连播位置同步到该词', rR('abIdx') === target.g, rR('abIdx'));
+  chk('恢复：merged_autoplay 同步写入', JSON.parse(lsR.getItem('merged_autoplay') || '{}').idx === target.g);
+  const toastR = sR.reg['abToast'] ? sR.reg['abToast'].textContent : '';
+  chk('恢复：toast 提示上次的词', toastR.indexOf('上次') >= 0 && toastR.indexOf(target.w) >= 0, toastR);
+  chk('恢复：渲染「上次位置」按钮', sR.reg['main'].innerHTML.indexOf('上次位置') >= 0);
+
+  // 上次停在专注模式：重开后自动进入专注模式，停在原词
+  const lsF = memStore();
+  lsF.setItem('merged_last_seen', JSON.stringify({ g: target.g, w: target.w, focus: true, ts: Date.now() }));
+  const sF = boot(lsF);
+  chk('上次在专注模式：重开自动进入', sF.run('focusOpen') === true);
+  chk('专注恢复停在原词', sF.run('abGetList()[abIdx].w') === target.w);
+
+  // 失效记录（词表更新 / 越界序号）：安全忽略，不进专注、位置不动
+  const lsB = memStore();
+  lsB.setItem('merged_last_seen', JSON.stringify({ g: 999999, w: 'no-such-word-xyz', focus: true, ts: Date.now() }));
+  const sB = boot(lsB);
+  chk('失效记录安全忽略：不进专注模式', sB.run('focusOpen') === false);
+  chk('失效记录安全忽略：位置不动', sB.run('abIdx') === 0);
 }
 
 // ── 汇总 ─────────────────────────────────────────────────────
