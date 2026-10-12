@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<title>2026 PDF 五表净增词</title>
+<style>
+  :root {
+    --bg:#0f1115; --card:#1a1d24; --card2:#22262f; --fg:#e6e8eb;
+    --muted:#8b93a1; --accent:#4c8dff; --accent2:#2a5fc0; --border:#2a2f3a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f4f6fa; --card:#fff; --card2:#eef1f6; --fg:#1a1d24; --muted:#5f6672; --accent:#2a5fc0; --accent2:#1c4499; --border:#dde2eb; }
+  }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    min-height:100vh; min-height:100dvh;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  header {
+    position:sticky; top:0; z-index:20; background:var(--bg);
+    padding:12px 16px 10px; padding-top:max(12px,env(safe-area-inset-top));
+    border-bottom:1px solid var(--border);
+  }
+  .top-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .title { font-weight:800; font-size:18px; flex:0 0 auto; }
+  .stats { font-size:12px; color:var(--muted); margin-top:6px; line-height:1.6; }
+  .home-btn, .sync-btn {
+    background:var(--card); border:1px solid var(--border); color:var(--accent);
+    border-radius:10px; padding:6px 10px; font-size:12px; cursor:pointer;
+    text-decoration:none; font-weight:600; white-space:nowrap;
+  }
+  .sync-btn { margin-left:auto; }
+  main { padding:12px 16px; max-width:800px; margin:0 auto; }
+
+  /* 搜索 + 过滤 */
+  .search-wrap {
+    display:flex; align-items:center; gap:8px;
+    background:var(--card); border:1px solid var(--border);
+    border-radius:10px; padding:6px 10px; margin-bottom:10px;
+  }
+  .search-wrap input { flex:1; border:0; outline:0; background:transparent; color:var(--fg); font-size:14px; }
+  .search-wrap .cnt { font-size:12px; color:var(--muted); white-space:nowrap; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .chip {
+    background:var(--card); border:1px solid var(--border); border-radius:10px;
+    padding:5px 10px; font-size:12px; cursor:pointer; color:var(--fg);
+    transition:border-color .15s; white-space:nowrap;
+  }
+  .chip:hover { border-color:var(--accent); }
+  .chip.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .chip.active .n { color:#fff; }
+  .chip .n { color:var(--muted); font-size:11px; margin-left:3px; }
+
+  /* 词行 */
+  .row {
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:12px 14px; margin-bottom:8px; cursor:pointer;
+    transition:border-color .15s;
+  }
+  .row:hover { border-color:var(--accent); }
+  .row.known { opacity:.55; }
+  .row-head { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .word { font-size:17px; font-weight:700; }
+  .ph { font-size:12px; color:var(--muted); }
+  .src-badges { display:flex; gap:4px; margin-left:auto; align-items:center; }
+  .sb {
+    font-size:10px; font-weight:700; border-radius:5px; padding:1px 6px;
+    border:1px solid currentColor; opacity:.95;
+  }
+  .sb.L { color:#4c8dff; } .sb.W { color:#ffd60a; } .sb.C { color:#34c759; }
+  .sb.S { color:#ff9f0a; } .sb.R { color:#bf5af2; }
+  .meaning { font-size:13px; line-height:1.6; margin-top:5px; color:var(--fg); }
+  .row-btns { display:flex; gap:6px; align-items:center; }
+  .rbtn {
+    background:transparent; border:1px solid var(--border); color:var(--muted);
+    border-radius:8px; padding:3px 9px; font-size:12px; cursor:pointer;
+    transition:all .15s;
+  }
+  .rbtn.speak { border:0; font-size:14px; padding:3px 6px; }
+  .rbtn.known.on { color:#34c759; border-color:#34c759; }
+  .rbtn.star.on { color:#ffd60a; border-color:#ffd60a; }
+  .detail { display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); font-size:13px; line-height:1.7; }
+  .row.open .detail { display:block; }
+  .detail .dl { margin-bottom:8px; }
+  .detail .dt { color:var(--muted); font-size:11px; margin-bottom:2px; }
+  .detail .en { color:var(--muted); }
+  .detail .ex { font-style:italic; }
+  .detail .tp .tag {
+    display:inline-block; background:var(--card2); border-radius:6px;
+    padding:2px 8px; font-size:11px; margin:2px 4px 2px 0;
+  }
+  .empty { text-align:center; color:var(--muted); padding:40px 0; font-size:14px; }
+  .backtotop {
+    position:fixed; right:18px; bottom:max(18px, env(safe-area-inset-bottom));
+    background:var(--card); border:1px solid var(--border); color:var(--accent);
+    border-radius:50%; width:40px; height:40px; font-size:18px; cursor:pointer;
+    display:none; z-index:15;
+  }
+
+  /* 同步弹窗 */
+  .modal-mask {
+    position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:30;
+    display:none; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-mask.open { display:flex; }
+  .modal {
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:20px; max-width:420px; width:100%;
+  }
+  .modal h3 { margin:0 0 8px; font-size:16px; }
+  .modal p { margin:0 0 12px; font-size:12px; color:var(--muted); line-height:1.6; }
+  .modal input[type=text] {
+    width:100%; background:var(--card2); border:1px solid var(--border);
+    border-radius:10px; padding:9px 12px; color:var(--fg); font-size:13px; margin-bottom:12px;
+  }
+  .modal .btns { display:flex; gap:8px; flex-wrap:wrap; }
+  .modal .btns button {
+    flex:1; background:var(--accent); color:#fff; border:0; border-radius:10px;
+    padding:9px 0; font-size:13px; font-weight:600; cursor:pointer; min-width:100px;
+  }
+  .modal .btns button.ghost { background:var(--card2); color:var(--fg); border:1px solid var(--border); }
+  .sync-status { font-size:12px; margin-top:10px; min-height:16px; }
+  .sync-status.ok { color:#34c759; } .sync-status.err { color:#ff453a; } .sync-status.info { color:var(--muted); }
+  .modal label { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); margin-bottom:12px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="top-row">
+    <a class="home-btn" href="../../index.html">← 首页</a>
+    <div class="title">2026 PDF 五表净增词</div>
+    <button class="sync-btn" id="syncOpenBtn">☁️ 云同步</button>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+<main>
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="搜索单词 / 释义 / 例句…">
+    <span class="cnt" id="cnt"></span>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div id="list"></div>
+  <div class="empty" id="empty" style="display:none">没有匹配的单词</div>
+</main>
+<button class="backtotop" id="backtotop" title="回到顶部">↑</button>
+
+<div class="modal-mask" id="syncModal">
+  <div class="modal">
+    <h3>☁️ 云同步学习进度</h3>
+    <p>和「2026 词汇卡」「学科分类总表」共用同一 GitHub Token（勾选 gist 权限，<a href="https://github.com/settings/tokens/new?scopes=gist&description=TOEFL-pdf2026-vocab-sync" target="_blank" style="color:var(--accent)">点此创建</a>）。任一页面连接后，本页自动共用登录。</p>
+    <input type="text" id="syncToken" placeholder="粘贴 GitHub Token">
+    <label><input type="checkbox" id="syncRemember" checked> 在本机记住 Token（公用电脑请取消勾选）</label>
+    <div class="btns">
+      <button onclick="syncLogin()">🔗 连接</button>
+      <button onclick="syncNow()">🔄 立即同步</button>
+      <button class="ghost" onclick="syncLogout()">退出登录</button>
+      <button class="ghost" onclick="syncClose()">关闭</button>
+    </div>
+    <div class="sync-status" id="syncMsg"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+'use strict';
+// ─── 状态 ───────────────────────────────────────────────
+const SRC_NAMES = { L:'听力800', W:'写作500', C:'阅读填空', S:'口语300', R:'阅读800' };
+const PROGRESS_KEY = 'toefl-pdf2026-progress';
+let progress = {};          // { word: {k:1, s:1} }
+let curSrc = 'ALL';
+let curStatus = 'ALL';
+
+// ─── 进度存取 ───────────────────────────────────────────
+function loadProgress() {
+  try { progress = JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {}; } catch(e) { progress = {}; }
+}
+function saveProgress() {
+  try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch(e) {}
+  if (gistToken && gistId) {
+    clearTimeout(saveProgress._t);
+    saveProgress._t = setTimeout(gistPush, 2000);
+  }
+}
+
+// ─── 发音：本地 TTS 优先，Google TTS 兜底 ───────────────
+const GOOGLE_TTS = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=';
+function speak(text) {
+  const t = String(text || '').trim();
+  if (!t) return;
+  const clean = t.split(/\s+\/\s+/)[0];   // 音标栏成对词只读第一项
+  try {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = 'en-US'; u.rate = .95;
+      const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('en-US'));
+      if (v) u.voice = v;
+      u.onerror = () => playRemote(clean);
+      speechSynthesis.speak(u);
+      return;
+    }
+  } catch(e) {}
+  playRemote(clean);
+}
+function playRemote(text) {
+  const a = new Audio(GOOGLE_TTS + encodeURIComponent(text));
+  a.play().catch(() => {});
+}
+
+// ─── 渲染 ───────────────────────────────────────────────
+const listEl = document.getElementById('list');
+const emptyEl = document.getElementById('empty');
+const cntEl = document.getElementById('cnt');
+
+function esc(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function matches(e) {
+  if (curSrc !== 'ALL' && e.src.indexOf(curSrc) === -1) return false;
+  const p = progress[e.w];
+  if (curStatus === 'KNOWN' && !(p && p.k)) return false;
+  if (curStatus === 'STAR' && !(p && p.s)) return false;
+  if (curStatus === 'UNSEEN' && p) return false;
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  if (!q) return true;
+  return (e.w + ' ' + (e.m||'') + ' ' + (e.en||'') + ' ' + (e.ex||'')).toLowerCase().indexOf(q) !== -1;
+}
+
+function rowHtml(e) {
+  const p = progress[e.w] || {};
+  const badges = e.src.map(s => `<span class="sb ${s}" title="${SRC_NAMES[s]}">${s}</span>`).join('');
+  let detail = '';
+  if (e.en)  detail += `<div class="dl"><div class="dt">英文释义</div><div class="en">${esc(e.en)}</div></div>`;
+  if (e.mem) detail += `<div class="dl"><div class="dt">记忆方法</div><div>${esc(e.mem)}</div></div>`;
+  if (e.ex)  detail += `<div class="dl"><div class="dt">例句</div><div class="ex">${esc(e.ex)}</div></div>`;
+  if (e.ex_cn) detail += `<div class="dl"><div class="dt">例句译文</div><div>${esc(e.ex_cn)}</div></div>`;
+  if (e.tp && e.tp.length) detail += `<div class="dl tp"><div class="dt">来源话题</div>${e.tp.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>`;
+  return `
+  <div class="row${p.k ? ' known' : ''}" data-w="${esc(e.w)}">
+    <div class="row-head">
+      <span class="word">${esc(e.w)}</span>
+      ${e.ph ? `<span class="ph">${esc(e.ph)}</span>` : ''}
+      <span class="src-badges">${badges}
+        <span class="row-btns">
+          <button class="rbtn speak" title="发音">🔊</button>
+          <button class="rbtn known${p.k ? ' on' : ''}" title="标记已知">✓</button>
+          <button class="rbtn star${p.s ? ' on' : ''}" title="收藏难词">⭐</button>
+        </span>
+      </span>
+    </div>
+    <div class="meaning">${esc(e.m)}</div>
+    ${detail ? `<div class="detail">${detail}<div class="dt" style="margin-top:2px">点击词头 🔊 发音 · ✓ 已知 · ⭐ 收藏</div></div>` : ''}
+  </div>`;
+}
+
+function render() {
+  const hits = PDF_VOCAB.filter(matches);
+  cntEl.textContent = hits.length + ' / ' + PDF_VOCAB.length;
+  const frag = document.createDocumentFragment();
+  const wrap = document.createElement('div');
+  wrap.innerHTML = hits.map(rowHtml).join('');
+  while (wrap.firstChild) frag.appendChild(wrap.firstChild);
+  listEl.innerHTML = '';
+  listEl.appendChild(frag);
+  emptyEl.style.display = hits.length ? 'none' : 'block';
+}
+
+// ─── 交互（事件委托）────────────────────────────────────
+listEl.addEventListener('click', ev => {
+  const btn = ev.target.closest('.rbtn');
+  const row = ev.target.closest('.row');
+  if (!row) return;
+  const w = row.dataset.w;
+  if (btn) {
+    ev.stopPropagation();
+    if (btn.classList.contains('speak')) { speak(w); return; }
+    progress[w] = progress[w] || {};
+    if (btn.classList.contains('known')) {
+      progress[w].k = progress[w].k ? 0 : 1;
+      if (!progress[w].k && !progress[w].s) delete progress[w];
+      btn.classList.toggle('on', progress[w] && progress[w].k);
+      row.classList.toggle('known', !!(progress[w] && progress[w].k));
+    } else if (btn.classList.contains('star')) {
+      progress[w].s = progress[w].s ? 0 : 1;
+      if (!progress[w].k && !progress[w].s) delete progress[w];
+      btn.classList.toggle('on', progress[w] && progress[w].s);
+    }
+    saveProgress();
+    updateStats();
+    return;
+  }
+  row.classList.toggle('open');
+});
+
+document.getElementById('search').addEventListener('input', render);
+
+// 状态选择与词头点击发音
+document.addEventListener('click', ev => {
+  if (ev.target.closest('.word')) {
+    speak(ev.target.closest('.word').textContent);
+  }
+});
+
+// ─── 来源筛选 chips + 状态 chips ────────────────────────
+function buildChips() {
+  const counts = { ALL: PDF_VOCAB.length };
+  PDF_VOCAB.forEach(e => e.src.forEach(s => counts[s] = (counts[s] || 0) + 1));
+  const chips = document.getElementById('chips');
+  let html = `<span class="chip active" data-src="ALL">全部<span class="n">${counts.ALL}</span></span>`;
+  'LWCSR'.split('').forEach(s => {
+    if (counts[s]) html += `<span class="chip" data-src="${s}">${SRC_NAMES[s]}<span class="n">${counts[s]}</span></span>`;
+  });
+  html += `<span style="flex-basis:100%;height:1px"></span>`;
+  ['ALL:全部状态', 'UNSEEN:未标记', 'KNOWN:已知', 'STAR:收藏'].forEach(pair => {
+    const [v, label] = pair.split(':');
+    html += `<span class="chip st${v === 'ALL' ? ' active' : ''}" data-st="${v}">${label}</span>`;
+  });
+  chips.innerHTML = html;
+  chips.addEventListener('click', ev => {
+    const c = ev.target.closest('.chip');
+    if (!c) return;
+    if (c.dataset.src) {
+      curSrc = c.dataset.src;
+      chips.querySelectorAll('.chip[data-src]').forEach(x => x.classList.toggle('active', x === c));
+    }
+    if (c.dataset.st) {
+      curStatus = c.dataset.st;
+      chips.querySelectorAll('.chip[data-st]').forEach(x => x.classList.toggle('active', x === c));
+    }
+    render();
+  });
+}
+
+function updateStats() {
+  const known = Object.values(progress).filter(p => p.k).length;
+  const star = Object.values(progress).filter(p => p.s).length;
+  document.getElementById('stats').innerHTML =
+    `五表合并去重 ${PDF_META.totalUnique} 词 · 剔除已收录 ${PDF_META.excluded} 词 · 本页净增 <b>${PDF_META.netNew}</b> 词` +
+    ` &nbsp;|&nbsp; 已知 ${known} · 收藏 ${star}`;
+}
+
+// 回到顶部
+const backBtn = document.getElementById('backtotop');
+window.addEventListener('scroll', () => {
+  backBtn.style.display = window.scrollY > 600 ? 'block' : 'none';
+});
+backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ─── 跨页面共享的 Gist 凭证（与 2026/学科总表页同一份实现）──
+const GIST_SHARED_KEY = 'toefl-vocab-gist-shared';
+function gistSharedRead() {
+  const empty = { token: '', remember: true, gists: {} };
+  try {
+    const raw = localStorage.getItem(GIST_SHARED_KEY) || sessionStorage.getItem(GIST_SHARED_KEY);
+    if (!raw) return empty;
+    const s = JSON.parse(raw) || {};
+    return { token: s.token || '', remember: s.remember !== false, gists: s.gists || {} };
+  } catch (e) { return empty; }
+}
+function gistSharedWrite(token, remember, slot, id) {
+  const cur = gistSharedRead();
+  const gists = Object.assign({}, cur.gists);
+  if (slot) { if (id) gists[slot] = id; else delete gists[slot]; }
+  const payload = JSON.stringify({ token: token, remember: remember, gists: gists });
+  try {
+    if (remember) { localStorage.setItem(GIST_SHARED_KEY, payload); sessionStorage.removeItem(GIST_SHARED_KEY); }
+    else { sessionStorage.setItem(GIST_SHARED_KEY, payload); localStorage.removeItem(GIST_SHARED_KEY); }
+  } catch (e) {}
+}
+function gistSharedClearToken() {
+  const cur = gistSharedRead();
+  gistSharedWrite('', cur.remember, null, null);
+}
+
+// ─── 本页的云同步（进度对象整体同步）────────────────────
+const GIST_SLOT = 'pdf2026';
+const GIST_DESC = 'TOEFL-pdf2026-vocab-sync';
+const GIST_FILE = 'progress.json';
+let gistToken = '', gistId = '';
+
+function gistLoadCreds() {
+  const sh = gistSharedRead();
+  gistToken = sh.token;
+  gistId = sh.gists[GIST_SLOT] || '';
+}
+function gistSaveCreds() {
+  gistSharedWrite(gistToken, true, GIST_SLOT, gistId);
+}
+function syncMsg(text, cls) {
+  const el = document.getElementById('syncMsg');
+  el.className = 'sync-status ' + (cls || 'info');
+  el.textContent = text;
+}
+function syncOpen() {
+  document.getElementById('syncModal').classList.add('open');
+  document.getElementById('syncToken').value = gistToken;
+  syncMsg('');
+  if (gistToken && gistId) syncMsg('已连接 · Gist ID: ' + gistId.slice(0, 8) + '...', 'ok');
+}
+function syncClose() {
+  document.getElementById('syncModal').classList.remove('open');
+}
+document.getElementById('syncOpenBtn').addEventListener('click', syncOpen);
+document.getElementById('syncModal').addEventListener('click', ev => {
+  if (ev.target === ev.currentTarget) syncClose();
+});
+
+async function gistFetch(url, opts) {
+  const res = await fetch(url, {
+    ...opts,
+    headers: { 'Authorization': 'token ' + gistToken, 'Accept': 'application/vnd.github.v3+json', ...(opts?.headers || {}) },
+  });
+  if (!res.ok) throw new Error(res.status + ' ' + (await res.text()).slice(0, 100));
+  return res.json();
+}
+async function gistFindExisting() {
+  const gists = await gistFetch('https://api.github.com/gists?per_page=100');
+  return gists.find(g => g.description === GIST_DESC);
+}
+async function gistCreate() {
+  return gistFetch('https://api.github.com/gists', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      description: GIST_DESC, public: false,
+      files: { [GIST_FILE]: { content: JSON.stringify(progress) } }
+    })
+  });
+}
+async function gistPush() {
+  if (!gistToken || !gistId) return;
+  await gistFetch('https://api.github.com/gists/' + gistId, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ files: { [GIST_FILE]: { content: JSON.stringify(progress) } } })
+  });
+}
+async function gistPull() {
+  if (!gistToken || !gistId) return;
+  const g = await gistFetch('https://api.github.com/gists/' + gistId);
+  const content = g.files && g.files[GIST_FILE] && g.files[GIST_FILE].content;
+  if (content) {
+    const remote = JSON.parse(content) || {};
+    Object.keys(remote).forEach(w => {
+      const r = remote[w] || {}, l = progress[w] || {};
+      const k = l.k || r.k, s = l.s || r.s;
+      if (k || s) progress[w] = { k: k || 0, s: s || 0 };
+    });
+    saveProgress();
+  }
+}
+async function syncLogin() {
+  const token = document.getElementById('syncToken').value.trim();
+  if (!token) { syncMsg('请先粘贴 Token', 'err'); return; }
+  gistToken = token;
+  syncMsg('连接中...', 'info');
+  try {
+    await gistFetch('https://api.github.com/user');
+    const existing = await gistFindExisting();
+    if (existing) {
+      gistId = existing.id;
+      gistSaveCreds();
+      syncMsg('已找到同步 Gist，正在拉取...', 'info');
+      await gistPull();
+      render(); updateStats();
+      syncMsg('✅ 同步成功！共 ' + Object.keys(progress).length + ' 条进度', 'ok');
+    } else {
+      syncMsg('创建同步 Gist...', 'info');
+      const g = await gistCreate();
+      gistId = g.id;
+      gistSaveCreds();
+      syncMsg('✅ 已连接！' + Object.keys(progress).length + ' 条进度已上传', 'ok');
+    }
+  } catch (e) {
+    gistToken = ''; gistId = '';
+    syncMsg('❌ 连接失败: ' + e.message, 'err');
+  }
+}
+async function syncNow() {
+  if (!gistToken || !gistId) { syncMsg('请先连接', 'err'); return; }
+  syncMsg('同步中...', 'info');
+  try {
+    await gistPull();
+    await gistPush();
+    render(); updateStats();
+    syncMsg('✅ 同步完成！共 ' + Object.keys(progress).length + ' 条进度', 'ok');
+  } catch (e) {
+    syncMsg('❌ 同步失败: ' + e.message, 'err');
+  }
+}
+function syncLogout() {
+  gistToken = ''; gistId = '';
+  try { gistSharedClearToken(); } catch (e) {}
+  document.getElementById('syncToken').value = '';
+  syncMsg('已退出登录，共用 Token 已清除（其他词表页也会断开），本机进度仍保留', 'info');
+}
+// 已在其他页面连接过：认领本页的 Gist（不擅自创建）
+async function gistAdoptShared() {
+  gistLoadCreds();
+  if (!gistToken || gistId) return;
+  try {
+    const existing = await gistFindExisting();
+    if (existing) { gistId = existing.id; gistSaveCreds(); }
+  } catch (e) {}
+}
+
+// ─── 启动 ───────────────────────────────────────────────
+loadProgress();
+buildChips();
+updateStats();
+render();
+gistAdoptShared();
+if ('speechSynthesis' in window) speechSynthesis.getVoices(); // 预热语音列表
+</script>
+</body>
+</html>
