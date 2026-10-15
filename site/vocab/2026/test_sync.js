@@ -1145,7 +1145,7 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
   chk('四个词组分类全部配上例句',
     ['听力-习语', '听力-习语补充', '听力-短语动词', '听力-口语表达'].every(c =>
       run("vocab.filter(e => e.c === '" + c + "').every(e => typeof e.ex === 'string' && e.ex.length > 8)")));
-  chk('例句总数 133 条', run("vocab.filter(e => typeof e.ex === 'string').length") === 133,
+  chk('例句总数 134 条', run("vocab.filter(e => typeof e.ex === 'string').length") === 134,
     run("vocab.filter(e => typeof e.ex === 'string').length"));
   chk('rapport 例句在列', /built a good rapport/.test(run("vocab.find(e => e.w === 'rapport').ex") || ''));
   chk('happy hour 例句绑定时间窗与折扣', /Happy hour runs from four to seven/.test(run("vocab.find(e => e.w === 'happy hour').ex") || ''));
