@@ -28,11 +28,12 @@ const MACROS = [
   ['speaking', '口语表达'], ['other', '其他'],
 ];
 
-// at（词条级音频文本覆盖）/ ac（有道分块）为可选字段：仅存在时序列化，
+// at（词条级音频文本覆盖）/ ac（有道分块）/ acFirst（分块优先，整句检索有响应但整词录音坏档时
+// 跳过整句直接分块连播）/ ex（例句"英文. 中文"，单词播完接力播英文）为可选字段：仅存在时序列化，
 // 否则 JSON.stringify(undefined) 会产出非法的 "at:undefined" 字面量。
 // 此前固定六字段会静默丢弃 at/ac——子路径页上「With all due respect」等
 // 词条的音频文本覆盖与分块连播全部失效，等于白写。
-const ser = e => '{' + ['w', 'p', 'm', 'c', 'i', 'r', 'at', 'ac']
+const ser = e => '{' + ['w', 'p', 'm', 'ex', 'c', 'i', 'r', 'at', 'ac', 'acFirst']
   .filter(k => e[k] !== undefined)
   .map(k => JSON.stringify(k) + ':' + JSON.stringify(e[k])).join(',') + '}';
 

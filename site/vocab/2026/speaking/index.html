@@ -207,7 +207,15 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .fc-meaning { font-size: 26px; font-weight: 700; line-height: 1.35; margin: 8px 0; display: none; }
 .fc-word { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; display: none; }
 .fc-pos { font-size: 14px; color: var(--muted); display: none; }
+.fc-example {
+  display: none; margin-top: 12px; padding: 10px 12px;
+  background: var(--card2); border-radius: 12px;
+  font-size: 14px; line-height: 1.6; text-align: left;
+}
+.fc-example .ex-en { display: block; color: var(--fg); font-weight: 600; }
+.fc-example .ex-zh { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
 .flashcard.revealed .fc-meaning, .flashcard.revealed .fc-word, .flashcard.revealed .fc-pos { display: block; }
+.flashcard.revealed .fc-example:not(:empty) { display: block; }
 /* 整句卡（即时应答、时间日期句型）缩小字号，并把刺激句排在正确回应之前 */
 .flashcard.long .fc-word { order: 1; font-size: 18px; font-weight: 700; line-height: 1.45; }
 .flashcard.long .fc-meaning {
@@ -378,6 +386,10 @@ button, a, input, select, label, textarea, [role=button] { touch-action: manipul
 .player-phon { text-align: center; font-size: 14px; color: var(--muted); margin-top: 4px; min-height: 18px; }
 .player-phon:empty { display: none; }
 .player-meaning { text-align: center; font-size: 16px; font-weight: 600; line-height: 1.5; margin-top: 8px; }
+.player-example { text-align: center; font-size: 13px; line-height: 1.5; margin-top: 8px; padding: 0 4px; }
+.player-example .ex-en { color: var(--fg); font-weight: 600; }
+.player-example .ex-zh { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.player-example:empty { display: none; }
 .player-meta { text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px; }
 
 /* 听测翻面：默认盖住单词与释义，点击卡片 / Enter 翻面 */
@@ -634,6 +646,7 @@ kbd {
   .flashcard { min-height: min(52dvh, 420px); padding: 22px 16px 20px; border-radius: 22px; }
   .fc-meaning { font-size: 22px; }
   .fc-word { font-size: 24px; }
+  .fc-example { font-size: 13px; }
   .flashcard.long .fc-word { font-size: 16px; }
   .flashcard.long .fc-meaning { font-size: 15px; }
   .speak-btn { top: 12px; right: 12px; width: 44px; height: 44px; }
@@ -797,6 +810,7 @@ kbd {
             </div>
             <div class="player-phon" id="seq-now-phon"></div>
             <div class="player-meaning" id="seq-now-meaning"></div>
+            <div class="player-example" id="seq-now-example"></div>
             <div class="player-meta" id="seq-now-meta"></div>
           </div>
         </div>
@@ -1463,6 +1477,9 @@ function speak(text, onDone) {
   // 取词条上预计算的有道分块（ac）：整句有道无词条时，用同一有道声分块连播
   const entry = (typeof VOCAB !== 'undefined' && Array.isArray(VOCAB)) ? VOCAB.find(x => x.w === raw) : null;
   const ac = entry && Array.isArray(entry.ac) ? entry.ac : null;
+  // 分块优先（acFirst）：整句有道检索有响应（200 合成音）但整词录音坏档的词条（如 visa application），
+  // 跳过整句检索直接 ac 分块连播，用分块里的真人词典声
+  const acFirst = !!(entry && entry.acFirst && Array.isArray(ac) && ac.length > 1);
   // 词条级音频文本覆盖（at）：有道整句检索区分大小写，句首大写可能查无词条；
   // 显示保留原样，播放改用有词条的写法（如小写习语形式），拿到流畅的整句有道声
   if (entry && typeof entry.at === 'string' && entry.at) {
@@ -1470,13 +1487,13 @@ function speak(text, onDone) {
     if (alt) clean = alt;
   }
   if (settings.nativeTTS === false) {   // 发音开关关闭：跳过本地 TTS，直接使用在线发音
-    playRemoteAudio(clean, generation, ac, onDone);
+    playRemoteAudio(clean, generation, ac, acFirst, onDone);
     return;
   }
-  nativeSpeak(clean, () => playRemoteAudio(clean, generation, ac, onDone), onDone);
+  nativeSpeak(clean, () => playRemoteAudio(clean, generation, ac, acFirst, onDone), onDone);
 }
 
-function playRemoteAudio(clean, generation, ac, onDone) {
+function playRemoteAudio(clean, generation, ac, acFirst, onDone) {
   if (generation !== _speakGeneration) return;
   _audio.pause();
   _audio.onerror = null;
@@ -1493,7 +1510,11 @@ function playRemoteAudio(clean, generation, ac, onDone) {
   const generic = _googleOk
     ? [GOOGLE_TTS + encodeURIComponent(clean), BAIDU_TTS + encodeURIComponent(clean)]
     : [BAIDU_TTS + encodeURIComponent(clean), GOOGLE_TTS + encodeURIComponent(clean)];
-  const candidates = isPhrase
+  // 分块优先（acFirst）：整句检索虽有响应（200 合成音），但该词条整词录音坏档 →
+  // 不做整句检索，直接落入候选耗尽分支 → playChunks 连播预计算分块里的真人词典声
+  const candidates = (hasAc && acFirst)
+    ? []
+    : isPhrase
     ? [YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
        YOUDAO_TTS + encodeURIComponent(clean) + '&type=1'].concat(hasAc ? [] : generic)
     : [YOUDAO_TTS + encodeURIComponent(clean) + '&type=2',
@@ -1634,6 +1655,49 @@ const seq = { on: false, paused: false, idx: 0, cat: '', list: [], timer: 0 };
 let seqToken = 0;       // 每次「打断/步进」自增，作废过期的播完回调，避免双推进
 let _seqInside = false; // 连读自身调 speak 时不触发 speak() 里的「先停连读」守卫
 let seqRows = [];
+
+// ─── 例句（ex 字段）：“英文例句. 中文翻译” ───
+// 拆出英文部分（接力朗读用）与中文部分（仅展示）。英文在第一个汉字之前。
+function exampleParts(ex) {
+  const s = typeof ex === 'string' ? ex.trim() : '';
+  if (!s) return null;
+  const cut = s.search(/[\u4e00-\u9fff]/);
+  const en = (cut < 0 ? s : s.slice(0, cut)).replace(/[\s·—:：]+$/, '').trim();
+  const zh = cut < 0 ? '' : s.slice(cut).trim();
+  return en ? { en: en, zh: zh } : null;
+}
+
+function entryExampleEn(entry) {
+  const p = entry && exampleParts(entry.ex);
+  return p ? p.en : '';
+}
+
+// 例句展示 HTML：英文一行高亮、中文一行小字（单词卡与连读卡共用）
+function exampleHtml(ex) {
+  const p = exampleParts(ex);
+  if (!p) return '';
+  return '<span class="ex-en">' + esc(p.en) + '</span>' +
+    (p.zh ? '<span class="ex-zh">' + esc(p.zh) + '</span>' : '');
+}
+
+// 「先单词、后例句」的词条朗读（卡片🔊 / 连读 / 词表行点击 共用入口）：
+// 单词播完停约 0.4s 再播例句英文；词条无 ex 时行为与 speak(entry.w) 一致。
+// 链路被新的发音或 stopSpeech 取代时按代际 token 静默终止；
+// 连读内部调用时，例句延续 _seqInside 标记（异步段临时置位），不会误停正在进行的连读。
+function speakEntry(entry, onDone) {
+  if (!entry) { if (onDone) setTimeout(onDone, 0); return; }
+  const inside = _seqInside;
+  speak(entry.w, () => {
+    const en = entryExampleEn(entry);
+    if (!en) { if (onDone) onDone(); return; }
+    const gen = _speakGeneration;   // 单词刚播完的最新代；间隔期间有新发音/停止即作废
+    setTimeout(() => {
+      if (gen !== _speakGeneration) return;
+      _seqInside = inside;
+      try { speak(en, onDone); } finally { _seqInside = false; }
+    }, 400);
+  });
+}
 
 function seqInit() {
   const sel = $('seq-cat');
@@ -1935,7 +1999,7 @@ function seqSpeakCurrent() {
   const entry = seq.list[seq.idx];
   if (!entry) { toast('请先选择连读范围'); return; }
   if (seq.on) seqPause();   // 连读中：暂停在当前词（保留位置），避免两路声音打架
-  speak(entry.w);           // 不传 onDone：播完不推进
+  speakEntry(entry);        // 不传 onDone：单词+例句播完不推进
 }
 
 // 进度条按比例跳词（0 = 第 1 词，1 = 末词）
@@ -2000,6 +2064,7 @@ function renderSeqPanel() {
   const phon = $('seq-now-phon');
   if (phon) phon.textContent = entry.p || '';
   $('seq-now-meaning').textContent = entry.m;
+  $('seq-now-example').innerHTML = exampleHtml(entry.ex);
   $('seq-now-meta').textContent = entry.c + (entry.r ? ' · P' + entry.r : '');
 
   const total = seq.list.length;
@@ -2090,7 +2155,7 @@ function seqPlayCurrent() {
   const myToken = seqToken;
   _seqInside = true;
   try {
-    speak(entry.w, () => { if (seqToken === myToken) seqAdvance(); });
+    speakEntry(entry, () => { if (seqToken === myToken) seqAdvance(); });
   } finally { _seqInside = false; }
 }
 
@@ -2140,7 +2205,7 @@ function seqStep(delta) {
     renderSeqPanel();                    // 未连读：换位置 + 单独朗读一次（同 S 发音）
     seqHighlight();
     const entry = seq.list[seq.idx];
-    if (entry) speak(entry.w);           // 无 onDone：播完停在当前词，连读仍未启动
+    if (entry) speakEntry(entry);        // 无 onDone：播完（含例句）停在当前词，连读仍未启动
   }
 }
 
@@ -2478,7 +2543,7 @@ function startResponseTraining() {
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
   renderStudyCard();
-  if (studyQueue.length) speak(studyQueue[0].w);
+  if (studyQueue.length) speakEntry(studyQueue[0]);
 }
 
 function getStats() {
@@ -2639,6 +2704,7 @@ function renderStudyCard() {
         '<div class="fc-meaning">' + esc(entry.m) + '</div>' +
         '<div class="fc-word">' + esc(entry.w) + '</div>' +
         '<div class="fc-pos">' + esc(entry.p) + '</div>' +
+        '<div class="fc-example">' + exampleHtml(entry.ex) + '</div>' +
         '<div class="fc-hint"><span class="listen-icon">🔊</span>' + (reviewish
           ? '先听发音回忆：会点「会」，不会点「不会」（不影响收藏状态），或先翻面验证'
           : '先听发音：不会的收藏 ⭐，会的标记已知 ✓，或点卡片翻面') + '</div>' +
@@ -2668,7 +2734,7 @@ function renderStudyCard() {
 
   $('fc-speak').addEventListener('click', e => {
     e.stopPropagation();
-    speak(entry.w);
+    speakEntry(entry);      // 先单词后例句
   });
 
   $('fc-known').addEventListener('click', e => {
@@ -2856,7 +2922,7 @@ function startErrorRedo() {
   if ($('study-cat-filter')) $('study-cat-filter').value = '';
   switchTab('study');
   renderStudyCard();
-  if (studyQueue.length) speak(studyQueue[0].w);
+  if (studyQueue.length) speakEntry(studyQueue[0]);
 }
 
 // ─── 分类一览（点词进卡片） ───
@@ -2999,7 +3065,7 @@ function startStudyAt(pos) {
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
   renderStudyCard();
-  speak(flat[studyIdx].w);
+  speakEntry(flat[studyIdx]);
 }
 
 function startStudy(macroFilter, mode) {
@@ -3013,7 +3079,7 @@ function startStudy(macroFilter, mode) {
   if ($('study-cat-filter')) $('study-cat-filter').value = studyCategory;
   switchTab('study');
   renderStudyCard();
-  if (studyQueue.length) speak(studyQueue[0].w);
+  if (studyQueue.length) speakEntry(studyQueue[0]);
 }
 
 function getFilteredList() {
@@ -3082,7 +3148,7 @@ function renderListPage() {
       '<td><span class="status-dot ' + x.status + '"></span>' + statusLabel(x.status) + '</td>' +
       '<td class="cat" title="' + esc(x.e.c) + '">' + esc(x.e.c) + '</td>' +
       '<td class="cnt"></td>';
-    tr.addEventListener('click', () => speak(x.e.w));
+    tr.addEventListener('click', () => speakEntry(x.e));
     // 词表内直接切换收藏：⭐=已收藏（点击取消），☆=未收藏（点击收藏）。
     // 行点击是播放发音，按钮用 stopPropagation 隔开。
     const paintCnt = () => {
@@ -3240,7 +3306,7 @@ function init() {
       settings.nativeTTS = ttsToggle.checked;
       saveSettings();
       // 即时试听当前词，确认是否已恢复/切换
-      if (studyStarted && studyIdx < studyQueue.length) speak(studyQueue[studyIdx].w);
+      if (studyStarted && studyIdx < studyQueue.length) speakEntry(studyQueue[studyIdx]);
     });
   }
 

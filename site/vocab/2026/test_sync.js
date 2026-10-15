@@ -92,6 +92,7 @@ const sessionStorage = memStore();
 let fetchLog = [];
 let gistStore = null; // 模拟远端 gist 文件内容
 let audioLog = [];    // Audio 桩记录每次设置的 src（断言「发起发音请求」用）
+let audioAutoEnd = false; // 打桩开关：play() 后异步触发 onended（测「单词→例句」链播）
 
 function fakeFetch(url, opts) {
   fetchLog.push({ url, method: (opts && opts.method) || 'GET', body: opts && opts.body });
@@ -139,7 +140,11 @@ const sandbox = {
     constructor() { this.src = ''; }
     set src(v) { this._src = v; if (v) audioLog.push(v); }
     get src() { return this._src; }
-    play() { return Promise.resolve(); }
+    play() {
+      // audioAutoEnd=true 时模拟「音频自然播完」，驱动 speak 的 onDone 链
+      if (audioAutoEnd) setTimeout(() => { if (this.onended) this.onended(); }, 5);
+      return Promise.resolve();
+    }
     pause() {}
     load() {}
   },
@@ -714,11 +719,12 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     pd.forEach(e => {
       const m = MAINVOCAB[e.i];
       if (!m || m.w !== e.w) pageProblems.push(key + ':i错位 ' + e.w + '@' + e.i);
-      // at/ac 必须逐字随行：gen_macro_pages.js 曾固定六字段序列化，会静默丢掉
-      // at（音频文本覆盖）与 ac（有道分块），子路径页上的覆盖全部失效
+      // at/ac/acFirst 必须逐字随行：gen_macro_pages.js 曾固定六字段序列化，会静默丢掉
+      // at（音频文本覆盖）与 ac（有道分块）/acFirst（分块优先），子路径页上的覆盖全部失效
       if (JSON.stringify(e.at) !== JSON.stringify(m && m.at)
-        || JSON.stringify(e.ac) !== JSON.stringify(m && m.ac))
-        pageProblems.push(key + ':at/ac丢失 ' + e.w);
+        || JSON.stringify(e.ac) !== JSON.stringify(m && m.ac)
+        || JSON.stringify(e.acFirst) !== JSON.stringify(m && m.acFirst))
+        pageProblems.push(key + ':at/ac/acFirst丢失 ' + e.w);
     });
     const patchOk = /wordToIndex\[e\.w\] = e\.i/.test(ph) && /byFullIdx\[idx\]/.test(ph)
       && /const MACRO_SUBPATH = \{\};/.test(ph);
@@ -1133,6 +1139,111 @@ chk('日常阅读分类已注册', run("getMacro('阅读-标识告示')") === 'r
     run('seq.idx') === run("seq.list.length - 1") && run('seq.paused') === true,
     run('seq.idx') + '/' + run('seq.paused'));
   run('seqStop()');
+
+  // ── 29. 词组例句（ex 字段）：数据齐全 + 单词播完接力播例句英文 ─────────
+  // 覆盖：听力-习语 / 听力-习语补充 / 听力-短语动词 / 听力-口语表达。
+  chk('四个词组分类全部配上例句',
+    ['听力-习语', '听力-习语补充', '听力-短语动词', '听力-口语表达'].every(c =>
+      run("vocab.filter(e => e.c === '" + c + "').every(e => typeof e.ex === 'string' && e.ex.length > 8)")));
+  chk('例句总数 132 条', run("vocab.filter(e => typeof e.ex === 'string').length") === 132,
+    run("vocab.filter(e => typeof e.ex === 'string').length"));
+  chk('rapport 例句在列', /built a good rapport/.test(run("vocab.find(e => e.w === 'rapport').ex") || ''));
+  chk('happy hour 例句绑定时间窗与折扣', /Happy hour runs from four to seven/.test(run("vocab.find(e => e.w === 'happy hour').ex") || ''));
+  chk('free weights 例句在列', /lower level of the recreation center/.test(run("vocab.find(e => e.w === 'free weights').ex") || ''));
+  chk('no-show 例句绑定罚款细节', /twenty-dollar fee/.test(run("vocab.find(e => e.w === 'no-show').ex") || ''));
+  chk('credit transfer 例句绑定 registrar 场景', /how many of your credits will transfer/.test(run("vocab.find(e => e.w === 'credit transfer').ex") || ''));
+  chk('course reserve 例句绑定限时借阅', /checked out for two hours/.test(run("vocab.find(e => e.w === 'course reserve').ex") || ''));
+  chk('approving 例句绑定 nod 场景', /approving nod/.test(run("vocab.find(e => e.w === 'approving').ex") || ''));
+  // visa application 有道 US 整词录音坏档（词中夹杂音、application 段被压短）；
+  // 实测大写整句检索（Visa application&type=2）同样返回 200 合成音而非 500，at 覆盖到不了分块。
+  // acFirst 分块优先：跳过整句候选直接连播 ac 两分块——visa/application 均为 48kHz 真人词典声。
+  chk('visa application 带 acFirst 分块优先',
+    run("vocab.find(e => e.w === 'visa application').acFirst") === true);
+  chk('visa application 带 ac 两分块',
+    JSON.stringify(run("vocab.find(e => e.w === 'visa application').ac")) === JSON.stringify([["visa",2],["application",2]]));
+  audioAutoEnd = true;
+  audioLog = [];
+  run("speak('visa application')");
+  await new Promise(r => setTimeout(r, 120));
+  audioAutoEnd = false;
+  chk('visa application 首块直取 visa 真人声',
+    audioLog[0] === 'https://dict.youdao.com/dictvoice?audio=visa&type=2', audioLog[0] || '无');
+  chk('visa application 次块连播 application 真人声',
+    audioLog[1] === 'https://dict.youdao.com/dictvoice?audio=application&type=2', audioLog[1] || '无');
+  // 漏水句应答卡：原第一分块「There's a leak」有道 US 无词条(500)会被 playSequence 静默跳过，
+  // 导致听感从 "under the sink" 开始、句子开头缺失。重新切分为 4 块全 US 有道真实词条：
+  // There's a / leak / under the sink / in the kitchen（各块均已实测 200 且转写内容正确）。
+  chk('漏水句应答卡分块切分为 4 块',
+    JSON.stringify(run("vocab.find(e => e.w === \"There's a leak under the sink in the kitchen.\").ac")) ===
+    JSON.stringify([["There's a",2],["leak",2],["under the sink",2],["in the kitchen",2]]));
+  chk('bundle up 例句在列', /bundle up before you head out/.test(run("vocab.find(e => e.w === 'bundle up').ex") || ''));
+  chk('touch and go 例句在列', /touch and go whether/.test(run("vocab.find(e => e.w === 'touch and go').ex") || ''));
+  chk('on second thought 例句在列', /meet at the library instead/.test(run("vocab.find(e => e.w === 'on second thought').ex") || ''));
+  chk('more often than not 例句在列', /cover the last two lectures/.test(run("vocab.find(e => e.w === 'more often than not').ex") || ''));
+  chk('having said that 已收录且带例句',
+    run("vocab.filter(e => e.w === 'having said that').length") === 1 &&
+    /weekends can get noisy/.test(run("vocab.find(e => e.w === 'having said that').ex") || ''));
+  chk('be swamped 例句在列', /swamped with assignments/.test(run("vocab.find(e => e.w === 'be swamped').ex") || ''));
+  chk('hold up 例句在列', /held up/.test(run("vocab.find(e => e.w === 'hold up').ex") || ''));
+  chk('例句英文部分可提取',
+    run('entryExampleEn(vocab.find(e => e.w === "Don\'t bother"))') === "Don't bother waiting for me.",
+    run('entryExampleEn(vocab.find(e => e.w === "Don\'t bother"))'));
+  chk('无例句词条提取为空', run('entryExampleEn(vocab.find(e => e.w === "analyse"))') === '');
+
+  // speakEntry：先播单词、稍停再播例句英文（打桩开 audioAutoEnd 驱动 onDone 链）
+  audioAutoEnd = true;
+  audioLog = [];
+  run('speakEntry(vocab.find(e => e.w === "be swamped"))');
+  await new Promise(r => setTimeout(r, 600));
+  audioAutoEnd = false;
+  const said = audioLog.map(u => {
+    const m = /[?&](?:audio|text|q)=([^&]*)/.exec(u);
+    try { return m ? decodeURIComponent(m[1]) : u; } catch (e) { return u; }
+  }).filter(Boolean);
+  chk('speakEntry 先播单词', said[0] === 'be swamped', said[0] || '无');
+  chk('speakEntry 再播例句英文', said[1] === "I'm swamped with assignments this week.", said[1] || '无');
+  chk('例句朗读不包含中文', said.length >= 2 && !/[\u4e00-\u9fff]/.test(said[1]), said[1] || '无');
+
+  // 无例句词条：speakEntry 退化为只播单词（不发起第二个请求）
+  audioAutoEnd = true;
+  audioLog = [];
+  run('speakEntry(vocab.find(e => e.w === "analyse"))');
+  await new Promise(r => setTimeout(r, 600));
+  audioAutoEnd = false;
+  chk('无例句词条只播单词', audioLog.length === 1 && /analyse/.test(audioLog[0]), audioLog.length);
+
+  // 链播被新发音打断：间隔期内再点一次 → 旧例句不响，只出现新一轮单词
+  audioAutoEnd = true;
+  audioLog = [];
+  run('speakEntry(vocab.find(e => e.w === "hold up"))');
+  await new Promise(r => setTimeout(r, 120));   // 单词已播完、例句还在 400ms 间隔内
+  run('speakEntry(vocab.find(e => e.w === "analyse"))');
+  await new Promise(r => setTimeout(r, 700));
+  audioAutoEnd = false;
+  const said2 = audioLog.map(u => {
+    const m = /[?&](?:audio|text|q)=([^&]*)/.exec(u);
+    try { return m ? decodeURIComponent(m[1]) : u; } catch (e) { return u; }
+  }).filter(Boolean);
+  chk('新发音打断旧例句', said2.length === 2 && said2[0] === 'hold up' && said2[1] === 'analyse',
+    said2.join(' → '));
+
+  // 单词卡显示例句（翻面后可见，含英文与中文两段）
+  run("studyQueue = [vocab.find(e => e.w === 'hold up')]; studyIdx = 0; studyMode = 'new'; " +
+      "studyResults = { right: 0, wrong: 0, wrongList: [], fav: 0, known: 0, collectedList: [] }; " +
+      "studyHistory = []; studyStarted = true; renderStudyCard();");
+  const cardHtml = getEl('study-area').innerHTML || '';
+  chk('单词卡渲染例句区块', cardHtml.includes('fc-example') && cardHtml.includes('held up') && cardHtml.includes('公交堵在了路上'));
+
+  // 连读卡显示例句（听测未翻面时与单词一起被盖住）
+  run("seq.list = [vocab.find(e => e.w === 'be swamped')]; seq.idx = 0; renderSeqPanel();");
+  const seqEx = getEl('seq-now-example');
+  chk('连读卡渲染例句', /swamped with assignments/.test(seqEx.innerHTML || ''), (seqEx.innerHTML || '').slice(0, 40));
+  chk('连读卡例句含中英两段', (seqEx.innerHTML || '').includes('ex-en') && (seqEx.innerHTML || '').includes('ex-zh'));
+  run("seq.list = []; renderSeqPanel();");
+
+  // 子路径页数据保留 ex 字段（gen_macro_pages 的 ser 白名单）
+  const subData = fs.readFileSync(path.join(HERE, 'listening', 'data.js'), 'utf8');
+  chk('听力子路径页保留例句', subData.includes('"w":"be swamped","p":"idiom","m":"忙得不可开交","ex":'));
 
   console.log(results.join('\n'));
   const failed = results.filter(r => r.startsWith('FAIL'));
