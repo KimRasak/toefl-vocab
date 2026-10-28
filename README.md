@@ -31,6 +31,6 @@
 
 ```bash
 python3 workspace/scripts/build_1925.py
-python3 workspace/scripts/build_merged_by_discipline.py
+python3 workspace/scripts/apply_general_usage.py
 python3 workspace/scripts/gen_1791_audio.py
 ```

@@ -4,11 +4,13 @@ __pycache__/
 *.pyc
 .hf_cache/
 
-# ---- 本地工作区：抓取语料、中间产物、实验与第三方工具 ----
+# ---- 本地工作区与私密真题库：抓取语料、中间产物、实验与线下真题 ----
 workspace/_local/
+real_quiz/
 
-# ---- 听力素材源目录：音频/字幕/中间数据都不入库（仅保留顶层构建脚本）----
-# 需另行备份到外部盘或对象存储；TPO 原文与音频属第三方版权内容，不放公开仓库
+# ---- 听力素材源目录：音频/字幕/中间数据都不入库（仅保留顶层构建脚本与元数据）----
+# 站点已按部署路径 site/listening/selected/ 与 site/listening/all/ 跟踪单页产物；
+# TPO 原文与音频属第三方版权内容且体积大（2.15GB），需另行备份到外部盘或对象存储，不放公开仓库
 workspace/projects/tpo-200/*
 !workspace/projects/tpo-200/*.py
 workspace/projects/tpo-listening/*
@@ -17,13 +19,10 @@ workspace/projects/tpo-listening/*
 !workspace/projects/tpo-listening/subjects.json
 !workspace/projects/tpo-listening/README.md
 
-# ---- 待决策：1791 本地真人音频（57MB / 3533 个 mp3）----
-# 若决定上线 V7 本地音频，删掉下面两行后提交，页面才能用上本地发音
+# ---- 已决策：1791 本地真人音频（59MB / 3533 个 mp3）不入 git ----
+# 避免仓库体积暴涨；仅本地保留供离线开发或按需生成
 site/vocab/1791/audio/
 site/vocab/1791/audio_map.js
-
-# ---- 构建产物：站点已按部署路径 listening/ listening-all/ 跟踪，源目录内的副本不重复入库 ----
-# （上面的 bilibili.../* 与 TPO_listening/* 规则已覆盖）
 
 # ---- 导入时保存的网页/PDF（仓库是 public，默认不公开这些）----
 *.mhtml
@@ -34,12 +33,12 @@ workspace/projects/ets-2026/*.zip
 workspace/projects/ets-2026/txt/
 site/listening/2026/audio/
 
-# ---- 已决策：2026 新格式听力页的音频（196 个文件 / 28MB）不入 git，改托管 HF ----
-# 不入 git 的理由是体积：28MB 会把仓库翻几倍，且每次改动永久留在历史里。
+# ---- 已决策：2026 新格式听力页的音频（196 个文件 / 29MB）不入 git，改托管 HF ----
+# 不入 git 的理由是体积：29MB 会把仓库翻倍，且每次改动永久留在历史里。
 # 托管在两个 HuggingFace dataset：
 #   xxfasdf/toefl-2026-official-listening-audio  public  仅 audio/，线上页面直接播这份
 #   xxfasdf/toefl-2026-listening-audio           private audio/ + 官方原始 original-zips/
-# 页面「本地优先、镜像兜底」，取用与恢复办法见 ets_official_2026/README.md 第五节。
+# 页面「本地优先、镜像兜底」，取用与恢复办法见 workspace/projects/ets-2026/README.md 第五节。
 
 # ---- TOEIC 样例音频（第三方版权素材，不入库）----
 site/listening/toeic/audio/
